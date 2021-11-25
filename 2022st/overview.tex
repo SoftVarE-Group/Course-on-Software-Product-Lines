@@ -1,12 +1,11 @@
 \input{template/lecture}
 
 \subtitle{Lecture Topics}
-\author[Thüm, Kehrer, Kuiter]{Thomas Thüm, Timo Kehrer, Elias Kuiter}
-
-\setbeamertemplate{section in toc}[sections numbered]
+\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
 
 \usepackage{pdfpages}
-\newcommand{\addlecture}[1]{\section{#1}\begin{frame}\includepdf[pages=2]{#1}\end{frame}}
+\newcommand{\addlecture}[2]{\section{#2}\begin{frame}\includepdf[pages=2]{#1}\end{frame}}
+\setbeamertemplate{section in toc}[sections numbered]
 
 \begin{document}
 	
@@ -14,23 +13,24 @@
 \usebackgroundtemplate{}
 \AtBeginSection[]{}
 
-\addtocontents{toc}{Part 1}
-\addlecture{new}
-\addlecture{new}
-\addlecture{new}
-
+\addtocontents{toc}{Classic Approaches for Variability}
+\addlecture{introduction}{Introduction}
+\addlecture{runandown}{Runtime Variability and Clone-and-Own}
+\addlecture{oop}{Modularity and Design Patterns}
 \sectionend
 	
-\addtocontents{toc}{Part 2}
-\addlecture{new}
-\addlecture{new}
-\addlecture{new}
-
+\addtocontents{toc}{Modeling and Implementing Features}
+\addlecture{modeling}{Feature Modeling}
+\addlecture{embedded}{Techniques for Embedded Software}
+\addlecture{apps}{Techniques for Application Software}
+\addlecture{languages}{Language-Based Techniques}
+\addlecture{process}{Development Process}
 \sectionend
 
-\addtocontents{toc}{Part 3}
-\addlecture{new}
-\addlecture{new}
-\addlecture{new}
+\addtocontents{toc}{Quality Assurance and Maintenance}
+\addlecture{interactions}{Feature Interactions}
+\addlecture{analyses}{Product-Line Analyses}
+\addlecture{testing}{Product-Line Testing}
+\addlecture{evonance}{Evolution and Maintenance}
 
 \end{document}

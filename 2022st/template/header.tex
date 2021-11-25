@@ -25,16 +25,9 @@
 	\section*{Overview}
 	\subsection*{Overview}
 	\begin{frame}{-- \insertsubtitle}
-		\begin{multicols}{3}
+		\begin{multicols}{2}
 			\tableofcontents
 		\end{multicols}
-	
-		\begin{flushright}
-			\footnotesize
-			Author: \insertauthor
-			
-			Date: \insertdate
-		\end{flushright}
 	\end{frame}
 }
 % temporarily added slide to have a lecture overview 
@@ -51,4 +44,4 @@
 	\end{frame}
 }
 
-\newcommand{\sectionend}{\addtocontents{toc}{\newpage}}
+\newcommand{\sectionend}{\addtocontents{toc}{\vspace{5mm}}}
