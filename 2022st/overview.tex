@@ -1,0 +1,36 @@
+\input{template/lecture}
+
+\subtitle{Lecture Topics}
+\author[Thüm, Kehrer, Kuiter]{Thomas Thüm, Timo Kehrer, Elias Kuiter}
+
+\setbeamertemplate{section in toc}[sections numbered]
+
+\usepackage{pdfpages}
+\newcommand{\addlecture}[1]{\section{#1}\begin{frame}\includepdf[pages=2]{#1}\end{frame}}
+
+\begin{document}
+	
+\input{template/header}
+\usebackgroundtemplate{}
+\AtBeginSection[]{}
+
+\addtocontents{toc}{Part 1}
+\addlecture{new}
+\addlecture{new}
+\addlecture{new}
+
+\sectionend
+	
+\addtocontents{toc}{Part 2}
+\addlecture{new}
+\addlecture{new}
+\addlecture{new}
+
+\sectionend
+
+\addtocontents{toc}{Part 3}
+\addlecture{new}
+\addlecture{new}
+\addlecture{new}
+
+\end{document}

@@ -1,0 +1,139 @@
+\documentclass[8pt, aspectratio=169, handout]{beamer} % hyperref={colorlinks=true}
+
+\title{Software Product Lines}
+
+% IMPORTED PACKAGES
+
+\usepackage{adjustbox} % used for partofpage
+\usepackage{tcolorbox} % used for mydefinition, mynote, myexample
+\usepackage{multicol} % used temporarily for the lecture overview
+
+% SLIDE TEMPLATE
+
+\beamertemplatenavigationsymbolsempty 
+
+% COMMANDS TO LAYOUT AND ANNIMATE SLIDES
+
+\newcommand{\lessonslearned}[3]{
+	\subsection{Summary}
+	\begin{frame}{-- \insertsection}
+		\leftorright{
+			\mydefinition{Lessons Learned}{
+				\begin{itemize}
+					#1
+				\end{itemize}
+			}
+			\mynote{Further Reading}{
+				\begin{itemize}
+					#2
+				\end{itemize}
+			}
+		}{
+			\myexample{Practice}{
+				#3
+			}
+		}
+	\end{frame}
+}
+
+\newcommand{\onlyleft}[1]{
+	\halfpage{#1}
+}
+
+\newcommand{\onlyright}[1]{
+	~\hfill
+	\halfpage{#1}
+}
+
+\newcommand{\leftorright}[2]{
+	\uncover<1>{\halfpage{#1}}
+	\hfill
+	\uncover<3->{\halfpage{#2}}
+}
+
+\newcommand{\rightorleft}[2]{
+	\uncover<3->{\halfpage{#1}}
+	\hfill
+	\uncover<1>{\halfpage{#2}}
+}
+
+\newcommand{\leftthenright}[2]{
+	\halfpage{#1}
+	\hfill\pause
+	\halfpage{#2}
+}
+
+\newcommand{\leftandright}[2]{
+	\halfpage{#1}
+	\hfill
+	\halfpage{#2}
+}
+
+\newcommand{\leftmiddleandright}[3]{
+	\thirdpage{#1}
+	\hfill
+	\thirdpage{#2}
+	\hfill
+	\thirdpage{#3}
+}
+
+\newcommand{\leftmiddleorright}[3]{
+	\uncover<1>{\thirdpage{#1}}
+	\hfill
+	\uncover<3>{\thirdpage{#2}}
+	\hfill
+	\uncover<5->{\thirdpage{#3}}
+}
+
+\newcommand{\halfpage}[1]{\partofpage{48}{#1}}
+
+\newcommand{\thirdpage}[1]{\partofpage{31}{#1}}
+
+\newcommand{\partofpage}[2]{
+	\adjustbox{valign=t}{\begin{minipage}{0.#1\textwidth}
+			\begin{flushleft}
+				#2
+			\end{flushleft}
+	\end{minipage}}
+}
+
+\newcommand{\mydefinition}[2]{
+	\begin{tcolorbox}[title=#1,colback=orange!10,colframe=orange!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
+\newcommand{\mydefinitiontight}[2]{
+	\begin{tcolorbox}[title=#1,colback=white,colframe=orange!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
+\newcommand{\mynote}[2]{
+	\begin{tcolorbox}[title=#1,colback=red!10,colframe=red!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
+\newcommand{\myexample}[2]{
+	\begin{tcolorbox}[title=#1,colback=blue!10,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
+\newcommand{\myexampletight}[2]{
+	\begin{tcolorbox}[title=#1,colback=white,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
