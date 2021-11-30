@@ -5,3 +5,6 @@
 *.snm
 *.gz
 *.toc
+*.fls
+*.fdb*
+.vscode
