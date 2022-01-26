@@ -18,15 +18,29 @@
 
 % proposal (explain with one running example):
 
+\subsection{Questions on Feature Models}
+
+list of all questions
+
+\subsection{SAT and \#SAT Solver}
+explain simple SAT solver ($SAT(\phi) \in \{\top, \bot\}$)
+
+as a black-box/abstraction (may be implemented as BDD)
+
+\begin{frame}{-- Minimum Unsatisfiable Set}
+    cannot be answered (easily) with simple SAT solver
+
+    explain extended SAT-MUS solver
+\end{frame}
+
+\begin{frame}{-- \#SAT Solver}
+    ...
+\end{frame}
+
 \subsection{Void Feature Model}
 % can be combined on one slide, possibly
 \begin{frame}{-- Problem}
-    is the FM even consistent? does it have errors?
-\end{frame}
-\begin{frame}{-- SAT Solver}
-    explain simple SAT solver ($SAT(\phi) \in \{\top, \bot\}$)
-
-    CNF/DIMACS somewhere?
+    is the FM even consistent? does it have errors? % can we even get a valid configuration? does a configurator allow anything? a clever configurator would see that
 \end{frame}
 \begin{frame}{-- Solution}
     void iff $SAT(\phi) = \bot$
@@ -50,14 +64,17 @@
     note that this is a generalization of void/core/dead
 \end{frame}
 
-\subsection{Explanations for Inconsistencies}
+\subsection{Redundant Constraints}
+\begin{frame}{-- Problem}
+    ...
+\end{frame}
+\begin{frame}{-- Solution}
+    ...
+\end{frame}
+
+\subsection{Explanations for Inconsistencies} % Thomas: always explain this with the analysis so we can show a graphical example? (show an example of an inconsistency and then reveal the issue)
 \begin{frame}{-- Problem}
     WHY is a FM inconsistent or a feature core/dead?
-\end{frame}
-\begin{frame}{-- Minimum Unsatisfiable Set}
-    cannot be answered (easily) with simple SAT solver
-
-    explain extended SAT-MUS solver
 \end{frame}
 \begin{frame}{-- Solution}
     ...
@@ -69,9 +86,6 @@
 
     explain FM cardinality (extension of void), feature cardinality (extension of dead) and partial cfg cardinality (ext. of partial cfg)
 \end{frame}
-\begin{frame}{-- \#SAT Solver}
-    ...
-\end{frame}
 \begin{frame}{-- Solution}
     ...
 \end{frame}
@@ -79,11 +93,26 @@
 \subsection{Other Analyses}
 \begin{frame}{~}
     list some more analyses/questions
+
+    atomic sets, determinate features
 \end{frame}
 
-\subsection{Implementation (?)}
+\subsection{Challenges}
 \begin{frame}{~}
-    maybe explain here that CNF/DIMACS is needed, what solvers are used in FeatureIDE as an example for how to implement this? is this at all relevant?
+    how is SAT (before: a black box) implemented?
+
+    solvers have parameters, heuristics, ...
+
+    there are SAT solvers that do not use CNF
+
+    CNF/DIMACS
+\end{frame}
+
+\subsection{Experiences} % performance / efficiency
+\begin{frame}{~}
+    show a few diagrams with performance on large models
+
+    (may even be implemented concretely as BDD)
 \end{frame}
 
 \subsection{Summary}
