@@ -1,58 +1,111 @@
-this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
+% this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
 
-revisit what the class of programs named "solver" does, and why it is important that we use OTS solvers and profit from their optimizations/contests - idea: reduce practical problems to solvers (sim. to TheoInf/Logics)
-only with Boolean formulas can we get really performant results today
+% revisit what the class of programs named "solver" does, and why it is important that we use OTS solvers and profit from their optimizations/contests - idea: reduce practical problems to solvers (sim. to TheoInf/Logics)
+% only with Boolean formulas can we get really performant results today
 
-extensions to simple SAT solvers (maybe explain when needed):
-- when SAT = true, some give a satisfying assignment (for optimizations)
-- wen SAT = false, some give a MUS (for explanations)
-- some can count, called sharp SAT (or keep them completely separated from SAT?) (for model counting)
+% extensions to simple SAT solvers (maybe explain when needed):
+% - when SAT = true, some give a satisfying assignment (for optimizations)
+% - wen SAT = false, some give a MUS (for explanations)
+% - some can count, called sharp SAT (or keep them completely separated from SAT?) (for model counting)
 
-ask questions:
-am i developing unused code?
-how to find out whether a partial configuration is valid? (show decision propagation in FeatureIDE)
+% ask questions:
+% am i developing unused code?
+% how to find out whether a partial configuration is valid? (show decision propagation in FeatureIDE)
 
-for each analysis, also list the sharp SAT encoding
+% for each analysis, also list the sharp SAT encoding
 
-as interaction at the end: how can we leverage when a SAT solver also gives us a sat-assignment?
+% as interaction at the end: how can we leverage when a SAT solver also gives us a sat-assignment?
 
-proposal (explain with one running example):
+% proposal (explain with one running example):
 
-Q: is the FM consistent?
-Tool: SAT (explain)
-A: SAT(FM)
+\subsection{Void Feature Model}
+% can be combined on one slide, possibly
+\begin{frame}{-- Problem}
+    is the FM even consistent? does it have errors?
+\end{frame}
+\begin{frame}{-- SAT Solver}
+    explain simple SAT solver ($SAT(\phi) \in \{\top, \bot\}$)
 
-Q: is a feature core/dead?
-Tool: SAT
-A: not SAT(FM and not F) etc.
-
-Q: WHY is this the case?
-Tool: SAT-MUS (explain)
-A: ...
-
-Q: to WHICH DEGREE is a FM consistent (i.e., degree of freedom / variability factor) or a feature core/dead?
-Tool: sharp SAT (explain)
-A: ...
-
-(then list some other analyses quickly)
-
-on a summary page, state that sharp SAT > 0 implies SAT, SAT-MUS iff SAT
-then, as an interaction, explain what SAT-ASS is and ask how it can be used
-this way, students are taught that SAT* solvers are tools for answering questions, and that if they support more features, more/faster analyses are possible
-
-% master theses T. Günther, S. Ananieva
-
-
-\subsection{Inconsistencies in Feature Models}
-
-\subsection{Slide Title 1}
-\begin{frame}{~}
-	\ldots
+    CNF/DIMACS somewhere?
+\end{frame}
+\begin{frame}{-- Solution}
+    void iff $SAT(\phi) = \bot$
 \end{frame}
 
-show examples of inconsistencies/anomalies in feature models (interaction?)
+\subsection{Core and Dead Features}
+\begin{frame}{-- Problem}
+    can a feature be chosen at all? is it false-optional?
+\end{frame}
+\begin{frame}{-- Solution}
+    f core iff $SAT(\phi and not f) = \bot$
+    
+    f dead iff $SAT(\phi and f) = \bot$
+\end{frame}
 
-questions?
+\subsection{Partial Configurations}
+\begin{frame}{-- Problem}
+    can a partial configuration be completed?
+    \end{frame}
+\begin{frame}{-- Solution}
+    note that this is a generalization of void/core/dead
+\end{frame}
+
+\subsection{Explanations for Inconsistencies}
+\begin{frame}{-- Problem}
+    WHY is a FM inconsistent or a feature core/dead?
+\end{frame}
+\begin{frame}{-- Minimum Unsatisfiable Set}
+    cannot be answered (easily) with simple SAT solver
+
+    explain extended SAT-MUS solver
+\end{frame}
+\begin{frame}{-- Solution}
+    ...
+\end{frame}
+
+\subsection{Cardinalities}
+\begin{frame}{-- Problem}
+    to WHICH DEGREE is a FM consistent (i.e., degree of freedom / variability factor) or a feature core/dead?
+
+    explain FM cardinality (extension of void), feature cardinality (extension of dead) and partial cfg cardinality (ext. of partial cfg)
+\end{frame}
+\begin{frame}{-- \#SAT Solver}
+    ...
+\end{frame}
+\begin{frame}{-- Solution}
+    ...
+\end{frame}
+
+\subsection{Other Analyses}
+\begin{frame}{~}
+    list some more analyses/questions
+\end{frame}
+
+\subsection{Implementation (?)}
+\begin{frame}{~}
+    maybe explain here that CNF/DIMACS is needed, what solvers are used in FeatureIDE as an example for how to implement this? is this at all relevant?
+\end{frame}
+
+\subsection{Summary}
+\begin{frame}{~}
+    make a table: each row is an analysis and each column says how to encode it logically
+
+    maybe state that sharp SAT $>$ 0 implies SAT, SAT-MUS iff SAT
+\end{frame}
+
+\subsection{Interaction}
+\begin{frame}{~}
+    then, as an interaction, explain what SAT (with example solution) is and ask how it can be used
+
+    another interaction: given a feature diagram, name all inconsistencies you can find (but maybe this is more of an exercise)
+
+    or, demonstrate FeatureIDE
+\end{frame}
+
+% students are taught that SAT* solvers are tools for answering questions, and that if they support more features, more/faster analyses are possible
+% master theses T. Günther, S. Ananieva
+
+- old structure -
 
 \subsection{Automated Reasoning}
 
