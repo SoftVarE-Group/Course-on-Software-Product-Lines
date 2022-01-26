@@ -1,4 +1,54 @@
+this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
+
+revisit what the class of programs named "solver" does, and why it is important that we use OTS solvers and profit from their optimizations/contests - idea: reduce practical problems to solvers (sim. to TheoInf/Logics)
+only with Boolean formulas can we get really performant results today
+
+extensions to simple SAT solvers (maybe explain when needed):
+- when SAT = true, some give a satisfying assignment (for optimizations)
+- wen SAT = false, some give a MUS (for explanations)
+- some can count, called sharp SAT (or keep them completely separated from SAT?) (for model counting)
+
+ask questions:
+am i developing unused code?
+how to find out whether a partial configuration is valid? (show decision propagation in FeatureIDE)
+
+for each analysis, also list the sharp SAT encoding
+
+as interaction at the end: how can we leverage when a SAT solver also gives us a sat-assignment?
+
+proposal (explain with one running example):
+
+Q: is the FM consistent?
+Tool: SAT (explain)
+A: SAT(FM)
+
+Q: is a feature core/dead?
+Tool: SAT
+A: not SAT(FM and not F) etc.
+
+Q: WHY is this the case?
+Tool: SAT-MUS (explain)
+A: ...
+
+Q: to WHICH DEGREE is a FM consistent (i.e., degree of freedom / variability factor) or a feature core/dead?
+Tool: sharp SAT (explain)
+A: ...
+
+(then list some other analyses quickly)
+
+on a summary page, state that sharp SAT > 0 implies SAT, SAT-MUS iff SAT
+then, as an interaction, explain what SAT-ASS is and ask how it can be used
+this way, students are taught that SAT* solvers are tools for answering questions, and that if they support more features, more/faster analyses are possible
+
+% master theses T. Günther, S. Ananieva
+
+
 \subsection{Inconsistencies in Feature Models}
+
+\subsection{Slide Title 1}
+\begin{frame}{~}
+	\ldots
+\end{frame}
 
 show examples of inconsistencies/anomalies in feature models (interaction?)
 
@@ -42,6 +92,5 @@ FeatureIDE configurator
 show how FeatureIDE automatically detects the anomalies from the beginning
 
 %\subsection{Edits to Feature Models}
-%
-% evolution + maintenance
+% put this in a evolution + maintenance chapter
 
