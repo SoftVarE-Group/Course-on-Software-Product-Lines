@@ -1,11 +1,20 @@
 \input{template/lecture}
 
+% todo: move these commands somewhere sensible?
+\newcommand{\sem}[1]{\ensuremath{\llbracket #1 \rrbracket}} % semantics brackets
+\newcommand{\pand}{\wedge} % conjunction
+\newcommand{\por}{\vee} % disjunction
+\newcommand{\pnot}{\neg} % negation
+\newcommand{\pequals}{\leftrightarrow} % biconditional
+\newcommand{\npequals}{\nleftrightarrow} % exclusive disjunction
+\newcommand{\mequals}{\Leftrightarrow} % equivalence (meta-level)
+\newcommand{\pimplies}{\rightarrow} % conditional
+\newcommand{\mimplies}{\Rightarrow} % implication (meta-level)
+\newcommand{\defeq}{\vcentcolon=} % defining equals
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
+
 \subtitle{4. Feature Modeling}
 \author{Elias Kuiter}
-
-% first: motivation and syntax of feature models/diagrams (how can a human model features sensibly?)
-% second: semantics of feature diagrams and other modeling notations (how can we encode features machine-readably?)
-% third: analyses of feature models (what can a computer tell us, which we cannot tell just by looking?)
 
 \begin{document}
 
@@ -13,42 +22,65 @@
 
 \section{Feature Models}
 
+% first: motivation and syntax of feature models/diagrams (how can a human model features sensibly?)
 \input{content/modeling_notation}
 
 \lessonslearned{
-	\item \ldots
+	\item Explicit knowledge about features matters.
+	\item Feature diagrams are a visual language for communicating feature models.
 }{
-	\item \ldots
+	\item Thorsten Berger et al. (2013): \href{https://doi.org/10.1145/2430502.2430513}{A Survey of Variability Modeling in Industrial Practice}
+	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
 }{
-	\ldots
+	Think of a soft- or hardware domain, then model its variability in a small feature diagram (with pen and paper or in FeatureIDE).
+
+	What do you (dis-)like about the feature diagram notation? Do you need cross-tree constraints to model your domain?
 }
 
 \sectionend
 
+% second: semantics of feature diagrams and other modeling notations (how can we encode features machine-readably?)
 \section{Representations and Translations}
 
 \input{content/modeling_representations}
 
 \lessonslearned{
-	\item \ldots
+	\item To understand large configuration spaces, formal semantics and machine-readable representations matter.
+	\item Propositional formulas satisfy many (though not all) needs for such a representation.
 }{
-	\item \ldots
+	\item Don Batory (2005): \href{https://doi.org/10.1007/11554844_3}{Feature Models, Grammars, and Propositional Formulas}
+	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
 }{
-	\ldots
+	Figure out how many valid configurations your feature diagram represents.
+	When is this easy?
+
+	Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
+	How might this be useful?
 }
 
 \sectionend
 
+% third: analyses of feature models (what can a computer tell us, which we cannot tell just by looking?)
 \section{Automated Analyses}
 
 \input{content/modeling_analyses}
 
 \lessonslearned{
-	\item \ldots
+	\item Automated SAT-based analyses help in understanding large configuration spaces.
+	\item There are still many open problems regarding encodings and applications (e.g., \#SAT).
 }{
-	\item \ldots
+	\item David Benavides et al. (2010): \href{https://doi.org/10.1016/j.is.2010.01.001}{Automated Analysis of Feature Models 20 Years Later: A Literature Review}
+	\item Thomas Thüm et al. (2009): \href{https://doi.org/10.1109/ICSE.2009.5070526}{Reasoning About Edits to Feature Models}
+	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}
 }{
-	\ldots
+	% alternative: find inconsistencies in your feature diagram
+	Recall that some $f \in F$ is dead iff $\pnot SAT(\phi \pand f)$.
+	Suppose you want to know \emph{all} dead features of $\phi$.
+	Naively, you may formulate $\abs{F}$ SAT queries.
+	
+	Can this be improved?
+	
+	(Hint: Some SAT solvers return an example model $M_\psi$ when $\psi$ is satisfiable.)
 }
 
 \input{template/footer}
