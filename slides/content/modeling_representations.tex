@@ -1,58 +1,82 @@
-this notation is already nice for communication, but semantics matter (for large models, it does not suffice to look sharply)
+\subsection{Motivation}
 
-this section shall teach the relationship between FMs and formulas and FMs and sets (i.e., Damiani 2020, Batory 2005), so: FM semantics
-also, (valid) total configurations should be explained here (how a computer can check them, this can be checked easily when an FM is encoded eg as runtime variability, but all other SAT-based questions are hard to answer)
+\begin{frame}{~}
+    this notation is already nice for communication, but semantics matter (for large models, it does not suffice to look sharply)
 
-first explain product lists / sets and configuration validity (ie, set membership):
-$ext-sem (FM) = \{ C \mid C in 2^F | C satisfies all FM rules \}$
-this is a nice (readable) semantics but impractical to check, so we need Formulas
+    why is this needed? (forward ref?)
 
+    this section shall teach the relationship between FMs and formulas and FMs and sets (i.e., Damiani 2020, Batory 2005), so: FM semantics
 
-at the end (what else is there?): in practice, we also have non-Boolean features/attributes/constraints over attributes (more details on efficiency in third block)
+    also, (valid) total configurations should be explained here (how a computer can check them, this can be checked easily when an FM is encoded eg as runtime variability, but all other SAT-based questions are hard to answer)
 
+    recount the example model here
+\end{frame}
 
+\subsection{List of Valid Configurations}
 
+\begin{frame}{~}
+    what is a (valid) configuration? define as a set of selected features (only later extend to partial configurations)
 
+    this is basically an Excel sheet
 
-\subsection{Feature Diagrams}
+    first explain product lists / sets and configuration validity (ie, set membership): (use same example)
 
-show running example as a feature diagram with cross-tree-constraints
+    $ext-sem (FM) = \{ C \mid C in 2^F | C satisfies all FM rules \}$
 
-explain notation
-
-lego example?
-
-discuss pros/cons
+    this is a nice (readable) semantics (directly connected to relational databases) but impractical to check, so we need formulas as a concise representation
+\end{frame}
 
 \subsection{Propositional Formulas}
 
-why is this needed? (forward ref?)
+\begin{frame}{~}
+    Syntax of formulas
 
-show running example as a formula
+    explain $\pand, \por, \pnot, \pimplies, \pequals$
 
-explain intuition behind elements of formula
+    here, we do not allow $\forall, \exists$ (extensions exist: QBF (e.g., slicing), FOL (non-Boolean models))
+\end{frame}
 
-CNF
+\begin{frame}{~}
+    show running example as a formula
+    
+    explain intuition behind elements of formula
 
-\subsection{Transforming Diagrams into Formulas}
+    motivate very shortly why this might be nice
 
-formal algorithm for transformation into FOL (and then CNF?)
+    there is evidence (Knueppel) that the full expressive power of Boolean formulas is needed for real-world formulas
+\end{frame}
 
-+ example
+\subsection{From Diagram to Formula}
 
-% CNF is a universal language for saving formulas, maybe explain it here?
+\begin{frame}{-- Algorithm}
+    formal algorithm for transformation into FOL (and then CNF?)
+\end{frame}
 
-\subsection{Other Representations}
+\subsection{Canonical Formula Representation(s?)}
 
-list of products, excel sheet, no explicit model (in motivation?), grammars, \dots
+\begin{frame}{-- Conjunctive Normal Form}
+    CNF is a universal language for saving Boolean formulas, maybe explain it here?
+\end{frame}
 
-variations of feature models (e.g. cardinalities, non-boolean)
+\begin{frame}{-- Equivalent Transformation}
+    
+\end{frame}
 
-discuss pros/cons
-
-Linux? KConfig? tri-state features
-
-pure::variants?
+\begin{frame}{-- DIMACS File Format}
+    
+\end{frame}
 
 %(state BDD?)
 % probably not - (knowledge compilation: there are many nuances between CNF and BDD, maybe discuss?)
+
+\subsection{Other Representations} %variations? these are not only other representations of the same notation
+
+\begin{frame}{~}
+    Extended Feature Models
+    
+    %at the end (what else is there?): in practice, we also have non-Boolean features/attributes/constraints over attributes (more details on efficiency in third block)
+
+    Cardinalities
+
+    Linux/Kconfig % tri-state features
+\end{frame}
