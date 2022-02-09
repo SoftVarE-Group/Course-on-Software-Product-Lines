@@ -1,6 +1,10 @@
 \input{template/lecture}
 
-% todo: move these commands somewhere sensible?
+\usepackage{mathtools} % required for absolute value
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
+
+% common abbreviations
 \newcommand{\sem}[1]{\ensuremath{\llbracket #1 \rrbracket}} % semantics brackets
 \newcommand{\pand}{\wedge} % conjunction
 \newcommand{\por}{\vee} % disjunction
@@ -11,7 +15,6 @@
 \newcommand{\pimplies}{\rightarrow} % conditional
 \newcommand{\mimplies}{\Rightarrow} % implication (meta-level)
 \newcommand{\defeq}{\vcentcolon=} % defining equals
-\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
 
 \subtitle{4. Feature Modeling}
 \author{Elias Kuiter}
