@@ -4,9 +4,16 @@
 
 % IMPORTED PACKAGES
 
+% proper encoding and typography
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+
 \usepackage{adjustbox} % used for partofpage
 \usepackage{tcolorbox} % used for mydefinition, mynote, myexample
 \usepackage{multicol} % used temporarily for the lecture overview
+\usepackage{mathtools} % required for absolute value in modeling lecture
 
 % SLIDE TEMPLATE
 
@@ -24,6 +31,7 @@
 				\end{itemize}
 			}
 			\mynote{Further Reading}{
+				\small % references take space, can be a little smaller
 				\begin{itemize}
 					#2
 				\end{itemize}
