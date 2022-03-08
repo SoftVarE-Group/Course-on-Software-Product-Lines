@@ -1,7 +1,7 @@
 \input{template/lecture}
 
 \subtitle{8. Development Process}
-\author{Author}
+\author{Thomas Thüm}
 
 \begin{document}
 
@@ -9,7 +9,26 @@
 
 \section{Domain and Application Engineering}
 
-\input{content/missing}
+\subsection{Recap on Process Models}
+% waterfall, V-model, scrum, ...
+\subsection{Domain Engineering}
+\subsubsection{Domain Analysis}
+% domain-driven requirements analysis, crucial, not always explicit
+\subsubsection{Domain Design and Implementation}
+% reusable parts indespensible, reusable architecture optional
+\subsubsection{Domain Testing/Verification}
+% systematic testing, sometimes skipped (e.g., if product derivation not automatic)
+\subsection{Application Engineering}
+\subsubsection{Product Configuration}
+% application-specific requirements analysis
+\subsubsection{Application Design and Implementation}
+% fully automatic or semi-automatic with custom design and implementation
+\subsubsection{Application Testing/Verification}
+% testing of a single product, sometimes optional
+\subsection{Overview on Domain and Application Engineering}
+% overview picture, also to wrap-up
+
+%\input{content/missing}
 
 \lessonslearned{
 	\item \ldots
@@ -22,8 +41,21 @@
 \sectionend
 
 \section{Overview on Implementation Techniques}
+% discuss each technique wrt. its properties
 
-\subsection{Implementation Techniques and Design Patterns}
+\subsection{Clone-and-Own}
+% probably three slides: ad-hoc, with version control, with build systems
+\subsection{Runtime Variability and Preprocessors}
+% probably feasible on the same slide
+\subsection{Components and Services}
+% probably feasible on the same slide
+\subsection{White-Box and Black-Box Frameworks}
+% probably requires two slides
+\subsection{X-Oriented Programming}
+% X=feature/aspect/delta
+\subsection{Design Patterns?}
+\subsection{Comparison of Implementation Techniques}
+% large table with all properties: automatic generation from feature selection, feature modularization, ...
 
 %\input{content/missing}
 
@@ -39,7 +71,21 @@
 
 \section{Adoption of Product Lines}
 
-\input{content/missing}
+\subsection{Proactive Adoption Strategy}
+% as introduced in Part 1
+\subsection{Reactive Adoption Strategy}
+% implement some products (i.e., their features) first
+\subsection{Extractive Adoption Strategy}
+% take existing variants into account
+% one variant or several cloned variants
+\subsection{Strategies in Practice}
+% typically combinations of the above strategies
+% reports on the use of those strategies
+\subsection{Virtual Platform?}
+% continuum between clone-and-own and product lines
+% classification between ad-hoc clone-and-own and product line with fully automatic generation
+
+%\input{content/missing}
 
 \lessonslearned{
 	\item \ldots
