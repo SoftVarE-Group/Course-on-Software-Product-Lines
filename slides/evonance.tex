@@ -1,17 +1,27 @@
 \input{template/lecture}
 
 \subtitle{12. Evolution and Maintenance}
-\author{Timo Kehrer}
-
-% note from Elias: IF we want to discuss Thomas' edits to feature models, we should do it here somewhere.
+\author{Timo Kehrer, Thomas Thüm}
 
 \begin{document}
 
 \input{template/header}
 
-\section{Topic 1}
+\section{Evolution of Feature Models}
 
-\input{content/missing}
+\subsection{Growing Configuration Spaces}
+% plots showing the increase in features/constraints/configurations
+\subsection{Classification of Changes}
+% specialization, generalization, refactoring
+% examples for each type + advantages from this knowledge
+\subsection{Automated Classification}
+% how to use a SAT solver for this
+\subsection{Frequency of Feature Model Changes}
+% in comparison to number of commits, how many commits change feature model, mapping, code
+\subsection{Outlook on Co-Evolution}
+% outlook on related topics: co-evolution patterns (Fever, refinement theory), refactorings including artifacts, co-evolution of feature model and configurations (GuyDance)
+
+%\input{content/missing}
 
 \lessonslearned{
 	\item \ldots
@@ -23,9 +33,16 @@
 
 \sectionend
 
-\section{Topic 2}
+\section{Topics 2}
 
-\input{content/missing}
+\subsection{Sampling/Analysis/Testing under Evolution?}
+\subsection{Continuous Integration for Product Lines?}
+\subsection{Reverse/Reengineering of Feature Models?}
+\subsection{Migration to New Implementation Technique?}
+% some transitions can be automated, others not, use for taxonomy in continuum between clone-and-own and product lines?
+\subsection{Variability Smells?}
+
+%\input{content/missing}
 
 \lessonslearned{
 	\item \ldots
