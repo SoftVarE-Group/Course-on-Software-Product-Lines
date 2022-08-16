@@ -9,23 +9,17 @@
 
 \section{Product-Line Testing in Practice}
 
-\subsection{Motivation}
-\begin{frame}
-	\leftandright{
+\begin{frame}{Recap: Software Quality}
+	\rightorleft{
+		\mydefinition{Quality \mysource{\ludewiglichter}}{Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.}
+		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
+	}{
+		\vspace{-12mm}
 		\href{https://commons.wikimedia.org/wiki/File:Andy_Hunt_programmer.jpg}{\includegraphics[width=\linewidth,trim=0 240 0 300,clip]{andy-hunt}}
 		\vspace{-7mm}
 		
 		\mynote{Andy Hunt \mysource{\thepragmaticprogrammer}}{\mycite{No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first.}}
 		% co-authored The Pragmatic Programmer, known for the Agile Manifesto
-	}{
-	}
-\end{frame}
-
-\begin{frame}{Recap: Software Quality}
-	\leftorright{
-		\mydefinition{Quality \mysource{\ludewiglichter}}{Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.}
-		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
-	}{
 	}
 \end{frame}
 
@@ -72,7 +66,7 @@
 \end{frame}
 
 \begin{frame}{Recap: Software Testing}
-	\leftandright{
+	\leftorright{
 		\vspace{7mm}
 		\uncover<1-3>{\mydefinition{Software Testing \mysource{\sommerville}}{\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}}{}}
 		\uncover<2-3>{\mydefinition{Validation Testing \mysource{\sommerville}}{\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}}{}}
@@ -100,7 +94,7 @@
 \end{frame}
 
 \begin{frame}
-	\leftandright{
+	\leftorright{
 		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
 		\vspace{-7mm}
 		
@@ -109,6 +103,10 @@
 	}{
 		\todo{illustration for many configurations from previous slides}
 	}
+\end{frame}
+
+\begin{frame}{Recap: Feature Model of the Linux Kernel}
+	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,page=1,trim=100 510 100 170,clip]{2020/2020-SPLC-Thuem}}
 \end{frame}
 
 % Dijkstra: we cannot test everything, and not all configurations
@@ -147,7 +145,7 @@
 
 \subsection{Test-Case Design in Single-System Engineering}
 \begin{frame}{Recap: Test-Case Design \deutschertitel{Testfallentwurf}}
-	\leftandright{
+	\leftorright{
 		\uncover<1>{\mydefinition{Systematic Test \mysource{\ludewiglichter}}{A systematic test is a test, in which
 			\begin{itemize}
 				\setlength\itemsep{.1em}
@@ -170,8 +168,8 @@
 	}
 \end{frame}
 
-\begin{frame}{Black-Box Testing \mytitlesource{\ludewiglichter}}
-	\leftorright{
+\begin{frame}{Recap: Black-Box Testing \mytitlesource{\ludewiglichter}}
+	\leftandright{
 		\mynote{Motivation}{
 			\begin{itemize}
 				\setlength\itemsep{.1em}
@@ -191,30 +189,6 @@
 			\end{itemize}
 		}{}
 	}{
-		\mydefinition{1. Equivalence Class Testing}{
-			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item idea: classify inputs and outputs into equivalence classes
-				\item assumption: equivalent test cases detect the same faults, one test case is sufficient
-			\end{itemize}
-		}{}
-		\vspace{-1mm}
-		\mydefinition{2. Boundary Testing}{
-			\begin{itemize}
-			\setlength\itemsep{.1em}
-				\item extension of equivalence class testing
-				\item goal: use experience (e.g., off-by-one errors)
-				\item for every equivalence class: consider smallest, typical, and largest value
-			\end{itemize}
-		}{}
-		\vspace{-1mm}
-		\myexample{In Practice}{
-			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item often combinations of white-box and black-box testing
-				\item more techniques with requirements or design
-			\end{itemize}
-		}
 	}
 \end{frame}
 
@@ -248,7 +222,7 @@
 \subsection{Coverage in Single-System Engineering}
 \begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
 	\vspace{-7mm}
-	\leftandright{
+	\leftorright{
 		\mydefinition{White-Box Testing \deutsch{Strukturtest}}{
 			\begin{itemize}
 				\setlength\itemsep{.1em}
