@@ -11,28 +11,64 @@
 
 \subsection{Motivation}
 \begin{frame}
-	\leftorright{
+	\leftandright{
 		\href{https://commons.wikimedia.org/wiki/File:Andy_Hunt_programmer.jpg}{\includegraphics[width=\linewidth,trim=0 240 0 300,clip]{andy-hunt}}
 		\vspace{-7mm}
 		
 		\mynote{Andy Hunt \mysource{\thepragmaticprogrammer}}{\mycite{No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first.}}
 		% co-authored The Pragmatic Programmer, known for the Agile Manifesto
 	}{
-		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
-		\vspace{-7mm}
-		
-		\mynote{Edsger W. Dijkstra (1972) \mysource{\thehumbleprogrammer}}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}}
-		% 1930-2002, ACM Turing Award winner
 	}
 \end{frame}
 
 \begin{frame}{Recap: Software Quality}
-	\vspace{-7mm}
 	\leftorright{
 		\mydefinition{Quality \mysource{\ludewiglichter}}{Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.}
 		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
 	}{
 	}
+\end{frame}
+
+\subsection{Recap: Quality Assurance}
+\begin{frame}{Recap: Quality Assurance \mytitlesource{\ludewiglichter}}
+	\vspace{-8mm}
+	\hfill
+	\todo{mindmap on quality assurance}
+%	\begin{tikzpicture}
+%		\path[small mindmap,
+%		every node/.style={concept,font=\scriptsize},
+%		emph/.style={font=\bfseries\scriptsize},
+%		hide/.style={visible on=<1->},
+%		concept color=uulmaccent!20,
+%		level 1/.append style={level distance=25mm,sibling angle=360/6},
+%		level 2/.append style={level distance=20mm,sibling angle=360/6},
+%		level 3/.append style={level distance=20mm,sibling angle=360/8},
+%		]
+%		node {Quality Assurance \deutsch{Qualitätssicherung}}
+%		[counterclockwise from=210]
+%		child[visible on={<1->}] { node {constructive} 
+%			[clockwise from=225]
+%			child[concept color=blue!20] { node {Coding Guidelines} }
+%		}
+%		child[visible on={<2->}] { node {analytical} 
+%			[counterclockwise from=240]
+%			child[concept color=green!20,visible on={<3->}] { node {analysis}
+%				[counterclockwise from=180]
+%				child { node {Compilation} }
+%				child { node {Code Reviews} }
+%			}
+%			child[concept color=red!20,visible on={<4->}] { node {execution}
+%				[counterclockwise from=315]
+%				child { node {White-Box Testing} }
+%				child { node {Black-Box Testing} }
+%			}
+%		}
+%		child[visible on={<5->}] { node {organizational} 
+%			[clockwise from=-45]
+%			child[concept color=orange!20] { node {Software Project Management} }
+%		}
+%		;
+%	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Recap: Software Testing}
@@ -60,6 +96,18 @@
 		\vspace{-2mm}
 		\uncover<6>{\mynote{}{\mycite{In \emph{manual testing}, a tester runs the program with some test data and
 				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.} \mysource{\sommerville}}}
+	}
+\end{frame}
+
+\begin{frame}
+	\leftandright{
+		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
+		\vspace{-7mm}
+		
+		\mynote{Edsger W. Dijkstra (1972) \mysource{\thehumbleprogrammer}}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}}
+		% 1930-2002, ACM Turing Award winner
+	}{
+		\todo{illustration for many configurations from previous slides}
 	}
 \end{frame}
 
@@ -97,6 +145,79 @@
 
 \section{Combinatorial Interaction Testing}
 
+\subsection{Test-Case Design in Single-System Engineering}
+\begin{frame}{Recap: Test-Case Design \deutschertitel{Testfallentwurf}}
+	\leftandright{
+		\uncover<1>{\mydefinition{Systematic Test \mysource{\ludewiglichter}}{A systematic test is a test, in which
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item[1.] the setup is defined,
+				\item[2.] the inputs are chosen systematically,
+				\item[3.] the results are documented and evaluated by criteria being defined prior to the test. 
+			\end{itemize}
+		}{}}
+		\uncover<2>{\mydefinition{Test Case \mysource{\ludewiglichter}}{In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.}{}}
+	}{
+		\mynote{Goal \mysource{\ludewiglichter}}{Detect a large number of failures with a low number of test cases. A test case (execution) is \emph{positive}, if it detects a failure, and \emph{successful} if it detects an unknown failure.}
+		\mydefinition{An ideal test case is \ldots \mysource{\ludewiglichter}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item representative: represents a large number of feasible test cases
+				\item failure sensitive: has a high probability to detect a failure
+				\item non-redundant: does not check what other test cases already check
+			\end{itemize}
+		}{}
+	}
+\end{frame}
+
+\begin{frame}{Black-Box Testing \mytitlesource{\ludewiglichter}}
+	\leftorright{
+		\mynote{Motivation}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item source code not always available (e.g., outsourced components, obfuscated code)
+				\item specific test cases derived from logical ones using arbitrary values
+				\item specification not incorporated so far (only for expected results)
+				\item invalid inputs not tested
+				\item errors are not equally distributed
+			\end{itemize}
+		}
+		\vspace{-1mm}
+		\mydefinition{Black-Box Testing \deutsch{Funktionstest}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item test-case design based on specification
+				\item source code and its inner structure is ignored (assumed as a black-box)
+			\end{itemize}
+		}{}
+	}{
+		\mydefinition{1. Equivalence Class Testing}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item idea: classify inputs and outputs into equivalence classes
+				\item assumption: equivalent test cases detect the same faults, one test case is sufficient
+			\end{itemize}
+		}{}
+		\vspace{-1mm}
+		\mydefinition{2. Boundary Testing}{
+			\begin{itemize}
+			\setlength\itemsep{.1em}
+				\item extension of equivalence class testing
+				\item goal: use experience (e.g., off-by-one errors)
+				\item for every equivalence class: consider smallest, typical, and largest value
+			\end{itemize}
+		}{}
+		\vspace{-1mm}
+		\myexample{In Practice}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item often combinations of white-box and black-box testing
+				\item more techniques with requirements or design
+			\end{itemize}
+		}
+	}
+\end{frame}
+
 \subsection{Pairwise Interaction Testing}
 
 \subsection{A Greedy Algorithm}
@@ -125,6 +246,30 @@
 \section{Solution-Space Sampling}
 
 \subsection{Coverage in Single-System Engineering}
+\begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
+	\vspace{-7mm}
+	\leftandright{
+		\mydefinition{White-Box Testing \deutsch{Strukturtest}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item inner structure of test object is used
+				\item idea: coverage of structural elements
+				\item code translated into control flow graph
+				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
+			\end{itemize}
+		}{}
+	}{
+		\mydefinition{Coverage Criteria \deutsch{Überdeckungskriterien}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
+				\uncover<3->{\item[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised} % TODO not so easy to define as percentage
+				\uncover<4->{\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)}
+				% TODO discuss path coverage?
+			\end{itemize}
+		}{}
+	}
+\end{frame}
 
 \subsection{Coverage of Ifdef Blocks}
 
