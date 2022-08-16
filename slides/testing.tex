@@ -12,12 +12,54 @@
 \subsection{Motivation}
 \begin{frame}
 	\leftorright{
+		\href{https://commons.wikimedia.org/wiki/File:Andy_Hunt_programmer.jpg}{\includegraphics[width=\linewidth,trim=0 240 0 300,clip]{andy-hunt}}
+		\vspace{-7mm}
+		
+		\mynote{Andy Hunt \mysource{\thepragmaticprogrammer}}{\mycite{No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first.}}
+		% co-authored The Pragmatic Programmer, known for the Agile Manifesto
+	}{
 		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
 		\vspace{-7mm}
 		
 		\mynote{Edsger W. Dijkstra (1972) \mysource{\thehumbleprogrammer}}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}}
 		% 1930-2002, ACM Turing Award winner
+	}
+\end{frame}
+
+\begin{frame}{Recap: Software Quality}
+	\vspace{-7mm}
+	\leftorright{
+		\mydefinition{Quality \mysource{\ludewiglichter}}{Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.}
+		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
 	}{
+	}
+\end{frame}
+
+\begin{frame}{Recap: Software Testing}
+	\leftandright{
+		\vspace{7mm}
+		\uncover<1-3>{\mydefinition{Software Testing \mysource{\sommerville}}{\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}}{}}
+		\uncover<2-3>{\mydefinition{Validation Testing \mysource{\sommerville}}{\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}}{}}
+		\uncover<3-3>{\mydefinition{Defect Testing \mysource{\sommerville}}{\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}}{}}
+	}{
+		\vspace{-12mm}
+		\uncover<4>{\mynote{V\&V \mysource{\seeconomics}}{\mycite{\emph{Validation}: Are we building the right product?\\\emph{Verification}: Are we building the product right?}}} 
+		% TODO better visualization of V&V (see Inas slides). move to V model?
+		\vspace{-2mm}
+		\uncover<5>{\mynote{Stages of Testing \mysource{\sommerville}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item[1.] \mycite{\emph{Development testing}, where the system is tested during development to discover
+				bugs and defects}
+				\item[2.] \mycite{\emph{Release testing}, where a separate testing team tests a complete version of the
+				system before it is released to users}
+				\item[3.] \mycite{\emph{User testing}, where users or potential users of a system test the system in their
+				own environment}
+			\end{itemize}
+		}}
+		\vspace{-2mm}
+		\uncover<6>{\mynote{}{\mycite{In \emph{manual testing}, a tester runs the program with some test data and
+				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.} \mysource{\sommerville}}}
 	}
 \end{frame}
 
