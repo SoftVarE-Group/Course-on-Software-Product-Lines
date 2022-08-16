@@ -19,6 +19,7 @@
 % mklink /J softvareslides C:\Users\...\SoftVarE-Slides
 \graphicspath{{../template/pics/logos}{../template/pics/nature}{../template/pics/uulm}{../thomasslides/}{../softvarepapers/}{../softvareslides/}{../pics/people/}{../pics/xkcd/}}
 
+
 %\usepackage[ngerman]{babel} % use this line for slides in German
 %\recordingtrue % special recording mode for use with a greenscreen, gives you space to show yourself in a layer in front of the slides, has no effect in the handout mode
 
@@ -26,6 +27,7 @@
 
 % LINKED LITERATURE
 
+\newcommand{\fospl}{\href{http://link.springer.com/book/10.1007/978-3-642-37521-7}{Apel~et~al.~2013}}
 \newcommand{\ludewiglichter}{\href{https://learning.oreilly.com/library/view/-/9781457184932/?ar}{Ludewig and Lichter}}
 \newcommand{\seeconomics}{\href{https://rds-ulm.ibs-bw.de/link?kid=027381854}{SE Economics}}
 \newcommand{\sommervillelink}[1]{\href{https://ulm.ibs-bw.de/aDISWeb/app?service=direct/0/Home/$DirectLink\&sp=SOPAC00\&sp=SAKSWB-IdNr1615420983}{#1}}
@@ -48,6 +50,13 @@
 \newcommand{\fodo}[1]{\todo{\footnote{\todo{#1}}}}
 \newcommand{\todots}{\todo{\ldots}}
 
+\newcommand{\xkcd}[2]{
+	\begin{frame}
+		\centering%
+		\href{https://xkcd.com/#1/}{\includegraphics[height=80mm]{#1}}
+	\end{frame}
+}
+
 % IMPORTED PACKAGES
 
 %\usepackage{adjustbox} % used for partofpage
@@ -59,7 +68,7 @@
 
 \newcommand{\lessonslearned}[3]{
 	\subsection{Summary}
-	\begin{frame}{\insertsection -- \insertsubsection}
+	\begin{frame}{\insertsection{} -- \insertsubsection}
 		\leftorright{
 			\mydefinition{Lessons Learned}{
 				\begin{itemize}
@@ -92,35 +101,35 @@
 }
 
 \renewcommandx{\maketitle}[2][1=apr21-o25a,2=150]{
-    {
+	{
 	\usebackgroundtemplate{} % TODO temporary hack to enable missing pictures at title slide
 	%\ifx {#1} \empty \else {\usebackgroundtemplate{\includegraphics[trim=0 0 0 #2,clip,width=\paperwidth]{#1}}} \fi     
 	%\usebackgroundtemplate{\includegraphics[trim=0 0 0 #2,clip,width=\paperwidth]{#1}}
-    \begin{frame}[plain]
-        \vskip0pt plus 1filll
-        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
-            \LARGE\textbf{\inserttitle}\hspace*{20pt}
-        \end{beamercolorbox}%
-        \nointerlineskip%
-        \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
-            \small 
-            \ifx \insertsubtitle \empty \else \insertsubtitle\ $\vert$ \fi
-            \insertauthor\
-            \ifx \insertdate \empty \else $\vert$ \insertdate \fi
-            \hspace*{20pt}
-        \end{beamercolorbox}%
-        \nointerlineskip%
-        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
-            \centering
-            \vspace{-1ex}
-            \hspace{10pt}
-            \includegraphics[height=4.5ex]{sp} % SPECIFY INSTITUTE LOGO HERE
-            \hfill
-            \includegraphics[height=4.5ex]{uulm}
-            \hspace{10pt}
-        \end{beamercolorbox}%
-    \end{frame}
-    }  
+	\begin{frame}[plain]
+		\vskip0pt plus 1filll
+		\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
+			\LARGE\textbf{\inserttitle}\hspace*{20pt}
+		\end{beamercolorbox}%
+		\nointerlineskip%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
+			\small 
+			\ifx \insertsubtitle \empty \else \insertsubtitle\ $\vert$ \fi
+			\insertauthor\
+			\ifx \insertdate \empty \else $\vert$ \insertdate \fi
+			\hspace*{20pt}
+		\end{beamercolorbox}%
+		\nointerlineskip%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
+			\centering
+			\vspace{-1ex}
+			\hspace{10pt}
+			\includegraphics[height=4.5ex]{sp} % SPECIFY INSTITUTE LOGO HERE
+			\hfill
+			\includegraphics[height=4.5ex]{uulm}
+			\hspace{10pt}
+		\end{beamercolorbox}%
+	\end{frame}
+	}  
 }
 
 %
@@ -224,3 +233,5 @@
 %		\end{flushleft}
 %	\end{tcolorbox}
 %}
+
+\input{template/feature_diagram_setup}
