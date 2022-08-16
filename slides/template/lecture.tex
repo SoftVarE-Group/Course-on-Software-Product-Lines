@@ -12,28 +12,35 @@
 % mklink /J template C:\Users\...\SlideTemplate
 % git clone git@spgit.informatik.uni-ulm.de:thuem/slides.git C:\Users\...\ThomasSlides
 % mklink /J thomasslides C:\Users\...\ThomasSlides
-\graphicspath{{../template/pics/logos}{../template/pics/nature}{../template/pics/uulm}{../thomasslides/}{../pics/}}
+\graphicspath{{../template/pics/logos}{../template/pics/nature}{../template/pics/uulm}{../thomasslides/}{../pics/people/}{../pics/xkcd/}}
 
 %\usepackage[ngerman]{babel} % use this line for slides in German
 %\recordingtrue % special recording mode for use with a greenscreen, gives you space to show yourself in a layer in front of the slides, has no effect in the handout mode
 
 \title{Software Product Lines} % short title is used for the slide footer but optional
 
-%
-%
-%% IMPORTED PACKAGES
-%
+% LINKED LITERATURE
+
+\newcommand{\thehumbleprogrammer}{\href{https://dl.acm.org/doi/10.1145/1283920.1283927}{The Humble Programmer}}
+
+% TYPICAL COMMANDS FOR LECTURES
+
+\newcommand{\deutsch}[1]{{\color{blue}(#1)}}
+\newcommand{\deutschertitel}[1]{{\tiny\deutsch{#1}}}
+
+\newcommand{\mycite}[1]{``#1''}
+\newcommand{\mytitlesource}[1]{{\tiny\normalfont\mbox{[#1]}}}
+\newcommand{\mysource}[1]{\ifthenelse{\equal{#1}{}}{}{\phantom{.}~\hfill~\mytitlesource{#1}}}
+
+% IMPORTED PACKAGES
+
 %\usepackage{adjustbox} % used for partofpage
 %\usepackage{tcolorbox} % used for mydefinition, mynote, myexample
 \usepackage{multicol} % used temporarily for the lecture overview
 \usepackage{mathtools} % required for absolute value in modeling lecture
-%
-%% SLIDE TEMPLATE
-%
-%\beamertemplatenavigationsymbolsempty 
-%
-%% COMMANDS TO LAYOUT AND ANNIMATE SLIDES
-%
+
+% COMMANDS TO LAYOUT AND ANNIMATE SLIDES
+
 \newcommand{\lessonslearned}[3]{
 	\subsection{Summary}
 	\begin{frame}{\insertsection -- \insertsubsection}
@@ -57,6 +64,7 @@
 	\end{frame}
 }
 
+% TODO temporary hack to layout the slide overview in two colums
 \renewcommand{\lectureoverview}{
 %	\section*{Overview}
 %	\subsection*{Overview}
@@ -69,7 +77,7 @@
 
 \renewcommandx{\maketitle}[2][1=apr21-o25a,2=150]{
     {
-	\usebackgroundtemplate{} % temporary hack
+	\usebackgroundtemplate{} % TODO temporary hack to enable missing pictures at title slide
 	%\ifx {#1} \empty \else {\usebackgroundtemplate{\includegraphics[trim=0 0 0 #2,clip,width=\paperwidth]{#1}}} \fi     
 	%\usebackgroundtemplate{\includegraphics[trim=0 0 0 #2,clip,width=\paperwidth]{#1}}
     \begin{frame}[plain]
