@@ -1,123 +1,84 @@
-% FEATURE: should be defined in intro chapter
-
-\subsection{Motivation}
-
 %this section shall give a clear motivation (making tacit knowledge explicit)/some application examples (analysis (some example questions, see Berger et al. for motivation of these questions), communication, knowledge managament/transfer), include the FODA notation and show FeatureIDE examples (without analysis)
 %=> how do we get from ad-hoc to our vision?
 
-\subsection{Features in Online Configurators}
-
-\subsection{Dependencies Between Features}
-
-% \subsection{Features in Industrial Practice}
-
-% better: Excel table of products or features/dependencies
-
-% give some experience reports/motivation from practice (Berger et al)
-
-% (maybe mention Marlin case study about Feature Location?)
-
-% \subsection{Feature Models and Configurations}
-
-% even better: show examples of structured configuration processes (eg. subway, Linux)
-
-% then define feature model + configuration and give examples
-
-\subsection{Feature Diagrams} % syntax, notation, visuals
-
-\begin{frame}{~}
-show running example as a feature diagram with cross-tree-constraints
-
-explain notation (formal semantics later)
-
-discuss pros/cons
-
-show diagram in some established tools: FeatureIDE, pure::variants
-
-FMs describe features and their dependencies explicitly - tease (in)valid configurations (interaction?)
-\end{frame}
-
-% TODO move?
-%\subsection{Implicit Knowledge About Features}
-%
-%usually, features + constraints are not modeled explicitly (tacit knowledge / lost in code) => pros/cons
-
-
-
-
-
-
-
-
-
-
-\subsection{Software Product Lines} % todo: recap from intro lecture. up to now: only variants.
+\subsection{Recap: Software Product Lines and Features}
 \begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
 	\leftorright{
-		\mydefinition{Mass Customization}{
-			\begin{itemize}
-				\item opposed to mass production
-				\item opposed to individual customization
-				\item idea: produce customized goods as efficient as with mass production
-			\end{itemize}
-		}
-		\href{https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG}{\includegraphics[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}
-	}{
 		\mydefinition{Software Product Line}{
 			\begin{itemize}
-				\item set of software-intensive systems (aka. products)
+				\item set of software-intensive systems (aka products)
 				\item sharing a common, managed set of features
 				\item satisfying the needs of a domain
 				\item developed from a common set of core assets (reuse)
 			\end{itemize}
 		}
-		\mydefinition{Feature}{ % todo: examples
+		\href{https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG}{\includegraphics[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}
+	}{
+		\mydefinition{Feature}{
 			\begin{itemize}
 				\item domain abstraction
 				\item used for communication by stakeholders (e.g., manager, developer, tester, customer, marketing)
 				\item specifies differences between products
 			\end{itemize}
 		}
+		\myexample{Examples}{
+			\begin{itemize}
+				\item \todots
+			\end{itemize}
+		}
+		\todo{scoping?}
 	}
 \end{frame}
 
-%todo : scoping
+\subsection{Features}
+\begin{frame}{\insertsubsection}
+	\todo{examples for simple feature models without (or with few) dependencies}
+	
+	\todo{Configuring a Sandwich}
 
-% motivation for dependencies between features
-\xkcd{2369}{BE5c-26s} % paper processor 25s
+	\todo{Configuring ...}
+\end{frame}
+
+\xkcd{2369}
 
 \subsection{Dependencies Between Features}
 \begin{frame}{\insertsubsection}
-	\partofpage{70}{\myexampletight{Thomas Configuring a Notebook}{\only<1,3->{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}}}
+	\partofpage{70}{\myexampletight{Configuring a Notebook}{\only<1,3->{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}}}
 \end{frame}
 
 \begin{frame}{\insertsubsection}
-	\partofpage{70}{\myexampletight{Thomas Still Configuring a Notebook}{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-office}}}
+	\partofpage{70}{\myexampletight{Still Configuring a Notebook}{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-office}}}
 \end{frame}
 
 \begin{frame}{\insertsubsection}
-	~\hfill\partofpage{60}{\myexampletight{Thomas Configuring a Car}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}}
+	~\hfill\partofpage{60}{\myexampletight{Configuring a Car}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}}
 \end{frame}
 
 \begin{frame}{\insertsubsection}
-	~\hfill\partofpage{60}{\myexampletight{Thomas Configuring a Car with a Weird Price}{\centering\includegraphics[width=.55\linewidth]{toyota-aygo-costs}}}
+	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with a Weird Price}{\centering\includegraphics[width=.55\linewidth]{toyota-aygo-costs}}}
 \end{frame}
 
 \begin{frame}{\insertsubsection}
-	~\hfill\partofpage{60}{\myexampletight{Thomas Configuring a Car with 8 Wheels!}{\includegraphics[width=\linewidth]{toyota-aygo-costs3}}}
+	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with 8 Wheels!}{\includegraphics[width=\linewidth]{toyota-aygo-costs3}}}
 \end{frame}
 
 \begin{frame}{\insertsubsection}
-	\partofpage{70}{\myexampletight{Thomas Configuring a German Car}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}}}
+	\partofpage{70}{\myexampletight{Configuring a German Car}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}}}
 \end{frame}
 
-\subsection{Feature Modeling} % syntax + semantics
+\subsection{Feature Models and Diagrams}
+
+\begin{frame}{\insertsubsection}
+	a feature is( def?)
+	a feature model is \ldots
+	a cfg is....
+\end{frame}
 
 \newcommand{\dbmpl}{
-	\myexampletight{A Database Management Product Line \todo{Feature Model?}}{
+	\myexampletight{A Database Management Product Line}{
 		\centering
 		\featureDiagramDbmgmt\\
-		$\mathit{Transactions} \pimplies \mathit{Put} \por \mathit{Delete}$
+		$Transactions \pimplies Put \por Delete$
 
 		\featureDiagramLegend
 	}
@@ -127,7 +88,7 @@ FMs describe features and their dependencies explicitly - tease (in)valid config
 	\leftorright{
 		\dbmpl
 	}{
-		\mydefinition{Feature Diagram \todo{vs model?}}{
+		\mydefinition{Feature Diagram \todo{vs model?}}{ % graphical representation of feature models
 			\begin{itemize}
 				\item hierarchy of features
 				\item dependencies between features modeled by tree and cross-tree constraints
@@ -163,28 +124,57 @@ FMs describe features and their dependencies explicitly - tease (in)valid config
 
 \begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
 	\leftorright{
-		\todo{other feature diagram example(s) which shows off how notation can also be used}
+		\dbmpl
 	}{
-		\mydefinition{Remarks on Notation}{
+		% what is a cfg?
+		\myexample{Valid Configurations}{ % one slide (gray out nonselected features)
 			\begin{itemize}
-				\item abstract/concrete features can be assigned arbitrarily
-    			\item groups can be used anywhere
-				\item directly below groups, no optional/mandatory markers are allowed
+				\item Read-only database on Windows:
+					$\{CfgDB, Base, API, Get, OS, Win\}$
+				\item Fully functional database on Unix:
+					$\{CfgDB, Base, API, Get, Put, Delete, $\\
+					$~Transactions, OS, Unix\}$
+				\item \dots
+			\end{itemize}
+		}
+		\myexample{Invalid Configurations}{ % one slide
+			\begin{itemize}
+				\item Violated tree constraint:
+					$\{CfgDB, Base, API, OS\}$\\
+					$\Rightarrow $ \emph{Get}, \emph{Put}, or \emph{Delete} missing; \emph{Windows} or \emph{Unix} missing
+				\item Violated cross-tree constraint:
+					$\{CfgDB, Base, API, Get, Trans., OS, Win\}$\\
+					$\Rightarrow $ \emph{Put} or \emph{Delete} required by \emph{Transactions}
+				\item \ldots
 			\end{itemize}
 		}
 	}
 \end{frame}
 
-\lessonslearned{
-	\item Motivation for mass customization
-	\item Software product lines, features, dependencies between features, configurators
-	\item Feature models: abstract and concrete features, tree and cross-tree constraints
-	\item Tree constraints: optional, mandatory, or group, alternative group
-	\item Feature modeling in practice
-	\item Further Reading: \fospl, Chapter~1 Software Product Lines and Section~2.3 Feature Modeling
-}{
-	\item Sketch a feature model that has 9 valid configurations (pen and paper preferred)
-	\item Upload your feature model to Moodle
-	\item Inspect whether other submitted solutions are syntactically correct and have the right number of configurations
-	\\\hfill%\qrcode{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=4494} % TODO in 2023 update link
-}{}
+\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
+	\leftorright{
+		\todo{other feature diagram example(s) which shows off how notation can also be used}
+	}{
+		\mynote{Notation}{
+			\begin{itemize}
+				\item abstract and concrete features can be assigned arbitrarily
+    			\item groups can be used anywhere
+				\item directly below groups, no optional or mandatory markers are allowed
+			\end{itemize}
+		}
+	}
+\end{frame}
+
+\subsection{The Value of Feature Modeling}
+\begin{frame}{\insertsubsection}
+	\leftandright{
+		\textbf{Making Tacit Knowledge Explicit}
+		\mynote{Interview with Practitioners \mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}}{
+			\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer’s point of view. But it’s also, we can see that from the, say project development, it’s also important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven’t realized that. They implemented the same features.}
+		}
+	}{
+		\textbf{Tool Support for Automation}
+
+		\todo{FeatureIDE, pure::variants screenshot?}
+	}
+\end{frame}
