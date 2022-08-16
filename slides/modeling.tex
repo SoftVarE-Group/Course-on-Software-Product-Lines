@@ -17,19 +17,25 @@
 \input{content/modeling_notation}
 
 \lessonslearned{
-	\item Explicit knowledge about features matters.
-	\item Feature diagrams are a visual language for communicating feature models.
+	\item Features, dependencies between features, configurators
+	\item Feature models: abstract and concrete features, tree and cross-tree constraints
+	\item Tree constraints: optional, mandatory, or group, alternative group
 }{
+	\item \fospl, Section~2.3 Feature Modeling
 	\item Thorsten Berger et al. (2013): \href{https://doi.org/10.1145/2430502.2430513}{A Survey of Variability Modeling in Industrial Practice}
 	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
 }{
-	Think of a soft- or hardware domain, then model its variability in a small feature diagram (with pen and paper or in FeatureIDE).
+	% \item In the feature model below, is the configuration $\{Base, API, Put, Trans., Win\}$ valid? % no, root+OS missing % block 3?
+	% \featureDiagramDbmgmt
 
-	What do you (dis-)like about the feature diagram notation? Do you need cross-tree constraints to model your domain?
-
-	% feature model example: is this cfg valid?
+	% $\mathit{Transactions} \pimplies \mathit{Put} \por \mathit{Delete}$
+	\item Sketch a feature model with at least 5 features (pen and paper preferred)
+    \item Upload your solution to ...
+    \item Discuss whether your solutions are syntactically correct
+	% \item Sketch a feature model that has 9 valid configurations (pen and paper preferred)
+ 	% \item Discuss whether your solutions are syntactically correct and have the right number of configurations
 }
-% draw a feature diagram with x valid configurations
+
 %block 1: features explizit + ihre abhängigkeiten auch 
 %notation für modell nutzen + eins zeichnen mit mind. 5 features, fehler korrigieren, lesen von modellen üben
 
@@ -47,10 +53,9 @@
 	\item Don Batory (2005): \href{https://doi.org/10.1007/11554844_3}{Feature Models, Grammars, and Propositional Formulas}
 	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
 }{
-	Figure out how many valid configurations your feature diagram represents.
+	\item Figure out how many valid configurations your feature diagram represents.
 	When is this easy?
-
-	Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
+	\item Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
 	How might this be useful?
 }
 % translate your model into a propositional formula
@@ -72,7 +77,7 @@
 	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}
 }{
 	% alternative: find inconsistencies in your feature diagram
-	Recall that some $f \in F$ is dead iff $\pnot SAT(\phi \pand f)$.
+	\item Recall that some $f \in F$ is dead iff $\pnot SAT(\phi \pand f)$.
 	Suppose you want to know \emph{all} dead features of $\phi$.
 	Naively, you may formulate $\abs{F}$ SAT queries.
 	

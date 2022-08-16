@@ -49,7 +49,7 @@
 \newcommand{\fodo}[1]{\todo{\footnote{\todo{#1}}}}
 \newcommand{\todots}{\todo{\ldots}}
 
-\newcommand{\xkcd}[2]{
+\newcommand{\xkcd}[1]{
 	\begin{frame}
 		\centering%
 		\href{https://xkcd.com/#1/}{\includegraphics[height=80mm]{#1}}
@@ -85,7 +85,9 @@
 			}
 		}{
 			\myexample{Practice}{
-				#3
+				\begin{itemize}
+					#3
+				\end{itemize}
 			}
 		}
 	\end{frame}
