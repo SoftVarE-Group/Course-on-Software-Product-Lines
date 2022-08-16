@@ -1,0 +1,61 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty % remove the default navigation symbols
+\input{../../slides/template/colorscheme}
+
+\usepackage[orientation=landscape,size=custom,width=10.4,height=3.2,scale=.4]{beamerposter}
+\setbeamersize{text margin left=0mm,text margin right=0mm}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzset{ >=stealth'} % define standard arrow tip
+
+\newcommand{\trunkbranch}[2]{
+	\begin{tikzpicture}[auto,xscale=.75,trunk/.style={circle,draw,thick,minimum size=2mm,inner sep=0mm,outer sep=.5mm},branch1/.style={trunk,fill=blue,yshift=1cm},branch2/.style={trunk,fill=blue,yshift=2cm},change/.style={overlay,->,thick},main/.style={trunk}, branch/.style={change#1},merge/.style={change#2}]
+		\node[main,label=below:r1,label=left:main] at (0,0) (rev1) {};
+		\node[branch1,label=above:r2] at (1,0) (rev2) {};
+		\node[branch1,label=above:r3] at (2,0) (rev3) {};
+		\node[main,label=below:r4] at (3,0) (rev4) {};
+		\node[branch2,label=above:r5,label=left:a branch] at (4,0) (rev5) {};
+		\node[branch1,label=above:r6] at (5,0) (rev6) {};
+		\node[branch1,label=above:r7] at (6,0) (rev7) {};
+		\node[branch2,label=above:r8] at (7,0) (rev8) {};
+		\node[main,label=below:r9] at (8,0) (rev9) {};
+		\node[branch2,label=above:r10] at (9,0) (rev10) {};
+		\node[main,label=below:r11] at (10,0) (rev11) {};
+		\node[main,label=below:r12] at (11,0) (rev12) {};
+		\node[branch2,label=above:r13] at (12,0) (rev13) {};
+		\draw[branch] (rev1) to (rev2);
+		\draw[change] (rev1) to (rev4);
+		\draw[change] (rev2) to (rev3);
+		\draw[merge] (rev3) to (rev4);
+		\draw[branch] (rev4) to (rev5);
+		\draw[branch] (rev4) to (rev6);
+		\draw[change] (rev4) to (rev9);
+		\draw[change] (rev5) to (rev8);
+		\draw[change] (rev6) to (rev7);
+		\draw[merge] (rev7) to (rev9);
+		\draw[change] (rev8) to (rev10);
+		\draw[merge] (rev9) to (rev10);
+		\draw[change] (rev9) to (rev11);
+		\draw[merge] (rev10) to node {merge} (rev11);
+		\draw[change] (rev10) to (rev13);
+		\draw[change] (rev11) to (rev12);
+	\end{tikzpicture}
+}
+\begin{document}
+	\begin{frame}[plain]
+		\centering%
+		\only<1|handout:0>{\trunkbranch{}{}}%
+		\only<2|handout:0>{\trunkbranch{,draw=blue}{}}%
+		\only<3-|handout:1>{\trunkbranch{,draw=blue}{,draw=orange}}%
+	\end{frame}
+\end{document}
+
+%\usepackage{adjustbox}
+%	\begin{frame}[t,plain,fragile]%
+%	    \begin{adjustbox}{width=\textwidth}%
+%			\only<1|handout:0>{\trunkbranch{}{}}%
+%			\only<2|handout:0>{\trunkbranch{,draw=blue}{}}%
+%			\only<3-|handout:1>{\trunkbranch{,draw=blue}{,draw=orange}}%
+%		\end{adjustbox}%
+%	\end{frame}
