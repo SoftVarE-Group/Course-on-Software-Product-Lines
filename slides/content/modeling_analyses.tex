@@ -4,118 +4,118 @@
 % ie, show an example of an inconsistency and then reveal the issue - can be combined with the MUS explanations
 
 \begin{frame}{~}
-    this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
+	this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
 
-    list questions we might want to ask a feature model (maybe grouped in the order in which they are discussed)
+	list questions we might want to ask a feature model (maybe grouped in the order in which they are discussed)
 
-    include some simple \#SAT questions (e.g., feature prioritization)
+	include some simple \#SAT questions (e.g., feature prioritization)
 
-    am i developing unused code?
+	am i developing unused code?
 
-    how to find out whether a partial configuration is valid? (show decision propagation in FeatureIDE)
+	how to find out whether a partial configuration is valid? (show decision propagation in FeatureIDE)
 
-    etc.
+	etc.
 \end{frame}
 
 \subsection{Automated Reasoning with SAT and \#SAT}
 
 \begin{frame}{-- Problem}
-    recapitulate (very basic) theory behind both problems
+	recapitulate (very basic) theory behind both problems
 
-    revisit what the class of programs named "solver" does, and why it is important that we use OTS solvers and profit from their optimizations/contests - idea: reduce practical problems to solvers (sim. to TheoInf/Logics)
+	revisit what the class of programs named "solver" does, and why it is important that we use OTS solvers and profit from their optimizations/contests - idea: reduce practical problems to solvers (sim. to TheoInf/Logics)
 \end{frame}
 
 \begin{frame}{-- Solvers}
-    explain simple SAT and \#SAT solver ($SAT(\phi) \in \{\top, \bot\}$)
+	explain simple SAT and \#SAT solver ($SAT(\phi) \in \{\top, \bot\}$)
 
-    as a black-box/abstraction (may be implemented in many ways, e.g. as BDD)
+	as a black-box/abstraction (may be implemented in many ways, e.g. as BDD)
 
-    extensions to SAT solver interface (harder to implement):
-    
-    when SAT = true, some give a satisfying assignment (for optimizations)
-    
-    wen SAT = false, some give a MUS (for explanations) % see master theses of T. Günther, S. Ananieva
+	extensions to SAT solver interface (harder to implement):
+	
+	when SAT = true, some give a satisfying assignment (for optimizations)
+	
+	wen SAT = false, some give a MUS (for explanations) % see master theses of T. Günther, S. Ananieva
 
-    \#SAT subsumes SAT, but is harder to compute
+	\#SAT subsumes SAT, but is harder to compute
 \end{frame}
 
 \subsection{Void Feature Model}
 \begin{frame}{~}
-    is the FM even consistent? does it have errors? % can we even get a valid configuration? does a configurator allow anything? a clever configurator would see that
+	is the FM even consistent? does it have errors? % can we even get a valid configuration? does a configurator allow anything? a clever configurator would see that
 
-    void iff $SAT(\phi) = \bot$
+	void iff $SAT(\phi) = \bot$
 
-    for each analysis, also list \#SAT encoding
-    to WHICH DEGREE is a FM consistent (i.e., degree of freedom / variability factor)?
+	for each analysis, also list \#SAT encoding
+	to WHICH DEGREE is a FM consistent (i.e., degree of freedom / variability factor)?
 
-    also list explanations / MUS (very shortly)
+	also list explanations / MUS (very shortly)
 
-    maybe for each analysis, list applications/scenarios, here: find grave modeling errors, check wether a configurator even allows to create ANY valid configuration
+	maybe for each analysis, list applications/scenarios, here: find grave modeling errors, check wether a configurator even allows to create ANY valid configuration
 \end{frame}
 
 \subsection{Core and Dead Features} % + these are variability smells
 \begin{frame}{~}
-    can a feature be chosen at all? is it false-optional?
-    to WHICH DEGREE is a feature core/dead? feature prioritization
+	can a feature be chosen at all? is it false-optional?
+	to WHICH DEGREE is a feature core/dead? feature prioritization
    
-    f core iff $SAT(\phi and not f) = \bot$
-    
-    f dead iff $SAT(\phi and f) = \bot$
+	f core iff $SAT(\phi and not f) = \bot$
+	
+	f dead iff $SAT(\phi and f) = \bot$
 
-    applications: find anomalies/inconsistencies (false-optional), commonality, feature prioritization
+	applications: find anomalies/inconsistencies (false-optional), commonality, feature prioritization
 \end{frame}
 
 \subsection{Partial Configurations}
 \begin{frame}{~}
-    can a partial configuration be completed?
-    can also be connected to Chico's \#SAT applications
+	can a partial configuration be completed?
+	can also be connected to Chico's \#SAT applications
 
-    note that this is a generalization of void/core/dead
+	note that this is a generalization of void/core/dead
 
-    total configurations were defined before, now expand this definition to a tuple $(sel, desel)$ and explain why
+	total configurations were defined before, now expand this definition to a tuple $(sel, desel)$ and explain why
 
-    applications: ...
+	applications: ...
 \end{frame}
 
 \subsection{Redundant Constraints (?)}
 \begin{frame}{~}
-    ... % include this? it has no real #SAT equivalent
+	... % include this? it has no real #SAT equivalent
 \end{frame}
 
 \subsection{Other Analyses}
 \begin{frame}{~}
-    list some more analyses/questions
+	list some more analyses/questions
 
-    atomic sets, determinate features
+	atomic sets, determinate features
 
-    probably too much:
-    FM edits?
-    redundant constraints?
+	probably too much:
+	FM edits?
+	redundant constraints?
 \end{frame}
 
 % maybe combine Challenges/Experiences? or flip them?
 \subsection{Challenges}
 \begin{frame}{~}
-    how is SAT (before: a black box) implemented (very broadly)?
+	how is SAT (before: a black box) implemented (very broadly)?
 
-    solvers have parameters, heuristics (variable ordering/assignment, restarts, ...)
+	solvers have parameters, heuristics (variable ordering/assignment, restarts, ...)
 
-    there are SAT solvers that do not use CNF, there are other techniques entirely (BDD, d-DNNF)
+	there are SAT solvers that do not use CNF, there are other techniques entirely (BDD, d-DNNF)
 
-    CNF/DIMACS transformation
+	CNF/DIMACS transformation
 
-    non-Boolean requires richer theories (SMT, CSP)
+	non-Boolean requires richer theories (SMT, CSP)
 \end{frame}
 
 \subsection{Experiences} % performance / efficiency
 \begin{frame}{~}
-    show a few diagrams with performance on large models
+	show a few diagrams with performance on large models
 
-    (may even be implemented concretely as BDD)
+	(may even be implemented concretely as BDD)
 
-    only with Boolean formulas can we get really performant results today
+	only with Boolean formulas can we get really performant results today
 
-    BDDs are hard to build, but have large payoff (maybe one slide on the abstract concept of knowledge compilation, without too many details?)
+	BDDs are hard to build, but have large payoff (maybe one slide on the abstract concept of knowledge compilation, without too many details?)
 
-    most of this is implemented in FeatureIDE, the configurator is a clever combination of the techniques explained above (Boolean constraint/decision propagation)
+	most of this is implemented in FeatureIDE, the configurator is a clever combination of the techniques explained above (Boolean constraint/decision propagation)
 \end{frame}
