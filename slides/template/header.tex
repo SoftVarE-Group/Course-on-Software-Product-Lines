@@ -1,47 +1,50 @@
-% TITLE SLIDE
+\maketitle[][0] % optional parameters to change title picture and offset to move it 
+\lectureoverview
 
-\maketitle
-
-% SLIDE TEMPLATE
-
-%\setbeamercolor{title}{fg=black}
-%\setbeamercolor{frametitle}{fg=black}
-\setbeamertemplate{frametitle}{{\huge~\\\insertsubsection~\insertframetitle}}
-\setbeamertemplate{footline}[text line]{\parbox{\linewidth}{\vspace*{-10pt}\hspace{0pt}%
-	\insertshortauthor\phantom{g\insertpagenumber}%
-	\hfill%
-	\inserttitle%
-	\ifx \insertsubtitle \empty \else \ -- \insertsubtitle\fi%
-	\ifx \insertsectionhead \empty \else \ -- \insertsectionhead\fi%
-	\hfill%
-	\phantom{g\insertshortauthor}\insertpagenumber%
-}}
-%\defbeamertemplate{footline}{\begin{beamercolorbox}[sep=1em]{author in head/foot}\insertshortauthor\hfill\insertsection\hfill\insertframenumber\end{beamercolorbox}}
-%\defbeamertemplate*{footline}{mytheme}{\begin{beamercolorbox}[sep=1em]{author in head/foot}\insertshortauthor\hfill\insertsection\hfill\insertframenumber\end{beamercolorbox}}
-
-% OVERVIEW SLIDES
-
-\newcommand{\overview}{
-	\section*{Overview}
-	\subsection*{Overview}
-	\begin{frame}{-- \insertsubtitle}
-		\begin{multicols}{2}
-			\tableofcontents
-		\end{multicols}
-	\end{frame}
-}
-% temporarily added slide to have a lecture overview 
-\overview
-
-% temporarily removed
-%\begin{frame}{Lecture Overview -- \insertsubtitle}
-%	\tableofcontents[hideallsubsections]
-%\end{frame}
-
-\AtBeginSection[]{%
-	\begin{frame}{Lecture Overview -- \insertsubtitle}
-		\tableofcontents[currentsection,hideothersubsections]
-	\end{frame}
-}
-
+%% TITLE SLIDE
+%
+%\maketitle
+%
+%% SLIDE TEMPLATE
+%
+%%\setbeamercolor{title}{fg=black}
+%%\setbeamercolor{frametitle}{fg=black}
+%\setbeamertemplate{frametitle}{{\huge~\\\insertsubsection~\insertframetitle}}
+%\setbeamertemplate{footline}[text line]{\parbox{\linewidth}{\vspace*{-10pt}\hspace{0pt}%
+%	\insertshortauthor\phantom{g\insertpagenumber}%
+%	\hfill%
+%	\inserttitle%
+%	\ifx \insertsubtitle \empty \else \ -- \insertsubtitle\fi%
+%	\ifx \insertsectionhead \empty \else \ -- \insertsectionhead\fi%
+%	\hfill%
+%	\phantom{g\insertshortauthor}\insertpagenumber%
+%}}
+%%\defbeamertemplate{footline}{\begin{beamercolorbox}[sep=1em]{author in head/foot}\insertshortauthor\hfill\insertsection\hfill\insertframenumber\end{beamercolorbox}}
+%%\defbeamertemplate*{footline}{mytheme}{\begin{beamercolorbox}[sep=1em]{author in head/foot}\insertshortauthor\hfill\insertsection\hfill\insertframenumber\end{beamercolorbox}}
+%
+%% OVERVIEW SLIDES
+%
+%\newcommand{\overview}{
+%	\section*{Overview}
+%	\subsection*{Overview}
+%	\begin{frame}{-- \insertsubtitle}
+%		\begin{multicols}{2}
+%			\tableofcontents
+%		\end{multicols}
+%	\end{frame}
+%}
+%% temporarily added slide to have a lecture overview 
+%\overview
+%
+%% temporarily removed
+%%\begin{frame}{Lecture Overview -- \insertsubtitle}
+%%	\tableofcontents[hideallsubsections]
+%%\end{frame}
+%
+%\AtBeginSection[]{%
+%	\begin{frame}{Lecture Overview -- \insertsubtitle}
+%		\tableofcontents[currentsection,hideothersubsections]
+%	\end{frame}
+%}
+%
 \newcommand{\sectionend}{\addtocontents{toc}{\vspace{5mm}}}
