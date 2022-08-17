@@ -1,3 +1,22 @@
+\newcommand{\featureDiagramConfigurableDatabase}{
+	\featureDiagram{
+		ConfigurableDatabase,
+		abstract[Base,concrete,mandatory]
+		[API,concrete,mandatory
+			[Get,concrete,or]
+			[Put,concrete]
+			[Delete,concrete]
+		]
+		[Transactions,concrete,optional]
+		[OS,abstract,mandatory
+			[Windows,concrete,alternative]
+			[Linux,concrete]
+		]
+	}
+}
+
+% STYLE COMMANDS FOR FEATURE DIAGRAMS
+
 \usepackage{forest}
 \usepackage{xcolor}
 \usetikzlibrary{angles}
