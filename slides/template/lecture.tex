@@ -215,14 +215,6 @@
 %
 %\newcommand{\thirdpage}[1]{\partofpage{31}{#1}}
 %
-%\newcommand{\partofpage}[2]{
-%	\adjustbox{valign=t}{\begin{minipage}{0.#1\textwidth}
-%			\begin{flushleft}
-%				#2
-%			\end{flushleft}
-%	\end{minipage}}
-%}
-%
 %\newcommand{\mydefinition}[2]{
 %	\begin{tcolorbox}[title=#1,colback=orange!10,colframe=orange!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
 %		\begin{flushleft}
@@ -246,15 +238,16 @@
 %		\end{flushleft}
 %	\end{tcolorbox}
 %}
-%
-%\newcommand{\myexample}[2]{
-%	\begin{tcolorbox}[title=#1,colback=blue!10,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
-%		\begin{flushleft}
-%			#2
-%		\end{flushleft}
-%	\end{tcolorbox}
-%}
-%
+
+% TODO hack to make \leftandright work again in example boxes
+\renewcommand{\myexample}[2]{
+	\begin{tcolorbox}[title={\setlength{\parskip}{0ex}\vphantom{/}#1},colback=blue!10,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
 %\newcommand{\myexampletight}[2]{
 %	\begin{tcolorbox}[title=#1,colback=white,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
 %		\begin{flushleft}
