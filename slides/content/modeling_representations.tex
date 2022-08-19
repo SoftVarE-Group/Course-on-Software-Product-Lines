@@ -96,13 +96,13 @@
 				\path [->] (fd2.south) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (phi);
 				\path [dashed, ->] (phi) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\czarneckithereandbackagain, \shereverseengineering}} (fd2.south);
 
-				\path [->] (fd2.south east) edge[bend left=8] node[sloped,yshift=1mm] {see slide X} (cfg);
+				\path [dashed, ->] (fd2.south east) edge[bend left=8] node[sloped,yshift=1mm] {see slide X} (cfg);
 				\path [dashed, ->] (cfg) edge[bend left=8] node[sloped,yshift=1mm] {\todots} (fd2.south east);
 
 				\path [->] (phi2) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (cnf);
 				\path [dashed, ->] (cnf) edge[bend left=15] node[sloped,yshift=1mm] {\todots} (phi2);
 			
-				\path [->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {see slide X} (cnf);
+				\path [dashed, ->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {see slide X} (cnf);
 				\path [dashed, ->] (cnf2.south) edge[bend right=15] node[sloped,yshift=1mm] {AllSAT} (cfg2);
 			\end{tikzpicture}
 		}
