@@ -461,6 +461,7 @@
 				\item t=3: every combination of three features
 			\end{itemize}
 		}
+	}{
 		\myexample{{T=3 Interactions for the Features $G$, $P$, and $D$}}{
 			$G \wedge P \wedge D$ \hfill $G \wedge P \wedge \neg D$ \hfill $G \wedge \neg P \wedge D$
 			
@@ -468,26 +469,35 @@
 			
 			$\neg G \wedge \neg P \wedge D$ \hfill $\neg G \wedge \neg P \wedge \neg D$
 		}
-	}{
-		\myexampletight{Effectivity of Interaction Testing \mysource{\href{https://ieeexplore.ieee.org/document/1321063}{Kuhn et al.\ 2004}}}{
-			\centering\includegraphics[width=.9\linewidth,page=1]{citplots}
-		}
-		\mynote{Trade-Off}{large t: high coverage (more effective)
-			
-			small t: low testing effort (more efficient)}
 	}
 \end{frame}
 
-\subsection{Effectiveness of Combinatorial Interaction Testing}
-
 \subsection{Efficiency of Combinatorial Interaction Testing}
-% testing efficiency and sampling efficiency
+%\subsection{Combinatorial Interaction Testing with ICPL}
+\begin{frame}{\insertsubsection\ \mytitlesource{\icpl}}
+	\leftorright{
+		\myexampletight{Assumption: All Features are Optional}{
+			\centering\footnotesize\featureDiagramEightOptionalFeatures
+		}
+		
+		\myexampletight{Number of Configurations in Pairwise Sample}{
+			\includegraphics[width=\linewidth,page=4]{citplots}
+		}
+	}{%
+		\myexampletight{Assumption: All Features are Optional}{
+			\centering\footnotesize\featureDiagramEightOptionalFeatures
+		}
+		
+		\myexampletight{Number of Configurations in T-Wise Sample}{
+			\includegraphics[width=\linewidth,page=5]{citplots}
+		}
+	}
+\end{frame}
 
-%\subsection{Pairwise Interaction Testing in Practice}
 \begin{frame}{\insertsubsection\ \mytitlesource{\icpl}}
 	\leftorright{
 		\myexampletight{Time in Minutes to Compute Sample}{
-			\centering\includegraphics[width=.8\linewidth,page=2]{citplots}
+			\includegraphics[width=\linewidth,page=2]{citplots}
 		}
 		\myexample{}{
 			\begin{itemize}
@@ -498,7 +508,7 @@
 		}
 	}{
 		\myexampletight{Number of Configurations in Sample}{
-			\centering\includegraphics[width=.8\linewidth,page=3]{citplots}
+			\includegraphics[width=\linewidth,page=3]{citplots}
 		}
 		\myexample{}{
 			\begin{itemize}
@@ -510,28 +520,20 @@
 	}
 \end{frame}
 
-%\subsection{Combinatorial Interaction Testing with ICPL}
-\begin{frame}{\insertsubsection\ \mytitlesource{\icpl}}
+% TODO distinguish testing efficiency and sampling efficiency
+
+\subsection{Effectiveness of Combinatorial Interaction Testing}
+\begin{frame}{\insertsubsection}
 	\leftorright{
-		\myexampletight{Assumption: All Features are Optional}{
-			\centering\scriptsize\featureDiagramEightOptionalFeatures
+		\myexampletight{Effectivity of Interaction Testing \mysource{\href{https://ieeexplore.ieee.org/document/1321063}{Kuhn et al.\ 2004}}}{
+			\includegraphics[width=\linewidth,page=1]{citplots}
 		}
-		
-		\myexampletight{Number of Configurations in Pairwise Sample}{
-			\centering\includegraphics[width=.9\linewidth,page=4]{citplots}
-		}
-	}{%
-		\myexampletight{Assumption: All Features are Optional}{
-			\centering\scriptsize\featureDiagramEightOptionalFeatures
-		}
-		
-		\myexampletight{Number of Configurations in T-Wise Sample}{
-			\centering\includegraphics[width=.9\linewidth,page=5]{citplots}
-		}
+	}{
+		\mynote{Trade-Off}{large t: high coverage (more effective)
+			
+			small t: low testing effort (more efficient)}
 	}
 \end{frame}
-
-%\input{content/missing}
 
 \lessonslearned{
 	\item \ldots

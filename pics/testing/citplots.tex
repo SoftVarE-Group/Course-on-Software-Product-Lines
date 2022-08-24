@@ -2,13 +2,18 @@
 \beamertemplatenavigationsymbolsempty % remove the default navigation symbols
 \input{../../slides/template/colorscheme}
 
+\makeatletter
+    \setlength\beamer@paperwidth{120mm}%
+    \setlength\beamer@paperheight{80mm}%
+    \geometry{papersize={\beamer@paperwidth,\beamer@paperheight}}
+\makeatother
 \setbeamersize{text margin left=0mm,text margin right=0mm}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{
 	width=\linewidth,
-	height=.75\linewidth,
+	height=.66\linewidth,
 	xlabel near ticks,
 	ylabel near ticks,
 	/pgf/number format/.cd,use comma,1000 sep={.},
@@ -18,10 +23,9 @@
 
 	% Effectivity of Interaction Testing \mysource{\href{https://ieeexplore.ieee.org/document/1321063}{Kuhn et al.\ 2004}}
 	\begin{frame}[plain]
-		\centering\Large
+		\centering
 		\begin{tikzpicture}
 			\begin{axis}[
-				width=.95\linewidth,
 				ymin=0,ymax=110,
 				xlabel=T,
 				ylabel=Found Errors (\%),
