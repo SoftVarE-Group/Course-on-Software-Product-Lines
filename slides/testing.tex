@@ -7,6 +7,8 @@
 
 \input{template/header}
 
+% TODO add xkcd from SWT? \widexkcd{974} % salt 12s
+
 \section{Product-Line Testing in Practice}
 
 % TODO famous example for a product line failure?
@@ -107,10 +109,6 @@
 	}
 \end{frame}
 
-\begin{frame}{Recap: Feature Model of the Linux Kernel}
-	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,page=1,trim=100 510 100 170,clip]{2020/2020-SPLC-Thuem}}
-\end{frame}
-
 \subsection{Testing All Configurations}
 \begin{frame}{\insertsubsection}
 	\leftorright{
@@ -162,6 +160,10 @@
 	}
 \end{frame}
 
+\begin{frame}{Recap: Feature Model of the Linux Kernel}
+	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,page=1,trim=100 510 100 170,clip]{2020/2020-SPLC-Thuem}}
+\end{frame}
+
 \newcommand{\eemph}[1]{{\color{red}\textbf{#1}}}
 
 \subsection{Testing One Configuration}
@@ -208,18 +210,10 @@
 				\item applicable to large product lines
 				\item no redundant test effort (from configurations)
 				\item often not feasible to test all features in one configuration (e.g., Win and Unix)
-				\item unnoticed feature interactions
+				\item unnoticed feature interactions \lectureinteractions
 			\end{itemize}
 		}
-		\mydefinition{Feature Interactions}{ % TODO extra slide with an example
-			\begin{itemize}
-				\setlength\itemsep{.4em}
-				\item features work well in isolation, but not in combination
-				\item example: fire control and flood control in a building
-				\item \emph{pairwise interactions}: interaction of two features
-				\item \emph{t-wise interaction}: interaction of t features
-			\end{itemize}
-		}
+		\todo{picture on known interaction from \lectureinteractions}
 	}
 \end{frame}
 
@@ -282,9 +276,9 @@
 	}
 \end{frame}
 
-\begin{frame}{Recap: Black-Box Testing \mytitlesource{\ludewiglichter}}
+\begin{frame}{Recap: Black-Box Testing \deutschertitel{Funktionstest}}
 	\leftandright{
-		\mynote{Motivation}{
+		\mynote{Motivation \mysource{\ludewiglichter}}{
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item source code not always available (e.g., outsourced components, obfuscated code)
@@ -295,7 +289,7 @@
 			\end{itemize}
 		}
 		\vspace{-1mm}
-		\mydefinition{Black-Box Testing \deutsch{Funktionstest}}{
+		\mydefinition{Black-Box Testing \mysource{\ludewiglichter}}{
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item test-case design based on specification
@@ -305,90 +299,6 @@
 	}{
 	}
 \end{frame}
-
-\subsection{Pairwise Interaction Testing}
-
-\subsection{A Greedy Algorithm}
-
-\subsection{Meta-Heuristic Search}
-
-\subsection{T-Wise Interaction Testing}
-
-\subsection{Effectiveness of Combinatorial Interaction Testing}
-
-\subsection{Efficiency of Combinatorial Interaction Testing}
-% testing efficiency and sampling efficiency
-
-%\input{content/missing}
-
-\lessonslearned{
-	\item \ldots
-}{
-	\item \ldots
-}{
-	\item \ldots
-}
-
-\sectionend
-
-\section{Solution-Space Sampling}
-
-\subsection{Coverage in Single-System Engineering}
-\begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
-	\vspace{-7mm}
-	\leftorright{
-		\mydefinition{White-Box Testing \deutsch{Strukturtest}}{
-			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item inner structure of test object is used
-				\item idea: coverage of structural elements
-				\item code translated into control flow graph
-				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
-			\end{itemize}
-		}{}
-	}{
-		\mydefinition{Coverage Criteria \deutsch{Überdeckungskriterien}}{
-			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
-				\uncover<3->{\item[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised} % TODO not so easy to define as percentage
-				\uncover<4->{\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)}
-				% TODO discuss path coverage?
-			\end{itemize}
-		}{}
-	}
-\end{frame}
-
-\subsection{Coverage of Ifdef Blocks}
-
-\subsection{Presence-Condition Coverage}
-
-%\subsection{Encoding Solution Space in Feature Models}
-
-\subsection{Overview on Coverage Criteria}
-
-\subsection{Overview on Input for Sampling Algorithms}
-% include test cases as input
-
-%\input{content/missing}
-
-\lessonslearned{
-	\item \ldots
-}{
-	\item \ldots
-}{
-	\item \ldots
-}
-
-
-
-
-
-
-
-
-
-
 
 \subsection{Pairwise Interaction Testing}
 \begin{frame}{\insertsubsection}
@@ -464,8 +374,7 @@
 	{\redandgray{#6}$\neg #1 \wedge \neg #2$}\\
 }
 
-\subsection{Pairwise Coverage}
-\begin{frame}{\insertsubsection}
+\begin{frame}{Pairwise Coverage}
 	\leftorright{
 		\vspace{5mm}
 		\mydefinition{Interactions to Cover}{
@@ -512,6 +421,23 @@
 	}
 \end{frame}
 % TODO use different colors for the different configurations (instead of separate handouts)
+
+
+\subsection{A Greedy Algorithm}
+\begin{frame}{\insertsubsection}
+%\begin{frame}{Einfache Heuristik für Pairwise Interaction Testing}
+%	Greedy-Algorithmus: Wähle immer die Konfiguration als nächstes, die die meisten fehlenden Interaktionen abdeckt
+%	\vspace{2mm}\pause
+%	\begin{itemize}
+%		\item Erste Konfiguration frei wählbar (jede deckt am Anfang die gleiche Anzahl von Interaktionen ab: eine pro Paar)
+%		\item Stoppe wenn keine Interaktionen übrig
+%		\item Findet ggfs.\ nicht die kleinste Teilmenge an Konfigurationen
+%		\item Bessere Algorithmen wurden in den letzten Jahren vorgeschlagen (z.B. ICPL)
+%	\end{itemize}
+\end{frame}
+% TODO introduce ICPL
+
+\subsection{Meta-Heuristic Search}
 
 \subsection{T-Wise Interaction Testing}
 \begin{frame}{\insertsubsection}
@@ -561,81 +487,12 @@
 	}
 \end{frame}
 
-\widexkcd{974} % salt 12s
+\subsection{Effectiveness of Combinatorial Interaction Testing}
 
-%\begin{frame}{Einfache Heuristik für Pairwise Interaction Testing}
-%	Greedy-Algorithmus: Wähle immer die Konfiguration als nächstes, die die meisten fehlenden Interaktionen abdeckt
-%	\vspace{2mm}\pause
-%	\begin{itemize}
-%		\item Erste Konfiguration frei wählbar (jede deckt am Anfang die gleiche Anzahl von Interaktionen ab: eine pro Paar)
-%		\item Stoppe wenn keine Interaktionen übrig
-%		\item Findet ggfs.\ nicht die kleinste Teilmenge an Konfigurationen
-%		\item Bessere Algorithmen wurden in den letzten Jahren vorgeschlagen (z.B. ICPL)
-%	\end{itemize}
-%\end{frame}
+\subsection{Efficiency of Combinatorial Interaction Testing}
+% testing efficiency and sampling efficiency
 
-% TODO introduce ICPL
-
-\subsection{Combinatorial Interaction Testing with ICPL}
-\begin{frame}{\insertsubsection\ \mytitlesource{\icpl}}
-	\leftorright{
-		\myexampletight{Assumption: All Features are Optional}{
-			% TODO \centering\includegraphics[width=.66\textwidth]{optional-features}
-		}
-		
-		\myexampletight{Number of Configurations in Pairwise Sample}{
-			\footnotesize\centering
-			\begin{tikzpicture}
-%				\begin{axis}[
-%					width=1.1\textwidth,height=.66\textwidth,
-%					ybar,
-%					bar width=1mm,
-%					ymin=0,ymax=300,
-%					xlabel=Number of Optional Features,
-%					nodes near coords={\pgfmathprintnumber[precision=0]{\pgfplotspointmeta}},
-%					legend style={at={(0.03,0.97)},anchor=north west},
-%					legend cell align=left,
-%					]
-%					\addplot coordinates {(0,1) (1,2) (2,4) (3,6) (4,8) (5,7) (6,7) (7,9) (8,10)};
-%					\addplot coordinates {(0,1) (1,2) (2,4) (3,8) (4,16) (5,32) (6,64) (7,128) (8,256)};
-%					\legend{Pairwise Sample (T=2),Valid Configurations}
-%				\end{axis}
-			\end{tikzpicture}
-		}
-	}{%
-		\myexampletight{Assumption: All Features are Optional}{
-			% TODO \centering\includegraphics[width=.66\textwidth]{optional-features}
-		}
-		
-		\myexampletight{Number of Configurations in T-Wise Sample}{
-			\footnotesize\centering
-			\begin{tikzpicture}
-%				\begin{axis}[
-%					width=1.1\textwidth,height=.66\textwidth,
-%					ybar,
-%					bar width=1mm,
-%					ymin=0,ymax=28,
-%					xlabel=Number of Optional Features,
-%					nodes near coords={\pgfmathprintnumber[precision=0]{\pgfplotspointmeta}},
-%					legend style={at={(0.03,0.97)},anchor=north west},
-%					legend cell align=left,
-%					]
-%					\addplot coordinates {(0,1) (1,2) (2,2) (3,2) (4,2) (5,2) (6,2) (7,2) (8,2)};
-%					\addplot coordinates {(0,1) (1,2) (2,4) (3,6) (4,8) (5,7) (6,7) (7,9) (8,10)};
-%					\addplot coordinates {(0,1) (1,2) (2,4) (3,8) (4,10) (5,13) (6,14) (7,18) (8,23)};
-%					\legend{T=1,T=2,T=3}
-%				\end{axis}
-			\end{tikzpicture}
-		}
-	}
-\end{frame}
-
-%\subsection{Recap: Linux Feature Model} % TODO slide repeated from above
-%\begin{frame}{\insertsubsection}
-%	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,trim=100 510 100 170,clip]{linux-bdd}}
-%\end{frame}
-
-\subsection{Pairwise Interaction Testing in Practice}
+%\subsection{Pairwise Interaction Testing in Practice}
 \begin{frame}{\insertsubsection\ \mytitlesource{\icpl}}
 	\leftorright{
 		\myexampletight{Time in Minutes to Compute Sample}{
@@ -704,31 +561,161 @@
 	}
 \end{frame}
 
+%\subsection{Combinatorial Interaction Testing with ICPL}
+\begin{frame}{\insertsubsection\ \mytitlesource{\icpl}}
+	\leftorright{
+		\myexampletight{Assumption: All Features are Optional}{
+			% TODO \centering\includegraphics[width=.66\textwidth]{optional-features}
+		}
+		
+		\myexampletight{Number of Configurations in Pairwise Sample}{
+			\footnotesize\centering
+			\begin{tikzpicture}
+%				\begin{axis}[
+%					width=1.1\textwidth,height=.66\textwidth,
+%					ybar,
+%					bar width=1mm,
+%					ymin=0,ymax=300,
+%					xlabel=Number of Optional Features,
+%					nodes near coords={\pgfmathprintnumber[precision=0]{\pgfplotspointmeta}},
+%					legend style={at={(0.03,0.97)},anchor=north west},
+%					legend cell align=left,
+%					]
+%					\addplot coordinates {(0,1) (1,2) (2,4) (3,6) (4,8) (5,7) (6,7) (7,9) (8,10)};
+%					\addplot coordinates {(0,1) (1,2) (2,4) (3,8) (4,16) (5,32) (6,64) (7,128) (8,256)};
+%					\legend{Pairwise Sample (T=2),Valid Configurations}
+%				\end{axis}
+			\end{tikzpicture}
+		}
+	}{%
+		\myexampletight{Assumption: All Features are Optional}{
+			% TODO \centering\includegraphics[width=.66\textwidth]{optional-features}
+		}
+		
+		\myexampletight{Number of Configurations in T-Wise Sample}{
+			\footnotesize\centering
+			\begin{tikzpicture}
+%				\begin{axis}[
+%					width=1.1\textwidth,height=.66\textwidth,
+%					ybar,
+%					bar width=1mm,
+%					ymin=0,ymax=28,
+%					xlabel=Number of Optional Features,
+%					nodes near coords={\pgfmathprintnumber[precision=0]{\pgfplotspointmeta}},
+%					legend style={at={(0.03,0.97)},anchor=north west},
+%					legend cell align=left,
+%					]
+%					\addplot coordinates {(0,1) (1,2) (2,2) (3,2) (4,2) (5,2) (6,2) (7,2) (8,2)};
+%					\addplot coordinates {(0,1) (1,2) (2,4) (3,6) (4,8) (5,7) (6,7) (7,9) (8,10)};
+%					\addplot coordinates {(0,1) (1,2) (2,4) (3,8) (4,10) (5,13) (6,14) (7,18) (8,23)};
+%					\legend{T=1,T=2,T=3}
+%				\end{axis}
+			\end{tikzpicture}
+		}
+	}
+\end{frame}
+
+%\input{content/missing}
+
+\lessonslearned{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\sectionend
+
+\section{Solution-Space Sampling}
+
+\subsection{Coverage in Single-System Engineering}
+\begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
+	\vspace{-7mm}
+	\leftorright{
+		\mydefinition{White-Box Testing \deutsch{Strukturtest}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item inner structure of test object is used
+				\item idea: coverage of structural elements
+				\item code translated into control flow graph
+				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
+			\end{itemize}
+		}{}
+	}{
+		\mydefinition{Coverage Criteria \deutsch{Überdeckungskriterien}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
+				\uncover<3->{\item[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised} % TODO not so easy to define as percentage
+				\uncover<4->{\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)}
+				% TODO discuss path coverage?
+			\end{itemize}
+		}{}
+	}
+\end{frame}
+
+\subsection{Coverage of Ifdef Blocks}
+
+\subsection{Presence-Condition Coverage}
+
+%\subsection{Encoding Solution Space in Feature Models}
+
+\subsection{Overview on Coverage Criteria}
+
+\subsection{Overview on Input for Sampling Algorithms}
+% include test cases as input
+
+%\input{content/missing}
+
+\lessonslearned{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+
+
+
+
+
+
+
+
+
+
+%\subsection{Recap: Linux Feature Model} % TODO slide repeated from above
+%\begin{frame}{\insertsubsection}
+%	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,trim=100 510 100 170,clip]{linux-bdd}}
+%\end{frame}
+
 % TODO how Linux is developed: patches on mailing list, only considered if not rejected by CI, what happens in CI
 
 % TODO variant reduction, prevent the explosion. marketing wants them all. engineering and quality assurance too expensive.
 
-\subsection{Choose Features Wisely}
-\begin{frame}{\insertsubsection}
-	\leftorright{
-		% TODO \myexampletight{John Ferguson Smart (2017)}{\centering\href{https://twitter.com/wakaleo/status/854702550469234692}{\includegraphics[width=.98\linewidth,angle=2,trim=0 0 5 0,clip]{unnecessary-features}}}
-		% 
-	}{
-		\centering\href{https://commons.wikimedia.org/wiki/File:John_Carmack_at_GDCA_2017_--_1_March_2017_(cropped).jpeg}{\includegraphics[width=.47\linewidth,trim=0 0 0 0,clip]{john-carmack}}
-		\vspace{-7mm}
-		
-		\mynote{John Carmack (born 1970) \mysource{\href{https://www.ics.uci.edu/~pattis/quotations.html\#C}{uci.edu}}}{\mycite{The important point is that the cost of adding a feature isn't just the time it takes to code it. The cost also includes the addition of an obstacle to future expansion. %Sure, any given feature list can be implemented, given enough coding time. But in addition to coming out late, you will usually wind up with a codebase that is so fragile that new ideas that should be dead-simple wind up taking longer and longer to work into the tangled existing web. 
-		[...] The trick is to pick the features that don't fight each other.}}
-		% video game developer, co-founder of a video game company
-	}
-\end{frame}
+% TODO \subsection{Choose Features Wisely}
+%\begin{frame}{\insertsubsection}
+%	\leftorright{
+%		% TODO \myexampletight{John Ferguson Smart (2017)}{\centering\href{https://twitter.com/wakaleo/status/854702550469234692}{\includegraphics[width=.98\linewidth,angle=2,trim=0 0 5 0,clip]{unnecessary-features}}}
+%		% 
+%	}{
+%		\centering\href{https://commons.wikimedia.org/wiki/File:John_Carmack_at_GDCA_2017_--_1_March_2017_(cropped).jpeg}{\includegraphics[width=.47\linewidth,trim=0 0 0 0,clip]{john-carmack}}
+%		\vspace{-7mm}
+%		
+%		\mynote{John Carmack (born 1970) \mysource{\href{https://www.ics.uci.edu/~pattis/quotations.html\#C}{uci.edu}}}{\mycite{The important point is that the cost of adding a feature isn't just the time it takes to code it. The cost also includes the addition of an obstacle to future expansion. %Sure, any given feature list can be implemented, given enough coding time. But in addition to coming out late, you will usually wind up with a codebase that is so fragile that new ideas that should be dead-simple wind up taking longer and longer to work into the tangled existing web. 
+%		[...] The trick is to pick the features that don't fight each other.}}
+%		% video game developer, co-founder of a video game company
+%	}
+%\end{frame}
 
-\subsection{Number of Features in Linux}
-\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www4.cs.fau.de/Ausarbeitung/MA-I4-2015-04-Hengelein.pdf}{Hengelein 2015}}}
-	\partofpage{70}{
-		% TODO \myexampletight{{2005--2015: Number of Features Tripled}}{\includegraphics[width=\linewidth]{linux-features}}
-	}
-\end{frame}
+% TODO \subsection{Number of Features in Linux}
+%\begin{frame}{\insertsubsection\ \mytitlesource{\href{https://www4.cs.fau.de/Ausarbeitung/MA-I4-2015-04-Hengelein.pdf}{Hengelein 2015}}}
+%	\partofpage{70}{
+%		% TODO \myexampletight{{2005--2015: Number of Features Tripled}}{\includegraphics[width=\linewidth]{linux-features}}
+%	}
+%\end{frame}
 
 %\lessonslearned{
 %	\item Testing software product lines
