@@ -156,6 +156,15 @@
 				\item (some) large product lines: not even the number of valid configurations is known
 			\end{itemize}
 		}
+		\mynote{Product-Line Complexity Classes}{
+			\begin{enumerate}
+				\item Can we compute the number of valid configurations?
+				\item Can we generate the list of valid configurations?
+				\item Can we generate and compile all products?
+				\item Can we test all products?
+				\item Can we manually list all valid configurations?
+			\end{enumerate}
+		}
 		% TODO add examples from Chico, diagram?
 	}
 \end{frame}
@@ -210,6 +219,7 @@
 				\item applicable to large product lines
 				\item no redundant test effort (from configurations)
 				\item often not feasible to test all features in one configuration (e.g., Win and Unix)
+				\item strategy in practice: all-yes-config (configuration with many features selected)
 				\item unnoticed feature interactions \lectureinteractions
 			\end{itemize}
 		}
