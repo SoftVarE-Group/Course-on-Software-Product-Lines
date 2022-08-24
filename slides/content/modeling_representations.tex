@@ -11,102 +11,29 @@
 
 	% recount the example model here
 
-
-	% \begin{tikzpicture}
-	% 	\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
-
-	% 	\node (nat) at (0,4) {Natural Language};
-	% 	%\node (cfg) at (4,4) [align=center] {List of Configurations\\{\tiny Product Map}};
-	% 	\node (cfg) at (4,4) {Product Map};
-	% 	\node (fd) at (2,3) {Feature Diagram};
-	% 	\node (uvl) at (4,2) {UVL};
-	% 	\node (phi) at (0,2) {Formula};
-	
-	% 	\path [dashed, ->] (nat) edge[bend left] node[right] {} (fd);
-	% 	\path [->] (fd) edge[bend left] node[right] {} (nat);
-	% 	\path [dashed, ->] (cfg) edge[bend right] node[right] {} (fd);
-	% 	\path [->] (fd) edge[bend right] node[right] {} (cfg);
-	% 	\path [->] (uvl.north) edge[bend left] node[left] {parse} (fd.south east);
-	% 	\path [->] (fd.south east) edge[bend left] node[right] {serialize} (uvl.north);
-	% 	\path [dashed, ->] (phi.north) edge[bend left] node[left] {} (fd.south west);
-	% 	\path [->] (fd.south west) edge[bend left] node[right] {translate} (phi.north);
-	% \end{tikzpicture}
-
-	% \begin{tikzpicture}
-	% 	\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
-
-	% 	\node (topleft) at (-1.2,0) {};
-	% 	\node (bottomleft) at (-1.2,-4) {};
-	% 	\node (fd) at (2,0) {Feature Diagram};
-	% 	\node (uvl) at (4,0) {UVL};
-	% 	\node (nat) at (0,-2) [align=center] {Natural\\Language};
-	% 	%\node (cfg) at (4,4) [align=center] {List of Configurations\\{\tiny Product Map}};
-	% 	\node (phi) at (2,-2) {Formula};
-	% 	\node (cfg) at (4,-2) {Product Map};
-	% 	\node (cnf) at (2,-4) {CNF};
-	% 	\node (dimacs) at (4,-4) {DIMACS};
-
-	% 	\path [dotted, thick, ->] (topleft) edge node[left, rotate=90, yshift=2mm, xshift=10mm] {information loss} (bottomleft);
-	
-	% 	\path [->] (fd) edge[bend left] node[right] {} (uvl);
-	% 	\path [->] (uvl) edge[bend left] node[left] {} (fd);
-		
-	% 	\path [->] (fd.south west) edge[bend left] node[right] {} (nat);
-	% 	\path [dashed, ->] (nat) edge[bend left] node[right] {} (fd.south west);
-						
-	% 	\path [->] (fd.south) edge[bend left] node[right] {} (phi);
-	% 	\path [dashed, ->] (phi) edge[bend left] node[left] {} (fd.south);
-
-	% 	\path [->] (fd.south east) edge[bend right] node[right] {} (cfg);
-	% 	\path [dashed, ->] (cfg) edge[bend right] node[right] {} (fd.south east);
-
-	% 	\path [->] (phi) edge[bend left] node[right] {} (cnf);
-	% 	\path [dashed, ->] (cnf) edge[bend left] node[left] {} (phi);
-	
-	% 	\path [->] (cnf) edge[bend left] node[right] {} (dimacs);
-	% 	\path [->] (dimacs) edge[bend left] node[left] {} (cnf);
-	% \end{tikzpicture}
-
 	\leftandright{
-		\myexampletight{Representations of Boolean Feature Models}{
+		\myexampletight{Representations of Variability Models}{
 			\usetikzlibrary{positioning}
 			\begin{tikzpicture}
 				\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
 		
-				\node (topleft) at (-1,0) {};
-				\node (bottomleft) at (-1,-4) {};
-				\node (bottomleft2) at (-0.5,-4) {\tiny\color{red}File Format};
-				
 				\node (fd) at (2,0) {Feature Diagram};
-				\node (fd2) at (fd.south) {\tiny\color{red}UVL, XML};
+				\node (fd2) at (fd.south) {\tiny\color{red}};
 				\node (nat) at (0,-2) [align=center] {Natural\\Language};
 				\node (nat2) at (nat.south) {\tiny\color{red}Plain/Rich Text};
-				\node (phi) at (2,-2) [align=center] {Propositional\\Formula};
-				\node (phi2) at (phi.south) {\tiny\color{red}Excel, SMT-LIB};
-				\node (cfg) at (4,-4) {Product Map};
+				\node (cfg) at (4,-2) {Product Map};
 				\node (cfg2) at (cfg.south) {\tiny\color{red}Excel, CSV};
-				\node (cnf) at (2,-4) {CNF};
-				\node (cnf2) at (cnf.south) {\tiny\color{red}DIMACS};
 		
-				\path [dotted, thick, ->] (topleft) edge node[left, rotate=90, yshift=2mm, xshift=10mm] {Loss of Structure} (bottomleft);
-			
 				\path [->] (fd2.south west) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (nat);
 				\path [dashed, ->] (nat) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\bakarnaturallanguage}} (fd2.south west);
 				
-				\path [->] (fd2.south) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (phi);
-				\path [dashed, ->] (phi) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\czarneckithereandbackagain, \shereverseengineering}} (fd2.south);
-
 				\path [dashed, ->] (fd2.south east) edge[bend left=8] node[sloped,yshift=1mm] {see slide X} (cfg);
 				\path [dashed, ->] (cfg) edge[bend left=8] node[sloped,yshift=1mm] {\todots} (fd2.south east);
-
-				\path [->] (phi2) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (cnf);
-				\path [dashed, ->] (cnf) edge[bend left=15] node[sloped,yshift=1mm] {\todots} (phi2);
-			
-				\path [dashed, ->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {see slide X} (cnf);
-				\path [dashed, ->] (cnf2.south) edge[bend right=15] node[sloped,yshift=1mm] {AllSAT} (cfg2);
 			\end{tikzpicture}
 		}
-	}{}
+	}{
+		
+	}
 \end{frame}
 
 \subsection{List of Valid Configurations}
@@ -238,3 +165,44 @@
 % \begin{frame}{\insertsubsection}
 % 	\vspace{-7mm}\includegraphics[width=.7\linewidth,trim=10 10 0 10,clip]{constraints-in-excel}
 % \end{frame}
+
+\begin{frame}{\insertsubsection}
+	\myexampletight{Representations of Variability Models}{
+		\usetikzlibrary{positioning}
+		\begin{tikzpicture}
+			\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
+	
+			\node (topleft) at (-1,0) {};
+			\node (bottomleft) at (-1,-4) {};
+			\node (bottomleft2) at (-0.5,-4) {\tiny\color{red}File Format};
+			
+			\node (fd) at (2,0) {Feature Model};
+			\node (fd2) at (fd.south) {\tiny\color{red}UVL, XML};
+			\node (nat) at (0,-2) [align=center] {Natural\\Language};
+			\node (nat2) at (nat.south) {\tiny\color{red}Plain/Rich Text};
+			\node (phi) at (2,-2) [align=center] {Propositional\\Formula};
+			\node (phi2) at (phi.south) {\tiny\color{red}Excel, SMT-LIB};
+			\node (cfg) at (4,-4) {Product Map};
+			\node (cfg2) at (cfg.south) {\tiny\color{red}Excel, CSV};
+			\node (cnf) at (2,-4) {CNF};
+			\node (cnf2) at (cnf.south) {\tiny\color{red}DIMACS};
+	
+			\path [dotted, thick, ->] (topleft) edge node[left, rotate=90, yshift=2mm, xshift=10mm] {Loss of Structure} (bottomleft);
+		
+			\path [->] (fd2.south west) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (nat);
+			\path [dashed, ->] (nat) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\bakarnaturallanguage}} (fd2.south west);
+			
+			\path [->] (fd2.south) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (phi);
+			\path [dashed, ->] (phi) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\czarneckithereandbackagain, \shereverseengineering}} (fd2.south);
+
+			\path [dashed, ->] (fd2.south east) edge[bend left=8] node[sloped,yshift=1mm] {see slide X} (cfg);
+			\path [dashed, ->] (cfg) edge[bend left=8] node[sloped,yshift=1mm] {\todots} (fd2.south east);
+
+			\path [->] (phi2) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (cnf);
+			\path [dashed, ->] (cnf) edge[bend left=15] node[sloped,yshift=1mm] {\todots} (phi2);
+		
+			\path [dashed, ->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {see slide X} (cnf);
+			\path [dashed, ->] (cnf2.south) edge[bend right=15] node[sloped,yshift=1mm] {AllSAT} (cfg2);
+		\end{tikzpicture}
+	}
+\end{frame}

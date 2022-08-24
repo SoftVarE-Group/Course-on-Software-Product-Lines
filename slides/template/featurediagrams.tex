@@ -1,8 +1,7 @@
 \newcommand{\featureDiagramConfigurableDatabase}{
 	\featureDiagram{
-		ConfigurableDatabase,
-		abstract[Base,concrete,mandatory]
-		[API,concrete,mandatory
+		ConfigDB,concrete
+		[API,abstract,mandatory
 			[Get,concrete,or]
 			[Put,concrete]
 			[Delete,concrete]
@@ -12,7 +11,8 @@
 			[Windows,concrete,alternative]
 			[Linux,concrete]
 		]
-	}
+	}\\
+	$Transactions \pimplies Put \por Delete$
 }
 
 % STYLE COMMANDS FOR FEATURE DIAGRAMS
