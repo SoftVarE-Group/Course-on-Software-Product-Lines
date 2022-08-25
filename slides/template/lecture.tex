@@ -27,6 +27,7 @@
 	{../pics/}
 	{../pics/configurators/}
 	{../pics/frameworks/}
+	{../pics/mindmaps/}
 	{../pics/people/}
 	{../pics/preprocessors/}
 	{../pics/products/}
@@ -74,39 +75,10 @@
 \newcommand{\shereverseengineering}{\href{https://dl.acm.org/doi/abs/10.1145/1985793.1985856}{She~et~al.~2011}}
 \newcommand{\bakarnaturallanguage}{\href{https://doi.org/10.1016/j.jss.2015.05.006}{Bakar~et~al.~2015}}
 
-% TYPICAL COMMANDS FOR LECTURES
-
-\renewcommand{\emph}[1]{{\color{blue}\textbf{#1}}}
-
-\newcommand{\deutsch}[1]{{\color{blue}(#1)}}
-\newcommand{\deutschertitel}[1]{{\tiny\deutsch{#1}}}
-
-\newcommand{\mycite}[1]{``#1''}
-\newcommand{\mytitlesource}[1]{{\tiny\normalfont\mbox{[#1]}}}
-\newcommand{\mysource}[1]{\ifthenelse{\equal{#1}{}}{}{\phantom{.}~\hfill~\mytitlesource{#1}}}
-
-\newcommand{\todo}[1]{{\color{red}\textbf{[#1]}}}
-\newcommand{\fodo}[1]{\todo{\footnote{\todo{#1}}}}
-\newcommand{\todots}{\todo{\ldots}}
-
-\newcommand{\xkcd}[1]{
-	\begin{frame}
-		\centering%
-		\href{https://xkcd.com/#1/}{\includegraphics[height=80mm]{#1}}
-	\end{frame}
-}
-\newcommand{\widexkcd}[1]{
-	\begin{frame}
-		\centering%
-		\href{https://xkcd.com/#1/}{\includegraphics[width=\linewidth]{xkcd/#1}}
-	\end{frame}
-}
-
 % IMPORTED PACKAGES
 
 %\usepackage{adjustbox} % used for partofpage
 \usepackage{multicol} % used temporarily for the lecture overview
-\usepackage{mathtools} % required for absolute value in modeling lecture
 \usepackage{stmaryrd} % \lightning in modeling lecture
 
 % INCLUDED TEMPLATE FILES
@@ -119,24 +91,24 @@
 \newcommand{\lessonslearned}[3]{
 	\subsection{Summary}
 	\begin{frame}{\insertsection{} -- \insertsubsection}
-		\leftorright{
+		\leftandright{
 			\mydefinition{Lessons Learned}{
 				\begin{itemize}
 					#1
 				\end{itemize}
 			}
-			\mynote{Further Reading}{
+			\uncover<2->{\mynote{Further Reading}{
 				\small % references take space, can be a little smaller
 				\begin{itemize}
 					#2
 				\end{itemize}
-			}
+			}}
 		}{
-			\myexample{Practice}{
+			\uncover<3->{\myexample{Practice}{
 				\begin{itemize}
 					#3
 				\end{itemize}
-			}
+			}}
 		}
 	\end{frame}
 }

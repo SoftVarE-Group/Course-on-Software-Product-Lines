@@ -1,3 +1,23 @@
+% TYPICAL COMMANDS FOR LECTURES
+
+\renewcommand{\emph}[1]{{\color{blue}\textbf{#1}}}
+
+\newcommand{\deutsch}[1]{{\color{blue}(#1)}}
+\newcommand{\deutschertitel}[1]{{\tiny\deutsch{#1}}}
+
+\newcommand{\mycite}[1]{``#1''}
+\newcommand{\mytitlesource}[1]{{\tiny\normalfont\mbox{[#1]}}}
+\newcommand{\mysource}[1]{\ifthenelse{\equal{#1}{}}{}{\phantom{.}~\hfill~\mytitlesource{#1}}}
+
+\newcommand{\todo}[1]{{\color{red}\textbf{[#1]}}}
+\newcommand{\fodo}[1]{\todo{\footnote{\todo{#1}}}}
+\newcommand{\todots}{\todo{\ldots}}
+
+\newcommand{\textheightwithtitle}{.85\textheight}
+\newcommand{\textheightwithouttitle}{.975\textheight}
+
+% COMMANDS FOR PROPOSITIONAL FORMULAS AND MATHEMATICAL NOTATIONS
+
 \newcommand{\sem}[1]{\ensuremath{\llbracket #1 \rrbracket}} % semantics brackets
 \newcommand{\pand}{\wedge} % conjunction
 \newcommand{\por}{\vee} % disjunction
@@ -10,4 +30,20 @@
 \newcommand{\defeq}{\vcentcolon=} % defining equals
 \newcommand{\power}[1]{\mathcal{P}(#1)} % power set
 
+\usepackage{mathtools} % required for absolute value in modeling lecture
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
+
+% COMMANDS TO INCLUDE XKCDs
+
+\newcommand{\xkcd}[1]{
+	\begin{frame}
+		\centering%
+		\href{https://xkcd.com/#1/}{\includegraphics[height=80mm]{#1}}
+	\end{frame}
+}
+\newcommand{\widexkcd}[1]{
+	\begin{frame}
+		\centering%
+		\href{https://xkcd.com/#1/}{\includegraphics[width=\linewidth]{xkcd/#1}}
+	\end{frame}
+}

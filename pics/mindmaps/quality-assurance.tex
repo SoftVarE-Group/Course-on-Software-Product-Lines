@@ -1,0 +1,58 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty % remove the default navigation symbols
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+
+\input{../../slides/template/colorscheme}
+\input{../../slides/template/macros}
+\input{../../slides/template/tikzmacros}
+
+\makeatletter
+    \setlength\beamer@paperwidth{86mm}%
+    \setlength\beamer@paperheight{76mm}%
+    \geometry{papersize={\beamer@paperwidth,\beamer@paperheight}}
+\makeatother
+\setbeamersize{text margin left=0mm,text margin right=0mm}
+
+\begin{document}
+
+	\begin{frame}[plain]
+		\centering
+		\begin{tikzpicture}
+			\path[small mindmap,
+			every node/.style={concept,font=\tiny},
+			emph/.style={font=\bfseries\tiny},
+			concept color=uulmaccent!20,
+			level 1/.append style={level distance=25mm,sibling angle=360/6},
+			level 2/.append style={level distance=20mm,sibling angle=360/6},
+			level 3/.append style={level distance=20mm,sibling angle=360/8},
+			]
+			node {Quality Assurance \deutsch{Qualitätssicherung}}
+			[counterclockwise from=210]
+			child { node {constructive} 
+				[clockwise from=225]
+				child[concept color=blue!20,visible on={<2-5>}] { node {Coding Guidelines} }
+			}
+			child[] { node {analytical} 
+				[counterclockwise from=240]
+				child[concept color=green!20,visible on={<4-6>}] { node {analysis}
+					[counterclockwise from=180]
+					child { node {Compilation} }
+					child { node {Code Reviews} }
+				}
+				child[concept color=red!20,visible on={<5,7>}] { node {execution}
+					[counterclockwise from=315]
+					child { node {White-Box Testing} }
+					child { node {Black-Box Testing} }
+				}
+			}
+			child { node {organizational} 
+				[clockwise from=-45]
+				child[concept color=orange!20,visible on={<3-5,8>}] { node {Software Project \mbox{\hspace{-.5mm}Management}} }
+			}
+			;
+		\end{tikzpicture}
+	\end{frame}
+
+\end{document}
