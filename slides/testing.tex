@@ -1,3 +1,9 @@
+\documentclass[
+	aspectratio=169, % default is 43
+	8pt, % font size, default is 11pt
+	handout, % handout mode without animations, comment out to add animations
+]{beamer}
+
 \input{template/lecture}
 
 \subtitle{11. Product-Line Testing}
@@ -13,7 +19,8 @@
 
 % TODO famous example for a product line failure?
 
-\begin{frame}{Recap: Software Quality}
+\subsection{Recap: Quality Assurance}
+\begin{frame}{Recap: Software Quality} % caution: slide copied to analysis lecture
 	\rightorleft{
 		\mydefinition{Quality \mysource{\ludewiglichter}}{Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.}
 		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
@@ -27,46 +34,15 @@
 	}
 \end{frame}
 
-\subsection{Recap: Quality Assurance}
-\begin{frame}{Recap: Quality Assurance \mytitlesource{\ludewiglichter}}
-	\vspace{-8mm}
-	\hfill
-	\todo{mindmap on quality assurance}
-%	\begin{tikzpicture}
-%		\path[small mindmap,
-%		every node/.style={concept,font=\scriptsize},
-%		emph/.style={font=\bfseries\scriptsize},
-%		hide/.style={visible on=<1->},
-%		concept color=uulmaccent!20,
-%		level 1/.append style={level distance=25mm,sibling angle=360/6},
-%		level 2/.append style={level distance=20mm,sibling angle=360/6},
-%		level 3/.append style={level distance=20mm,sibling angle=360/8},
-%		]
-%		node {Quality Assurance \deutsch{Qualitätssicherung}}
-%		[counterclockwise from=210]
-%		child[visible on={<1->}] { node {constructive} 
-%			[clockwise from=225]
-%			child[concept color=blue!20] { node {Coding Guidelines} }
-%		}
-%		child[visible on={<2->}] { node {analytical} 
-%			[counterclockwise from=240]
-%			child[concept color=green!20,visible on={<3->}] { node {analysis}
-%				[counterclockwise from=180]
-%				child { node {Compilation} }
-%				child { node {Code Reviews} }
-%			}
-%			child[concept color=red!20,visible on={<4->}] { node {execution}
-%				[counterclockwise from=315]
-%				child { node {White-Box Testing} }
-%				child { node {Black-Box Testing} }
-%			}
-%		}
-%		child[visible on={<5->}] { node {organizational} 
-%			[clockwise from=-45]
-%			child[concept color=orange!20] { node {Software Project Management} }
-%		}
-%		;
-%	\end{tikzpicture}
+\begin{frame}{Recap: Quality Assurance \mytitlesource{\ludewiglichter}} % caution: slide copied to analysis lecture
+	\hfill%
+	\only<1|handout:0>{\includegraphics[height=\textheightwithtitle,page=1]{quality-assurance}}%
+	\only<2|handout:0>{\includegraphics[height=\textheightwithtitle,page=2]{quality-assurance}}%
+	\only<3|handout:0>{\includegraphics[height=\textheightwithtitle,page=3]{quality-assurance}}%
+	\only<4|handout:0>{\includegraphics[height=\textheightwithtitle,page=4]{quality-assurance}}%
+	\only<5|handout:1>{\includegraphics[height=\textheightwithtitle,page=5]{quality-assurance}}%
+	\only<6|handout:0>{\includegraphics[height=\textheightwithtitle,page=7]{quality-assurance}}%
+	% TODO check why this mindmap has a white background. could be large without a white background when using \textheightwithouttitle
 \end{frame}
 
 \begin{frame}{Recap: Software Testing}
@@ -147,25 +123,17 @@
 			}
 		}
 	}{
+		\vspace{-7mm}
 		\mynote{Discussion}{
 			\begin{itemize}
 				\setlength\itemsep{.5em}
-				\item only feasible for small product lines (few valid configurtions)
+				\item only feasible for small product lines (few valid configurations)
 				\item redundant test effort
 				\item large product lines: not even feasible to generate and compile all configurations
 				\item (some) large product lines: not even the number of valid configurations is known
 			\end{itemize}
 		}
-		\mynote{Product-Line Complexity Classes}{
-			\begin{enumerate}
-				\item Can we compute the number of valid configurations?
-				\item Can we generate the list of valid configurations?
-				\item Can we generate and compile all products?
-				\item Can we test all products?
-				\item Can we manually list all valid configurations?
-			\end{enumerate}
-		}
-		% TODO add examples from Chico, diagram?
+		\todo{add examples from Chico, diagram?}
 	}
 \end{frame}
 
