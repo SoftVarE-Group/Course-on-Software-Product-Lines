@@ -1,0 +1,91 @@
+\subsection{Coverage in Single-System Engineering}
+\begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
+	\vspace{-7mm}
+	\leftorright{
+		\mydefinition{White-Box Testing \deutsch{Strukturtest}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item inner structure of test object is used
+				\item idea: coverage of structural elements
+				\item code translated into control flow graph
+				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
+			\end{itemize}
+		}{}
+	}{
+		\mydefinition{Coverage Criteria \deutsch{Überdeckungskriterien}}{
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
+				\uncover<3->{\item[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised} % TODO not so easy to define as percentage
+				\uncover<4->{\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)}
+				% TODO discuss path coverage?
+			\end{itemize}
+		}{}
+	}
+\end{frame}
+
+\subsection{Coverage of Ifdef Blocks}
+\begin{frame}{\insertsubsection}
+	%\leftorright{
+		\myexample{An Elevator Product Line \mysource{\samplingsurvey}}{
+			\includegraphics[width=\linewidth,page=3,trim=40 530 70 100,clip]{2018/2018-SPLC-Varshosaz}
+		}
+%		\mynote{}{
+			\begin{itemize}
+				\item compiler error in Line~29 for partial configuration $(\{FIFO\},\{DirectedCall\})$ / feature interaction $FIFO \pand \pnot DirectedCall$: field \texttt{dreq} undefined
+				\item null pointer exception in Line~8 for partial configuration $(\{DirectedCall\},\{FIFO\})$ / feature interaction $DirectedCall \pand \pnot FIFO$
+			\end{itemize}
+%		}
+%	}{
+%	}
+\end{frame}
+
+\subsection{Presence-Condition Coverage}
+
+%\subsection{Encoding Solution Space in Feature Models}
+
+\subsection{Overview on Coverage Criteria}
+\begin{frame}{\insertsubsection}
+	%\leftorright{
+		\mydefinition{Techniques \& Coverage Criteria \mysource{\samplingsurvey}}{
+			\includegraphics[width=\linewidth,page=4,trim=50 100 310 610,clip]{2018/2018-SPLC-Varshosaz}
+		}
+%	}{
+%	}
+\end{frame}
+
+\subsection{Overview on Input for Sampling Algorithms}
+\begin{frame}{\insertsubsection}
+	\leftandright{
+		\mydefinition{Input Data \mysource{\samplingsurvey}}{
+			\includegraphics[width=\linewidth,page=3,trim=350 430 90 310,clip]{2018/2018-SPLC-Varshosaz}
+		}
+		\myexample{Domain Knowledge \mysource{\samplingsurvey}}{
+			\begin{itemize}
+				\item except the feature model
+				\item e.g., configurations choosen by experts
+				\item e.g., feature model specialized prior to sampling
+			\end{itemize}
+		}
+	}{
+		\myexample{Part 2: Combinatorial Interaction Testing}{
+			\begin{itemize}
+				\item (Problem-Space Sampling)
+				\item \emph{feature model} used to consider only valid configurations
+			\end{itemize}
+		}
+		\myexample{Part 3: Solution-Space Sampling}{
+			\begin{itemize}
+				\item mapping from features to \emph{implementation artifacts} used
+				\item \emph{feature model} used to consider only valid configurations
+			\end{itemize}
+		}
+		\myexample{Combinatorial Reduction of Tests \mysource{\reducingconfigurations}}{
+			\begin{itemize}
+				\item which configurations matter for each test?
+				\item analyze \emph{unit tests} and \emph{impl. artifacts}
+				\item \emph{feature model} used to consider only valid configurations
+			\end{itemize}
+		}
+	}
+\end{frame}
