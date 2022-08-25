@@ -1,4 +1,4 @@
-\subsection{Motivation}
+\subsection{Representations of Variability Models}
 
 \begin{frame}{\insertsubsection} % show list of cfgs, diagrams, text => what are the problems? 
 	% this notation is already nice for communication, but semantics matter (for large models, it does not suffice to look sharply)
@@ -12,49 +12,91 @@
 	% recount the example model here
 
 	\leftandright{
-		\myexampletight{Representations of Variability Models}{
-			\usetikzlibrary{positioning}
-			\begin{tikzpicture}
-				\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
-		
-				\node (fd) at (2,0) {Feature Diagram};
-				\node (fd2) at (fd.south) {\tiny\color{red}};
-				\node (nat) at (0,-2) [align=center] {Natural\\Language};
-				\node (nat2) at (nat.south) {\tiny\color{red}Plain/Rich Text};
-				\node (cfg) at (4,-2) {Product Map};
-				\node (cfg2) at (cfg.south) {\tiny\color{red}Excel, CSV};
-		
-				\path [->] (fd2.south west) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (nat);
-				\path [dashed, ->] (nat) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\bakarnaturallanguage}} (fd2.south west);
-				
-				\path [dashed, ->] (fd2.south east) edge[bend left=8] node[sloped,yshift=1mm] {see slide X} (cfg);
-				\path [dashed, ->] (cfg) edge[bend left=8] node[sloped,yshift=1mm] {\todots} (fd2.south east);
-			\end{tikzpicture}
+		\myexample{Natural Language}{
+			\tiny ``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
+			Optionally, the database can support \feat{transactions}, provided that the API allows for Put or Delete requests.
+			Also, the database targets a supported operating system, which is either \feat{Windows} or \feat{Linux}.''
+		}
+		\myexample{Configuration Map}{
+			\tiny
+			\leftandright{
+				$\{C,G,W\}$\\
+				\hspace{4mm}\vdots\\[1ex]
+				$\{C,G,P,D,T,W\}$
+			}{
+				$\{C,G,L\}$\\
+				\hspace{4mm}\vdots\\[1ex]
+				$\{C,G,P,D,T,L\}$
+			}
+		}
+		\myexampletight{Feature Model}{
+			\centering\tiny
+			\featureDiagramConfigurableDatabase
 		}
 	}{
-		
+		\centering
+		\usetikzlibrary{positioning}
+		\begin{tikzpicture}
+			\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
+	
+			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]\tiny\refslide{frame:fm}\\[-1ex]{\tiny\color{red}P1}};
+			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]\tiny\refslide{frame:natlang}\\[-1ex]{\tiny\color{red}TXT, RTF}};
+			\node (cfg) at (4,-2) [align=center] {Configuration Map\\[-1ex]\tiny\refslide{frame:cfgmap}\\[-1ex]{\tiny\color{red}CSV, XLS}};
+	
+			\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {toString} (nat);
+			\path [dotted, ->] (nat) edge[bend left] node[sloped,yshift=1mm] {P3} (fd);
+			
+			\path [dotted, ->] (fd) edge[bend left] node[sloped,yshift=1mm] {P2} (cfg);
+			\path [dotted, ->] (cfg) edge[bend left] node[sloped,yshift=1mm] {P3} (fd);
+
+			\node (trans) at (-1,-2.8) {};
+			\node (trans2) at (2,-2.8) {};
+			\node (trans3) at (-1,-3.1) {};
+			\node (trans4) at (2,-3.1) {};
+			\path [->] (trans) edge node[yshift=1mm] {automated transformation} (trans2);
+			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {semi-automated transformation} (trans4);
+		\end{tikzpicture}
+
+		\mynote{Problems}{
+			\begin{enumerate}%[label=P\arabic*]
+				\item How to express feature models textually?
+				\item How to obtain configurations automatically?
+    			\item \color{gray}{(How to reverse engineer feature models?)}
+			\end{enumerate}
+		}
 	}
 \end{frame}
 
-\subsection{List of Valid Configurations}
-
-\begin{frame}{\insertsubsection}
-	what is a (valid) configuration? define as a set of selected features (only later extend to partial configurations)
-
-	this is basically an Excel sheet
-
-	first explain product lists / sets and configuration validity (ie, set membership): (use same example)
-
-	$ext-sem (FM) = \{ C \mid C in 2^F | C satisfies all FM rules \}$
-
-	this is a nice (readable) semantics (directly connected to relational databases) but impractical to check, so we need formulas as a concise representation
-\end{frame}
 
 \subsection{Universal Variability Language}
 
 \begin{frame}{\insertsubsection}
-	demo?
+	\leftorright{
+		\includegraphics[width=0.7\linewidth]{uvl-model}
+	}{
+		\includegraphics[width=\linewidth]{varied-model}
+		\mynote{UVL}{
+			\begin{itemize}
+				\item textual language for feature modeling
+    			\item 
+			\end{itemize}
+		}
+	}
 \end{frame}
+
+% \subsection{List of Valid Configurations}
+
+% \begin{frame}{\insertsubsection}
+% 	what is a (valid) configuration? define as a set of selected features (only later extend to partial configurations)
+
+% 	this is basically an Excel sheet
+
+% 	first explain product lists / sets and configuration validity (ie, set membership): (use same example)
+
+% 	$ext-sem (FM) = \{ C \mid C in 2^F | C satisfies all FM rules \}$
+
+% 	this is a nice (readable) semantics (directly connected to relational databases) but impractical to check, so we need formulas as a concise representation
+% \end{frame}
 
 \subsection{Propositional Formulas}
 
