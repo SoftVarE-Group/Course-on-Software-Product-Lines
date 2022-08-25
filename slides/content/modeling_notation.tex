@@ -4,13 +4,11 @@
 		\mydefinition{Software Product Line}{
 			\begin{itemize}
 				\item set of software-intensive systems (aka products)
-				\item sharing a common, managed set of features
+				\item sharing a common, managed set of \emph{features}
 				\item satisfying the needs of a domain
 				\item developed from a common set of core assets (reuse)
 			\end{itemize}
 		}
-		\href{https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG}{\includegraphics[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}
-	}{
 		\mydefinition{Feature}{
 			\begin{itemize}
 				\item domain abstraction
@@ -18,13 +16,13 @@
 				\item specifies differences between products
 			\end{itemize}
 		}
+	}{
 		\myexample{Examples}{
 			\begin{itemize}
 				\item \todots
 			\end{itemize}
 		}
 		\todo{scoping?}
-		\todo{SPL has been explained, HCS, feature also. only recap here}
 	}
 \end{frame}
 
@@ -105,14 +103,14 @@
 
 \subsection{Characterizing Valid Configurations}
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\insertsubsection}\label{frame:natlang}
 	\leftorright{
 		\mynote{Valid Configuration}{
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
 		}
 
-		\mydefinition{First Approach: Natural Language}{
+		\mydefinition{Natural Language}{
 			\begin{itemize}
 				\item informal description of relationships between features in $F$
 				\item a complete configuration $S$ is \emph{valid} if it conforms to the description
@@ -129,14 +127,14 @@
 	}
 \end{frame}
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\insertsubsection}\label{frame:cfgmap}
 	\leftorright{
 		\mynote{Valid Configuration}{
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
 		}
 
-		\mydefinition{Second Approach: Configuration Map}{
+		\mydefinition{Configuration Map}{
 			\begin{itemize}
 				\item a \emph{configuration map} over $F$ is a set of complete configurations $C \subseteq F$
 				\item a complete configuration $S$ is \emph{valid} if it occurs in the configuration map ($S \in C$)
@@ -205,7 +203,7 @@
 	}
 }
 
-\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
+\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}\label{frame:fm}
 	\leftorright{
 		\dbmpl
 	}{
