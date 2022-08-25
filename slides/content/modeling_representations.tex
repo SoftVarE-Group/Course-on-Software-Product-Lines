@@ -78,25 +78,11 @@
 		\mynote{UVL}{
 			\begin{itemize}
 				\item textual language for feature modeling
-    			\item 
+    			\item \todots
 			\end{itemize}
 		}
 	}
 \end{frame}
-
-% \subsection{List of Valid Configurations}
-
-% \begin{frame}{\insertsubsection}
-% 	what is a (valid) configuration? define as a set of selected features (only later extend to partial configurations)
-
-% 	this is basically an Excel sheet
-
-% 	first explain product lists / sets and configuration validity (ie, set membership): (use same example)
-
-% 	$ext-sem (FM) = \{ C \mid C in 2^F | C satisfies all FM rules \}$
-
-% 	this is a nice (readable) semantics (directly connected to relational databases) but impractical to check, so we need formulas as a concise representation
-% \end{frame}
 
 \subsection{Propositional Formulas}
 
@@ -104,6 +90,7 @@
 	Syntax of formulas
 
 	explain $\pand, \por, \pnot, \pimplies, \pequals$
+
 
 	here, we do not allow $\forall, \exists$ (extensions exist: QBF (e.g., slicing), FOL (non-Boolean models))
 \end{frame}
@@ -120,11 +107,34 @@
 
 \subsection{From Diagram to Formula}
 
+\forestset{
+	featureDiagram/.style={
+		for tree={
+			text depth = 0,
+			parent anchor = south,
+			child anchor = north,
+			draw = drawColor,
+			edge = {draw=drawColor},
+		}
+	}
+}
+
 \begin{frame}{-- Algorithm}
-	formal algorithm for transformation into FOL (and then CNF?)
+	\leftorright{
+		$\phi\left(\featureDiagram{Root}\right) = Root$
+	
+		$\phi\left(\featureDiagram{P[C,optional]}\right) = C \pimplies P$
+	
+		$\phi\left(\featureDiagram{P[C,mandatory]}\right) = C \pequals P$
+	}{
+		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = (\bigvee_{1 \leq i \leq n} C_i) \pequals P$
+		
+		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = (\bigvee_{1 \leq i \leq n} C_i) \pequals P \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)$
+	}
+
 \end{frame}
 
-\subsection{Canonical Formula Representation(s?)}
+\subsection{Conjunctive Normal Form}
 
 \begin{frame}{-- Conjunctive Normal Form}
 	CNF is a universal language for saving Boolean formulas, maybe explain it here?
@@ -246,5 +256,12 @@
 			\path [dashed, ->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {see slide X} (cnf);
 			\path [dashed, ->] (cnf2.south) edge[bend right=15] node[sloped,yshift=1mm] {AllSAT} (cfg2);
 		\end{tikzpicture}
+
+		% describe sat, #sat, allsat
+		% describe size of product lines (chico)
+
+		% \myexampletight{Industrial Configuration Spaces \mysource{\evaluatingsharpsatsolvers}}{
+		% 	\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
+		% }
 	}
 \end{frame}
