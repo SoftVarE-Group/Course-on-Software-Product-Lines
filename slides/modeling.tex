@@ -1,13 +1,10 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 
 \input{template/lecture}
-
-% use tabs instead of spaces
-% put references on slides
 
 \subtitle{4. Feature Modeling}
 \author{Elias Kuiter}
@@ -18,7 +15,6 @@
 
 \section{Feature Models}
 
-% first: motivation and syntax of feature models/diagrams (how can a human model features sensibly?)
 \input{content/modeling_notation}
 
 \lessonslearned{
@@ -31,16 +27,12 @@
 	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
 }{
 	\item Sketch a feature model with \todo{X} configurations (pen and paper preferred)
-    \item Upload your solution to \todots
- 	\item Discuss whether your solutions are syntactically correct and have the right number of configurations
+	\item Upload your solution to \todots
+	\item Discuss whether your solutions are syntactically correct and have the right number of configurations
 }
-
-%block 1: features explizit + ihre abhängigkeiten auch 
-%notation für modell nutzen + eins zeichnen mit mind. 5 features, fehler korrigieren, lesen von modellen üben
 
 \sectionend
 
-% second: semantics of feature diagrams and other modeling notations (how can we encode features machine-readably?)
 \section{Representations and Translations}
 
 \input{content/modeling_representations}
@@ -57,8 +49,6 @@
 	\item Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
 	How might this be useful?
 }
-% translate your model into a propositional formula
-%block 2: formel hinschreiben, valide + invalide cfg aufschreiben
 
 \sectionend
 

@@ -9,9 +9,7 @@
 
 	% also, (valid) total configurations should be explained here (how a computer can check them, this can be checked easily when an FM is encoded eg as runtime variability, but all other SAT-based questions are hard to answer)
 
-	% recount the example model here
-
-	\leftandright{
+	\leftorright{
 		\myexample{Natural Language}{
 			\tiny ``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
 			Optionally, the database can support \feat{transactions}, provided that the API allows for Put or Delete requests.
@@ -35,38 +33,17 @@
 		}
 	}{
 		\centering
-		\usetikzlibrary{positioning}
-		\begin{tikzpicture}
-			\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
-	
-			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]\tiny\refslide{frame:fm}\\[-1ex]{\tiny\color{red}P1}};
-			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]\tiny\refslide{frame:natlang}\\[-1ex]{\tiny\color{red}TXT, RTF}};
-			\node (cfg) at (4,-2) [align=center] {Configuration Map\\[-1ex]\tiny\refslide{frame:cfgmap}\\[-1ex]{\tiny\color{red}CSV, XLS}};
-	
-			\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {toString} (nat);
-			\path [dotted, ->] (nat) edge[bend left] node[sloped,yshift=1mm] {P3} (fd);
-			
-			\path [dotted, ->] (fd) edge[bend left] node[sloped,yshift=1mm] {P2} (cfg);
-			\path [dotted, ->] (cfg) edge[bend left] node[sloped,yshift=1mm] {P3} (fd);
-
-			\node (trans) at (-1,-2.8) {};
-			\node (trans2) at (2,-2.8) {};
-			\node (trans3) at (-1,-3.1) {};
-			\node (trans4) at (2,-3.1) {};
-			\path [->] (trans) edge node[yshift=1mm] {automated transformation} (trans2);
-			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {semi-automated transformation} (trans4);
-		\end{tikzpicture}
+		\includegraphics[width=\linewidth]{representations-high-level}
 
 		\mynote{Problems}{
-			\begin{enumerate}%[label=P\arabic*]
-				\item How to express feature models textually?
-				\item How to obtain configurations automatically?
-    			\item \color{gray}{(How to reverse engineer feature models?)}
+			\begin{enumerate}
+				\item[P1] How to express feature models \emph{textually}?
+				\item[P2] How to obtain configurations \emph{automatically}?
+				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
 		}
 	}
 \end{frame}
-
 
 \subsection{Universal Variability Language}
 
@@ -74,11 +51,64 @@
 	\leftorright{
 		\includegraphics[width=0.7\linewidth]{uvl-model}
 	}{
+		\centering
 		\includegraphics[width=\linewidth]{varied-model}
-		\mynote{UVL}{
+		$Transactions \pimplies Put \por Delete$
+		\mynote{Universal Variability Language (UVL)}{
 			\begin{itemize}
 				\item textual language for feature modeling
-    			\item \todots
+				\item \todots
+			\end{itemize}
+		}
+	}
+\end{frame}
+
+\subsection{Recap: Propositional Formulas}
+
+\begin{frame}{\insertsubsection}
+	\leftorright{
+		\mydefinition{Syntax of Propositional Formulas}{
+			A \emph{(propositional) formula} \deutsch{aussagenlogische Formel} is ...
+			\begin{itemize}
+				\item a \emph{(Boolean) variable} $X$,
+    			\item a \emph{negation} $\pnot \phi$ of a formula $\phi$,
+    			\item a \emph{conjunction} $(\phi \pand \psi)$ of formulas $\phi$ and $\psi$,
+				\item similarly, a \emph{disjunction} $(\phi \por \psi)$, \emph{implication} $(\phi \pimplies \psi)$, or \emph{biimplication} $(\phi \pequals \psi)$.
+			\end{itemize}
+		}
+		\mynote{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}{
+			\vspace*{-4ex}
+			\begin{align*}
+				           &~Transactions \pimplies (Put \por Delete) \\
+				\equiv     &~Transactions \pimplies Put \por Delete \\
+				\not\equiv &~(Transactions \pimplies Put) \por Delete
+			\end{align*}
+		}
+	}{
+		\mydefinition{Informal Semantics of Propositional Formulas}{
+			\vspace*{-4ex}
+			\begin{equation*}
+				\begin{rcases}
+					\pnot \phi          \\
+					\phi \pand \psi     \\
+					\phi \por \psi      \\
+					\phi \pimplies \psi \\
+					\phi \pequals \psi
+				\end{rcases} \text{ means } \begin{cases}
+					\text{``not $\phi$''} \\
+					\text{``$\phi$ and $\psi$''} \\
+					\text{``$\phi$ or $\psi$'' (inclusive)} \\
+					\text{``if $\phi$, then $\psi$'' (else?)} \\
+					\text{``$\phi$ if and only if $\psi$''}
+				\end{cases}
+			\end{equation*}
+		}
+		\mynote{Differences to First-Order Logic}{
+			\begin{itemize}
+				\item no quantifiers $\forall, \exists$
+    			\item no predicates $P(\ldots)$ (e.g., $=$, $>$, $isA$)
+    			\item no functions $f(\ldots)$ (e.g., $+$, $\ast$, $typeOf$)
+				\item no constants (e.g., $42$, ``hello'')
 			\end{itemize}
 		}
 	}
@@ -87,23 +117,55 @@
 \subsection{Propositional Formulas}
 
 \begin{frame}{\insertsubsection}
-	Syntax of formulas
+	\leftandright{
+		\only<1-|handout:1>{
+			\myexampletight{A Feature Model $FM$ \ldots}{
+				\centering\tiny
+				\featureDiagramConfigurableDatabase
+			}
+			\myexample{\ldots as a Propositional Formula $\phi(FM)$}{
+				\vspace*{-4ex}
+				\small
+				\begin{align*}
+					\phi(FM) = &~ConfigDB \\
+					\pand &~API \pequals ConfigDB \\
+					\pand &~Transactions \pimplies ConfigDB \\
+					\pand &~OS \pequals ConfigDB \\
+					\pand &~Get \por Put \por Delete \pequals API \\
+					\pand &~Windows \por Linux \pequals API \\
+					\pand &~\pnot (Windows \pand Linux) \\
+					\pand &~Transactions \pimplies Put \por Delete
+				\end{align*}
+			}
+		}
+	}{
+		\only<2-|handout:1>{
+			\myexample{Evaluating the Validity of Configurations}{
+				\begin{itemize}
+					\item $\phi(\{C, G, W\}) = $
+						\begin{align*}
+							\phi(FM) = &~ConfigDB \\
+							\pand &~API \pequals ConfigDB \\
+							\pand &~Transactions \pimplies ConfigDB \\
+							\pand &~OS \pequals ConfigDB \\
+							\pand &~Get \por Put \por Delete \pequals API \\
+							\pand &~Windows \por Linux \pequals API \\
+							\pand &~\pnot (Windows \pand Linux) \\
+							\pand &~Transactions \pimplies Put \por Delete
+						\end{align*}
+					\item \emph{Invalid} ($\lightning$ no operating system):
+						$\{C, G\}$
+				\end{itemize}
+			}
+		}
+	}
+	%explain intuition behind elements of formula
 
-	explain $\pand, \por, \pnot, \pimplies, \pequals$
+	%motivate very shortly why this might be nice
 
-
-	here, we do not allow $\forall, \exists$ (extensions exist: QBF (e.g., slicing), FOL (non-Boolean models))
 \end{frame}
 
-\begin{frame}{\insertsubsection}
-	show running example as a formula
-	
-	explain intuition behind elements of formula
-
-	motivate very shortly why this might be nice
-
-	there is evidence (Knueppel) that the full expressive power of Boolean formulas is needed for real-world formulas
-\end{frame}
+%check valid configuration
 
 \subsection{From Diagram to Formula}
 
@@ -127,9 +189,9 @@
 	
 		$\phi\left(\featureDiagram{P[C,mandatory]}\right) = C \pequals P$
 	}{
-		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = (\bigvee_{1 \leq i \leq n} C_i) \pequals P$
+		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = \bigvee_{1 \leq i \leq n} C_i \pequals P$
 		
-		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = (\bigvee_{1 \leq i \leq n} C_i) \pequals P \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)$
+		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = \bigvee_{1 \leq i \leq n} C_i \pequals P \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)$
 	}
 
 \end{frame}
@@ -161,6 +223,9 @@
 	Cardinalities
 
 	Linux/Kconfig % tri-state features
+
+	only requires/excludes constraints
+	%there is evidence (Knueppel) that the full expressive power of Boolean formulas is needed for real-world formulas
 \end{frame}
 
 
@@ -220,42 +285,7 @@
 
 \begin{frame}{\insertsubsection}
 	\myexampletight{Representations of Variability Models}{
-		\usetikzlibrary{positioning}
-		\begin{tikzpicture}
-			\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
-	
-			\node (topleft) at (-1,0) {};
-			\node (bottomleft) at (-1,-4) {};
-			\node (bottomleft2) at (-0.5,-4) {\tiny\color{red}File Format};
-			
-			\node (fd) at (2,0) {Feature Model};
-			\node (fd2) at (fd.south) {\tiny\color{red}UVL, XML};
-			\node (nat) at (0,-2) [align=center] {Natural\\Language};
-			\node (nat2) at (nat.south) {\tiny\color{red}Plain/Rich Text};
-			\node (phi) at (2,-2) [align=center] {Propositional\\Formula};
-			\node (phi2) at (phi.south) {\tiny\color{red}Excel, SMT-LIB};
-			\node (cfg) at (4,-4) {Product Map};
-			\node (cfg2) at (cfg.south) {\tiny\color{red}Excel, CSV};
-			\node (cnf) at (2,-4) {CNF};
-			\node (cnf2) at (cnf.south) {\tiny\color{red}DIMACS};
-	
-			\path [dotted, thick, ->] (topleft) edge node[left, rotate=90, yshift=2mm, xshift=10mm] {Loss of Structure} (bottomleft);
-		
-			\path [->] (fd2.south west) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (nat);
-			\path [dashed, ->] (nat) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\bakarnaturallanguage}} (fd2.south west);
-			
-			\path [->] (fd2.south) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (phi);
-			\path [dashed, ->] (phi) edge[bend left=15] node[sloped,yshift=1mm] {\footnote{\czarneckithereandbackagain, \shereverseengineering}} (fd2.south);
-
-			\path [dashed, ->] (fd2.south east) edge[bend left=8] node[sloped,yshift=1mm] {see slide X} (cfg);
-			\path [dashed, ->] (cfg) edge[bend left=8] node[sloped,yshift=1mm] {\todots} (fd2.south east);
-
-			\path [->] (phi2) edge[bend left=15] node[sloped,yshift=1mm] {see slide X} (cnf);
-			\path [dashed, ->] (cnf) edge[bend left=15] node[sloped,yshift=1mm] {\todots} (phi2);
-		
-			\path [dashed, ->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {see slide X} (cnf);
-			\path [dashed, ->] (cnf2.south) edge[bend right=15] node[sloped,yshift=1mm] {AllSAT} (cfg2);
-		\end{tikzpicture}
+		\includegraphics[width=\linewidth]{representations-low-level}
 
 		% describe sat, #sat, allsat
 		% describe size of product lines (chico)

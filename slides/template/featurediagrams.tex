@@ -1,15 +1,17 @@
+\usepackage{xstring}
+
 \newcommand{\featureDiagramConfigurableDatabase}{
 	\featureDiagram{
-		ConfigDB,concrete
-		[API,abstract,mandatory
-			[Get,concrete,or]
-			[Put,concrete]
-			[Delete,concrete]
+		\subnode{ConfigDB}{ConfigDB},concrete
+		[\subnode{API}{API},abstract,mandatory
+			[\subnode{Get}{Get},concrete,or]
+			[\subnode{Put}{Put},concrete]
+			[\subnode{Delete}{Delete},concrete]
 		]
-		[Transactions,concrete,optional]
-		[OS,abstract,mandatory
-			[Windows,concrete,alternative]
-			[Linux,concrete]
+		[\subnode{Transactions}{Transactions},concrete,optional]
+		[\subnode{OS}{OS},abstract,mandatory
+			[\subnode{Windows}{Windows},concrete,alternative]
+			[\subnode{Linux}{Linux},concrete]
 		]
 	}\\
 	$Transactions \pimplies Put \por Delete$
@@ -34,6 +36,7 @@
 \usepackage{forest}
 \usepackage{xcolor}
 \usetikzlibrary{angles}
+\usetikzlibrary{tikzmark}
 \definecolor{drawColor}{RGB}{128 128 128}
 \newcommand{\circleSize}{0.175em}
 \newcommand{\angleSize}{0.75em}
@@ -150,4 +153,11 @@
 		featureDiagramEmpty[]
 		{\small\legend}
 	\end{forest}
+}
+
+\newcommand{\emphfeature}[1]{\node [draw=black,line width=0.8pt,fit=(#1)] {};}
+\newcommand{\emphfeatures}[1]{
+	\begin{tikzpicture}[overlay,remember picture]
+		\foreach \f in {#1} {\emphfeature{\f}}
+	\end{tikzpicture}
 }

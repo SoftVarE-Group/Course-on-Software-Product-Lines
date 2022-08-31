@@ -25,6 +25,8 @@
 	revisit what the class of programs named "solver" does, and why it is important that we use OTS solvers and profit from their optimizations/contests - idea: reduce practical problems to solvers (sim. to TheoInf/Logics)
 \end{frame}
 
+%sat, taut
+
 \begin{frame}{-- Solvers}
 	explain simple SAT and \#SAT solver ($SAT(\phi) \in \{\top, \bot\}$)
 
@@ -57,7 +59,7 @@
 \begin{frame}{\insertsubsection}
 	can a feature be chosen at all? is it false-optional?
 	to WHICH DEGREE is a feature core/dead? feature prioritization
-   
+
 	f core iff $SAT(\phi and not f) = \bot$
 	
 	f dead iff $SAT(\phi and f) = \bot$

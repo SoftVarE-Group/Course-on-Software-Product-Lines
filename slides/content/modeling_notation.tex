@@ -1,5 +1,5 @@
 \subsection{Recap: Software Product Lines and Features}
-\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
+\begin{frame}{\insertsubsection\ \mytitlesource{\fospl} \todo{SPL Def citation}}
 	\leftorright{
 		\mydefinition{Software Product Line}{
 			\begin{itemize}
@@ -27,40 +27,40 @@
 \end{frame}
 
 \subsection{Configuring Features}
-\begin{frame}{\insertsubsection}
-	\todo{examples for simple feature models without (or with few) dependencies}
+% \begin{frame}{\insertsubsection}
+% 	\todo{examples for simple feature models without (or with few) dependencies}
 	
-	\todo{Configuring a Sandwich}
+% 	\todo{Configuring a Sandwich}
 
-	\todo{Configuring ...}
-\end{frame}
+% 	\todo{Configuring ...}
+% \end{frame}
 
-\xkcd{2369}
+% \xkcd{2369}
 
 \subsection{Configuring Features with Dependencies}
-\begin{frame}{\insertsubsection}
-	\partofpage{70}{\myexampletight{Configuring a Notebook}{\only<1,3->{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}}}
-\end{frame}
+% \begin{frame}{\insertsubsection}
+% 	\partofpage{70}{\myexampletight{Configuring a Notebook}{\only<1,3->{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}}}
+% \end{frame}
 
-\begin{frame}{\insertsubsection}
-	\partofpage{70}{\myexampletight{Still Configuring a Notebook}{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-office}}}
-\end{frame}
+% \begin{frame}{\insertsubsection}
+% 	\partofpage{70}{\myexampletight{Still Configuring a Notebook}{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-office}}}
+% \end{frame}
 
-\begin{frame}{\insertsubsection}
-	~\hfill\partofpage{60}{\myexampletight{Configuring a Car}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}}
-\end{frame}
+% \begin{frame}{\insertsubsection}
+% 	~\hfill\partofpage{60}{\myexampletight{Configuring a Car}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}}
+% \end{frame}
 
-\begin{frame}{\insertsubsection}
-	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with a Weird Price}{\centering\includegraphics[width=.55\linewidth]{toyota-aygo-costs}}}
-\end{frame}
+% \begin{frame}{\insertsubsection}
+% 	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with a Weird Price}{\centering\includegraphics[width=.55\linewidth]{toyota-aygo-costs}}}
+% \end{frame}
 
-\begin{frame}{\insertsubsection}
-	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with 8 Wheels!}{\includegraphics[width=\linewidth]{toyota-aygo-costs3}}}
-\end{frame}
+% \begin{frame}{\insertsubsection}
+% 	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with 8 Wheels!}{\includegraphics[width=\linewidth]{toyota-aygo-costs3}}}
+% \end{frame}
 
-\begin{frame}{\insertsubsection}
-	\partofpage{70}{\myexampletight{Configuring a German Car}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}}}
-\end{frame}
+% \begin{frame}{\insertsubsection}
+% 	\partofpage{70}{\myexampletight{Configuring a German Car}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-blacktooth}}}
+% \end{frame}
 
 \subsection{Configurations}
 
@@ -74,7 +74,7 @@
 				\item formally: a pair $(S, D)$ such that $S, D \subseteq F$ and $S, D$ are disjoint ($S \cap D = \varnothing$)
 				\item is \emph{complete} \deutsch{vollständig} if all features are covered ($S \cup D = F$) and \emph{partial} \deutsch{partiell} otherwise
 				\item a complete configuration is \emph{valid} \deutsch{gültig} if it ``makes sense'' in the domain and \emph{invalid} \deutsch{ungültig} otherwise
-    			\item we often abbreviate complete configurations with $S \equiv (S, F \setminus S)$
+				\item we often abbreviate complete configurations with $S \equiv (S, F \setminus S)$
 			\end{itemize}
 		}
 	}{
@@ -114,8 +114,9 @@
 			\begin{itemize}
 				\item informal description of relationships between features in $F$
 				\item a complete configuration $S$ is \emph{valid} if it conforms to the description
-    			\item[+] succinct
-    			\item[--] sometimes ambiguous, not machine-readable
+				\item[+] succinct
+				\item[--] sometimes ambiguous
+				\item[--] not machine-readable
 			\end{itemize}
 		}
 	}{
@@ -139,9 +140,9 @@
 				\item a \emph{configuration map} over $F$ is a set of complete configurations $C \subseteq F$
 				\item a complete configuration $S$ is \emph{valid} if it occurs in the configuration map ($S \in C$)
 				\item also known as product map
-    			\item[+] precise
-				\item[--] unreadable, redundant
-				\item[--] explodes in size ($0 \leq \abs{C} \leq 2^{\abs{F}}$)
+				\item[+] precise
+				\item[--] not human-readable
+				\item[--] redundant, explodes in size ($0 \leq \abs{C} \leq 2^{\abs{F}}$)
 			\end{itemize}
 		}
 	}{
@@ -153,7 +154,7 @@
 			
 			\small
 			\leftandright{
-				{\color{blue}$\{C,G,W\}$}\\
+				{\color{black}$\{C,G,W\}$}\\
 				$\{C,P,W\}$\\
 				$\{C,G,P,W\}$\\
 				$\{C,D,W\}$\\
@@ -179,7 +180,7 @@
 				$\{C,D,T,L\}$\\
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
-				{\color{blue}$\{C,G,P,D,T,L\}$}
+				{\color{black}$\{C,G,P,D,T,L\}$}
 			}
 		}
 	}
@@ -194,83 +195,74 @@
 
 \subsection{Feature Models}
 
-\newcommand{\dbmpl}{
-	\myexampletight{A Configurable Database}{
-		\centering
-		\featureDiagramConfigurableDatabase
-
-		\featureDiagramLegend
-	}
-}
-
 \begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}\label{frame:fm}
-	\leftorright{
-		\dbmpl
-	}{
-		\mydefinition{Feature Model \deutsch{Feature-Modell}}{
-			\begin{itemize}
-				\item hierarchy of features
-				\item dependencies between features modeled by tree and cross-tree constraints
-				\item \emph{tree constraints}: defined by the hierarchy
-				\item \emph{cross-tree constraints}: propositional formulas over features
-				\item \emph{abstract features} are used to group other features
-				\item \emph{concrete features} have an implementation
-    			\item also known as feature diagram or feature tree
-			\end{itemize}
-		}
-	}
-\end{frame}
-
-\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
-	\leftorright{
-		\dbmpl
-	}{
-		\mydefinition{Tree Constraints}{
-			\begin{itemize}
-				\item each feature requires its parent
-				\item an \emph{optional feature} can be (de-)selected freely when its parent is selected
-				\item a \emph{mandatory feature} is required by its parent
-				\item \emph{or group}: at least one feature must be selected when the parent is selected
-				\item \emph{alternative group}: exactly one feature must be selected when the parent is selected
-			\end{itemize}
-		}
-		\mydefinition{Cross-Tree Constraints}{
-			\begin{itemize}
-				\item a list of propositional formulas expressing further dependencies between features
-			\end{itemize}
-		}
-	}
-\end{frame}
-
-\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
-	\leftorright{
-		\dbmpl
-	}{
-		\myexample{Valid Configurations \todo{animate}}{
-			\begin{itemize}
-				\item \emph{Valid} (read-only database on Windows):
-					$(\{C, G, W\}, \{P, D, T, L\})$
-				\item \emph{Valid} (fully functional database on Linux):
-					$(\{C, G, P, D, T, L\}, \{W\}\}$
-				\item \emph{Invalid} ($\lightning$ no operating system):
-					$(\{C, G\}, \{P, D, T, W, L\})$
-				\item \emph{Invalid} (transactions $\lightning$ read-only database):
-					$(\{C, G, T, L\}, \{P, D, W\})$
-			\end{itemize}
+	\leftandright{
+		\myexampletight{A Configurable Database}{
+			\centering
+			\featureDiagramConfigurableDatabase
+			\only<1-3>{\emphfeatures{}}
+			\only<4>{\emphfeatures{ConfigDB,Get,Windows}}
+			\only<5>{\emphfeatures{ConfigDB,Get,Put,Delete,Transactions,Linux}}
+			\only<6>{\emphfeatures{ConfigDB,Get}}
+			\only<7>{\emphfeatures{ConfigDB,Get,Transactions,Linux}}
 			
+			\featureDiagramLegend
 		}
-	}
+	}{
+		\only<2>{
+			\mydefinition{Feature Model \deutsch{Feature-Modell}}{
+				\begin{itemize}
+					\item hierarchy of features
+					\item dependencies between features modeled by tree and cross-tree constraints
+					\item \emph{tree constraints}: defined by the hierarchy
+					\item \emph{cross-tree constraints}: propositional formulas over features
+					\item \emph{abstract features} are used to group other features
+					\item \emph{concrete features} have an implementation
+					\item also known as feature diagram or feature tree
+				\end{itemize}
+			}
+		}
+		\only<3>{
+			\mydefinition{Tree Constraints}{
+				\begin{itemize}
+					\item each feature requires its parent
+					\item an \emph{optional feature} can be (de-)selected freely when its parent is selected
+					\item a \emph{mandatory feature} is required by its parent
+					\item \emph{or group}: at least one feature must be selected when the parent is selected
+					\item \emph{alternative group}: exactly one feature must be selected when the parent is selected
+				\end{itemize}
+			}
+			\mydefinition{Cross-Tree Constraints}{
+				\begin{itemize}
+					\item a list of propositional formulas expressing further dependencies between features
+				\end{itemize}
+			}
+		}
+		\only<4->{
+			\myexample{Valid Configurations \todo{animate}}{
+				\begin{itemize}
+					\item<4-> \emph{Valid} (read-only database on Windows):
+						$(\{C, G, W\}, \{P, D, T, L\})$
+					\item<5-> \emph{Valid} (fully functional database on Linux):
+						$(\{C, G, P, D, T, L\}, \{W\}\}$
+					\item<6-> \emph{Invalid} ($\lightning$ no operating system):
+						$(\{C, G\}, \{P, D, T, W, L\})$
+					\item<7-> \emph{Invalid} (transactions $\lightning$ read-only database):
+						$(\{C, G, T, L\}, \{P, D, W\})$
+				\end{itemize}
+			}
+		}
+}
 \end{frame}
 
-\begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}
+\begin{frame}{\insertsubsection}
 	\leftorright{
-		\todo{other feature diagram example(s) which shows off how notation can also be used}
-		% graph product line example?
+		\todo{graph product line example from Timo}
 	}{
 		\mynote{Notation}{
 			\begin{itemize}
 				\item abstract and concrete features can be assigned arbitrarily
-    			\item groups can be used anywhere
+				\item groups can be used anywhere
 				\item directly below groups, no optional or mandatory markers are allowed
 			\end{itemize}
 		}
@@ -279,10 +271,10 @@
 
 \subsection{Advantages of Feature Modeling}
 \begin{frame}{\insertsubsection}
-	\leftandright{
+	\leftorright{
 		\textbf{Making Tacit Knowledge Explicit}
 		\mynote{Interview with Practitioners \mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}}{
-			\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer’s point of view. But it’s also, we can see that from the, say project development, it’s also important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven’t realized that. They implemented the same features.}
+			\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer's point of view. But it's also, we can see that from the, say project development, it's also important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven't realized that. They implemented the same features.}
 		}
 	}{
 		\textbf{Tool Support}
@@ -290,5 +282,3 @@
 		\includegraphics[width=\linewidth]{featureide-feature-model-editor}
 	}
 \end{frame}
-
-% advantages over Natural Language, List of Configurations
