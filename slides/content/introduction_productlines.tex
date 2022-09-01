@@ -1,9 +1,23 @@
-\subsection{Customization}
+\subsection{Customization} % TODO Handcrafting
+\begin{frame}{\insertsubsection\ \deutsch{Maßschneiderung}}
+	\leftorright{
+		\todots
+	}{
+		\todots
+	}
+\end{frame}
 % why?
-% \deutsch{Maßschneiderung}
-% variants / product variants
 
 \subsection{Mass Production}
+\begin{frame}{\insertsubsection}
+	\leftorright{
+		\todots
+		\href{https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG}{\includegraphics[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}
+	}{
+		\mynote{Mass Production for Software?\mysource{\fospl\mypage{7}}}{\mycite{The idea is to provide software that satisfies the
+		needs of most customers, which leads almost automatically to the situation, in which customers miss desired functionality and are overwhelmed with functionality they do not need actually (just think of any contemporary office or graphics program). It is often this generality that makes software complex, slow, and buggy.}}
+	}
+\end{frame}
 % why?
 % \deutsch{Massenproduktion}
 % industrial revolution/era:
@@ -13,7 +27,16 @@
 % - 1980s automatic assembly lines
 % swiss-army knife \deutsch{Eierlegende Wollmilchsau}
 
+% one size fits all: T-Shirts
+
 \subsection{Mass Customization}
+\begin{frame}{\insertsubsection}
+	\leftorright{
+		\todots
+	}{
+		\myexampletight{Car Configuration}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}
+	}
+\end{frame}
 % why?
 %\subsection{Motivation}
 % why product lines?
@@ -22,42 +45,73 @@
 % expensive customization
 
 \subsection{Features and Products of a Domain}
-\begin{frame}{\insertsubsection}
+\begin{frame}{What is a Feature?}
 	\leftorright{
-		\mydefinition{Feature \deutsch{Feature} \mysource{\fospl}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}
-		\mynote{Feature in a Product Line \mysource{\fospl}}{\mycite{Features are used in product-line engineering to specify and communicate commonalities and differences of the products between stakeholders, and to guide structure, reuse, and variation across all phases of the software life cycle.}}
-		\mydefinition{Product \deutsch{Produkt} \mysource{\fospl}}{\mycite{A \emph{product} of a product line is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}}
+		\mydefinition{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}
+		\todo{picture of a program highlighting one or two features? settings? changelog? marketing description of new features (Github?)?}
 	}{
-		\mydefinition{Domain \deutsch{Domäne} \mysource{\fospl}}{ % TODO cite CE00 here too?
-			\mycitebegin A \emph{domain} is an area of knowledge that:
+		\mynote{Feature in a Product Line \mysource{\fospl\mypage{18}}}{\mycitebegin Features are used in \todo{product-line engineering}
 			\begin{itemize}
-				\item is scoped to maximize the satisfaction of the requirements of its stakeholders,
-				\item includes a set of concepts and terminology understood by practitioners in
-				that area,
-				\item and includes the knowledge of how to build software systems (or parts of
-				software systems) in that area.\myciteend
+				\item to specify and communicate commonalities and differences of the products between \todo{stakeholders}, and
+				\item to guide structure, reuse, and variation across all phases of the software life cycle.\myciteend
 			\end{itemize}
 		}
-		\mynote{}{
-			\begin{itemize}
-				\item a feature is a domain abstraction
-				\item in this course:
-				
-					product = product variant = variant = program variant
-			\end{itemize}
-		}
+		\todo{illustrate stakeholders and software life cycle? project cartoon?}
 	}
 \end{frame}
-% features = domain abstractions. def of apel book
 % goals of features
 %a distinctively identifiable functional abstraction that must be implemented, tested, delivered, and maintained” (Kang et al.
 %a product characteristic from user or customer views, which essentially consists of a cohesive set of individual requirements” (Chen et al.
 %an optional or incremental unit of Zave 2003) 
 
+\xkcd{2369} % paper processor 25s
+
+\begin{frame}{What is a Product?}
+	\leftorright{
+		\mydefinition{Product \deutsch{Produkt} \mysource{\fospl\mypage{19}}}{\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}}
+		\todo{product map illustrating differences of products in terms of features? Venn diagram?}
+		
+		\todo{when to introduce configurations?}
+	}{
+		\mynote{}{
+			\begin{itemize}
+				\item in this course:
+				
+					product = product variant = variant
+				\item software product: a product consisting only of software
+				\item program $\subset$ software
+			\end{itemize}
+		}
+		\todo{exemplify difference between hardware product, software product, and program (reuse pictures from before)}
+	}
+\end{frame}
+
+\begin{frame}{What is a Domain?}
+	\leftorright{
+		\mydefinition{Domain \deutsch{Domäne} \mysource{\fospl\mypage{19}}}{ % TODO cite CE00 here too?
+			\mycitebegin A \emph{domain} is an area of knowledge that:
+			\begin{itemize}
+				\item is scoped to maximize the satisfaction of the requirements of its stakeholders,
+				\item includes a set of concepts and terminology understood by practitioners in that area,
+				\item and includes the knowledge of how to build software systems (or parts of
+				software systems) in that area.\myciteend
+			\end{itemize}
+		}
+		\todo{give examples for several domains. ideally all example domains that have been discussed before already}
+	}{
+		\mynote{}{
+			\begin{itemize}
+				\item a feature is a domain abstraction
+				\item identification of features requires domain expertise
+			\end{itemize}
+		}
+	}
+\end{frame}
+
 \subsection{Software Product Line}
 \begin{frame}{\insertsubsection}
 	\leftandright{
-		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl}}{\mycitebegin A \emph{software product line} is 
+		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
 				\item a set of software-intensive systems \only<2|handout:0>{\myexample{}{aka.\ products or variants}}
 				\item that share a common, managed set of features \only<3|handout:0>{\myexample{}{common set, but not all products have all features in common}}
@@ -69,15 +123,44 @@
 	}{}
 \end{frame}
 % variants / platforms / domain / variant generation
-
 % configurable software, highly-configurable software, variable software, software variation
 
 \subsection{Product-Line Engineering}
-% opposed to single-system engineering
+\begin{frame}{\insertsubsection}
+	\leftorright{
+		\mydefinition{Product-Line Engineering}{}
+		\mynote{Idea of Product-Line Engineering}{
+			reduce effort per product by means of an up-front investment for the product line
+		
+			\todo{picture illustrating effort per product}
+		}
+	}{
+		\mynote{Promises of Product Lines \mysource{\fospl\mypages{9--10}}}{
+			\begin{itemize}
+				\item tailor-made \deutsch{Maßschneiderung}
+				\item reduced costs \deutsch{Kostenreduzierung}
+				\item improved quality \deutsch{Qualitätssteigerung}
+				\item reduced time-to-market \deutsch{Reduzierung der Produktentwicklungszeit}
+			\end{itemize}
+		}
+		\mydefinition{Single-System Engineering}{}
+	}
+\end{frame}
 
 % product-line hall of fame
+% success stories: Boing, Bosch, Hewlett Packard, Toshiba, General Motors \mysource{\fospl}
 
-% product (aka. variant)
+
+
+
+% TODO \subsection{Running Examples?}
+% \fospl: data management for embedded systems, product line of a graph library
+
+% not software, not running: financial services (or in \lecturemodeling?), bikes, shoes, notebooks, ...
+% Linux, Graph Product Line \lectureruntime\ or \lecturecloneandown, Configurable Database, Elevator Product Line, Printer product lines, Car configurators, software ecosystem (Browser plug-ins, IDE plug-ins)
+
+% elevators: pictures from various elevators (OVGU, UULM, Bern), invisible end-user-visible features (e.g., double click for deselection)
+% if you do this at home: do not select all stops before you know it is working
 
 % how many examples in first lecture? move certain examples in later lectures? if so, which ones?
 %\subsection{Automotive Systems}
@@ -91,6 +174,7 @@
 % XKCD: all-in-one paper processor
 %\subsection{Operating Systems}
 % windows, linux!!!, android
+% Linux: where is it used? on which principal hardware? how many instances are running world wide? how many commits and developers? how many versions have been release and since when? screenshot how it looks like when linux is configured
 % apps?
 %\subsection{Integrated Development Environments}
 % eclipse
@@ -101,7 +185,7 @@
 % ecos, packages in debian
 
 %\subsection{Beyond Software}
-% financial products by KfW, bikes, shoes, muesli, Subway, headphones, lego, detergents
+% financial products by KfW, bikes, shoes, muesli, Subway, headphones, lego, detergents, furniture (handcrafted vs standardized vs product line), kitchens
 % brompton: picture in ulm slides
 
 % TODO zoo of animals/tools
@@ -140,3 +224,16 @@
 %Load-time variability is decided after compilation when the program is started.
 %With run-time variability, decisions can be made and changed during program
 %execution.
+
+
+
+% explain configurators vs selectors? for example, iPhone is available is produced in any combination and then selled, still there are selectors to find the right product easily. cf. ebay/amazon
+
+
+
+
+% history on product lines? how old are product lines and ideas discussed in this lecture?
+
+
+
+
