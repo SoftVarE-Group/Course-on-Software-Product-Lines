@@ -1,8 +1,20 @@
+\subsection{Customization} % TODO Handcrafting
+\begin{frame}{\insertsubsection\ \deutsch{Maßschneiderung}}
+	\leftorright{
+		\todots
+	}{
+		\todots
+	}
+\end{frame}
+% why?
+
 \subsection{Mass Production}
 \begin{frame}{\insertsubsection}
 	\leftorright{
+		\todots
+		\href{https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG}{\includegraphics[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}
 	}{
-		\mynote{Mass Production for Software? \mysource{\fospl}}{\mycite{The idea is to provide software that satisfies the
+		\mynote{Mass Production for Software?\mysource{\fospl\mypage{7}}}{\mycite{The idea is to provide software that satisfies the
 		needs of most customers, which leads almost automatically to the situation, in which customers miss desired functionality and are overwhelmed with functionality they do not need actually (just think of any contemporary office or graphics program). It is often this generality that makes software complex, slow, and buggy.}}
 	}
 \end{frame}
@@ -17,24 +29,12 @@
 
 % one size fits all: T-Shirts
 
-\subsection{Customization} % TODO Handcrafting
-\begin{frame}{\insertsubsection}
-	\leftorright{
-		\todots
-	}{
-		\todots
-	}
-\end{frame}
-% why?
-% \deutsch{Maßschneiderung}
-% variants / product variants
-
 \subsection{Mass Customization}
 \begin{frame}{\insertsubsection}
 	\leftorright{
 		\todots
 	}{
-		\todots
+		\myexampletight{Car Configuration}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}
 	}
 \end{frame}
 % why?
@@ -47,10 +47,10 @@
 \subsection{Features and Products of a Domain}
 \begin{frame}{What is a Feature?}
 	\leftorright{
-		\mydefinition{Feature \deutsch{Feature} \mysource{\fospl}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}
+		\mydefinition{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}
 		\todo{picture of a program highlighting one or two features? settings? changelog? marketing description of new features (Github?)?}
 	}{
-		\mynote{Feature in a Product Line \mysource{\fospl}}{\mycitebegin Features are used in \todo{product-line engineering}
+		\mynote{Feature in a Product Line \mysource{\fospl\mypage{18}}}{\mycitebegin Features are used in \todo{product-line engineering}
 			\begin{itemize}
 				\item to specify and communicate commonalities and differences of the products between \todo{stakeholders}, and
 				\item to guide structure, reuse, and variation across all phases of the software life cycle.\myciteend
@@ -64,9 +64,11 @@
 %a product characteristic from user or customer views, which essentially consists of a cohesive set of individual requirements” (Chen et al.
 %an optional or incremental unit of Zave 2003) 
 
+\xkcd{2369} % paper processor 25s
+
 \begin{frame}{What is a Product?}
 	\leftorright{
-		\mydefinition{Product \deutsch{Produkt} \mysource{\fospl}}{\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}}
+		\mydefinition{Product \deutsch{Produkt} \mysource{\fospl\mypage{19}}}{\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}}
 		\todo{product map illustrating differences of products in terms of features? Venn diagram?}
 		
 		\todo{when to introduce configurations?}
@@ -86,7 +88,7 @@
 
 \begin{frame}{What is a Domain?}
 	\leftorright{
-		\mydefinition{Domain \deutsch{Domäne} \mysource{\fospl}}{ % TODO cite CE00 here too?
+		\mydefinition{Domain \deutsch{Domäne} \mysource{\fospl\mypage{19}}}{ % TODO cite CE00 here too?
 			\mycitebegin A \emph{domain} is an area of knowledge that:
 			\begin{itemize}
 				\item is scoped to maximize the satisfaction of the requirements of its stakeholders,
@@ -109,7 +111,7 @@
 \subsection{Software Product Line}
 \begin{frame}{\insertsubsection}
 	\leftandright{
-		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl}}{\mycitebegin A \emph{software product line} is 
+		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
 				\item a set of software-intensive systems \only<2|handout:0>{\myexample{}{aka.\ products or variants}}
 				\item that share a common, managed set of features \only<3|handout:0>{\myexample{}{common set, but not all products have all features in common}}
@@ -121,24 +123,35 @@
 	}{}
 \end{frame}
 % variants / platforms / domain / variant generation
-
 % configurable software, highly-configurable software, variable software, software variation
 
-\subsection{Product-Line Engineering} % TODO together with mass customization?
+\subsection{Product-Line Engineering}
 \begin{frame}{\insertsubsection}
 	\leftorright{
-		\todots
+		\mydefinition{Product-Line Engineering}{}
+		\mynote{Idea of Product-Line Engineering}{
+			reduce effort per product by means of an up-front investment for the product line
+		
+			\todo{picture illustrating effort per product}
+		}
 	}{
-		\todots
+		\mynote{Promises of Product Lines \mysource{\fospl\mypages{9--10}}}{
+			\begin{itemize}
+				\item tailor-made \deutsch{Maßschneiderung}
+				\item reduced costs \deutsch{Kostenreduzierung}
+				\item improved quality \deutsch{Qualitätssteigerung}
+				\item reduced time-to-market \deutsch{Reduzierung der Produktentwicklungszeit}
+			\end{itemize}
+		}
+		\mydefinition{Single-System Engineering}{}
 	}
 \end{frame}
-% opposed to single-system engineering
-
-% goal of PLE: invest one-time effort, reduce effort per product
-% tailor-made, reduced costs, improved quality \mysource{\fospl}
 
 % product-line hall of fame
 % success stories: Boing, Bosch, Hewlett Packard, Toshiba, General Motors \mysource{\fospl}
+
+
+
 
 % TODO \subsection{Running Examples?}
 % \fospl: data management for embedded systems, product line of a graph library
@@ -172,7 +185,7 @@
 % ecos, packages in debian
 
 %\subsection{Beyond Software}
-% financial products by KfW, bikes, shoes, muesli, Subway, headphones, lego, detergents
+% financial products by KfW, bikes, shoes, muesli, Subway, headphones, lego, detergents, furniture (handcrafted vs standardized vs product line), kitchens
 % brompton: picture in ulm slides
 
 % TODO zoo of animals/tools
