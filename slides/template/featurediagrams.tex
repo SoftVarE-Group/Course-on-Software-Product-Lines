@@ -1,17 +1,17 @@
 \usepackage{xstring}
 
-\newcommand{\featureDiagramConfigurableDatabase}{
+\newcommand{\featureDiagramConfigurableDatabase}[1][]{
 	\featureDiagram{
-		\subnode{ConfigDB}{ConfigDB},concrete
-		[\subnode{API}{API},abstract,mandatory
-			[\subnode{Get}{Get},concrete,or]
-			[\subnode{Put}{Put},concrete]
-			[\subnode{Delete}{Delete},concrete]
+		\subnode{ConfigDB#1}{ConfigDB},concrete
+		[\subnode{API#1}{API},abstract,mandatory
+			[\subnode{Get#1}{Get},concrete,or]
+			[\subnode{Put#1}{Put},concrete]
+			[\subnode{Delete#1}{Delete},concrete]
 		]
-		[\subnode{Transactions}{Transactions},concrete,optional]
-		[\subnode{OS}{OS},abstract,mandatory
-			[\subnode{Windows}{Windows},concrete,alternative]
-			[\subnode{Linux}{Linux},concrete]
+		[\subnode{Transactions#1}{Transactions},concrete,optional]
+		[\subnode{OS#1}{OS},abstract,mandatory
+			[\subnode{Windows#1}{Windows},concrete,alternative]
+			[\subnode{Linux#1}{Linux},concrete]
 		]
 	}\\
 	$Transactions \pimplies Put \por Delete$
@@ -155,9 +155,28 @@
 	\end{forest}
 }
 
-\newcommand{\emphfeature}[1]{\node [draw=black,line width=0.8pt,fit=(#1)] {};}
-\newcommand{\emphfeatures}[1]{
+\newcommand{\featureDiagramOverlay}[1]{
 	\begin{tikzpicture}[overlay,remember picture]
-		\foreach \f in {#1} {\emphfeature{\f}}
+		#1
 	\end{tikzpicture}
+}
+
+\newcommand{\featureEmph}[2][draw=black]{
+		\foreach \f in {#2} {
+			\node [fit=\f,fill opacity=0.4,line width=0.6pt,rounded corners,#1] {};
+		}
+}
+
+\newcommand{\featureDeemph}[2][fill=white]{
+	\foreach \f in {#2} {
+		\node [fit=\f,fill opacity=0.4,line width=0.6pt,rounded corners,#1] {};
+	}
+}
+
+\newcommand{\featureSelected}[1]{
+	\featureEmph[fill=green,draw=green,fill opacity=0.1,draw opacity=0.2]{#1}
+}
+
+\newcommand{\featureDeselected}[1]{
+	\featureEmph[fill=red,draw=red,fill opacity=0.1,draw opacity=0.2]{#1}
 }

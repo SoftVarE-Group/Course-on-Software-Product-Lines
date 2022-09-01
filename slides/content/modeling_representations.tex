@@ -51,9 +51,11 @@
 	\leftorright{
 		\includegraphics[width=0.7\linewidth]{uvl-model}
 	}{
-		\centering
-		\includegraphics[width=\linewidth]{varied-model}
-		$Transactions \pimplies Put \por Delete$
+		\myexampletight{A Feature Model ``Sideways''}{
+			\centering
+			\includegraphics[width=\linewidth]{varied-model}
+			$Transactions \pimplies Put \por Delete$
+		}
 		\mynote{Universal Variability Language (UVL)}{
 			\begin{itemize}
 				\item textual language for feature modeling
@@ -68,12 +70,13 @@
 \begin{frame}{\insertsubsection}
 	\leftorright{
 		\mydefinition{Syntax of Propositional Formulas}{
-			A \emph{(propositional) formula} \deutsch{aussagenlogische Formel} is ...
+			Inductive definition of \emph{(propositional) formulas}\\\deutsch{(aussagenlogische) Formeln}:
 			\begin{itemize}
-				\item a \emph{(Boolean) variable} $X$,
-    			\item a \emph{negation} $\pnot \phi$ of a formula $\phi$,
-    			\item a \emph{conjunction} $(\phi \pand \psi)$ of formulas $\phi$ and $\psi$,
-				\item similarly, a \emph{disjunction} $(\phi \por \psi)$, \emph{implication} $(\phi \pimplies \psi)$, or \emph{biimplication} $(\phi \pequals \psi)$.
+				\item the \emph{(Boolean) truth values} $\top$, $\bot$
+				\item any \emph{(Boolean) variable} $X$
+    			\item any \emph{negation} $\pnot \phi$ of a formula $\phi$
+    			\item any \emph{conjunction} $(\phi \pand \psi)$ of formulas $\phi$ and $\psi$
+				\item any \emph{disjunction} $(\phi \por \psi)$, \emph{implication} $(\phi \pimplies \psi)$, or \emph{biimplication} $(\phi \pequals \psi)$
 			\end{itemize}
 		}
 		\mynote{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}{
@@ -89,16 +92,20 @@
 			\vspace*{-4ex}
 			\begin{equation*}
 				\begin{rcases}
+					\top                \\
+					\bot                \\
 					\pnot \phi          \\
 					\phi \pand \psi     \\
 					\phi \por \psi      \\
 					\phi \pimplies \psi \\
 					\phi \pequals \psi
 				\end{rcases} \text{ means } \begin{cases}
+					\text{``true'' (or \emph{tautology})} \\
+					\text{``false'' (or \emph{contradiction})} \\
 					\text{``not $\phi$''} \\
 					\text{``$\phi$ and $\psi$''} \\
-					\text{``$\phi$ or $\psi$'' (inclusive)} \\
-					\text{``if $\phi$, then $\psi$'' (else?)} \\
+					\text{``$\phi$ or $\psi$'' (inclusive or!)} \\
+					\text{``if $\phi$, then $\psi$'' (and else?)} \\
 					\text{``$\phi$ if and only if $\psi$''}
 				\end{cases}
 			\end{equation*}
@@ -121,41 +128,96 @@
 		\only<1-|handout:1>{
 			\myexampletight{A Feature Model $FM$ \ldots}{
 				\centering\tiny
-				\featureDiagramConfigurableDatabase
+				\featureDiagramConfigurableDatabase[_phi]
+				\featureDiagramOverlay{
+					\only<1>{
+						\featureDeemph{(API_phi),(Get_phi),(Put_phi),(Delete_phi),(Transactions_phi),(OS_phi),(Windows_phi),(Linux_phi)}
+						\featureEmph{(ConfigDB_phi)}
+					}
+					\only<2>{
+						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(Transactions_phi),(OS_phi),(Windows_phi),(Linux_phi)}
+						\featureEmph{(ConfigDB_phi)(API_phi)}
+					}
+					\only<3>{
+						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(API_phi),(OS_phi),(Windows_phi),(Linux_phi)}
+						\featureEmph{(ConfigDB_phi)(Transactions_phi)}
+					}
+					\only<4>{
+						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(API_phi),(Transactions_phi),(Windows_phi),(Linux_phi)}
+						\featureEmph{(ConfigDB_phi)(OS_phi)}
+					}
+					\only<5>{
+						\featureDeemph{(ConfigDB_phi),(Transactions_phi),(Windows_phi),(Linux_phi),(OS_phi)}
+						\featureEmph{(Get_phi)(Put_phi)(Delete_phi)(API_phi)}
+					}
+					\only<6-7>{
+						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(API_phi),(Transactions_phi),(ConfigDB_phi)}
+						\featureEmph{(Windows_phi)(Linux_phi)(OS_phi)}
+					}
+					\only<8>{
+						\featureDeemph{(ConfigDB_phi)(Transactions_phi)(Windows_phi)(Linux_phi)(OS_phi)(Get_phi)(Put_phi)(Delete_phi)(API_phi)}
+					}
+					\only<9-12>{
+						\featureSelected{(ConfigDB_phi),(API_phi),(Get_phi),(OS_phi),(Windows_phi)}
+						\featureDeselected{(Put_phi)(Delete_phi),(Transactions_phi),(Linux_phi)}
+					}
+					\only<13->{
+						\featureSelected{(ConfigDB_phi),(API_phi),(Get_phi)}
+						\featureDeselected{(Put_phi)(Delete_phi)(Windows_phi)(Linux_phi),(Transactions_phi)(OS_phi)}
+					}
+				}
 			}
 			\myexample{\ldots as a Propositional Formula $\phi(FM)$}{
 				\vspace*{-4ex}
 				\small
 				\begin{align*}
 					\phi(FM) = &~ConfigDB \\
-					\pand &~API \pequals ConfigDB \\
-					\pand &~Transactions \pimplies ConfigDB \\
-					\pand &~OS \pequals ConfigDB \\
-					\pand &~Get \por Put \por Delete \pequals API \\
-					\pand &~Windows \por Linux \pequals API \\
-					\pand &~\pnot (Windows \pand Linux) \\
-					\pand &~Transactions \pimplies Put \por Delete
+					\uncover<2->{\pand &~(API \pequals ConfigDB) \\}
+					\uncover<3->{\pand &~(Transactions \pimplies ConfigDB) \\}
+					\uncover<4->{\pand &~(OS \pequals ConfigDB) \\}
+					\uncover<5->{\pand &~(Get \por Put \por Delete \pequals API) \\}
+					\uncover<6->{\pand &~(Windows \por Linux \pequals OS) \\}
+					\uncover<7->{\pand &~\pnot (Windows \pand Linux) \\}
+					\uncover<8->{\pand &~(Transactions \pimplies Put \por Delete)}
 				\end{align*}
 			}
 		}
 	}{
-		\only<2-|handout:1>{
-			\myexample{Evaluating the Validity of Configurations}{
-				\begin{itemize}
-					\item $\phi(\{C, G, W\}) = $
-						\begin{align*}
-							\phi(FM) = &~ConfigDB \\
-							\pand &~API \pequals ConfigDB \\
-							\pand &~Transactions \pimplies ConfigDB \\
-							\pand &~OS \pequals ConfigDB \\
-							\pand &~Get \por Put \por Delete \pequals API \\
-							\pand &~Windows \por Linux \pequals API \\
-							\pand &~\pnot (Windows \pand Linux) \\
-							\pand &~Transactions \pimplies Put \por Delete
-						\end{align*}
-					\item \emph{Invalid} ($\lightning$ no operating system):
-						$\{C, G\}$
-				\end{itemize}
+		\only<9-|handout:2>{
+			\myexample{Is This a Valid Configuration?}{
+				\vspace*{-4ex}
+				\only<9-12>{
+					\begin{align*}
+								&~\phi(FM)({\{C, A, G, O, W\}}) \\
+						=		&~\phi(FM)(\cfg[2-]{C, A, G, O, W}{P, D, T, L}) \\
+						\uncover<10->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fs{O} \pequals \fs{C}) \\
+						\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fs{W} \por \fd{L} \pequals \fs{O}) \\
+						\pand &~\pnot (\fs{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
+						\uncover<11->{=&~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fs{\top} \pequals \fs{\top}) \\
+						\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fs{\top} \por \fd{\bot} \pequals \fs{\top}) \\
+						\pand &~\pnot (\fs{\top} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
+						\uncover<12->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
+						=		&~\fs{\top}}
+					\end{align*}
+					\uncover<12->{\emph{$\leadsto$ configuration is valid}\\
+					\phantom{$\leadsto$ }(read-only database on Windows)}
+				}
+				\only<13->{
+					\begin{align*}
+								&~\phi(FM)({\{C, A, G\}}) \\
+						=		&~\phi(FM)(\cfg[2-]{C, A, G}{P, D, T, O, W, L}) \\
+						\uncover<14->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fd{O} \pequals \fs{C}) \\
+						\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fd{W} \por \fd{L} \pequals \fd{O}) \\
+						\pand &~\pnot (\fd{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
+						\uncover<15->{=&~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fd{\bot} \pequals \fs{\top}) \\
+						\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fd{\bot} \por \fd{\bot} \pequals \fd{\bot}) \\
+						\pand &~\pnot (\fd{\bot} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
+						\uncover<16->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fd{\bot} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
+						=		&~\fd{\bot}}
+					\end{align*}
+					\uncover<16->{\emph{$\leadsto$ configuration is invalid}\\
+					\phantom{$\leadsto$ }($\lightning$ no operating system)}
+				}
 			}
 		}
 	}
@@ -183,6 +245,8 @@
 
 \begin{frame}{-- Algorithm}
 	\leftorright{
+		$\phi($\begin{forest}featureDiagram[x[y]]\end{forest}$) = Root$
+		
 		$\phi\left(\featureDiagram{Root}\right) = Root$
 	
 		$\phi\left(\featureDiagram{P[C,optional]}\right) = C \pimplies P$
