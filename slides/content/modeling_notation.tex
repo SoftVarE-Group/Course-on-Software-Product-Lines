@@ -84,18 +84,18 @@
 			
 			Examples for \emph{complete} configurations:
 			\begin{itemize}
-				\item \emph{Valid} (read-only database on Windows):
-					$(\{C, G, W\}, \{P, D, T, L\})$
-				\item \emph{Valid} (fully functional database on Linux):
-					$(\{C, G, P, D, T, L\}, \{W\}\}$
-				\item \emph{Invalid} ($\lightning$ no operating system):
-					$(\{C, G\}, \{P, D, T, W, L\})$
-				\item \emph{Invalid} (transactions $\lightning$ read-only database):
-					$(\{C, G, T, L\}, \{P, D, W\})$
+				\item \emph{valid} (read-only database on Windows):
+					$\cfg{C, G, W}{P, D, T, L}$
+				\item \emph{valid} (fully functional database on Linux):
+					$\cfg{C, G, P, D, T, L}{W}$
+				\item \emph{invalid} ($\lightning$ no operating system):
+					$\cfg{C, G}{P, D, T, W, L}$
+				\item \emph{invalid} (transactions $\lightning$ read-only database):
+					$\cfg{C, G, T, L}{P, D, W}$
 			\end{itemize}
 			Examples for \emph{partial} configurations:
 			
-			$(\{C, G\}, \{P, D\})$, $(\varnothing, \varnothing)$, \ldots
+			$\cfg{C, G}{P, D}$, $(\varnothing, \varnothing)$
 		}
 		
 	}
@@ -199,12 +199,25 @@
 	\leftandright{
 		\myexampletight{A Configurable Database}{
 			\centering
-			\featureDiagramConfigurableDatabase
-			\only<1-3>{\emphfeatures{}}
-			\only<4>{\emphfeatures{ConfigDB,Get,Windows}}
-			\only<5>{\emphfeatures{ConfigDB,Get,Put,Delete,Transactions,Linux}}
-			\only<6>{\emphfeatures{ConfigDB,Get}}
-			\only<7>{\emphfeatures{ConfigDB,Get,Transactions,Linux}}
+			\featureDiagramConfigurableDatabase[_fm]
+			\featureDiagramOverlay{
+				\only<4>{
+					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm),(OS_fm),(Windows_fm)}
+					\featureDeselected{(Put_fm)(Delete_fm),(Transactions_fm),(Linux_fm)}
+				}
+				\only<5>{
+					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm)(Put_fm)(Delete_fm),(Linux_fm)}
+					\featureDeselected{(Windows_fm)}
+				}
+				\only<6>{
+					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm)}
+					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)(Linux_fm),(Transactions_fm)(OS_fm)}
+				}
+				\only<7>{
+					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm),(Linux_fm)}
+					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)}
+				}
+			}
 			
 			\featureDiagramLegend
 		}
@@ -239,16 +252,16 @@
 			}
 		}
 		\only<4->{
-			\myexample{Valid Configurations \todo{animate}}{
+			\myexample{Valid Configurations}{
 				\begin{itemize}
-					\item<4-> \emph{Valid} (read-only database on Windows):
-						$(\{C, G, W\}, \{P, D, T, L\})$
-					\item<5-> \emph{Valid} (fully functional database on Linux):
-						$(\{C, G, P, D, T, L\}, \{W\}\}$
-					\item<6-> \emph{Invalid} ($\lightning$ no operating system):
-						$(\{C, G\}, \{P, D, T, W, L\})$
-					\item<7-> \emph{Invalid} (transactions $\lightning$ read-only database):
-						$(\{C, G, T, L\}, \{P, D, W\})$
+					\item<4-> \emph{valid} (read-only database on Windows):
+						$\cfg[4]{C, A, G, O, W}{P, D, T, L}$
+					\item<5-> \emph{valid} (fully functional database on Linux):
+						$\cfg[5]{C, A, G, P, D, T, O, L}{W}$
+					\item<6-> \emph{invalid} ($\lightning$ no operating system):
+						$\cfg[6]{C, A, G}{P, D, T, O, W, L}$
+					\item<7-> \emph{invalid} (transactions $\lightning$ read-only database):
+						$\cfg[7]{C, A, G, T, O, L}{P, D, W}$
 				\end{itemize}
 			}
 		}
