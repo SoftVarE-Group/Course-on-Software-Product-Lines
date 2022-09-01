@@ -33,16 +33,29 @@
 \subsection{Combinatorial Explosion}
 \begin{frame}{\insertsubsection}
 	\leftorright{
+		\myexampletight{Combinatorial Explosion}{
+			\includegraphics[width=\linewidth,page=6]{citplots}
+			\vspace{-4mm} % TODO Benno: hack. why needed?
+			\small
+			\begin{itemize}
+				\item assumption: all combinations of features are valid
+				\item 33 features: a unique combination for every human
+				\item 320 features: more combinations than atoms in the universe
+			\end{itemize}
+		}
 	}{
 		\myexampletight{Industrial Configuration Spaces \mysource{\evaluatingsharpsatsolvers}}{
-			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
+			\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
+			\vspace{-4mm} % TODO Benno: hack. why needed?
+			\small
+			\begin{itemize}
+				\item in practice: not all combinations of features valid
+				\item largest known product line has $1.7 \cdot 10^{1534}$ products
+				\item many industrial product lines too large to specify all valid combinations manually
+			\end{itemize}
 		}
 	}
 \end{frame}
-% huge configuration spaces: Chico's numbers
-% expoential grows (in the number of features)
-% not all combinations valid
-% how to model valid combinations?
 
 \subsection{Feature Interactions}
 \begin{frame}{\insertsubsection}
@@ -55,27 +68,70 @@
 % typically unknown in advance
 % quality assurance/correctness necessary
 
-%\subsection{Incompatible Features}
-%% hidden in Ebay, grayed out in Amazon, hints for Lenovo
-%\subsection{Compound Features}
-%% software for Lenovo, ...
-%\subsection{Automated Reconfiguration}
-%% BMW, Toyota
-%\subsection{Interactive Resolution of Conflicts}
-%% Lenovo, Toyota
-%\subsection{}
-
-\subsection{Continuous Growth}
+\subsection{Continuing Change and Growth}
 \begin{frame}{\insertsubsection}
 	\leftorright{
-		\todots
+		\mydefinition{Lehman's Laws of Software Evolution (excerpt) \mysource{\lehmanslaws}}{
+			\begin{itemize}
+				\item Continuing Change: systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
+				\item Increasing Complexity: complexity increases during evolution unless work is done to maintain or reduce it % As an E-type system evolves its complexity increases unless work is done to maintain or reduce it.
+				%\item Self Regulation: %E-type system evolution process is self regulating with distribution of product and process measures close to normal.
+				%\item Conservation of Organizational Stability (invariant work rate): %The average effective global activity rate in an evolving E-type system is invariant over product lifetime.
+				%\item Conservation of Familiarity: satisfactory evolution excludes excessive growth %As an E-type system evolves all associated with it, developers, sales personnel, users, for example, must maintain mastery of its content and behaviour to achieve satisfactory evolution. Excessive growth diminishes that mastery. Hence the average incremental growth remains invariant as the system evolves.
+				\item Continuing Growth: functionality must be continually increased to maintain user satisfaction %The functional content of E-type systems must be continually increased to maintain user satisfaction over their lifetime.
+				\item Declining Quality: quality will decline unless rigorously maintained and adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
+				%\item Feedback System: %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
+			\end{itemize}
+		}
 	}{
-		\todots
+		\mynote{Essence of the Laws}{
+			\begin{itemize}
+				\item software that is used will be modified
+				\item when modified, its complexity will increase (unless one does actively work against it)
+			\end{itemize}
+		}
+		\myexample{Consequences for Product Lines}{
+			\begin{itemize}
+				\item number of features and size of implementation increases over time
+				\item all above-mentioned challenges increase over time
+				\item more code clones
+				\item harder to trace features
+				\item automated generation more urgent
+				\item increasing combinatorial explosion
+				\item more feature interactions
+			\end{itemize}
+		}
 	}
 \end{frame}
-% evolution: number of features/variants increases
-% number of features grows over time: picture on linux from ulm slides
-% law?
+
+\begin{frame}{Evolution of the Linux Kernel}
+	\twodimensionalanalysislink{\includegraphics[width=\linewidth,page=1,trim=80 420 80 260,clip]{2019/2019-VariVolution-Thuem}}
+	\leftorright{
+		\myexample{}{
+			\begin{itemize}
+				\item about $60,000$ commits per year
+				\item in peak weeks: new commit every 5 minutes
+			\end{itemize}
+		}
+	}{
+	}
+\end{frame}
+
+\begin{frame}{Evolution of the Linux Kernel}
+	\leftorright{
+		\todo{LOC over time}
+	}{
+		\todo{number of features over time}
+	}
+\end{frame}
+
+\begin{frame}{Evolution of the Linux Kernel}
+	\leftorright{
+		\todo{number of valid feature combinations over time}
+	}{
+		\todo{time to compute these numbers?}
+	}
+\end{frame}
 
 %\subsection{Maintainability}
 % maintenance of preprocessor code?

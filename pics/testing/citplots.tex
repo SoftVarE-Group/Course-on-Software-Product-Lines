@@ -135,4 +135,24 @@
 		\end{tikzpicture}
 	\end{frame}
 
+	% Number of Valid Configurations
+	\begin{frame}[plain]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=.97\linewidth,
+				ybar,
+				bar width=4mm,
+				ymin=0,ymax=4500,
+				xlabel=Number of Optional Features,
+				ylabel=Number of Valid Configurations,
+				nodes near coords={\pgfmathprintnumber[precision=0]{\pgfplotspointmeta}},
+				legend style={at={(0.03,0.97)},anchor=north west},
+				legend cell align=left,
+				]
+				\addplot coordinates {(1,2) (2,4) (3,8) (4,16) (5,32) (6,64) (7,128) (8,256) (9,512) (10,1024) (11,2048) (12,4096)};
+			\end{axis}
+		\end{tikzpicture}
+	\end{frame}
+
 \end{document}
