@@ -1,0 +1,149 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty % remove the default navigation symbols
+\input{../../slides/template/colorscheme}
+
+\makeatletter
+    \setlength\beamer@paperwidth{120mm}%
+    \setlength\beamer@paperheight{80mm}%
+    \geometry{papersize={\beamer@paperwidth,\beamer@paperheight}}
+\makeatother
+\setbeamersize{text margin left=0mm,text margin right=0mm}
+
+\usepackage{tikz}
+\usepackage{pgfcalendar} % convert the dates to Julian integers
+\usepackage{pgfplots}
+\usepackage{pgfplotstable} % manipulate the data file/table
+\usepgfplotslibrary{dateplot}
+\pgfplotsset{
+	width=.95\linewidth,
+	height=.68\linewidth,
+	date coordinates in=x,
+	xmin={2003-01-01},
+	xmax={2026-01-01},
+	xlabel=Year,
+	xlabel near ticks,
+	ylabel near ticks,
+	xtick={2005-01-01,2010-01-01,2015-01-01,2020-01-01,2025-01-01},
+	xticklabel={\year},
+	/pgf/number format/.cd,fixed,use comma,1000 sep={.},
+}
+
+% the following trick enables a trendline for a date axis
+% adapted from https://tex.stackexchange.com/questions/367339/linear-regression-with-dates-on-x-axis-in-pgfplots
+\pgfplotsset{compat=1.14}
+\newcommand{\readtablewithtrendline}[2]{
+	\pgfplotstableread[col sep=comma]{#1}#2
+	% add new column with Julian integer numbers
+	    % therefore a counter is needed
+	    \newcount\julianday
+	\pgfplotstablecreatecol[
+	    create col/assign/.code={
+	        % convert the number of the current row and save it to `\julianday'
+	        \pgfcalendardatetojulian{\thisrow{release_date}}{\julianday}
+	        % then give the entry of `\julianday' to `\entry' which is then
+	        % given to the current cell
+	        \edef\entry{\the\julianday}
+	        \pgfkeyslet{/pgfplots/table/create col/next content}\entry
+	    },
+	]{JulianDay}{#2}
+	% because the `dateplot' library shifts automatically all dates to 0 using
+	% the first found coordinate we can't use the created `JulianDay' data
+	% directly for `linear regression', but have to do the same first with
+	% the data
+	    % get the first coordinate of the column ...
+	    \pgfplotstablegetelem{0}{JulianDay}\of{#2}
+	    % ... and store it in `\xmin'
+	    \pgfmathtruncatemacro{\xmin}{\pgfplotsretval}
+	% now create another column with the shifted values
+	\pgfplotstablecreatecol[
+	    expr={\thisrow{JulianDay}-\xmin},
+	]{JulianDayMod}{#2}
+}
+\readtablewithtrendline{linux-sloc.csv}{\loc}
+\readtablewithtrendline{linux-features.csv}{\features}
+\readtablewithtrendline{linux-products.csv}{\products}
+
+\begin{document}
+
+	% lines of code (SLOC) of Linux kernel
+	\begin{frame}[plain]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=.89\linewidth,
+				ymin=0,
+				ymax=29000000,
+				ylabel=Lines of Source Code (SLOC),
+				scaled y ticks=false]
+				\addplot table [col sep=comma,x=release_date,y=sloc] {\loc};
+				\addplot table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=sloc}}] {\loc};
+				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,4361591) {};
+				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,9734588) {};
+				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,12852861) {};
+				\node [coordinate,pin=above:{v5.0}] at (axis cs:2019-03-03,17847774) {};
+				\node [coordinate,pin=above:{v5.19}] at (axis cs:2022-07-31,23970553) {};
+			\end{axis}
+		\end{tikzpicture}
+	\end{frame}
+
+	% number of features of Linux kernel
+	\begin{frame}[plain]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				ylabel=Number of Features,
+				ymin=0,
+				ymax=21000,
+				scaled y ticks=false]
+				\addplot table [only marks,col sep=comma,x=release_date,y=features] {\features};
+				\addplot table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=features}}] {\features};
+				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,3454) {};
+				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,8517) {};
+				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,11292) {};
+				\node [coordinate,pin=above:{v4.18}] at (axis cs:2018-08-12,14049) {};
+			\end{axis}
+		\end{tikzpicture}
+	\end{frame}
+
+	% number of products of Linux kernel
+	\begin{frame}[plain]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				ylabel=Number of Products,
+				ymax=8500,
+				ytick={1000,2000,3000,4000,5000,6000,7000,8000},
+				yticklabels={$10^{1000}$,$10^{2000}$,$10^{3000}$,$10^{4000}$,$10^{5000}$,$10^{6000}$,$10^{7000}$,$10^{8000}$},
+				scaled y ticks=false]
+				\addplot table [only marks,col sep=comma,x=release_date,y=products_log10] {\products};
+				\addplot table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=products_log10}}] {\products};
+				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,940.89) {};
+				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,3069.90) {};
+				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,4289.37) {};
+				\node [coordinate,pin=above:{v4.6 ($10^{4861}$)}] at (axis cs:2016-05-15,4861.44) {};
+			\end{axis}
+		\end{tikzpicture}
+	\end{frame}
+
+	% model counting time of Linux kernel
+	\begin{frame}[plain]
+		\centering
+		\begin{tikzpicture}
+			\begin{semilogyaxis}[
+				width=.93\linewidth,
+				ylabel=Time for Counting (logarithmic),
+				ymax=30000000000,
+				ytick={1,1000,60000,3600000,86400000,2419200000,31536000000},
+				yticklabels={1 ms,1 sec,1 min,1 hour,1 day,4 weeks,1 year},
+				]
+				\addplot table [only marks,col sep=comma,x=release_date,y=time_in_ms] {\products};
+				\addplot table [red,mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=time_in_ms}}] {\products};
+				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,331) {};
+				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,17698) {};
+				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,748797) {};
+				\node [coordinate,pin=above:{v4.6 (39 min)}] at (axis cs:2016-05-15,2365859) {};
+			\end{semilogyaxis}
+		\end{tikzpicture}
+	\end{frame}
+
+\end{document}

@@ -93,12 +93,14 @@
 		\myexample{Consequences for Product Lines}{
 			\begin{itemize}
 				\item number of features and size of implementation increases over time
-				\item all above-mentioned challenges increase over time
-				\item more code clones
-				\item harder to trace features
-				\item automated generation more urgent
-				\item increasing combinatorial explosion
-				\item more feature interactions
+				\item discussed challenges increase over time
+					\begin{itemize}
+						\item more code clones
+						\item harder to trace features
+						\item automated generation more urgent
+						\item increasing combinatorial explosion
+						\item more feature interactions
+					\end{itemize}
 			\end{itemize}
 		}
 	}
@@ -119,17 +121,17 @@
 
 \begin{frame}{Evolution of the Linux Kernel}
 	\leftorright{
-		\todo{LOC over time}
+		\myexampletight{Size of the Code Base}{\includegraphics[width=\linewidth,page=1]{linux-plots}}
 	}{
-		\todo{number of features over time}
+		\myexampletight{Number of Features}{\includegraphics[width=\linewidth,page=2]{linux-plots}}
 	}
 \end{frame}
 
 \begin{frame}{Evolution of the Linux Kernel}
 	\leftorright{
-		\todo{number of valid feature combinations over time}
+		\myexampletight{Number of Products}{\includegraphics[width=\linewidth,page=3]{linux-plots}}
 	}{
-		\todo{time to compute these numbers?}
+		\myexampletight{Time to Count Products}{\includegraphics[width=\linewidth,page=4]{linux-plots}}
 	}
 \end{frame}
 
