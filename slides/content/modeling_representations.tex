@@ -243,19 +243,22 @@
 	}
 }
 
+\newcommand{\featureDiagramFunction}[4]{$#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right) = #4$}
+
 \begin{frame}{-- Algorithm}
 	\leftorright{
-		$\phi($\begin{forest}featureDiagram[x[y]]\end{forest}$) = Root$
+		\featureDiagramFunction{\phi}{6ex}{Root}{Root}
 		
-		$\phi\left(\featureDiagram{Root}\right) = Root$
-	
-		$\phi\left(\featureDiagram{P[C,optional]}\right) = C \pimplies P$
-	
-		$\phi\left(\featureDiagram{P[C,mandatory]}\right) = C \pequals P$
+		\featureDiagramFunction{\phi}{6ex}{P[C,optional]}{C \pimplies P}
+
+		\featureDiagramFunction{\phi}{6ex}{P[C,mandatory]}{C \pequals P}
+		
+		\featureDiagramFunction{\phi}{15ex}{P[$C_1$,or][\ldots][$C_n$]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}
+
+		\featureDiagramFunction{\phi}{15ex}{P[$C_1$,or][\ldots][$C_n$]}{}
+		$\bigvee_{1 \leq i \leq n} C_i \pequals P$
+		\hspace*{23.5ex}$\pand~\bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)$
 	}{
-		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = \bigvee_{1 \leq i \leq n} C_i \pequals P$
-		
-		$\phi\left(\featureDiagram{P[$C_1$,or][\ldots][$C_n$]}\right) = \bigvee_{1 \leq i \leq n} C_i \pequals P \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)$
 	}
 
 \end{frame}
