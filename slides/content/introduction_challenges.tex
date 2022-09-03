@@ -113,6 +113,7 @@
 			\begin{itemize}
 				\item about $60,000$ commits per year
 				\item in peak weeks: new commit every 5 minutes
+				\iten in average weeks: every 9 minutes
 			\end{itemize}
 		}
 	}{
@@ -121,22 +122,49 @@
 
 \begin{frame}{Evolution of the Linux Kernel}
 	\leftorright{
-		\myexampletight{Size of the Code Base}{\includegraphics[width=\linewidth,page=1]{linux-plots}}
+		\myexampletight{Size of the Code Base}{
+			\includegraphics[width=\linewidth,page=1]{linux-plots}
+			\vspace{-4mm} % TODO Benno: hack. why needed?
+			\begin{itemize}
+				\item from 4 to 24 millions in 17 years
+				\item about one million LOC added every year
+				\item about 3,000 LOC per day
+			\end{itemize}
+		}
 	}{
-		\myexampletight{Number of Features}{\includegraphics[width=\linewidth,page=2]{linux-plots}}
+		\myexampletight{Number of Features}{
+			\includegraphics[width=\linewidth,page=2]{linux-plots}
+			\vspace{-4mm} % TODO Benno: hack. why needed?
+			\begin{itemize}
+				\item about 800 new features every year
+				\item about 15 new features every week
+				\item in 2018 four times more features than in 2005
+			\end{itemize}
+		}
 	}
 \end{frame}
 
 \begin{frame}{Evolution of the Linux Kernel}
 	\leftorright{
-		\myexampletight{Number of Products}{\includegraphics[width=\linewidth,page=3]{linux-plots}}
+		\myexampletight{Number of Products}{
+			\includegraphics[width=\linewidth,page=3]{linux-plots}
+			\vspace{-4mm} % TODO Benno: hack. why needed?
+			\begin{itemize}
+				\item number of products is doubled more than three times a day
+				\item the current kernel is likely to have between $10^{6000}$ and $10^{8000}$ products
+			\end{itemize}
+		}
 	}{
-		\myexampletight{Time to Count Products}{\includegraphics[width=\linewidth,page=4]{linux-plots}}
+		\myexampletight{Time to Count Products}{
+			\includegraphics[width=\linewidth,page=4]{linux-plots}
+			\vspace{-4mm} % TODO Benno: hack. why needed?
+			\begin{itemize}
+				\item most kernel versions before 2015 can be computed within 1 minute
+				\item most kernel versions after 2015 cannot be computed within 1 hour
+			\end{itemize}
+		}
 	}
 \end{frame}
-
-%\subsection{Maintainability}
-% maintenance of preprocessor code?
 
 % costs: development, investment, maintenance, logistic, production
 % customer needs?
