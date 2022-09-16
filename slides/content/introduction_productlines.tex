@@ -1,6 +1,8 @@
 \subsection{Customization} % TODO Handcrafting
-\begin{frame}{\insertsubsection\ \deutsch{Maßschneiderung}}
+\begin{frame}{\insertsubsection\ \deutschertitel{Maßschneiderung}}
 	\leftorright{
+		\todo{shoes? (is still out there and a later example) furniture?}
+		
 		\todots
 	}{
 		\todots
@@ -9,7 +11,7 @@
 % why?
 
 \subsection{Mass Production}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\insertsubsection\ \deutschertitel{Massenproduktion}}
 	\leftorright{
 		\todots
 	}{
@@ -29,7 +31,7 @@
 % one size fits all: T-Shirts
 
 \subsection{Mass Customization}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\insertsubsection\ \deutschertitel{Kundenindividuelle Massenproduktion}}
 	\leftorright{
 		\todots
 	
@@ -47,27 +49,44 @@
 % variability in hardware, laws, ...
 % expensive customization
 
+\begin{frame}{The Project Cartoon}
+	\renewcommand{\projectcartoonwidth}{.135}
+	\uncover<2-|handout:1-2>{\alt<-8|handout:1>{\hprojectcartoon{01}{how the customer explained it}}{\alt<9|handout:2>{\hprojectcartoon{01}{Requirements}}{\projectcartoon{01}{Requirements}}}}% requirements
+	\uncover<3->{\alt<-8,10-|handout:1>{\hprojectcartoon{02}{how the project leader understood it}}{\projectcartoon{02}{how the project leader understood it}}}% modeling
+	\uncover<4->{\alt<-8,10-|handout:1>{\hprojectcartoon{03}{how the analyst designed it}}{\projectcartoon{03}{how the analyst designed it}}}% architecture and design
+	\uncover<5->{\alt<-8,10-|handout:1>{\hprojectcartoon{04}{how the programmer implemented it}}{\projectcartoon{04}{how the programmer implemented it}}}% implementation
+	\uncover<6->{\alt<-8,10-|handout:1>{\hprojectcartoon{05}{what the beta testers received}}{\projectcartoon{05}{what the beta testers received}}}% testing
+	\uncover<7->{\alt<-8,10-|handout:1>{\hprojectcartoon{10}{how it was supported}}{\projectcartoon{10}{how it was supported}}}% maintenance
+	\uncover<8->{\alt<-8|handout:1>{\hprojectcartoon{13}{what the customer really needed}}{\alt<9>{\hprojectcartoon{13}{Product}}{\projectcartoon{13}{Product}}}}% customer / SE II
+	\\
+\end{frame}
+
+\begin{frame}{Recap: The Software Life Cycle}
+	\waterfallcartoon\\
+\end{frame}
+
 \subsection{Features and Products of a Domain}
 \begin{frame}{What is a Feature?}
-	\leftorright{
-		\mydefinition{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}
-		\todo{picture of a program highlighting one or two features? settings? changelog? marketing description of new features (Github?)?}
+	\leftandright{
+		\uncover<2->{\mydefinition{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}}
+		\centering\xkcd{2369}{width=.8\linewidth}
 	}{
-		\mynote{Feature in a Product Line \mysource{\fospl\mypage{18}}}{\mycitebegin Features are used in \todo{product-line engineering}
+		\uncover<3->{\mynote{Feature in a Product Line \mysource{\fospl\mypage{18}}}{\mycitebegin Features are used in product-line engineering
 			\begin{itemize}
-				\item to specify and communicate commonalities and differences of the products between \todo{stakeholders}, and
+				\item to specify and communicate commonalities and differences of the products between stakeholders \deutsch{Akteure} and
 				\item to guide structure, reuse, and variation across all phases of the software life cycle.\myciteend
 			\end{itemize}
-		}
-		\todo{illustrate stakeholders and software life cycle? project cartoon?}
+		}}
+		\renewcommand{\projectcartoonwidth}{.18}\scriptsize
+		\uncover<4->{\waterfallcartoon}\\
 	}
 \end{frame}
+% TODO 		\todo{picture of a program highlighting one or two features? settings? changelog? marketing description of new features (Github?)?}
+
 % goals of features
 %a distinctively identifiable functional abstraction that must be implemented, tested, delivered, and maintained” (Kang et al.
 %a product characteristic from user or customer views, which essentially consists of a cohesive set of individual requirements” (Chen et al.
 %an optional or incremental unit of Zave 2003) 
-
-\xkcd{2369} % paper processor 25s
 
 \begin{frame}{What is a Product?}
 	\leftorright{
@@ -191,7 +210,7 @@
 % financial products by KfW, bikes, shoes, muesli, Subway, headphones, lego, detergents, furniture (handcrafted vs standardized vs product line), kitchens
 % brompton: picture in ulm slides
 
-% TODO zoo of animals/tools
+% zoo of animals/tools
 
 % historical development? exchangable parts, production lines, automated product lines, ...
 % all-in-one solution vs custom development? software for German fire departments
