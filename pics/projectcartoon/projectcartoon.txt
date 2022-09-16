@@ -1,0 +1,18 @@
+01 How the customer explained it
+02 How the project leader understood it
+03 How the analyst designed it
+04 How the programmer wrote it
+05 What the beta testers received
+06 How the business consultant described it
+07 How the project was documented
+08 What operations installed
+09 How the customer was billed
+10 How it was supported
+11 What marketing advertised
+12 When it was delivered
+13 What the customer really needed
+14 What the digg effect can do to your site
+15 The disaster recover plan
+16 The Open Source version
+17 How it performed under load
+18 How patches were applied
