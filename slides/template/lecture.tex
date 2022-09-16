@@ -243,7 +243,7 @@
 
 % TODO hack to make \leftandright work again in example boxes
 \renewcommand{\myexample}[2]{
-	\begin{tcolorbox}[title={\setlength{\parskip}{0ex}\vphantom{/}#1},colback=blue!10,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
+	\begin{tcolorbox}[title={#1}, before title={\setlength{\parskip}{0ex}\vphantom{/}},colback=blue!10,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
 		\begin{flushleft}
 			#2
 		\end{flushleft}
