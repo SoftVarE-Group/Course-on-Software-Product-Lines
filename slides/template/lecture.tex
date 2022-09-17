@@ -1,5 +1,23 @@
 \usepackage{../template/beamerthemeuulm} % use the inofficial uulm beamer theme
 \setfaculty{infIngPsy} % set the color scheme for your faculty here [med/infIngPsy/math/nat]
+\setmycolumnsdefault{animation=forget} % animate all columns per default
+%\recordingtrue % special recording mode for use with a greenscreen, gives you space to show yourself in a layer in front of the slides, has no effect in the handout mode
+
+\title{Software Product Lines} % short title is used for the slide footer but optional
+
+% IMPORTED PACKAGES
+
+%\usepackage{adjustbox} % used for partofpage
+\usepackage{multicol} % used temporarily for the lecture overview
+\usepackage{stmaryrd} % \lightning in modeling lecture
+
+% INCLUDED TEMPLATE FILES
+
+\input{template/colorscheme}
+\input{template/macros}
+\input{template/featurediagrams}
+
+% GRAPHICSPATH
 
 % TODO use git module for public repositories
 % requires symbolic links
@@ -37,26 +55,6 @@
 	{../pics/xkcd/}
 }
 
-%\recordingtrue % special recording mode for use with a greenscreen, gives you space to show yourself in a layer in front of the slides, has no effect in the handout mode
-
-\title{Software Product Lines} % short title is used for the slide footer but optional
-
-% REFERENCES TO OTHER LECTURES
-
-\newcommand{\reflecture}[1]{(see Lecture~#1)}
-\newcommand{\lectureintroduction}{\reflecture{1}}
-\newcommand{\lectureruntime}{\reflecture{2}}
-\newcommand{\lecturecloneandown}{\reflecture{3}}
-\newcommand{\lecturemodeling}{\reflecture{4}}
-\newcommand{\lectureembedded}{\reflecture{5}}
-\newcommand{\lectureapps}{\reflecture{6}}
-\newcommand{\lecturelanguages}{\reflecture{7}}
-\newcommand{\lectureprocess}{\reflecture{8}}
-\newcommand{\lectureinteractions}{\reflecture{9}}
-\newcommand{\lectureanalyses}{\reflecture{10}}
-\newcommand{\lecturetesting}{\reflecture{11}}
-\newcommand{\lectureevonance}{\reflecture{12}}
-
 % LINKED LITERATURE
 
 \newcommand{\bakarnaturallanguage}{\href{https://doi.org/10.1016/j.jss.2015.05.006}{Bakar~et~al.~2015}}
@@ -82,48 +80,29 @@
 \newcommand{\twodimensionalanalysislink}[1]{\href{https://github.com/SoftVarE-Group/Papers/raw/main/2019/2019-VariVolution-Thuem.pdf}{#1}}
 \newcommand{\twodimensionalanalysis}{\twodimensionalanalysislink{Thüm~et~al.~2019}}
 
-% IMPORTED PACKAGES
+% REFERENCES TO OTHER LECTURES
 
-%\usepackage{adjustbox} % used for partofpage
-\usepackage{multicol} % used temporarily for the lecture overview
-\usepackage{stmaryrd} % \lightning in modeling lecture
+\newcommand{\reflecture}[1]{(see Lecture~#1)}
+\newcommand{\lectureintroduction}{\reflecture{1}}
+\newcommand{\lectureruntime}{\reflecture{2}}
+\newcommand{\lecturecloneandown}{\reflecture{3}}
+\newcommand{\lecturemodeling}{\reflecture{4}}
+\newcommand{\lectureembedded}{\reflecture{5}}
+\newcommand{\lectureapps}{\reflecture{6}}
+\newcommand{\lecturelanguages}{\reflecture{7}}
+\newcommand{\lectureprocess}{\reflecture{8}}
+\newcommand{\lectureinteractions}{\reflecture{9}}
+\newcommand{\lectureanalyses}{\reflecture{10}}
+\newcommand{\lecturetesting}{\reflecture{11}}
+\newcommand{\lectureevonance}{\reflecture{12}}
 
-% INCLUDED TEMPLATE FILES
-\input{template/colorscheme}
-\input{template/macros}
-\input{template/featurediagrams}
+% HACKS TO WORKAROUND PROBLEMS WITH THE TEMPLATE
 
-% COMMANDS TO LAYOUT AND ANNIMATE SLIDES
-
-\newcommand{\lessonslearned}[3]{
-	\subsection{Summary}
-	\begin{frame}{\insertsection{} -- \insertsubsection}
-		\leftandright{
-			\mydefinition{Lessons Learned}{
-				\begin{itemize}
-					#1
-				\end{itemize}
-			}
-			\uncover<2->{\mynote{Further Reading}{
-				\small % references take space, can be a little smaller
-				\begin{itemize}
-					#2
-				\end{itemize}
-			}}
-		}{
-			\uncover<3->{\myexample{Practice}{
-				\begin{itemize}
-					#3
-				\end{itemize}
-			}}
-		}
-	\end{frame}
-}
+% TODO command to add extra space after each section manually
+\newcommand{\sectionend}{\addtocontents{toc}{\vspace{5mm}}}
 
 % TODO temporary hack to layout the slide overview in two colums
 \renewcommand{\lectureoverview}{
-%	\section*{Overview}
-%	\subsection*{Overview}
 	\begin{frame}{\insertsubtitle}
 		\begin{multicols}{2}
         	\setlength{\parskip}{0ex}
@@ -132,11 +111,10 @@
 	\end{frame}
 }
 
+% TODO temporary hack to enable missing pictures at title slide
 \renewcommandx{\maketitle}[2][1=apr21-o25a,2=150]{
 	{
-	\usebackgroundtemplate{} % TODO temporary hack to enable missing pictures at title slide
-	%\ifx {#1} \empty \else {\usebackgroundtemplate{\includegraphics[trim=0 0 0 #2,clip,width=\paperwidth]{#1}}} \fi     
-	%\usebackgroundtemplate{\includegraphics[trim=0 0 0 #2,clip,width=\paperwidth]{#1}}
+	\usebackgroundtemplate{}
 	\begin{frame}[plain]
 		\vskip0pt plus 1filll
 		\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
@@ -164,86 +142,6 @@
 	}  
 }
 
-\renewcommand{\emph}[1]{{\color{blue}\textbf{#1}}}
-
-%
-%\newcommand{\onlyleft}[1]{
-%	\halfpage{#1}
-%}
-%
-%\newcommand{\onlyright}[1]{
-%	~\hfill
-%	\halfpage{#1}
-%}
-%
-%\newcommand{\leftorright}[2]{
-%	\uncover<1>{\halfpage{#1}}
-%	\hfill
-%	\uncover<3->{\halfpage{#2}}
-%}
-%
-%\newcommand{\rightorleft}[2]{
-%	\uncover<3->{\halfpage{#1}}
-%	\hfill
-%	\uncover<1>{\halfpage{#2}}
-%}
-%
-%\newcommand{\leftthenright}[2]{
-%	\halfpage{#1}
-%	\hfill\pause
-%	\halfpage{#2}
-%}
-%
-%\newcommand{\leftandright}[2]{
-%	\halfpage{#1}
-%	\hfill
-%	\halfpage{#2}
-%}
-%
-%\newcommand{\leftmiddleandright}[3]{
-%	\thirdpage{#1}
-%	\hfill
-%	\thirdpage{#2}
-%	\hfill
-%	\thirdpage{#3}
-%}
-%
-%\newcommand{\leftmiddleorright}[3]{
-%	\uncover<1>{\thirdpage{#1}}
-%	\hfill
-%	\uncover<3>{\thirdpage{#2}}
-%	\hfill
-%	\uncover<5->{\thirdpage{#3}}
-%}
-%
-%\newcommand{\halfpage}[1]{\partofpage{48}{#1}}
-%
-%\newcommand{\thirdpage}[1]{\partofpage{31}{#1}}
-%
-%\newcommand{\mydefinition}[2]{
-%	\begin{tcolorbox}[title=#1,colback=orange!10,colframe=orange!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
-%		\begin{flushleft}
-%			#2
-%		\end{flushleft}
-%	\end{tcolorbox}
-%}
-%
-%\newcommand{\mydefinitiontight}[2]{
-%	\begin{tcolorbox}[title=#1,colback=white,colframe=orange!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
-%		\begin{flushleft}
-%			#2
-%		\end{flushleft}
-%	\end{tcolorbox}
-%}
-%
-%\newcommand{\mynote}[2]{
-%	\begin{tcolorbox}[title=#1,colback=red!10,colframe=red!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
-%		\begin{flushleft}
-%			#2
-%		\end{flushleft}
-%	\end{tcolorbox}
-%}
-
 % TODO hack to make \leftandright work again in example boxes
 \renewcommand{\myexample}[2]{
 	\begin{tcolorbox}[title={#1}, before title={\setlength{\parskip}{0ex}\vphantom{/}},colback=blue!10,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
@@ -252,12 +150,3 @@
 		\end{flushleft}
 	\end{tcolorbox}
 }
-
-%\newcommand{\myexampletight}[2]{
-%	\begin{tcolorbox}[title=#1,colback=white,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
-%		\begin{flushleft}
-%			#2
-%		\end{flushleft}
-%	\end{tcolorbox}
-%}
-

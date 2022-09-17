@@ -1,5 +1,7 @@
 % TYPICAL COMMANDS FOR LECTURES
 
+\renewcommand{\emph}[1]{{\color{blue}\textbf{#1}}}
+
 \newcommand{\deutsch}[1]{{\color{blue}(#1)}}
 \newcommand{\deutschertitel}[1]{{\tiny\deutsch{#1}}}
 
@@ -17,6 +19,31 @@
 
 \newcommand{\textheightwithtitle}{.825\textheight}
 \newcommand{\textheightwithouttitle}{.975\textheight}
+
+\newcommand{\lessonslearned}[3]{
+	\subsection{Summary}
+	\begin{frame}{\insertsection{} -- \insertsubsection}
+		\leftandright{
+			\mydefinition{Lessons Learned}{
+				\begin{itemize}
+					#1
+				\end{itemize}
+			}
+			\uncover<2->{\mynote{Further Reading}{
+				\small % references take space, can be a little smaller
+				\begin{itemize}
+					#2
+				\end{itemize}
+			}}
+		}{
+			\uncover<3->{\myexample{Practice}{
+				\begin{itemize}
+					#3
+				\end{itemize}
+			}}
+		}
+	\end{frame}
+}
 
 % COMMANDS FOR PROPOSITIONAL FORMULAS AND MATHEMATICAL NOTATIONS
 
