@@ -1,10 +1,10 @@
 \subsection{Code Clones}
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\todots
-	}{
+	\mynextcolumn
 		\todots
-	}
+	\end{mycolumns}
 \end{frame}
 % cloning in single-system engineering, levels of clones?
 % cloning in the large, considered harmful
@@ -12,27 +12,27 @@
 
 \subsection{Feature Traceability}
 \begin{frame}{\insertsubsection}
-	\leftandright{
+	\begin{mycolumns}[widths={40}]
 		\mydefinition{Feature Traceability \mysource{\fospl\mypage{54}}}{\mycite{Feature traceability is the ability to trace a feature from the problem space (for example, the feature model) to the solution space (that is, its manifestation in design and code artifacts).}}
 		\todo{all terms introduced?}
-	}{
+	\mynextcolumn
 		\myexampletight{Feature Traceability with Colored Source Code}{\includegraphics[width=\linewidth]{feature-traceability}}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Automated Generation}
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\todo{lego pictures}
-	}{
+	\mynextcolumn
 		\href{https://pxhere.com/en/photo/920906}{\includegraphics[width=\linewidth]{car-tower}}
-	}
+	\end{mycolumns}
 \end{frame}
 % how to automatically generate products given a descriptive selection of features?
 
 \subsection{Combinatorial Explosion}
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}[widths={49}]
 		\myexampletight{Combinatorial Explosion}{
 			\includegraphics[width=\linewidth,page=6]{cit-plots}%
 			\small%
@@ -42,7 +42,7 @@
 				\item 320 features: more combinations than atoms in the universe
 			\end{itemize}
 		}
-	}{
+	\mynextcolumn
 		\myexampletight{Industrial Configuration Spaces \mysource{\evaluatingsharpsatsolvers}}{
 			\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}%
 			\small%
@@ -52,7 +52,7 @@
 				\item largest automotive product line has about $1.7 \cdot 10^{1534}$ products
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 \begin{frame}{\insertsubsection}
 	\centering\href{https://github.com/SoftVarE-Group/Slides/blob/main/2021/2021-02-10-VaMoS-SharpSATApplications.pdf}{\includegraphics[height=\textheightwithtitle,page=9,trim=60 15 15 5,clip]{2021/2021-02-10-VaMoS-SharpSATApplications}}
@@ -60,18 +60,18 @@
 
 \subsection{Feature Interactions}
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\todots
-	}{
+	\mynextcolumn
 		\myexampletight{Invalid Car Configurations}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}}
-	}
+	\end{mycolumns}
 \end{frame}
 % typically unknown in advance
 % quality assurance/correctness necessary
 
 \subsection{Continuing Change and Growth}
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}[widths={42}]
 		\mydefinition{Lehman's Laws of Software Evolution (excerpt) \mysource{\lehmanslaws}}{
 			\begin{itemize}
 				\item Continuing Change: systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
@@ -84,7 +84,7 @@
 				%\item Feedback System: %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
 			\end{itemize}
 		}
-	}{
+	\mynextcolumn
 		\mynote{Essence of the Laws}{
 			\begin{itemize}
 				\item software that is used will be modified
@@ -104,11 +104,11 @@
 					\end{itemize}
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Evolution of the Linux Kernel}
-	\leftorright{
+	\begin{mycolumns}
 		\myexample{}{
 			\begin{itemize}
 				\item about $60,000$ commits per year
@@ -116,15 +116,15 @@
 				\item in average weeks: every 9 minutes
 			\end{itemize}
 		}
-	}{
+	\mynextcolumn
 		\vspace{-12mm} % TODO Benno: hack. not sure how to improve this.
 		\href{https://github.com/erikbern/git-of-theseus}{\includegraphics[width=\linewidth,trim=100 70 110 80,clip]{linux-stack-plot}}
-	}
+	\end{mycolumns}
 	\twodimensionalanalysislink{\includegraphics[width=.8\linewidth,page=1,trim=80 420 80 260,clip]{2019/2019-VariVolution-Thuem}}
 \end{frame}
 
 \begin{frame}{Evolution of the Linux Kernel}
-	\leftorright{
+	\begin{mycolumns}
 		\myexampletight{Size of the Code Base}{
 			\includegraphics[width=\linewidth,page=1]{linux-plots}%
 			\begin{itemize}
@@ -133,7 +133,7 @@
 				\item about 3,000 LOC per day
 			\end{itemize}
 		}
-	}{
+	\mynextcolumn
 		\myexampletight{Number of Features}{
 			\includegraphics[width=\linewidth,page=2]{linux-plots}%
 			\begin{itemize}
@@ -142,11 +142,11 @@
 				\item in 2018 four times more features than in 2005
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Evolution of the Linux Kernel}
-	\leftorright{
+	\begin{mycolumns}
 		\myexampletight{Number of Products}{
 			\includegraphics[width=\linewidth,page=3]{linux-plots}%
 			\begin{itemize}
@@ -154,7 +154,7 @@
 				\item the current kernel is likely to have between $10^{6000}$ and $10^{8000}$ products
 			\end{itemize}
 		}
-	}{
+	\mynextcolumn
 		\myexampletight{Time to Count Products}{
 			\includegraphics[width=\linewidth,page=4]{linux-plots}%
 			\begin{itemize}
@@ -162,7 +162,7 @@
 				\item most kernel versions after 2015 cannot be computed within 1 hour
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 % costs: development, investment, maintenance, logistic, production

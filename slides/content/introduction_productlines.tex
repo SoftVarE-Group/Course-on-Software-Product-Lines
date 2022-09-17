@@ -1,23 +1,23 @@
 \subsection{Customization} % TODO Handcrafting
 \begin{frame}{\insertsubsection\ \deutschertitel{Maßschneiderung}}
-	\leftorright{
+	\begin{mycolumns}
 		\todo{shoes? (is still out there and a later example) furniture?}
 		
 		\todots
-	}{
+	\mynextcolumn
 		\todots
-	}
+	\end{mycolumns}
 \end{frame}
 % why?
 
 \subsection{Mass Production}
 \begin{frame}{\insertsubsection\ \deutschertitel{Massenproduktion}}
-	\leftorright{
+	\begin{mycolumns}
 		\todots
-	}{
+	\mynextcolumn
 		\mynote{Mass Production for Software?\mysource{\fospl\mypage{7}}}{\mycite{The idea is to provide software that satisfies the
 		needs of most customers, which leads almost automatically to the situation, in which customers miss desired functionality and are overwhelmed with functionality they do not need actually (just think of any contemporary office or graphics program). It is often this generality that makes software complex, slow, and buggy.}}
-	}
+	\end{mycolumns}
 \end{frame}
 % why?
 % \deutsch{Massenproduktion}
@@ -35,15 +35,15 @@
 	\centering\href{https://en.wikipedia.org/wiki/File:I-80_Eastshore_Fwy.jpg}{\includegraphics[width=.66\linewidth]{many-cars}}
 \end{frame}
 \begin{frame}{\insertsubsection\ \deutschertitel{Kundenindividuelle Massenproduktion}}
-	\leftorright{
+	\begin{mycolumns}
 		\todots
 	
 		\myexampletight{Car Configuration}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}
-	}{
+	\mynextcolumn
 		\myexampletight{Car Production}{\href{https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG}{\includegraphics[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}}
 		
 		\todots
-	}
+	\end{mycolumns}
 \end{frame}
 % why?
 %\subsection{Motivation}
@@ -71,10 +71,10 @@
 
 \subsection{Features and Products of a Domain}
 \begin{frame}{What is a Feature?}
-	\leftandright{
+	\begin{mycolumns}[widths={45},t]
 		\uncover<2->{\mydefinition{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}}
 		\centering\xkcd{2369}{width=.9\linewidth,trim=35 35 35 35,clip}
-	}{
+	\mynextcolumn
 		\uncover<3->{\mynote{Feature in a Product Line \mysource{\fospl\mypage{18}}}{\mycitebegin Features are used in product-line engineering
 			\begin{itemize}
 				\item to specify and communicate commonalities and differences of the products between stakeholders \deutsch{Akteure} and
@@ -83,7 +83,7 @@
 		}}
 		\renewcommand{\projectcartoonwidth}{.18}\scriptsize
 		\uncover<4->{\waterfallcartoon}\\
-	}
+	\end{mycolumns}
 \end{frame}
 % TODO picture of a program highlighting one or two features? settings? changelog? marketing description of new features (Github?)?
 
@@ -93,13 +93,13 @@
 %an optional or incremental unit of Zave 2003) 
 
 \begin{frame}{What is a Product?}
-	\leftorright{
+	\begin{mycolumns}
 		\mydefinition{Product \deutsch{Produkt} \mysource{\fospl\mypage{19}}}{\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}}
 		
 		\todo{product map illustrating differences of products in terms of features? Venn diagram? Eclipse? Office?}
 		
 		\todo{when to introduce configurations?}
-	}{
+	\mynextcolumn
 		\mynote{}{
 			\begin{itemize}
 				\item in this course:
@@ -110,11 +110,11 @@
 			\end{itemize}
 		}
 		\todo{exemplify difference between hardware product, software product, and program (reuse pictures from before)}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{What is a Domain?}
-	\leftorright{
+	\begin{mycolumns}
 		\mydefinition{Domain \deutsch{Domäne} \mysource{\fospl\mypage{19}}}{ % TODO cite CE00 here too?
 			\mycitebegin A \emph{domain} is an area of knowledge that:
 			\begin{itemize}
@@ -125,43 +125,43 @@
 			\end{itemize}
 		}
 		\todo{give examples for several domains. ideally all example domains that have been discussed before already}
-	}{
+	\mynextcolumn
 		\mynote{}{
 			\begin{itemize}
 				\item a feature is a domain abstraction
 				\item identification of features requires domain expertise
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Software Product Line}
 \begin{frame}{\insertsubsection}
-	\leftandright{
+	\begin{mycolumns}[widths={80},columns=1]
 		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
-				\item a set of software-intensive systems \only<2|handout:0>{\myexample{}{aka.\ products or variants}}
-				\item that share a common, managed set of features \only<3|handout:0>{\myexample{}{common set, but not all products have all features in common}}
-				\item satisfying the specific needs of a particular market segment or mission \only<4|handout:0>{\myexample{}{aka.\ domain \deutsch{Domäne}}}
-				\item and that are developed from a common set of core assets in a prescribed way.\myciteend \only<5|handout:0>{\myexample{}{aka.\ planned, structured reuse \deutsch{Wiederverwendung}}}
+				\item a set of software-intensive systems \uncover<2>{\myexampletight{}{aka.\ products or variants}}
+				\item that share a common, managed set of features \uncover<3>{\myexampletight{}{common set, but not all products have all features in common}}
+				\item satisfying the specific needs of a particular market segment or mission \uncover<4>{\myexampletight{}{aka.\ domain \deutsch{Domäne}}}
+				\item and that are developed from a common set of core assets in a prescribed way.\myciteend \uncover<5>{\myexampletight{}{aka.\ planned, structured reuse \deutsch{Wiederverwendung}}}
 			\end{itemize}
 			\mysource{Software Engineering Institute, Carnegie Mellon University}
 		}
-	}{}
+	\end{mycolumns}
 \end{frame}
 % variants / platforms / domain / variant generation
 % configurable software, highly-configurable software, variable software, software variation
 
 \subsection{Product-Line Engineering}
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\mydefinition{Product-Line Engineering}{}
 		\mynotetight{Idea of Product-Line Engineering}{
 			Reduce effort per product by means of an up-front investment for the product line:
 			
 			\includegraphics[width=\linewidth,page=3,trim=30 60 30 50,clip]{VariantSync with Graphs/2015-05-14 FOSDm VariantSync}
 		}
-	}{
+	\mynextcolumn
 		\mynote{Promises of Product Lines \mysource{\fospl\mypages{9--10}}}{
 			\begin{itemize}
 				\item tailor-made \deutsch{Maßschneiderung}
@@ -171,7 +171,7 @@
 			\end{itemize}
 		}
 		\mydefinition{Single-System Engineering}{}
-	}
+	\end{mycolumns}
 \end{frame}
 
 % product-line hall of fame
