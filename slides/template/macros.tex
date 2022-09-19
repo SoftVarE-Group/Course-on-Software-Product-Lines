@@ -119,3 +119,13 @@
 %\uncover<1->{\hprojectcartoon{16}{the open source version}} % open source (licensing)
 %\uncover<1->{\hprojectcartoon{17}{how it performed under load}} % compilation and static analyses. quality assurance? performance?
 %\uncover<1->{\hprojectcartoon{18}{how patches were applied}} % evolution
+
+% COMMANDS BASED ON TIKZ
+
+\newcommand{\mglass}[1]{
+	\scalebox{#1}{
+		\begin{tikzpicture}[overlay]
+			\node[circle,draw=gray,line width=1,fill=blue,fill opacity=.2,inner sep=2mm] {} edge[draw=gray,line width=1,double distance=1pt,shorten <= -.2pt] (.33,-.33);
+		\end{tikzpicture}
+	}
+}

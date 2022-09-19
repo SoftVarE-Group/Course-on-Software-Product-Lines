@@ -2,8 +2,12 @@
 \begin{frame}{\insertsubsection}
 	\begin{mycolumns}
 		\todots
+		
+		~\hfill\includegraphics[width=.2\linewidth]{pants-blue}\hfill\includegraphics[width=.2\linewidth]{pants-red}\hfill~
 	\mynextcolumn
 		\todots
+
+		~\hfill\includegraphics[width=.2\linewidth]{130}\hfill\includegraphics[width=.2\linewidth]{230}\hfill~
 	\end{mycolumns}
 \end{frame}
 % cloning in single-system engineering, levels of clones?
@@ -15,6 +19,8 @@
 	\begin{mycolumns}[widths={40}]
 		\mydefinition{Feature Traceability \mysource{\fospl\mypage{54}}}{\mycite{Feature traceability is the ability to trace a feature from the problem space (for example, the feature model) to the solution space (that is, its manifestation in design and code artifacts).}}
 		\todo{all terms introduced?}
+
+		find feature \includegraphics[width=.17\linewidth]{pants-blue} in source code \includegraphics[width=.17\linewidth]{230}
 	\mynextcolumn
 		\myexampletight{Feature Traceability with Colored Source Code}{\includegraphics[width=\linewidth]{feature-traceability}}
 	\end{mycolumns}
@@ -22,13 +28,45 @@
 
 \subsection{Automated Generation}
 \begin{frame}{\insertsubsection}
-	\begin{mycolumns}
-		\todo{lego pictures}
+	\begin{mycolumns}[columns=3,widths={38,5},animation=none]
+		\myexampletight{Features}{
+			\foreach \animation/\handout/\page in {1-2/0/5,3-4/0/6,5-6/0/7,7-8/0/8,9-10/0/9,11-/1/10} {%
+				\only<\animation|handout:\handout>{\includegraphics[width=\linewidth,page=\page,trim=45 0 45 0,clip]{lego}}%
+			}%
+		}
 	\mynextcolumn
-		\href{https://pxhere.com/en/photo/920906}{\includegraphics[width=\linewidth]{car-tower}}
+		\centering\Huge$\Rightarrow$
+	\mynextcolumn
+		\myexampletight{Products}{
+			\foreach \animation/\handout/\page in {1/0/3,2-3/0/11,4-5/0/12,6-7/0/13,8-9/0/14,10-11/0/15,12-/1/18} {%
+				\only<\animation|handout:\handout>{\includegraphics[width=\linewidth,page=\page]{lego}}%
+			}%
+		}
 	\end{mycolumns}
 \end{frame}
-% how to automatically generate products given a descriptive selection of features?
+\begin{frame}{\insertsubsection}
+	\begin{mycolumns}[widths={45},animation=none]
+		\myexample{Product Line with Features}{
+			\only<1-2>{\includegraphics[width=\linewidth]{metaproduct}}%
+			\only<3->{\includegraphics[width=\linewidth]{metaproduct2}}%
+		}
+	\mynextcolumn
+		\mydefinition{Goal}{
+			\begin{itemize}
+			\item automatic generation of products
+			\item based on a (descriptive) selection of features
+			\end{itemize}
+		}
+		\uncover<2->{\mynote{Challenges}{
+			\begin{itemize}
+			\item how to map features to source code?
+			\item how to combine source code of multiple features?
+			\item how to define valid combinations of features?
+			\end{itemize}
+		}}
+	\end{mycolumns}
+\end{frame}
+% TODO removed following picture here, move it to somewhere else? \href{https://pxhere.com/en/photo/920906}{\includegraphics[width=\linewidth]{car-tower}}
 
 \subsection{Combinatorial Explosion}
 \begin{frame}{\insertsubsection}
@@ -61,13 +99,27 @@
 \subsection{Feature Interactions}
 \begin{frame}{\insertsubsection}
 	\begin{mycolumns}
-		\todots
+		\only<1-2|handout:0>{\includegraphics[width=\linewidth,page=24]{lego}}%
+		\only<3->{\includegraphics[width=\linewidth,page=25]{lego}}%
 	\mynextcolumn
-		\myexampletight{Invalid Car Configurations}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}}
+		\myexample{Example Interaction}{
+			phone \includegraphics[width=.14\linewidth]{phone} cannot be used with helmet \includegraphics[width=.14\linewidth]{helmet}
+		}
+		\uncover<2->{\mynote{Challenges}{
+			\begin{itemize}
+			\item interaction typically unknown in advance
+			\item interactions occur in some but not all combinations
+			\item challenge for quality assurance
+			\end{itemize}
+		}}
 	\end{mycolumns}
 \end{frame}
-% typically unknown in advance
-% quality assurance/correctness necessary
+\begin{frame}{\insertsubsection}
+	\begin{mycolumns}[widths={75},animation=none]
+		\myexampletight{Invalid Car Configurations}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
 
 \subsection{Continuing Change and Growth}
 \begin{frame}{\insertsubsection}
