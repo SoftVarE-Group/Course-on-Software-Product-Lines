@@ -8,7 +8,6 @@
 
 % IMPORTED PACKAGES
 
-%\usepackage{adjustbox} % used for partofpage
 \usepackage{multicol} % used temporarily for the lecture overview
 \usepackage{stmaryrd} % \lightning in modeling lecture
 
@@ -113,37 +112,6 @@
 		\end{multicols}
 	\end{frame}
 }
-
-%% TODO temporary hack to enable missing pictures at title slide
-%\renewcommandx{\maketitle}[2][1=apr21-o25a,2=150]{
-%	{
-%	\usebackgroundtemplate{}
-%	\begin{frame}[plain]
-%		\vskip0pt plus 1filll
-%		\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
-%			\LARGE\textbf{\inserttitle}\hspace*{20pt}
-%		\end{beamercolorbox}%
-%		\nointerlineskip%
-%		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
-%			\small 
-%			\ifx \insertsubtitle \empty \else \insertsubtitle\ $\vert$ \fi
-%			\insertauthor\
-%			\ifx \insertdate \empty \else $\vert$ \insertdate \fi
-%			\hspace*{20pt}
-%		\end{beamercolorbox}%
-%		\nointerlineskip%
-%		\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
-%			\centering
-%			\vspace{-1ex}
-%			\hspace{10pt}
-%			\includegraphics[height=4.5ex]{sp} % SPECIFY INSTITUTE LOGO HERE
-%			\hfill
-%			\includegraphics[height=4.5ex]{uulm}
-%			\hspace{10pt}
-%		\end{beamercolorbox}%
-%	\end{frame}
-%	}  
-%}
 
 % TODO hack to make \leftandright work again in example boxes
 \renewcommand{\myexample}[2]{
