@@ -6,6 +6,37 @@
 
 \input{template/lecture}
 
+
+% Code Listings
+\usepackage{listings}
+
+\lstset{ 
+	language=Java, % choose the language of the code
+	numbers=none, % where to put the line-numbers
+	numberstyle=\tiny, % the size of the fonts that are used for the line-numbers     
+	showspaces=false, % show spaces adding particular underscores
+	showstringspaces=false, % underline spaces within strings
+	showtabs=false, % show tabs within strings adding particular underscores
+	frame=single, % adds a frame around the code
+	framerule=1pt,
+	framesep=3pt,
+	tabsize=2, % sets default tabsize to 2 spaces
+	rulesepcolor=\color{gray},
+	rulecolor=\color{black},
+	captionpos=b, % sets the caption-position to bottom
+	breaklines=true, % sets automatic line breaking
+	breakatwhitespace=false, 
+	moredelim=**[is][\color{red}]{@}{@},
+	moredelim=**[is][\color{green}]{?}{?},
+	moredelim=**[is][\color{blue}]{~}{~},
+	escapeinside={(*@}{@*)},
+	columns=fullflexible, 
+	backgroundcolor=\color{white}
+}
+
+% Tables
+\usepackage{booktabs}
+
 \subtitle{2. Runtime Variability and Design Patterns}
 \author{Timo Kehrer}
 
@@ -20,57 +51,67 @@
 
 \section{Configuration of Runtime Variability}
 
-\subsection{Runtime Parameters}
-\begin{frame}{\insertsubsection}
-	\leftorright{
-		\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
-	}{
-		\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
-	}
-\end{frame}
+\input{content/runtime_configuration}
 
 \lessonslearned{
-	\item \ldots
+	\item External setting of configuration parameters through, e.g.,
+		%\begin{itemize}
+			command-line parameters,
+			configuration files, or
+			preference dialogs.
+		%\end{itemize}
+	\item Validity of parameter settings (i.e., feature combinations) may be affected by dependencies between features.
 }{
-	\item \ldots
+	\item S. Apel, D. Batory, C. Kästner, and G. Saake. Feature-Oriented Software Product Lines - Concepts and Implementation. Springer, 2013. Chapter 4
+	\item J. Meinicke, T. Thüm, R. Schröter, F. Benduhn, T. Leich, and G. Saake. Mastering Software Variability with FeatureIDE. Springer, 2017. Chapter 17.1
 }{
-	\ldots
+	\item Do you know any practical examples making use of runtime variability?
+	\item How does the configuration take place?
+	\item Is the configuration checked for validity?
 }
 
 \sectionend
-
+	
 \section{Realization of Runtime Variability}
 
-\subsection{Runtime Parameters and Runtime Properties}
-\begin{frame}{\insertsubsection\ \mytitlesource{\featureide}}
-	\leftorright{
-		\includegraphics[width=\linewidth]{runtime-parameters}
-	}{
-		\includegraphics[width=\linewidth]{runtime-properties}
-	}
-\end{frame}
+\input{content/runtime_implementation}
 
 \lessonslearned{
-	\item \ldots
+	\item Global (immutable) variables or (lengthy) parameter lists.
+	\item Reconfiguration at runtime is possible (in principle).
+	\item Variability is spread over the entire program.
+	\item Variable parts are always delivered.
+		%\begin{itemize}
+			%\item Affects code size, resource consumption, performance, ...
+			%\item Unused functionality may be risky (security, business strategy, ...)
+		%\end{itemize}
 }{
-	\item \ldots
+	\item P. Hodgson. Feature Toggles. \url{https://martinfowler.com/articles/feature-toggles.html}
 }{
-	\ldots
+	\item What are the problems with code scattering, tangling and replication?
+	\item What are the problems of variable parts being always delivered?
 }
 
 \sectionend
 
 \section{Design Patterns for Variability}
 
-\input{content/missing}
+\input{content/runtime_patterns}
 
 \lessonslearned{
-	\item \ldots
+	\item Variability through object-orientation and design patterns
+	\item Extension through delegation vs. inheritance  
+	\item Limitations and drawbacks w.r.t. feature combinations
 }{
-	\item \ldots
+	\item B. Meyer, Object-Oriented Software Construction, Prentice Hall, 1997. Chapters 3, 4
+	\item E. Gamma, R. Helm, R. Johnson, and J. Vlissides. Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley, 1995.
 }{
-	\ldots
+	\item What characterizes a modular software design and why can it support variability?
+	\item In which sense are object-oriented solutions more modular than feature toggles?
+	\item Do you know of other design patterns supporting variability?
 }
+
+\sectionend
 
 \input{template/footer}
 

@@ -5,6 +5,9 @@
 *.snm
 *.gz
 *.toc
+*.bbl
+*.blg
+*.tmp
 *.fls
 *.fdb*
 .vscode
