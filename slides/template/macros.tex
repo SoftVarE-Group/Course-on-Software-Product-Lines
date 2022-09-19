@@ -1,5 +1,7 @@
 % TYPICAL COMMANDS FOR LECTURES
 
+\renewcommand{\emph}[1]{{\color{blue}\textbf{#1}}}
+
 \newcommand{\deutsch}[1]{{\color{blue}(#1)}}
 \newcommand{\deutschertitel}[1]{{\tiny\deutsch{#1}}}
 
@@ -15,8 +17,33 @@
 \newcommand{\fodo}[1]{\todo{\footnote{\todo{#1}}}}
 \newcommand{\todots}{\todo{\ldots}}
 
-\newcommand{\textheightwithtitle}{.85\textheight}
+\newcommand{\textheightwithtitle}{.825\textheight}
 \newcommand{\textheightwithouttitle}{.975\textheight}
+
+\newcommand{\lessonslearned}[3]{
+	\subsection{Summary}
+	\begin{frame}{\insertsection{} -- \insertsubsection}
+		\leftandright{
+			\mydefinition{Lessons Learned}{
+				\begin{itemize}
+					#1
+				\end{itemize}
+			}
+			\uncover<2->{\mynote{Further Reading}{
+				\small % references take space, can be a little smaller
+				\begin{itemize}
+					#2
+				\end{itemize}
+			}}
+		}{
+			\uncover<3->{\myexample{Practice}{
+				\begin{itemize}
+					#3
+				\end{itemize}
+			}}
+		}
+	\end{frame}
+}
 
 % COMMANDS FOR PROPOSITIONAL FORMULAS AND MATHEMATICAL NOTATIONS
 
@@ -41,15 +68,54 @@
 
 % COMMANDS TO INCLUDE XKCDs
 
-\newcommand{\xkcd}[1]{
+\newcommand{\xkcd}[2]{
+	\href{https://xkcd.com/#1/}{\includegraphics[#2]{#1}}
+}
+\newcommand{\xkcdframe}[1]{
 	\begin{frame}
 		\centering%
-		\href{https://xkcd.com/#1/}{\includegraphics[height=80mm]{#1}}
+		\xkcd{#1}{height=80mm}
 	\end{frame}
 }
-\newcommand{\widexkcd}[1]{
+\newcommand{\widexkcdframe}[1]{
 	\begin{frame}
-		\centering%
-		\href{https://xkcd.com/#1/}{\includegraphics[width=\linewidth]{xkcd/#1}}
+		\xkcd{#1}{width=\linewidth}
 	\end{frame}
 }
+
+% COMMANDS TO SIMPLIFY USAGE OF THE PROJECT CARTOON
+
+\newcommand{\projectcartoonwidth}{.19} % default value for 5 tiles
+\newcommand{\projectcartoon}[2]{\projectcartoonimage{sepia/cell_#1}{#2}}
+\newcommand{\hprojectcartoon}[2]{\projectcartoonimage{alpha/cell_#1}{#2}}
+\newcommand{\projectcartoonimage}[2]{
+	\begin{minipage}[t]{\projectcartoonwidth\linewidth}
+		\centering
+		\href{http://web.archive.org/web/20191029221320/http://www.projectcartoon.com/}{\includegraphics[width=\linewidth]{#1}}\\#2
+	\end{minipage}\hfill
+}
+\newcommand{\waterfallcartoon}{
+	\hprojectcartoon{02}{Analysis}%
+	\hprojectcartoon{03}{Design}%
+	\hprojectcartoon{04}{Implementation}%
+	\hprojectcartoon{05}{Testing}%
+	\hprojectcartoon{10}{Maintenance}%
+}
+%\uncover<1->{\hprojectcartoon{01}{how the customer explained it}} % requirements
+%\uncover<1->{\hprojectcartoon{02}{how the project leader understood it}} % modeling
+%\uncover<1->{\hprojectcartoon{03}{how the analyst designed it}} % architecture and design
+%\uncover<1->{\hprojectcartoon{04}{how the programmer implemented it}} % implementation
+%\uncover<1->{\hprojectcartoon{05}{what the beta testers received}} % testing
+%\uncover<1->{\hprojectcartoon{06}{how the business consultant described it}} % process
+%\uncover<1->{\hprojectcartoon{07}{how the project was documented}} % documentation?
+%\uncover<1->{\hprojectcartoon{08}{what operations installed}} % devops/continuous integration?
+%\uncover<1->{\hprojectcartoon{09}{how the customer was billed}} % management (pricing)
+%\uncover<1->{\hprojectcartoon{10}{how it was supported}} % maintenance
+%\uncover<1->{\hprojectcartoon{11}{what marketing advertised}} % product lines. marketing? reuse?
+%\uncover<1->{\hprojectcartoon{12}{when it was delivered}} % configuration management. continous delivery?
+%\uncover<1->{\hprojectcartoon{13}{what the customer really needed}} % customer / SE II
+%\uncover<1->{\hprojectcartoon{14}{what the digg effect can do to your site}} % ???
+%\uncover<1->{\hprojectcartoon{15}{the disaster recover plan}} % ???
+%\uncover<1->{\hprojectcartoon{16}{the open source version}} % open source (licensing)
+%\uncover<1->{\hprojectcartoon{17}{how it performed under load}} % compilation and static analyses. quality assurance? performance?
+%\uncover<1->{\hprojectcartoon{18}{how patches were applied}} % evolution

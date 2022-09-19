@@ -1,0 +1,56 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty % remove the default navigation symbols
+\input{../../slides/template/colorscheme}
+
+\makeatletter
+    \setlength\beamer@paperwidth{100mm}%
+    \setlength\beamer@paperheight{80mm}%
+    \geometry{papersize={\beamer@paperwidth,\beamer@paperheight}}
+\makeatother
+\setbeamersize{text margin left=0mm,text margin right=0mm}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\newcommand{\graph}[4]{
+	\begin{tikzpicture}[xscale=2,yscale=2,line width=3pt,every node/.style={inner sep=0pt},node/.style={shape=circle,draw,minimum size=10mm},weight/.style={inner sep=3pt,white,#2},edge/.style={shorten <= 5pt,shorten >= 5pt,#1},oedge/.style={edge,#3}]
+		\only<#4>{\node at (-.5,-.7) {\includegraphics[width=\linewidth]{paint}};}
+		\node[node,name=n1] at (0,0) {};
+		\node[node,name=n2] at (-1,-2) {};
+		\node[node,name=n3] at (1,-2) {};
+		\node[node,name=n4] at (-2,0) {};
+		\draw[oedge] (n1) -- node[weight,above left]  {\Huge\textbf{2}} (n2);
+		\draw[oedge] (n2) -- node[weight,above]       {\Huge\textbf{1}} (n3);
+		\draw[edge]  (n1) -- node[weight,above right] {\Huge\textbf{6}} (n3);
+		\draw[oedge] (n4) -- node[weight,above]       {\Huge\textbf{3}} (n1);
+	\end{tikzpicture}
+}
+\newcommand{\pgraph}{\graph{}{}{}{1-}}
+\newcommand{\pdgraph}{\graph{->}{}{}{1-}}
+\newcommand{\pwgraph}{\graph{}{black}{}{1-}}
+\newcommand{\pograph}{\graph{->}{black}{blue}{1-}}
+\newcommand{\ngraph}{\graph{shorten <= 0pt,shorten >= 0pt}{}{}{1-}}
+
+\begin{document}
+
+	\begin{frame}[plain]
+		\pgraph
+	\end{frame}
+
+	\begin{frame}[plain]
+		\pdgraph
+	\end{frame}
+
+	\begin{frame}[plain]
+		\pwgraph
+	\end{frame}
+
+	\begin{frame}[plain]
+		\pograph
+	\end{frame}
+
+	\begin{frame}[plain]
+		\ngraph
+	\end{frame}
+
+\end{document}
