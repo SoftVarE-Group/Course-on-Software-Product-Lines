@@ -1,4 +1,4 @@
-\subsection{Customization and Handcrafting}
+\subsection{Handcrafting and Customization}
 \begin{frame}{What do these examples have in common?}
 	\begin{mycolumns}[columns=3,widths={35,28},animation=none]
 		\href{https://de.wikipedia.org/wiki/Datei:White_and_red_wedding_dress.jpg}{\includegraphics[width=\linewidth,trim=25 200 25 25,clip]{wedding}}
@@ -13,7 +13,7 @@
 		
 		\uncover<2->{\mydefinition{Customization \deutschertitel{Maßschneiderung}}{
 			\begin{itemize}
-			\item aka. Handcrafting
+			\item aka.\ handcrafting
 			\item labor-intensive production
 			\item highly individual goods
 			\end{itemize}
@@ -23,46 +23,79 @@
 % why?
 
 \subsection{Mass Production}
-\begin{frame}{\insertsubsection\ \deutschertitel{Massenproduktion}}
+\begin{frame}{\insertsubsection}
 	\begin{mycolumns}
-		\todots
+		\mydefinition{Mass Production \deutschertitel{Massenproduktion}\mysource{\fospl\mypages{3--4}}}{
+			\begin{itemize}
+			\item consequence of industrialization
+			\item goods are produced from standardized parts
+			\item improved productivity compared to handcrafting
+			\item reduced costs, improved quality
+			\item but: (almost) no individualism
+			\end{itemize}
+		}
+		\myexample{Principle: One Size Fits All}{
+			\begin{itemize}
+			\item t-shirts: XS, S, M, L, XL, XXL
+			\item swiss-army knife \deutsch{Eierlegende Wollmilchsau}
+			\end{itemize}
+		}
 	\mynextcolumn
+		\vspace{-10mm}
+		\href{https://en.wikipedia.org/wiki/File:Wenger_EvoGrip_S17.JPG}{\includegraphics[width=\linewidth]{swiss-army-knife}}
 		\mynote{Mass Production for Software?\mysource{\fospl\mypage{7}}}{\mycite{The idea is to provide software that satisfies the
 		needs of most customers, which leads almost automatically to the situation, in which customers miss desired functionality and are overwhelmed with functionality they do not need actually (just think of any contemporary office or graphics program). It is often this generality that makes software complex, slow, and buggy.}}
 	\end{mycolumns}
 \end{frame}
-% why?
-% \deutsch{Massenproduktion}
 % industrial revolution/era:
 % - John Hall, exchangable parts 1826, 25 years of trials (source?)
 % - Henry Ford/Ransom Olds, production/assembly line, 1901 (source?)
 % - 1961 first industrial roboter at General Motors
 % - 1980s automatic assembly lines
-% swiss-army knife \deutsch{Eierlegende Wollmilchsau}
-
-% one size fits all: T-Shirts
 
 \subsection{Mass Customization}
 \begin{frame}{About Every Second Car is Unique}
 	\centering\href{https://en.wikipedia.org/wiki/File:I-80_Eastshore_Fwy.jpg}{\includegraphics[width=.66\linewidth]{many-cars}}
 \end{frame}
 \begin{frame}{\insertsubsection\ \deutschertitel{Kundenindividuelle Massenproduktion}}
-	\begin{mycolumns}
-		\todots
+	\begin{mycolumns}[widths={45}]
+		\mydefinition{Mass Customization\mysource{\fospl\mypage{4}}}{
+			\begin{itemize}
+			\item = mass production + customization
+			\item customized, individual goods at costs similar to mass production
+			\end{itemize}
+		}
 	
 		\myexampletight{Car Configuration}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}
 	\mynextcolumn
 		\myexampletight{Car Production}{\href{https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG}{\includegraphics[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}}
 		
-		\todots
+		\myexample{Other Domains}{bikes, computers, electronics, tools, medicine, clothing, food, financial services, \ldots, software?}
 	\end{mycolumns}
 \end{frame}
-% why?
-%\subsection{Motivation}
-% why product lines?
-% resource limitations: energy, performance, memory
-% variability in hardware, laws, ...
-% expensive customization
+
+\begin{frame}{Mass Customization for Software?}
+	\begin{mycolumns}
+		\mydefinition{Mass Customization for Software?}{
+			\begin{itemize}
+			\item customization: individual software developed using Waterfall model or Scrum
+			\item mass production: standard software developed once for millions or billions of users (e.g., Whatsapp messenger)
+			\item mass customization: software product lines
+			\end{itemize}
+		}
+	
+		\mynote{Why Software Product Lines?}{
+			\begin{itemize}
+			\item resource limitations: memory, performance, energy
+			\item different hardware
+			\item different laws
+			\item goal: avoid expensive customization
+			\end{itemize}
+		}
+	\mynextcolumn
+		\includegraphics[width=\linewidth,page=24]{lego}
+	\end{mycolumns}
+\end{frame}
 
 \subsection{Recap: The Software Life Cycle}
 \begin{frame}{The Project Cartoon}
@@ -188,9 +221,6 @@
 
 % product-line hall of fame
 % success stories: Boing, Bosch, Hewlett Packard, Toshiba, General Motors \mysource{\fospl}
-
-
-
 
 % TODO \subsection{Running Examples?}
 % \fospl: data management for embedded systems, product line of a graph library
