@@ -407,217 +407,25 @@ public class Node {
 \end{frame}
 
 \subsection{Code Scattering}
-\begin{frame}[fragile]{Problem: Code Scattering \todo{Indicate scattered code}}
-		\begin{columns}
-			\column{.45\textwidth}
-\begin{tiny}
-\begin{lstlisting}
-public class Graph {
-	...
-	Edge add(Node n, Node m) {
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		@if (Config.WEIGHTED) { e.weight = new Weight(); }@
-		return e;
-	}
-	@Edge add(Node n, Node m, Weight w) {
-		if (!Config.WEIGHTED) { throw new RuntimeException(); }
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		e.weight = w;
-		return e;
-	}@
-	...
-}
-\end{lstlisting}
-\begin{lstlisting}
-~public class Color {
-	static void setDisplayColor(Color c) {...}
-}~
-\end{lstlisting}
-\begin{lstlisting}
-@public class Weight {
-	void print() {...}
-}@
-\end{lstlisting}
-\end{tiny}	
-			\column{.45\textwidth}
-\begin{tiny}
-\begin{lstlisting}
-public class Node {
-	~Color color;~
-	...
-	Node(){
-		~if (Config.COLORED) { 
-			color = new Color(); 
-		}~
-	}
-	void print() {
-		~if (Config.COLORED) { 
-			Color.setDisplayColor(color); 
-		}~
-		System.out.print(id);
-	}
-}
-\end{lstlisting}
-\begin{lstlisting}
-public class Edge {
-	@Weight weight;@
-	...
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
-		@if (Config.WEIGHTED) { weight = new Weight(); }@
-	}
-	void print() {
-		a.print(); b.print();
-		@if (Config.WEIGHTED) { weight.print(); }@
-	}
-}
-\end{lstlisting}
-\end{tiny}	
-		\end{columns}
+\begin{frame}{Problem: Code Scattering}
+	\begin{center}
+		\vspace[-2mm}
+		\includegraphics[scale=1.0]{scattering}
+	\end{center}
 \end{frame}
 
 \subsection{Code Tangling}
-\begin{frame}[fragile]{Problem: Code Tangling \todo{Indicate tangled code}}
-		\begin{columns}
-			\column{.45\textwidth}
-\begin{tiny}
-\begin{lstlisting}
-public class Graph {
-	...
-	Edge add(Node n, Node m) {
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		@if (Config.WEIGHTED) { e.weight = new Weight(); }@
-		return e;
-	}
-	@Edge add(Node n, Node m, Weight w) {
-		if (!Config.WEIGHTED) { throw new RuntimeException(); }
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		e.weight = w;
-		return e;
-	}@
-	...
-}
-\end{lstlisting}
-\begin{lstlisting}
-~public class Color {
-	static void setDisplayColor(Color c) {...}
-}~
-\end{lstlisting}
-\begin{lstlisting}
-@public class Weight {
-	void print() {...}
-}@
-\end{lstlisting}
-\end{tiny}	
-			\column{.45\textwidth}
-\begin{tiny}
-\begin{lstlisting}
-public class Node {
-	~Color color;~
-	...
-	Node(){
-		~if (Config.COLORED) { 
-			color = new Color(); 
-		}~
-	}
-	void print() {
-		~if (Config.COLORED) { 
-			Color.setDisplayColor(color); 
-		}~
-		System.out.print(id);
-	}
-}
-\end{lstlisting}
-\begin{lstlisting}
-public class Edge {
-	@Weight weight;@
-	...
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
-		@if (Config.WEIGHTED) { weight = new Weight(); }@
-	}
-	void print() {
-		a.print(); b.print();
-		@if (Config.WEIGHTED) { weight.print(); }@
-	}
-}
-\end{lstlisting}
-\end{tiny}	
-		\end{columns}
+\begin{frame}{Problem: Code Tangling}
+	\begin{center}
+		\vspace[-2mm}
+		\includegraphics[scale=1.0]{tangling}
+	\end{center}
 \end{frame}
 
 \subsection{Code Replication}
-\begin{frame}[fragile]{Problem: Code Replication \todo{Indicate replicated code}}
-		\begin{columns}
-			\column{.45\textwidth}
-\begin{tiny}
-\begin{lstlisting}
-public class Graph {
-	...
-	Edge add(Node n, Node m) {
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		@if (Config.WEIGHTED) { e.weight = new Weight(); }@
-		return e;
-	}
-	@Edge add(Node n, Node m, Weight w) {
-		if (!Config.WEIGHTED) { throw new RuntimeException(); }
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		e.weight = w;
-		return e;
-	}@
-	...
-}
-\end{lstlisting}
-\begin{lstlisting}
-~public class Color {
-	static void setDisplayColor(Color c) {...}
-}~
-\end{lstlisting}
-\begin{lstlisting}
-@public class Weight {
-	void print() {...}
-}@
-\end{lstlisting}
-\end{tiny}	
-			\column{.45\textwidth}
-\begin{tiny}
-\begin{lstlisting}
-public class Node {
-	~Color color;~
-	...
-	Node(){
-		~if (Config.COLORED) { 
-			color = new Color(); 
-		}~
-	}
-	void print() {
-		~if (Config.COLORED) { 
-			Color.setDisplayColor(color); 
-		}~
-		System.out.print(id);
-	}
-}
-\end{lstlisting}
-\begin{lstlisting}
-public class Edge {
-	@Weight weight;@
-	...
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
-		@if (Config.WEIGHTED) { weight = new Weight(); }@
-	}
-	void print() {
-		a.print(); b.print();
-		@if (Config.WEIGHTED) { weight.print(); }@
-	}
-}
-\end{lstlisting}
-\end{tiny}	
-		\end{columns}
+\begin{frame}{Problem: Code Replication}
+	\begin{center}
+		\vspace[-2mm}
+		\includegraphics[scale=1.0]{replication}
+	\end{center}
 \end{frame}
