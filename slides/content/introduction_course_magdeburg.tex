@@ -1,42 +1,69 @@
-\subsection{Formalities}
+\subsection{Who}
 
 \begin{frame}{\insertsubsection}
 	\begin{mycolumns}
-		\mynote{Who Are You?}{
-			\begin{itemize}
-				\item Bachelor student (5 ECTS)
-				\item Master student (6 ECTS)
-				\item enrolled in one of these courses of study:
-				\begin{itemize}
-					\item Informatik
-					\item Computervisualistik
-					\item Wirtschaftsinformatik
-					\item Ingenieurinformatik
-					\item Digital Engineering
-				\end{itemize}
-				\item looking for an elective subject \deutsch{Wahlpflichtfach (WPF)}
-			\end{itemize}
-		}
-	\mynextcolumn
-		\mynote{Who Are We?}{
-			\centering
-			\parbox{0.45\linewidth}{
+		\only<1|handout:1>{
+			\mynote{Who Are You? \mysource{\universitycourses} \tiny ;-)}{
 				\centering
-				\href{https://www.dbse.ovgu.de/Mitarbeiter/Gunter+Saake.html}{\includegraphics[width=\linewidth]{gunter-saake}}\\[.5ex]
-				\href{https://www.dbse.ovgu.de/Mitarbeiter/Gunter+Saake.html}{\emph{Gunter Saake}}\\[.5ex]
-				\small professor for databases and software engineering\\[.5ex]
-				FeatureIDE project manager
+				\small
+				\featureDiagram{
+					You,concrete
+						[Degree,concrete,mandatory
+							[Bachelor,concrete,alternative]
+							[Master,concrete]]
+						[WPF,concrete,mandatory]
+						[Interest,concrete,mandatory]
+						[Course,concrete,mandatory
+							[INF,concrete,alternative]
+							[CV,concrete]
+							[WIF,concrete]
+							[INGIF,concrete]
+							[DE,concrete]]
+				}\\[1ex]
+				$\textsf{Bachelor} \pimplies \textsf{ECTS} = 5$\\
+				$\textsf{Master} \pimplies \textsf{ECTS} = 6$
 			}
-			\parbox{0.45\linewidth}{
+		}
+		\only<2-|handout:2->{
+			\mynote{Who Are You?}{
+				\begin{itemize}
+					\item a \emph{Bachelor student} (5 ECTS) or
+					\item a \emph{Master student} (6 ECTS)
+					\item looking for an \emph{elective subject} \deutsch{Wahlpflichtfach (WPF)}
+					\item enrolled in \emph{INF}, \emph{CV}, \emph{WIF}, \emph{INGIF}, or \emph{DE}
+					\item interested in
+					\begin{itemize}
+						\item \emph{learning} about the basic principles of systematically managing software variability
+						\item \emph{experimenting} with novel software engineering methods and tools
+						\item getting in touch with current \emph{research} on software product lines
+					\end{itemize}
+				\end{itemize}
+			}
+		}
+		\mynextcolumn
+		\only<3-|handout:3->{
+			\mynote{Who Are We?}{
 				\centering
-				\href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\includegraphics[width=0.75\linewidth]{elias-kuiter}}\\[.5ex]
-				\href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\emph{Elias Kuiter}}\\[.5ex]
-				\small PhD student in feature-model analysis\\[.5ex]
-				FeatureIDE core developer
+				\parbox{0.45\linewidth}{
+					\centering
+					\href{https://www.dbse.ovgu.de/Mitarbeiter/Gunter+Saake.html}{\includegraphics[width=\linewidth]{gunter-saake}}\\[.5ex]
+					\href{https://www.dbse.ovgu.de/Mitarbeiter/Gunter+Saake.html}{\emph{Gunter Saake}}\\[.5ex]
+					\small professor for databases and software engineering\\[.5ex]
+					FeatureIDE project manager
+				}
+				\parbox{0.45\linewidth}{
+					\centering
+					\href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\includegraphics[width=0.75\linewidth]{elias-kuiter}}\\[.5ex]
+					\href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\emph{Elias Kuiter}}\\[.5ex]
+					\small PhD student in feature-model analysis\\[.5ex]
+					FeatureIDE core developer
+				}
 			}
 		}
 	\end{mycolumns}
 \end{frame}
+
+\subsection{Where and When}
 
 \begin{frame}{\insertsubsection}
 	\begin{mycolumns}
@@ -49,7 +76,7 @@
 					\item starts on October 11
 				\end{itemize}
 				\item usually held by Gunter
-				\item \emph{slides} are handed out in \href{https://elearning.ovgu.de/course/view.php?id=13228}{Moodle}
+				\item \emph{slides} are available on \href{https://elearning.ovgu.de/course/view.php?id=13228}{Moodle}
 				\item guest lectures planned:
 				\begin{itemize}
 					\item industry talk around Christmas
@@ -67,13 +94,15 @@
 					\item starts on October 18
 				\end{itemize}
 				\item usually held by Elias
-				\item \emph{exercise sheets} are handed out 1 week in advance in \href{https://elearning.ovgu.de/course/view.php?id=13228}{Moodle}
-				\item 2 weeks time to work on \emph{practical tasks}
+				\item \emph{exercise sheets} are available on \href{https://elearning.ovgu.de/course/view.php?id=13228}{Moodle}
+				\item typically 2 weeks time to work on \emph{practical tasks}
 				\item lab exercise planned for end of January
 			\end{itemize}
 		}
 	\end{mycolumns}
 \end{frame}
+
+\subsection{Taking the Exam, and Beyond}
 
 \begin{frame}{\insertsubsection}
 	\begin{mycolumns}
@@ -90,17 +119,18 @@
 				\item oral exam ($\approx 20$ minutes)
 				\item 1--2 exam days in February or March
 				\item to get an ungraded performance \deutsch{Schein}, you have to pass the exam
-				\item consultation in the last lecture
+				\item consultation planned in the last lecture
 			\end{itemize}
 		}
 	\mynextcolumn
 		\mynote{Further Studies}{
 			\begin{itemize}
-				\item Bachelor/Master thesis
-				\item individual project
-				\item seminar or software project in summer term % FeatJAR software project or proseminar on advanced language concepts
+				\item \emph{Individual Project} (FeatureIDE)
+				\item \emph{Software Project or Seminar} (offered in summer term) % FeatJAR software project or proseminar on advanced language concepts
+				\item \emph{Master Thesis} (several open topics on SPLE)
+				\item \emph{PhD Thesis?} (SPLs are still actively researched)
 			\end{itemize}
-			\ldots{} consult with us!
+			\ldots{} contact us!
 		}
 	\end{mycolumns}
 \end{frame}
