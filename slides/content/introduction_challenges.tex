@@ -1,18 +1,31 @@
-\subsection{Code Clones}
+\subsection{Software Clones}
 \begin{frame}{\insertsubsection}
 	\begin{mycolumns}
-		\todots
+		\mydefinition{Software Clone\mysource{\softwareclonedetection\mypage{1166}}}{
+			\begin{itemize}
+			\item = result of copying and pasting existing fragments of the software
+			\item code clones = copied code fragments
+			%\item process: software cloning
+			\item replicates need to be altered consistently
+			\item for example: bugs need to be fixed in all replicated fragments
+			\item in practice: a common source for inconsistencies and bugs
+			\end{itemize}
+		}
 		
-		~\hfill\includegraphics[width=.2\linewidth]{pants-blue}\hfill\includegraphics[width=.2\linewidth]{pants-red}\hfill~
+		\myexample{Cloning Parts of Software}{~\hfill\includegraphics[width=.2\linewidth]{pants-blue}\hfill\includegraphics[width=.2\linewidth]{pants-red}\hfill~}
 	\mynextcolumn
-		\todots
+		\mynote{Types of Software Clones\mysource{\softwareclonedetection\mypage{1167}}}{
+			\begin{itemize}
+			\item Type 1: identical except whitespaces and comments
+			\item Type 2: syntactically similar except changed identifiers++
+			\item Type 3: copied with modifications (e.g., inserted or removed statements)
+			\item Type 4: similar functionality without textual similarities
+			\end{itemize}
+		}
 
-		~\hfill\includegraphics[width=.2\linewidth]{130}\hfill\includegraphics[width=.2\linewidth]{230}\hfill~
+		\myexample{Cloning Whole Products (Clone-and-Own)}{~\hfill\includegraphics[width=.2\linewidth]{130}\hfill\includegraphics[width=.2\linewidth]{230}\hfill~}
 	\end{mycolumns}
 \end{frame}
-% cloning in single-system engineering, levels of clones?
-% cloning in the large, considered harmful
-% clone-and-own: even more problematic
 
 \subsection{Feature Traceability}
 \begin{frame}{\insertsubsection}
@@ -148,7 +161,7 @@
 				\item number of features and size of implementation increases over time
 				\item discussed challenges increase over time
 					\begin{itemize}
-						\item more code clones
+						\item more software clones
 						\item harder to trace features
 						\item automated generation more urgent
 						\item increasing combinatorial explosion
