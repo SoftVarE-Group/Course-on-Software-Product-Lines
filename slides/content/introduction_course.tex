@@ -1,8 +1,7 @@
-%\subsection{Preliminaries}
 \subsection{What You Should Know}
 
 \begin{frame}{\insertsubsection{}}
-	\leftorright{
+	\begin{mycolumns}
 		\mynote{Fundamentals of Software Engineering}{
 			\begin{itemize}
 				\item development processes
@@ -12,7 +11,7 @@
 				\item modularity
 			\end{itemize}
 		}
-	}{
+	\mynextcolumn
 		\mynote{Fundamentals of Theoretical Computer Science}{
 			\begin{itemize}
 				\item set theory
@@ -24,14 +23,13 @@
 		\mynote{Exercise}{
 			solid programming skills in Java
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
-%\subsection{Course Overview}
 \subsection{What You Will Learn}
 
 \begin{frame}{\insertsubsection{}}
-	\leftmiddleorright{
+	\begin{mycolumns}[columns=3,t]
 		\mydefinition{Part I: Ad-Hoc Approaches for Variability}{
 			\begin{enumerate}
 				\item Introduction
@@ -39,7 +37,7 @@
 				\item Compile-Time Variability with Clone-and-Own
 			\end{enumerate}
 		}
-	}{
+	\mynextcolumn
 		\mydefinition{\small Part II: Modeling and Implementing Features}{
 			\begin{enumerate}
 				\setcounter{enumi}{3}
@@ -50,7 +48,7 @@
 				\item Development Process
 			\end{enumerate}
 		}
-	}{
+	\mynextcolumn
 		\mydefinition{Part III: Quality Assurance and Maintenance}{
 			\begin{enumerate}
 				\setcounter{enumi}{8}
@@ -60,14 +58,13 @@
 				\item Evolution and Maintenance
 			\end{enumerate}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
-%\subsection{Literature and Tool Support}
 \subsection{What You Might Need}
 
 \begin{frame}{\insertsubsection{}}
-	\leftorright{
+	\begin{mycolumns}
 		\myexampletight{Recommended Literature for Lecture \& Exercise}{
 			\centering
 			\parbox{0.49\linewidth}{
@@ -81,13 +78,13 @@
 				\emph{practice-oriented}
 			}
 		}
-	}{
+	\mynextcolumn
 		\myexampletight{Recommended Tool Support for the Exercise}{
 			\centering
 			\href{https://featureide.github.io/}{\includegraphics[width=\linewidth]{featureide-feature-model-editor.png}}\\[.5ex]
 			\href{https://featureide.github.io/}{\includegraphics[width=0.25\linewidth]{featureide-logo.png}}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Credit for the Slides}
