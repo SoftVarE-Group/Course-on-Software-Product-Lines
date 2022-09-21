@@ -126,3 +126,27 @@
 		\end{flushleft}
 	\end{tcolorbox}
 }
+
+% UNIVERSITY-SPECIFIC ADJUSTMENTS
+% or: a product line of product-line lectures ;-)
+
+\newif\ifbern
+\newif\ifmagdeburg
+\newif\ifulm
+
+\newcommand{\foruniversity}[4][]{\ifbern#2\else\ifmagdeburg#3\else\ifulm#4\else#1\fi\fi\fi}
+
+\let\originalauthor\author
+\renewcommand{\author}[1]{
+	\foruniversity[\originalauthor{#1}]
+		{\originalauthor{Timo Kehrer, Sandra Greiner}}
+		{\originalauthor{Gunter Saake, Elias Kuiter}}
+		{\originalauthor{Thomas Thüm, Chico Sundermann}}
+}
+
+\newcommand{\inputforuniversity}[1]{
+	\foruniversity
+		{\input{#1_bern}}
+		{\input{#1_magdeburg}}
+		{\input{#1_ulm}}
+}
