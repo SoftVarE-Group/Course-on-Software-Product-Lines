@@ -10,12 +10,12 @@
 \author{Thomas Thüm, Timo Kehrer, Elias Kuiter, Sebastian Krieter}
 
 \usepackage{pdfpages}
-\newcommand{\addlecture}[2]{\section{#2}\begin{frame}\includepdf[pages=2]{#1}\end{frame}}
+\newcommand{\addlecture}[2]{\section{#2}\begin{frame}\includepdf[pages=1]{#1}\end{frame}}
 \setbeamertemplate{section in toc}[sections numbered]
 
 \begin{document}
 	
-\input{template/header}
+\lectureoverview
 \usebackgroundtemplate{}
 \AtBeginSection[]{}
 
@@ -27,19 +27,19 @@
 \addlecture{cloneandown}{Compile-Time Variability with Clone-and-Own} % Timo
 \sectionend
 
-\addtocontents{toc}{Modeling and Implementing Product Lines} % TODO Features?
-\addlecture{modeling}{Feature Modeling}                      % Elias, Sebastian
-\addlecture{embedded}{Techniques for Compile-Time Features}  % ? (was embedded software before)
-\addlecture{modular}{Techniques for Modular Variability}     % Timo (was application software before)
-\addlecture{languages}{Language-Based Techniques}            % Thomas
-\addlecture{process}{Development Process}                    % Thomas?
+\addtocontents{toc}{Modeling and Implementing Features}
+\addlecture{modeling}{Feature Modeling}        % Elias
+\addlecture{features}{Compile-Time Features}   % ? (was embedded software before)
+\addlecture{modular}{Modular Features}         % Timo (was application software before)
+\addlecture{languages}{Languages for Features} % Thomas
+\addlecture{process}{Development Process}      % Thomas?
 \sectionend
 % TODO managed clone-and-own? VariantSync?
 
 \addtocontents{toc}{Quality Assurance and Maintenance}
 \addlecture{interactions}{Feature Interactions}  % Thomas
-\addlecture{analyses}{Product-Line Analyses}     % Elias, Sebastian
-\addlecture{testing}{Product-Line Testing}       % Thomas, Sebastian
+\addlecture{analyses}{Product-Line Analyses}     % Elias, Sebastian?
+\addlecture{testing}{Product-Line Testing}       % Thomas, Sebastian?
 \addlecture{evonance}{Evolution and Maintenance} % Timo, Thomas
 
 \end{document}
