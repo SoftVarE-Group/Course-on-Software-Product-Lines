@@ -1,0 +1,51 @@
+\usepackage{listings}
+
+% default listing style
+\lstset{ 
+	language=Java, % choose the language of the code
+	numbers=none, % where to put the line-numbers
+	numberstyle=\tiny, % the size of the fonts that are used for the line-numbers
+	showspaces=false, % show spaces adding particular underscores
+	showstringspaces=false, % underline spaces within strings
+	showtabs=false, % show tabs within strings adding particular underscores
+	frame=single, % adds a frame around the code
+	framerule=1pt,
+	framesep=3pt,
+	tabsize=2, % sets default tabsize to 2 spaces
+	rulesepcolor=\color{gray},
+	rulecolor=\color{black},
+	captionpos=b, % sets the caption-position to bottom
+	breaklines=true, % sets automatic line breaking
+	breakatwhitespace=false, 
+	moredelim=**[is][\color{red}]{@}{@},
+	moredelim=**[is][\color{green}]{?}{?},
+	moredelim=**[is][\color{blue}]{~}{~},
+	escapeinside={(*@}{@*)},
+	columns=fullflexible,
+	backgroundcolor=\color{white}
+}
+
+% \begin{lstlisting}[language=UVL]
+\lstdefinelanguage{UVL}{
+  tabsize = 4,
+  showstringspaces = false,
+  commentstyle=\color[HTML]{839496},
+  keywordstyle=\color{blue},
+  stringstyle=\color[HTML]{2429c9},
+  basicstyle = \footnotesize\ttfamily,
+  breaklines = true,
+  columns=fullflexible,
+  keepspaces=true,
+  sensitive=true,
+  mathescape,
+  alsoletter={=, >, |},
+  morekeywords={features, constraints, namespace, mandatory, optional, or, alternative, abstract, =>, |}
+}
+
+\lstnewenvironment{java}[1][]
+  {\lstset{#1}}
+  {}
+
+\lstnewenvironment{uvl}[1][]
+  {\lstset{language=UVL,#1}}
+  {}
