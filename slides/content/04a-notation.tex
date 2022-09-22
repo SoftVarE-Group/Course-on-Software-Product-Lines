@@ -1,6 +1,6 @@
 \subsection{Recap: Software Product Lines and Features}
 \begin{frame}{\insertsubsection\ \mytitlesource{\fospl} \todo{SPL Def citation}}
-	\leftorright{
+	\begin{mycolumns}
 		\mydefinition{Software Product Line}{
 			\begin{itemize}
 				\item set of software-intensive systems (aka products)
@@ -16,14 +16,14 @@
 				\item specifies differences between products
 			\end{itemize}
 		}
-	}{
+	\mynextcolumn
 		\myexample{Examples}{
 			\begin{itemize}
 				\item \todots
 			\end{itemize}
 		}
 		\todo{scoping?}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Configuring Features}
@@ -67,7 +67,7 @@
 \newcommand{\feat}[1]{{\emph{#1}}}
 
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\mydefinition{Configuration}{
 			\begin{itemize}
 				\item a \emph{configuration} \deutsch{Konfiguration} over a set of features $F$ selects and deselects features in $F$
@@ -77,8 +77,8 @@
 				\item we often abbreviate complete configurations with $S \equiv (S, F \setminus S)$
 			\end{itemize}
 		}
-	}{
-		\myexample{A Configurable Database}{
+	\mynextcolumn
+		\myexample{}{
 			Feature set $F = \{ConfigDB, Get, Put, Delete,$
 			\hspace*{22mm}$Transactions, Windows, Linux\}$
 			
@@ -97,14 +97,13 @@
 			
 			$\cfg{C, G}{P, D}$, $(\varnothing, \varnothing)$
 		}
-		
-	}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Characterizing Valid Configurations}
 
 \begin{frame}{\insertsubsection}\label{frame:natlang}
-	\leftorright{
+	\begin{mycolumns}
 		\mynote{Valid Configuration}{
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
@@ -119,17 +118,17 @@
 				\item[--] not machine-readable
 			\end{itemize}
 		}
-	}{
-		\myexample{A Configurable Database}{
+	\mynextcolumn
+		\myexample{}{
 			``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
 			Optionally, the database can support \feat{transactions}, provided that the API allows for Put or Delete requests.
 			Also, the database targets a supported operating system, which is either \feat{Windows} or \feat{Linux}.''
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\insertsubsection}\label{frame:cfgmap}
-	\leftorright{
+	\begin{mycolumns}
 		\mynote{Valid Configuration}{
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
@@ -145,8 +144,8 @@
 				\item[--] redundant, explodes in size ($0 \leq \abs{C} \leq 2^{\abs{F}}$)
 			\end{itemize}
 		}
-	}{
-		\myexample{A Configurable Database}{
+	\mynextcolumn
+		\myexample{}{
 			Feature set $F = \{ConfigDB, Get, Put, Delete,$
 			\hspace*{22mm}$Transactions, Windows, Linux\}$
 			
@@ -183,7 +182,7 @@
 				{\color{black}$\{C,G,P,D,T,L\}$}
 			}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\insertsubsection}
@@ -193,11 +192,12 @@
 	\textbf{Can we do better?}
 \end{frame}
 
-\subsection{Feature Models}
+\subsection{Feature Models} % syntax
 
+%todo 2 frames, switch image and definitians
 \begin{frame}{\insertsubsection\ \mytitlesource{\fospl}}\label{frame:fm}
-	\leftandright{
-		\myexampletight{A Configurable Database}{
+	\begin{mycolumns}
+		\myexampletight{}{
 			\centering
 			\featureDiagramConfigurableDatabase[_fm]
 			\featureDiagramOverlay{
@@ -221,7 +221,7 @@
 			
 			\featureDiagramLegend
 		}
-	}{
+	\mynextcolumn
 		\only<2>{
 			\mydefinition{Feature Model \deutsch{Feature-Modell}}{
 				\begin{itemize}
@@ -252,7 +252,7 @@
 			}
 		}
 		\only<4->{
-			\myexample{Valid Configurations}{
+			\myexample{Valid Configurations}{ % semantics frame
 				\begin{itemize}
 					\item<4-> \emph{valid} (read-only database on Windows):
 						$\cfg[4]{C, A, G, O, W}{P, D, T, L}$
@@ -265,13 +265,13 @@
 				\end{itemize}
 			}
 		}
-}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\todo{graph product line example from Timo}
-	}{
+	\mynextcolumn
 		\mynote{Notation}{
 			\begin{itemize}
 				\item abstract and concrete features can be assigned arbitrarily
@@ -279,19 +279,19 @@
 				\item directly below groups, no optional or mandatory markers are allowed
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Advantages of Feature Modeling}
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\textbf{Making Tacit Knowledge Explicit}
 		\mynote{Interview with Practitioners \mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}}{
 			\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer's point of view. But it's also, we can see that from the, say project development, it's also important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven't realized that. They implemented the same features.}
 		}
-	}{
+	\mynextcolumn
 		\textbf{Tool Support}
 
-		\includegraphics[width=\linewidth]{featureide-feature-model-editor}
-	}
+		\href{https://featureide.github.io}{\includegraphics[width=\linewidth]{featureide-feature-model-editor}}
+	\end{mycolumns}
 \end{frame}

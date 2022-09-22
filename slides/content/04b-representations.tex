@@ -9,7 +9,7 @@
 
 	% also, (valid) total configurations should be explained here (how a computer can check them, this can be checked easily when an FM is encoded eg as runtime variability, but all other SAT-based questions are hard to answer)
 
-	\leftorright{
+	\begin{mycolumns}
 		\myexample{Natural Language}{
 			\tiny ``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
 			Optionally, the database can support \feat{transactions}, provided that the API allows for Put or Delete requests.
@@ -31,26 +31,46 @@
 			\centering\tiny
 			\featureDiagramConfigurableDatabase
 		}
-	}{
+	\mynextcolumn
 		\centering
 		\includegraphics[width=\linewidth]{representations-high-level}
 
 		\mynote{Problems}{
 			\begin{enumerate}
-				\item[P1] How to express feature models \emph{textually}?
-				\item[P2] How to obtain configurations \emph{automatically}?
+				\item[P1] How to express feature models \emph{textually}? % animate P1 with arrows, see lego example
+				\item[P2] How to obtain configurations \emph{automatically}? % valid cfg
 				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Universal Variability Language}
 
-\begin{frame}{\insertsubsection}
-	\leftorright{
-		\includegraphics[width=0.7\linewidth]{uvl-model}
-	}{
+\begin{frame}[fragile]{\insertsubsection}
+	\begin{mycolumns}
+\begin{uvl}[basicstyle=\normalsize]
+features
+	ConfigDB	
+		mandatory
+			API {abstract}
+				or
+					Get
+					Put
+					Delete
+
+		optional
+			Transactions
+		mandatory
+			OS {abstract}
+				alternative
+					Windows
+					Linux
+				
+constraints
+	Transactions => Put | Delete
+\end{uvl}
+	\mynextcolumn
 		\myexampletight{A Feature Model ``Sideways''}{
 			\centering
 			\includegraphics[width=\linewidth]{varied-model}
@@ -59,16 +79,38 @@
 		\mynote{Universal Variability Language (UVL)}{
 			\begin{itemize}
 				\item textual language for feature modeling
-				\item \todots
+				\item adds advanced modeling constructs (e.g., attributes, cardinalities, submodels, \ldots)
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection}
+	\centering
+	\includegraphics[width=0.45\linewidth]{representations-high-level}
+	\begin{mycolumns}[animation=none]
+		\mynote{Problems}{
+			\begin{enumerate}
+				\item[P1] How to express feature models \emph{textually}?
+				\item[P2] How to obtain configurations \emph{automatically}?
+				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
+			\end{enumerate}
+		}
+		\mynextcolumn
+		\mynote{Solutions}{
+			\begin{enumerate}
+				\item[P1] Universal Variability Language $\rightarrow$ \emph{Syntax}
+				\item[P2] \emph{Semantics}?
+				\item[P3] \color{gray}{--}
+			\end{enumerate}
+		}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Recap: Propositional Formulas}
 
 \begin{frame}{\insertsubsection}
-	\leftorright{
+	\begin{mycolumns}
 		\mydefinition{Syntax of Propositional Formulas}{
 			Inductive definition of \emph{(propositional) formulas}\\\deutsch{(aussagenlogische) Formeln}:
 			\begin{itemize}
@@ -80,14 +122,14 @@
 			\end{itemize}
 		}
 		\mynote{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}{
-			\vspace*{-4ex}
+			\vspace*{-4ex} % TODO Benno: why is this hack needed?
 			\begin{align*}
 				           &~Transactions \pimplies (Put \por Delete) \\
 				\equiv     &~Transactions \pimplies Put \por Delete \\
 				\not\equiv &~(Transactions \pimplies Put) \por Delete
 			\end{align*}
 		}
-	}{
+	\mynextcolumn
 		\mydefinition{Informal Semantics of Propositional Formulas}{
 			\vspace*{-4ex}
 			\begin{equation*}
@@ -118,13 +160,15 @@
 				\item no constants (e.g., $42$, ``hello'')
 			\end{itemize}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
-\subsection{Propositional Formulas}
+\subsection{From Feature Model to Formula}
 
-\begin{frame}{\insertsubsection}
-	\leftandright{
+\subsubsection{Example}
+
+\begin{frame}{\insertsubsection: \insertsubsubsection}
+	\begin{mycolumns}
 		\only<1-|handout:1>{
 			\myexampletight{A Feature Model $FM$ \ldots}{
 				\centering\tiny
@@ -182,7 +226,7 @@
 				\end{align*}
 			}
 		}
-	}{
+	\mynextcolumn
 		\only<9-|handout:2>{
 			\myexample{Is This a Valid Configuration?}{
 				\vspace*{-4ex}
@@ -213,56 +257,52 @@
 						\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fd{\bot} \por \fd{\bot} \pequals \fd{\bot}) \\
 						\pand &~\pnot (\fd{\bot} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
 						\uncover<16->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fd{\bot} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
-						=		&~\fd{\bot}}
+						=		&~\fd{\bot}} % todo: only show \pand and pih(fm) = and parentheses at the end
 					\end{align*}
 					\uncover<16->{\emph{$\leadsto$ configuration is invalid}\\
 					\phantom{$\leadsto$ }($\lightning$ no operating system)}
 				}
 			}
 		}
-	}
-	%explain intuition behind elements of formula
-
-	%motivate very shortly why this might be nice
-
+	\end{mycolumns}
 \end{frame}
 
-%check valid configuration
+\subsection{From Feature Model to Formula}
 
-\subsection{From Diagram to Formula}
+\subsubsection{Algorithm}
 
-\forestset{
-	featureDiagram/.style={
-		for tree={
-			text depth = 0,
-			parent anchor = south,
-			child anchor = north,
-			draw = drawColor,
-			edge = {draw=drawColor},
+\newcommand{\featureDiagramFn}[4]{#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right) &= #4}
+\newcommand{\featureDiagramPhantom}[4]{\vphantom{#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right)}}
+
+\begin{frame}{\insertsubsection: \insertsubsubsection}
+	\begin{mycolumns}[animation=none]
+		\mydefinition{}{
+			\vspace*{-4ex}
+			\begin{align*}
+				\uncover<1->{\featureDiagramFn{\phi}{6ex}{Root,concrete}{Root}}\\
+				\uncover<2->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,optional,concrete]}{C \pimplies P}}\\
+				\uncover<3->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,mandatory,concrete]}{C \pequals P}}\\
+				\uncover<4->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,or,concrete][\ldots][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
+				\uncover<5->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,or,concrete][\ldots][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
+				& \uncover<5->{\pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)}
+			\end{align*}
 		}
+	\mynextcolumn
+	\mynote{}{
+		\begin{itemize}
+			\item<1-> \emph{Root feature}: $R$ is always required
+   			\item<2-> \emph{Optional feature}: $C$ requires $P$
+   			\item<3-> \emph{Mandatory feature}: Optional + $P$ requires $C$
+   			\item<4-> \emph{Or group}: Optional + $P$ requires at least one $C_i$
+   			\item<5-> \emph{Alternative group}: Optional + $P$ requires exactly one $C_i$
+      % conjuction
+	  % cross-tree constraints
+		\end{itemize}
 	}
-}
-
-\newcommand{\featureDiagramFunction}[4]{$#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right) = #4$}
-
-\begin{frame}{-- Algorithm}
-	\leftorright{
-		\featureDiagramFunction{\phi}{6ex}{Root}{Root}
-		
-		\featureDiagramFunction{\phi}{6ex}{P[C,optional]}{C \pimplies P}
-
-		\featureDiagramFunction{\phi}{6ex}{P[C,mandatory]}{C \pequals P}
-		
-		\featureDiagramFunction{\phi}{15ex}{P[$C_1$,or][\ldots][$C_n$]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}
-
-		\featureDiagramFunction{\phi}{15ex}{P[$C_1$,or][\ldots][$C_n$]}{}
-		$\bigvee_{1 \leq i \leq n} C_i \pequals P$
-		\hspace*{23.5ex}$\pand~\bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)$
-	}{
-	}
-
+	\end{mycolumns}
 \end{frame}
 
+% cnf + transf. + dimacs on one slide
 \subsection{Conjunctive Normal Form}
 
 \begin{frame}{-- Conjunctive Normal Form}
