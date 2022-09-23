@@ -3,7 +3,7 @@
 % do everything with one running example (preferably the one from before)
 % ie, show an example of an inconsistency and then reveal the issue - can be combined with the MUS explanations
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
 
 	list questions we might want to ask a feature model (maybe grouped in the order in which they are discussed)
@@ -42,7 +42,7 @@
 \end{frame}
 
 \subsection{Void Feature Model}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	is the FM even consistent? does it have errors? % can we even get a valid configuration? does a configurator allow anything? a clever configurator would see that
 
 	void iff $SAT(\phi) = \bot$
@@ -56,7 +56,7 @@
 \end{frame}
 
 \subsection{Core and Dead Features} % + these are variability smells
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	can a feature be chosen at all? is it false-optional?
 	to WHICH DEGREE is a feature core/dead? feature prioritization
 
@@ -68,7 +68,7 @@
 \end{frame}
 
 \subsection{Partial Configurations}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	can a partial configuration be completed?
 	can also be connected to Chico's \#SAT applications
 
@@ -80,12 +80,12 @@
 \end{frame}
 
 \subsection{Redundant Constraints (?)}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	... % include this? it has no real #SAT equivalent
 \end{frame}
 
 \subsection{Other Analyses}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	list some more analyses/questions
 
 	atomic sets, determinate features
@@ -99,7 +99,7 @@
 
 % maybe combine Challenges/Experiences? or flip them?
 \subsection{Challenges}
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	how is SAT (before: a black box) implemented (very broadly)?
 
 	solvers have parameters, heuristics (variable ordering/assignment, restarts, ...)
@@ -112,7 +112,7 @@
 \end{frame}
 
 \subsection{Experiences} % performance / efficiency
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	show a few diagrams with performance on large models
 
 	(may even be implemented concretely as BDD)

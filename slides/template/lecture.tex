@@ -159,6 +159,18 @@
 }
 \makeatother
 
+% TODO hack to set default frame title
+% \setbeamertemplate{frametitle}{
+%     \vspace{20pt}%
+%     \fitbox[maxheight=2.5ex,minheight=0pt,maxwidth=\textwidth,minwidth=0pt]{%
+%         \vphantom{/}%
+% 		\ifstrequal{\insertframetitle}{~}%
+% 			{\myframetitle{}\ifnum\thesubsubsection=0\else: \insertsubsubsection{}\fi\insertframetitle{}}%
+% 			{\insertframetitle}%
+%     }%
+% }
+\newcommand{\myframetitle}{\insertsubsection{}\ifnum\thesubsubsection=0\else\ -- \insertsubsubsection{}\fi}
+
 % setter for title picture
 \newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}
 

@@ -1,6 +1,6 @@
 \subsection{Representations of Variability Models}
 
-\begin{frame}{\insertsubsection} % show list of cfgs, diagrams, text => what are the problems? 
+\begin{frame}{\myframetitle} % show list of cfgs, diagrams, text => what are the problems? 
 	% this notation is already nice for communication, but semantics matter (for large models, it does not suffice to look sharply)
 
 	% why is this needed? (forward ref?)
@@ -47,7 +47,7 @@
 
 \subsection{Universal Variability Language}
 
-\begin{frame}[fragile]{\insertsubsection}
+\begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}
 \begin{uvl}[basicstyle=\normalsize]
 features
@@ -85,7 +85,7 @@ constraints
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	\centering
 	\includegraphics[width=0.45\linewidth]{representations-high-level}
 	\begin{mycolumns}[animation=none]
@@ -109,7 +109,7 @@ constraints
 
 \subsection{Recap: Propositional Formulas}
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\mydefinition{Syntax of Propositional Formulas}{
 			Inductive definition of \emph{(propositional) formulas}\\\deutsch{(aussagenlogische) Formeln}:
@@ -167,7 +167,7 @@ constraints
 
 \subsubsection{Example}
 
-\begin{frame}{\insertsubsection: \insertsubsubsection}
+\begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\only<1-|handout:1>{
 			\myexampletight{A Feature Model $FM$ \ldots}{
@@ -274,7 +274,7 @@ constraints
 \newcommand{\featureDiagramFn}[4]{#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right) &= #4}
 \newcommand{\featureDiagramPhantom}[4]{\vphantom{#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right)}}
 
-\begin{frame}{\insertsubsection: \insertsubsubsection}
+\begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
 		\mydefinition{}{
 			\vspace*{-4ex}
@@ -322,7 +322,7 @@ constraints
 
 \subsection{Other Representations} %variations? these are not only other representations of the same notation
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	Extended Feature Models
 	
 	%at the end (what else is there?): in practice, we also have non-Boolean features/attributes/constraints over attributes (more details on efficiency in third block)
@@ -342,7 +342,7 @@ constraints
 
 
 % \subsection{Enumerating All Configurations}
-% \begin{frame}{\insertsubsection}
+% \begin{frame}{\myframetitle}
 % 	\leftandright{
 % 		%\myexampletight{}{\centering\includegraphics[width=.75\textwidth]{db-constraint}}
 % 		\myexample{26 Valid Configurations}{
@@ -381,16 +381,16 @@ constraints
 % \end{frame}
 
 % \subsection{Linux Feature Model}
-% \begin{frame}{\insertsubsection}
+% \begin{frame}{\myframetitle}
 % 	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,trim=100 510 100 170,clip]{linux-bdd}}
 % \end{frame}
 
 % \subsection{Dependencies Modeled in Excel}
-% \begin{frame}{\insertsubsection}
+% \begin{frame}{\myframetitle}
 % 	\vspace{-7mm}\includegraphics[width=.7\linewidth,trim=10 10 0 10,clip]{constraints-in-excel}
 % \end{frame}
 
-\begin{frame}{\insertsubsection}
+\begin{frame}{\myframetitle}
 	\myexampletight{Representations of Variability Models}{
 		\includegraphics[width=\linewidth]{representations-low-level}
 
