@@ -128,6 +128,40 @@
 	\end{tcolorbox}
 }
 
+% TODO hack to switch the lecture title with its subtitle on the title slide
+\makeatletter
+\renewcommandx{\maketitle}[2][1=apr21-o25a,2=150]{
+    {
+    \def \picture {#1}
+    \ifx \picture \empty \else \usebackgroundtemplate{\includegraphics[trim=0 0 0 #2,clip,width=\paperwidth]{#1}} \fi
+    \begin{frame}[plain]
+        \vskip0pt plus 1filll
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
+            \LARGE\textbf{\insertsubtitle}\hspace*{20pt}
+        \end{beamercolorbox}%
+        \nointerlineskip%
+        \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
+            \small
+             \inserttitle\ $\vert$
+            \insertauthor\
+            \ifx \insertdate \empty \else $\vert$ \insertdate \fi
+            \hspace*{20pt}
+        \end{beamercolorbox}%
+        \nointerlineskip
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
+            \vspace{-1ex}%
+            \hspace{10pt}
+            \@mainlogo
+            \hspace{10pt}
+        \end{beamercolorbox}%
+    \end{frame}
+    }
+}
+\makeatother
+
+% setter for title picture
+\newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}
+
 % UNIVERSITY-SPECIFIC ADJUSTMENTS
 % or: a product line of product-line lectures ;-)
 
