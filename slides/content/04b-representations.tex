@@ -264,8 +264,6 @@ constraints
 	\end{mycolumns}
 \end{frame}
 
-\subsection{From Feature Model to Formula}
-
 \subsubsection{Algorithm}
 
 \newcommand{\featureDiagramFn}[4]{#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right) &= #4}
@@ -273,106 +271,188 @@ constraints
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
+		\mydefinition{Algorithm: Translate $FM$ Into $\phi(FM)$}{
+			\begin{enumerate}
+				\item<2-> translate each tree constraint
+				\begin{itemize}
+					\item<3-> \emph{Root feature}: $R$ is always required
+						\item<4-> \emph{Optional feature}: $C$ requires $P$
+						\item<5-> \emph{Mandatory feature}:\\
+							Optional + $P$ requires $C$
+						\item<6-> \emph{Or group}:\\
+							Optional + $P$ requires at least one $C_i$
+						\item<7-> \emph{Alternative group}:\\
+							Optional + $P$ requires exactly one $C_i$
+				\end{itemize}
+				\item<8-> conjoin translated tree constraints\\
+					$\phi(TC) \gets \bigwedge_{tc \in TC} \phi(tc)$
+				\item<9-> conjoin cross-tree constraints\\
+					$\phi(CTC) \gets \bigwedge_{ctc \in CTC} ctc$
+				\item<10-> $\phi(FM) \gets \phi(TC) \pand \phi(CTC)$
+			\end{enumerate}
+		}
+	\mynextcolumn
 		\mydefinition{}{
 			\vspace*{-4ex}
 			\begin{align*}
-				\uncover<1->{\featureDiagramFn{\phi}{6ex}{Root,concrete}{Root}}\\
-				\uncover<2->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,optional,concrete]}{C \pimplies P}}\\
-				\uncover<3->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,mandatory,concrete]}{C \pequals P}}\\
-				\uncover<4->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,or,concrete][\ldots][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
-				\uncover<5->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,or,concrete][\ldots][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
-				& \uncover<5->{\pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)}
+				\uncover<3->{\featureDiagramFn{\phi}{6ex}{Root,concrete}{Root}}\\
+				\uncover<4->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,optional,concrete]}{C \pimplies P}}\\
+				\uncover<5->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,mandatory,concrete]}{C \pequals P}}\\
+				\uncover<6->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,or,concrete][\ldots,concrete][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
+				\uncover<7->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,alternative,concrete][\ldots,concrete][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
+				\uncover<7->{& \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)}
 			\end{align*}
 		}
-	\mynextcolumn
-	\mynote{}{
-		\begin{itemize}
-			\item<1-> \emph{Root feature}: $R$ is always required
-   			\item<2-> \emph{Optional feature}: $C$ requires $P$
-   			\item<3-> \emph{Mandatory feature}: Optional + $P$ requires $C$
-   			\item<4-> \emph{Or group}: Optional + $P$ requires at least one $C_i$
-   			\item<5-> \emph{Alternative group}: Optional + $P$ requires exactly one $C_i$
-      % conjunction of everything
-	  % cross-tree constraints
-		\end{itemize}
-	}
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Storing Formulas}
+\subsection{A ``Universal Formula Language''?}
+
+\subsubsection{Conjunctive Normal Form}
 
 \begin{frame}{\myframetitle}
 	% cnf + transf. + dimacs on one slide
 	%CNF is a universal language for saving Boolean formulas, maybe explain it here?
 
-	\begin{mycolumns}
+	\begin{mycolumns}[animation=none]
 		\mydefinition{Recap: Conjunctive Normal Form}{
 			\begin{itemize}
 				\item a \emph{literal} $L$ is a variable $X$ or its negation $\pnot X$
-				\item a \emph{clause} $C$ is a disjunction of literals $\bigvee_{j} L_j$
-				\item a \emph{conjunctive normal form (CNF)} is a conjunction of clauses $\bigwedge_{i} C_i = \bigwedge_{i} \bigvee_{j} L_j$
+				\item a \emph{clause} $\clause{C}$ is a disjunction of literals $\clause{\bigvee_{j} L_j}$
+				\item a \emph{conjunctive normal form (CNF)} is a conjunction of clauses $\bigwedge_{i} C_i = \bigwedge_{i} \clause{\bigvee_{j} L_j}$
 				\item intuitively: a set of ``rules'' to be satisfied
 				\item any formula $\phi$ can be transformed into a CNF $\phi'$ that is logically equivalent ($\phi \mequals \phi'$)
 			\end{itemize}
 		} % later on allsat: DNF as opposition? subtractive/additive definition?
-		\mydefinition{Recap: Identities}{
-			\begin{itemize}
-				\item 
-			\end{itemize}
+		\uncover<2->{
+			\mydefinition{Recap: Laws of Propositional Logic}{
+				\begin{itemize}
+					\item<3-> implication: $\phi \pimplies \psi \mequals \pnot \phi \por \psi$
+					\item<3-> biimplication: $\phi \pequals \psi \mequals (\pnot \phi \por \psi) \pand (\pnot \psi \por \phi)$
+					\item<4-> De Morgan's laws: $\pnot (\phi \pand \psi) \mequals \pnot \phi \por \pnot \psi$
+					\item<5-> distributivity:\,$(\phi \pand \psi) \por \chi \mequals (\phi \por \chi) \pand (\psi \por \chi)$
+				\end{itemize}
+			}
 		}
 	\mynextcolumn
-		% \myexample{}{
-		% 	\vspace*{-4ex}
-		% 	\small
-		% 	\begin{align*}
-		% 		&~\phi(FM) \\
-		% 		\uncover<10->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fs{O} \pequals \fs{C}) \\
-		% 		\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fs{W} \por \fd{L} \pequals \fs{O}) \\
-		% 		\pand &~\pnot (\fs{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
-		% 		\uncover<11->{=&~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fs{\top} \pequals \fs{\top}) \\
-		% 		\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fs{\top} \por \fd{\bot} \pequals \fs{\top}) \\
-		% 		\pand &~\pnot (\fs{\top} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
-		% 		\uncover<12->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
-		% 		=		&~\fs{\top}}
-		% 	\end{align*}
-		% }
-		% \begin{dimacs}
-		% 	p cnf 
-		% \end{dimacs}
+		\uncover<2->{
+			% \myexampletight{A Feature Model $FM$ \ldots}{
+			% 	\centering\tiny
+			% 	\featureDiagramConfigurableDatabaseSmall
+			% }
+			\myexample{Transforming Part of $\phi(FM)$ into CNF}{
+				\vspace*{-4ex}
+				\small
+				% todo: introduce colors that are color-blind-compatible
+				\leftandright{%
+					\begin{align*}
+						\uncover<2->{&~\clause{C} \\
+						%\pand &~(A \pequals C) \\
+						\pand &~(T \pimplies C) \\
+						\pand &~(O \pequals C) \\
+						%\pand &~(G \por P \por D \pequals A) \\
+						\pand &~(W \por L \pequals O) \\
+						\pand &~\pnot (W \pand L)}
+						%\pand &~(T \pimplies P \por D) \\
+					\end{align*}
+				}{
+					\begin{align*}
+						\uncover<3->{&~\clause{C} \\
+						\pand &~\clause{(\pnot T \por C)} \\
+						\pand &~\clause{(\pnot O \por C)} \pand \clause{(\pnot C \por O)} \\
+						\pand &~(\pnot (W \por L) \por O) \\
+						\pand &~\clause{(\pnot O \por W \por L)} \\
+						\pand &~\pnot (W \pand L)}
+					\end{align*}
+				}
+				\leftandright{
+					\begin{align*}
+						\uncover<4->{&~\clause{C} \\
+						\pand &~\clause{(\pnot T \por C)} \\
+						\pand &~\clause{(\pnot O \por C)} \pand \clause{(\pnot C \por O)} \\
+						\pand &~((\pnot W \pand \pnot L) \por O) \\
+						\pand &~\clause{(\pnot O \por W \por L)} \\
+						\pand &~\clause{(\pnot W \por \pnot L)}}
+					\end{align*}
+				}{
+					\begin{align*}
+						\uncover<5->{&~\clause{C} \\
+						\pand &~\clause{(\pnot T \por C)} \\
+						\pand &~\clause{(\pnot O \por C)} \pand \clause{(\pnot C \por O)} \\
+						\pand &~\clause{(\pnot W \por O)} \pand \clause{(\pnot L \por O)} \\
+						\pand &~\clause{(\pnot O \por W \por L)} \\
+						\pand &~\clause{(\pnot W \por \pnot L)}}
+					\end{align*}
+				}
+			}
+		}
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{-- Equivalent Transformation}
-	
+\subsubsection{DIMACS}
+
+\begin{frame}[fragile]{\myframetitle}
+ 	\begin{mycolumns}[columns=3,widths={25,25,50}]
+		\begin{align*}
+			&~C \\
+			\pand &~(\pnot T \por C) \\
+			\pand &~(\pnot O \por C) \pand (\pnot C \por O) \\
+			\pand &~(\pnot W \por O) \pand (\pnot L \por O) \\
+			\pand &~(\pnot O \por W \por L) \\
+			\pand &~(\pnot W \por \pnot L)
+		\end{align*}
+ 	\mynextcolumn
+\begin{dimacs}[basicstyle=\large]
+	c 1 C
+	c 2 T
+	c 3 O
+	c 4 W
+	c 5 L
+	p cnf 5 8
+	1 0
+	-2 1 0
+	-3 1 0
+	-1 3 0
+	-4 3 0
+	-5 3 0
+	-3 4 5 0
+	-4 5 0
+\end{dimacs}
+	\mynextcolumn
+		\mydefinition{DIMACS Format\mysource{\dimacsformat}}{
+			\begin{itemize}
+				\item de facto industry standard for storing CNF
+				\item machine-readable, automated analyses, \ldots
+				\item comments start with \texttt{c \ldots}
+				\item problem line:\\
+					\texttt{p cnf \#variables \#clauses}
+				\item clause $\bigvee_{i} L_i$ translates to \texttt{L1 \ldots\ Ln 0}
+				\item intuitively:
+					\begin{equation*}
+						\begin{rcases}
+							\texttt{0}\\
+							\texttt{\textvisiblespace}\\
+							\texttt{-}
+						\end{rcases} \text{ means } \begin{cases}
+							\pand \\
+							\por \\
+							\pnot
+						\end{cases}
+					\end{equation*}
+			\end{itemize}
+		}
+ 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{-- DIMACS File Format}
-	
-\end{frame}
+% FM [UVL,attribute,cardinalities,...] -> phi[Prop/FOL/QBF...] -> CNF[BDD/d-DNNF/...] -> SAT[#SAT,AllSat] -> SAT Result -> FM Result
+% show this + where it can be varied (BDD, ...) at the end
 
-%(state BDD?)
-% probably not - (knowledge compilation: there are many nuances between CNF and BDD, maybe discuss?)
-
-\subsection{Other Representations} %variations? these are not only other representations of the same notation
+\subsection{Variability Models in the Wild}
 
 \begin{frame}{\myframetitle}
-	Extended Feature Models
-	
-	%at the end (what else is there?): in practice, we also have non-Boolean features/attributes/constraints over attributes (more details on efficiency in third block)
-
-	Cardinalities
-
 	Linux/Kconfig % tri-state features
-
-	only requires/excludes constraints
-	%there is evidence (Knueppel) that the full expressive power of Boolean formulas is needed for real-world formulas
+	% can be transformed into a feature model
 \end{frame}
-
-
-
-
-
-
 
 % \subsection{Enumerating All Configurations}
 % \begin{frame}{\myframetitle}
@@ -425,7 +505,7 @@ constraints
 
 \begin{frame}{\myframetitle}
 	\myexampletight{Representations of Variability Models}{
-		\includegraphics[width=\linewidth]{representations-low-level}
+		\includegraphics[width=\linewidth]{representations-low-level}%also kconfig?
 
 		% describe sat, #sat, allsat
 		% describe size of product lines (chico)
