@@ -1,12 +1,9 @@
 \subsection{Representations of Variability Models}
 
-\begin{frame}{\myframetitle} % show list of cfgs, diagrams, text => what are the problems? 
+\begin{frame}{\myframetitle}
 	% this notation is already nice for communication, but semantics matter (for large models, it does not suffice to look sharply)
-
 	% why is this needed? (forward ref?)
-
 	% this section shall teach the relationship between FMs and formulas and FMs and sets (i.e., Damiani 2020, Batory 2005), so: FM semantics
-
 	% also, (valid) total configurations should be explained here (how a computer can check them, this can be checked easily when an FM is encoded eg as runtime variability, but all other SAT-based questions are hard to answer)
 
 	\begin{mycolumns}
@@ -38,7 +35,7 @@
 		\mynote{Problems}{
 			\begin{enumerate}
 				\item[P1] How to express feature models \emph{textually}? % animate P1 with arrows, see lego example
-				\item[P2] How to obtain configurations \emph{automatically}? % valid cfg
+				\item[P2] How to obtain valid configurations \emph{automatically}?
 				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
 		}
@@ -51,7 +48,7 @@
 	\begin{mycolumns}
 \begin{uvl}[basicstyle=\normalsize]
 features
-	ConfigDB	
+	ConfigDB
 		mandatory
 			API {abstract}
 				or
@@ -66,7 +63,7 @@ features
 				alternative
 					Windows
 					Linux
-				
+
 constraints
 	Transactions => Put | Delete
 \end{uvl}
@@ -85,14 +82,14 @@ constraints
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle}
+\begin{frame}{} %todo good name
 	\centering
 	\includegraphics[width=0.45\linewidth]{representations-high-level}
 	\begin{mycolumns}[animation=none]
 		\mynote{Problems}{
 			\begin{enumerate}
 				\item[P1] How to express feature models \emph{textually}?
-				\item[P2] How to obtain configurations \emph{automatically}?
+				\item[P2] How to obtain valid configurations \emph{automatically}?
 				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
 		}
@@ -168,44 +165,44 @@ constraints
 \subsubsection{Example}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\only<1-|handout:1>{
+	\begin{mycolumns}[animation=none]
+		\only<1-|handout:1-2>{
 			\myexampletight{A Feature Model $FM$ \ldots}{
 				\centering\tiny
 				\featureDiagramConfigurableDatabase[_phi]
 				\featureDiagramOverlay{
-					\only<1>{
+					\only<1|handout:0>{
 						\featureDeemph{(API_phi),(Get_phi),(Put_phi),(Delete_phi),(Transactions_phi),(OS_phi),(Windows_phi),(Linux_phi)}
 						\featureEmph{(ConfigDB_phi)}
 					}
-					\only<2>{
+					\only<2|handout:0>{
 						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(Transactions_phi),(OS_phi),(Windows_phi),(Linux_phi)}
 						\featureEmph{(ConfigDB_phi)(API_phi)}
 					}
-					\only<3>{
+					\only<3|handout:0>{
 						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(API_phi),(OS_phi),(Windows_phi),(Linux_phi)}
 						\featureEmph{(ConfigDB_phi)(Transactions_phi)}
 					}
-					\only<4>{
+					\only<4|handout:0>{
 						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(API_phi),(Transactions_phi),(Windows_phi),(Linux_phi)}
 						\featureEmph{(ConfigDB_phi)(OS_phi)}
 					}
-					\only<5>{
+					\only<5|handout:0>{
 						\featureDeemph{(ConfigDB_phi),(Transactions_phi),(Windows_phi),(Linux_phi),(OS_phi)}
 						\featureEmph{(Get_phi)(Put_phi)(Delete_phi)(API_phi)}
 					}
-					\only<6-7>{
+					\only<6-7|handout:0>{
 						\featureDeemph{(Get_phi),(Put_phi),(Delete_phi),(API_phi),(Transactions_phi),(ConfigDB_phi)}
 						\featureEmph{(Windows_phi)(Linux_phi)(OS_phi)}
 					}
-					\only<8>{
+					\only<8|handout:0>{
 						\featureDeemph{(ConfigDB_phi)(Transactions_phi)(Windows_phi)(Linux_phi)(OS_phi)(Get_phi)(Put_phi)(Delete_phi)(API_phi)}
 					}
-					\only<9-12>{
+					\only<9-12|handout:1>{
 						\featureSelected{(ConfigDB_phi),(API_phi),(Get_phi),(OS_phi),(Windows_phi)}
 						\featureDeselected{(Put_phi)(Delete_phi),(Transactions_phi),(Linux_phi)}
 					}
-					\only<13->{
+					\only<13-|handout:2>{
 						\featureSelected{(ConfigDB_phi),(API_phi),(Get_phi)}
 						\featureDeselected{(Put_phi)(Delete_phi)(Windows_phi)(Linux_phi),(Transactions_phi)(OS_phi)}
 					}
@@ -227,10 +224,10 @@ constraints
 			}
 		}
 	\mynextcolumn
-		\only<9-|handout:2>{
+		\only<9-|handout:1-2>{
 			\myexample{Is This a Valid Configuration?}{
 				\vspace*{-4ex}
-				\only<9-12>{
+				\only<9-12|handout:1>{
 					\begin{align*}
 								&~\phi(FM)({\{C, A, G, O, W\}}) \\
 						=		&~\phi(FM)(\cfg[2-]{C, A, G, O, W}{P, D, T, L}) \\
@@ -246,7 +243,7 @@ constraints
 					\uncover<12->{\emph{$\leadsto$ configuration is valid}\\
 					\phantom{$\leadsto$ }(read-only database on Windows)}
 				}
-				\only<13->{
+				\only<13-|handout:2>{
 					\begin{align*}
 								&~\phi(FM)({\{C, A, G\}}) \\
 						=		&~\phi(FM)(\cfg[2-]{C, A, G}{P, D, T, O, W, L}) \\
@@ -257,7 +254,7 @@ constraints
 						\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fd{\bot} \por \fd{\bot} \pequals \fd{\bot}) \\
 						\pand &~\pnot (\fd{\bot} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
 						\uncover<16->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fd{\bot} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
-						=		&~\fd{\bot}} % todo: only show \pand and pih(fm) = and parentheses at the end
+						=		&~\fd{\bot}} % todo: only show \pand and phi(fm) = and parentheses at the end
 					\end{align*}
 					\uncover<16->{\emph{$\leadsto$ configuration is invalid}\\
 					\phantom{$\leadsto$ }($\lightning$ no operating system)}
@@ -295,18 +292,54 @@ constraints
    			\item<3-> \emph{Mandatory feature}: Optional + $P$ requires $C$
    			\item<4-> \emph{Or group}: Optional + $P$ requires at least one $C_i$
    			\item<5-> \emph{Alternative group}: Optional + $P$ requires exactly one $C_i$
-      % conjuction
+      % conjunction of everything
 	  % cross-tree constraints
 		\end{itemize}
 	}
 	\end{mycolumns}
 \end{frame}
 
-% cnf + transf. + dimacs on one slide
-\subsection{Conjunctive Normal Form}
+\subsection{Storing Formulas}
 
-\begin{frame}{-- Conjunctive Normal Form}
-	CNF is a universal language for saving Boolean formulas, maybe explain it here?
+\begin{frame}{\myframetitle}
+	% cnf + transf. + dimacs on one slide
+	%CNF is a universal language for saving Boolean formulas, maybe explain it here?
+
+	\begin{mycolumns}
+		\mydefinition{Recap: Conjunctive Normal Form}{
+			\begin{itemize}
+				\item a \emph{literal} $L$ is a variable $X$ or its negation $\pnot X$
+				\item a \emph{clause} $C$ is a disjunction of literals $\bigvee_{j} L_j$
+				\item a \emph{conjunctive normal form (CNF)} is a conjunction of clauses $\bigwedge_{i} C_i = \bigwedge_{i} \bigvee_{j} L_j$
+				\item intuitively: a set of ``rules'' to be satisfied
+				\item any formula $\phi$ can be transformed into a CNF $\phi'$ that is logically equivalent ($\phi \mequals \phi'$)
+			\end{itemize}
+		} % later on allsat: DNF as opposition? subtractive/additive definition?
+		\mydefinition{Recap: Identities}{
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		}
+	\mynextcolumn
+		% \myexample{}{
+		% 	\vspace*{-4ex}
+		% 	\small
+		% 	\begin{align*}
+		% 		&~\phi(FM) \\
+		% 		\uncover<10->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fs{O} \pequals \fs{C}) \\
+		% 		\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fs{W} \por \fd{L} \pequals \fs{O}) \\
+		% 		\pand &~\pnot (\fs{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
+		% 		\uncover<11->{=&~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fs{\top} \pequals \fs{\top}) \\
+		% 		\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fs{\top} \por \fd{\bot} \pequals \fs{\top}) \\
+		% 		\pand &~\pnot (\fs{\top} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
+		% 		\uncover<12->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
+		% 		=		&~\fs{\top}}
+		% 	\end{align*}
+		% }
+		% \begin{dimacs}
+		% 	p cnf 
+		% \end{dimacs}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{-- Equivalent Transformation}

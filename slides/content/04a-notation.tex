@@ -192,52 +192,42 @@
 	\textbf{Can we do better?}
 \end{frame}
 
-\subsection{Feature Models} % syntax
+\subsection{Feature Models}
 
-%todo 2 frames, switch image and definitians
-\begin{frame}{\myframetitle\ \mytitlesource{\fospl}}\label{frame:fm}
+\subsubsection{Syntax}
+
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl}} % \foda?
 	\begin{mycolumns}
 		\myexampletight{}{
 			\centering
-			\featureDiagramConfigurableDatabase[_fm]
-			\featureDiagramOverlay{
-				\only<4>{
-					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm),(OS_fm),(Windows_fm)}
-					\featureDeselected{(Put_fm)(Delete_fm),(Transactions_fm),(Linux_fm)}
-				}
-				\only<5>{
-					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm)(Put_fm)(Delete_fm),(Linux_fm)}
-					\featureDeselected{(Windows_fm)}
-				}
-				\only<6>{
-					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm)}
-					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)(Linux_fm),(Transactions_fm)(OS_fm)}
-				}
-				\only<7>{
-					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm),(Linux_fm)}
-					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)}
-				}
-			}
+			\featureDiagramConfigurableDatabase
 			
 			\featureDiagramLegend
 		}
 	\mynextcolumn
-		\only<2>{
-			\mydefinition{Feature Model \deutsch{Feature-Modell}}{
-				\begin{itemize}
-					\item hierarchy of features
-					\item dependencies between features modeled by tree and cross-tree constraints
-					\item \emph{tree constraints}: defined by the hierarchy
-					\item \emph{cross-tree constraints}: propositional formulas over features
-					\item \emph{abstract features} are used to group other features
-					\item \emph{concrete features} have an implementation
-					\item also known as feature diagram or feature tree
-				\end{itemize}
-			}
+		\mydefinition{Feature Model \deutsch{Feature-Modell}}{
+			\begin{itemize}
+				\item hierarchy of features
+				\item dependencies between features modeled by tree and cross-tree constraints
+				\item \emph{tree constraints}: defined by the hierarchy
+				\item \emph{cross-tree constraints}: propositional formulas over features
+				\item \emph{abstract features} are used to group other features
+				\item \emph{concrete features} have an implementation
+				\item also known as feature diagram or feature tree
+    			\item notation for \emph{optional/mandatory features} and \emph{or/alternative groups}
+			\end{itemize}
 		}
-		\only<3>{
+	\end{mycolumns}
+\end{frame}
+
+\subsubsection{Semantics}
+
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl}}
+	\begin{mycolumns}[animation=none]
+		\uncover<2-|handout:1>{
 			\mydefinition{Tree Constraints}{
 				\begin{itemize}
+					\item the \emph{root feature} is always required
 					\item each feature requires its parent
 					\item an \emph{optional feature} can be (de-)selected freely when its parent is selected
 					\item a \emph{mandatory feature} is required by its parent
@@ -245,25 +235,61 @@
 					\item \emph{alternative group}: exactly one feature must be selected when the parent is selected
 				\end{itemize}
 			}
+		}
+	\mynextcolumn
+		\myexampletight{}{
+			\centering
+			\featureDiagramConfigurableDatabase
+		}
+		\uncover<3|handout:1>{
 			\mydefinition{Cross-Tree Constraints}{
 				\begin{itemize}
-					\item a list of propositional formulas expressing further dependencies between features
+					\item a list of \emph{propositional formulas} expressing further dependencies between features
+					\item each cross-tree constraint must be satisfied
 				\end{itemize}
 			}
 		}
-		\only<4->{
-			\myexample{Valid Configurations}{ % semantics frame
-				\begin{itemize}
-					\item<4-> \emph{valid} (read-only database on Windows):
-						$\cfg[4]{C, A, G, O, W}{P, D, T, L}$
-					\item<5-> \emph{valid} (fully functional database on Linux):
-						$\cfg[5]{C, A, G, P, D, T, O, L}{W}$
-					\item<6-> \emph{invalid} ($\lightning$ no operating system):
-						$\cfg[6]{C, A, G}{P, D, T, O, W, L}$
-					\item<7-> \emph{invalid} (transactions $\lightning$ read-only database):
-						$\cfg[7]{C, A, G, T, O, L}{P, D, W}$
-				\end{itemize}
+	\end{mycolumns}
+\end{frame}
+
+\subsubsection{Characterizing Valid Configurations}
+
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl}}
+	\begin{mycolumns}[animation=none]
+		\myexampletight{}{
+			\centering
+			\featureDiagramConfigurableDatabase[_fm]
+			\featureDiagramOverlay{
+				\only<2|handout:0>{
+					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm),(OS_fm),(Windows_fm)}
+					\featureDeselected{(Put_fm)(Delete_fm),(Transactions_fm),(Linux_fm)}
+				}
+				\only<3|handout:0>{
+					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm)(Put_fm)(Delete_fm),(Linux_fm)}
+					\featureDeselected{(Windows_fm)}
+				}
+				\only<4|handout:0>{
+					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm)}
+					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)(Linux_fm),(Transactions_fm)(OS_fm)}
+				}
+				\only<5|handout:0>{
+					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm),(Linux_fm)}
+					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)}
+				}
 			}
+		}
+	\mynextcolumn
+		\myexample{Is This a Valid Configuration?}{
+			\begin{itemize}
+				\item<2-|handout:1> \emph{valid} (read-only database on Windows):
+					$\cfg[2|handout:0]{C, A, G, O, W}{P, D, T, L}$
+				\item<3-|handout:1> \emph{valid} (fully functional database on Linux):
+					$\cfg[3|handout:0]{C, A, G, P, D, T, O, L}{W}$
+				\item<4-|handout:1> \emph{invalid} ($\lightning$ no operating system):
+					$\cfg[4|handout:0]{C, A, G}{P, D, T, O, W, L}$
+				\item<5-|handout:1> \emph{invalid} (transactions $\lightning$ read-only database):
+					$\cfg[5|handout:0]{C, A, G, T, O, L}{P, D, W}$
+			\end{itemize}
 		}
 	\end{mycolumns}
 \end{frame}

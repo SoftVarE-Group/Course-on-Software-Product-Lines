@@ -27,25 +27,32 @@
 
 % \begin{lstlisting}[language=UVL]
 \lstdefinelanguage{UVL}{
-  tabsize = 4,
-  showstringspaces = false,
-  commentstyle=\color[HTML]{839496},
-  keywordstyle=\color{blue},
-  stringstyle=\color[HTML]{2429c9},
-  basicstyle = \footnotesize\ttfamily,
-  breaklines = true,
-  columns=fullflexible,
-  keepspaces=true,
-  sensitive=true,
-  mathescape,
-  alsoletter={=, >, |},
-  morekeywords={features, constraints, namespace, mandatory, optional, or, alternative, abstract, =>, |}
+	tabsize = 4,
+	commentstyle=\color[HTML]{839496},
+	keywordstyle=\color{blue},
+	stringstyle=\color[HTML]{2429c9},
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	columns=fullflexible,
+	keepspaces=true,
+	sensitive=true,
+	mathescape,
+	alsoletter={=, >, |},
+	morekeywords={features, constraints, namespace, mandatory, optional, or, alternative, abstract, =>, |}
 }
 
-\lstnewenvironment{java}[1][]
-  {\lstset{#1}}
-  {}
+\lstdefinelanguage{DIMACS}{
+	commentstyle=\color[HTML]{839496},
+	keywordstyle=\color{blue},
+	stringstyle=\color[HTML]{2429c9},
+	basicstyle = \footnotesize\ttfamily,
+	breaklines = true,
+	columns=fullflexible,
+	keepspaces=true,
+	sensitive=true,
+	morekeywords={p, cnf}
+}
 
-\lstnewenvironment{uvl}[1][]
-  {\lstset{language=UVL,#1}}
-  {}
+\lstnewenvironment{java}[1][]{\lstset{#1}}{}
+\lstnewenvironment{uvl}[1][]{\lstset{language=UVL,#1}}{}
+\lstnewenvironment{dimacs}[1][]{\lstset{language=DIMACS,#1}}{}
