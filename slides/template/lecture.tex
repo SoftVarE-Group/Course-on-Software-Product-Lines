@@ -1,8 +1,7 @@
 \usepackage{../template/beamerthemeuulm} % use the inofficial uulm beamer theme
 \setfaculty{infIngPsy} % set the color scheme for your faculty here [med/infIngPsy/math/nat]
 \uulmlogos{,uulm,,unibe-flat-crop,,ovgu-blue,}
-\setmycolumnsdefault{animation=forget} % animate all columns per default
-%\recordingtrue % special recording mode for use with a greenscreen, gives you space to show yourself in a layer in front of the slides, has no effect in the handout mode
+\setmycolumnsdefault{animation=keep} % animate all columns per default
 
 \title{Software Product Lines} % short title is used for the slide footer but optional
 
@@ -109,26 +108,7 @@
 % HACKS TO WORKAROUND PROBLEMS WITH THE TEMPLATE
 
 % TODO command to add extra space after each section manually
-\newcommand{\sectionend}{\addtocontents{toc}{\vspace{5mm}}}
-
-% TODO temporary hack to layout the slide overview in two colums
-\renewcommand{\lectureoverview}{
-	\begin{frame}{\insertsubtitle}
-		\begin{multicols}{2}
-        	\setlength{\parskip}{0ex}
-			\tableofcontents
-		\end{multicols}
-	\end{frame}
-}
-
-% TODO hack to make \leftandright work again in example boxes
-\renewcommand{\myexample}[2]{
-	\begin{tcolorbox}[title={#1}, before title={\setlength{\parskip}{0ex}\vphantom{/}},colback=blue!10,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=1mm,right=1mm,top=1mm,bottom=1mm]
-		\begin{flushleft}
-			#2
-		\end{flushleft}
-	\end{tcolorbox}
-}
+\newcommand{\sectionend}{\addtocontents{toc}{\vspace{2mm}}}
 
 % TODO hack to switch the lecture title with its subtitle on the title slide
 \makeatletter
