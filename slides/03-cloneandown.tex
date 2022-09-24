@@ -14,7 +14,7 @@
 \input{template/header}
 
 \begin{frame}{Graphs for Timo}
-	\foreach \page in {1,...,40}{\page=\includegraphics[width=.074\linewidth,page=\page]{graphs}\hspace{2mm}\hfill\vspace{.2mm}}
+	\foreach \page in {1,...,40}{\page=\pic[width=.074\linewidth,page=\page]{graphs}\hspace{2mm}\hfill\vspace{.2mm}}
 \end{frame}
 
 % ad-hoc compile-time variability
@@ -48,9 +48,9 @@
 \subsection{Version Control Systems}
 
 \begin{frame}{\myframetitle}
-	\only<1|handout:0>{\includegraphics[width=\linewidth,page=1]{branching}}%
-	\only<2|handout:0>{\includegraphics[width=\linewidth,page=2]{branching}}%
-	\only<3-|handout:1>{\includegraphics[width=\linewidth,page=3]{branching}}%
+	\only<1|handout:0>{\pic[width=\linewidth,page=1]{branching}}%
+	\only<2|handout:0>{\pic[width=\linewidth,page=2]{branching}}%
+	\only<3-|handout:1>{\pic[width=\linewidth,page=3]{branching}}%
 \end{frame}
 
 \input{content/missing}
