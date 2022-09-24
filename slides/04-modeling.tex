@@ -26,9 +26,11 @@
 	\item Thorsten Berger et al. (2013): \href{https://doi.org/10.1145/2430502.2430513}{A Survey of Variability Modeling in Industrial Practice}
 	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
 }{
-	\item sketch a feature model with \todo{X} configurations (pen and paper preferred)
-	\item upload your solution to \todots
-	\item discuss whether your solutions are syntactically correct and have the right number of configurations
+	\begin{itemize}
+		\item sketch a feature model with \todo{X} configurations (pen and paper preferred)
+		\item upload your solution to \todots
+		\item discuss whether your solutions are syntactically correct and have the right number of configurations
+	\end{itemize}
 }
 
 \sectionend
@@ -44,10 +46,12 @@
 	\item Don Batory (2005): \href{https://doi.org/10.1007/11554844_3}{Feature Models, Grammars, and Propositional Formulas}
 	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
 }{
-	\item Figure out how many valid configurations your feature diagram represents.
-	When is this easy?
-	\item Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
-	How might this be useful?
+	\begin{itemize}
+		\item Figure out how many valid configurations your feature diagram represents.
+		When is this easy?
+		\item Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
+		How might this be useful?
+	\end{itemize}
 }
 
 \sectionend
@@ -66,7 +70,7 @@
 	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}
 }{
 	% alternative: find inconsistencies in your feature diagram
-	\item Recall that some $f \in F$ is dead iff $\pnot SAT(\phi \pand f)$.
+	Recall that some $f \in F$ is dead iff $\pnot SAT(\phi \pand f)$.
 	Suppose you want to know \emph{all} dead features of $\phi$.
 	Naively, you may formulate $\abs{F}$ SAT queries.
 	
