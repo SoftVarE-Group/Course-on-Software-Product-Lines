@@ -13,6 +13,10 @@
 
 \input{template/header}
 
+\begin{frame}{Graphs for Timo}
+	\foreach \page in {1,...,40}{\page=\includegraphics[width=.074\linewidth,page=\page]{graphs}\hspace{2mm}\hfill\vspace{.2mm}}
+\end{frame}
+
 % ad-hoc compile-time variability
 %   without provenance
 %   with version control: version control systems, exploiting branches/forks
@@ -23,25 +27,9 @@
 
 \input{content/03a-intro}
 
-
 \subsection{Problems with Runtime Variability}
 \subsection{Ad-Hoc Compile-Time Variability}
 \subsection{Unmanaged Clone-and-Own}
-
-\subsection{Graphs for Timo}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=5]
-		\includegraphics[width=\linewidth,page=1]{graphs}
-	\mynextcolumn
-		\includegraphics[width=\linewidth,page=2]{graphs}
-	\mynextcolumn
-		\includegraphics[width=\linewidth,page=3]{graphs}
-	\mynextcolumn
-		\includegraphics[width=\linewidth,page=4]{graphs}
-	\mynextcolumn
-		\includegraphics[width=\linewidth,page=5]{graphs}
-	\end{mycolumns}
-\end{frame}
 
 \lessonslearned{
 	\item \ldots
