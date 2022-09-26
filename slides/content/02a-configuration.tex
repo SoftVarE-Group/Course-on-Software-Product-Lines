@@ -1,6 +1,60 @@
-\subsection{Configuration Parameters}
+\begin{frame}{Recap: Software Product Lines}
+	\begin{mycolumns}
+		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
+			\begin{itemize}
+				\item a set of software-intensive systems (aka.\ products or variants)
+				\item that share a common, managed set of features 
+				\item satisfying the specific needs of a particular market segment or mission (aka.\ domain)
+				\item and that are developed from a common set of core assets in a prescribed way.\myciteend
+				\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
+			\end{itemize}
+		}
+	\mynextcolumn
+		\pic[width=\linewidth,page=24]{lego}
+	\end{mycolumns}
+\end{frame}
 
-\begin{frame}{Command-Line Options}
+\subsection{Variability and Binding Time}
+
+\begin{frame}{How to Implement Software Product Lines?}
+	\begin{mycolumns}[widths={45},animation=none]
+		\includegraphics[width=\linewidth]{metaproduct2}	
+	\mynextcolumn
+		\mynote{Key Issues}{
+			\begin{itemize}
+			\item Systematic reuse of implementation artifacts.
+			\item Explicit handling of variability.
+			\end{itemize}
+		}
+		\uncover<2->{\mydefinition{Variability\mysource{\fospl\mypage{48}}}{
+			Variability is the ability to derive different products from a common set of artifacts.
+		}}
+		\uncover<3->{\mynote{Variability-Intensive System}{
+			Any software product line is a variability-intensive system.
+		}}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Variability and Binding Times}
+	\begin{mycolumns}[widths={45},animation=none]
+		\includegraphics[width=\linewidth]{metaproduct2}	
+	\mynextcolumn
+		\mydefinition{Binding Time}{
+			\begin{itemize}
+				\item Variability offers choices.
+				\item Derivation of a product requires to make decisions (aka. binding).
+				\item Decisions may be bound at different binding times.
+			\end{itemize}
+		}	
+		\uncover<2->{\mynote{When, how and by whom?}{
+			In the sequel: Focus on when and by whom\ldots
+		}}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Command-Line Options}
+
+\begin{frame}{Example: Command-Line Options}
 	\leftorright{
 		\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
 	}{
@@ -8,44 +62,49 @@
 	}
 \end{frame}
 
-\begin{frame}{Configuration Files}
+\subsection{Configuration Files}
+
+\begin{frame}{Example: Configuration Files}
 	\includegraphics[width=0.75\linewidth]{configfile-eclipse-ini}
 \end{frame}
 
-\begin{frame}{Preference Dialogs}
+\subsection{Preference Dialogs}
+
+\begin{frame}{Example: Preference Dialogs}
 	\includegraphics[width=0.75\linewidth]{preferences-eclipse}
 \end{frame}
 
-\begin{frame}{Common Principle: Runtime Variability}
-	\leftorright{
-		\myexampletight{Command-Line Options}{
-			\begin{center}
-				\includegraphics[width=0.7\linewidth,height=0.125\textheight]{runtime-parameters-win10-cmd-dir}
-			\end{center}
-		}
-		\myexampletight{Configuration Files}{
-			\begin{center}
-				\includegraphics[width=0.7\linewidth,height=0.125\textheight]{configfile-eclipse-ini}
-			\end{center}
-		}
-		\myexampletight{Preference Dialogs}{
-			\begin{center}
-				\includegraphics[width=0.7\linewidth,height=0.125\textheight]{preferences-eclipse}
-			\end{center}
-		}
-	}{
-		\mynote{Configuration Parameters}{
-			\begin{itemize}
-				\item Behavior of a program is determined by configuration parameters being interpreted at runtime.
-				\item Configuration may happen non-interactively (at startup) or interactively (through dialogs).
-			\end{itemize}
-		}
+\subsection{Runtime Variability}
+
+\begin{frame}{What do these examples have in common?}
+	\begin{mycolumns}[columns=3,widths={26,36,36},animation=none]
+		\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir}
+	\mynextcolumn
+		\pic[width=\linewidth]{configfile-eclipse-ini}
+	\mynextcolumn
+		\pic[width=\linewidth]{preferences-eclipse}
+	\end{mycolumns}
+		
+	\uncover<2->{
+		\begin{mycolumns}[columns=2,widths={55,40},animation=none]
+			\mynote{Configuration Parameters}{
+				\begin{itemize}
+					\item Behavior of a program is determined by configuration parameters being interpreted at runtime.
+					\item In other words: Choices offered by variability are decided at runtime.
+					\item Configuration may happen non-interactively (at startup) or interactively (through dialogs).
+				\end{itemize}
+			}			
+		\mynextcolumn	
+			\mydefinition{Runtime Variability\mysource{\fospl\mypage{49}}}{
+				Runtime variability is decided after compilation when the program is started (aka. load-time variability) or during program execution.
+			}	
+		\end{mycolumns}
 	}
 \end{frame}
 
-\subsection{Example: A Graph Library}
+\subsection{Configuration Parameters}
 
-\begin{frame}{\myframetitle}
+\begin{frame}{Example: A Graph Library}
 	A simple library providing \ldots \\
 	\vspace{5mm}
 	\leftorright{
@@ -70,29 +129,51 @@
 	}
 \end{frame}
 
-\subsection{Features as Configuration Parameters}
-\begin{frame}{Features of a Graph as Configuration Parameters}
-	\leftorright{
-		\includegraphics[width=0.9\linewidth]{graph-features}
-	}{
-		\mynote{}{
-			\begin{itemize}
-				\item Typically, configuration parameters are flags.
-				\item Their boolean value determines which features are activated and which ones are deactivated.
-			\end{itemize}
-		}
-	}
+\begin{frame}{Features of a Graph}
+	\begin{mycolumns}[columns=4,widths={25},animation=none]
+		\includegraphics[width=\linewidth,page=1]{graphs}
+		\includegraphics[width=\linewidth,page=3]{graphs}
+		\ldots etc.
+	\mynextcolumn
+		\includegraphics[width=\linewidth,page=5]{graphs}
+		\includegraphics[width=\linewidth,page=7]{graphs}
+	\mynextcolumn
+		\includegraphics[width=\linewidth,page=11]{graphs}
+		\includegraphics[width=\linewidth,page=13]{graphs}
+	\mynextcolumn
+		\includegraphics[width=\linewidth,page=15]{graphs}
+		\includegraphics[width=\linewidth,page=17]{graphs}		
+	\end{mycolumns}
 \end{frame}
 
-
-
-
+\begin{frame}{Features as Configuration Parameters}
+	\begin{mycolumns}[columns=3,widths={25,25,45},animation=none]
+		\myexampletight{Directed}{\includegraphics[width=\linewidth,page=3]{graphs}}	
+		\myexampletight{Colored}{\includegraphics[width=\linewidth,page=11]{graphs}}	
+	\mynextcolumn
+		\myexampletight{Weighted}{\includegraphics[width=\linewidth,page=5]{graphs}}	
+		\myexampletight{Weighted, Colored}{\includegraphics[width=\linewidth,page=15]{graphs}}			
+	\mynextcolumn
+		\includegraphics[width=0.45\linewidth,page=6]{graphs}
+		\hfill
+		\includegraphics[width=0.45\linewidth,page=12]{graphs}
+		
+		~
+		
+		\mynote{Configuration of graph data structures}{
+			\begin{itemize}
+				\item Typically, configuration parameters are {\em flags}.
+				\item Their boolean value determines which {\em features} are {\em activated} and which ones are {\em deactivated}.
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
 
 \subsection{Validity of Parameter Settings}
+
 \begin{frame}{\myframetitle}
-	\begin{columns}
-		\column{.6\textwidth}
-			\begin{tabular}{llll}
+	\begin{mycolumns}[columns=4,widths={65,5,15,15},animation=none]
+		\begin{tabular}{llll}
 			\toprule
 			{\bf Algorithm} 							& {\bf Graph type} 	& {\bf Weights} & {\bf Coloring}  \\ \midrule
 			{\em Vertex numbering}			  & *          				& *        			& *         			\\
@@ -100,16 +181,25 @@
 			{\em Shortest path}        		& directed   				& weighted 			& *         			\\
 			{\em Minimum spanning tree} 	& undirected 				& weighted 			& *         			\\
 			\ldots         					& \ldots 			 			& \ldots 		  	& \ldots 					\\ \bottomrule
-			\end{tabular}
-			\vspace{5mm}	
-			\mynote{Dependencies between features must be checked}{
-				\begin{itemize}
-					\item When the parameters are configured at startup, or
-					\item whenever parameters are changed at runtime.
-				\end{itemize}
-			}
-		\column{.35\textwidth}
-			\includegraphics[width=\linewidth]{graph-features}
-	\end{columns}
+		\end{tabular}
+		\vspace{5mm}	
+		\uncover<2->{\mynote{Dependencies between features must be checked}{
+			\begin{itemize}
+				\item When the parameters are configured at startup, or
+				\item whenever parameters are changed at runtime.
+			\end{itemize}
+		}}
+	\mynextcolumn
+		~
+	\mynextcolumn
+		\myexampletight{Directed}{\includegraphics[width=\linewidth,page=3]{graphs}}	
+		\myexampletight{Colored}{
+			\hfill\\
+			\hfill\\
+			\includegraphics[width=\linewidth,page=11]{graphs}
+		}	
+	\mynextcolumn
+		\myexampletight{Weighted}{\includegraphics[width=\linewidth,page=5]{graphs}}	
+		\myexampletight{Weighted, Colored}{\includegraphics[width=\linewidth,page=15]{graphs}}	
+	\end{mycolumns}
 \end{frame}
-

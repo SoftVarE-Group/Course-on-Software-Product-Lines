@@ -1,5 +1,6 @@
-\subsection{Recap: Object-Oriented Key Concepts}
-\begin{frame}{\myframetitle}
+\subsection{Object-Oriented Key Concepts}
+
+\begin{frame}{Recap: Object-Oriented Key Concepts}
 	\leftorright{
 		\mydefinition{Encapsulation}{Abstraction \& Information Hiding}		
 		\mydefinition{Composition}{Nested objects}	
@@ -10,8 +11,9 @@
 	}
 \end{frame}
 
-\subsection{Recap: Design Patterns}
-\begin{frame}{\myframetitle\ \mytitlesource{\gof}}
+\subsection{Design Patterns}
+
+\begin{frame}{Recap: Design Patterns\ \mytitlesource{\gof}}
 	\leftorright{
 		\vspace{-10mm}
 		\mynote{Design patterns}{
@@ -80,8 +82,9 @@
 	}
 \end{frame}
 
-\subsection{Object-Oriented Design of our Graph Library}
-\begin{frame}{\myframetitle}
+\subsection{Trade-Offs and Limitations}
+
+\begin{frame}{Object-Oriented Design of our Graph Library}
 	\leftorright{
 		\begin{center}
 			\pic[width=0.7\linewidth]{graphlib-oo-node-edge}
@@ -169,7 +172,6 @@ public class EdgeFactory {
 		\end{columns}
 \end{frame}
 
-\subsection{Feature Combinations}
 \begin{frame}{Feature Combinations?}
 	\leftorright{
 		\begin{center}
@@ -194,10 +196,14 @@ public class EdgeFactory {
 \end{frame}
 
 \begin{frame}{Static Modeling of Feature Combinations}
-	\includegraphics[width=0.7\linewidth]{graphlib-oo-combinatorial}
-	\mynote{}{
-		Even if multiple inheritance is supported, statically combining features through inheritance is tedious (or infeasible).
-	}
+	\begin{mycolumns}[columns=2,widths={70,30},animation=none]
+		\includegraphics[width=\linewidth]{graphlib-oo-combinatorial}
+		\mynote{}{
+			Even if multiple inheritance is supported, statically combining features through inheritance is tedious (or infeasible).
+		}
+	\mynextcolumn
+		~
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Decorator Pattern as a Solution?}

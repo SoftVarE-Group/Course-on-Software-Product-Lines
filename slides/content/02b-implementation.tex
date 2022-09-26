@@ -1,5 +1,21 @@
-\subsection{A Non-Variable Graph Implementation}
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}{Recap: Variability and Binding Times}
+	\begin{mycolumns}[widths={45},animation=none]
+		\includegraphics[width=\linewidth]{metaproduct2}	
+	\mynextcolumn
+		\mydefinition{Binding Time}{
+			\begin{itemize}
+				\item Variability offers choices.
+				\item Derivation of a product requires to make decisions (aka. binding).
+				\item Decisions may be bound at different binding times.
+			\end{itemize}
+		}	
+		\uncover<2->{\mynote{When, how and by whom?}{
+			In the sequel: Focus on how\ldots
+		}}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}[fragile]{A Non-Variable Graph Implementation}
 	\begin{tiny}
 		\begin{columns}
 			\column{.45\textwidth}
@@ -135,12 +151,11 @@ public class Edge {
 	\end{tiny}
 \end{frame}
 
-\subsection{Adding Variability: A Basic Idea}
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}[fragile]{Adding Variability: A Basic Idea}
 		\begin{columns}
 			\column{.45\textwidth}
 				\mynote{}{
-					Conditional statements, controlled by configuration parameters (``feature toggles'').
+					Conditional statements, controlled by configuration parameters.
 				}
 				\vspace{5mm}
 \begin{tiny}
@@ -198,6 +213,7 @@ public class Edge {
 \end{frame}
 
 \subsection{Global Variables}
+
 \begin{frame}[fragile]{\myframetitle}
 		\begin{columns}
 			\column{.45\textwidth}
@@ -292,10 +308,12 @@ public class Graph {
 \end{lstlisting}
 \end{tiny}	
 			\column{.45\textwidth}
-				\mynote{}{ 
+				\mynote{Idea}{ 
 					\begin{itemize}
-						\item {\bf Idea:} Static configuration when configuration parameters are known at compile time.
+						\item Static configuration when configuration parameters are known at compile time.
 					\end{itemize}					
+				}
+				\mynote{Discussion}{ 
 					\begin{itemize}
 						\item {\bf Advantage:} Compiler optimizations may remove dead code.
 					\end{itemize}					
