@@ -1,0 +1,161 @@
+
+\begin{frame}{Recap: Software Configuration Management}
+	\vspace{2mm}
+	\pic[width=0.7\linewidth]{configuration-management-2}
+\end{frame}
+
+\subsection{Build Systems}
+
+\begin{frame}{Tool Support: Build Systems}
+	\begin{mycolumns}[columns=2,widths={50,50},animation=none]
+		\pic[width=\linewidth]{ant-hello-world}		
+	\mynextcolumn
+		\mydefinition{Build Systems}{	
+			\begin{itemize}
+				\item Automation of the build process through build scripts
+				\item Multiple steps with dependencies/conditions
+				\begin{itemize}
+					\item Copy files, 
+					\item call compiler, 
+					\item start other tools, 
+					\item \ldots
+				\end{itemize}	
+				\item Tools: 
+				\begin{itemize}
+					\item make
+					\item ant
+					\item maven
+					\ldots
+				\end{itemize}
+			\end{itemize}
+		}
+	\end{mycolumns}	
+\end{frame}
+
+\subsection{Variability through Build Scripts}
+
+\begin{frame}{Variability through Build Scripts}
+	\begin{flushright}		
+		\vspace{-1cm}
+		\pic[scale=0.27]{buildsystems}
+		~~~~~~~~~~~~~~~~~
+	\end{flushright}
+	\begin{mycolumns}[columns=2,widths={50,50},animation=none]
+		\vspace{-8cm}
+		\mynote{Basic Idea}{	
+			\begin{itemize}
+				\item One build script per variant.
+				\item Include/exclude files when translating.
+				\item Overwrite variant-specific files.
+			\end{itemize}
+		}		
+	\mynextcolumn
+		~	
+	\end{mycolumns}	
+\end{frame}
+
+\begin{frame}[fragile]{Example: Graph Library}
+\begin{tiny}	
+	\begin{mycolumns}[columns=4,widths={10,30,10,60},animation=none]
+		~
+	\mynextcolumn
+		\vspace{2mm}
+		\pic[width=\linewidth]{buildsystems-graphs-1}	
+	\mynextcolumn
+		~
+	\mynextcolumn
+\begin{lstlisting}
+public class Edge {
+	Node a, b;
+
+	Edge(Node _a, Node _b) {
+		a = _a; b = _b;
+	}
+	...
+}
+\end{lstlisting}
+\vspace{1cm}
+\begin{lstlisting}
+public class Edge {
+	Node a, b;
+	@Weight weight = new Weight();@
+
+	Edge(Node _a, Node _b) {
+		a = _a; b = _b;
+	}
+	...
+}
+\end{lstlisting}
+	\end{mycolumns}
+\end{tiny}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Graph Library}
+\begin{tiny}	
+	\begin{mycolumns}[columns=4,widths={10,30,10,60},animation=none]
+		~
+	\mynextcolumn
+		\vspace{2mm}
+		\pic[width=\linewidth]{buildsystems-graphs-2}	
+	\mynextcolumn
+		~
+	\mynextcolumn
+\begin{lstlisting}
+public class Graph implements IGraph {
+	@EdgeFactory ef;@
+	...
+	@public Graph(EdgeFactory _ef) {
+		ef = _ef;@
+	}
+	public Edge add(Node n, Node m) {
+		@Edge e = ef.createEdge(n, m);@
+		nodes.add(n); nodes.add(m); edges.add(e);
+		return e;
+	}
+	...
+}
+\end{lstlisting}
+\begin{lstlisting}
+public class Edge {
+	Node a, b;
+	...
+}
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}
+public class WeightedEdge extends Edge {
+	Node a, b;
+	@Weight weight = new Weight();@
+	...
+}
+\end{lstlisting}
+	\end{mycolumns}
+\end{tiny}
+\end{frame}
+
+\subsection{Discussion}
+
+\begin{frame}{Discussion}
+	\begin{flushright}		
+		\vspace{-1cm}
+		\pic[scale=0.27]{buildsystems}
+		~~~~~~~~~~~~~~~~~
+	\end{flushright}
+	\begin{mycolumns}[columns=2,widths={50,50},animation=none]
+		\vspace{-8cm}
+		\mynote{Comparison to Version Control Systems}{	
+			\begin{itemize}
+				\item Supports combination of more fine-grained software items (i.e., files).
+				\item However: No provenance support.
+			\end{itemize}
+		}	
+		\mynote{More generally:}{	
+			\begin{itemize}
+				\item Combination of items (i.e., files) $\neq$ combination of features.
+				\item All variants are potentially affected by changes to the basic variant.
+			\end{itemize}
+		}		
+	\mynextcolumn
+		~	
+	\end{mycolumns}	
+\end{frame}

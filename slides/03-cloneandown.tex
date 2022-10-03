@@ -1,7 +1,7 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+%	handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 
 \input{template/lecture}
@@ -13,10 +13,6 @@
 
 \input{template/header}
 
-\begin{frame}{Graphs for Timo}
-	\foreach \page in {1,...,40}{\page=\pic[width=.074\linewidth,page=\page]{graphs}\hspace{2mm}\hfill\vspace{.2mm}}
-\end{frame}
-
 % ad-hoc compile-time variability
 %   without provenance
 %   with version control: version control systems, exploiting branches/forks
@@ -27,55 +23,54 @@
 
 \input{content/03a-intro}
 
-\subsection{Problems with Runtime Variability}
-\subsection{Ad-Hoc Compile-Time Variability}
-\subsection{Unmanaged Clone-and-Own}
-
 \lessonslearned{
-	\item \ldots
+	\item Compile-time variability is decided before or at compile time.
+	\item In Clone-and-Own, new variants of a software system are created by copying and adapting an existing variant.
+	\item Simple paradigm, but suffering from maintenance problems in the long run.
 }{
-	\item \ldots
+	\item \todo{\ldots}
 }{
-	\ldots
+	\item What are the reasons why clone-and-own is very popular in practice?
+	\item What is the order of magnitude of the number of variants that can be reasonably maintained in clone-and-own?
+	\item Have you ever applied the principle of clone-and-own? If so, where and how? 
 }
 
 \sectionend
 
 \section{Clone-and-Own with Version Control}
 
-\subsection{Software Configuration Management}
-
-\subsection{Version Control Systems}
-
-\begin{frame}{\myframetitle}
-	\only<1|handout:0>{\pic[width=\linewidth,page=1]{branching}}%
-	\only<2|handout:0>{\pic[width=\linewidth,page=2]{branching}}%
-	\only<3-|handout:1>{\pic[width=\linewidth,page=3]{branching}}%
-\end{frame}
-
-\input{content/missing}
+\input{content/03b-versioncontrol}
 
 \lessonslearned{
-	\item \ldots
+	\item Software Configuration Management as a traditional discipline of managing the evolution of variability-intensive systems 
+	\item Version Control Systems as a widespread tool supporting Clone-and-Own in Practice
 }{
-	\item \ldots
+	\item \fospl, Chapter 5.1
 }{
-	\ldots
+	\item Which Software Configuration Management concepts are supported by Version Control Systems?
+	\item Do you know other version control systems than Git? 
+	\item If so, in which way are they different from Git? 
 }
 
 \sectionend
 
 \section{Clone-and-Own with Build Systems}
 
-\input{content/missing}
+\input{content/03c-buildsystems}
 
 \lessonslearned{
-	\item \ldots
+	\item Variability through build scripts
+	\item Granularity of clones: Individual files
+	\item Combination of files $\neq$ combination of features
 }{
-	\item \ldots
+	\item \fospl, Chapter 5.1
 }{
-	\ldots
+	\item Which software configuration management concepts are supported by build systems?
+	\item What are the commonalities and differences of clone-and-own with version control and clone-and-own with build systems?
+	\item What are the strengths and weaknesses?
 }
+
+\sectionend
 
 \input{template/footer}
 

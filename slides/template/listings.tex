@@ -1,5 +1,8 @@
 \usepackage{listings}
 
+% Used in order to strikeout text in code listings
+\usepackage{ulem}
+
 % default listing style
 \lstset{ 
 	language=Java, % choose the language of the code
@@ -20,6 +23,7 @@
 	moredelim=**[is][\color{red}]{@}{@},
 	moredelim=**[is][\color{green}]{?}{?},
 	moredelim=**[is][\color{blue}]{~}{~},
+	moredelim=[is][\sout]{|}{|},
 	escapeinside={(*@}{@*)},
 	columns=fullflexible,
 	backgroundcolor=\color{white}

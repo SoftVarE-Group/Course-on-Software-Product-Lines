@@ -1,0 +1,114 @@
+
+\subsection{Software Configuration Management}
+
+\begin{frame}{Excursus: Software Configuration Management}
+	\begin{mycolumns}[columns=2,widths={35,63},animation=keep]
+		\mydefinition{Software Configuration Management (SCM)}{	
+			Policies, processes and tools for managing evolving software systems:
+			\begin{itemize}
+				\item Version control 
+				\item System building
+				\item Release management
+				\item Change management
+				\item Collaborative work
+			\end{itemize}	
+		}	
+	\mynextcolumn
+		\mydefinition{Basic Terms and Definitions}{	
+			\begin{itemize}
+				\item {\bf Software Item}: An (atomic) artifact that can be uniquely identified 
+				\item {\bf Version}: A modified software item.
+				\begin{itemize}
+					\item {\bf Revision}: A new version that replaces an old one.
+					\item {\bf Variant}: A version that co-exists with another one.
+				\end{itemize}
+				\item {\bf Configuration}: A set of software items that together form a functioning (partial) system.
+				\item {\bf Baseline}: A stable configuration that represents a point of reference for further development.
+				\item {\bf Release}: A baseline delivered to customers.				
+			\end{itemize}
+		}
+	\end{mycolumns}	
+\end{frame}
+
+\begin{frame}{Excursus: Software Configuration Management}
+	\vspace{2mm}
+	\only<1|handout:0>{\pic[width=0.7\linewidth]{configuration-management-1}}%
+	\only<2-|handout:1>{\pic[width=0.7\linewidth]{configuration-management-2}}%
+\end{frame}
+
+\begin{frame}{Example: A Conceptual Organization of our Graph Library}
+	\vspace{2mm}
+	\only<1|handout:0>{\pic[width=0.8\linewidth]{configuration-management-graphs-1}}%
+	\only<2-|handout:1>{\pic[width=0.8\linewidth]{configuration-management-graphs-2}}%
+\end{frame}
+
+%\begin{frame}{Tool Support: Version Control Systems}
+	%\only<1|handout:0>{\pic[width=\linewidth,page=1]{branching}}%
+	%\only<2|handout:0>{\pic[width=\linewidth,page=2]{branching}}%
+	%\only<3-|handout:1>{\pic[width=\linewidth,page=3]{branching}}%
+%\end{frame}
+
+\subsection{Version Control Systems}
+
+\begin{frame}{Tool Support: Version Control Systems}
+\begin{large}
+	\hspace{70mm}
+	\uncover<4->{$\text{cherrypick := patch}(\Delta(r8,r10),r11)$}\\
+	\vspace{8mm}
+	\only<1|handout:0>{\pic[width=0.8\linewidth]{versioncontrol-1}}%
+	\only<2|handout:0>{\pic[width=0.8\linewidth]{versioncontrol-2}}%
+	\only<3-|handout:1>{\pic[width=0.8\linewidth]{versioncontrol-3}}\\
+	\vspace{8mm}
+	\hspace{40mm}
+	\uncover<4->{$\text{merge := 3-way-merge}(r4,\Delta(r4,r7),\Delta(r4,r9))$}
+\end{large}
+\end{frame}
+
+\subsection{Supporting Clone-and-Own Development}
+
+\begin{frame}{Example: Graph Library under Version Control}
+	\pic[width=0.7\linewidth]{versioncontrol-graphs-1.pdf}
+\end{frame}
+
+\begin{frame}{Example: Graph Library under Version Control}
+	\pic[width=0.7\linewidth]{versioncontrol-graphs-2.pdf}
+\end{frame}
+
+\begin{frame}{Example: Graph Library under Version Control}
+	\pic[width=0.7\linewidth]{versioncontrol-graphs-3.pdf}
+\end{frame}
+
+\subsection{Discussion}
+
+\begin{frame}{Clone-and-Own with Version Control}
+	\begin{mycolumns}[columns=2,widths={50,50},animation=keep]
+		\mynote{Summary and Observations}{			
+			Clone-and-Own with Provenance:
+			\begin{itemize}
+				\item Supports keeping tracking of revisions and variants
+				\item Creation of new variants is supported by merging of branches
+				\item Propagation of changes between variants is supported by cherrypicking changes
+			\end{itemize}	
+			However:
+			\begin{itemize}
+				\item Versioning is typically limited to entire system variants (i.e., branches)
+				\item No flexible combination of software items
+			\end{itemize}
+		}	
+	\mynextcolumn
+		\mynote{Advantages}{	
+			\begin{itemize}
+				\item Well-established and stable systems.
+				\item Well-known known process.
+				\item Good tool integration.	
+			\end{itemize}
+		}
+		\mynote{Disadvantages}{	
+			\begin{itemize}
+				\item Development of variants, not features: flexible combination of features not directly possible.
+				\item No structured reuse (copy \& edit).
+				\item Merging and cherrypicking not fully automated.	
+			\end{itemize}			
+		}
+	\end{mycolumns}	
+\end{frame}
