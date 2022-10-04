@@ -17,6 +17,21 @@
 	$Transactions \pimplies Put \por Delete$
 }
 
+\newcommand{\featureDiagramWaffle}{
+	\featureDiagram{
+		Waffle,concrete
+		[Topping,optional,abstract
+			[Sugar,concrete,or]
+			[Cream,concrete]
+			[Cherries,concrete]
+			[\ldots]]
+		[Accessories,abstract,mandatory
+			[Plate,concrete,mandatory]
+			[Fork,concrete,optional]]
+	}\\
+	$Cherries \pimplies Sugar \pand Fork$
+}
+
 \newcommand{\featureDiagramEightOptionalFeatures}{
 	\featureDiagram{
 		SPL,abstract

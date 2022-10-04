@@ -38,6 +38,40 @@
 % \xkcd{2369}
 
 \subsection{Configuring Features with Dependencies}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[columns=3,widths={40,20,40}]
+		\myexampletight{Ordering a Waffle \ldots}{
+			\pic[width=\textwidth]{waffle-feature-model}
+		}
+		\mynextcolumn
+		\myexampletight{\ldots With Sugar}{
+			\pic[width=\textwidth]{waffle-sugar}
+		}
+		\myexampletight{\ldots With Cherries}{
+			\pic[width=\textwidth]{waffle-cherries}
+		}
+		\mynextcolumn
+		\mynote{This is Nice, But \ldots}{
+			\begin{itemize}
+				\item plate and sugar seem to always be included, a fork is only included for some orders\\
+					$\Rightarrow$ limitations seem arbitrary
+				\item children get special treatment\\
+					$\Rightarrow$ order process is unfair
+				\item what exactly am I paying for?\\
+					$\Rightarrow$ investments are unclear
+				\end{itemize}
+		}
+		\mydefinition{In This Lecture}{
+			\begin{enumerate}
+				\item how to model and configure features and their dependencies?
+				\item how to store and communicate?
+				\item how to analyze and understand?
+			\end{enumerate}
+		}
+	\end{mycolumns}
+\end{frame}
+
 % \begin{frame}{\myframetitle}
 % 	\partofpage{70}{\myexampletight{Configuring a Notebook}{\only<1,3->{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}}}
 % \end{frame}
@@ -297,6 +331,9 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\todo{graph product line example from Timo}
+
+		%\centering
+		%\featureDiagramWaffle
 	\mynextcolumn
 		\mynote{Notation}{
 			\begin{itemize}
