@@ -1,7 +1,34 @@
 \subsection{Asking Questions About Feature Models}
 
+\begin{frame}{\myframetitle}
+	\partofpage{70}{\myexampletight{Configuring a Notebook}{\only<1,3->{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}}}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\partofpage{70}{\myexampletight{Still Configuring a Notebook}{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-office}}}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	~\hfill\partofpage{60}{\myexampletight{Configuring a Car}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with a Weird Price}{\centering\includegraphics[width=.55\linewidth]{toyota-aygo-costs}}}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with 8 Wheels!}{\includegraphics[width=\linewidth]{toyota-aygo-costs3}}}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\partofpage{70}{\myexampletight{Configuring a German Car}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}}}
+\end{frame}
+
 % do everything with one running example (preferably the one from before)
 % ie, show an example of an inconsistency and then reveal the issue - can be combined with the MUS explanations
+
+% FM [UVL,attribute,cardinalities,...] -> phi[Prop/FOL/QBF...] -> CNF[BDD/d-DNNF/...] -> SAT[#SAT,AllSat] -> SAT Result -> FM Result
+% show this + where it can be varied (BDD, ...) at the end
 
 \begin{frame}{\myframetitle}
 	this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
@@ -130,3 +157,13 @@
 \end{frame}
 
 % end goal: the lecture shows how to realize a automated configurator that does not allow invalid configurations
+
+\subsection{Challenges of Feature Modeling}
+
+\begin{frame}{\myframetitle}
+	scoping: which features do we want to deliver? (vl 8,12)
+
+	interactions: which dependencies between feature are there? (vl 9)
+
+	new tools, languages, experts/consultants, ...
+\end{frame}

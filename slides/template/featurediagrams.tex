@@ -24,12 +24,23 @@
 			[Sugar,concrete,or]
 			[Cream,concrete]
 			[Cherries,concrete]
-			[\ldots]]
+			[Nutella,concrete]
+			[Crumbles,concrete
+				[Chocolate,concrete,alternative]
+				[Colored,concrete]]]
 		[Accessories,abstract,mandatory
 			[Plate,concrete,mandatory]
-			[Fork,concrete,optional]]
+			[Fork,concrete,optional
+				[Plastic,concrete,alternative]
+				[Wood,concrete]]]
+		[Customer,abstract,mandatory
+			[Adult,abstract,alternative]
+			[Child,abstract]]
 	}\\
-	$Cherries \pimplies Sugar \pand Fork$
+	$Sugar$\\
+	$Cherries \pimplies Sugar \pand Fork$\\
+	$Nutella \por Crumbles \pimplies Child$\\
+	$Fork \pimplies Adult$
 }
 
 \newcommand{\featureDiagramEightOptionalFeatures}{
