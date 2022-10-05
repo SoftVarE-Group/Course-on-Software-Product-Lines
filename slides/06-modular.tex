@@ -15,14 +15,7 @@
 
 \section{Components}
 
-% discuss components with gluecode (clone and own for glue code) vs alternative components (no clone and own on glue code)
-
-\subsection{Recap: UML Component Diagram}
-\subsection{Vision: Component Markets}
-\subsection{The Library Scaling Problem}
-\subsection{Components in Java}
-\subsection{Components for Features}
-\subsection{Discussion}
+\input{content/06a-components}
 
 \lessonslearned{
 	\item \ldots
@@ -36,8 +29,7 @@
 
 \section{Services and Microservices}
 
-\subsection{Services vs. Components}
-\subsection{Microservices vs. Services}
+\input{content/06b-services}
 
 \lessonslearned{
 	\item \ldots
@@ -51,57 +43,7 @@
 
 \section{Black-Box Frameworks}
 
-\begin{frame}{Preplanned Bike Extensions}
-	\begin{mycolumns}[columns=4,T]
-		\centering\pic[width=\linewidth]{bike-extensionpoint1}
-
-		bike lock
-	\mynextcolumn
-		\centering\pic[width=\linewidth]{bike-extensionpoint2}
-
-		front wheel brake
-	\mynextcolumn
-		\centering\pic[width=\linewidth]{bike-extensionpoint3}
-
-		rear wheel brake
-	\mynextcolumn
-		\centering\pic[width=\linewidth]{bike-extensionpoint4}
-
-		kickstand
-	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{Preplanned Bike Extensions}
-	\begin{mycolumns}[columns=5,widths={30,5,30,5,30}]
-		\centering\pic[width=\linewidth]{bike-extensionpoint1-withoutplugin}
-
-		framework with extension~points
-	\mynextcolumn
-		\centering\Huge +
-	\mynextcolumn
-		\centering\pic[width=\linewidth]{bike-lock}
-
-		plug-ins\\~
-	\mynextcolumn
-		\centering\Huge =
-	\mynextcolumn
-		\centering\pic[width=\linewidth]{bike-extensionpoint1}
-
-		framework with plug-ins\\~
-	\end{mycolumns}
-\end{frame}
-
-\subsection{Frameworks with Plug-Ins}
-\begin{frame}{\myframetitle\ \mytitlesource{\featureide}}
-	\leftorright{
-		\includegraphics[width=\linewidth]{framework-with-plugins}
-	}{
-		\includegraphics[width=\linewidth]{framework-a-plugin}
-	}
-\end{frame}
-
-\subsection{White-Box Frameworks?}
-% discuss differences to black-box and similiarities to components with gluecode
+\input{content/06c-frameworks}
 
 \lessonslearned{
 	\item \ldots
