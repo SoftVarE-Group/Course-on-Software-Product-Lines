@@ -122,7 +122,8 @@ public class Edge {
 
 		\begin{definition}{How to? -- Command-Line Options / Configuration Files}
 			\begin{itemize}
-				\item implement runtime variability and compile the program
+				\item implement runtime variability
+				\item compile the program
 				\item automatically generate command-line options / configuration files based on configuration
 				\item run the program
 			\end{itemize}
@@ -157,21 +158,62 @@ public class Config {
 \end{frame}
 
 \subsubsection{Features with Clone-and-Own?}
-% compile-time variability, but ...
-% no automated generation with version control
-% automated generation with build systems but no features
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={30}]
+		\centering~
+
+		\includegraphics[scale=0.2]{alice}
+		\includegraphics[scale=0.26,page=2]{graphs}
+
+		\includegraphics[scale=0.2]{bob}
+		\includegraphics[scale=0.26,page=12]{graphs}
+
+		\includegraphics[scale=0.2]{eve}
+		\includegraphics[scale=0.26,page=16]{graphs}
+	\mynextcolumn
+		\begin{definition}{How to?}
+			\begin{itemize}
+				\item implement separate project for each product\\(i.e., branch with version control)
+				\item download project / checkout branch based on configuration
+				\item run build script, if existent
+				\item compile and run the program
+			\end{itemize}
+		\end{definition}
+		\begin{note}{What is missing?}
+			\begin{itemize}
+				\item compile-time variability only for implemented products
+				\item no automated generation:\\\hfill for clone-and-own (with version control systems)
+				\item automated generation based on build script and extra files:\\\hfill for clone-and-own with build systems
+				\item no free feature selection (i.e., configuration)
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
 
 \subsection{Introducing Features to Build Systems}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\todots
+	\mynextcolumn
+		\todots
+	\end{mycolumns}
+\end{frame}
 
 \subsection{KBuild -- The Linux Kernel Build System}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\todots
+	\mynextcolumn
+		\todots
+	\end{mycolumns}
+\end{frame}
 % https://docs.kernel.org/kbuild/kbuild.html
 
 \subsection{Discussion of Features with Build Systems}
-
-%\begin{frame}{\myframetitle}
-%	\begin{mycolumns}
-%		\todots
-%	\mynextcolumn
-%		\todots
-%	\end{mycolumns}
-%\end{frame}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\todots
+	\mynextcolumn
+		\todots
+	\end{mycolumns}
+\end{frame}
