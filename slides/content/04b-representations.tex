@@ -135,7 +135,7 @@ constraints
 		}
 		\mynote{Solutions}{
 			\begin{enumerate}
-				\item[P1] Universal Variability Language $\rightarrow$ \emph{Syntax}
+				\item[P1] Universal Variability Language $\Rightarrow$ \emph{Syntax}
 				\item[P2] \emph{Semantics}?
 				\item[P3] \color{gray}{--}
 			\end{enumerate}
@@ -247,11 +247,11 @@ constraints
 					}
 				}
 			}
-			\myexample{\ldots as a Propositional Formula $\phi(FM)$}{
+			\myexample{\ldots as a Propositional Formula $\Phi(FM)$}{
 				\vspace*{-4ex}
 				\small
 				\begin{align*}
-					\phi(FM) = &~ConfigDB \\
+					\Phi(FM) = &~ConfigDB \\
 					\uncover<2->{\pand &~(API \pequals ConfigDB) \\}
 					\uncover<3->{\pand &~(Transactions \pimplies ConfigDB) \\}
 					\uncover<4->{\pand &~(OS \pequals ConfigDB) \\}
@@ -268,8 +268,8 @@ constraints
 				\vspace*{-4ex}
 				\only<9-12|handout:1>{
 					\begin{align*}
-								&~\phi(FM)({\{C, A, G, O, W\}}) \\
-						=		&~\phi(FM)(\cfg[2-]{C, A, G, O, W}{P, D, T, L}) \\
+								&~\Phi(FM)({\{C, A, G, O, W\}}) \\
+						=		&~\Phi(FM)(\cfg[2-]{C, A, G, O, W}{P, D, T, L}) \\
 						\uncover<10->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fs{O} \pequals \fs{C}) \\
 						\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fs{W} \por \fd{L} \pequals \fs{O}) \\
 						\pand &~\pnot (\fs{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
@@ -284,8 +284,8 @@ constraints
 				}
 				\only<13-|handout:2>{
 					\begin{align*}
-								&~\phi(FM)({\{C, A, G\}}) \\
-						=		&~\phi(FM)(\cfg[2-]{C, A, G}{P, D, T, O, W, L}) \\
+								&~\Phi(FM)({\{C, A, G\}}) \\
+						=		&~\Phi(FM)(\cfg[2-]{C, A, G}{P, D, T, O, W, L}) \\
 						\uncover<14->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fd{O} \pequals \fs{C}) \\
 						\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fd{W} \por \fd{L} \pequals \fd{O}) \\
 						\pand &~\pnot (\fd{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
@@ -310,7 +310,7 @@ constraints
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
-		\mydefinition{Algorithm: Translate $FM$ Into $\phi(FM)$}{
+		\mydefinition{Algorithm: Translate $FM$ Into $\Phi(FM)$}{
 			\begin{enumerate}
 				\item<2-> translate each tree constraint
 				\begin{itemize}
@@ -324,21 +324,21 @@ constraints
 							Optional + $P$ requires exactly one $C_i$
 				\end{itemize}
 				\item<8-> conjoin translated tree constraints\\
-					$\phi(TC) \gets \bigwedge_{tc \in TC} \phi(tc)$
+					$\Phi(TC) \gets \bigwedge_{tc \in TC} \Phi(tc)$
 				\item<9-> conjoin cross-tree constraints\\
-					$\phi(CTC) \gets \bigwedge_{ctc \in CTC} ctc$
-				\item<10-> $\phi(FM) \gets \phi(TC) \pand \phi(CTC)$
+					$\Phi(CTC) \gets \bigwedge_{ctc \in CTC} ctc$
+				\item<10-> $\Phi(FM) \gets \Phi(TC) \pand \Phi(CTC)$
 			\end{enumerate}
 		}
 	\mynextcolumn
 		\mydefinition{}{
 			\vspace*{-4ex}
 			\begin{align*}
-				\uncover<3->{\featureDiagramFn{\phi}{6ex}{Root,concrete}{Root}}\\
-				\uncover<4->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,optional,concrete]}{C \pimplies P}}\\
-				\uncover<5->{\featureDiagramFn{\phi}{6ex}{P,concrete[C,mandatory,concrete]}{C \pequals P}}\\
-				\uncover<6->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,or,concrete][\ldots,concrete][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
-				\uncover<7->{\featureDiagramFn{\phi}{15ex}{P,concrete[$C_1$,alternative,concrete][\ldots,concrete][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
+				\uncover<3->{\featureDiagramFn{\Phi}{6ex}{Root,concrete}{Root}}\\
+				\uncover<4->{\featureDiagramFn{\Phi}{6ex}{P,concrete[C,optional,concrete]}{C \pimplies P}}\\
+				\uncover<5->{\featureDiagramFn{\Phi}{6ex}{P,concrete[C,mandatory,concrete]}{C \pequals P}}\\
+				\uncover<6->{\featureDiagramFn{\Phi}{15ex}{P,concrete[$C_1$,or,concrete][\ldots,concrete][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
+				\uncover<7->{\featureDiagramFn{\Phi}{15ex}{P,concrete[$C_1$,alternative,concrete][\ldots,concrete][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
 				\uncover<7->{& \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)}
 			\end{align*}
 		}
@@ -370,7 +370,7 @@ constraints
 		}
 	\mynextcolumn
 		\uncover<2->{
-			\myexample{Transforming Part of $\phi(FM)$ into $CNF(\phi(FM))$}{
+			\myexample{Transforming Part of $\Phi(FM)$ into $CNF(\Phi(FM))$}{
 				\vspace*{-4ex}
 				\small
 				% TODO: use color-blind friendly colors
@@ -491,7 +491,7 @@ constraints
 			\path [->] (fd.south west) edge[bend left=15] node[sloped,yshift=1mm] {toString} (nat);
 			\path [dotted, ->] (nat) edge[bend left=15] node[sloped,yshift=1mm] {(i)} (fd.south west);
 			
-			\path [->] (fd.south) edge[bend left=15] node[sloped,yshift=1mm,rotate=90] {$\phi$} (phi);
+			\path [->] (fd.south) edge[bend left=15] node[sloped,yshift=1mm,rotate=90] {$\Phi$} (phi);
 			\path [dotted, ->] (phi) edge[bend left=15] node[sloped,yshift=2mm,rotate=270] {(ii)} (fd.south);
 
 			\path [->] (phi) edge[bend left=15] node[sloped,yshift=1mm] {CNF} (cnf);
@@ -524,11 +524,11 @@ constraints
 		}
 		\mynote{Solutions}{
 			\begin{enumerate}
-				\item[P1] Universal Variability Language $\rightarrow$ \emph{Syntax}
-				\item[P2] Propositional Formulas $\rightarrow$ \emph{Semantics}
+				\item[P1] Universal Variability Language $\Rightarrow$ \emph{Syntax}
+				\item[P2] Propositional Formulas $\Rightarrow$ \emph{Semantics}
 				\begin{itemize}
 					\item[(a)] evaluate feature-model formula
-					\item[(b)] \emph{???} $\rightarrow$ soon \ldots
+					\item[(b)] \emph{???} $\Rightarrow$ soon \ldots
 				\end{itemize}
 				\item[P3] \color{gray}{(i) e.g., \bakarnaturallanguage\\(ii) e.g., \czarneckithereandbackagain}
 			\end{enumerate}
