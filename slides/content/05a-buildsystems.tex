@@ -1,11 +1,11 @@
 \subsection{How to Implement Features?}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\myexampletight{Given a Feature Model for Graphs \ldots}{
+		\myexampletight{Given a feature model for graphs \ldots}{
 			\centering\featureDiagramGraphs
 			%\featureDiagramLegend
 		}
-		\myexample{\ldots and a Valid Configuration}{
+		\myexample{\ldots\ we can derive a valid configuration}{
 			\small
 			\leftmiddleandright{
 				$\{G\}$\\
@@ -40,10 +40,121 @@
 \end{frame}
 
 \subsection{Problems of Ad-Hoc Approaches for Variability}
+
 \subsubsection{Features with Runtime Variability?}
-% feature model used to create valid configuration
-% configuration used to generate global variables/configuration files/runtime parameters
-% automated generation, but no compile-time variability
+\begin{frame}[fragile]{\myframetitle}
+	\footnotesize
+	\begin{mycolumns}[animation=none]
+\begin{lstlisting}
+public class Config {
+	~public static boolean COLORED = true;~
+	@public static boolean WEIGHTED = false;@
+}
+\end{lstlisting}
+\begin{lstlisting}
+public class Graph {
+	...
+	Edge add(Node n, Node m) {
+		Edge e = new Edge(n, m);
+		nodes.add(n); nodes.add(m); edges.add(e);
+		@if (Config.WEIGHTED) { e.weight = new Weight(); }@
+		return e;
+	}
+	@Edge add(Node n, Node m, Weight w) {
+		if (!Config.WEIGHTED) { throw new RuntimeException(); }
+		Edge e = new Edge(n, m);
+		nodes.add(n); nodes.add(m); edges.add(e);
+		e.weight = w;
+		return e;
+	}@
+	...
+}
+\end{lstlisting}
+	\mynextcolumn
+\begin{lstlisting}
+public class Node {
+	~Color color;~
+	...
+	Node(){
+		~if (Config.COLORED) { color = new Color(); }~
+	}
+	void print() {
+		~if (Config.COLORED) { Color.setDisplayColor(color); }~
+		System.out.print(id);
+	}
+}
+\end{lstlisting}
+\begin{lstlisting}
+public class Edge {
+	@Weight weight;@
+	...
+	Edge(Node _a, Node _b) {
+		a = _a; b = _b;
+		@if (Config.WEIGHTED) { weight = new Weight(); }@
+	}
+	void print() {
+		a.print(); b.print();
+		@if (Config.WEIGHTED) { weight.print(); }@
+	}
+}
+\end{lstlisting}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={40},T]
+		\includegraphics[width=\linewidth]{preferences-eclipse}
+
+		\begin{definition}{How to? -- Preference Dialog}
+			\begin{itemize}
+				\item implement runtime variability
+				\item compile the program
+				\item manually adjust preferences based on configuration
+				\item run the program
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\leftandright{
+			\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
+		}{
+			\includegraphics[width=\linewidth]{configfile-eclipse-ini}
+		}
+
+		\begin{definition}{How to? -- Command-Line Options / Configuration Files}
+			\begin{itemize}
+				\item implement runtime variability and compile the program
+				\item automatically generate command-line options / configuration files based on configuration
+				\item run the program
+			\end{itemize}
+		\end{definition}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[widths={48}]
+\begin{lstlisting}
+public class Config {
+	~public final static boolean COLORED = true;~
+	@public final static boolean WEIGHTED = false;@
+}
+\end{lstlisting}
+		\begin{definition}{How to? -- Immutable Global Variables}
+			\begin{itemize}
+				\item implement runtime variability
+				\item automatically generate class with global variables based on configuration
+				\item compile and run the program
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\begin{note}{What is missing?}
+			\begin{itemize}
+				\item automated generation:\\\hfill for preference dialogs
+				\item no compile-time variability / same large binary:\\\hfill for all except immutable global variables
+				\item very limited compile-time variability:\\\hfill for immutable global variables
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
 
 \subsubsection{Features with Clone-and-Own?}
 % compile-time variability, but ...
