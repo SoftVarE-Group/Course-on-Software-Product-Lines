@@ -1,0 +1,137 @@
+\subsection{Services vs. Components}
+\subsection{Microservices vs. Services}
+
+\subsection{(German Slides on Microservices)}
+\begin{frame}{Microservices und Microservice Architekturen}
+	\mycite{A \emph{microservice} is a cohesive, independent process interacting via messages. A \emph{microservice architecture} is a distributed application where all its modules are microservices.}{Dragoni et al., 2017}
+	
+	\pause
+	\mycite{[A \emph{microservice} is a module] implemented and operated as a small yet independent system, offering access to its internal logic and data through a well-defined network interface.}{Jamshidi et al., 2018}
+	
+	\begin{center}
+		\vspace{-12mm}
+		\pic[width=.45\linewidth]{peer-to-peer}
+	\end{center}
+	
+	%\zitat{The microservices architecture gained popularity relatively recently and can be considered to be in its infancy since there is still a lack of consensus on what microservices actually are.}{Dragoni et al., 2017}
+	
+	%\zitat{\emph{Microservices} are small, autonomous services that work together.}{Sam Newman, 2015}
+\end{frame}
+
+\begin{frame}{Wie klein sind Microservices?}
+	\mycite{[A microservice] could be re-written in \emph{two weeks}.}{\href{https://www.rea-group.com/blog/micro-services-what-even-are-they/}{Jon Eaves, 2014}}
+	
+	\pause
+	\mycite{If the codebase is too big to be \emph{managed by a small team}, looking to break it down is very sensible. [...] The smaller the service, the more you \emph{maximize the benefits and downsides} of microservice architecture.}{Sam Newman, 2015}% [...] The golden rule: can you make a change to a service and deploy it by itself without changing anything else?
+	
+	\pause
+	\begin{columns}
+		\column{.4\linewidth}
+		\hfill\pic[width=.8\linewidth]{pizza}
+		\column{.55\linewidth}
+		\href{https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success}{\emph{Two-Pizza Rule} by Jeff Bezos}:\\Every team should be small enough that it can be fed with two pizzas.
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Beispiel: Microservices bei Netflix}
+	\large\bigskip\bigskip\bigskip\bigskip\bigskip
+	\begin{center}
+		\begin{tabular}{rl}
+			100s & of microservices\\
+			1,000s & of daily production changes\\
+			10,000s & of instances\\
+			100,000s & of customer interactions per minute\\
+			1,000,000s & of customers\\
+			%1,000,000,000s & of metrics\\
+			10,000,000,000\phantom{s} & hours streamed\\
+			10s & of operations engineers
+		\end{tabular}
+	\end{center}
+	
+	\bigskip\bigskip\bigskip\bigskip\hfill\tiny Quelle: \href{https://fr.slideshare.net/AmazonWebServices/dvo203-the-life-of-a-netflix-engineer-using-37-of-the-internet}{https://fr.slideshare.net/AmazonWebServices/dvo203-the-life-of-a-netflix-engineer-using-37-of-the-internet}
+\end{frame}
+
+\begin{frame}{Prinzipien von Microservices}
+	\emph{Gesetz von Conway}: \mycite{Organizations which design systems [...] are constrained to produce designs which are copies of the communication structures of these organizations.}{\href{https://www.melconway.com/Home/pdf/committees.pdf}{Melvin Edward Conway, 1968}}
+	
+	\pause
+	\emph{Single Responsibility Principle}: \mycite{Gather together the things that change for the same reasons. Separate those things that change for different reasons.}{\href{https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html}{Robert C. Martin, 2014}}
+	
+	\pause
+	\mycite{\emph{You build it, you run it.}}{Amazon CTO Werner Vogel, 2006}
+	\begin{itemize}
+		\item Team übernimmt Entwicklung, Betrieb und Wartung (vgl. DevOps)
+		\item Besseres Verständnis für Potential und Leistungsfähigkeit
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Vorteile von Microservices}
+	\begin{itemize}
+		\item Heterogenität: einfache Anwendung von neuen Technologien/Programmiersprachen
+		\item Continuous Integration/Deployment: bei Änderungen müssen nur einzelne Microservices ausgeliefert oder bei Fehlfunktionen zurückgesetzt werden (Rollback)
+		\item Skalierbarkeit: Anzahl von Instanzen wählbar nach Rechenaufwand pro Microservice
+		\pause
+		\item Effizienz und Performance: Konfiguration von Ausführungsumgebung kann pro Microservice optimiert werden
+		\item Wiederverwendung: Microservices können in beliebig vielen anderen Microservices verwendet werden
+		\item Modernisierung: Ersetzung oder Entfernung einfacher möglich
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Nachteile von Microservices}
+	\begin{itemize}
+		\item Latenz im Netzwerk größer als die von gemeinsam genutztem Arbeitsspeicher
+		\item Netzwerksecurity erfordert Mehraufwand für Verschlüsselung und Authentifizierung
+		\item Integrationstest kann sehr aufwändig werden
+		\pause
+		\item Verschieben von Code kann neue Programmiersprache erfordern
+		\item Änderungen an Teams schwierig durch Heterogenität
+		\item Ggfs. zu viele Microservices
+		\item Datenkonsistenz schwierig herzustellen wenn mehrere Microservices verändert werden
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Der Hype um Microservices}
+	\pic[width=\linewidth]{microservices}
+\end{frame}
+
+\begin{frame}{Der Hype um Microservices}
+	\pic[width=\linewidth]{microservices-comparison}
+\end{frame}
+
+\begin{frame}{Vergleich mit Serviceorientierten Architekturen}
+	\begin{columns}[t]
+		\column{.35\linewidth}
+		Gemeinsamkeiten
+		\begin{itemize}
+			\item Services werden im Betriebsystem als eigenständige Prozess angesehen
+			\item Kommunikation über Netzwerke
+		\end{itemize}
+		\column{.55\linewidth}
+		Unterschiede
+		\begin{itemize}
+			\item Microservices sind ein spezifischer Ansatz für SOA
+			\item Microservices sind meist kleiner als Services (feingranulares SOA)
+			\item Orchestrierung: SOA vernetzt sich über zentralen Service
+			\item Choreographie: Microservices kommunizieren durch Publish-Subscribe-Prinzip
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Vergleich mit Komponenten/Bibliotheken/Plugins}
+	\begin{columns}[t]
+		\column{.35\linewidth}
+		Gemeinsamkeiten
+		\begin{itemize}
+			\item Modularisierung
+			\item Wiederverwendung
+		\end{itemize}
+		\column{.55\linewidth}
+		Unterschiede
+		\begin{itemize}
+			\item Microservices unterstützen Heterogenität (z.B. verschiedene Programmiersprachen)
+			\item Microservices haben keinen gemeinsamen Arbeitsspeicher
+			\item Update von Microservices erfordert keinen Neustart der Gesamtapplikation
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
