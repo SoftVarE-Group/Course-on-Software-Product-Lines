@@ -1,10 +1,46 @@
 \subsection{How to Implement Features?}
-% what we have: feature models, configurations
-% what we want: automated generation of products based on configuration + compile-time variability
-% central question for the next three lectures
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\myexampletight{Given a Feature Model for Graphs \ldots}{
+			\centering\featureDiagramGraphs
+			%\featureDiagramLegend
+		}
+		\myexample{\ldots and a Valid Configuration}{
+			\small
+			\leftmiddleandright{
+				$\{G\}$\\
+				$\{G,C\}$\\
+				$\{G,D\}$\\
+				$\{G,C,D\}$\\
+			}{
+				$\{G,W\}$\\
+				$\{G,C,W\}$\\
+				$\{G,D,W\}$\\
+				$\{G,C,D,W\}$\\
+			}{
+				$\{G,W,S\}$\\
+				$\{G,C,W,S\}$\\
+				$\{G,D,W,S\}$\\
+				$\{G,C,D,W,S\}$\\
+			}
+		}
+	\mynextcolumn
+		\vspace{-10mm}
+		\myexampletight{How to Generate Products Automatically?}{
+			\centering\foreach \page in {2,12,4,14,6,16,8,18,10,20,42,44}{\includegraphics[width=.23\linewidth,page=\page]{graphs} }
+		}
+		\mynote{Goals}{
+			\begin{itemize}
+				\item descriptive specification of a product (i.e., a configuration, a selection of features)
+				\item automated generation of a product with compile-time variability
+			\end{itemize}
+			Focus of the next three lectures \ldots
+		}
+	\end{mycolumns}
+\end{frame}
 
 \subsection{Problems of Ad-Hoc Approaches for Variability}
-\subsubsection{Features with Runtime Variability}
+\subsubsection{Features with Runtime Variability?}
 % feature model used to create valid configuration
 % configuration used to generate global variables/configuration files/runtime parameters
 % automated generation, but no compile-time variability
@@ -16,14 +52,10 @@
 
 \subsection{Introducing Features to Build Systems}
 
-\subsection{KBuild}
+\subsection{KBuild -- The Linux Kernel Build System}
+% https://docs.kernel.org/kbuild/kbuild.html
 
 \subsection{Discussion of Features with Build Systems}
-
-\subsection{Granularity of Variability}
-% Christian's paper?
-% empirical studies?
-% essence: file-level variability is not engough
 
 %\begin{frame}{\myframetitle}
 %	\begin{mycolumns}
