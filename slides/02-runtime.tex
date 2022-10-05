@@ -6,6 +6,11 @@
 
 \input{template/lecture}
 
+% SET UNIVERSITY
+\berntrue
+% \magdeburgtrue
+% \ulmtrue
+
 % Tables
 \usepackage{booktabs}
 
@@ -15,10 +20,6 @@
 \begin{document}
 
 \input{template/header}
-
-\begin{frame}{Graphs for Timo}
-	\foreach \page in {1,...,40}{\page=\includegraphics[width=.074\linewidth,page=\page]{graphs}\hspace{2mm}\hfill\vspace{.2mm}}
-\end{frame}
 
 % runtime variability
 %   input: flags in source code, configuration files, runtime parameters (avoid recompilation)
@@ -104,7 +105,7 @@
 }{
 	\begin{itemize}
 		\item What characterizes a modular software design and why can it support variability?
-		\item In which sense are object-oriented solutions more modular than feature toggles?
+		\item In which sense are object-oriented solutions more modular than simple conditional statements?
 		\item Do you know of other design patterns supporting variability?
 	\end{itemize}
 }

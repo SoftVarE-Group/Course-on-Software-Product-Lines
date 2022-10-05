@@ -313,14 +313,14 @@ public class Graph {
 						\item Static configuration when configuration parameters are known at compile time.
 					\end{itemize}					
 				}
-				\mynote{Discussion}{ 
+				\uncover<2->{\mynote{Discussion}{ 
 					\begin{itemize}
 						\item {\bf Advantage:} Compiler optimizations may remove dead code.
 					\end{itemize}					
 					\begin{itemize}
 						\item {\bf Disadvantage:} No external configuration by the end-user.
 					\end{itemize}
-				}
+				}}
 		\end{columns}
 \end{frame}
 
@@ -368,14 +368,14 @@ public class Edge {
 						\item Parameter values are passed along method invocations.
 					\end{itemize}
 				}				
-				\mynote{Discussion}{ 
+				\uncover<2->{\mynote{Discussion}{ 
 					\begin{itemize}
 						\item {\bf Advantage:} Different instantiations (e.g., colored and uncolored graphs) within in the same program.
 					\end{itemize}					
 					\begin{itemize}
 						\item {\bf Disadvantage:} May lead to methods with many parameters (code smell!).
 					\end{itemize}
-				}
+				}}
 		\end{columns}
 \end{frame}
 
@@ -414,13 +414,17 @@ public class Node {
 					\begin{itemize}
 						\item Alter feature selection without stopping and restarting the program.
 					\end{itemize}
-				}				
-				\mynote{Discussion}{ 
-					\begin{itemize}
+				}	
+				~
+				\uncover<2->{\mynote{}{
+					What happens we change the value of {\tt COLORED} from {\tt false} to {\tt true} (at runtime)?
+				}}
+				\uncover<3->{\mynote{Discussion}{ 
+					\begin{itemize} 
 						\item Feature-specific code may depend on certain initialization steps or assume certain invariants.
 						\item Just updating the values of configuration parameters does not update the current state of the program.
 					\end{itemize}
-				}
+				}}
 		\end{columns}
 \end{frame}
 
