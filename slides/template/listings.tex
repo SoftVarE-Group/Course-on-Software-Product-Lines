@@ -29,9 +29,9 @@
 % \begin{lstlisting}[language=UVL]
 \lstdefinelanguage{UVL}{
 	tabsize = 4,
-	commentstyle=\color[HTML]{839496},
+	commentstyle=\color{green},
 	keywordstyle=\color{blue},
-	stringstyle=\color[HTML]{2429c9},
+	stringstyle=\color{red},
 	basicstyle=\footnotesize\ttfamily,
 	breaklines=true,
 	columns=fullflexible,
@@ -43,18 +43,36 @@
 }
 
 \lstdefinelanguage{DIMACS}{
-	commentstyle=\color[HTML]{839496},
+	commentstyle=\color{green},
 	keywordstyle=\color{blue},
-	stringstyle=\color[HTML]{2429c9},
+	stringstyle=\color{red},
 	basicstyle = \footnotesize\ttfamily,
 	breaklines = true,
 	columns=fullflexible,
 	keepspaces=true,
 	sensitive=true,
 	alsoletter={0},
-	morekeywords={c, p, cnf, 0}
+	morekeywords={p, cnf, 0},
+	morecomment=[f]{c},
+}
+
+\lstdefinelanguage{Kconfig}{
+	commentstyle=\color{green},
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+	basicstyle = \footnotesize\ttfamily,
+	breaklines = true,
+	columns={fullflexible},
+	keepspaces=true,
+	sensitive=true,
+	alsoletter={},
+	morekeywords={config,bool,default,if,help,def_bool,depends,on,select},
+	morecomment=[f]{\#},
+	morestring=*[d]{"},
+	literate={-}{{-}}1,
 }
 
 \lstnewenvironment{java}[1][]{\lstset{#1}}{}
 \lstnewenvironment{uvl}[1][]{\lstset{language=UVL,#1}}{}
 \lstnewenvironment{dimacs}[1][]{\lstset{language=DIMACS,#1}}{}
+\lstnewenvironment{kconfig}[1][]{\lstset{language=Kconfig,#1}}{}
