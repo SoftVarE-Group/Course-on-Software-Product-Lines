@@ -146,7 +146,7 @@
 		\begin{columns}
 			\column{.45\textwidth}
 				\vspace{-15mm}
-				\mynote{}{
+				\myexample{}{
 					\normalsize
 					An initial implementation of our graph library providing weighted graphs.
 				}
@@ -209,7 +209,7 @@ public class Weight {
 		\begin{columns}
 			\column{.45\textwidth}
 				\vspace{-15mm}				
-				\mynote{}{
+				\myexample{}{
 					\normalsize
 					Alice works with unweighted graphs, so she copies and adapts the basic implementation.
 				}
@@ -272,7 +272,7 @@ public class Edge {
 		\begin{columns}
 			\column{.45\textwidth}
 				\vspace{-3mm}				
-				\mynote{}{
+				\myexample{}{
 					\normalsize
 					Alice works with unweighted graphs, so she copies and adapts the basic implementation.
 				}
@@ -331,7 +331,7 @@ public class Edge {
 		\begin{columns}
 			\column{.45\textwidth}
 				\vspace{-10mm}
-				\mynote{}{
+				\myexample{}{
 					\normalsize
 					Bob works with colored (unweighted) graphs. He is a colleague of Alice and knows her variant, so he copies and adapts Alice's variant.
 				}
@@ -390,24 +390,26 @@ public class Node {
 				She wants to work with graphs which are both colored and weighted.
 			}
 			\vspace{2mm}
-			\mynote{}{				
+			\uncover<2->{\mynote{}{				
 				\begin{itemize}
 					\item Where to start from? 
 					\item Does Eve know about Bob's and Alice's variants?
 					\item If so, how to avoid repeating the work that has been already done by Alice and Bob, respectively?
 				\end{itemize}
-			}
+			}}
 		\column{.4\textwidth}			
 			~
 	\end{columns}	
 	\vspace{5mm}
-	\includegraphics[scale=0.3,page=6]{graphs}
-	\hspace{5mm}
-	\includegraphics[scale=0.3]{alice}
-	\includegraphics[scale=0.3,page=2]{graphs}
-	\hspace{5mm}
-	\includegraphics[scale=0.3]{bob}
-	\includegraphics[scale=0.3,page=12]{graphs}
+	\uncover<2->{
+		\includegraphics[scale=0.3,page=6]{graphs}
+		\hspace{5mm}
+		\includegraphics[scale=0.3]{alice}
+		\includegraphics[scale=0.3,page=2]{graphs}
+		\hspace{5mm}
+		\includegraphics[scale=0.3]{bob}
+		\includegraphics[scale=0.3,page=12]{graphs}
+	}
 \end{frame}
 
 \begin{frame}[fragile]{Problem: Evolution and Maintenance}
@@ -420,7 +422,7 @@ public class Node {
 		\begin{columns}
 			\column{.45\textwidth}
 				\vspace{-12mm}
-				\mynote{}{
+				\myexample{}{
 					\normalsize
 					Maintainers of the initial variant refactor the code of the basic implementation.
 				}
@@ -445,23 +447,27 @@ public class Graph {
 }
 \end{codetight}	
 			\column{.45\textwidth}
-				\mynote{}{
-					\normalsize
-					\begin{itemize}
-						\item Who informs Alice, Bob and Eve about the improvement?
-						\item How do they know whether the improvement is relevant for them?
-						\item If so, how to propagate the improvement to their variant?
-					\end{itemize}									
+				\uncover<2->{
+					\mynote{}{
+						\normalsize
+						\begin{itemize}
+							\item Who informs Alice, Bob and Eve about the improvement?
+							\item How do they know whether the improvement is relevant for them?
+							\item If so, how to propagate the improvement to their variant?
+						\end{itemize}									
+					}
 				}
 				\vspace{2mm}
-				\includegraphics[scale=0.1]{alice}
-				\includegraphics[scale=0.13,page=2]{graphs}
-				\hspace{2.5mm}
-				\includegraphics[scale=0.1]{bob}
-				\includegraphics[scale=0.13,page=12]{graphs}
-				\hspace{2.5mm}
-				\includegraphics[scale=0.1]{eve}
-				\includegraphics[scale=0.13,page=16]{graphs}
+				\uncover<2->{
+					\includegraphics[scale=0.1]{alice}
+					\includegraphics[scale=0.13,page=2]{graphs}
+					\hspace{2.5mm}
+					\includegraphics[scale=0.1]{bob}
+					\includegraphics[scale=0.13,page=12]{graphs}
+					\hspace{2.5mm}
+					\includegraphics[scale=0.1]{eve}
+					\includegraphics[scale=0.13,page=16]{graphs}
+				}
 		\end{columns}
 	\end{tiny}
 \end{frame}
