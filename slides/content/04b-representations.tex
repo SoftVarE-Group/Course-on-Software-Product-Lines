@@ -53,7 +53,7 @@
 		\mynote{Problems}{
 			\begin{enumerate}
 				\item<3->[P1] How to express feature models \emph{textually}?
-				\item<4->[P2] How to (a) validate configurations and (b) obtain valid configurations \emph{automatically}?
+				\item<4->[P2] How to (a) validate configurations and (b) get all valid configurations \emph{automatically}?
 				\item<5->[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
 		}
@@ -129,7 +129,7 @@ constraints
 		\mynote{Problems}{
 			\begin{enumerate}
 				\item[P1] How to express feature models \emph{textually}?
-				\item[P2] How to (a) validate configurations and (b) obtain valid configurations \emph{automatically}?
+				\item[P2] How to (a) validate configurations and (b) get all valid configurations \emph{automatically}?
 				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
 		}
@@ -497,7 +497,7 @@ constraints
 			\path [->] (phi) edge[bend left=15] node[sloped,yshift=1mm] {CNF} (cnf);
 			\path [dotted, ->] (cnf) edge[bend left=15] node[sloped,yshift=2mm,rotate=270] {(ii)} (phi);
 		
-			\path [dotted, ->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {CNF} (cnf);
+			\path [->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {CNF} (cnf);
 			\path [dotted, ->] (cnf.south) edge[bend right=15] node[sloped,yshift=1mm] {\textbf{P2(b)}} (cfg);
 
 			\node (trans) at (-1,-4.6) {};
@@ -516,7 +516,7 @@ constraints
 				\item[P2] How to 
 				\begin{itemize}
 					\item[(a)] validate configurations and
-					\item[(b)] obtain valid configurations
+					\item[(b)] get all valid configurations
 				\end{itemize}
 				\emph{automatically}?
 				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
@@ -528,7 +528,7 @@ constraints
 				\item[P2] Propositional Formulas $\Rightarrow$ \emph{Semantics}
 				\begin{itemize}
 					\item[(a)] evaluate feature-model formula
-					\item[(b)] \emph{???} $\Rightarrow$ soon \ldots
+					\item[(b)] \emph{???}
 				\end{itemize}
 				\item[P3] \color{gray}{(i) e.g., \bakarnaturallanguage\\(ii) e.g., \czarneckithereandbackagain}
 			\end{enumerate}

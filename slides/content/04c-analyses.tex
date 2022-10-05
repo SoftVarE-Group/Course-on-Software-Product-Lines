@@ -51,7 +51,7 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60}]
 		\mynote{}{
-			what happens if we ordered this \ldots?
+			What happens if we ordered this \ldots?
 		}
 	\mynextcolumn
 		\myexampletight{Configuring a Car with 8 Wheels!}{
@@ -67,7 +67,7 @@
 		}
 	\mynextcolumn
 		\mynote{}{
-			why does the telephone conflict with Microsoft Office?
+			Why does the telephone conflict with Microsoft Office?
 		}
 	\end{mycolumns}
 \end{frame}
@@ -82,28 +82,31 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mynote{Goals}{
+		\mynote{Open Questions}{
 			\begin{itemize}
-				\item how do such configurators work?
-				\item how to avoid inconsistencies?
-				\item how to provide explanations and fixes?
-    			\item \emph{P2(b)} How to obtain valid configurations automatically?
+				\item How do such configurators work?
+				\item How to avoid inconsistencies?
+				\item How to provide explanations and fixes?
+    			\item How to get all valid configurations automatically? (\emph{P2(b)})
 			\end{itemize}
-			$\Rightarrow$ \emph{Automated Analysis of Feature Models}
-			% analysis != transformation
-
-			%below: valid cfg = product
+		}
+		\mydefinition{Automated Analysis of Feature Models}{
+			\begin{itemize}
+				\item up until now: \emph{transformations} of variability model \emph{representations}
+				\item now: \emph{analysis} of feature models to improve our understanding of a configuration space
+				\item for brevity: product = valid configuration
+			\end{itemize}
 		}
 	\mynextcolumn
 		\myexample{Asking Questions About Feature Models}{
 			\begin{itemize}
 				\item Is a given configuration valid?
-				\item Is there any valid configuration at all?\\
-					How many/which valid configurations are there?\\
+				\item Is there any product at all?\\
+					How many/which products are there?\\
 				\item Is a given feature (de-)selectable at all?\\
-					How many/which valid configurations include it?\\
+					How many/which products include it?\\
 				\item Is a given partial configuration consistent?\\
-					How many/which valid configurations include it?\\
+					How many/which products include it?\\
 				\item \color{gray}{(Which features always occur together?)}
 				\item \color{gray}{(Is a given constraint redundant?)}
 				\item \color{gray}{(How do two feature model versions differ?)}
@@ -111,14 +114,6 @@
 			\end{itemize}
 		}
 	\end{mycolumns}
-
-	%this section should teach all usual FM/cfg analyses - some in more detail, some only high-level (other SPL analyses come in analyses.tex)
-
-	%list questions we might want to ask a feature model (maybe grouped in the order in which they are discussed)
-
-	%include some simple \#SAT questions (e.g., feature prioritization)
-
-	%how to find out whether a partial configuration is valid? (show decision propagation in FeatureIDE)
 \end{frame}
 
 \subsection{SAT, \ssat{}, and AllSAT Solvers}
@@ -180,15 +175,15 @@
 					\emph{How many}/\emph{which} valid configurations include it?\\
 			\end{itemize}
 		}
-		\mynote{Choosing the Right Solver Class}{
+		\mynote{Choosing the Right Solver}{
 			\begin{itemize}
-				\item ``is''~~~~~~~~~~~~$\approx$ SAT solver query
-				\item ``how many''~$\approx$ \ssat{} solver query
-				\item ``which''~~~~~~\,$\approx$ AllSAT solver query
+				\item ``is?''~~~~~~~~~~~~$\approx$ SAT solver query
+				\item ``how many?''~$\approx$ \ssat{} solver query
+				\item ``which?''~~~~~~\,$\approx$ AllSAT solver query
 			\end{itemize}
 		}
 	\mynextcolumn
-		\mydefinition{Feature-Model Analysis Process}{
+		\mydefinition{Typical Feature-Model Analysis Process}{
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -207,7 +202,9 @@
 							(answer) edge node [yshift=2mm]{\small interpret} (result);
 			\end{tikzpicture}
 		}
-		%below we assume phi to be in cnf
+		\mynote{}{
+			for brevity, we assume that $\phi = CNF(\Phi(FM))$ for a given feature model $FM$
+		}
 	\end{mycolumns}
 \end{frame}
 
@@ -231,8 +228,8 @@
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block] (query) {$\phi$};
 				\node [block, right =10mm of query] (answer) {$\bot/\top$};
-				\node [block, above right =-2mm and 6mm of answer] (void) {\emph{void}};
-				\node [block, below right =-2mm and 6mm of answer] (notvoid) {\emph{consistent}};
+				\node [block, above right =-3mm and 6mm of answer] (void) {$FM$ is \emph{void}};
+				\node [block, below right =-3mm and 6mm of answer] (notvoid) {$FM$ is \emph{consistent}};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small SAT} (answer)
 							(answer) edge node [yshift=2mm,sloped]{\small $\bot$} (void)
 							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
@@ -240,12 +237,12 @@
 		}
 		\mynextcolumn
 		\emph{Cardinality of Feature Models (\ssat{})}
-		\mydefinition{How many products are there?}{
+		\mydefinition{How Many Products Are There?}{
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block] (query) {$\phi$};
-				\node [block, right =10mm of query] (answer) {$\#cfg$};
+				\node [block, right =10mm of query] (answer) {$\abs{C}$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
 		}
@@ -254,8 +251,8 @@
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block] (query) {$\phi$};
-				\node [block, right =10mm of query] (answer) {$\#cfg$};
-				\node [block, right =6mm of answer] (num) {$\frac{\#cfg}{2^{\abs{F}}}$};
+				\node [block, right =10mm of query] (answer) {$\abs{C}$};
+				\node [block, right =6mm of answer] (num) {$\frac{\abs{C}}{2^{\abs{F}}}$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer)
 							(answer) edge node [yshift=2mm,sloped]{} (num);
 			\end{tikzpicture}
@@ -265,12 +262,12 @@
 		\myexampletight{}{
 			\leftandright{
 				\centering
-				{\small\featureDiagram{Root,abstract[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
+				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				void
 			}{
 				\centering
-				{\small\featureDiagram{Root,abstract[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
+				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				consistent
 			}
@@ -279,85 +276,187 @@
 		\myexampletight{}{
 			\leftandright{
 				\centering
-				{\small\featureDiagram{Root,abstract[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
+				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				$0$ products, VF $0$
 			}{
 				\centering
-				{\small\featureDiagram{Root,abstract[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
+				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				$2$ products, VF $\frac{2}{8}$
 			}
 		}
 	\end{mycolumns}
-	%for each analysis, also list \#SAT encoding
-	%to WHICH DEGREE is a FM consistent (i.e., degree of freedom / variability factor)?
-
-	%also list explanations / MUS (very shortly)
 \end{frame}
 
+\subsection{Enumeration of Feature Models}
+
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{mycolumns}
 		\emph{Enumeration of Feature Models (AllSAT)}
-		\mydefinition{All Products}{
+		\mydefinition{Which Products Are There?}{
 			\begin{itemize}
-				\item recall \emph{P2(b)}: How to obtain valid configurations automatically?
+				\item \emph{P2(b)}: How to get all products?
 			\end{itemize}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block] (query) {$\phi$};
-				\node [block, right =10mm of query] (answer) {$AllSAT(\phi)$};
-				\node [block, right =6mm of answer] (num) {$C$};
-				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small AllSAT} (answer)
-							(answer) edge node [yshift=2mm,sloped]{\small $C$} (num);
+				\node [block, right =10mm of query] (answer) {$C$};
+				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small AllSAT} (answer);
 			\end{tikzpicture}
+		}
+		\mynote{}{
+			AllSAT does not scale to realistic feature models!
 		}
 		\myexampletight{}{
 			\leftandright{
 				\centering
-				{\small\featureDiagram{Root,abstract[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
+				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				$\varnothing$
 			}{
 				\centering
-				{\small\featureDiagram{Root,abstract[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
+				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				$\{\{Root, X\},\{Root, Y\}\}$
 			}
 		}
-		\mynextcolumn
-		% representations slide?
+	\mynextcolumn
+		\centering
+		\sffamily
+		\begin{tikzpicture}
+			\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
+
+			\node (topleft) at (-1.4,0) {};
+			\node (bottomleft) at (-1.4,-4) {};
+			
+			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\tiny\color{red}Feature Diagram, UVL}};
+			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{red}Thoughts, Plain Text}};
+			\node (phi) at (2,-2) [align=center] {Formula\\[-1ex]{\tiny\color{red}Infix Notation}};
+			\node (cfg) at (4,-4) [align=center] {Configuration Map\\[-1ex]{\tiny\color{red}Excel, Set of Sets}};
+			\node (cnf) at (2,-4) [align=center] {CNF\\[-1ex]{\tiny\color{red}DIMACS}};
+
+			\path [dashed, thick, ->] (topleft) edge node[left, rotate=90, yshift=2mm, xshift=10mm] {Loss of Structure} (bottomleft);
+		
+			\path [->] (fd.south west) edge[bend left=15] node[sloped,yshift=1mm] {toString} (nat);
+			\path [dotted, ->] (nat) edge[bend left=15] node[sloped,yshift=1mm] {} (fd.south west);
+			
+			\path [->] (fd.south) edge[bend left=15] node[sloped,yshift=1mm,rotate=90] {$\Phi$} (phi);
+			\path [dotted, ->] (phi) edge[bend left=15] node[sloped,yshift=2mm,rotate=270] {} (fd.south);
+
+			\path [->] (phi) edge[bend left=15] node[sloped,yshift=1mm] {CNF} (cnf);
+			\path [dotted, ->] (cnf) edge[bend left=15] node[sloped,yshift=2mm,rotate=270] {} (phi);
+		
+			\path [->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {CNF} (cnf);
+			\path [->] (cnf.south) edge[bend right=15] node[sloped,yshift=1mm] {AllSAT} (cfg);
+
+			\node (trans) at (-1,-4.6) {};
+			\node (trans2) at (2,-4.6) {};
+			\node (trans3) at (-1,-4.9) {};
+			\node (trans4) at (2,-4.9) {};
+			\path [->] (trans) edge node[yshift=1mm] {Automated Transformation} (trans2);
+			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
+		
+			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
+		\end{tikzpicture}
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Core and Dead Features} % + these are variability smells
+\subsection{Consistency and Cardinality of Features}
+
 \begin{frame}{\myframetitle}
-	can a feature be chosen at all? is it false-optional?
-	to WHICH DEGREE is a feature core/dead? feature prioritization
+	\begin{mycolumns}[t]
+		\emph{Consistency of Features (SAT)}
+		\mydefinition{Core/Dead Feature}{
+			\begin{itemize}
+				\item can a feature $F$ be (de-)selected at all?
+			\end{itemize}
+			\centering
+			\begin{tikzpicture}
+				\tikzset{block/.style={align=center,minimum height=5mm}}
+				\node [block] (query) {$\phi \pand F$};
+				\node [block, right =10mm of query] (answer) {$\bot/\top$};
+				\node [block, above right =-3mm and 6mm of answer] (void) {$F$ is \emph{dead}};
+				\node [block, below right =-3mm and 6mm of answer] (notvoid) {$F$ is not dead};
+				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small SAT} (answer)
+							(answer) edge node [yshift=2mm,sloped]{\small $\bot$} (void)
+							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
+			\end{tikzpicture}
+			\begin{tikzpicture}
+				\tikzset{block/.style={align=center,minimum height=5mm}}
+				\node [block] (query) {$\phi \pand \pnot F$};
+				\node [block, right =10mm of query] (answer) {$\bot/\top$};
+				\node [block, above right =-3mm and 6mm of answer] (void) {$F$ is \emph{core}};
+				\node [block, below right =-3mm and 6mm of answer] (notvoid) {$F$ is not core};
+				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small SAT} (answer)
+							(answer) edge node [yshift=2mm,sloped]{\small $\bot$} (void)
+							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
+			\end{tikzpicture}
+		}
+		\mynextcolumn
+		\emph{Cardinality of Features (\ssat{})}
+		\mydefinition{How Many Products Include Feature $F$?}{
+			\centering
+			\begin{tikzpicture}
+				\tikzset{block/.style={align=center,minimum height=5mm}}
+				\node [block] (query) {$\phi \pand F$};
+				\node [block, right =10mm of query] (answer) {$\abs{\{S \in C \mid F \in S\}}$};
+				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
+			\end{tikzpicture}
+		}
+		\mydefinition{Commonality: How Dead is This Feature?}{
+			\centering
+			\begin{tikzpicture}
+				\tikzset{block/.style={align=center,minimum height=5mm}}
+				\node [block] (query) {$\phi$};
+				\node [block, right =10mm of query] (answer) {$\abs{\{S \in C \mid F \in S\}}$};
+				\node [block, right =6mm of answer] (num) {$\frac{\abs{\{S \in C \mid F \in S\}}}{\abs{C}}$};
+				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer)
+							(answer) edge node [yshift=2mm,sloped]{} (num);
+			\end{tikzpicture}
+		}
+	\end{mycolumns}
+	\begin{mycolumns}[t]
+		\myexampletight{}{
+			\centering
+			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
-	f core iff $SAT(\phi and not f) = \bot$
-	
-	f dead iff $SAT(\phi and f) = \bot$
+			$X$ is dead, $Root$ and $Y$ are core
+		}
+		\mynextcolumn
+		\myexampletight{}{
+			\centering
+			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
-	applications: find anomalies/inconsistencies (false-optional), commonality, feature prioritization
+			$X$: 0, $Root$ and $Y$: 1
+		}
+	\end{mycolumns}
 \end{frame}
 
-\subsection{Partial Configurations}
+\subsection{Consistency and Cardinality of Partial Configurations}
+
 \begin{frame}{\myframetitle}
-	can a partial configuration be completed?
-	can also be connected to Chico's \#SAT applications
-
-	note that this is a generalization of void/core/dead
-
-	total configurations were defined before, now expand this definition to a tuple $(sel, desel)$ and explain why
-
-	applications: ...
-\end{frame}
-
-\subsection{Redundant Constraints (?)}
-\begin{frame}{\myframetitle}
-	... % include this? it has no real #SAT equivalent
+	\begin{mycolumns}[t]
+		\emph{Consistency of Partial Configurations (SAT)}
+		\mydefinition{Core/Dead Feature}{
+			...
+		}
+		\mynextcolumn
+		\emph{Cardinality of Partial Configurations (\ssat{})}
+		\mydefinition{How Many Products Include Feature $F$?}{
+			...
+		}
+	\end{mycolumns}
+	\begin{mycolumns}[t]
+		\myexampletight{}{
+			...
+		}
+		\mynextcolumn
+		\myexampletight{}{
+			...
+		}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Other Analyses}
@@ -373,8 +472,8 @@
 	%explanations?
 \end{frame}
 
-% maybe combine Challenges/Experiences? or flip them?
-\subsection{Challenges}
+\subsection{Experiences \& Challenges}
+
 \begin{frame}{\myframetitle}
 	how is SAT (before: a black box) implemented (very broadly)?
 
@@ -387,7 +486,7 @@
 	non-Boolean requires richer theories (SMT, CSP)
 \end{frame}
 
-\subsection{Experiences} % performance / efficiency
+%\subsection{Experiences} % performance / efficiency
 \begin{frame}{\myframetitle}
 	show a few diagrams with performance on large models
 
@@ -395,7 +494,7 @@
 
 	only with Boolean formulas can we get really performant results today
 
-	BDDs are hard to build, but have large payoff (maybe one slide on the abstract concept of knowledge compilation, without too many details?)
+	BDDs are hard to build, but have large payoff (maybe one slide on the concrete concept of knowledge compilation, without too many details?)
 
 	most of this is implemented in FeatureIDE, the configurator is a clever combination of the techniques explained above (Boolean constraint/decision propagation) % show linux configurator
 
@@ -407,7 +506,7 @@
 
 % end goal: the lecture shows how to realize a automated configurator that does not allow invalid configurations
 
-\subsection{Challenges of Feature Modeling}
+%\subsection{Challenges of Feature Modeling}
 
 \begin{frame}{\myframetitle}
 	scoping: which features do we want to deliver? (vl 8,12)
