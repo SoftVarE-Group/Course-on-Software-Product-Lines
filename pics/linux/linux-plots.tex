@@ -61,6 +61,7 @@
 }
 \readtablewithtrendline{linux-sloc.csv}{\loc}
 \readtablewithtrendline{linux-features.csv}{\features}
+\readtablewithtrendline{linux-products-nonempty.csv}{\productsnonempty}
 \readtablewithtrendline{linux-products.csv}{\products}
 
 \begin{document}
@@ -75,8 +76,8 @@
 				ymax=29000000,
 				ylabel=Lines of Source Code (SLOC),
 				scaled y ticks=false]
-				\addplot table [col sep=comma,x=release_date,y=sloc] {\loc};
-				\addplot table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=sloc}}] {\loc};
+				\addplot+[mark options={color=black,fill=green,fill opacity=.5}] table [only marks,col sep=comma,x=release_date,y=sloc] {\loc};
+				\addplot[black] table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=sloc}}] {\loc};
 				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,4361591) {};
 				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,9734588) {};
 				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,12852861) {};
@@ -95,8 +96,8 @@
 				ymin=0,
 				ymax=21000,
 				scaled y ticks=false]
-				\addplot table [only marks,col sep=comma,x=release_date,y=features] {\features};
-				\addplot table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=features}}] {\features};
+				\addplot+[mark options={color=black,fill=blue,fill opacity=.5}] table [only marks,col sep=comma,x=release_date,y=features] {\features};
+				\addplot[black] table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=features}}] {\features};
 				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,3454) {};
 				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,8517) {};
 				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,11292) {};
@@ -115,8 +116,8 @@
 				ytick={1000,2000,3000,4000,5000,6000,7000,8000},
 				yticklabels={$10^{1000}$,$10^{2000}$,$10^{3000}$,$10^{4000}$,$10^{5000}$,$10^{6000}$,$10^{7000}$,$10^{8000}$},
 				scaled y ticks=false]
-				\addplot table [only marks,col sep=comma,x=release_date,y=products_log10] {\products};
-				\addplot table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=products_log10}}] {\products};
+				\addplot+[mark options={color=black,fill=orange,fill opacity=.5}] table [only marks,col sep=comma,x=release_date,y=products_log10] {\productsnonempty};
+				\addplot[black] table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=products_log10}}] {\productsnonempty};
 				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,940.89) {};
 				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,3069.90) {};
 				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,4289.37) {};
@@ -136,12 +137,13 @@
 				ytick={1,1000,60000,3600000,86400000,2419200000,31536000000},
 				yticklabels={1 ms,1 sec,1 min,1 hour,1 day,4 weeks,1 year},
 				]
-				\addplot table [only marks,col sep=comma,x=release_date,y=time_in_ms] {\products};
-				\addplot table [red,mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=time_in_ms}}] {\products};
-				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,331) {};
-				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,17698) {};
-				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,748797) {};
+				\addplot+[mark options={color=black,fill=red,fill opacity=.5}] table [only marks,col sep=comma,x=release_date,y=time_in_ms] {\products};
+				\addplot[black] table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=time_in_ms}}] {\products};
+				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,334) {};
+				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,13773) {};
+				\node [coordinate,pin=above left:{v4.0}] at (axis cs:2015-04-12,1855100) {};
 				\node [coordinate,pin=above:{v4.8 (46 min)}] at (axis cs:2016-09-25,2740432) {};
+				\node [coordinate,pin=right:{timeout}] at (axis cs:2018-08-12,3600000) {};
 			\end{semilogyaxis}
 		\end{tikzpicture}
 	\end{frame}

@@ -13,8 +13,51 @@
 			[\subnode{Windows#1}{Windows},concrete,alternative]
 			[\subnode{Linux#1}{Linux},concrete]
 		]
-	}\\
+	}
+
 	$Transactions \pimplies Put \por Delete$
+}
+
+\newcommand{\featureDiagramWaffle}{
+	\featureDiagram{
+		Waffle,concrete
+		[Topping,optional,abstract
+			[Sugar,concrete,or]
+			[Cream,concrete]
+			[Cherries,concrete]
+			[Nutella,concrete]
+			[Crumbles,concrete
+				[Chocolate,concrete,alternative]
+				[Colored,concrete]]]
+		[Accessories,abstract,mandatory
+			[Plate,concrete,mandatory]
+			[Fork,concrete,optional
+				[Plastic,concrete,alternative]
+				[Wood,concrete]]]
+		[Customer,abstract,mandatory
+			[Adult,abstract,alternative]
+			[Child,abstract]]
+	}
+
+	$Sugar$\\
+	$Cherries \pimplies Sugar \pand Fork$\\
+	$Nutella \por Crumbles \pimplies Child$\\
+	$Fork \pimplies Adult$
+}
+
+\newcommand{\featureDiagramGraphs}{
+	\featureDiagram{
+		Graph,concrete
+		[Nodes,mandatory,abstract
+			[Colored,optional,concrete]]
+		[Edges,mandatory,abstract
+			[Directed,optional,concrete]
+			[Weighted,optional,concrete]]
+		[Algorithms,mandatory,abstract,
+			[ShortestPath,optional,concrete]]
+	}
+
+	$ShortestPath \pimplies Weighted$
 }
 
 \newcommand{\featureDiagramEightOptionalFeatures}{

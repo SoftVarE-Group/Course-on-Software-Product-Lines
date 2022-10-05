@@ -1,66 +1,61 @@
-\subsection{Recap: Software Product Lines and Features}
-\begin{frame}{\myframetitle\ \mytitlesource{\fospl} \todo{SPL Def citation}}
+\subsection{Recap: Software Product Lines}
+\begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mydefinition{Software Product Line}{
+		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
-				\item set of software-intensive systems (aka products)
-				\item sharing a common, managed set of \emph{features}
-				\item satisfying the needs of a domain
-				\item developed from a common set of core assets (reuse)
-			\end{itemize}
-		}
-		\mydefinition{Feature}{
-			\begin{itemize}
-				\item domain abstraction
-				\item used for communication by stakeholders (e.g., manager, developer, tester, customer, marketing)
-				\item specifies differences between products
+				\item a set of software-intensive systems
+				\item that share a common, managed set of features
+				\item satisfying the specific needs of a particular market segment or mission
+				\item and that are developed from a common set of core assets in a prescribed way.\myciteend
+				\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
 			\end{itemize}
 		}
 	\mynextcolumn
-		\myexample{Examples}{
-			\begin{itemize}
-				\item \todots
-			\end{itemize}
+		\mydefinition{Feature \mysource{\fospl\mypage{18}}}{
+			\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}
 		}
-		\todo{scoping?}
+		\mydefinition{Product \mysource{\fospl\mypage{19}}}{
+			\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}
+		}
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Configuring Features}
-% \begin{frame}{\myframetitle}
-% 	\todo{examples for simple feature models without (or with few) dependencies}
-	
-% 	\todo{Configuring a Sandwich}
+\subsection{Understanding Features and Their Dependencies}
 
-% 	\todo{Configuring ...}
-% \end{frame}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[columns=3,widths={40,20,40}]
+		\myexampletight{Ordering a Waffle \ldots}{
+			\pic[width=\textwidth]{waffle-feature-model}
+		}
+		\mynextcolumn
+		\myexampletight{\ldots with Sugar}{
+			\pic[width=\textwidth]{waffle-sugar}
+		}
+		\myexampletight{\ldots with Cherries}{
+			\pic[width=\textwidth]{waffle-cherries}
+		}
+		\mynextcolumn
+		\mynote{This is Nice, But \ldots}{
+			\begin{itemize}
+				\item plate and sugar seem to always be included, a fork is only included for some orders\\
+					$\Rightarrow$ limitations seem arbitrary
+				\item children get special treatment\\
+					$\Rightarrow$ order process is unfair
+				\item what exactly am I paying for?\\
+					$\Rightarrow$ investments are unclear
+				\end{itemize}
+		}
+		\mydefinition{In This Lecture}{
+			\begin{enumerate}
+				\item how to model and configure features and their dependencies?
+				\item how to store and communicate?
+				\item how to analyze and understand?
+			\end{enumerate}
+		}
+	\end{mycolumns}
+\end{frame}
 
-% \xkcd{2369}
-
-\subsection{Configuring Features with Dependencies}
-% \begin{frame}{\myframetitle}
-% 	\partofpage{70}{\myexampletight{Configuring a Notebook}{\only<1,3->{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}}}
-% \end{frame}
-
-% \begin{frame}{\myframetitle}
-% 	\partofpage{70}{\myexampletight{Still Configuring a Notebook}{\includegraphics[width=\linewidth]{thinkpad-x1-yoga-office}}}
-% \end{frame}
-
-% \begin{frame}{\myframetitle}
-% 	~\hfill\partofpage{60}{\myexampletight{Configuring a Car}{\includegraphics[width=\linewidth]{toyota-aygo-wheels}}}
-% \end{frame}
-
-% \begin{frame}{\myframetitle}
-% 	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with a Weird Price}{\centering\includegraphics[width=.55\linewidth]{toyota-aygo-costs}}}
-% \end{frame}
-
-% \begin{frame}{\myframetitle}
-% 	~\hfill\partofpage{60}{\myexampletight{Configuring a Car with 8 Wheels!}{\includegraphics[width=\linewidth]{toyota-aygo-costs3}}}
-% \end{frame}
-
-% \begin{frame}{\myframetitle}
-% 	\partofpage{70}{\myexampletight{Configuring a German Car}{\includegraphics[width=\linewidth]{bmw-series1-confassistant-blacktooth}}}
-% \end{frame}
+\xkcdframe{2369}
 
 \subsection{Configurations}
 
@@ -79,9 +74,11 @@
 		}
 	\mynextcolumn
 		\myexample{}{
-			Feature set $F = \{ConfigDB, Get, Put, Delete,$
-			\hspace*{22mm}$Transactions, Windows, Linux\}$
-			
+			\vspace*{-4ex}
+			\begin{align*}
+				\text{Feature set } F = \{&ConfigDB, Get, Put, Delete,\\
+				&Transactions, Windows, Linux\}
+			\end{align*}
 			Examples for \emph{complete} configurations:
 			\begin{itemize}
 				\item \emph{valid} (read-only database on Windows):
@@ -100,7 +97,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Characterizing Valid Configurations}
+\subsubsection*{Natural Language}
 
 \begin{frame}{\myframetitle}\label{frame:natlang}
 	\begin{mycolumns}
@@ -127,6 +124,8 @@
 	\end{mycolumns}
 \end{frame}
 
+\subsubsection*{Configuration Map}
+
 \begin{frame}{\myframetitle}\label{frame:cfgmap}
 	\begin{mycolumns}
 		\mynote{Valid Configuration}{
@@ -146,8 +145,11 @@
 		}
 	\mynextcolumn
 		\myexample{}{
-			Feature set $F = \{ConfigDB, Get, Put, Delete,$
-			\hspace*{22mm}$Transactions, Windows, Linux\}$
+			\vspace*{-4ex}
+			\begin{align*}
+				\text{Feature set } F = \{&ConfigDB, Get, Put, Delete,\\
+				&Transactions, Windows, Linux\}
+			\end{align*}
 			
 			Configuration map:
 			
@@ -185,6 +187,8 @@
 	\end{mycolumns}
 \end{frame}
 
+\subsubsection*{Excel}
+
 \begin{frame}{\myframetitle}
 	\centering
 	\includegraphics[width=0.48\linewidth]{products-in-excel}
@@ -194,9 +198,9 @@
 
 \subsection{Feature Models}
 
-\subsubsection{Syntax}
+\subsubsection*{Syntax}
 
-\begin{frame}{\myframetitle\ \mytitlesource{\fospl}} % \foda?
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl; \foda\mypages{63--72}; \batorygrammars}}
 	\begin{mycolumns}
 		\myexampletight{}{
 			\centering
@@ -214,15 +218,15 @@
 				\item \emph{abstract features} are used to group other features
 				\item \emph{concrete features} have an implementation
 				\item also known as feature diagram or feature tree
-    			\item notation for \emph{optional/mandatory features} and \emph{or/alternative groups}
+				\item notation for \emph{optional/mandatory features} and \emph{or/alternative groups}
 			\end{itemize}
 		}
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection{Semantics}
+\subsubsection*{Semantics}
 
-\begin{frame}{\myframetitle\ \mytitlesource{\fospl}}
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl; \batorygrammars}}
 	\begin{mycolumns}[animation=none]
 		\uncover<2-|handout:1>{
 			\mydefinition{Tree Constraints}{
@@ -252,9 +256,9 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection{Example}
+\subsubsection*{Examples}
 
-\begin{frame}{\myframetitle\ \mytitlesource{\fospl}}
+\begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
 		\myexampletight{}{
 			\centering
@@ -295,20 +299,32 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\todo{graph product line example from Timo}
+	\begin{mycolumns}[columns=3,widths={5,90,5}]
 	\mynextcolumn
-		\mynote{Notation}{
+		\myexampletight{}{
+			\centering
+			\featureDiagramWaffle
+			% sugar is false-optional
+			% implicit constraint: cherries implies adult
+		}
+	\mynextcolumn
+	\end{mycolumns}
+
+	\begin{mycolumns}[columns=3,widths={5,90,5}]
+	\mynextcolumn
+		\mynote{A Few Remarks on Notation}{
 			\begin{itemize}
 				\item abstract and concrete features can be assigned arbitrarily
 				\item groups can be used anywhere
 				\item directly below groups, no optional or mandatory markers are allowed
 			\end{itemize}
 		}
+	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
 
 \subsection{Advantages of Feature Modeling}
+
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\textbf{Making Tacit Knowledge Explicit}
