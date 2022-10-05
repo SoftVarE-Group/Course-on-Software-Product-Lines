@@ -151,7 +151,7 @@
 					An initial implementation of our graph library providing weighted graphs.
 				}
 \vspace{3mm}				
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
@@ -174,9 +174,9 @@ public class Graph {
 		}
 	}
 }
-\end{lstlisting}
+\end{codetight}
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Edge {
 	Node a, b;
 	Weight weight = new Weight();
@@ -189,12 +189,12 @@ public class Edge {
 		weight.print();
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Weight {
 	void print() {...}
 }
-\end{lstlisting}
+\end{codetight}
 		\end{columns}
 	\end{tiny}
 \end{frame}
@@ -214,7 +214,7 @@ public class Weight {
 					Alice works with unweighted graphs, so she copies and adapts the basic implementation.
 				}
 \vspace{3mm}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
@@ -237,9 +237,9 @@ public class Graph {
 		}
 	}
 }
-\end{lstlisting}
+\end{codetight}
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Edge {
 	Node a, b;
 	@|Weight weight = new Weight();|@
@@ -252,12 +252,12 @@ public class Edge {
 		@|weight.print();|@
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 @|public class Weight {
 	void print() {...}
 }|@
-\end{lstlisting}
+\end{codetight}
 		\end{columns}
 	\end{tiny}
 \end{frame}
@@ -277,7 +277,7 @@ public class Edge {
 					Alice works with unweighted graphs, so she copies and adapts the basic implementation.
 				}
 \vspace{3mm}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
@@ -293,9 +293,9 @@ public class Graph {
 		}
 	}
 }
-\end{lstlisting}
+\end{codetight}
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Node {
 	int id = 0;
 
@@ -303,8 +303,8 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Edge {
 	Node a, b;
 
@@ -315,7 +315,7 @@ public class Edge {
 		a.print(); b.print();
 	}
 }
-\end{lstlisting}
+\end{codetight}
 		\end{columns}
 	\end{tiny}
 \end{frame}
@@ -336,7 +336,7 @@ public class Edge {
 					Bob works with colored (unweighted) graphs. He is a colleague of Alice and knows her variant, so he copies and adapts Alice's variant.
 				}
 \vspace{3mm}					
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
@@ -352,9 +352,9 @@ public class Graph {
 		}
 	}
 }
-\end{lstlisting}	
+\end{codetight}	
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Node {
 	int id = 0;
 	~Color color = new Color();~
@@ -364,12 +364,12 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 ~public class Color {
 	static void setDisplayColor(Color c) {...}
 }~
-\end{lstlisting}
+\end{codetight}
 		\end{columns}
 	\end{tiny}
 \end{frame}
@@ -425,7 +425,7 @@ public class Node {
 					Maintainers of the initial variant refactor the code of the basic implementation.
 				}
 \vspace{3mm}					
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -443,7 +443,7 @@ public class Graph {
 	}
 	...
 }
-\end{lstlisting}	
+\end{codetight}	
 			\column{.45\textwidth}
 				\mynote{}{
 					\normalsize

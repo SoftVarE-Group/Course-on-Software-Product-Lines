@@ -1,79 +1,51 @@
 \usepackage{listings}
 \usepackage[normalem]{ulem}
+\tcbuselibrary{listings}
 
-% default listing style
-\lstset{ 
-	language=Java, % choose the language of the code
+\newcommand{\definelanguage}[2]{
+	\lstdefinelanguage{#1}{#2}
+	\lstnewenvironment{#1}[1][]{\lstset{language=#1,##1}}{}
+	\newtcblisting{#1tight}[2][]{uulm@tightboxstyle={top=-6pt,bottom=-6pt}{##2}{blue},listing only,listing options={language=#1,##1}}
+}
+
+% listing style inherited by all languages
+\lstset{
 	numbers=none, % where to put the line-numbers
-	numberstyle=\tiny, % the size of the fonts that are used for the line-numbers
-	showspaces=false, % show spaces adding particular underscores
+	showspaces=false, % show spaces with underscores
 	showstringspaces=false, % underline spaces within strings
-	showtabs=false, % show tabs within strings adding particular underscores
-	frame=single, % adds a frame around the code
-	framerule=1pt,
-	framesep=3pt,
+	showtabs=false, % show tabs within strings with underscores
 	tabsize=2, % sets default tabsize to 2 spaces
-	rulesepcolor=\color{gray},
-	rulecolor=\color{black},
-	captionpos=b, % sets the caption-position to bottom
 	breaklines=true, % sets automatic line breaking
-	breakatwhitespace=false, 
+	breakatwhitespace=false,
+	columns=fullflexible,
+	commentstyle=\color{green},
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+}
+
+% language-specific styles
+\definelanguage{code}{
 	moredelim=**[is][\color{red}]{@}{@},
 	moredelim=**[is][\color{green}]{?}{?},
 	moredelim=**[is][\color{blue}]{~}{~},
 	moredelim=[is][\sout]{|}{|},
-	escapeinside={(*@}{@*)},
-	columns=fullflexible,
-	backgroundcolor=\color{white}
 }
 
-% \begin{lstlisting}[language=UVL]
-\lstdefinelanguage{UVL}{
-	tabsize = 4,
-	commentstyle=\color{green},
-	keywordstyle=\color{blue},
-	stringstyle=\color{red},
-	basicstyle=\footnotesize\ttfamily,
-	breaklines=true,
-	columns=fullflexible,
-	keepspaces=true,
-	sensitive=true,
-	mathescape,
+\definelanguage{uvl}{
 	alsoletter={=, >, |},
 	morekeywords={features, constraints, namespace, mandatory, optional, or, alternative, abstract, =>, |}
 }
 
-\lstdefinelanguage{DIMACS}{
-	commentstyle=\color{green},
-	keywordstyle=\color{blue},
-	stringstyle=\color{red},
-	basicstyle = \footnotesize\ttfamily,
-	breaklines = true,
-	columns=fullflexible,
-	keepspaces=true,
-	sensitive=true,
+\definelanguage{dimacs}{
 	alsoletter={0},
 	morekeywords={p, cnf, 0},
 	morecomment=[f]{c},
 }
 
-\lstdefinelanguage{Kconfig}{
-	commentstyle=\color{green},
-	keywordstyle=\color{blue},
-	stringstyle=\color{red},
-	basicstyle = \footnotesize\ttfamily,
-	breaklines = true,
-	columns={fullflexible},
+\definelanguage{kconfig}{
 	keepspaces=true,
-	sensitive=true,
-	alsoletter={},
-	morekeywords={config,bool,default,if,help,def_bool,depends,on,select},
+	morekeywords={config, bool, default, if, help, def_bool, depends, on, select},
 	morecomment=[f]{\#},
 	morestring=*[d]{"},
 	literate={-}{{-}}1,
 }
-
-\lstnewenvironment{java}[1][]{\lstset{#1}}{}
-\lstnewenvironment{uvl}[1][]{\lstset{language=UVL,#1}}{}
-\lstnewenvironment{dimacs}[1][]{\lstset{language=DIMACS,#1}}{}
-\lstnewenvironment{kconfig}[1][]{\lstset{language=Kconfig,#1}}{}

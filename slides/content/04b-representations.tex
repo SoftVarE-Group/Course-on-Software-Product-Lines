@@ -64,7 +64,7 @@
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}
-\begin{uvl}[basicstyle=\normalsize]
+\begin{uvltight}[basicstyle=\normalsize]{}
 features
 	ConfigDB
 		mandatory
@@ -84,7 +84,7 @@ features
 
 constraints
 	Transactions => Put | Delete
-\end{uvl}
+\end{uvltight}
 	\mynextcolumn
 		\myexampletight{A Feature Model ``Sideways''}{
 			\centering
@@ -430,20 +430,20 @@ constraints
 			\pand &~(\pnot W \por \pnot L)
 		\end{align*}
  	\mynextcolumn
-\begin{dimacs}[basicstyle=\large]
-	c 1 C
-	c 2 T
-	c 3 O
-	c 4 W
-	c 5 L
-	p cnf 5 8
-	1 0
-	-2 1 0
-	-3 1 0 -1 3 0
-	-4 3 0 -5 3 0
-	-3 4 5 0
-	-4 5 0
-\end{dimacs}
+\begin{dimacstight}[basicstyle=\large]{}
+c 1 C
+c 2 T
+c 3 O
+c 4 W
+c 5 L
+p cnf 5 8
+1 0
+-2 1 0
+-3 1 0 -1 3 0
+-4 3 0 -5 3 0
+-3 4 5 0
+-4 5 0
+\end{dimacstight}
 	\mynextcolumn
 		\mydefinition{DIMACS Format\mysource{\dimacsformat}}{
 			\begin{itemize}
@@ -552,7 +552,7 @@ constraints
 \begin{frame}[fragile]{\myframetitle}
 	\texttt{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{torvalds/linux/arch/x86/Kconfig}}
 	\begin{mycolumns}
-		\begin{kconfig}[basicstyle=\small]
+		\begin{kconfigtight}[basicstyle=\small]{}
 config 64BIT
 	bool "64-bit kernel" if "$(ARCH)" = "x86"
 	default "$(ARCH)" != "i386"
@@ -573,7 +573,7 @@ config X86_64
 	# Options that are inherently 64-bit kernel only:
 	select ARCH_HAS_GIGANTIC_PAGE
 	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128
-...\end{kconfig}
+\end{kconfigtight}
 	\mynextcolumn
 		\mydefinition{KConfig Language\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html}{kernel.org}}}{
 			\begin{itemize}

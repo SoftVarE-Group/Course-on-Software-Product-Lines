@@ -99,7 +99,7 @@
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -114,8 +114,8 @@ public class Graph {
 	}
 	...
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 @public class WeightedGraph extends Graph {
 	...
 	// override hook method
@@ -126,7 +126,7 @@ public class Graph {
 	}
 	...
 }@
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 				\includegraphics[width=0.75\linewidth]{graphlib-oo-node-edge}	
@@ -137,7 +137,7 @@ public class Graph {
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph implements IGraph {
 	EdgeFactory ef;
 	...
@@ -152,21 +152,21 @@ public class Graph implements IGraph {
 	}
 	...
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class EdgeFactory {
 	Edge createEdge(Node a, Node b) {
 		return new Edge(a, b);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 @public class WeightedEdgeFactory extends EdgeFactory {
 	Edge createEdge(Node a, Node b) {
 		return new WeightedEdge(a, b);
 	}
 }@
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 				\includegraphics[width=0.75\linewidth]{graphlib-oo-node-edge}	
@@ -211,7 +211,7 @@ public class EdgeFactory {
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public abstract class GraphDecorator implements IGraph {
 	protected IGraph graph;
 	
@@ -219,8 +219,8 @@ public abstract class GraphDecorator implements IGraph {
 		graph = _graph; 
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 @public class WeightedGraph extends GraphDecorator {
 	public WeightedGraph(IGraph _graph) {
 		super(_graph);
@@ -232,16 +232,16 @@ public abstract class GraphDecorator implements IGraph {
 	}
 	...
 }@
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 				\includegraphics[width=\linewidth]{graphlib-oo-decorator}	
 		\end{columns}
 Usage Example: 
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 IGraph g = new WeightedGraph(new ColoredGraph(new Graph(new WeightedEdgeFactory())));
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 \end{frame}
 

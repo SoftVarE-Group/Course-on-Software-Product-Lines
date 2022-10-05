@@ -19,7 +19,7 @@
 	\begin{tiny}
 		\begin{columns}
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
@@ -42,14 +42,14 @@ public class Graph {
 		}
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Color {
 	static void setDisplayColor(Color c) {...}
 }
-\end{lstlisting}	
+\end{codetight}	
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Node {
 	int id = 0;
 	Color color = new Color();
@@ -59,8 +59,8 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Edge {
 	Node a, b;
 	Weight weight = new Weight();
@@ -73,12 +73,12 @@ public class Edge {
 		weight.print();
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Weight {
 	void print() {...}
 }
-\end{lstlisting}
+\end{codetight}
 		\end{columns}
 	\end{tiny}
 \end{frame}
@@ -87,7 +87,7 @@ public class Weight {
 	\begin{tiny}
 		\begin{columns}
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
@@ -110,14 +110,14 @@ public class Graph {
 		}
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 ~public class Color {
 	static void setDisplayColor(Color c) {...}
 }~
-\end{lstlisting}	
+\end{codetight}	
 			\column{.45\textwidth}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Node {
 	int id = 0;
 	~Color color = new Color();~
@@ -127,8 +127,8 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Edge {
 	Node a, b;
 	@Weight weight = new Weight();@
@@ -141,12 +141,12 @@ public class Edge {
 		@weight.print();@
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 @public class Weight {
 	void print() {...}
 }@
-\end{lstlisting}
+\end{codetight}
 		\end{columns}
 	\end{tiny}
 \end{frame}
@@ -159,7 +159,7 @@ public class Edge {
 				}
 				\vspace{5mm}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -177,11 +177,11 @@ public class Graph {
 	}@
 	...
 }
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Node {
 	~Color color;~
 	...
@@ -193,8 +193,8 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Edge {
 	@Weight weight;@ 
 	...
@@ -207,7 +207,7 @@ public class Edge {
 		@if (WEIGHTED) { weight.print(); }@
 	}
 }
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 		\end{columns}
 \end{frame}
@@ -218,13 +218,13 @@ public class Edge {
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Config {
 	~public static boolean COLORED = true;~
 	@public static boolean WEIGHTED = false;@
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -242,11 +242,11 @@ public class Graph {
 	}@
 	...
 }
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Node {
 	~Color color;~
 	...
@@ -258,8 +258,8 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Edge {
 	@Weight weight;@
 	...
@@ -272,7 +272,7 @@ public class Edge {
 		@if (Config.WEIGHTED) { weight.print(); }@
 	}
 }
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 		\end{columns}
 \end{frame}
@@ -281,13 +281,13 @@ public class Edge {
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Config {
 	~public static final boolean COLORED = true;~
 	@public static final boolean WEIGHTED = false;@
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -305,7 +305,7 @@ public class Graph {
 	}@
 	...
 }
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 				\mynote{Idea}{ 
@@ -329,7 +329,7 @@ public class Graph {
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Graph {
 	@boolean weighted;@
 	~boolean colored;~
@@ -347,8 +347,8 @@ public class Graph {
 	}
 	...
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Edge {
 	@boolean weighted;@
 	@Weight weight;@ 
@@ -359,7 +359,7 @@ public class Edge {
 	}
 	...
 }
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 				\mynote{Idea}{ 
@@ -384,14 +384,14 @@ public class Edge {
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{lstlisting}
+\begin{codetight}{}
 public class Config {
 	~public static boolean COLORED = false;~
 	@public static boolean WEIGHTED = false;@
 }
 
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Node {
 	~Color color;~
 	...
@@ -407,7 +407,7 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
+\end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
 				\mynote{Idea}{ 

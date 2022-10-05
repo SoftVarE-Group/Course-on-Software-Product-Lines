@@ -45,13 +45,13 @@
 \begin{frame}[fragile]{\myframetitle}
 	\footnotesize
 	\begin{mycolumns}[animation=none]
-\begin{lstlisting}
+\begin{codetight}{}
 public class Config {
 	~public static boolean COLORED = true;~
 	@public static boolean WEIGHTED = false;@
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -69,9 +69,9 @@ public class Graph {
 	}@
 	...
 }
-\end{lstlisting}
+\end{codetight}
 	\mynextcolumn
-\begin{lstlisting}
+\begin{codetight}{}
 public class Node {
 	~Color color;~
 	...
@@ -83,8 +83,8 @@ public class Node {
 		System.out.print(id);
 	}
 }
-\end{lstlisting}
-\begin{lstlisting}
+\end{codetight}
+\begin{codetight}{}
 public class Edge {
 	@Weight weight;@
 	...
@@ -97,7 +97,7 @@ public class Edge {
 		@if (Config.WEIGHTED) { weight.print(); }@
 	}
 }
-\end{lstlisting}
+\end{codetight}
 	\end{mycolumns}
 \end{frame}
 
@@ -133,12 +133,12 @@ public class Edge {
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[widths={48}]
-\begin{lstlisting}
+\begin{codetight}{}
 public class Config {
 	~public final static boolean COLORED = true;~
 	@public final static boolean WEIGHTED = false;@
 }
-\end{lstlisting}
+\end{codetight}
 		\begin{definition}{How to? -- Immutable Global Variables}
 			\begin{itemize}
 				\item implement runtime variability
