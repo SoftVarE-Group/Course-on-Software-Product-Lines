@@ -1,6 +1,4 @@
-\subsection{Natural Language, Configuration Map, and Feature Model}
-
-\subsubsection*{Variability Model Representations}
+\subsection{Representations and Transformations}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
@@ -100,7 +98,7 @@ constraints
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Representations and Transformations}
 	\begin{mycolumns}
 		\centering
 		\sffamily
@@ -470,7 +468,7 @@ p cnf 5 8
  	\end{mycolumns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Representations and Transformations}
 	\begin{mycolumns}[widths={52,48}]
 		\centering
 		\sffamily
@@ -536,7 +534,7 @@ p cnf 5 8
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Variability Models in the Wild}
+\subsection{Feature Models in the Wild}
 
 \subsubsection*{Excel, Again}
 
@@ -550,9 +548,8 @@ p cnf 5 8
 \subsubsection*{Linux Kernel}
 
 \begin{frame}[fragile]{\myframetitle}
-	\texttt{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{torvalds/linux/arch/x86/Kconfig}}
 	\begin{mycolumns}
-		\begin{kconfigtight}[basicstyle=\small]{}
+		\begin{kconfigtight}[basicstyle=\small]{Part of the x86 Architecture \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{linux/arch/x86/Kconfig}}}
 config 64BIT
 	bool "64-bit kernel" if "$(ARCH)" = "x86"
 	default "$(ARCH)" != "i386"
@@ -579,7 +576,7 @@ config X86_64
 			\begin{itemize}
 				\item configuration language used in embedded/OS development (e.g., Linux, Zephyr, ESP32)
 				\item similar to UVL, but has many quirks (e.g., tristate features, \texttt{select})
-				\item translation into formula or feature model possible, but not trivial \mysource{\href{https://dl.acm.org/doi/abs/10.1145/3468264.3468578}{Oh~et~al.~2021}}
+				\item transformation into formula or feature model possible, but not trivial \mysource{\href{https://dl.acm.org/doi/abs/10.1145/3468264.3468578}{Oh~et~al.~2021}}
 			\end{itemize}
 		}
 	\hspace*{-3mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,trim=180 510 100 170,clip]{2020/2020-SPLC-Thuem}}

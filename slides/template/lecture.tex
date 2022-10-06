@@ -163,6 +163,17 @@
 }
 \makeatother
 
+% TODO
+\renewcommand{\contentoverview}{
+    \begin{frame}{\inserttitle\ -- \insertsubtitle}
+        \linespread{.5}
+        \vfill
+        \begin{multicols}{2}
+            \tableofcontents
+        \end{multicols}
+    \end{frame}
+}
+
 % TODO hack to set default frame title
 % \setbeamertemplate{frametitle}{
 %     \vspace{20pt}%

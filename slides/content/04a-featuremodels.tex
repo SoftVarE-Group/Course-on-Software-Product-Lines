@@ -20,7 +20,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Understanding Features and Their Dependencies}
+\subsection{Features Have Dependencies}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[columns=3,widths={40,20,40}]
@@ -57,7 +57,7 @@
 
 \xkcdframe{2369}
 
-\subsection{Configurations}
+\subsection{Specifying Valid Configurations}
 
 \newcommand{\feat}[1]{{\emph{#1}}}
 
@@ -97,7 +97,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection*{Natural Language}
+\subsubsection{Natural Language}
 
 \begin{frame}{\myframetitle}\label{frame:natlang}
 	\begin{mycolumns}
@@ -124,7 +124,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection*{Configuration Map}
+\subsubsection{Configuration Map}
 
 \begin{frame}{\myframetitle}\label{frame:cfgmap}
 	\begin{mycolumns}
@@ -187,7 +187,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection*{Excel}
+\subsubsection*{Configuration Map in Excel}
 
 \begin{frame}{\myframetitle}
 	\centering
@@ -312,7 +312,7 @@
 
 	\begin{mycolumns}[columns=3,widths={5,90,5}]
 	\mynextcolumn
-		\mynote{A Few Remarks on Notation}{
+		\mynote{}{
 			\begin{itemize}
 				\item abstract and concrete features can be assigned arbitrarily
 				\item groups can be used anywhere
@@ -323,17 +323,27 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Advantages of Feature Modeling}
+\subsection{Pros and Cons}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\textbf{Making Tacit Knowledge Explicit}
-		\mynote{Interview with Practitioners \mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}}{
-			\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer's point of view. But it's also, we can see that from the, say project development, it's also important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven't realized that. They implemented the same features.}
+		\mynote{Pro: Making Tacit Knowledge Explicit}{
+			\small\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer's point of view. But it's also [\ldots] important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven't realized that. They implemented the same features.} -- {\footnotesize Interview with Practitioners}\mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}
+		}
+
+		\mynote{Pro: Tool Support}{
+			\pic[width=.3\linewidth]{featureide-logo},\hspace{2mm}\href{https://biglever.com/solution/gears/}{Gears},\hspace{2mm}\href{https://www.pure-systems.com/de/purevariants}{pure::variants},\hspace{2mm}\ldots% end goal: the lecture shows how to realize a automated configurator that does not allow invalid configurations
+
 		}
 	\mynextcolumn
-		\textbf{Tool Support}
+		\mynote{Con: Challenges}{
+			\begin{itemize}
+				\item \emph{domain scoping}: which features?
+				\item \emph{feature interactions}: which dependencies?
+				\item requires infrastructure, consulting, and training
+			\end{itemize}
+		}
 
-		\pic[width=\linewidth]{featureide-feature-model-editor}
+		\vspace*{2mm}\centering\pic[width=.7\linewidth]{wollmilchsau}
 	\end{mycolumns}
 \end{frame}
