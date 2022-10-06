@@ -47,7 +47,7 @@
 	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
 }{
 	\begin{itemize}
-		\item Figure out how many valid configurations your feature diagram represents.
+		\item \todo{Figure} out how many valid configurations your feature diagram represents.
 		When is this easy?
 		\item Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
 		How might this be useful?
@@ -68,14 +68,7 @@
 	\item Thomas Thüm et al. (2009): \href{https://doi.org/10.1109/ICSE.2009.5070526}{Reasoning About Edits to Feature Models}
 	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}
 }{
-	% alternative: find inconsistencies in your feature diagram
-	Recall that some $f \in F$ is dead iff $\pnot SAT(\phi \pand f)$.
-	Suppose you want to know \emph{all} dead features of $\phi$.
-	Naively, you may formulate $\abs{F}$ SAT queries.
-	
-	Can this be improved?
-	
-	(Hint: Some SAT solvers return an example model $M_\psi$ when $\psi$ is satisfiable.)
+	\todo{find inconsistencies in your feature diagram}
 }
 
 \input{template/footer}

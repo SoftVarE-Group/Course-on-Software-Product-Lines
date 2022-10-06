@@ -1,7 +1,9 @@
 \newcommand{\ssat}{\texttt{\#}SAT}
 \usetikzlibrary{arrows,positioning}
 
-\subsection{Web Configurators in Action}
+\subsection{Configurators in the Wild}
+
+\subsubsection*{Notebooks}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={70,30}]
@@ -26,6 +28,8 @@
 		}
 	\end{mycolumns}
 \end{frame}
+
+\subsubsection*{Cars}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60}]
@@ -72,7 +76,28 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{}
+\subsubsection*{Linux Kernel}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={60,40}]
+		\myexampletight{}{
+			\pic[width=\textwidth]{linux-menuconfig}
+		}
+	\mynextcolumn
+		\mynote{make menuconfig}{
+			\begin{itemize}
+				\item KConfig-based configurator
+				\item generates a \texttt{.config} file
+				\item widely used to configure Linux
+				\item still: it is possible to create invalid products
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Automated Analysis of Feature Models}
+
+\begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\mynote{Open Questions}{
 			\begin{itemize}
@@ -152,9 +177,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Solver-Based Analysis of Feature Models}
-
-\begin{frame}{\myframetitle}
+\begin{frame}{Automated Analysis of Feature Models}
 	\begin{mycolumns}
 		\myexample{Asking Questions About Feature Models}{
 			\begin{itemize}
@@ -471,47 +494,53 @@
 	\end{mycolumns}
 \end{frame}
 
-% end goal: the lecture shows how to realize a automated configurator that does not allow invalid configurations
+\subsection{Automated Analyses in FeatureIDE}
 
-\subsection{Experiences \& Challenges}
+\subsubsection*{Feature-Model Editor}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		% \myexampletight{Industrial Configuration Spaces \mysource{\evaluatingsharpsatsolvers}}{
-		% 	\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
-		% }
+	\begin{mycolumns}[widths={60,40}]
+		\myexampletight{}{
+			\pic[width=\textwidth]{featureide-feature-model-editor-waffle}
+		}
 	\mynextcolumn
-		
+		\myexampletight{}{
+			\pic[width=\textwidth]{featureide-feature-model-statistics}
+		}
 	\end{mycolumns}
-	% how is SAT (before: a black box) implemented (very broadly)?
-
-	% solvers have parameters, heuristics (variable ordering/assignment, restarts, ...)
-
-	% there are SAT solvers that do not use CNF, there are other techniques entirely (BDD, d-DNNF)
-
-	% CNF/DIMACS transformation
-
-	% non-Boolean requires richer theories (SMT, CSP)
 \end{frame}
 
-%\subsection{Experiences} % performance / efficiency
-	% show a few diagrams with performance on large models
+\subsubsection*{Configuration Editor}
 
-	% (may even be implemented concretely as BDD)
-
-	% only with Boolean formulas can we get really performant results today
-
-	% BDDs are hard to build, but have large payoff (maybe one slide on the concrete concept of knowledge compilation, without too many details?)
-
-	% most of this is implemented in FeatureIDE, the configurator is a clever combination of the techniques explained above (Boolean constraint/decision propagation) % show linux configurator
-
-		%at the end (what else is there?): in practice, we also have non-Boolean features/attributes/constraints over attributes (more details on efficiency in third block)
-
-	%there is evidence (Knueppel) that the full expressive power of Boolean formulas is needed for real-world formulas
-
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={60,40}]
+		\myexampletight{}{
+			\centering
+			\pic[width=.27\textwidth]{featureide-configuration-editor-step1}
+			$\Rightarrow$
+			\pic[width=.63\textwidth]{featureide-configuration-editor-step2}
+		}
+	\mynextcolumn
+		\mynote{Decision Propagation}{
+			\begin{itemize}
+				\item after each decision (i.e., click) \ldots
+				\begin{itemize}
+					\item \ldots{} select features that are now \emph{conditionally core}
+					\item \ldots{} deselect features that are now \emph{conditionally dead}
+				\end{itemize}
+				\item this way it is impossible to configure an invalid product
+				\item explanations for all propagated decisions
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
 
 \begin{frame}{}
 	\begin{mycolumns}
+		\myexampletight{Challenge: Increasing Complexity \mysource{\evaluatingsharpsatsolvers}}{
+			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
+		}
+	\mynextcolumn
 		\mydefinition{Research Opportunities}{
 			\centering
 			\begin{tikzpicture}
@@ -531,7 +560,7 @@
 				\path[draw,->,color=blue] (fm) edge node[yshift=2mm] {\small $\Phi$} (formula)
 							(formula) edge node[yshift=0mm,align=center] {\small $CNF$\\{\footnotesize\color{red}Tseitin}} (cnf)
 							(cnf.east) -| (right) -- node[yshift=2mm] {\small formulate} (left) |- (query)
-							(query) edge node[yshift=-7mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT, \ssat{}, AllSAT\\{\color{red}MAX-SAT}\\{\color{red}Solution-SAT}\\{\color{red}MUS}\\{\color{red}QBF}\\{\color{red}WMC}\\{\color{red}PMC}} (answer)
+							(query) edge node[yshift=-7mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT, \ssat{}, AllSAT\\{\color{red}MAX-SAT}\\{\color{red}Solution-SAT}\\{\color{red}MUS}\\{\color{red}SMT, CSP}\\{\color{red}QBF}\\{\color{red}WMC, PMC}} (answer)
 							(answer) edge (result);
 			\end{tikzpicture}
 			\vspace*{-4ex}
@@ -541,7 +570,5 @@
 				\item investigate correctness and compositionality
 			\end{itemize}
 		}
-	\mynextcolumn
-		
 	\end{mycolumns}
 \end{frame}
