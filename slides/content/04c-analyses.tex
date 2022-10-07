@@ -32,7 +32,7 @@
 \subsubsection*{Cars}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40,60}]
+	\begin{mycolumns}[widths={40,60},animation=none]
 	\mynextcolumn
 		\myexampletight{Configuring a Car}{
 			\includegraphics[width=\linewidth]{toyota-aygo-wheels}
@@ -41,7 +41,7 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40,60}]
+	\begin{mycolumns}[widths={40,60},reverse]
 		\mynote{}{
 			it is possible to create inconsistent states, leading to an invalid product
 		}
@@ -53,7 +53,7 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40,60}]
+	\begin{mycolumns}[widths={40,60},reverse]
 		\mynote{}{
 			What happens if we ordered this \ldots?
 		}
@@ -86,7 +86,7 @@
 	\mynextcolumn
 		\mynote{make menuconfig}{
 			\begin{itemize}
-				\item KConfig-based configurator
+				\item configures KConfig models
 				\item generates a \texttt{.config} file
 				\item widely used to configure Linux
 				\item still: it is possible to create invalid products
@@ -146,7 +146,8 @@
 					in practice, solvability depends on domain
 				\item answered by \emph{SAT solvers}:\\
 					highly-optimized, off-the-shelf tools;\\
-					competitively developed over several decades
+					competitively developed over several decades;\\
+					takes a CNF in DIMACS format as input
 			\end{itemize}
 		}
 		\myexample{}{
@@ -203,13 +204,13 @@
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block] (fm) {Feature Model};
-				\node [block, right =8mm of fm] (formula) {Formula};
-				\node [block, right =8mm of formula] (cnf) {CNF};
+				\node [block, right =4mm of fm] (formula) {Formula};
+				\node [block, right =8mm of formula] (cnf) {DIMACS};
 				\node [block, below right =8mm and -12mm of fm] (query) {Query};
 				\node [block, right =10mm of query] (answer) {Answer};
 				\node [block, right =12mm of answer] (result) {Result};
-				\node [coordinate, below right =5mm and 4mm of cnf] (right) {};
-				\node [coordinate, above left =3mm and 4mm of query] (left) {};
+				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
+				\node [coordinate, above left =3mm and 2mm of query] (left) {};
 				\path[draw,->,color=blue] (fm) edge node[yshift=2mm] {\small $\Phi$} (formula)
 							(formula) edge node[yshift=2mm] {\small $CNF$} (cnf)
 							(cnf.east) -| (right) -- node[yshift=2mm] {\small formulate} (left) |- (query)
@@ -302,6 +303,33 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
+	\begin{mycolumns}[t]
+		\emph{Feasibility of SAT-Based Analyses}
+
+		\mynote{Is Sat-Based Analysis ``Easy''?}{
+			\begin{itemize}
+				\item provocative claim: \mycite{SAT-based analysis of feature models is easy} \mysource{\href{https://dl.acm.org/doi/10.5555/1753235.1753267}{Mendonca~et~al.~2009}}
+				\item easy $=$ performs much better than expected (although NP-complete)
+				\item easy $=$ fast?
+				\begin{itemize}
+					\item what about formulating the query?\\
+						(e.g., CNF transformation)
+					\item what about many queries?\\
+						(e.g., what we discuss next)
+				\end{itemize}
+			\end{itemize}
+		}
+	\mynextcolumn
+		\emph{Feasibility of \ssat{}-Based Analyses}
+	
+		\myexampletight{Time to Count Products of Linux}{
+			\includegraphics[width=\linewidth,page=4]{linux-plots}
+		}
+	\end{mycolumns}
+\end{frame}
+
+
+\begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\emph{Enumeration of Feature Models (AllSAT)}
 		\mydefinition{Which Products Are There?}{
@@ -317,7 +345,8 @@
 			\end{tikzpicture}
 		}
 		\mynote{}{
-			AllSAT does not scale to realistic feature models!
+			AllSAT does not scale to realistic feature models!\\
+			50 features, configurations \`a 1 Byte $\approx$ 1 Petabyte
 		}
 		\myexampletight{}{
 			\leftandright{
@@ -451,12 +480,12 @@
 		\emph{Consistency of Partial Configurations (SAT)}
 		\mydefinition{Valid Partial Configuration}{
 			\begin{itemize}
-				\item does a partial configuration $C = (S, D)$ contain a mistake?
+				\item does a partial configuration $C = ({\color{green}S}, {\color{red}D})$ contain a mistake?
 			\end{itemize}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
-				\node [block] (query) {$\phi \pand \bigwedge_{s \in S} s \pand \bigwedge_{d \in D} \pnot d$};
+				\node [block] (query) {$\phi \pand \bigwedge_{s \in S} {\color{green}s} \pand \bigwedge_{d \in D} {\color{red}\pnot d}$};
 				\node [block, right =10mm of query] (answer) {$\bot/\top$};
 				\node [block, above right =-3mm and 6mm of answer] (void) {$C$ $\times$};
 				\node [block, below right =-3mm and 6mm of answer] (notvoid) {$C$ \checkmark};
@@ -472,7 +501,7 @@
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block] (query) {$\phi \pand ...$};
-				\node [block, right =10mm of query] (answer) {$\abs{\{(I', E') \in C \mid I \subseteq I', E \in E'\}}$};
+				\node [block, right =10mm of query] (answer) {$\abs{\{(S', D') \in C \mid {\color{green}S} \subseteq S', {\color{red}D} \in D'\}}$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
 		}
@@ -482,14 +511,14 @@
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,optional][Y,concrete,optional]}\\$X \pimplies Y$}
 
-			$(\{Root\}, \{X\})$ \checkmark
+			\cfg{Root}{X} \checkmark
 		}
 		\mynextcolumn
 		\myexampletight{}{
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,optional][Y,concrete,optional]}\\$X \pimplies Y$}
 
-			$(\{Root\}, \{X\})$: 2 products
+			\cfg{Root}{X}: 2 products
 		}
 	\end{mycolumns}
 \end{frame}
@@ -535,28 +564,45 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{Automated Analysis of Feature Models}
 	\begin{mycolumns}
-		\myexampletight{Challenge: Complexity \mysource{\evaluatingsharpsatsolvers}}{
-			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
+		\mydefinition{The Road So Far \ldots}{
+			\centering
+			\begin{tikzpicture}
+				\tikzset{block/.style={align=center,minimum height=5mm}}
+				\node [block] (fm) {Feature Model};
+				\node [block, right =4mm of fm] (formula) {Formula};
+				\node [block, right =8mm of formula] (cnf) {DIMACS};
+				\node [block, below right =8mm and -12mm of fm] (query) {Query};
+				\node [block, below =-.5mm of query,align=center,color=blue,font={\footnotesize}] (query2) {void feature model\\variability factor\\all products\\core/dead features\\false-optional features\\commonality\\valid partial configuration\\decision propagation};
+				\node [block, right =27mm of query] (answer) {Answer};
+				\node [block, right =4mm of answer] (result) {};
+				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
+				\node [coordinate, above left =3mm and 2mm of query] (left) {};
+				\path[draw,->,color=blue] (fm) edge node[yshift=2mm] {\small $\Phi$} (formula)
+							(formula) edge node[yshift=2mm,align=center] {\small $CNF$} (cnf)
+							(cnf.east) -| (right) -- node[yshift=2mm] {\small formulate} (left) |- (query)
+							(query) edge node[yshift=-2mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT\\\ssat{}\\AllSAT} (answer)
+							(answer) edge (result);
+			\end{tikzpicture}
 		}
 	\mynextcolumn
-		\mydefinition{Research Opportunities}{
+		\mydefinition{\ldots and Beyond}{
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block,align=center,color=red,font={\footnotesize}] (fm2) {attributes\\cardinalities\\submodels};
 				\node [block, below =.5mm of fm2] (fm) {Feature Model};
-				\node [block, right =8mm of fm] (formula) {Formula};
+				\node [block, right =4mm of fm] (formula) {Formula};
 				\node [block, above =.5mm of formula,align=center,color=red,font={\footnotesize}] (formula2) {quantifiers\\predicates\\functions};
-				\node [block, right =8mm of formula] (cnf) {CNF};
+				\node [block, right =8mm of formula] (cnf) {DIMACS};
 				\node [block, above =.5mm of cnf,align=center,color=red,font={\footnotesize}] (cnf2) {DNF\\d-DNNF\\BDD};
 				\node [block, below right =8mm and -12mm of fm] (query) {Query};
-				\node [block, below =-.5mm of query,align=center,color=red,font={\footnotesize}] (query2) {atomic sets\\redundant constraints\\feature-model edits\\explanations\\decision propagation\\sampling\\slicing};
+				\node [block, below =-.5mm of query,align=center,color=red,font={\footnotesize}] (query2) {atomic sets\\redundant constraints\\feature-model edits\\explanations\\sampling\\slicing};
 				\node [block, right =27mm of query] (answer) {Answer};
 				\node [block, right =4mm of answer] (result) {};
-				\node [coordinate, below right =5mm and 4mm of cnf] (right) {};
-				\node [coordinate, above left =3mm and 4mm of query] (left) {};
+				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
+				\node [coordinate, above left =3mm and 2mm of query] (left) {};
 				\path[draw,->,color=blue] (fm) edge node[yshift=2mm] {\small $\Phi$} (formula)
 							(formula) edge node[yshift=0mm,align=center] {\small $CNF$\\{\footnotesize\color{red}Tseitin}} (cnf)
 							(cnf.east) -| (right) -- node[yshift=2mm] {\small formulate} (left) |- (query)

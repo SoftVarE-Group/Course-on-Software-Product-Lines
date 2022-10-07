@@ -1,14 +1,14 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	%handout, % handout mode without animations, comment out to add animations
+	handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 
 \input{template/lecture}
 
 % SET UNIVERSITY
 % \berntrue
-\magdeburgtrue
+% \magdeburgtrue
 % \ulmtrue
 
 \subtitle{4. Feature Modeling}
@@ -26,7 +26,7 @@
 \input{content/04a-featuremodels}
 
 \lessonslearned{
-	\item features, dependencies between features, configurators
+	\item features, dependencies between features, and configurations
 	\item feature models: abstract and concrete features, tree and cross-tree constraints
 	\item tree constraints: optional, mandatory, or group, alternative group
 }{
@@ -35,9 +35,8 @@
 	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
 }{
 	\begin{itemize}
-		\item sketch a feature model with \todo{X} configurations (pen and paper preferred)
-		\item upload your solution to \todots
-		\item discuss whether your solutions are syntactically correct and have the right number of configurations
+		\item sketch a feature model with features $A, B, C, \ldots$ that has 7 configurations (pen and paper preferred)
+		\item discuss in groups whether your solutions are syntactically correct and have the right number of configurations
 	\end{itemize}
 }
 
@@ -54,12 +53,12 @@
 	\item Don Batory (2005): \href{https://doi.org/10.1007/11554844_3}{Feature Models, Grammars, and Propositional Formulas}
 	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
 }{
-	\begin{itemize}
-		\item \todo{Figure} out how many valid configurations your feature diagram represents.
-		When is this easy?
-		\item Translate (a part of) your feature diagram into a formula, then into CNF, and finally into a DIMACS file.
-		How might this be useful?
-	\end{itemize}
+	Translate the following feature diagram into a formula and then into CNF:
+
+	\centering
+	\featureDiagram{Root[A,optional[C,or][D]][B,mandatory[E,alternative][F]]}
+
+	$D \pimplies E$
 }
 
 \sectionend
@@ -69,14 +68,28 @@
 \input{content/04c-analyses}
 
 \lessonslearned{
-	\item Automated SAT-based analyses help in understanding large configuration spaces.
-	\item There are still many open problems regarding encodings and applications (e.g., \#SAT).
+	\item with solvers, we can build reliable configurators for product lines
+	\item SAT-based analyses: void feature model, core/dead features, decision propagation
+	\item \ssat{}-based analyses: variability factor, feature commonality
 }{
+	\item \fospl, Section~10.1 Analysis of Feature Models
 	\item David Benavides et al. (2010): \href{https://doi.org/10.1016/j.is.2010.01.001}{Automated Analysis of Feature Models 20 Years Later: A Literature Review}
-	\item Thomas Thüm et al. (2009): \href{https://doi.org/10.1109/ICSE.2009.5070526}{Reasoning About Edits to Feature Models}
 	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}
 }{
-	\todo{find inconsistencies in your feature diagram}
+	Consider this feature diagram:
+
+	\begin{center}
+		\featureDiagram{Root[A,optional[C,or][D]][B,mandatory[E,alternative][F]]}
+	\end{center}
+
+	How can you \ldots
+	\begin{itemize}
+		\item make this feature model void
+		\item make exactly one feature dead
+	\end{itemize}
+	\ldots{} by adding one constraint, respectively?
+
+	Name a partial configuration for which only two products exist.
 }
 
 \input{template/footer}
