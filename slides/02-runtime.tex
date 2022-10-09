@@ -3,16 +3,9 @@
 	8pt, % font size, default is 11pt
 	handout, % handout mode without animations, comment out to add animations
 ]{beamer}
+\def\university{}
 
 \input{template/lecture}
-
-% SET UNIVERSITY
-% \berntrue
-% \magdeburgtrue
-% \ulmtrue
-
-% Tables
-\usepackage{booktabs}
 
 \subtitle{2. Runtime Variability and Design Patterns}
 \author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
@@ -20,41 +13,22 @@
 	{\setpicture[300]{magdeburg-canal}}
 	{\setpicture{oct20-south4}}
 
+% Tables
+\usepackage{booktabs}
+
 \begin{document}
 
 \input{template/header}
 
-% runtime variability
-%   input: flags in source code, configuration files, runtime parameters (avoid recompilation)
-%   realization: if, switch, encoded in objects/state, inheritance
-%   design patterns for variability / OOP + outlook beyond runtime variability
-
 \section{Configuration of Runtime Variability}
-
-%\begin{frame}{Variants of Graphs and Their Features}
-	%\centering
-	%\includegraphics[width=.7\linewidth,page=6,trim=20 20 20 150,clip]{FeatureIDE with Graphs/2016-05-19 ICSE FeatureIDEdemo}
-	%% TODO export into separate PDF containing only the separate products
-%\end{frame}
-%
-%\subsection{Runtime Parameters}
-%\begin{frame}{\myframetitle}
-	%\leftorright{
-		%\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
-	%}{
-		%\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
-	%}
-%\end{frame}
 
 \input{content/02a-configuration}
 
 \lessonslearned{
 	\item External setting of configuration parameters through, e.g.,
-		%\begin{itemize}
 			command-line parameters,
 			configuration files, or
 			preference dialogs.
-		%\end{itemize}
 	\item Validity of parameter settings (i.e., feature combinations) may be affected by dependencies between features.
 }{
 	\item S. Apel, D. Batory, C. Kästner, and G. Saake. Feature-Oriented Software Product Lines - Concepts and Implementation. Springer, 2013. Chapter 3	
@@ -77,10 +51,6 @@
 	\item Reconfiguration at runtime is possible (in principle).
 	\item Variability is spread over the entire program.
 	\item Variable parts are always delivered.
-		%\begin{itemize}
-			%\item Affects code size, resource consumption, performance, ...
-			%\item Unused functionality may be risky (security, business strategy, ...)
-		%\end{itemize}
 }{
 	\item \fospl, Chapter 4.
  	\item \featureide, Chapter 17.1.

@@ -1,9 +1,30 @@
 \usepackage{../template/beamerthemeuulm} % use the inofficial uulm beamer theme
-\setfaculty{infIngPsy} % set the color scheme for your faculty here [med/infIngPsy/math/nat]
 \uulmlogos{,uulm,,unibe-flat-crop,,ovgu-blue,}
 \setmycolumnsdefault{animation=keep} % animate all columns per default
 
 \title{Software Product Lines} % short title is used for the slide footer but optional
+
+% UNIVERSITY-SPECIFIC ADJUSTMENTS
+% or: a product line of product-line lectures ;-)
+% usage: \def\university{ulm}
+
+\expandafter\def\csname \university\endcsname{}
+\newcommand{\foruniversity}[4][]{\ifdefined\bern#2\else\ifdefined\magdeburg#3\else\ifdefined\ulm#4\else#1\fi\fi\fi}
+
+\let\originalauthor\author
+\renewcommand{\author}[1]{
+	\foruniversity[\originalauthor{#1}]
+		{\originalauthor{Timo Kehrer, Sandra Greiner}}
+		{\originalauthor{Gunter Saake, Elias Kuiter}}
+		{\originalauthor{Thomas Thüm, Chico Sundermann}}
+}
+
+\newcommand{\inputforuniversity}[1]{
+	\foruniversity
+		{\input{#1bern}}
+		{\input{#1magdeburg}}
+		{\input{#1ulm}}
+}
 
 % IMPORTED PACKAGES
 
@@ -142,7 +163,7 @@
     \begin{frame}[plain]
         \vskip0pt plus 1filll
 		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,left]{copyrightbox}
-            \footnotesize
+            \tiny
 			\ifdefined\thecopyright
 				\hspace{1mm}\thecopyright
 			\fi
@@ -181,42 +202,9 @@
     \end{frame}
 }
 
-% TODO hack to set default frame title
-% \setbeamertemplate{frametitle}{
-%     \vspace{20pt}%
-%     \fitbox[maxheight=2.5ex,minheight=0pt,maxwidth=\textwidth,minwidth=0pt]{%
-%         \vphantom{/}%
-% 		\ifstrequal{\insertframetitle}{~}%
-% 			{\myframetitle{}\ifnum\thesubsubsection=0\else: \insertsubsubsection{}\fi\insertframetitle{}}%
-% 			{\insertframetitle}%
-%     }%
-% }
+% TODO merge into template
+% automatic frame title
 \newcommand{\myframetitle}{\insertsubsection{}\ifnum\thesubsubsection=0\else\ -- \insertsubsubsection{}\fi}
-
 % setter for title picture + copyright notice
 \newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}
 \newcommand{\setcopyright}[1]{\def\thecopyright{#1}}
-
-% UNIVERSITY-SPECIFIC ADJUSTMENTS
-% or: a product line of product-line lectures ;-)
-
-\newif\ifbern
-\newif\ifmagdeburg
-\newif\ifulm
-
-\newcommand{\foruniversity}[4][]{\ifbern#2\else\ifmagdeburg#3\else\ifulm#4\else#1\fi\fi\fi}
-
-\let\originalauthor\author
-\renewcommand{\author}[1]{
-	\foruniversity[\originalauthor{#1}]
-		{\originalauthor{Timo Kehrer, Sandra Greiner}}
-		{\originalauthor{Gunter Saake, Elias Kuiter}}
-		{\originalauthor{Thomas Thüm, Chico Sundermann}}
-}
-
-\newcommand{\inputforuniversity}[1]{
-	\foruniversity
-		{\input{#1bern}}
-		{\input{#1magdeburg}}
-		{\input{#1ulm}}
-}

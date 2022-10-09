@@ -1,13 +1,5 @@
-% uulm color scheme:
-\definecolor{black}{HTML}{000000}
-\definecolor{uulmlogoblue}{HTML}{89a2b3}
-\definecolor{uulmblue}{HTML}{7D9AAA}
-\definecolor{uulmaccent}{HTML}{A9A28D}
-\definecolor{green}{HTML}{56AA1C}
-\definecolor{red}{HTML}{A32638}
-\definecolor{orange}{HTML}{DF6D07}
-\definecolor{blue}{HTML}{26547C}
-% refined color scheme:
+% default colors
+% used in standalone pictures and when no university is selected
 \definecolor{black}{HTML}{000000}
 \definecolor{uulmlogoblue}{HTML}{0000AA}
 \definecolor{uulmblue}{HTML}{0000AA}
@@ -16,3 +8,31 @@
 \definecolor{red}{HTML}{AA0000}
 \definecolor{orange}{HTML}{AA5500}
 \definecolor{blue}{HTML}{0000AA}
+\ifdefined\setfaculty
+	\setfaculty{infIngPsy}
+\fi
+
+\ifdefined\foruniversity
+\foruniversity{
+	% Bern
+}{
+	% Magdeburg
+	% OVGU colors: https://www.cd.ovgu.de/Logo_+Farbe_+Schrift/Farbe.html
+	% FIN colors: https://www.cd.ovgu.de/Fakult%C3%A4ten/Informatik.html
+	\definecolor{uulmaccent}{RGB}{77,77,77} % accent gray
+	\definecolor{green}{RGB}{5,165,53} % natural sciences
+	\definecolor{red}{RGB}{209,63,88} % mathematics
+	\definecolor{orange}{RGB}{243,145,0} % humanities
+	\definecolor{blue}{RGB}{0,104,180} % computer science
+	\setbeamercolor{mypagenumber}{fg=white,bg=blue}
+	\setbeamercolor{titlebox}{fg=white,bg=blue}
+}{
+	% Ulm
+	% copied from beamerthemeuulm.sty
+	\definecolor{uulmaccent}{HTML}{A9A28D}
+	\definecolor{green}{HTML}{56AA1C}
+	\definecolor{red}{HTML}{A32638}
+	\definecolor{orange}{HTML}{DF6D07}
+	\definecolor{blue}{HTML}{26547C}
+}
+\fi
