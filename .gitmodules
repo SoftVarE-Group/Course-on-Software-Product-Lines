@@ -1,0 +1,9 @@
+[submodule "SoftVarE-SlideTemplate"]
+	path = SoftVarE-SlideTemplate
+	url = https://github.com/SoftVarE-Group/SlideTemplate.git
+[submodule "SoftVarE-Papers"]
+	path = SoftVarE-Papers
+	url = https://github.com/SoftVarE-Group/Papers.git
+[submodule "SoftVarE-Slides"]
+	path = SoftVarE-Slides
+	url = https://github.com/SoftVarE-Group/Slides.git

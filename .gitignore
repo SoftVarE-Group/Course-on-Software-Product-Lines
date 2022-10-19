@@ -11,10 +11,6 @@
 *.fls
 *.fdb*
 .vscode
-/template
-/thomasslides
-/softvarepapers
-/softvareslides
 *.vrb
 *.synctex*
 *.listing

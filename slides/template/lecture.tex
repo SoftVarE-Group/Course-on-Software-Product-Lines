@@ -1,4 +1,4 @@
-\usepackage{../template/beamerthemeuulm} % use the inofficial uulm beamer theme
+\usepackage{../SoftVarE-SlideTemplate/beamerthemeuulm} % use the inofficial uulm beamer theme
 \uulmlogos{,uulm,,unibe-flat-crop,,ovgu-blue,}
 \setmycolumnsdefault{animation=keep} % animate all columns per default
 
@@ -41,17 +41,6 @@
 
 % GRAPHICSPATH
 
-% TODO use git module for public repositories
-% requires symbolic links
-% git clone git@github.com:SoftVarE-Group/SlideTemplate.git C:\Users\...\SlideTemplate
-% mklink /J template C:\Users\...\SlideTemplate
-% git clone git@spgit.informatik.uni-ulm.de:thuem/slides.git C:\Users\...\ThomasSlides
-% mklink /J thomasslides C:\Users\...\ThomasSlides
-% git clone git@github.com:SoftVarE-Group/Papers.git C:\Users\...\SoftVarE-Papers
-% mklink /J softvarepapers C:\Users\...\SoftVarE-Papers
-% git clone git@github.com:SoftVarE-Group/Slides.git C:\Users\...\SoftVarE-Slides
-% mklink /J softvareslides C:\Users\...\SoftVarE-Slides
-
 \makeatletter
 \newcommand{\setpaths}[1]{
 	\graphicspath{#1} % for loading pictures
@@ -67,12 +56,11 @@
 	\IfFileExists{#2.txt}{\hreffile{#2.txt}}{}{\includegraphics[#1]{#2}}}
 
 \setpaths{
-	{../template/pics/logos/}
-	{../template/pics/nature/}
-	{../template/pics/uulm/}
-	{../thomasslides/}
-	{../softvarepapers/}
-	{../softvareslides/}
+	{../SoftVarE-SlideTemplate/pics/logos/}
+	{../SoftVarE-SlideTemplate/pics/nature/}
+	{../SoftVarE-SlideTemplate/pics/uulm/}
+	{../SoftVarE-Papers/}
+	{../SoftVarE-Slides/}
 	{../pics/}
 	{../pics/bikes/}
 	{../pics/cars/}

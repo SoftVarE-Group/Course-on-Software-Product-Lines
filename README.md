@@ -4,6 +4,17 @@
 
 *The material is currently under development. We do not recommend to use it at this stage. If you have any feedback, please contact [Thomas Thüm](mailto:thomas.thuem@uni-ulm.de).*
 
+## Setup
+
+Clone this repository with:
+
+```
+git clone --recursive https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines.git
+```
+
+In `slides/01-introduction.tex` (or a sibling file), set your university at the top and whether you want animations or a handout.
+Then compile with LaTeX.
+
 ## License
 
 All course material is licensed under the <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA-4.0</a> license (Creative Commons Attribution Share Alike).
