@@ -1,4 +1,4 @@
-\begin{frame}{Recap: Software Product Lines}
+\begin{frame}{Recap: Software Product Lines} % Fachbegriffe in Definition übersetzen?
 	\begin{mycolumns}
 		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
@@ -31,7 +31,7 @@
 		}}
 		~
 		\uncover<3->{\mynote{Variability-Intensive System}{
-			Any software product line is a variability-intensive system.
+			Any software product line is a variability-intensive system. % wo kommt diese def her?
 		}}
 	\end{mycolumns}
 \end{frame}
@@ -40,7 +40,7 @@
 	\begin{mycolumns}[widths={45},animation=none]
 		\includegraphics[width=\linewidth]{metaproduct2}	
 	\mynextcolumn
-		\mydefinition{Binding Time}{
+		\mydefinition{Binding Time \deutsch{Zeitpunkt der Bindung}}{
 			\begin{itemize}
 				\item Variability offers choices.
 				\item Derivation of a product requires to make decisions (aka. binding).
@@ -56,17 +56,21 @@
 \subsection{Command-Line Options}
 
 \begin{frame}{Example: Command-Line Options}
-	\leftorright{
+	\begin{mycolumns}[t]
 		\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
-	}{
+
+		Description of configuration options
+	\mynextcolumn
 		\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
-	}
+
+		Two different instances (no , in file sizes)
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Configuration Files}
 
 \begin{frame}{Example: Configuration Files}
-	\includegraphics[width=0.75\linewidth]{configfile-eclipse-ini}
+	\includegraphics[width=0.75\linewidth]{configfile-eclipse-ini} % das sind ja eigentlich auch nur CLI options - besser eine richtige INI Datei?
 \end{frame}
 
 \subsection{Preference Dialogs}
@@ -97,7 +101,7 @@
 			}			
 		\mynextcolumn	
 			\mydefinition{Runtime Variability\mysource{\fospl\mypage{49}}}{
-				Runtime variability is decided after compilation when the program is started (aka. load-time variability) or during program execution.
+				Runtime variability \deutsch{Laufzeitvariabilität} is decided after compilation when the program is started (aka. load-time variability) or during program execution.
 			}	
 		\end{mycolumns}
 	}

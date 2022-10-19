@@ -8,7 +8,7 @@
 		\mydefinition{Distribution of Responsibility}{Separation of concerns}	
 		\mydefinition{Inheritance}{Conceptual hierarchy, polymorphism, reuse}
 	}{
-		\pic[width=0.8\linewidth]{oo-concepts-illustration}
+		\pic[width=0.8\linewidth]{oo-concepts-illustration} % was illustriert was? warum ist square kein rectangle?
 	}
 \end{frame}
 
@@ -17,7 +17,7 @@
 \begin{frame}{Recap: Design Patterns\ \mytitlesource{\gof}}
 	\leftorright{
 		\vspace{-10mm}
-		\mynote{Design patterns}{
+		\mynote{Design patterns \deutsch{Entwurfsmuster}}{
 			\begin{itemize}
 				\item Document common solutions to concrete yet frequently occurring design problems.
 				\item Suggest a concrete implementation for a specific object-oriented programming problem.
@@ -25,7 +25,7 @@
 		}		
 		\mynote{Design patterns for variability}{
 			\begin{itemize}
-				\item Many GoF design patterns for designing software around stable abstractions and interchangeable (i.e., variable) parts, e.g.
+				\item Many Gang of Four (GoF) design patterns for designing software around stable abstractions and interchangeable (i.e., variable) parts, e.g.
 				\begin{itemize}
 					\item Template Method
 					\item Abstract Factory
@@ -99,7 +99,7 @@
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
-\begin{codetight}{}
+\begin{codetight}{} % code generell leider sehr klein
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -173,7 +173,7 @@ public class EdgeFactory {
 		\end{columns}
 \end{frame}
 
-\begin{frame}{Feature Combinations?}
+\begin{frame}{Feature Combinations?} % zentrieren
 	\leftorright{
 		\begin{center}
 			\includegraphics[width=\linewidth]{graphlib-oo-diamond}
@@ -207,7 +207,7 @@ public class EdgeFactory {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}[fragile]{Decorator Pattern as a Solution?}
+\begin{frame}[fragile]{Decorator Pattern as a Solution?} % motivation etwas zu knapp
 		\begin{columns}
 			\column{.45\textwidth}
 \begin{tiny}
@@ -220,7 +220,7 @@ public abstract class GraphDecorator implements IGraph {
 	}
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}{} % auf den alten folien war ein bsp dazu, evtl mit reinnehmen
 @public class WeightedGraph extends GraphDecorator {
 	public WeightedGraph(IGraph _graph) {
 		super(_graph);
@@ -239,7 +239,7 @@ public abstract class GraphDecorator implements IGraph {
 		\end{columns}
 Usage Example: 
 \begin{tiny}
-\begin{codetight}{}
+\begin{codetight}{} % zu klein
 IGraph g = new WeightedGraph(new ColoredGraph(new Graph(new WeightedEdgeFactory())));
 \end{codetight}
 \end{tiny}	
