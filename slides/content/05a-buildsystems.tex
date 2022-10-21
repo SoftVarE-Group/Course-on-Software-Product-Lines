@@ -191,12 +191,27 @@ public class Config {
 \end{frame}
 
 \subsection{Introducing Features to Build Systems}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\todots
-	\mynextcolumn
-		\todots
-	\end{mycolumns}
+\begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
+	\begin{mycolumns}[widths={70}]
+		\centering
+		\featureDiagram{Anesthesia Device,abstract
+			[Monitoring,abstract,mandatory
+				[Display,abstract,or[LCD,concrete,alternative][OLED,concrete]]
+				[Wi-Fi,abstract
+					[HTTP Server,concrete,mandatory]]]
+			[History,optional,concrete]
+			[Libraries,abstract,mandatory
+				[Storage,abstract,optional[NVS,concrete,alternative][FRAM,concrete]]
+				[RTC,concrete,optional[Battery,concrete,mandatory]]]}
+
+			$History \pimplies Storage \pand RTC$
+		\mynextcolumn
+			\pic[width=.4\linewidth]{buildsystem-pignap}
+
+			todo
+
+			% show diff to cloneandown with header files?
+\end{mycolumns}
 \end{frame}
 
 \subsection{KBuild -- The Linux Kernel Build System}
@@ -249,10 +264,6 @@ obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
 		\end{kbuildtight}
 	\end{mycolumns}
 \end{frame}
-% https://docs.kernel.org/kbuild/kbuild.html
-
-%show how it interacts with kconfig(fm)
-%fm & pc_file & pc_line
 
 \subsection{Discussion of Features with Build Systems}
 \begin{frame}{\myframetitle}
