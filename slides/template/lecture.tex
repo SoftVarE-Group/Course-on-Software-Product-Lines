@@ -26,23 +26,6 @@
 		{\input{#1ulm}}
 }
 
-% IMPORTED PACKAGES
-
-\usepackage{multicol} % used temporarily for the lecture overview
-\usepackage{stmaryrd} % \lightning in modeling lecture
-\usepackage{catchfile} % read picture sources from files
-
-%\usepackage{silence} % ignore some warnings
-%\WarningFilter{latex}{You have requested package} % ignore warning for loading packages from submodules
-%\usepackage{../EagleoutIce-fancyqr/fancyqr} % QR codes for practice task
-
-% INCLUDED TEMPLATE FILES
-
-\input{template/colorscheme}
-\input{template/macros}
-\input{template/featurediagrams} % TODO merge into template?
-\input{template/listings} % TODO merge into template?
-
 % GRAPHICSPATH
 
 \makeatletter
@@ -67,6 +50,7 @@
 	{../SoftVarE-Slides/}
 	{../pics/}
 	{../pics/bikes/}
+	{../pics/buildsystems/}
 	{../pics/cars/}
 	{../pics/cloneandown/}
 	{../pics/configurators/}
@@ -90,7 +74,24 @@
 	{../pics/variabilitymodels/}
 	{../pics/versioncontrol/}
 	{../pics/xkcd/}
+	{../EagleoutIce-fancyqr/}
 }
+
+% IMPORTED PACKAGES
+
+\usepackage{multicol} % used temporarily for the lecture overview
+\usepackage{stmaryrd} % \lightning in modeling lecture
+\usepackage{catchfile} % read picture sources from files
+\usepackage{silence} % ignore some warnings
+\WarningFilter{latex}{You have requested package} % ignore warning for loading packages from submodules
+\usepackage{fancyqr} % QR codes for practice task, credits to Florian Sihler
+
+% INCLUDED TEMPLATE FILES
+
+\input{template/colorscheme}
+\input{template/macros}
+\input{template/featurediagrams} % TODO merge into template?
+\input{template/listings} % TODO merge into template?
 
 % LINKED LITERATURE
 
