@@ -45,7 +45,14 @@
 \definelanguage{kconfig}{
 	keepspaces=true,
 	morekeywords={config, bool, default, if, help, def_bool, depends, on, select},
-	morecomment=[f]{\#},
+	morecomment=[l]{\#},
 	morestring=*[d]{"},
+	literate={-}{{-}}1,
+}
+
+\definelanguage{kbuild}{
+	morekeywords={config, bool, default, if, help, def_bool, depends, on, select},
+	morecomment=[l]{\#},
+	moredelim=**[is][\color{red}]{~}{~},
 	literate={-}{{-}}1,
 }

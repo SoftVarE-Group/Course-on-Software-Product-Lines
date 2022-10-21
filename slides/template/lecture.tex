@@ -32,12 +32,16 @@
 \usepackage{stmaryrd} % \lightning in modeling lecture
 \usepackage{catchfile} % read picture sources from files
 
+%\usepackage{silence} % ignore some warnings
+%\WarningFilter{latex}{You have requested package} % ignore warning for loading packages from submodules
+%\usepackage{../EagleoutIce-fancyqr/fancyqr} % QR codes for practice task
+
 % INCLUDED TEMPLATE FILES
 
 \input{template/colorscheme}
 \input{template/macros}
-\input{template/featurediagrams}
-\input{template/listings}
+\input{template/featurediagrams} % TODO merge into template?
+\input{template/listings} % TODO merge into template?
 
 % GRAPHICSPATH
 
@@ -196,3 +200,10 @@
 % setter for title picture + copyright notice
 \newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}
 \newcommand{\setcopyright}[1]{\def\thecopyright{#1}}
+
+% TODO improve itemize + enumerate margins
+% \setlength{\leftmargini}{3ex}
+% \setbeamertemplate{enumerate item}{\makebox[.5\labelwidth][l]{\insertenumlabel.}}
+
+% TODO: add reference slide at the end for picture licenses
+% TODO: QR codes for uploading practice solutions

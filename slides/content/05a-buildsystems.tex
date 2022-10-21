@@ -133,7 +133,7 @@ public class Edge {
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[widths={48}]
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\small]{}
 public class Config {
 	~public final static boolean COLORED = true;~
 	@public final static boolean WEIGHTED = false;@
@@ -200,20 +200,82 @@ public class Config {
 \end{frame}
 
 \subsection{KBuild -- The Linux Kernel Build System}
-\begin{frame}{\myframetitle}
+\begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}
-		\todots
+		\begin{kconfigtight}[basicstyle=\footnotesize]{Feature Model with KConfig\mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{linux/arch/x86/Kconfig}}}
+config X86_32 ...
+config X86_64 ...
+
+config IA32_EMULATION
+	bool "IA32 Emulation"
+	depends on X86_64
+	help Include code to run legacy 32-bit programs under a 64-bit kernel. You should likely enable this, unless you're 100% sure that you don't have any 32-bit programs left.
+\end{kconfigtight}
+		\mydefinition{KBuild Language\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/makefiles.html}{kernel.org}}}{
+			\begin{itemize}
+				\item a style for writing Makefiles in Linux
+				\item defines goals with Make variables
+				\begin{itemize}
+					\item \texttt{obj-y}: static linkage (= include feature)
+					\item \texttt{obj-m}: dynamic linkage (= as module)
+					\item \texttt{obj-}: no linkage (= exclude feature)
+				\end{itemize}
+				\item full power of Make $\Rightarrow$ hard to comprehend
+			\end{itemize}
+		}
 	\mynextcolumn
-		\todots
+		\begin{kbuildtight}[basicstyle=\small]{Feature Mapping with KBuild \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kbuild}{linux/arch/x86/Kbuild}}}
+# link these subdirectories statically:
+obj-y += entry/ # entry routines
+obj-y += realmode/ # 16-bit support
+obj-y += kernel/ # x86 kernel
+obj-y += mm/ # memory management
+
+# link these depending on a configuration option:
+obj-~$(CONFIG_IA32_EMULATION)~ += ia32/
+obj-~$(CONFIG_XEN)~ += xen/ # paravirtualization
+
+# the KConfig feature model can even be overridden:
+obj-~$(subst m,y,$(CONFIG_HYPERV))~ += hyperv/
+		\end{kbuildtight}
+
+		\begin{kbuildtight}[basicstyle=\small]{Recurse into Subsystems\mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/ia32/Makefile}{linux/arch/x86/ia32/Makefile}}}
+# ia32 kernel emulation subsystem
+obj-~$(CONFIG_IA32_EMULATION)~ := ia32_signal.o
+audit-class-~$(CONFIG_AUDIT)~ := audit.o
+
+# IA32_EMULATION and AUDIT required for audit.o:
+obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
+		\end{kbuildtight}
 	\end{mycolumns}
 \end{frame}
 % https://docs.kernel.org/kbuild/kbuild.html
 
+%show how it interacts with kconfig(fm)
+%fm & pc_file & pc_line
+
 \subsection{Discussion of Features with Build Systems}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\todots
+		\mynote{Advantages}{
+			\begin{itemize}
+				\item compile-time variability\\
+					$\Rightarrow$ \emph{fast, small binaries} with smaller attack surface and without disclosing secrets
+				\item automated generation of arbitrary products\\
+					$\Rightarrow$ \emph{free feature selection}
+				\item allows in- and exclusion of individual files or even entire subsystems\\
+					$\Rightarrow$ high-level, \emph{modular variability}
+			\end{itemize}
+		}
 	\mynextcolumn
-		\todots
+		\mynote{Challenges}{
+			\begin{itemize}
+				\item not easily reconfigurable at run- or load-time
+				\item build scripts may become complex, there is no limit to what can be done (e.g., you can run arbitrary shell commands on files)\\
+					$\Rightarrow$ \emph{hard to understand and analyze}
+				\item no simple in- and exclusion of individual lines or chunks of code\\
+				$\Rightarrow$ high-level use \emph{only}!
+			\end{itemize}
+		}
 	\end{mycolumns}
 \end{frame}
