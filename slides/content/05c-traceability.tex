@@ -30,7 +30,7 @@
 \subsubsection*{FeatureIDE}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\myexampletight{Tool Support for Feature Traceability}{\includegraphics[width=\linewidth]{feature-traceability}}
+		\myexampletight{Tool Support for Feature Traceability}{\pic[width=\linewidth]{feature-traceability}}
 	\mynextcolumn
 		\todots
 	\end{mycolumns}
@@ -53,6 +53,90 @@
 		\todots
 	\end{mycolumns}
 \end{frame}
-% no preprocessor directives
-% CIDE
+
+\subsubsection*{CIDE}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={70},animation=none]
+		\pic[width=\linewidth,trim=0 10 0 0,clip]{cide-open-editor}
+	\mynextcolumn
+		\begin{example}{What is CIDE?}
+			\begin{itemize}
+				\item stands for Colored IDE
+				\item based on Eclipse and FeatureIDE
+				\item special editors available for several languages:
+			\end{itemize}
+			\begin{flushleft}
+				ANTLR, C (experimental), C++ (experimental), C\#, ECMAScript (JavaScript), Featherweight Java, \textbf{Java 1.5}, gCIDE, Haskell, JavaCC, and Python
+			\end{flushleft}
+		\end{example}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={70},animation=none]
+		\pic[width=\linewidth]{cide-editor-and-outline}
+	\mynextcolumn
+		\begin{example}{Why colors?}
+			\begin{itemize}
+				\item colors replace preprocessor directives
+				\item annotation based on syntax of the language
+				\item easy annotation with selection and context menu
+				\item no need to handle separators and logical connectors:\\\mycite{\texttt{,}}, \mycite{\texttt{||}}
+			\end{itemize}
+		\end{example}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={70},animation=none]
+		\pic[width=\linewidth]{cide}
+	\mynextcolumn
+		\begin{example}{Why virtual separation?}
+			\begin{itemize}
+				\item source code is a view on the abstract syntax tree (AST)
+				\item possible to hide irrelevant features
+				\item possible to show overlapping features
+				\item supporting development despite scattering and tangling
+			\end{itemize}
+		\end{example}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\pic[width=\linewidth]{cide-show-single-feature}
+	\begin{example}{}\centering
+		possible to only show a single feature -- in its surrounded code
+	\end{example}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={45},animation=none]
+		\begin{example}{Why configuration?}
+			\begin{itemize}
+				\item features specified in FeatureIDE feature model
+				\item configuration created in FeatureIDE configuration editor
+				\item configuration used to generate and visualize variant
+				\item \ldots
+			\end{itemize}
+		\end{example}
+	\mynextcolumn
+		\pic[width=\linewidth]{cide-feature-selection}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={45},animation=none]
+		\begin{example}{Why configuration?}
+			\begin{itemize}
+				\item \ldots
+				\item variant visualized in source code and project explorer
+				\item only necessary to press CIDE button in project explorer
+				\item pressing it again returns to the view of the product line
+			\end{itemize}
+		\end{example}
+	\mynextcolumn
+		\pic[width=\linewidth]{cide-variant-view-in-project-explorer}
+	\end{mycolumns}
+\end{frame}
+% CIDE literature
 % forward reference to physical separation of concerns in next two lectures
