@@ -195,17 +195,25 @@ public class Config {
 	\begin{mycolumns}[columns=2,widths={65}]
 		\centering
 			\leftandright{
+				\myexample{\small Case Study: Anesthesia Device}{
+					\begin{itemize}
+						\item C application
+						\item targets embedded devices (ESP32)
+						\item configurations are hard-coded as build scripts
+					\end{itemize}
+				}
+			}{
+				\myexampletight{\small{\color{red}Production Device}: OLED, Clock}{\pic[width=\linewidth]{pignap-cfg-production-oled}}
+			}
+
+			\leftandright{
 				\myexampletight{\small{\color{blue}Prototype}: LCD, Real-Time Clock}{\pic[width=\linewidth]{pignap-cfg-prototype-lcd-rtc}}
 			}{
 				\myexampletight{\small{\color{green}Prototype}: OLED Display}{\pic[width=\linewidth]{pignap-cfg-prototype-oled}}
 			}
-			\parbox{.5\linewidth}{
-				\myexampletight{\small{\color{red}Production Device}: OLED, Clock}{\pic[width=\linewidth]{pignap-cfg-production-oled}}
-			}
 		\mynextcolumn
 			\centering
-			\pic[width=.63\linewidth,page=1]{pignap-variants-and-features}
-			\mynote{}{$\Rightarrow$ one build script per variant}
+			\pic[width=.65\linewidth,page=1]{pignap-variants-and-features}
 	\end{mycolumns}
 \end{frame}
 
@@ -214,8 +222,9 @@ public class Config {
 	\begin{mycolumns}[widths={60}]
 		\mydefinition{How to Implement Features with Build Systems?}{
 			\begin{itemize}
-				\item step 1: create a feature model
+				\item step 1: model variability in a feature model
 				\item step 2: in build scripts, in- and exclude files based on feature selection
+				\item step 3: pass a feature selection at build time
 			\end{itemize}
 			$\Rightarrow$ one build script per group of related features
 		}
@@ -253,7 +262,7 @@ config IA32_EMULATION
 	depends on X86_64
 	help Include code to run legacy 32-bit programs under a 64-bit kernel. You should likely enable this, unless you're 100% sure that you don't have any 32-bit programs left.
 \end{kconfigtight}
-		\mydefinition{KBuild Language\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/makefiles.html}{kernel.org}}}{
+		\mydefinition{KBuild\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/makefiles.html}{kernel.org}}}{
 			\begin{itemize}
 				\item a style for writing Makefiles in Linux
 				\item defines goals with Make variables
