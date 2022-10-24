@@ -192,7 +192,7 @@ public class Config {
 
 \subsection{Recap: Clone-and-Own with Build Systems}
 \begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
-	\begin{mycolumns}[columns=2,widths={65}]
+	\begin{mycolumns}[columns=2,widths={65},animation=none]
 		\centering
 			\leftandright{
 				\myexample{\small Case Study: Anesthesia Device}{
@@ -203,17 +203,20 @@ public class Config {
 					\end{itemize}
 				}
 			}{
-				\myexampletight{\small{\color{red}Production Device}: OLED, Clock}{\pic[width=\linewidth]{pignap-cfg-production-oled}}
+				\uncover<4->{\myexampletight{\small{\color{red}Production Device}: OLED, Clock}{\pic[width=\linewidth]{pignap-cfg-production-oled}}}
 			}
 
 			\leftandright{
-				\myexampletight{\small{\color{blue}Prototype}: LCD, Real-Time Clock}{\pic[width=\linewidth]{pignap-cfg-prototype-lcd-rtc}}
+				\uncover<2->{\myexampletight{\small{\color{green}Prototype}: OLED Display}{\pic[width=\linewidth]{pignap-cfg-prototype-oled}}}
 			}{
-				\myexampletight{\small{\color{green}Prototype}: OLED Display}{\pic[width=\linewidth]{pignap-cfg-prototype-oled}}
+				\uncover<3->{\myexampletight{\small{\color{blue}Prototype}: LCD, Real-Time Clock}{\pic[width=\linewidth]{pignap-cfg-prototype-lcd-rtc}}}
 			}
 		\mynextcolumn
 			\centering
-			\pic[width=.65\linewidth,page=1]{pignap-variants-and-features}
+			\only<1>{\pic[width=.65\linewidth,page=1]{pignap-variants}}%
+			\only<2>{\pic[width=.65\linewidth,page=2]{pignap-variants}}%
+			\only<3>{\pic[width=.65\linewidth,page=3]{pignap-variants}}%
+			\only<4>{\pic[width=.65\linewidth,page=4]{pignap-variants}}
 	\end{mycolumns}
 \end{frame}
 
@@ -245,7 +248,7 @@ public class Config {
 	\mynextcolumn
 		\myexampletight{}{
 			\centering
-			\pic[width=.65\linewidth,page=2]{pignap-variants-and-features}
+			\pic[width=.65\linewidth]{pignap-features}
 		}
 \end{mycolumns}
 \end{frame}
@@ -300,6 +303,42 @@ obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
 		\end{kbuildtight}
 	\end{mycolumns}
 \end{frame}
+
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}
+		\mynote{Recap: Interactive Linux Kernel Configurator}{\pic[width=\linewidth]{linux-menuconfig-emulation}}
+
+		\begin{kconfigtight}[basicstyle=\footnotesize]{Feature Model and Example Configuration}
+			config AUDIT ... # configured as NO
+			config IA32_EMULATION ... # configured as YES
+			config HYPERV ... # configured as MODULE
+			config XEN ... # configured as NO
+\end{kconfigtight}
+	\mynextcolumn
+		\begin{kbuildtight}[basicstyle=\small]{Feature Mapping}
+obj-y += entry/ realmode/ kernel/ mm/
+obj-~$(CONFIG_IA32_EMULATION)~ += ia32/
+obj-~$(CONFIG_XEN)~ += xen/
+obj-~$(subst m,y,$(CONFIG_HYPERV))~ += hyperv/
+obj-~$(CONFIG_IA32_EMULATION)~ := ia32_signal.o
+audit-class-~$(CONFIG_AUDIT)~ := audit.o
+obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
+		\end{kbuildtight}
+
+		\begin{kbuildtight}[basicstyle=\small]{Feature Mapping for Example Configuration}
+obj-y += entry/ realmode/ kernel/ mm/
+obj-?y? += ia32/
+obj- += xen/
+obj-?y? += hyperv/
+obj-?y? := ia32_signal.o
+audit-class- := audit.o
+obj-?y? +=
+		\end{kbuildtight}
+
+		\mynote{}{\small i.e., \texttt{entry, realmode, kernel, mm, ia32, hyperv, ia32\_signal.o} are compiled}
+	\end{mycolumns}
+\end{frame}
+
 
 \subsection{Discussion of Features with Build Systems}
 \begin{frame}{\myframetitle}
