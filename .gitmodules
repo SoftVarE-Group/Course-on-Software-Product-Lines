@@ -7,3 +7,6 @@
 [submodule "SoftVarE-Slides"]
 	path = SoftVarE-Slides
 	url = https://github.com/SoftVarE-Group/Slides.git
+[submodule "EagleoutIce-fancyqr"]
+	path = EagleoutIce-fancyqr
+	url = https://github.com/EagleoutIce/fancyqr.git
