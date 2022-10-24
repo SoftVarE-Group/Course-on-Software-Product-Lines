@@ -9,7 +9,7 @@
 Clone this repository with:
 
 ```
-git clone --recursive https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines.git
+git clone --recursive git@github.com:SoftVarE-Group/Course-on-Software-Product-Lines
 ```
 
 In `slides/01-introduction.tex` (or a sibling file), set your university at the top and whether you want animations or a handout.
