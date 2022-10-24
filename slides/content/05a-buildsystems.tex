@@ -190,11 +190,38 @@ public class Config {
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Recap: Clone-and-Own with Build Systems}
+\begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
+	\begin{mycolumns}[columns=2,widths={65}]
+		\centering
+			\leftandright{
+				\myexampletight{\small{\color{blue}Prototype}: LCD, Real-Time Clock}{\pic[width=\linewidth]{pignap-cfg-prototype-lcd-rtc}}
+			}{
+				\myexampletight{\small{\color{green}Prototype}: OLED Display}{\pic[width=\linewidth]{pignap-cfg-prototype-oled}}
+			}
+			\parbox{.5\linewidth}{
+				\myexampletight{\small{\color{red}Production Device}: OLED, Clock}{\pic[width=\linewidth]{pignap-cfg-production-oled}}
+			}
+		\mynextcolumn
+			\centering
+			\pic[width=.63\linewidth,page=1]{pignap-variants-and-features}
+			\mynote{}{$\Rightarrow$ one build script per variant}
+	\end{mycolumns}
+\end{frame}
+
 \subsection{Introducing Features to Build Systems}
 \begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
-	\begin{mycolumns}[widths={70}]
-		\centering
-		\featureDiagram{Anesthesia Device,abstract
+	\begin{mycolumns}[widths={60}]
+		\mydefinition{How to Implement Features with Build Systems?}{
+			\begin{itemize}
+				\item step 1: create a feature model
+				\item step 2: in build scripts, in- and exclude files based on feature selection
+			\end{itemize}
+			$\Rightarrow$ one build script per group of related features
+		}
+		\myexampletight{}{
+			\centering
+			\featureDiagram{Anesthesia Device,abstract
 			[Monitoring,abstract,mandatory
 				[Display,abstract,or[LCD,concrete,alternative][OLED,concrete]]
 				[Wi-Fi,abstract
@@ -205,12 +232,12 @@ public class Config {
 				[RTC,concrete,optional[Battery,concrete,mandatory]]]}
 
 			$History \pimplies Storage \pand RTC$
-		\mynextcolumn
-			\pic[width=.4\linewidth]{buildsystem-pignap}
-
-			todo
-
-			% show diff to cloneandown with header files?
+		}
+	\mynextcolumn
+		\myexampletight{}{
+			\centering
+			\pic[width=.65\linewidth,page=2]{pignap-variants-and-features}
+		}
 \end{mycolumns}
 \end{frame}
 
