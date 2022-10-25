@@ -1,3 +1,12 @@
+\subsection{Recap: Scattering, Tangling, Replication}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\todots
+	\mynextcolumn
+		\todots
+	\end{mycolumns}
+\end{frame}
+
 \subsection{The Feature Traceability Problem}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
@@ -18,32 +27,63 @@
 
 \subsection{Feature Traceability with Colors}
 
-\subsubsection*{FeatureCommander}
+\subsubsection*{Feature Commander}
 \begin{frame}{\myframetitle}
-	\centering\pic[height=\textheightwithtitle]{feature-commander1}
+	\begin{mycolumns}[animation=none,widths={65}]
+		\only<1,6-|handout:1>{\pic[width=\linewidth]{feature-commander1-cropped}}%
+		\only<2|handout:0>{\pic[width=\linewidth,trim=0 450 600 0,clip]{feature-commander1-cropped}}%
+		\only<3|handout:0>{\pic[width=\linewidth,trim=750 400 -150 50,clip]{feature-commander1-cropped}}%
+		\only<4|handout:0>{\pic[width=\linewidth,trim=175 175 425 275,clip]{feature-commander1-cropped}}%
+		\only<5|handout:0>{\pic[width=\linewidth,trim=600 0 0 450,clip]{feature-commander1-cropped}}%
+	\mynextcolumn
+		\begin{definition}{\featurecommander}
+			\begin{itemize}
+				\item each feature can be assigned to a color
+				\item color used to support feature traceability
+				\item features not assigned to a color shown in a shade of grade
+				\item visualizations based on preprocessor macros % TODO check wording
+			\end{itemize}
+		\end{definition}
+		\begin{note}{}
+			\href{https://www.tu-chemnitz.de/informatik/ST/research/material/xenomai/video.wmv}{demo video available} (no sound)
+		\end{note}
+	\end{mycolumns}
 \end{frame}
+
 \begin{frame}{\myframetitle}
-	\centering\pic[height=\textheightwithtitle]{feature-commander2}
+	\begin{mycolumns}[animation=none,widths={35}]
+		\begin{definition}{\featurecommander}
+			\begin{itemize}
+				\item research prototype (last update August 2010)
+				\item only static view on the source code
+				\item only works for \href{https://source.denx.de/Xenomai/xenomai/-/wikis/home}{Xenomai} (a real-time core for Linux)
+				\item further reading on experiments with developers: \backgroundcolors
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\only<1,5-|handout:1>{\fbox{\pic[width=\linewidth]{feature-commander2-cropped}}}%
+		\only<2|handout:0>{\pic[width=\linewidth,trim=0 450 600 0,clip]{feature-commander2-cropped}}%
+		\only<3|handout:0>{\pic[width=\linewidth,trim=600 450 0 0,clip]{feature-commander2-cropped}}%
+		\only<4|handout:0>{\pic[width=\linewidth,trim=600 0 0 450,clip]{feature-commander2-cropped}}%
+	\end{mycolumns}
 \end{frame}
-% TODO keywords on feature commander + references
 
 \subsubsection*{FeatureIDE}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\myexampletight{Tool Support for Feature Traceability}{\pic[width=\linewidth]{feature-traceability}}
+	\begin{mycolumns}[animation=none,widths={65}]
+		\pic[width=\linewidth]{feature-traceability}
 	\mynextcolumn
-		\todots
+		\begin{definition}{FeatureIDE\mysource{\featureide}}
+			\begin{itemize}
+				\item tool support for feature traceability
+				\item inspired by \featurecommander
+				\item color can be assigned to features
+				\item colors used in feature model, configurations, package explorer, and source code
+			\end{itemize}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
-
-\subsection{Recap: Scattering, Tangling, Replication}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\todots
-	\mynextcolumn
-		\todots
-	\end{mycolumns}
-\end{frame}
+% TODO link to youtube videos
 
 \subsection{Virtual Separation of Concerns}
 \begin{frame}{\myframetitle\mysource{\virtualseparation}}
