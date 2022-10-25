@@ -46,49 +46,89 @@
 \end{frame}
 
 \subsection{Virtual Separation of Concerns}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle\mysource{\virtualseparation}}
 	\begin{mycolumns}
-		\todots
+		\begin{definition}{Virtual Separation of Concerns}
+			\begin{itemize}
+				\item annotations of code based on the underlying structure (i.e., abstract syntax)
+				\item \textbf{disciplined annotations}: only optional nodes in the abstract syntax tree can be annotated
+				\item tool support used to provide views and navigate in source code
+				\item \textbf{syntactic correctness} guaranteed for all generated program variants
+			\end{itemize}
+		\end{definition}
+		% TODO show abstract syntax tree here? maybe for expressions with addition, multiplication, and values. or classes, class name, methods, fields, parameters, return type?
 	\mynextcolumn
-		\todots
+		\begin{note}{What is different with preprocessors?}
+			\begin{itemize}
+				\item annotation of characters in plain text
+				\item undisciplined annotations possible
+				\item can lead to generation of syntactically invalid program variants
+			\end{itemize}
+		\end{note}
+		\begin{note}{What is different with physical separation?}
+			\begin{itemize}
+				\item features physically separated from each other
+				\item dedicated components, services, plug-ins \lecturemodules
+				\item dedicated modules, folders, files \lecturelanguages
+			\end{itemize}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
 \subsubsection*{CIDE}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70},animation=none]
-		\pic[width=\linewidth,trim=0 10 0 0,clip]{cide-open-editor}
+\begin{frame}{\myframetitle\mysource{\cide}}
+	\begin{mycolumns}[widths={60},animation=none]
+		\pic[width=\linewidth]{cide-open-editor}
 	\mynextcolumn
 		\begin{example}{What is CIDE?}
 			\begin{itemize}
-				\item stands for Colored IDE
-				\item based on Eclipse and FeatureIDE
+				\item stands for Colored Integrated Development Environment
+				\item colors used to mark features
+				\item based on Eclipse~3.5 and FeatureIDE
+				\item research prototype (last update in May 2012)
 				\item special editors available for several languages:
+				ANTLR, Bali, C (experimental), C++ (experimental), C\#, ECMAScript (JavaScript), Featherweight Java, \textbf{Java 1.5}, gCIDE, Haskell, HTML, JavaCC, OSGi Manifest, Properties, Python, and XHTML
 			\end{itemize}
-			\begin{flushleft}
-				ANTLR, C (experimental), C++ (experimental), C\#, ECMAScript (JavaScript), Featherweight Java, \textbf{Java 1.5}, gCIDE, Haskell, JavaCC, and Python
-			\end{flushleft}
 		\end{example}
 	\end{mycolumns}
 \end{frame}
+%Featherweight Java 	.fj 	
+%Java 	.java 	
+%Java (JDT) 	.java 	recommended, supports type checking
+%C 	.c, .h 	exact parser, does not understand preprocessor statements
+%C (approx) 	.c, .h 	pseudo-parser, does not recognize full structure and not all preprocessor statements; use only one C extension at a time
+%C# 	.cs 	
+%ECMAScript (JavaScript) 	.js 	
+%Haskell 	.hs 	pseudo-parser, skips over expressions
+%Bali 	.b 	supports type checking
+%ANTLR 	.g 	simple productions only, no options or semantic extensions.
+%JavaCC 	.cc 	
+%gCIDE 	.gcide 	bootstrapped grammar for gCIDE itself
+%Properties 	.properties 	for line-based property files
+%HTML and XML 	.html; .xml 	XML parser does not parse doctype declarations yet (not compatible with Eclipse's WST plugins for some reason)
+%XHTML 	.xhtml 	version 1.0 strict, does not understand doctype declaration yet; generated from dtd
+%XML-People 	.xml 	simple proof-of-concept parser for the following DTD: [people.dtd]; do not use together with XML extension
+%Python 	.py 	
+%OSGi Manifest 	MANIFEST.MF 	simple, with simple type system
 
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle\mysource{\cide}}
 	\begin{mycolumns}[widths={70},animation=none]
 		\pic[width=\linewidth]{cide-editor-and-outline}
 	\mynextcolumn
 		\begin{example}{Why colors?}
 			\begin{itemize}
 				\item colors replace preprocessor directives
-				\item annotation based on syntax of the language
-				\item easy annotation with selection and context menu
-				\item no need to handle separators and logical connectors:\\\mycite{\texttt{,}}, \mycite{\texttt{||}}
+				\item features relevant for development task are assigned a color
+				\item code annotated to a feature by selection and context menu
+				\item features visualized by background colors
+				\item annotations stored externally (no changes outside the special editor feasible)
 			\end{itemize}
 		\end{example}
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70},animation=none]
+\begin{frame}{\myframetitle\mysource{\cide}}
+	\begin{mycolumns}[widths={65},animation=none]
 		\pic[width=\linewidth]{cide}
 	\mynextcolumn
 		\begin{example}{Why virtual separation?}
@@ -97,19 +137,21 @@
 				\item possible to hide irrelevant features
 				\item possible to show overlapping features
 				\item supporting development despite scattering and tangling
+				\item no need to handle separators and logical connectors:\\\mycite{\texttt{,}}, \mycite{\texttt{||}}
+				\item efficient detection of type errors \lectureanalyses
 			\end{itemize}
 		\end{example}
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle\mysource{\cide}}
 	\pic[width=\linewidth]{cide-show-single-feature}
 	\begin{example}{}\centering
-		possible to only show a single feature -- in its surrounded code
+		\textbf{view on a feature}: possible to only show a single feature -- in its surrounded code
 	\end{example}
 \end{frame}
 
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle\mysource{\cide}}
 	\begin{mycolumns}[widths={45},animation=none]
 		\begin{example}{Why configuration?}
 			\begin{itemize}
@@ -124,12 +166,12 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle\mysource{\cide}}
 	\begin{mycolumns}[widths={45},animation=none]
 		\begin{example}{Why configuration?}
 			\begin{itemize}
 				\item \ldots
-				\item variant visualized in source code and project explorer
+				\item \textbf{view on a variant}: variant visualized in source code and project explorer
 				\item only necessary to press CIDE button in project explorer
 				\item pressing it again returns to the view of the product line
 			\end{itemize}
