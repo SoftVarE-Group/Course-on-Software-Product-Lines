@@ -1,7 +1,7 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	%handout, % handout mode without animations, comment out to add animations
+	handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 \def\university{}
 
@@ -32,10 +32,13 @@
 	\item build systems include entire files, not lines or chunks
 }{
 	\item \fospl, Section~5.2 Build Systems
+	% TODO add work on KernelHaven
 }{
 	Choose a build system and sketch how it may be used to implement this SPL (file structure and build script):
 
-	\featureDiagramConfigurableDatabase
+	\begin{center}
+		\featureDiagramConfigurableDatabase
+	\end{center}
 
 	Do you find any difficulties?
 }
@@ -47,9 +50,12 @@
 \input{content/05b-preprocessors}
 
 \lessonslearned{
-	\item \ldots
+	\item granularity of variability at file level is not sufficient
+	\item preprocessors facilitate fine-grained variability within files
+	\item a widely applied preprocessor is the C Preprocessor
+	\item industrial systems often combine preprocessors and build systems for features
 }{
-	\item \ldots
+	\item \fospl, Section~5.3 Preprocessors
 }{
 	\ldots
 }
@@ -61,9 +67,12 @@
 \input{content/05c-traceability}
 
 \lessonslearned{
-	\item \ldots
+	\item preprocessor variability suffers from scattering and tangling
+	\item feature traceability can be established with tool support (e.g., Feature Commander)
+	\item virtual separation of concerns is an alternative to preprocessors (e.g., CIDE)
 }{
-	\item \ldots
+	\item \fospl, Section~3.2.2 Feature Traceability
+	\item \fospl, Section~7 Advanced, Tool-Driven Variability Mechanisms
 }{
 	\ldots
 }
