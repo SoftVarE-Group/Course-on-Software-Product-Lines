@@ -11,17 +11,29 @@
 % essence: file-level variability is not engough
 
 \subsection{What is a Preprocessor?}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle\mysource{\fospl\mypages{110--111}}}
 	\begin{mycolumns}
-		\todots
+		\begin{definition}{Preprocessor}
+			\begin{itemize}
+				\item tool manipulating source code before compilation (i.e., at compile time)
+				\item preprocessors are used:
+					\begin{itemize}
+						\item to inline files\hfill(e.g., header files)
+						\item to define and expand macros\\\hfill(cf.\ metaprogramming)
+						\item for \textbf{conditional compilation}\\\hfill(e.g., remove debug code for release)
+					\end{itemize}
+			\end{itemize}
+		\end{definition}
 	\mynextcolumn
-		\todots
+		\begin{note}{Preprocessor}
+			\begin{itemize}
+				\item the C Preprocessor is used in almost every C/C++ project
+				\item preprocessors are typically oblivious to the target language as they operate on text files (e.g., the C Preprocessor can also used for Fortran or Java)
+				\item conditional compilation is a very common technique to implement product lines
+			\end{itemize}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
-% compiler, compile-time
-% when to run a preprocessor
-% the preprocessing principle: hide code from the compiler
-% language independent
 
 % in-place vs outa-place preprocessors
 % how to select features? parameters passed to the preprocessor, define in source code
