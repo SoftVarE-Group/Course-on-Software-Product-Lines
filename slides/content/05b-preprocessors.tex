@@ -44,9 +44,12 @@
 		\myexampletight{Example Input to the Preprocessor}{\includegraphics[scale=.3]{preprocessor-c}}
 	}{
 		\myexampletight{Example Output (Simplified)}{\includegraphics[scale=.15]{preprocessor-c-output}}
+		\begin{note}{}
+			preprocessors typically do not remove line breaks to not influence of line numbers reported by compilers
+		\end{note}
 	}
 \end{frame}
-% TODO #if in above example? does this work?
+% TODO example contains "Beautiful" but should be "beautiful"
 % TODO keywords: #ifdef #endif #else
 % TODO illustrate parameters and the call of the preprocessor
 
@@ -92,11 +95,31 @@
 \end{frame}
 
 \subsection{Preprocessors in FeatureIDE}
-\begin{frame}{\myframetitle}
-	\todots
+\begin{frame}{\myframetitle\mysource{\featureide}}
+	\begin{mycolumns}[animation=none,widths={75}]
+		\only<1|handout:0>{\pic[width=\linewidth]{featureide-antenna-featuremodel}}%
+		\only<2|handout:1>{\pic[width=\linewidth]{featureide-antenna-configuration}}%
+		\only<3|handout:0>{\pic[width=\linewidth]{featureide-antenna-warning}}%
+		\only<4|handout:0>{\pic[width=\linewidth]{featureide-antenna-contentassist}}%
+	\mynextcolumn
+%		\begin{definition}{FeatureIDE\mysource{\featureide}}
+%			\begin{itemize}
+%				\item 
+%			\end{itemize}
+%		\end{definition}
+		\begin{note}{\href{https://www.youtube.com/watch?v=jVe7f32mLCQ}{Demo Video}}
+			\begin{itemize}
+				\item preprocessing with Antenna on command line
+				\item feature modeling
+				\item warnings for unreferenced features
+				\item content assist proposing feature names
+				\item configuration and automated regeneration
+				\item (first 2 min relevant here)
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
 \end{frame}
-% has FeatureIDE been shown/discussed before? ideally, here only present preprocessor integration
-% \href{https://www.youtube.com/watch?v=jVe7f32mLCQ}{demo video available} (first 2 minutes): preprocessing with Antenna on command line, feature modeling, warnings for unreferenced features, content assist proposing feature names, configuration, automated regeneration
+% TODO has FeatureIDE been shown/discussed before? ideally, here only present preprocessor integration
 
 \subsection{Discussion of Preprocessors}
 \begin{frame}{\myframetitle\ \mytitlesource{\featureide}}
