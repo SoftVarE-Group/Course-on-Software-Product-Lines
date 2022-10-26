@@ -1,9 +1,34 @@
 \subsection{Granularity of Variability}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\todots
+	\begin{mycolumns}[animation=none]
+		\mydefinition{Granularity of Variability}{
+			\begin{itemize}
+				\item Depending on the implementation technique, variability can be introduced at different levels of granularity.
+				\item A level of granularity refers to
+				\begin{itemize}
+					\item the hierarchical organization of implementation artifacts (e.g., through the file system),
+					\item the hierarchical structure of an implementation artifact (e.g., given by its syntax)
+				\end{itemize}
+			\end{itemize}
+		}
+		\myexample{Granularity Levels in Java}{
+			Archives $>$ packages $>$ classes $>$ members $>$ statements
+		}
+		\pause
 	\mynextcolumn
-		\todots
+		\mynote{What we have seen so far?}{
+			\begin{itemize}
+				\item Coarse-grained: Clone-and-own with version control (entire variants)
+				\item Medium-grained: Clone-and-own with build systems (file level)
+				\item Medium-grained: Features with build systems (file level)
+				\item Medium-grained: Design patterns for variability (class or member level)
+				\item Fine-grained: Runtime parameters (statement level) 
+			\end{itemize}
+		}
+		\pause
+		\mynote{What is missing?}{
+			Yet no approach supporting fine-grained compile-time variability!
+		}		
 	\end{mycolumns}
 \end{frame}
 % Christian's paper?
@@ -131,6 +156,48 @@
 \end{frame}
 % pros: fine granular, language-independent
 % cons: IDE support, easy to create mistakes
+
+\begin{frame}{Problem: Source-Code "`Obfuscation"'}
+	\begin{mycolumns}[animation=none]
+		\mynote{Observations on readability}{
+			\begin{itemize}
+				\item Mixing two languages (C and \#ifdefs, or Java and Munge, ...)
+				\item Control flow difficult to understand
+				\item Long annotations hard to find
+				\item Extra line breaks destroy layout
+			\end{itemize}
+		}
+	\mynextcolumn
+		\todots		
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Discussion of Features with Preprocessors}
+	\begin{mycolumns}[animation=none]
+		\mynote{Advantages}{
+			\begin{itemize}
+				\item Well-known and mature tools, readily available
+				\item Easy to use; annotate and remove
+				\item Support compile-time variability
+				\item Flexible, arbitrary levels of granularity
+				\item Can handle code and non-code artifacts
+				\item Little preplanning required; variability can be added to an existing project				
+			\end{itemize}
+		}
+	\mynextcolumn
+		\pause
+		\mynote{Challenges}{
+			\begin{itemize}
+				\item Scattering and tangling; no separation of cencerns
+				\item Multiple languages intermixed in the same development artifact;
+				\item May obfuscate source code and severly impact its readability
+				\item Hard to analyze and process for existing IDEs
+				\item Often used in an ad-hoc or undisciplined fashion
+				\item Prone to subtle errors which are hard to detect				
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
 
 \xkcdframe{619} % linux features 20s
 
