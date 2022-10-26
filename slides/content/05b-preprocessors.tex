@@ -112,17 +112,41 @@
 \xkcdframe{619} % linux features 20s
 
 \subsection{Preprocessor-Based Product Lines in the Wild}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle\mysource{\fortyproductlines}}
 	\leftorright{
-		\myexample{\mysource{Liebig ICSE10}}{
-			\todo{lines of code vs number of features}
-		}
+		\begin{exampletight}{Number of Features}
+			\centering\pic[width=.8\linewidth,page=1]{fortyproductlines}\\Lines of Code
+		\end{exampletight}
 	}{
-		\myexample{\mysource{Liebig ICSE10}}{
-			\todo{number of features vs lines of variable code}
-		}
+		\begin{exampletight}{Percentage of Variable Code}
+			\centering\pic[width=.8\linewidth,page=2]{fortyproductlines}\\Lines of Code
+		\end{exampletight}
 	}
-	\todo{add logos of all 40 systems}
 \end{frame}
+
+\begin{frame}{\myframetitle\mysource{\fortyproductlines}}
+	\leftorright{
+		\begin{exampletight}{Lines of Variable Code}
+			\centering\pic[width=.8\linewidth,page=3]{fortyproductlines}\\Number of Features
+		\end{exampletight}
+	}{
+		\begin{exampletight}{Average Nesting Depth}
+			\centering\pic[width=.8\linewidth,page=6]{fortyproductlines}\\Number of Features
+		\end{exampletight}
+	}
+\end{frame}
+
+\begin{frame}{\myframetitle\mysource{\fortyproductlines}}
+	\leftorright{
+		\begin{exampletight}{Average Number of Feature References}
+			\centering\pic[width=.8\linewidth,page=4]{fortyproductlines}\\Number of Features
+		\end{exampletight}
+	}{
+		\begin{exampletight}{Average Number of Features per Annotation}
+			\centering\pic[width=.8\linewidth,page=5]{fortyproductlines}\\Number of Features
+		\end{exampletight}
+	}
+\end{frame}
+% TODO create own plots for the data?
 % TODO add pictures from Rodrigues et al. @ INFSOF’16 (Assessing ﬁne-grained feature dependencies): methods with directives vs product lines
 

@@ -1,0 +1,47 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty % remove the default navigation symbols
+\input{../../slides/template/colorscheme}
+\input{../../slides/template/macros}
+
+\makeatletter
+    \setlength\beamer@paperwidth{100mm}%
+    \setlength\beamer@paperheight{100mm}%
+    \geometry{papersize={\beamer@paperwidth,\beamer@paperheight}}
+\makeatother
+\setbeamersize{text margin left=0mm,text margin right=0mm}
+
+\usepackage{tikz}
+
+\begin{document}
+
+	% number of features vs lines of code
+	\begin{frame}[plain]
+		\includegraphics[width=\linewidth,page=6,trim=70 565 400 85,clip]{fortyproductlines-paper}
+	\end{frame}
+
+	% percentage of variable code vs lines of code
+	\begin{frame}[plain]
+		\includegraphics[width=\linewidth,page=6,trim=235 565 235 85,clip]{fortyproductlines-paper}
+	\end{frame}
+
+	% lines of variable code vs number of features
+	\begin{frame}[plain]
+		\includegraphics[width=\linewidth,page=6,trim=405 565 65 85,clip]{fortyproductlines-paper}
+	\end{frame}
+
+	% average scattering degree vs number of features
+	\begin{frame}[plain]
+		\includegraphics[width=\linewidth,page=7,trim=70 565 400 85,clip]{fortyproductlines-paper}
+	\end{frame}
+
+	% average tangling degree vs number of features
+	\begin{frame}[plain]
+		\includegraphics[width=\linewidth,page=7,trim=235 565 235 85,clip]{fortyproductlines-paper}
+	\end{frame}
+
+	% average nesting depth vs number of features
+	\begin{frame}[plain]
+		\includegraphics[width=\linewidth,page=7,trim=405 565 65 85,clip]{fortyproductlines-paper}
+	\end{frame}
+
+\end{document}
