@@ -158,21 +158,95 @@
 \subsection{Discussion of Preprocessors}
 
 \begin{frame}{\myframetitle}
-	\centering\pic[height=\textheightwithtitle,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\begin{mycolumns}[T,animation=none,widths={26}]
+		\begin{note}{Powerful Preprocessors}
+			we can annotate
+			\setlength\leftmargini{3mm}
+			\begin{itemize}
+				\item complete files (i.e., Java classes)
+				\item members (e.g., fields, methods)
+				\item (parts of) statements
+				\item parameters
+				\item \ldots
+				\item single characters
+			\end{itemize}
+			\uncover<2->{and automatically generate variants}
+		\end{note}
+		\uncover<3->{\begin{example}{}
+			everyone happy?
+		\end{example}}
+	\mynextcolumn
+		\only<1|handout:0>{\pic[width=\linewidth,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
+		\only<2->{\pic[width=\linewidth,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}}
+	\end{mycolumns}
 \end{frame}
+
 \begin{frame}{\myframetitle}
-	\centering\pic[height=\textheightwithtitle,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\begin{mycolumns}[T,animation=none,widths={74}]
+		\pic[width=\linewidth,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\mynextcolumn
+		\begin{example}{Syntax Error}
+			missing semicolon!
+		\end{example}
+
+		\pause
+		\begin{note}{Powerful Preprocessors}
+			\setlength\leftmargini{3mm}
+			\begin{itemize}
+				\item can produce syntactically ill-formed programs
+				\item may appear only for certain configurations
+				\item are hard to find
+				\item higher likelyhood than for other techniques
+			\end{itemize}
+
+			(see Part 3) % TODO introduce labels for parts? would be able to click on them
+		\end{note}
+	\end{mycolumns}
 \end{frame}
+
 \begin{frame}{\myframetitle}
-	\centering\pic[height=\textheightwithtitle,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\begin{mycolumns}[T,animation=none,widths={74}]
+		\pic[width=\linewidth,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\mynextcolumn
+		\begin{example}{Type Error}
+			weight undefined!
+		\end{example}
+
+		\pause
+		\begin{note}{Powerful Preprocessors}
+			\setlength\leftmargini{3mm}
+			\begin{itemize}
+				\item can produce ill-typed programs
+				\item may appear only for certain configurations
+				\item are hard to find
+				\item higher likelyhood than for other techniques
+			\end{itemize}
+			\lectureanalyses
+		\end{note}
+	\end{mycolumns}
 \end{frame}
+
 \begin{frame}{\myframetitle}
-	\centering\pic[height=\textheightwithtitle,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\begin{mycolumns}[T,animation=none,widths={74}]
+		\pic[width=\linewidth,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\mynextcolumn
+		\begin{example}{Runtime Error}
+			assertion failed!
+		\end{example}
+
+		\pause
+		\begin{note}{Powerful Preprocessors}
+			\setlength\leftmargini{3mm}
+			\begin{itemize}
+				\item can produce programs with unwanted behavior
+				\item may appear only for certain configurations
+				\item are hard to find
+				\item higher likelyhood than for other techniques
+			\end{itemize}
+			\lecturetesting
+		\end{note}
+	\end{mycolumns}
 \end{frame}
-\begin{frame}{\myframetitle}
-	\centering\pic[height=\textheightwithtitle,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
-\end{frame}
-% TODO add notes on the examples
 
 %\begin{frame}{\myframetitle}
 %	\leftorright{
