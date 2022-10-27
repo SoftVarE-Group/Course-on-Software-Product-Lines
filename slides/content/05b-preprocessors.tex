@@ -273,7 +273,7 @@
 % pros: fine granular, language-independent
 % cons: IDE support, easy to create mistakes
 
-\begin{frame}{Problem: Source-Code ``Obfuscation''}
+\begin{frame}[fragile]{Problem: Source-Code ``Obfuscation''}
 	\begin{mycolumns}[animation=none]
 		\mynote{Observations on Readability}{
 			\begin{itemize}
@@ -283,8 +283,35 @@
 				\item Extra line breaks destroy layout
 			\end{itemize}
 		}
+		\mydefinition{Problem: Undisciplined Annotations}{
+			\begin{itemize}
+				\item the preprocessor language (e.g., \#ifdefs) does not care about the preprocessed language (e.g., C)
+				\item allows for ``undisciplined'' preprocessor usage (precise definition later)
+				\item considerably worsens readability
+			\end{itemize}
+		}
 	\mynextcolumn
-		\todots		
+		\begin{cpptight}[basicstyle=\small]{Can you read this source code?\mysource{\href{https://dl.acm.org/doi/abs/10.1145/1960275.1960299}{{Liebig~et~al.~2011; xterm}}}}
+#if ~defined(__GLIBC__)~
+	// additional lines of code
+#elif ~defined(__MVS__)~
+	result = pty_search(pty);
+#else
+#ifdef ~USE_ISPTS_FLAG~
+	if (result) {
+#endif
+		result = ((*pty=open("/dev/ptmx", O_RDWR))<0);
+#endif
+#if ~defined(SVR4) || defined(__SCO__) || \~
+		~defined(USE_ISPTS_FLAG)~
+		if (!result)
+			strcpy(ttydev, ptsname(*pty));
+#ifdef ~USE_ISPTS_FLAG~
+		IsPts = !result;
+	}
+#endif
+#endif
+		\end{cpptight}
 	\end{mycolumns}
 \end{frame}
 
