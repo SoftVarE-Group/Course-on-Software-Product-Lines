@@ -64,35 +64,46 @@
 % how to select features? parameters passed to the preprocessor, define in source code
 
 \subsection{CPP -- The C Preprocessor}
-\begin{frame}{\myframetitle\ -- In a Nutshell}
+\begin{frame}{\myframetitle}
+	\setlength\leftmargini{4mm}%
 	\begin{mycolumns}[T,columns=3,animation=none]
-		\begin{definition}{CPP's Keywords\mysource{\href{https://en.cppreference.com/w/cpp/preprocessor}{cppreference.com}}}
+		\begin{definition}{CPP Directives\mysource{\href{https://en.cppreference.com/w/cpp/preprocessor}{cppreference.com}}}
+			file inclusion
 			\begin{itemize}
-				\item 
+				\item \texttt{\#include}
 			\end{itemize}
+			\only<2->{text replacement
+			\begin{itemize}
+				\item \texttt{\#define}
+				\item \texttt{\#undef}
+			\end{itemize}}
+			\only<3->{conditional compilation
+			\begin{itemize}
+				\item \texttt{\#if}, \texttt{\#endif}
+				\only<6->{\item \texttt{\#else}, \texttt{\#elif}
+				\item<7-> \texttt{\#ifdef}, \texttt{\#ifndef}
+				\item<8-> \texttt{\#elifdef}, \texttt{\#elifndef}}
+			\end{itemize}}
 		\end{definition}
 	\mynextcolumn
-		\pause
 		\myexampletight{Example Input}{\pic[scale=.3]{preprocessor-c}}
 	\mynextcolumn
-		\pause
-		\myexampletight{Example Output (Simplified)}{\pic[scale=.15]{preprocessor-c-output}}
-		\pause
-		\begin{note}{Why simplified?}
+		\uncover<4->{\myexampletight{Example Output (Simplified)}{\pic[scale=.15]{preprocessor-c-output}}}
+		\uncover<5->{\begin{note}{Why simplified?}
 			\begin{itemize}
 				\item preprocessed file can get very long due to to included header files
 				\item preprocessors typically do not remove line breaks to not influence line numbers reported by compilers
 			\end{itemize}
-		\end{note}
+		\end{note}}
 	\end{mycolumns}
 \end{frame}
 % TODO example contains "Beautiful" but should be "beautiful"
 % TODO keywords: #ifdef #endif #else
 % TODO illustrate parameters and the call of the preprocessor
 
-\begin{frame}{\myframetitle\ -- In a Coconutshell}
-	\todots
-\end{frame}
+%\begin{frame}{\myframetitle}
+%	\todots
+%\end{frame}
 % TODO explain the most important commands: #if #defined or and not ... #elif
 % TODO #include
 
