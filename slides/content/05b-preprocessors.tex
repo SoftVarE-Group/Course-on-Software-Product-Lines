@@ -64,15 +64,24 @@
 % how to select features? parameters passed to the preprocessor, define in source code
 
 \subsection{CPP -- The C Preprocessor}
-\begin{frame}{\myframetitle\ -- In a Nutshell \mytitlesource{\featureide}}
-	\leftorright{
-		\myexampletight{Example Input to the Preprocessor}{\includegraphics[scale=.3]{preprocessor-c}}
-	}{
-		\myexampletight{Example Output (Simplified)}{\includegraphics[scale=.15]{preprocessor-c-output}}
-		\begin{note}{}
+\begin{frame}{\myframetitle\ -- In a Nutshell}
+	\begin{mycolumns}[T,columns=3,animation=none]
+		\begin{definition}{CPP's Keywords\mysource{\href{https://en.cppreference.com/w/cpp/preprocessor}{cppreference.com}}}
+			\begin{itemize}
+				\item 
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\pause
+		\myexampletight{Example Input}{\pic[scale=.3]{preprocessor-c}}
+	\mynextcolumn
+		\pause
+		\myexampletight{Example Output (Simplified)}{\pic[scale=.15]{preprocessor-c-output}}
+		\pause
+		\begin{note}{Why simplified?}
 			preprocessors typically do not remove line breaks to not influence of line numbers reported by compilers
 		\end{note}
-	}
+	\end{mycolumns}
 \end{frame}
 % TODO example contains "Beautiful" but should be "beautiful"
 % TODO keywords: #ifdef #endif #else
@@ -93,28 +102,28 @@
 \subsection{Preprocessors for Java}
 \begin{frame}{Munge -- A Simple Preprocessor for Java \mytitlesource{\featureide}}
 	\begin{mycolumns}[widths={55}]
-		\myexampletight{Example Input and Output}{\includegraphics[width=\linewidth]{preprocessor-munge}}
+		\myexampletight{Example Input and Output}{\pic[width=\linewidth]{preprocessor-munge}}
 	\mynextcolumn
 		\myexampletight{Calling the Preprocessor}{
 			\centering
-			\includegraphics[width=\linewidth]{preprocessor-munge-call}
+			\pic[width=\linewidth]{preprocessor-munge-call}
 			
-			\includegraphics[width=.7\linewidth]{preprocessor-munge-idea}
+			\pic[width=.7\linewidth]{preprocessor-munge-idea}
 		}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Antenna -- An In-Place Preprocessor for Java \mytitlesource{\featureide}}
 	\begin{mycolumns}[widths={55}]
-		\myexampletight{Example Input and Output}{\includegraphics[width=\linewidth]{preprocessor-antenna}}
+		\myexampletight{Example Input and Output}{\pic[width=\linewidth]{preprocessor-antenna}}
 	\mynextcolumn
 		\myexampletight{Calling the Preprocessor}{
 			\centering
-			\includegraphics[width=\linewidth]{preprocessor-antenna-call}
+			\pic[width=\linewidth]{preprocessor-antenna-call}
 			
 			~
 			
-			\includegraphics[width=.7\linewidth]{preprocessor-antenna-idea}
+			\pic[width=.7\linewidth]{preprocessor-antenna-idea}
 		}
 	\end{mycolumns}
 \end{frame}
@@ -147,13 +156,32 @@
 % TODO has FeatureIDE been shown/discussed before? ideally, here only present preprocessor integration
 
 \subsection{Discussion of Preprocessors}
-\begin{frame}{\myframetitle\ \mytitlesource{\featureide}}
-	\leftorright{
-		\myexampletight{A Slightly More Complex Example}{\includegraphics[width=\linewidth]{preprocessor-antenna-elevator}}
-	}{
-		\todots
-	}
+
+\begin{frame}{\myframetitle}
+	\centering\pic[height=\textheightwithtitle,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}
 \end{frame}
+\begin{frame}{\myframetitle}
+	\centering\pic[height=\textheightwithtitle,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}
+\end{frame}
+\begin{frame}{\myframetitle}
+	\centering\pic[height=\textheightwithtitle,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
+\end{frame}
+\begin{frame}{\myframetitle}
+	\centering\pic[height=\textheightwithtitle,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
+\end{frame}
+\begin{frame}{\myframetitle}
+	\centering\pic[height=\textheightwithtitle,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
+\end{frame}
+% TODO add notes on the examples
+
+%\begin{frame}{\myframetitle}
+%	\leftorright{
+%		\myexampletight{A Slightly More Complex Example}{\pic[width=\linewidth]{preprocessor-antenna-elevator}}
+%	}{
+%		\todots
+%	}
+%\end{frame}
+
 % pros: fine granular, language-independent
 % cons: IDE support, easy to create mistakes
 
