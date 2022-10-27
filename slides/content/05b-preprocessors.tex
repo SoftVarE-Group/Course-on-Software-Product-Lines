@@ -185,21 +185,21 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T,animation=none,widths={74}]
+	\begin{mycolumns}[T,animation=none,widths={73}]
 		\pic[width=\linewidth,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{example}{Syntax Error}
-			missing semicolon!
+			missing ) and semicolon!
 		\end{example}
 
 		\pause
 		\begin{note}{Powerful Preprocessors}
 			\setlength\leftmargini{3mm}
+			can produce syntactically ill-formed programs:
 			\begin{itemize}
-				\item can produce syntactically ill-formed programs
-				\item may appear only for certain configurations
-				\item are hard to find
-				\item higher likelyhood than for other techniques
+				\item errors may appear only for certain configurations,
+				\item are hard to find, and
+				\item are more likely than for other techniques
 			\end{itemize}
 
 			(see Part 3) % TODO introduce labels for parts? would be able to click on them
@@ -208,21 +208,21 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T,animation=none,widths={74}]
+	\begin{mycolumns}[T,animation=none,widths={73}]
 		\pic[width=\linewidth,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{example}{Type Error}
-			weight undefined!
+			\texttt{weight} undefined!
 		\end{example}
 
 		\pause
 		\begin{note}{Powerful Preprocessors}
 			\setlength\leftmargini{3mm}
+			can produce ill-typed programs:
 			\begin{itemize}
-				\item can produce ill-typed programs
-				\item may appear only for certain configurations
-				\item are hard to find
-				\item higher likelyhood than for other techniques
+				\item errors may appear only for certain configurations,
+				\item are hard to find, and
+				\item are more likely than for other techniques
 			\end{itemize}
 			\lectureanalyses
 		\end{note}
@@ -230,7 +230,7 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T,animation=none,widths={74}]
+	\begin{mycolumns}[T,animation=none,widths={73}]
 		\pic[width=\linewidth,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{example}{Runtime Error}
@@ -240,11 +240,11 @@
 		\pause
 		\begin{note}{Powerful Preprocessors}
 			\setlength\leftmargini{3mm}
+			can produce programs with\,unwanted\,behavior:
 			\begin{itemize}
-				\item can produce programs with unwanted behavior
-				\item may appear only for certain configurations
-				\item are hard to find
-				\item higher likelyhood than for other techniques
+				\item errors may appear only for certain configurations,
+				\item are hard to find, and
+				\item are more likely than for other techniques
 			\end{itemize}
 			\lecturetesting
 		\end{note}
