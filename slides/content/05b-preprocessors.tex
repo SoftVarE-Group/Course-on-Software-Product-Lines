@@ -82,7 +82,7 @@
 				\item \texttt{\#if}, \texttt{\#endif}
 				\only<6->{\item \texttt{\#else}, \texttt{\#elif}
 				\item<7-> \texttt{\#ifdef}, \texttt{\#ifndef}
-				\item<8-> \texttt{\#elifdef}, \texttt{\#elifndef}}
+				\item<8-> new: \texttt{\#elifdef}, \texttt{\#elifndef}}
 			\end{itemize}}
 		\end{definition}
 	\mynextcolumn
@@ -98,14 +98,9 @@
 	\end{mycolumns}
 \end{frame}
 % TODO example contains "Beautiful" but should be "beautiful"
-% TODO keywords: #ifdef #endif #else
 % TODO illustrate parameters and the call of the preprocessor
 
-%\begin{frame}{\myframetitle}
-%	\todots
-%\end{frame}
 % TODO explain the most important commands: #if #defined or and not ... #elif
-% TODO #include
 
 % TODO #error
 % TODO parameters, #define, even combinations
@@ -114,31 +109,70 @@
 % TODO discipliced, undisciplined
 
 \subsection{Preprocessors for Java}
+
 \begin{frame}{Munge -- A Simple Preprocessor for Java \mytitlesource{\featureide}}
-	\begin{mycolumns}[widths={55}]
-		\myexampletight{Example Input and Output}{\pic[width=\linewidth]{preprocessor-munge}}
+	\begin{mycolumns}[T,widths={75}]
+		\begin{exampletight}{Example Input and Output}
+			\centering\pic[width=\linewidth]{preprocessor-munge}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{Calling the Preprocessor}{
-			\centering
-			\pic[width=\linewidth]{preprocessor-munge-call}
-			
-			\pic[width=.7\linewidth]{preprocessor-munge-idea}
-		}
+		\begin{note}{Munge}
+			\begin{itemize}
+				\item preprocessor for Java
+				\item written in Java
+				\item about 300 LOC
+			\end{itemize}
+		\end{note}
 	\end{mycolumns}
+
+	\begin{exampletight}{Call of Munge on Command Line}
+		\centering\pic[scale=.3]{preprocessor-munge-call}
+	\end{exampletight}
 \end{frame}
 
 \begin{frame}{Antenna -- An In-Place Preprocessor for Java \mytitlesource{\featureide}}
-	\begin{mycolumns}[widths={55}]
-		\myexampletight{Example Input and Output}{\pic[width=\linewidth]{preprocessor-antenna}}
+	\begin{mycolumns}[T,widths={75}]
+		\begin{exampletight}{Example Input and Output}
+			\centering\pic[width=\linewidth]{preprocessor-antenna}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{Calling the Preprocessor}{
-			\centering
-			\pic[width=\linewidth]{preprocessor-antenna-call}
-			
-			~
-			
-			\pic[width=.7\linewidth]{preprocessor-antenna-idea}
-		}
+		\begin{note}{Antenna}
+			\begin{itemize}
+				\item preprocessor for Java
+				\item writtin in Java
+				\item has been used for Java ME (micro edition) projects
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+
+	\begin{exampletight}{Call of Munge on Command Line}
+		\centering\pic[scale=.3]{preprocessor-antenna-call}
+	\end{exampletight}
+\end{frame}
+
+\begin{frame}{In-Place and Out-of-Place Preprocessors \mytitlesource{\featureide}}
+	\begin{mycolumns}[T]
+		\begin{note}{In-Place Preprocessor}
+			\begin{itemize}
+				\item input file manipulated
+				\item lines commented out where necessary
+				\item often: better support in IDEs
+			\end{itemize}
+		\end{note}
+		\begin{exampletight}{Antenna, \ldots}
+			\pic[height=30mm]{preprocessor-antenna-idea}
+		\end{exampletight}
+	\mynextcolumn
+		\begin{note}{Out-of-Place Preprocessor}
+			\begin{itemize}
+				\item separate output file generated
+				\item lines deleted where necessary
+				\item often: worse support in IDEs
+			\end{itemize}
+		\end{note}
+		\begin{exampletight}{CPP, Munge, \ldots}
+			\pic[height=30mm]{preprocessor-munge-idea}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
