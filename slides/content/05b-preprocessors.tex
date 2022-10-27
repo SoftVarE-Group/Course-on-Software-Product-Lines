@@ -262,11 +262,11 @@
 % pros: fine granular, language-independent
 % cons: IDE support, easy to create mistakes
 
-\begin{frame}{Problem: Source-Code "`Obfuscation"'}
+\begin{frame}{Problem: Source-Code ``Obfuscation''}
 	\begin{mycolumns}[animation=none]
-		\mynote{Observations on readability}{
+		\mynote{Observations on Readability}{
 			\begin{itemize}
-				\item Mixing two languages (C and \#ifdefs, or Java and Munge, ...)
+				\item Mixing \emph{two languages} (C and \#ifdefs, or Java and Munge, ...)
 				\item Control flow difficult to understand
 				\item Long annotations hard to find
 				\item Extra line breaks destroy layout
@@ -282,23 +282,26 @@
 		\mynote{Advantages}{
 			\begin{itemize}
 				\item Well-known and mature tools, readily available
-				\item Easy to use; annotate and remove
-				\item Support compile-time variability
-				\item Flexible, arbitrary levels of granularity
-				\item Can handle code and non-code artifacts
-				\item Little preplanning required; variability can be added to an existing project				
+				\item Easy to use\\
+				$\Rightarrow$ just annotate and remove
+				\item Supports \emph{compile-time variability}
+				\item Flexible, arbitrary levels of \emph{granularity}
+				\item Can handle code and non-code artifacts (\emph{uniformity})
+				\item Little \emph{preplanning} required\\
+				$\Rightarrow$ variability can be added to an existing project
 			\end{itemize}
 		}
 	\mynextcolumn
 		\pause
 		\mynote{Challenges}{
 			\begin{itemize}
-				\item Scattering and tangling; no separation of cencerns
-				\item Multiple languages intermixed in the same development artifact;
-				\item May obfuscate source code and severly impact its readability
+				\item \emph{Scattering} and \emph{tangling}\\
+				$\Rightarrow$ separation of concerns?
+				\item Mixes multiple languages in the same development artifact
+				\item May \emph{obfuscate} source code and severely impact its readability
 				\item Hard to analyze and process for existing IDEs
-				\item Often used in an ad-hoc or undisciplined fashion
-				\item Prone to subtle errors which are hard to detect				
+				\item Often used in an ad-hoc or \emph{undisciplined} fashion
+				\item Prone to subtle syntax, type, or runtime errors which are hard to detect
 			\end{itemize}
 		}
 	\end{mycolumns}
