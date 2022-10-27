@@ -52,7 +52,7 @@
 	\mynextcolumn
 		\begin{note}{Preprocessor}
 			\begin{itemize}
-				\item the C Preprocessor is used in almost every C/C++ project
+				\item the C Preprocessor (CPP) is used in almost every C/C++ project
 				\item preprocessors are typically oblivious to the target language as they operate on text files (e.g., the C Preprocessor can also used for Fortran or Java)
 				\item conditional compilation is a very common technique to implement product lines
 			\end{itemize}
@@ -79,7 +79,10 @@
 		\myexampletight{Example Output (Simplified)}{\pic[scale=.15]{preprocessor-c-output}}
 		\pause
 		\begin{note}{Why simplified?}
-			preprocessors typically do not remove line breaks to not influence of line numbers reported by compilers
+			\begin{itemize}
+				\item preprocessed file can get very long due to to included header files
+				\item preprocessors typically do not remove line breaks to not influence line numbers reported by compilers
+			\end{itemize}
 		\end{note}
 	\end{mycolumns}
 \end{frame}
