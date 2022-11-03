@@ -5,7 +5,8 @@
 		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
 	}{
 		\vspace{-12mm}
-		\href{https://commons.wikimedia.org/wiki/File:Andy_Hunt_programmer.jpg}{\includegraphics[width=\linewidth,trim=0 240 0 300,clip]{andy-hunt}}
+		\centering
+		\pic[width=\linewidth,trim=0 240 0 300,clip]{andy-hunt}
 		\vspace{-7mm}
 		
 		\mynote{Andy Hunt \mysource{\thepragmaticprogrammer}}{\mycite{No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first.}}
@@ -63,25 +64,25 @@
 		\mydefinition{Product-Line Complexity Classes}{
 			In a timeframe of 24h \ldots
 			\begin{enumerate}
-				\item[C0] Products cannot be generated automatically
-				\item[C1] All products can be tested
-				\item[C2] Not C1, but all products can be generated
-				\item[C3] Not C2, but all configurations can be generated (aka. ALLSAT)
-				\item[C4] Not C3, but the number of valid configurations can be computed (aka. \#SAT)
-				\item[C5] Not C4, but whether there is a valid configuration can be computed (aka. SAT)
-				\item[C6] It cannot be computed whether there is a valid configuration
+				\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}
+				\item[\textbf{C1}] All products can be generated and \emph{tested}
+				\item[\textbf{C2}] Not C1, but all \emph{products} can be \emph{generated}
+				\item[\textbf{C3}] Not C2, but all \emph{configurations} can be \emph{generated} (AllSAT)
+				\item[\textbf{C4}] Not C3, but the \emph{number of valid configurations} can be computed (\ssat{})
+				\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)
+				\item[\textbf{C6}] It cannot be computed whether there is a valid configuration
 			\end{enumerate}
 		}
 	}{
 		\myexample{Examples}{
 			\begin{enumerate}
-				\item[C0] all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)
-				\item[C1] $< 2,000$ products for 1 min per product
-				\item[C2] $< 90,000$ products for 1 s per product
-				\item[C3] $< 10^{13}$ configurations for 1 ns per configuration
-				\item[C4] older versions of Linux/Automotive05
-				\item[C5] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
-				\item[C6] No example known
+				\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}
+				\item[\textbf{C1}] $< 2{\small,}000$ products for 1 min per product
+				\item[\textbf{C2}] $< 90{\small,}000$ products for 1 s per product
+				\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration
+				\item[\textbf{C4}] older versions of Linux/Automotive05
+				\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
+				\item[\textbf{C6}] No example known
 			\end{enumerate}
 		}
 	}

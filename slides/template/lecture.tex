@@ -4,6 +4,40 @@
 
 \title{Software Product Lines} % short title is used for the slide footer but optional
 
+\newcommand{\emphifequal}[2]{\ifthenelse{\equal{#1}{#2}}{\color{blue}\bfseries}{}}
+\newcommand{\lectureseriesoverview}[1][]{ % shown at the start and end of each part
+	\begin{mycolumns}[columns=3,t]
+		\mydefinition{\emphifequal{#1}{I}Part I: Ad-Hoc Approaches for Variability}{
+			\begin{enumerate}
+				\item {\emphifequal{#1}{1}Introduction}
+				\item {\emphifequal{#1}{2}Runtime Variability and Design Patterns}
+				\item {\emphifequal{#1}{3}Compile-Time Variability with Clone-and-Own}
+			\end{enumerate}
+		}
+	\mynextcolumn
+		\mydefinition{\emphifequal{#1}{II}Part II: Modeling and Implementing Features}{
+			\begin{enumerate}
+				\setcounter{enumi}{3}
+				\item {\emphifequal{#1}{4}Feature Modeling}
+				\item {\emphifequal{#1}{5}Conditional Compilation}
+				\item {\emphifequal{#1}{6}Modular Features}
+				\item {\emphifequal{#1}{7}Languages for Features}
+				\item {\emphifequal{#1}{8}Development Process}
+			\end{enumerate}
+		}
+	\mynextcolumn
+		\mydefinition{\emphifequal{#1}{III}Part III: Quality Assurance and Maintenance}{
+			\begin{enumerate}
+				\setcounter{enumi}{8}
+				\item {\emphifequal{#1}{9}Feature Interactions}
+				\item {\emphifequal{#1}{10}Product-Line Analyses}
+				\item {\emphifequal{#1}{11}Product-Line Testing}
+				\item {\emphifequal{#1}{12}Evolution and Maintenance}
+			\end{enumerate}
+		}
+	\end{mycolumns}
+}
+
 % emphasizing links
 \hypersetup{linkcolor = black, citecolor = black, filecolor = black, runcolor = black, urlcolor = red, colorlinks=true}
 
