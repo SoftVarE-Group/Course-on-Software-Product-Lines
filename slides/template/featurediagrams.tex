@@ -74,6 +74,25 @@
 	}
 }
 
+\newcommand{\featureDiagramLego}{
+	\featureDiagram{
+		Lego Manikin,abstract
+			[Headpiece,abstract,optional
+				[Helmet,concrete,alternative]
+				[Hat,concrete]]
+			[Head,concrete,mandatory]
+			[Item,abstract,optional
+				[Brush,concrete,or]
+				[Phone,concrete]]
+			[Shirt,concrete,mandatory]
+			[Pants,abstract,mandatory
+				[Red,concrete,alternative]
+				[Blue,concrete]]
+	}
+	$Helmet \pimplies \pnot Phone$
+}
+
+
 % STYLE COMMANDS FOR FEATURE DIAGRAMS
 
 \usepackage{forest}
