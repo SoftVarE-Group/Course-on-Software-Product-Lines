@@ -3,6 +3,7 @@
 	8pt, % font size, default is 11pt
 	handout, % handout mode without animations, comment out to add animations
 ]{beamer}
+\def\university{}
 
 \input{template/lecture}
 
@@ -15,7 +16,7 @@
 
 \begin{document}
 	
-\lectureoverview
+\contentoverview
 \usebackgroundtemplate{}
 \AtBeginSection[]{}
 
@@ -26,17 +27,17 @@
 \sectionend
 
 \addtocontents{toc}{Modeling and Implementing Features}
-\addlecture{04-modeling}{Feature Modeling}        % Elias 22/10/13
-\addlecture{05-features}{Compile-Time Features}   % Thomas, Elias 22/10/27
-\addlecture{06-modular}{Modular Features}         % Timo 22/11/03
-\addlecture{07-languages}{Languages for Features} % Timo 22/11/10
-\addlecture{08-process}{Development Process}      % Thomas? 22/11/17
+\addlecture{04-modeling}{Feature Modeling}           % Elias 22/10/13
+\addlecture{05-conditional}{Conditional Compilation} % Thomas, Elias 22/10/27
+\addlecture{06-modular}{Modular Features}            % Timo 22/11/10
+\addlecture{07-languages}{Languages for Features}    % Timo 22/11/17
+\addlecture{08-process}{Development Process}         % Thomas? 22/11/24
 \sectionend
 
 \addtocontents{toc}{Quality Assurance and Maintenance}
-\addlecture{09-interactions}{Feature Interactions}  % Thomas 22/11/24
-\addlecture{10-analyses}{Product-Line Analyses}     % Elias, Sebastian?
-\addlecture{11-testing}{Product-Line Testing}       % Thomas, Sebastian?
+\addlecture{09-interactions}{Feature Interactions}  % Thomas 22/12/01
+\addlecture{10-analyses}{Product-Line Analyses}     % Elias, Sebastian? 22/12/08
+\addlecture{11-testing}{Product-Line Testing}       % Thomas, Sebastian? 22/12/15
 \addlecture{12-evonance}{Evolution and Maintenance} % Timo, Thomas
 
 \end{document}
