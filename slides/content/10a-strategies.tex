@@ -61,9 +61,9 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mydefinition{Product-Based Analysis Strategy}{
+		\mydefinition{Intuition}{
 			\begin{itemize}
-				\item to analyze the whole product line, just analyze each product
+				\item to analyze the product line, just analyze \emph{each product}
 				\begin{itemize}
 					\item individually
 					\item in isolation
@@ -79,7 +79,7 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mydefinition{A Generic Algorithm}{
+		\mydefinition{Generic Algorithm}{
 			\begin{algorithmic}
 				\Require a product line with a feature model $FM$
 				\Ensure runs a given analysis $\alpha$ on all products
@@ -95,7 +95,7 @@
 		\mynote{}{
 			\begin{itemize}
 				\item $\gamma$ \emph{generates} (= compiles) products (e.g., \texttt{make}, \texttt{gradle}, \texttt{FeatureHouse}, \texttt{npm}, \ldots)
-				\item $\alpha$ \emph{analyzes} the product (e.g., run tests)
+				\item $\alpha$ \emph{analyzes} the product (e.g., run all tests)
 				\item $\sigma$ \emph{summarizes} the results (e.g., each individual call to $\alpha$ must succeed)
 			\end{itemize}
 		}
@@ -140,18 +140,76 @@
 	\end{mycolumns}
 \end{frame}
 
-%optimized
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[columns=3,widths={25,50,25}]
+	\mynextcolumn
+		\hspace*{-6mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,trim=180 510 100 170,clip]{2020/2020-SPLC-Thuem}}
+		\mynote{Advantages and Challenges}{
+			\begin{itemize}
+				\item[+] sound and complete (if generator $\gamma$, analysis $\alpha$, and summary $\sigma$ are sound and complete)
+				\item[--] does not scale to realistic product lines
+				\begin{itemize}
+					\item $AllSAT$ only works on small feature models
+					\item up to $2^{\abs{F}}$ calls to the generator $\gamma$ and the analysis $\alpha$
+				\end{itemize}
+			\end{itemize}
+		}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+
+% \subsection{Sample-Based Testing} % maybe move to lec 11 with recap of product-based
+
+% \begin{frame}{\myframetitle}
+% 	\begin{mycolumns}
+% 		\mydefinition{Intuition}{
+% 			\begin{itemize}
+% 				\item to analyze the product line, just analyze \emph{some products} (which products?)
+% 				\item e.g., \emph{sample-based testing} \lecturetesting
+% 			\end{itemize}
+% 		}
+% 		\mynote{Advantages and Challenges}{
+% 			\todots
+% 		}
+% 	\mynextcolumn
+% 		\pic[width=\linewidth,page=10]{lego-analyses}
+% 	\end{mycolumns}
+% \end{frame}
 
 \subsection{Feature-Based Analysis Strategy}
 
 \begin{frame}{\myframetitle}
-	
+	\begin{mycolumns}
+		\mydefinition{Intuition}{
+			\begin{itemize}
+				\item to analyze the product line, just analyze \emph{some products} (which products?)
+				\item e.g., \emph{sample-based testing} \lecturetesting
+			\end{itemize}
+		}
+		\mynote{Advantages and Challenges}{
+			\todots
+		}
+	\mynextcolumn
+		\pic[width=\linewidth,page=6]{lego-analyses}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Family-Based Analysis Strategy}
 
 \begin{frame}{\myframetitle}
-	
+	\begin{mycolumns}
+		\mydefinition{Intuition}{
+			\begin{itemize}
+				\item to analyze the product line, just analyze \emph{some products} (which products?)
+				\item e.g., \emph{sample-based testing} \lecturetesting
+			\end{itemize}
+		}
+		\mynote{Advantages and Challenges}{
+			\todots
+		}
+	\mynextcolumn
+		\pic[width=\linewidth,page=3]{lego-analyses}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Classification of Product-Line Analysis Strategies}
@@ -161,19 +219,26 @@
 		\pic[width=\linewidth,page=9]{lego-analyses}
 
 		\mydefinition{Product-Based Strategy}{
-			\ldots
+			\begin{itemize}
+				\item[+] sound and complete %(if generator $\gamma$, analysis $\alpha$, and summary $\sigma$ are sound and complete)
+				\item[--] does not scale in general %to realistic product lines
+				\begin{itemize}
+					\item $AllSAT$ only works on small feature models
+					\item up to $2^{\abs{F}}$ calls to the generator $\gamma$ and the analysis $\alpha$
+				\end{itemize}
+			\end{itemize}
 		}
 	\mynextcolumn
 		\pic[width=\linewidth,page=6]{lego-analyses}
 	
 		\mydefinition{Feature-Based Strategy}{
-			\ldots
+			\todots
 		}
 	\mynextcolumn
 		\pic[width=\linewidth,page=3]{lego-analyses}
 
 		\mydefinition{Family-Based Strategy}{
-			\ldots
+			\todots
 		}
 \end{mycolumns}
 \end{frame}
