@@ -1,4 +1,46 @@
-% discuss components with gluecode (clone and own for glue code) vs alternative components (no clone and own on glue code)
+\subsection{Recap: How to Implement Features?}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\myexampletight{Given a feature model for graphs \ldots}{
+			\centering\featureDiagramGraphs
+			%\featureDiagramLegend
+		}
+		\myexample{\ldots\ we can derive a valid configuration}{
+			\small
+			\leftmiddleandright{
+				$\{G\}$\\
+				$\{G,C\}$\\
+				$\{G,D\}$\\
+				$\{G,C,D\}$\\
+			}{
+				$\{G,W\}$\\
+				$\{G,C,W\}$\\
+				$\{G,D,W\}$\\
+				$\{G,C,D,W\}$\\
+			}{
+				$\{G,W,S\}$\\
+				$\{G,C,W,S\}$\\
+				$\{G,D,W,S\}$\\
+				$\{G,C,D,W,S\}$\\
+			}
+		}
+	\mynextcolumn
+		\vspace{-10mm}
+		\myexampletight{How to Generate Products Automatically?}{
+			\centering\foreach \page in {2,12,4,14,6,16,8,18,10,20,42,44}{\includegraphics[width=.23\linewidth,page=\page]{graphs} }
+		}
+		\mynote{Goals}{
+			\begin{itemize}
+				\item descriptive specification of a product (i.e., a configuration, a selection of features)
+				\item automated generation of a product with compile-time variability
+			\end{itemize}
+			Focus of the next three lectures \ldots
+		}
+	\end{mycolumns}
+\end{frame}
+
+
+
 
 \subsection{Recap: UML Component Diagram}
 \subsection{Vision: Component Markets}
