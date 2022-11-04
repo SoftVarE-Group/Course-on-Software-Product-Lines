@@ -40,6 +40,7 @@
 				\item development with reuse
 				\item build products using artifacts from domain engineering
 				\item repeated for every product
+				\item \mycite{application} of the product line (i.e., suitable for application and system software)
 			\end{itemize}
 		\end{note}}
 	\end{mycolumns}
@@ -68,34 +69,49 @@
 	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
+% TODO introduce domain and application artifacts here? see \sple
+% would also apply to domain/application requirements, but domain requirement is a confusing term (as it would refer to requirements of a product line and not all of a domain)
+
+% terms used in the remained are mostly taken from \sple and some from \fospl
 
 \subsection{Analysis and Design}
-\begin{frame}{Domain and Application Analysis}
+\begin{frame}{Domain and Application Analysis}\small
 	\begin{mycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{02}{}
 	\mynextcolumn
-		\begin{definition}{Domain Analysis\mysource{\fospl\mypage{21}}}
+		\begin{definition}{Domain Analysis\mysource{\fospl\mypage{21}, \sple\mypage{25}}}
 			\begin{itemize}
 				\item requirements analysis for a product line
 				\item define scope of the product line
 				\item which features are in scope?
 				\item which combinations of features are in scope?
-				\item typically results in a feature model
+				\item typically results in a feature model and features mapped to requirements
 			\end{itemize}
 		\end{definition}
+		\begin{definition}{Domain Scoping\mysource{\fospl\mypage{22}}}
+			which requirements of a domain are in scope for the product line?
+			\begin{itemize}
+				\item domain experts collect requirements (e.g., from existing systems, interviews, potential customers)
+				\item often economical decision by managers
+			\end{itemize}
+		\end{definition}
+		% TODO introduce term Domain Modeling?
 	\mynextcolumn
-		\begin{definition}{Application Analysis\mysource{\fospl\mypage{21}}}
+		\begin{definition}{Application Analysis\mysource{\fospl\mypages{21--25}}}
 			\begin{itemize}
 				\item requirements analysis for a product
 				\item based on the output of domain analysis
 				\item ideally: customer requirements mapped to a feature selection
-				\item what about new requirements?
-					\begin{enumerate}
-						\item integrate into domain analysis
-						\item document for custom development
+				\item alternative strategies for new and unsupported requirements:
+					\begin{enumerate}\small % TODO Benno: why is the font size changed here?
+						\item requirement is out of scope (i.e., no product made available)
+						\item document for custom development (i.e., development in application engineering)
+						\item integrate into domain analysis (i.e., development in domain engineering)
 					\end{enumerate}
+				\item best strategy depends on the situation
 			\end{itemize}
 		\end{definition}
+		% TODO pointer to staged configuration? or even introduce it here?
 	\end{mycolumns}
 \end{frame}
 
@@ -107,9 +123,11 @@
 	\begin{mycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{03}{}
 	\mynextcolumn
-		\begin{definition}{Domain Design}
+		\begin{definition}{Domain Design\mysource{\sple\mypage{26}}} % TODO see \sple Chapter 6+11
 			\begin{itemize}
-				\item 
+				\item development of a reference architecture
+				\item common, high-level structure for all products
+				\item decision on implementation technique
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
@@ -126,18 +144,19 @@
 	\begin{mycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{04}{}
 	\mynextcolumn
-		\begin{definition}{Domain Implementation\mysource{\fospl\mypage{21}}}
+		\begin{definition}{Domain Implementation\mysource{\fospl\mypage{21}}} % TODO see \sple Chapter 7+12
 			\begin{itemize}
 				\item development of reusable artifacts
 				\item implementation of features identified during domain analysis
+				\item implementation largely depends on the implementation technique chosen in domain design
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
 		\begin{definition}{Application Implementation\mysource{\fospl\mypage{21}}}
 			\begin{itemize}
 				\item development of products based on reusable artifacts
-				\item ideally: fully automated generation
-				\item full automation not feasible
+				\item ideally: fully automated generation (aka.\ \emph{product derivation})
+				\item full automation not feasible \ldots
 					\begin{enumerate}
 						\item when custom development is needed
 						\item for clone-and-own, components, services
@@ -153,9 +172,12 @@
 	\begin{mycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{05}{}
 	\mynextcolumn
-		\begin{definition}{Domain Testing}
+		\begin{definition}{Domain Testing\mysource{\sple\mypage{27}}} % TODO see \sple Chapter 8+13
 			\begin{itemize}
-				\item 
+				\item validation and verification of reusable artifacts
+				\item development of reusable tests
+				\item testing of features in isolation, if possible \lectureanalyses
+				\item testing of sample products \lecturetesting
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
