@@ -2,35 +2,88 @@
 \subsection{Microservices vs. Services}
 
 \subsection{(German Slides on Microservices)}
-\begin{frame}{Microservices und Microservice Architekturen}
-	\mycite{A \emph{microservice} is a cohesive, independent process interacting via messages. A \emph{microservice architecture} is a distributed application where all its modules are microservices.}{Dragoni et al., 2017}
-	
-	\pause
-	\mycite{[A \emph{microservice} is a module] implemented and operated as a small yet independent system, offering access to its internal logic and data through a well-defined network interface.}{Jamshidi et al., 2018}
-	
-	\begin{center}
-		\vspace{-12mm}
-		\pic[width=.45\linewidth]{peer-to-peer}
-	\end{center}
-	
-	%\zitat{The microservices architecture gained popularity relatively recently and can be considered to be in its infancy since there is still a lack of consensus on what microservices actually are.}{Dragoni et al., 2017}
-	
-	%\zitat{\emph{Microservices} are small, autonomous services that work together.}{Sam Newman, 2015}
+
+\begin{frame}{(Micro-)Services}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{(Micro-)Service}{
+			\mycite{[A (micro-)service is a module] implemented and operated as a small yet independent system, offering access to its internal logic and data through a well-defined network interface.}
+				{Jamshidi et al., 2018}
+		}
+		\mydefinition{(Micro-)Service Architecture}{
+			\mycite{A [micro]service is a cohesive, independent process interacting via messages. 
+				A microservice architecture [service-oriented architecture] is a distributed application where all its modules are microservices.}
+				{Dragoni et al., 2017}
+		}	
+	\mynextcolumn		
+		\pic[width=\linewidth]{peer-to-peer}
+	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Wie klein sind Microservices?}
-	\mycite{[A microservice] could be re-written in \emph{two weeks}.}{\href{https://www.rea-group.com/blog/micro-services-what-even-are-they/}{Jon Eaves, 2014}}
-	
-	\pause
-	\mycite{If the codebase is too big to be \emph{managed by a small team}, looking to break it down is very sensible. [...] The smaller the service, the more you \emph{maximize the benefits and downsides} of microservice architecture.}{Sam Newman, 2015}% [...] The golden rule: can you make a change to a service and deploy it by itself without changing anything else?
-	
-	\pause
-	\begin{columns}
-		\column{.4\linewidth}
-		\hfill\pic[width=.8\linewidth]{pizza}
-		\column{.55\linewidth}
-		\href{https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success}{\emph{Two-Pizza Rule} by Jeff Bezos}:\\Every team should be small enough that it can be fed with two pizzas.
-	\end{columns}
+\begin{frame}{Services vs.\ Components}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{Component}{
+			Intra-process communication (i.e., method calls)
+			\begin{center}
+				\pic[width=0.65\linewidth]{component_vs_service_1}
+			\end{center}			
+		}
+	\mynextcolumn		
+		\mydefinition{Service}{
+			Inter-process communication (e.g., REST API)
+			\begin{center}
+				\pic[width=0.65\linewidth]{component_vs_service_2}
+			\end{center}	
+		}
+	\end{mycolumns}
+	~
+	\mynote{}{
+		As a consequence, each (micro-)service can be implemented using different technology stacks, whereas components are bound to the same technology (given by container or middleware).
+	}
+\end{frame}
+
+\begin{frame}{Microservice Architecture: Motivation}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mynote{Remember: The Library Scaling Problem}{
+			TODO			
+		}
+	\mynextcolumn		
+		\mynote{How small is a Microservice?}{
+			\begin{itemize}
+				\item Components are very unspecific of how to deal with the general requirement ``not too small but not too big''.
+				\item On the contrary, there is a clear philosophy behind microservice architectures, largely driven by organizational constraints wrt.\ agile teams and continuous delivery
+			\end{itemize}
+		}
+		\mydefinition{}{
+			\mycite{If the codebase is too big to be \emph{managed by a small team}, looking to break it down is very sensible. [...] The smaller the service, the more you \emph{maximize the benefits and downsides} of microservice architecture.}{Sam Newman, 2015}% [...] The golden rule: can you make a change to a service and deploy it by itself without changing anything else?
+		}		
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Microservice Architecture: Philosophy and Principles}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{Conway's Law}{
+			\mycite{Organizations which design systems [...] are constrained to produce designs which are copies of the communication structures of these organizations.}{\href{https://www.melconway.com/Home/pdf/committees.pdf}{Melvin Edward Conway, 1968}}			
+		}
+		\mydefinition{Single Responsibility Principle}{
+			\mycite{Gather together the things that change for the same reasons. Separate those things that change for different reasons.}{\href{https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html}{Robert C. Martin, 2014}}			
+		}
+		\mydefinition{}{
+			\mycite{You build it, you run it.}{Amazon CTO Werner Vogel, 2006}			
+		}				
+	\mynextcolumn		
+		\mynote{Consequences}{
+			\begin{itemize}
+				\item Microservices are supposed to be split along business capabilities (e.g., TODO) instead of technical concerns (e.g., TODO)
+				\item Each microservice is built (full stack) {\em and} operated by a small agile team that takes over full responsibility (cf. DevOps) 
+			\end{itemize}
+		}
+		\mydefinition{}{
+			\mycite{[A microservice] could be re-written in \emph{two weeks}.}{\href{https://www.rea-group.com/blog/micro-services-what-even-are-they/}{Jon Eaves, 2014}}
+		}
+		\mydefinition{}{
+			\mycite{Every team should be small enough that it can be fed with two pizzas.}{\href{https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success}{Jeff Bezos, 2018}}
+		}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Beispiel: Microservices bei Netflix}
@@ -49,20 +102,6 @@
 	\end{center}
 	
 	\bigskip\bigskip\bigskip\bigskip\hfill\tiny Quelle: \href{https://fr.slideshare.net/AmazonWebServices/dvo203-the-life-of-a-netflix-engineer-using-37-of-the-internet}{https://fr.slideshare.net/AmazonWebServices/dvo203-the-life-of-a-netflix-engineer-using-37-of-the-internet}
-\end{frame}
-
-\begin{frame}{Prinzipien von Microservices}
-	\emph{Gesetz von Conway}: \mycite{Organizations which design systems [...] are constrained to produce designs which are copies of the communication structures of these organizations.}{\href{https://www.melconway.com/Home/pdf/committees.pdf}{Melvin Edward Conway, 1968}}
-	
-	\pause
-	\emph{Single Responsibility Principle}: \mycite{Gather together the things that change for the same reasons. Separate those things that change for different reasons.}{\href{https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html}{Robert C. Martin, 2014}}
-	
-	\pause
-	\mycite{\emph{You build it, you run it.}}{Amazon CTO Werner Vogel, 2006}
-	\begin{itemize}
-		\item Team übernimmt Entwicklung, Betrieb und Wartung (vgl. DevOps)
-		\item Besseres Verständnis für Potential und Leistungsfähigkeit
-	\end{itemize}
 \end{frame}
 
 \begin{frame}{Vorteile von Microservices}
@@ -88,14 +127,6 @@
 		\item Ggfs. zu viele Microservices
 		\item Datenkonsistenz schwierig herzustellen wenn mehrere Microservices verändert werden
 	\end{itemize}
-\end{frame}
-
-\begin{frame}{Der Hype um Microservices}
-	\pic[width=\linewidth]{microservices}
-\end{frame}
-
-\begin{frame}{Der Hype um Microservices}
-	\pic[width=\linewidth]{microservices-comparison}
 \end{frame}
 
 \begin{frame}{Vergleich mit Serviceorientierten Architekturen}
@@ -135,3 +166,81 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Traditional Promises of Microservices}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mynote{}{
+			\begin{itemize}
+				\item Scalability: Microservices are small enough to be developed by a small, agile team (cf. typical size of a Scrum team).
+				\item Continuous integration/deployment: Microservices can be deployed independently of each other (i.e., each microservice has its own CI/CD pipeline).
+				\item Heterogeneity: Each microservice can be implemented using its own technology stack (team preferences, adoption of new technologies, etc.).
+				\item Fault tolerance: The crash of a single microservice should not lead to a crash of the entire system (cf. design for failure).
+				\item Efficiency: Configuration of execution environment can be optimized per microservice.
+				\item Modernization: A microservice can be easily replaced by an alterantive one (even being re-implemented from scratch).
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexampletight{The Microservice ``Hype''}{
+			\pic[width=\linewidth]{microservices}
+			\pic[width=\linewidth]{microservices-comparison}
+		}
+	\end{mycolumns}	
+\end{frame}
+
+\begin{frame}{Service-Oriented Implementation of Software Product Lines}
+	\begin{mycolumns}[widths={40,60},animation=none]
+		\myexample{Recap: Component-Based Implementation}{
+			\includegraphics[width=.23\linewidth,height=1.0cm]{lego_components} 
+				\vspace*{\fill}
+					$+$ 
+				\vspace*{\fill}	
+			\includegraphics[width=.23\linewidth,height=1.0cm]{lego_glue}
+				\vspace*{\fill}
+					$=$ 
+				\vspace*{\fill}	
+			\includegraphics[width=.3\linewidth,height=1.0cm]{lego_product}
+		}		
+		\myexample{Plenty of Glue Code}{
+			\centering
+			\includegraphics[width=.65\linewidth,height=2.5cm]{lego_glue}				
+		}				
+	\mynextcolumn
+		\mydefinition{Same Idea}{
+			\begin{itemize}
+				\item Features are implemented as services.
+				\item Feature selection determines the services to be composed.
+			\end{itemize}
+		}	
+		\mynote{However}{
+			``Standardized'' service composition instead of highly individual glue code.
+		}	
+		\myexample{}{
+			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_components} 
+				\vspace*{\fill}
+					$+$ 
+				\vspace*{\fill}	
+			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_orchestration}
+				\vspace*{\fill}
+					$=$ 
+				\vspace*{\fill}	
+			\includegraphics[width=.35\linewidth,height=1.75cm]{lego_product}
+		}	
+	\end{mycolumns}	
+\end{frame}
+
+\begin{frame}{Service ``Composition''}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{Orchestration}{
+			Description of an executable (business-)process as a combination of services (centralized perspective, e.g., using WS-BPEL).
+		}
+		\myexampletight{}{
+			\pic[width=\linewidth]{trafficlights}
+		}
+	\mynextcolumn
+		\mydefinition{Choreography}{
+			Each service describes its own task within a service composition (decentralized perspective, e.g, using WS-CDL).
+		}
+		\myexampletight{}{
+			\pic[width=\linewidth]{crossroad}
+		}
+	\end{mycolumns}	
+\end{frame}
