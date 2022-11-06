@@ -1,6 +1,51 @@
 \newcommand{\pluseq}{\mathrel{+}=}
 
-\subsection{Recap: Quality Assurance}
+\newcommand{\familybasedlego}{
+	\begin{tikzpicture}
+		\node (lego) at (0,-1.7) {\pic[height=40mm,page=1]{lego-analyses}};
+		\node (lego) at (0,-.05) {\huge \textbf{+}};
+		\node (lego) at (0,1) {\footnotesize\featureDiagramLego};
+		\node at (0,-.3) {\mglass{9.5}};
+	\end{tikzpicture}
+}
+
+\newcommand{\summaryproductbased}{
+	\centering\pic[width=.8\linewidth,page=9]{lego-analyses}
+	\mynote{Product-Based Strategy}{
+		\begin{itemize}
+			\item analyze individual \emph{products}
+			\item[+] sound, complete
+			\item[+] uses off-the-shelf generator\,$\gamma$ and analysis\,$\alpha$
+			\item[--] redundant effort
+			\item[--] does not scale well
+		\end{itemize}
+	}
+}
+
+\newcommand{\summaryfeaturebased}{
+	\centering\pic[width=.8\linewidth,page=6]{lego-analyses}
+	\mynote{Feature-Based Strategy}{
+		\begin{itemize}
+			\item analyze individual \emph{features}
+			\item[+] sound, efficient
+			\item[--] analysis $\alpha$ requires features with interfaces
+			\item[--] incomplete: misses all feature interactions
+		\end{itemize}
+	}
+}
+
+\newcommand{\summaryfamilybased}{
+	\centering\scalebox{.5}{\familybasedlego}
+	\mynote{Family-Based Strategy}{
+		\begin{itemize}
+			\item analyze the \emph{product line}
+			\item[+] sound, complete, efficient
+			\item[--] requires careful, hand-crafted analysis $\alpha$
+		\end{itemize}
+	}
+}
+
+\subsection*{Recap: Quality Assurance}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
 	\hfill%
@@ -12,52 +57,62 @@
 	\only<6|handout:0>{\includegraphics[height=\textheightwithtitle,page=6]{quality-assurance}}%
 \end{frame}
 
-%mit nem emotionalen Bild/bsp motivieren => gute Softwarequalität ist wichtig
+\begin{frame}{}
+	\todo{motivating example that software quality matters, static analysis matters}
+\end{frame}
 
 \subsection{Automated Analysis of Product Lines}
 
+%avoiding bugs is nice - finding bugs is also necessary
+
 \begin{frame}{\myframetitle}
-	% \begin{mycolumns}
-	% 	\mynote{Open Questions}{
-	% 		\begin{itemize}
-	% 			\item How do such configurators work?
-	% 			\item How to avoid inconsistencies?
-	% 			\item How to provide explanations and fixes?
-    % 			\item How to get all valid configurations automatically? (\emph{P2(b)})
-	% 		\end{itemize}
-	% 	}
-	% 	\mydefinition{Automated Analysis of Feature Models}{
-	% 		\begin{itemize}
-	% 			\item up until now: \emph{creation} and \emph{transformation} of feature models
-	% 			\item now: \emph{analysis} of feature models to improve our understanding of a configuration space
-	% 			\item for brevity: product = valid configuration
-	% 		\end{itemize}
-	% 	}
-	% \mynextcolumn
-	% 	\myexample{Asking Questions About Product Lines}{
-	% 		(in ascending order of difficulty)
-	% 		\begin{itemize}
-	% 			\item Can we test 
-	% 			\item Can we compile every product successfully?
-	% 			\item Can we test every product successfully?
-	% 			\item 
-	% 			\item Is a given configuration valid?
-	% 			\item Is there any product at all?\\
-	% 				How many/which products are there?\\
-	% 			\item Is a given feature (de-)selectable at all?\\
-	% 				How many/which products include it?\\
-	% 			\item Is a given partial configuration consistent?\\
-	% 				How many/which products include it?\\
-	% 			\item \color{gray}{(Which features always occur together?)}
-	% 			\item \color{gray}{(Is a given constraint redundant?)}
-	% 			\item \color{gray}{(How do two feature model versions differ?)}
-	% 			\item \color{gray}{(Why is \ldots? How to fix \ldots?)}
-	% 		\end{itemize}
-	% 	}
-	% \end{mycolumns}
+	\begin{mycolumns}[t]
+		\mynote{Typical Program Analyses}{
+			\leftorright{
+				\begin{itemize}
+					\item code metrics
+					\item type checking
+					\item theorem proving
+					\item data-flow analysis
+					\item performance analysis
+					\item \ldots
+				\end{itemize}
+			}{
+				\hspace*{10mm}\mglass{3.2}
+			}
+		}
+		\mydefinition{What is a Program Analysis?}{
+			\begin{itemize}
+				\item analyzes properties of a \emph{program} (e.g., correctness, performance, and safety)
+				\item can be used to automatically find bugs, bottlenecks, and other \emph{vulnerabilities}
+			\end{itemize}
+		}
+		\mynextcolumn
+		\myexample{Asking Questions About Product Lines}{
+			\begin{itemize}
+				\item Which product has the most lines of code?
+				\item Which products have type errors (and why)? %typechef
+				\item Which products violate specifications? %key
+				\item Which products have unsafe data flows? %spllift
+				\item Which is the fastest product?\\ %performance prediction
+					Which product has the smallest executable? %https://ieeexplore.ieee.org/document/9555247
+			\end{itemize}
+		}
+		\mydefinition{What is a Product-Line Analysis?}{
+			\begin{itemize}
+				\item analyzes properties of an entire \emph{product line}
+				\item can be roughly classified by its \emph{strategy}:
+				\begin{itemize}
+					\item product-based
+					\item feature-based
+					\item family-based
+				\end{itemize}
+			\end{itemize}
+		}
+	\end{mycolumns}
 \end{frame}
 
-\subsection{Product-Based Analysis Strategy}
+\subsection{Product-Based Strategies} % refs missing in whole part!
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
@@ -69,9 +124,10 @@
 					\item in isolation
 					\item possibly in parallel
 				\end{itemize}
+				\item e.g., compile and verify each product
 			\end{itemize}
 		}
-		\myexampletight{}{\centering\featureDiagramLego}
+		\myexampletight{}{\centering\featureDiagramLego\\$Helmet \pimplies \pnot Phone$}
 	\mynextcolumn
 		\pic[width=\linewidth,page=9]{lego-analyses}
 	\end{mycolumns}
@@ -79,23 +135,22 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mydefinition{Generic Algorithm}{
+		\mydefinition{Algorithm}{
 			\begin{algorithmic}
-				\Require a product line with a feature model $FM$
-				\Ensure runs a given analysis $\alpha$ on all products
-				\State $C \gets AllSAT(\phi(FM))$ \Comment{{\small enumerate valid config's}}
+				\Require a product line $pl$; algorithms $\gamma$, $\alpha$, $\sigma$
+				\State $C \gets AllSAT(\phi(FM_{pl}))$ \Comment{{\small enumerate valid config's}}
 				\State $results \gets []$
 				\ForAll{$S \in C$} \Comment{{\small for each valid config}}
-				\State $P \gets \gamma(S)$ \Comment{{\small generate the product}}
-				\State $results \pluseq \alpha(P)$ \Comment{{\small append the analysis result}}
+				\State $p \gets \gamma(S)$ \Comment{{\small generate product}}
+				\State $results \pluseq \alpha(p)$ \Comment{{\small add analysis result}}
 				\EndFor
 				\State \Return $\sigma(results)$
 			\end{algorithmic}
 		}
 		\mynote{}{
 			\begin{itemize}
-				\item $\gamma$ \emph{generates} (= compiles) products (e.g., \texttt{make}, \texttt{gradle}, \texttt{FeatureHouse}, \texttt{npm}, \ldots)
-				\item $\alpha$ \emph{analyzes} the product (e.g., run all tests)
+				\item $\gamma$ \emph{generates} (e.g., compiles) products (e.g., \texttt{make}, \texttt{gradle}, \texttt{FeatureHouse}, \texttt{npm}, \ldots)
+				\item $\alpha$ \emph{analyzes} the product (e.g., run verifier)
 				\item $\sigma$ \emph{summarizes} the results (e.g., each individual call to $\alpha$ must succeed)
 			\end{itemize}
 		}
@@ -109,7 +164,7 @@
 			\footnotesize
 			\leftandright{
 				$\sigma([\alpha(\gamma(\{C,G,W\}))$\\
-				$~~~~\alpha(\gamma(\{C,P,W\})$\\
+				$~~~~\alpha(\gamma(\{C,P,W\}))$\\
 				$~~~~\alpha(\gamma(\{C,G,P,W\}))$\\
 				$~~~~\alpha(\gamma(\{C,D,W\}))$\\
 				$~~~~\alpha(\gamma(\{C,G,D,W\}))$\\
@@ -140,155 +195,113 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={25,50,25}]
+\begin{frame}{Classification of Strategies}
+	\begin{mycolumns}[t,columns=3]
+		\summaryproductbased
 	\mynextcolumn
-		\hspace*{-6mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,trim=180 510 100 170,clip]{2020/2020-SPLC-Thuem}}
-		\mynote{Advantages and Challenges}{
-			\begin{itemize}
-				\item[+] sound and complete (if generator $\gamma$, analysis $\alpha$, and summary $\sigma$ are sound and complete)
-				\item[--] does not scale to realistic product lines
-				\begin{itemize}
-					\item $AllSAT$ only works on small feature models
-					\item up to $2^{\abs{F}}$ calls to the generator $\gamma$ and the analysis $\alpha$
-				\end{itemize}
-			\end{itemize}
-		}
 	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
 
-% \subsection{Sample-Based Testing} % maybe move to lec 11 with recap of product-based
-
-% \begin{frame}{\myframetitle}
-% 	\begin{mycolumns}
-% 		\mydefinition{Intuition}{
-% 			\begin{itemize}
-% 				\item to analyze the product line, just analyze \emph{some products} (which products?)
-% 				\item e.g., \emph{sample-based testing} \lecturetesting
-% 			\end{itemize}
-% 		}
-% 		\mynote{Advantages and Challenges}{
-% 			\todots
-% 		}
-% 	\mynextcolumn
-% 		\pic[width=\linewidth,page=10]{lego-analyses}
-% 	\end{mycolumns}
-% \end{frame}
-
-\subsection{Feature-Based Analysis Strategy}
+\subsection{Feature-Based Strategies}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\mydefinition{Intuition}{
 			\begin{itemize}
-				\item to analyze the product line, just analyze \emph{some products} (which products?)
-				\item e.g., \emph{sample-based testing} \lecturetesting
+				\item to analyze the product line, just analyze \emph{each feature} individually
+				\item ignore all relations to other features
+				\item e.g., compile and verify each component\\
+				$\Rightarrow$ requires \emph{interfaces between features} (components, services, plug-ins) % todo: rename lecture 6 accordingly?
 			\end{itemize}
 		}
-		\mynote{Advantages and Challenges}{
-			\todots
-		}
+		\myexampletight{}{\centering\featureDiagramLego\\$Helmet \pimplies \pnot Phone$}
 	\mynextcolumn
 		\pic[width=\linewidth,page=6]{lego-analyses}
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Family-Based Analysis Strategy}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\mydefinition{Algorithm}{
+			\begin{algorithmic}
+				\Require a product line $pl$; algorithms $\alpha$, $\sigma$
+				\State $results \gets []$
+				\ForAll{$f \in F_{pl}$} \Comment{{\small for each feature}}
+				\State $results \pluseq \alpha(f)$ \Comment{{\small add analysis result}}
+				\EndFor
+				\State \Return $\sigma(results)$
+			\end{algorithmic}
+		}
+		\mynote{}{
+			\begin{itemize}
+				\item $\alpha$ \emph{analyzes} the feature (e.g., compiles and verifies (part of) the component)
+				\item $\sigma$ \emph{summarizes} the results (see product-based)
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexampletight{}{
+			\begin{center}
+				\small\featureDiagramConfigurableDatabase
+			\end{center}
+		}
+		\myexample{}{
+			\vspace*{-4ex}
+			\small
+			\begin{align*}
+				\sigma([&\alpha(\gamma(C)) \text{ -- e.g., compile and verify base code}\\
+				&\alpha(\gamma(G)) \text{ -- e.g., compile and verify feature Get}\\
+				&\alpha(\gamma(P)) \text{ -- \ldots}\\
+				&\alpha(\gamma(D))\\
+				&\alpha(\gamma(T))\\
+				&\alpha(\gamma(W))\\
+				&\alpha(\gamma(L))])
+			\end{align*}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Classification of Strategies}
+	\begin{mycolumns}[t,columns=3]
+		\summaryproductbased
+	\mynextcolumn
+		\summaryfeaturebased
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Family-Based Strategies}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\mydefinition{Intuition}{
 			\begin{itemize}
-				\item to analyze the product line, just analyze \emph{some products} (which products?)
-				\item e.g., \emph{sample-based testing} \lecturetesting
+				\item analyze the product line (or \emph{family}) as a whole
+				\item requirement: the analysis should give the same result as a product-based analysis
+				\item makes use of the feature model and artifacts
+				\item analysis is \emph{hand-crafted}, no generic algorithm\\
+				$\Rightarrow$ typically: reduction to SAT problems
 			\end{itemize}
 		}
-		\mynote{Advantages and Challenges}{
-			\todots
+		\myexample{Today's Examples}{
+			\begin{itemize}
+				\item analyzing feature mappings
+				\item analyzing variable code
+			\end{itemize}
 		}
 	\mynextcolumn
-		\pic[width=\linewidth,page=3]{lego-analyses}
+		\centering\familybasedlego
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Classification of Product-Line Analysis Strategies}
+\subsection{Classification of Strategies}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=3]
-		\pic[width=\linewidth,page=9]{lego-analyses}
-
-		\mydefinition{Product-Based Strategy}{
-			\begin{itemize}
-				\item[+] sound and complete %(if generator $\gamma$, analysis $\alpha$, and summary $\sigma$ are sound and complete)
-				\item[--] does not scale in general %to realistic product lines
-				\begin{itemize}
-					\item $AllSAT$ only works on small feature models
-					\item up to $2^{\abs{F}}$ calls to the generator $\gamma$ and the analysis $\alpha$
-				\end{itemize}
-			\end{itemize}
-		}
+	\begin{mycolumns}[t,columns=3]
+		\summaryproductbased
 	\mynextcolumn
-		\pic[width=\linewidth,page=6]{lego-analyses}
-	
-		\mydefinition{Feature-Based Strategy}{
-			\todots
-		}
+		\summaryfeaturebased
 	\mynextcolumn
-		\pic[width=\linewidth,page=3]{lego-analyses}
-
-		\mydefinition{Family-Based Strategy}{
-			\todots
-		}
-\end{mycolumns}
-\end{frame}
-
-% mit quadranten starten
-%bezug auf FM-analyse
-%wir gucken uns jetzt Source Code an (evtl. linke zwei (VL 4, Problem Space) + rechte zwei Quadranten (VL 10+, Solution Space))
-% wechselwirkung zw. sol und problem space (mapping+FM)
-
-% properties one might want to analyze, similar to questions about feature models in modeling.tex
-% include questions for all four quadrants
-
-%strategien high-level angucken
-%product-based
-%number crunching, wie groß sind SPLs, product-based skaliert nicht
-
-%ich könnte weniger produkte angucken (sampling)
-%grundstein für test-vorlesung
-
-%oder nur features angucken: feature-based
-%wichtige message: es reicht nicht, features einzeln zu analysieren
-%rückgriff auf interaktionen (dass feature-based nicht reicht)
-
-\subsection{Complexity of Product-Line Analyses}
-
-\begin{frame}{\myframetitle}
-	\leftorright{
-		\mydefinition{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}{
-			In a timeframe of 24h \ldots
-			\begin{enumerate}
-				\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}
-				\item[\textbf{C1}] All products can be generated and \emph{tested}
-				\item[\textbf{C2}] Not C1, but all \emph{products} can be \emph{generated}
-				\item[\textbf{C3}] Not C2, but all \emph{configurations} can be \emph{generated} (AllSAT)
-				\item[\textbf{C4}] Not C3, but the \emph{number of valid configurations} can be computed (\ssat{})
-				\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)
-				\item[\textbf{C6}] It cannot be computed whether there is a valid configuration
-			\end{enumerate}
-		}
-	}{
-		\myexample{Examples}{
-			\begin{enumerate}
-				\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}
-				\item[\textbf{C1}] $< 2000$ products for 1 min per product
-				\item[\textbf{C2}] $< 90000$ products for 1 s per product
-				\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration
-				\item[\textbf{C4}] older versions of Linux/Automotive05
-				\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
-				\item[\textbf{C6}] No example known
-			\end{enumerate}
-		}
-	}
+		\summaryfamilybased
+	\end{mycolumns}
 \end{frame}

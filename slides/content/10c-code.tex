@@ -19,3 +19,37 @@
 	% 	labelOnlyAB={4},labelOnlyAC={5},labelOnlyBC={6},labelABC={7}]
 	% \end{venndiagram3sets}
 \end{frame}
+
+\subsection{Complexity of Product-Line Analyses} % "analyses in the wild?"
+
+%number crunching, wie groß sind SPLs, product-based skaliert nicht, wann brauchen wir typechef, ...
+
+\begin{frame}{\myframetitle}
+	\leftorright{
+		\mydefinition{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}{
+			In a timeframe of 24h \ldots
+			\begin{enumerate}
+				\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}
+				\item[\textbf{C1}] All products can be generated and \emph{tested}
+				\item[\textbf{C2}] Not C1, but all \emph{products} can be \emph{generated}
+				\item[\textbf{C3}] Not C2, but all \emph{configurations} can be \emph{generated} (AllSAT)
+				\item[\textbf{C4}] Not C3, but the \emph{number of valid configurations} can be computed (\ssat{})
+				\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)
+				\item[\textbf{C6}] It cannot be computed whether there is a valid configuration
+			\end{enumerate}
+		}
+	}{
+		\myexample{Examples}{
+			% also put examples of analysis strategies here, and which kind of mapping/code analysis scales for which class?
+			\begin{enumerate}
+				\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}
+				\item[\textbf{C1}] $< 2000$ products for 1 min per product
+				\item[\textbf{C2}] $< 90000$ products for 1 s per product
+				\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration
+				\item[\textbf{C4}] older versions of Linux/Automotive05
+				\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
+				\item[\textbf{C6}] No example known
+			\end{enumerate}
+		}
+	}
+\end{frame}
