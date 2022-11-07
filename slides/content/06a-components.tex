@@ -24,10 +24,9 @@
 				$\{G,C,D,W,S\}$\\
 			}
 		}
-	\mynextcolumn
-		\vspace{-10mm}
+	\mynextcolumn		
 		\myexampletight{How to Generate Products Automatically?}{
-			\centering\foreach \page in {2,12,4,14,6,16,8,18,10,20,42,44}{\includegraphics[width=.23\linewidth,page=\page]{graphs} }
+			\centering\foreach \page in {2,12,4,14,6,16,8,18}{\includegraphics[width=.23\linewidth,page=\page]{graphs} }
 		}
 		\mynote{Goals}{
 			\begin{itemize}
@@ -91,29 +90,35 @@
 \begin{frame}{Modularity}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Modularization}{
-			Consistent application of \emph{information hiding} and \emph{data encapsulation}:
+			Consistent application of \emph{information hiding} and \emph{data encapsulation} to achieve:
 			\begin{itemize}
 				\item Strong logical connection between the inner parts of a module (high cohesion)
 				\item Precisely defined, minimal interfaces (low coupling)
 			\end{itemize}						
 		}
-	\mynextcolumn
 		\mydefinition{Coupling and Cohesion}{
 			\begin{itemize}
-				\item Cohesion: Measure of how well the parts of a module work together (intra-module communication).
-				\item Coupling: Measure of the complexity of inter-module communication (through interfaces).
+				\item \emph{Cohesion}: Measure of how well the parts of a module work together (intra-module communication).
+				\item \emph{Coupling}: Measure of the complexity of inter-module communication (through interfaces).
 			\end{itemize}
+		}		
+	\mynextcolumn
+		\vspace{-1cm}
+		\myexampletight{High Coupling, Low Cohesion}{
+			\centering
+			\includegraphics[width=0.5\textwidth]{cohesion_coupling_1}
+		}
+		\myexampletight{Low Coupling, High Cohesion}{
+			\centering
+			\includegraphics[width=0.5\textwidth]{cohesion_coupling_2}
 		}
 	\end{mycolumns}
-	\begin{mycolumns}[widths={50,50},animation=none]
-		\includegraphics[width=\textwidth]{cohesion_coupling_1}
-	\mynextcolumn
-		\includegraphics[width=\textwidth]{cohesion_coupling_2}
+	\begin{mycolumns}[widths={50,50},animation=none]	
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Why Modularity?}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={45,55},animation=none]
 		\mynote{Traditional Reasons}{			
 			\begin{itemize}
 				\item Modules can be developed independently of each other (collaborative work)
@@ -127,13 +132,13 @@
 	\mynextcolumn
 		\mynote{Modularization and Software Product Lines}{
 			\begin{itemize}
-				\item Reuse: Parts of the software can be {\em reused} 
-				\item Alternatives: Modules can be {\em exchanged by alternative implementations}
-				\item Variability: Modules can be {\em reassembled in a new context} (e.g., in other projects)
+				\item \emph{Reuse}: Parts of the software can be {\em reused} 
+				\item \emph{Alternatives}: Modules can be {\em exchanged by alternative implementations}
+				\item \emph{Variability}: Modules can be {\em reassembled in a new context} (e.g., in other projects)
 			\end{itemize}
 		}
 		\myexampletight{}{
-			\includegraphics[width=\linewidth,page=18,trim=5 5 5 5,clip]{lego} 
+			\includegraphics[width=\linewidth,page=18,trim=5 115 5 5,clip]{lego} 
 		}
 	\end{mycolumns}	
 \end{frame}
@@ -141,32 +146,30 @@
 \begin{frame}{Components}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Component \mysource{\szyperski}}{			
-			A software component is a unit of composition with contractually specified interfaces and explicit context dependencies only. 
-			A software component can be deployed independently and is subject to composition by third parties.
+			A software component is a unit of composition with contractually specified \emph{interfaces} and explicit \emph{context dependencies} only. 
+			A software component can be deployed independently and is \emph{subject to composition} by third parties.
 		}
+		\myexampletight{}{
+			\centering
+			\pic[width=.7\linewidth]{component_uml.png}
+		}	
 		\mynote{}{			
 			\begin{itemize}
-				\item Provides its functionality through an interface (provided interface)
-				\item Declares functional dependencies to other components (required interface)
-				\item Declares deployment dependencies such as container or middleware (e.g., JavaEE, COBRA, COM+/DCOM, OSGi, etc.)
+				\item Context/deployment dependencies: Typically container or middleware (e.g., JavaEE, COBRA, OSGi, etc.)
 			\end{itemize}
 		}
-		\myexampletight{}{
-			\centering
-			\pic[width=.5\linewidth]{component_uml.png}
-		}	
 	\mynextcolumn
-		\mynote{Composition and Reuse}{
-			Components
+		\vspace{-0.7cm}
+		\mynote{Composition and Reuse: Components}{
 			\begin{itemize}
-				\item are composed with other components to form software systems,
-				\item are supposed to be re-usable in other software systems,
-				\item may stem from third-party vendors (make-or-by-decisions, markets for components).
+				\item Are composed with other components to form software systems,
+				\item Are supposed to be re-usable in other software systems,
+				\item May stem from third-party vendors (make-or-by-decisions, markets for components).
 			\end{itemize}			
 		}
-		\myexampletight{}{
+		\myexampletight{UML Component Diagrams}{
 			\centering
-			\pic[width=.8\linewidth]{component_diagram_uml.png}
+			\pic[width=\linewidth]{component_diagram_uml.png}
 		}	
 	\end{mycolumns}	
 \end{frame}
@@ -185,85 +188,62 @@
 	\mynextcolumn
 		\mynote{Differences}{
 			\begin{itemize}
-				\item Objects are smaller than components by focusing on detailed implementation problems (components aim at abstracting from implementation details).
-				\item Object are less cohesive and stronger coupled than components due to (deliberately) delegating lots of responsibilities to other objects, while components aim at maximizing cohesion and minimizing coupling.
-				\item Objects/classes are reused through inheritance and polymorphism, while components are reused by being integrated into a component architecture.		
+				\item \emph{Objects are smaller} than components by focusing on detailed implementation problems (components aim at abstracting from implementation details).
+				\item \emph{Object are less cohesive and stronger coupled} than components due to (deliberately) delegating lots of responsibilities to other objects, while components aim at maximizing cohesion and minimizing coupling.
+				\item \emph{Objects/classes are reused through inheritance and polymorphism}, while components are reused by being integrated into a component architecture.		
 			\end{itemize}			
 		}
 	\end{mycolumns}	
 \end{frame}
 
 \begin{frame}[fragile]{Example: A Color Component}
-	\begin{mycolumns}[columns=2,widths={50,50}]
-{\tiny
-\begin{codetight}{}
-package components.color;
-
-~// public interface~
-public class ColorComponent {
-	public Color createColor(int r, int g, int b) { /* ... /* }
-	public void printColor(Color color) { /* ... /* }
-	public void mapColor(Object o, Color c) { /* ... /* }
-	public Color getColor(Object o) { /* ... /* }
-	
-	// just one component instance
-	public static ColorComponent getInstance() { return instance; }
-	private static ColorComponent instance = new ColorComponent();
-	private ColorComponent() { super(); }
-}
-public interface Color { /* ... /* }
-
-// hidden implementation
-class ColorImpl implements Color { /* ... /* }
-class ColorPrinter { /* ... /* }
-class ColorMapping { /* ... /* }
-\end{codetight}
-}
-		\mynextcolumn
+	\begin{mycolumns}[columns=2,widths={40,60}]
 			\myexample{A Reusable Component}{
 				\begin{itemize}
 					\item Assume that storing and printing colors is non-trivial (e.g., in our graph library). 
 					\item Implement color management as a reusable component, using Java's visibility mechanism to enforce encapsulation.						
 				\end{itemize}
 			}
+		\mynextcolumn
+{\small
+\begin{codetight}{}
+package components.color;
+
+~// public interface~
+public class ColorComponent {
+	public Color createColor(int r, int g, int b) { ~/* ... /*~ }
+	public void printColor(Color color) { ~/* ... /*~ }
+	public void mapColor(Object o, Color c) { ~/* ... /*~ }
+	public Color getColor(Object o) { ~/* ... /*~ }
+	
+	~// just one component instance~
+	public static ColorComponent getInstance() { return instance; }
+	private static ColorComponent instance = new ColorComponent();
+	private ColorComponent() { super(); }
+}
+public interface Color { ~/* ... /*~ }
+
+~// hidden implementation~
+class ColorImpl implements Color { ~/* ... /*~ }
+class ColorPrinter { ~/* ... /*~ }
+class ColorMapping { ~/* ... /*~ }
+\end{codetight}
+}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Example: A Color Component}
-	\begin{mycolumns}[columns=2,widths={50,50}]
-{\tiny
-\begin{codetight}{}
-public class Node {
-	int id;
-
-	public Node(int id) {
-		this.id = id;
-	}
-
-	public Node(int id, Color c) {
-		this(id);
-		ColorComponent.getInstance().mapColor(this, c);
-	}
-
-	public void print() {
-		if (Config.COLORED) {
-			Color c = ColorComponent.getInstance().getColor(this);
-			ColorComponent.getInstance().printColor(c);
-		}
-		System.out.print(id);
-	}
-}
-\end{codetight}
+	\begin{mycolumns}[columns=2,widths={60,40}]
+{\small
 \begin{codetight}{}
 public class Graph {
 	private List<Node> nodes = new ArrayList<Node>();
-
 	public Node add() {
 		Node n = null;
-		if (Config.COLORED) {
-			Color c = ColorComponent.getInstance().createColor(255, 255, 255);
+		@if (Config.COLORED) {
+			Color c = ColorComponent.getInstance().createColor(0, 0, 0);
 			n = new Node(nodes.size(), c);
-		} else {
+		} else @ {
 			n = new Node(nodes.size());
 		}
 		nodes.add(n);
@@ -274,14 +254,36 @@ public class Graph {
 \end{codetight}
 }
 		\mynextcolumn
-			\mynote{Reuse + Glue Code}{
-				\begin{itemize}
-					\item We can reuse the Color Component when implementing the color feature for the graph library (but also for other applications). 
-					\item However, we need to write custom code to ``connect'' our implementation with the component.\\
-						$\Rightarrow$ \emph{Glue Code}
-				\end{itemize}
-			}
+\vspace{-0.5cm}
+{\small
+\begin{codetight}{}
+public class Node {
+	private int id;
+	@private ColorComponent colorComp =
+		ColorComponent.getInstance();@
+	public Node(int id) { this.id = id; }
+	public Node(int id, @Color c@) {
+		this(id);
+		@colorComp.mapColor(this, c);@
+	}
+	public void print() {
+		@if (Config.COLORED) {
+			Color c = colorComp.getColor(this);
+			colorComp.printColor(c);
+		}@
+		System.out.print(id);
+	}
+}
+\end{codetight}
+}			
 	\end{mycolumns}
+	\mynote{}{
+		\begin{itemize}
+			\item We can \emph{reuse} the Color Component when implementing the color feature for the graph library (but also for other applications). 
+			\item However, we need to write custom code to ``connect'' our implementation with the component.\\
+				$\Rightarrow$ \emph{Glue Code}
+		\end{itemize}
+	}
 \end{frame}
 
 
@@ -314,7 +316,7 @@ public class Graph {
 		}			
 		\mynote{Glue Code and Customization}{
 			\begin{itemize}
-				\item Developers must connect components through glue code (exception: If components are only exchanged against alternative components are exchanged, no glue code is required)
+				\item Developers must connect components through glue code (exception: If components are only exchanged against alternative components)
 				\item Components may contain run-time variability (e.g., color manager in our example may be parameterized by color model (RGB, CMYK, ...))
 			\end{itemize}
 		}

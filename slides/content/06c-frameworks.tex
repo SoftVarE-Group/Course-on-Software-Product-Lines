@@ -1,25 +1,25 @@
 \begin{frame}{Framework with Plug-Ins}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{Framework and Hot Spot}{
-			A framework is a set of classes that embodies an abstract design for solutions to a family of related problems, and supports reuse at a larger granularity than classes. A framework is open for extension at explicit hot spots.				
+		\mydefinition{Framework and Hot Spot TODO:cite}{
+			A \emph{framework} is a set of classes that embodies an abstract design for solutions to a family of related problems, and supports reuse at a larger granularity than classes. A framework is open for \emph{extension} at explicit \emph{hot spots}.				
 		}
-		\mydefinition{Plug-In}{
-			A plug-in extends hot spots of a [...] framework with custom behavior. A plug-in can be separately compiled and deployed.	
+		\mydefinition{Plug-In TODO:cite}{
+			A \emph{plug-in} extends hot spots of a [...] framework with custom behavior. A plug-in can be separately compiled and deployed.	
 		}
 		\mynote{}{
-			Frameworks with plug-ins are also called blackbox frameworks: Developers need to understand interfaces, but not the internal framework implementation.
+			Frameworks with plug-ins are also called "`blackbox frameworks"': Developers need to understand interfaces, but not the internal framework implementation.
 		}
 	\mynextcolumn
-		TODO: links cites
-		TODO: rechts Inversion of Control
-		Hollywood principle: ``Don’t call us, we’ll call you''
-		
-		\pic[width=0.5\linewidth]{library_vs_framework}
-		
+		\vspace{-0.7cm}
+		\mynote{Inversion of Control}{
+			Hollywood principle: ``Don't call us, we'll call you''\\
+			\centering 
+			\pic[width=0.75\linewidth]{library_vs_framework}
+		}
 		\mynote{}{
 			\begin{itemize}
 				\item Can be understood in terms of the observer and/or strategy pattern: The framework exposes explicit hot spots, at which plug-ins can register observers and strategies.
-				\item Requires preplanning for possible future extensions
+				\item Requires \emph{preplanning} for possible future extensions
 			\end{itemize}
 		}		
 	\end{mycolumns}
@@ -27,7 +27,7 @@
 
 
 
-\begin{frame}{Preplanned Bike Extensions}
+\begin{frame}{Real-World Example: Preplanned Bike Extensions}
 	\begin{mycolumns}[columns=4,T]
 		\centering\pic[width=\linewidth]{bike-extensionpoint1}
 
@@ -47,7 +47,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Preplanned Bike Extensions}
+\begin{frame}{Real-World Example: Preplanned Bike Extensions}
 	\begin{mycolumns}[columns=5,widths={30,5,30,5,30}]
 		\centering\pic[width=\linewidth]{bike-extensionpoint1-withoutplugin}
 
@@ -68,25 +68,35 @@
 \end{frame}
 
 
-\begin{frame}{Simple Example: A Family of Dialogs}
-	\begin{itemize}
-		\item Familie von Dialogen, bestehend aus Textfeld und Button\\
-		\pic{dialog1}
-		\pic{dialog2}
-		\pic{dialog3}
-		\item 90\% des Quelltexts sind gleich
-		\begin{itemize}
-			\item Main Methode
-			\item Initialisierung von Fenstern, Textfeld und Button
-			\item Layout
-			\item Schließen des Fensters
-			\item \ldots
-		\end{itemize}
-	\end{itemize}
+\begin{frame}{Simple Java Example: A Family of Dialogs}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\myexampletight{}{
+			\centering \pic[width=0.8\linewidth]{dialog1}
+		}
+		\myexampletight{}{
+			\centering \pic[width=0.8\linewidth]{dialog2}
+		}
+		\myexampletight{}{
+			\centering \pic[width=\linewidth]{dialog3}
+		}
+	\mynextcolumn		
+		\mynote{}{
+			\begin{itemize}
+				\item All dialogs have a similar structure (basically textfield + button)
+				\item Large parts of the source code are identical:
+				\begin{itemize}
+					\item Main method,
+					\item Initialization of windows, textfield and button
+					\item layouting,
+					\item window closing and disposal,
+					\item etc.
+				\end{itemize}
+			\end{itemize}
+		}		
+	\end{mycolumns}
 \end{frame}
-
-
-\begin{frame}[fragile]{Simple Example: A Family of Dialogs}
+	
+\begin{frame}[fragile]{Simple Java Example: A Family of Dialogs}
 	\small\begin{mycolumns}[columns=2,widths={50,50}]
 \begin{codetight}{}
 public class Calc extends JFrame {
@@ -107,9 +117,9 @@ public class Calc extends JFrame {
 		p.add(textfield, BorderLayout.WEST);
 		button.addActionListener(new ActionListener() 
 			{ @/* calculate */@ });
-		this.setp(p);
-		this.pack();
+		this.setContentPane(p);
 		this.setTitle(@"My Great Calculator"@);
+		this.pack();
 		// ...
 	}
 }
@@ -134,9 +144,9 @@ public class Ping extends JFrame {
 		p.add(textfield, BorderLayout.WEST);
 		button.addActionListener(new ActionListener() 
 			{ @/* calculate */@ });
-		this.setp(p);
-		this.pack();	
+		this.setContentPane(p);
 		this.setTitle(@"Ping"@);
+		this.pack();	
 		// ...
 	}
 }
@@ -145,40 +155,41 @@ public class Ping extends JFrame {
 \end{frame}
 
 
-\begin{frame}[fragile]{Simple Example: A Family of Dialogs}
-	\tiny\begin{mycolumns}[columns=2,widths={50,50}]
+\begin{frame}[fragile]{Simple Java Example: A Family of Dialogs}
+	\begin{mycolumns}[columns=2,widths={50,50}]
+		\mynote{}{TODO: One line is ok}
+\tiny
 \begin{codetight}{}
 public class Application extends JFrame {
-	private JTextField textfield;
 	private Plugin plugin;
-
-	public Application(Plugin plugin) {
-		this.plugin = plugin;
-		plugin.setApplication(this);
+	// ...
+	public Application(@Plugin plugin@) {
+		@this.plugin = plugin;
+		plugin.setApplication(this);@
 		init();
 	}
-
 	protected void init() {
 		JPanel p = new JPanel(new BorderLayout());
 		p.setBorder(new BevelBorder(/*...*/);
 		JButton button = new JButton();
-		button.setText(plugin.getButtonText());
+		button.setText(@plugin.getButtonText()@);
 		p.add(button, BorderLayout.EAST);
 		textfield = new JTextField("");
-		textfield.setText(plugin.getInititalText());
+		textfield.setText(@plugin.getInititalText()@);
 		textfield.setPreferredSize(new Dimension(200, 20));
 		p.add(textfield, BorderLayout.WEST);		
-		button.addActionListener(/* . . . plugin.buttonClicked(); . . . */);
-		this.setContentPane(p);
+		button.addActionListener(/*... @plugin.buttonClicked();@ ...*/);
+		this.setContentPane(p);		
+		this.setTitle(@plugin.getApplicationTitle()@);
 		// ...
 	}
-
-	public String getInput() {
+	@public String getInput() {
 		return textfield.getText();
-	}
+	}@
 }
 \end{codetight}
 		\mynextcolumn
+{\tiny
 \begin{codetight}{}
 public interface Plugin {
 	String getApplicationTitle();
@@ -212,22 +223,23 @@ public class CalcPlugin implements Plugin {
 	}
 }
 \end{codetight}
+}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Simple Example: A Family of Dialogs}
-	\tiny\begin{mycolumns}[columns=2,widths={50,50}]
+	\begin{mycolumns}[columns=2,widths={50,50}]
+		\mynote{}{TODO: One line is ok}
+\tiny
 \begin{codetight}{}
 public class Application extends JFrame @implements InputProvider@ {
-	private JTextField textfield;
 	private Plugin plugin;
-
+	// ...
 	public Application(Plugin plugin) {
 		this.plugin = plugin;
 		@plugin.setInputProvider(this);@
 		init();
 	}
-
 	protected void init() {
 		JPanel p = new JPanel(new BorderLayout());
 		p.setBorder(new BevelBorder(/*...*/);
@@ -238,17 +250,16 @@ public class Application extends JFrame @implements InputProvider@ {
 		textfield.setText(plugin.getInititalText());
 		textfield.setPreferredSize(new Dimension(200, 20));
 		p.add(textfield, BorderLayout.WEST);		
-		button.addActionListener(/* . . . plugin.buttonClicked(); . . . */);
-		this.setContentPane(p);
+		button.addActionListener(/* . . . plugin.buttonClicked(); . . . */);		
 		// ...
 	}
-
 	public String getInput() {
 		return textfield.getText();
 	}
 }
 \end{codetight}
 		\mynextcolumn
+{\tiny
 \begin{codetight}{}
 public interface InputProvider {
 	public String getInput();
@@ -267,15 +278,9 @@ public interface Plugin {
 public class CalcPlugin implements Plugin {
 	@private InputProvider inputProvider;@
 
-	public String getApplicationTitle() {
-		return "My Great Calculator";
-	}
-	public String getButtonText() {
-		return "calculate";
-	}
-	public String getInititalText() {
-		return "10 / 2 + 6";
-	}
+	public String getApplicationTitle() { /*...*/ }
+	public String getButtonText() { /*...*/ }
+	public String getInititalText() { /*...*/ }
 	public void buttonClicked() {
 		calculate(@inputProvider.getInput()@);
 	}
@@ -287,6 +292,7 @@ public class CalcPlugin implements Plugin {
 	}
 }
 \end{codetight}
+}
 	\end{mycolumns}
 \end{frame}
 
@@ -322,7 +328,7 @@ public class CalcPlugin implements Plugin {
 \end{frame}
 
 \begin{frame}[fragile]{Example: Plug-In Loading and Management}
-	\tiny\begin{mycolumns}[columns=2,widths={50,50}]
+	\small\begin{mycolumns}[columns=2,widths={50,50}]
 \begin{codetight}{Plug-In Loader using Java Reflection}
 public class Starter {
 	public static void main(String[] args) {
@@ -332,9 +338,11 @@ public class Starter {
 			String pluginName = args[0];
 			try {
 				Class pluginClass = Class.forName(pluginName);
-				new Application((Plugin) pluginClass.newInstance()).setVisible(true);
+				new Application((Plugin) 
+					pluginClass.newInstance()).setVisible(true);
 			} catch (Exception e) {
-				System.out.println("Cannot load plugin " + pluginName + ", reason: " + e);
+				System.out.println("Cannot load plugin " + 
+					pluginName + ", reason: " + e);
 			}
 		}
 	}
@@ -368,6 +376,7 @@ public class Application {
 	\begin{mycolumns}[widths={70,30},animation=none]
 		\pic[width=\linewidth]{eclipse_overview}
 	\mynextcolumn
+		\vspace{-0.7cm}
 		\myexample{Versatile IDE}{
 			\begin{itemize}
 				\item Lots of common functionality required by any IDE
@@ -428,22 +437,18 @@ public class Application {
 				\vspace*{\fill}	
 			\includegraphics[width=.3\linewidth,height=1.0cm]{lego_product}
 		}		
-		\myexample{Still needs some specification for ``composition''}{
+		\myexample{Still needs some specification of ``composition'' (cf.\ orchestration vs.\ choreography)}{
 			\centering
 			\includegraphics[width=.65\linewidth,height=2.5cm]{lego_orchestration}				
 		}				
-	\mynextcolumn
+	\mynextcolumn		
 		\mydefinition{Same Idea}{
 			\begin{itemize}
 				\item Features are implemented by different plug-ins
 				\item Feature selection determines the plug-ins to be loaded and registered 
 			\end{itemize}
 		}	
-		\mynote{}{
-			Neither individual glue code nor specification of service composition required.
-		}	
 		\myexample{}{
-			TODO: Erstes Bild ohne Räder
 			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_product} 
 				\vspace*{\fill}
 					$+$ 
@@ -455,8 +460,11 @@ public class Application {
 			\includegraphics[width=.35\linewidth,height=1.75cm]{lego_product}
 		}	
 		\mynote{}{
-			Potential for full automation comes at a price: The preplanning problem (see next slides).
-		}
+			\begin{itemize}
+				\item Neither glue code nor explicit service composition required (TODO Räder).
+				\item But: Full automation comes at a price (s.\ preplanning problem).
+			\end{itemize}
+		}			
 	\end{mycolumns}	
 \end{frame}
 
@@ -464,39 +472,33 @@ public class Application {
 	\tiny\begin{mycolumns}[columns=2,widths={50,50}]
 \begin{codetight}{}
 public class Graph {
-	// ...
-	private List<Node> nodes = new ArrayList<Node>();	
-	private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();
-	
-	public void registerPlugin(GraphPlugin p){
+	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
+	// ...	
+	@public void registerPlugin(GraphPlugin p){
 		plugins.add(p);
-	}
-	
+	}@
 	public void addNode(int id, Color c){
 		Node n = new Node(id);
-		notifyAdd(n, c);
+		@notifyAdd(n, c);@
 		nodes.add(n);
 	}
-	
 	public void print() {
 		for (Node n : nodes) {
-			notifyPrint(n);
+			@notifyPrint(n);@
 			// ...
 		}
 		// ...
 	}
-	
-	private void notifyAdd(Node n, Color c) {
+	@private void notifyAdd(Node n, Color c) {
 		for (GraphPlugin p : plugins) {
 			p.aboutToAdd(n, c);
 		}
 	}
-	
 	private void notifyPrint(Node n) {
 		for (GraphPlugin p : plugins) {
 			p.aboutToPrint(n);
 		}
-	}
+	}@
 	// ...
 }
 \end{codetight}
@@ -516,15 +518,18 @@ public class ColorPlugin implements GraphPlugin {
 	public void aboutToAdd(Node n, Color c) {
 		map.put(n, c);
 	}
+	
 	public void aboutToAdd(Edge e, Weight w) {
-		// do nothing
+		~// do nothing~
 	}
+	
 	public void aboutToPrint(Node n) {
 		Color c = map.get(n);
 		Color.setDisplayColor(c);
 	}
+	
 	public void aboutToPrint(Edge e) {
-		// do nothing
+		~// do nothing~
 	}
 }
 \end{codetight}

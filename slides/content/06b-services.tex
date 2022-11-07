@@ -78,7 +78,7 @@
 			\end{itemize}
 		}
 		\mydefinition{}{
-			\mycite{[A microservice] could be re-written in \emph{two weeks}.}{\href{https://www.rea-group.com/blog/micro-services-what-even-are-they/}{Jon Eaves, 2014}}
+			\mycite{[A microservice] could be re-written in two weeks.}{\href{https://www.rea-group.com/blog/micro-services-what-even-are-they/}{Jon Eaves, 2014}}
 		}
 		\mydefinition{}{
 			\mycite{Every team should be small enough that it can be fed with two pizzas.}{\href{https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success}{Jeff Bezos, 2018}}
@@ -170,17 +170,18 @@
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mynote{}{
 			\begin{itemize}
-				\item Scalability: Microservices are small enough to be developed by a small, agile team (cf. typical size of a Scrum team).
-				\item Continuous integration/deployment: Microservices can be deployed independently of each other (i.e., each microservice has its own CI/CD pipeline).
-				\item Heterogeneity: Each microservice can be implemented using its own technology stack (team preferences, adoption of new technologies, etc.).
-				\item Fault tolerance: The crash of a single microservice should not lead to a crash of the entire system (cf. design for failure).
-				\item Efficiency: Configuration of execution environment can be optimized per microservice.
-				\item Modernization: A microservice can be easily replaced by an alterantive one (even being re-implemented from scratch).
+				\item \emph{Scalability}: Microservices are small enough to be developed by a small, agile team. %(cf. typical size of a Scrum team).
+				\item \emph{Continuous integration/deployment}: Microservices can be deployed independently of each other. %(i.e., each microservice has its own CI/CD pipeline).
+				\item \emph{Heterogeneity}: Each microservice can be implemented using its own technology stack. %(team preferences, adoption of new technologies, etc.).
+				\item \emph{Fault tolerance}: The crash of a single microservice should not lead to a crash of the entire system. %(cf. design for failure).
+				\item \emph{Efficiency}: Configuration of execution environment can be optimized per microservice.
+				\item \emph{Modernization}: A microservice can be easily replaced by an alternative one (even re-implemented from scratch).
 			\end{itemize}
 		}
 	\mynextcolumn
 		\myexampletight{The Microservice ``Hype''}{
-			\pic[width=\linewidth]{microservices}
+			\pic[width=\linewidth]{microservices}\\
+			\vspace{0.3cm}
 			\pic[width=\linewidth]{microservices-comparison}
 		}
 	\end{mycolumns}	
@@ -189,11 +190,11 @@
 \begin{frame}{Service-Oriented Implementation of Software Product Lines}
 	\begin{mycolumns}[widths={40,60},animation=none]
 		\myexample{Recap: Component-Based Implementation}{
-			\includegraphics[width=.23\linewidth,height=1.0cm]{lego_components} 
+			\includegraphics[width=.24\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.23\linewidth,height=1.0cm]{lego_glue}
+			\includegraphics[width=.24\linewidth,height=1.0cm]{lego_glue}
 				\vspace*{\fill}
 					$=$ 
 				\vspace*{\fill}	
