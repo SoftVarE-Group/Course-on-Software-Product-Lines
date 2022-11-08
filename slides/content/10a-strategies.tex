@@ -45,7 +45,7 @@
 	}
 }
 
-\subsection*{Recap: Quality Assurance}
+\subsection{Recap: Quality Assurance}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
 	\hfill%
@@ -66,9 +66,9 @@
 %avoiding bugs is nice - finding bugs is also necessary
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{mycolumns}[t,widths={47}]
 		\mynote{Typical Program Analyses}{
-			\leftorright{
+			\leftandright{
 				\begin{itemize}
 					\item code metrics
 					\item type checking
@@ -78,7 +78,7 @@
 					\item \ldots
 				\end{itemize}
 			}{
-				\hspace*{10mm}\mglass{3.2}
+				\hspace*{10mm}\mglass{3}
 			}
 		}
 		\mydefinition{What is a Program Analysis?}{
@@ -90,12 +90,13 @@
 		\mynextcolumn
 		\myexample{Asking Questions About Product Lines}{
 			\begin{itemize}
-				\item Which product has the most lines of code?
-				\item Which products have type errors (and why)? %typechef
-				\item Which products violate specifications? %key
-				\item Which products have unsafe data flows? %spllift
-				\item Which is the fastest product?\\ %performance prediction
-					Which product has the smallest executable? %https://ieeexplore.ieee.org/document/9555247
+				\item Which product has the most lines of code? \mysource{\href{https://dl.acm.org/doi/10.1145/3307630.3342384}{ref}}
+				\item Which products have type errors? \mysource{\href{https://dl.acm.org/doi/10.1145/1868688.1868693}{ref}}
+				\item Which products violate specifications? \mysource{\href{https://dl.acm.org/doi/10.1145/2371401.2371404}{ref}}
+				\item Which products have unsafe data flows? \mysource{\href{https://dl.acm.org/doi/10.1145/2499370.2491976}{ref}}
+				\item Which is the fastest product? \mysource{\href{https://link.springer.com/article/10.1007/s10515-020-00273-8}{ref}}\\
+					Which product has the smallest binary? \mysource{\href{https://dl.acm.org/doi/10.1145/3546932.3546997}{ref}}
+				\item \ldots
 			\end{itemize}
 		}
 		\mydefinition{What is a Product-Line Analysis?}{
@@ -235,7 +236,7 @@
 		}
 		\mynote{}{
 			\begin{itemize}
-				\item $\alpha$ \emph{analyzes} the feature (e.g., compiles and verifies (part of) the component)
+				\item $\alpha$ \emph{analyzes} the feature (e.g., compiles and verifies the component)
 				\item $\sigma$ \emph{summarizes} the results (see product-based)
 			\end{itemize}
 		}
@@ -285,9 +286,10 @@
 		}
 		\myexample{Today's Examples}{
 			\begin{itemize}
-				\item analyzing feature mappings
-				\item analyzing variable code
+				\item analyzing \emph{feature mappings}
+				\item analyzing \emph{variable code}
 			\end{itemize}
+			$\Rightarrow$ here: only for \emph{conditional compilation}
 		}
 	\mynextcolumn
 		\centering\familybasedlego
