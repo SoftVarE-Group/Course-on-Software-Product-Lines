@@ -1,9 +1,10 @@
+\subsection{Hot Spots and Plug-Ins}
 \begin{frame}{Framework with Plug-Ins}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{Framework and Hot Spot TODO:cite}{
+		\mydefinition{Framework and Hot Spot \mysource{\fospl\mypages{80--81}}}{
 			A \emph{framework} is a set of classes that embodies an abstract design for solutions to a family of related problems, and supports reuse at a larger granularity than classes. A framework is open for \emph{extension} at explicit \emph{hot spots}.				
 		}
-		\mydefinition{Plug-In TODO:cite}{
+		\mydefinition{Plug-In \mysource{\fospl\mypages{80--81}}}{
 			A \emph{plug-in} extends hot spots of a [...] framework with custom behavior. A plug-in can be separately compiled and deployed.	
 		}
 		\mynote{}{
@@ -25,8 +26,7 @@
 	\end{mycolumns}
 \end{frame}
 
-
-
+\subsection{Preplanned Extensions}
 \begin{frame}{Real-World Example: Preplanned Bike Extensions}
 	\begin{mycolumns}[columns=4,T]
 		\centering\pic[width=\linewidth]{bike-extensionpoint1}
@@ -67,8 +67,8 @@
 	\end{mycolumns}
 \end{frame}
 
-
-\begin{frame}{Simple Java Example: A Family of Dialogs}
+\subsection{Basic Design Principles}
+\begin{frame}{Simple Java Example: A Family of Dialogs \mytitlesource{\fospl}}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\myexampletight{}{
 			\centering \pic[width=0.8\linewidth]{dialog1}
@@ -157,7 +157,7 @@ public class Ping extends JFrame {
 
 \begin{frame}[fragile]{Simple Java Example: A Family of Dialogs}
 	\begin{mycolumns}[columns=2,widths={50,50}]
-		\mynote{}{TODO: One line is ok}
+		\mynote{}{Plug-in implementation hidden from application.}
 \tiny
 \begin{codetight}{}
 public class Application extends JFrame {
@@ -229,7 +229,7 @@ public class CalcPlugin implements Plugin {
 
 \begin{frame}[fragile]{Simple Example: A Family of Dialogs}
 	\begin{mycolumns}[columns=2,widths={50,50}]
-		\mynote{}{TODO: One line is ok}
+		\mynote{}{Application implementation hidden from plug-in.}
 \tiny
 \begin{codetight}{}
 public class Application extends JFrame @implements InputProvider@ {
@@ -296,6 +296,7 @@ public class CalcPlugin implements Plugin {
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Plug-In Loading and Management}
 \begin{frame}{Plug-In Loading and Management}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mynote{Simple example vs.\ reality}{
@@ -372,6 +373,7 @@ public class Application {
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Frameworks in the Wild}
 \begin{frame}{Frameworks in the Wild: Eclipse}
 	\begin{mycolumns}[widths={70,30},animation=none]
 		\pic[width=\linewidth]{eclipse_overview}
@@ -396,18 +398,19 @@ public class Application {
 
 \begin{frame}{Frameworks in the Wild: Eclipse \mytitlesource{\featureide}}
 	\leftorright{
-		\includegraphics[width=\linewidth]{framework-with-plugins}
+		\pic[width=\linewidth]{framework-with-plugins}
 	}{
-		\includegraphics[width=\linewidth]{framework-a-plugin}
+		\pic[width=\linewidth]{framework-a-plugin}
 	}
 \end{frame}
 
 \begin{frame}{Frameworks in the Wild: Further Examples}
-	\begin{mycolumns}[widths={60,40},animation=none]
+	\begin{mycolumns}[widths={75,25},animation=none]
 		\myexample{}{
 			\begin{itemize}
 				\item Other IDEs (e.g. IntelliJ, ...)
-				\item Frontend frameworks (e.g., MacApp, Swing, SWT, MFC, ...)
+				\item Unit test frameworks (e.g., JUnit, ...)
+				\item Frontend frameworks (e.g., React, Angular ...)
 				\item Backend frameworks (e.g., Spring Boot, Ruby on Rails, Django, ...) 
 				\item Multimedia frameworks (e.g., DirectX, ...)
 				\item Raster/vector graphics editors (e.g., Adobe Photoshop, MS Visio, ...)
@@ -419,27 +422,27 @@ public class Application {
 			\end{itemize}
 		}		
 	\mynextcolumn
-		... TODO logos
+		~
 	\end{mycolumns}
 \end{frame}
 
-
+\subsection{Implementation of Product Lines}
 \begin{frame}{Framework-Based Implementation of Software Product Lines}
 	\begin{mycolumns}[widths={40,60},animation=none]
 		\myexample{Recap: Service-Based Implementation}{
-			\includegraphics[width=.23\linewidth,height=1.0cm]{lego_components} 
+			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.23\linewidth,height=1.0cm]{lego_orchestration}
+			\pic[width=.23\linewidth,height=1.0cm]{lego_orchestration}
 				\vspace*{\fill}
 					$=$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.3\linewidth,height=1.0cm]{lego_product}
+			\pic[width=.3\linewidth,height=1.0cm]{lego_product}
 		}		
 		\myexample{Still needs some specification of ``composition'' (cf.\ orchestration vs.\ choreography)}{
 			\centering
-			\includegraphics[width=.65\linewidth,height=2.5cm]{lego_orchestration}				
+			\pic[width=.65\linewidth,height=2.5cm]{lego_orchestration}				
 		}				
 	\mynextcolumn		
 		\mydefinition{Same Idea}{
@@ -449,15 +452,15 @@ public class Application {
 			\end{itemize}
 		}	
 		\myexample{}{
-			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_product} 
+			\pic[width=.31\linewidth,height=1.75cm]{lego_product} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_components}
+			\pic[width=.27\linewidth,height=1.75cm]{lego_components}
 				\vspace*{\fill}
 					$=$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.35\linewidth,height=1.75cm]{lego_product}
+			\pic[width=.31\linewidth,height=1.75cm]{lego_product}
 		}	
 		\mynote{}{
 			\begin{itemize}
@@ -536,6 +539,7 @@ public class ColorPlugin implements GraphPlugin {
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Discussion}
 \begin{frame}{Challenges and Problems }
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\myexample{}{

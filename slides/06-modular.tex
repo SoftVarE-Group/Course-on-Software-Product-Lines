@@ -19,11 +19,17 @@
 \input{content/06a-components}
 
 \lessonslearned{
-	\item \ldots
+	\item Modularity = information hiding and data encapsulation
+	\item Components foster a modular software architecture and design
+	\item Reuse within and beyond product lines
+	\item No automated product derivation, glue code is necessary
 }{
-	\item \ldots
+	\item \szyperski
+	\item \fospl, Chapter 4.4
 }{
-	\ldots
+	\item Consider the feature traceability problem in a component-based implementation. How would you localize a feature? Does it still suffer from scattering, tangling and replication? 
+	\item We have introduced a simple color component which we reused in our graph implementation. Could we consider the graph library itself as another component? What about its reusability?
+	\item How can product-line engineering help to find the right trade-offs regarding the library scaling problem?
 }
 
 \sectionend
@@ -33,11 +39,15 @@
 \input{content/06b-services}
 
 \lessonslearned{
-	\item \ldots
+	\item Services are another kind of module implemented and operated independently of each other 
+	\item Microservices have a clear philosophy regarding their size, driven by organizational constraints
+	\item Reuse within and beyond product lines
+	\item No automated product derivation, orchestration or choreography is necessary
 }{
-	\item \ldots
+	\item \fospl, Chapter 4.4
 }{
 	\item We have talked a lot about promises of microservices. Do you also see any drawbacks?
+	\item In a component-based product-line implementation, practitioners often rely on clone-and-own for glue code. How could we handle variability in service orchestrations?
 }
 
 \sectionend
@@ -47,11 +57,18 @@
 \input{content/06c-frameworks}
 
 \lessonslearned{
-	\item \ldots
+	\item A framework is open to extension by integrating plug-ins at explicit hot spots.
+	\item The framework takes full control over all plug-ins (load-time and run-time).
+	\item Enables full automation but requires preplanning effort.
 }{
-	\item \ldots
+	\item \fospl, Chapter 4.3
 }{
-	\ldots
+	\item Remember two fundamental principles in object-oriented programming; how do they relate to frameworks with plug-ins?
+	\begin{itemize}
+		\item Interface Segregation Principle: ``Clients should not be forced to depend upon interfaces that they do not use''.
+		\item Open-Closed Principle: ``Classes should be open for extension but closed for modification''.
+	\end{itemize}
+	\item In general: Where are the limitations of a modular approach?
 }
 
 \input{template/footer}

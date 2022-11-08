@@ -1,8 +1,4 @@
-\subsection{Services vs. Components}
-\subsection{Microservices vs. Services}
-
-\subsection{(German Slides on Microservices)}
-
+\subsection{(Micro-)Services}
 \begin{frame}{(Micro-)Services}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{(Micro-)Service}{
@@ -19,6 +15,7 @@
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Services vs. Components}
 \begin{frame}{Services vs.\ Components}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Component}{
@@ -41,10 +38,12 @@
 	}
 \end{frame}
 
+\subsection{Microservice Architectures}
 \begin{frame}{Microservice Architecture: Motivation}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mynote{Remember: The Library Scaling Problem}{
-			TODO			
+			\centering
+			\pic[width=.95\linewidth]{tangram}			
 		}
 	\mynextcolumn		
 		\mynote{How small is a Microservice?}{
@@ -73,7 +72,7 @@
 	\mynextcolumn		
 		\mynote{Consequences}{
 			\begin{itemize}
-				\item Microservices are supposed to be split along business capabilities (e.g., TODO) instead of technical concerns (e.g., TODO)
+				\item Microservices are supposed to be split along business capabilities (e.g., purchase, sale, ...) instead of technical concerns (e.g., UI, persistence, ...)
 				\item Each microservice is built (full stack) {\em and} operated by a small agile team that takes over full responsibility (cf. DevOps) 
 			\end{itemize}
 		}
@@ -84,86 +83,6 @@
 			\mycite{Every team should be small enough that it can be fed with two pizzas.}{\href{https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success}{Jeff Bezos, 2018}}
 		}
 	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{Beispiel: Microservices bei Netflix}
-	\large\bigskip\bigskip\bigskip\bigskip\bigskip
-	\begin{center}
-		\begin{tabular}{rl}
-			100s & of microservices\\
-			1,000s & of daily production changes\\
-			10,000s & of instances\\
-			100,000s & of customer interactions per minute\\
-			1,000,000s & of customers\\
-			%1,000,000,000s & of metrics\\
-			10,000,000,000\phantom{s} & hours streamed\\
-			10s & of operations engineers
-		\end{tabular}
-	\end{center}
-	
-	\bigskip\bigskip\bigskip\bigskip\hfill\tiny Quelle: \href{https://fr.slideshare.net/AmazonWebServices/dvo203-the-life-of-a-netflix-engineer-using-37-of-the-internet}{https://fr.slideshare.net/AmazonWebServices/dvo203-the-life-of-a-netflix-engineer-using-37-of-the-internet}
-\end{frame}
-
-\begin{frame}{Vorteile von Microservices}
-	\begin{itemize}
-		\item Heterogenität: einfache Anwendung von neuen Technologien/Programmiersprachen
-		\item Continuous Integration/Deployment: bei Änderungen müssen nur einzelne Microservices ausgeliefert oder bei Fehlfunktionen zurückgesetzt werden (Rollback)
-		\item Skalierbarkeit: Anzahl von Instanzen wählbar nach Rechenaufwand pro Microservice
-		\pause
-		\item Effizienz und Performance: Konfiguration von Ausführungsumgebung kann pro Microservice optimiert werden
-		\item Wiederverwendung: Microservices können in beliebig vielen anderen Microservices verwendet werden
-		\item Modernisierung: Ersetzung oder Entfernung einfacher möglich
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Nachteile von Microservices}
-	\begin{itemize}
-		\item Latenz im Netzwerk größer als die von gemeinsam genutztem Arbeitsspeicher
-		\item Netzwerksecurity erfordert Mehraufwand für Verschlüsselung und Authentifizierung
-		\item Integrationstest kann sehr aufwändig werden
-		\pause
-		\item Verschieben von Code kann neue Programmiersprache erfordern
-		\item Änderungen an Teams schwierig durch Heterogenität
-		\item Ggfs. zu viele Microservices
-		\item Datenkonsistenz schwierig herzustellen wenn mehrere Microservices verändert werden
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Vergleich mit Serviceorientierten Architekturen}
-	\begin{columns}[t]
-		\column{.35\linewidth}
-		Gemeinsamkeiten
-		\begin{itemize}
-			\item Services werden im Betriebsystem als eigenständige Prozess angesehen
-			\item Kommunikation über Netzwerke
-		\end{itemize}
-		\column{.55\linewidth}
-		Unterschiede
-		\begin{itemize}
-			\item Microservices sind ein spezifischer Ansatz für SOA
-			\item Microservices sind meist kleiner als Services (feingranulares SOA)
-			\item Orchestrierung: SOA vernetzt sich über zentralen Service
-			\item Choreographie: Microservices kommunizieren durch Publish-Subscribe-Prinzip
-		\end{itemize}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Vergleich mit Komponenten/Bibliotheken/Plugins}
-	\begin{columns}[t]
-		\column{.35\linewidth}
-		Gemeinsamkeiten
-		\begin{itemize}
-			\item Modularisierung
-			\item Wiederverwendung
-		\end{itemize}
-		\column{.55\linewidth}
-		Unterschiede
-		\begin{itemize}
-			\item Microservices unterstützen Heterogenität (z.B. verschiedene Programmiersprachen)
-			\item Microservices haben keinen gemeinsamen Arbeitsspeicher
-			\item Update von Microservices erfordert keinen Neustart der Gesamtapplikation
-		\end{itemize}
-	\end{columns}
 \end{frame}
 
 \begin{frame}{Traditional Promises of Microservices}
@@ -187,22 +106,23 @@
 	\end{mycolumns}	
 \end{frame}
 
+\subsection{Implementation of Product Lines}
 \begin{frame}{Service-Oriented Implementation of Software Product Lines}
 	\begin{mycolumns}[widths={40,60},animation=none]
 		\myexample{Recap: Component-Based Implementation}{
-			\includegraphics[width=.24\linewidth,height=1.0cm]{lego_components} 
+			\pic[width=.24\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.24\linewidth,height=1.0cm]{lego_glue}
+			\pic[width=.24\linewidth,height=1.0cm]{lego_glue}
 				\vspace*{\fill}
 					$=$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.3\linewidth,height=1.0cm]{lego_product}
+			\pic[width=.3\linewidth,height=1.0cm]{lego_product}
 		}		
 		\myexample{Plenty of Glue Code}{
 			\centering
-			\includegraphics[width=.65\linewidth,height=2.5cm]{lego_glue}				
+			\pic[width=.65\linewidth,height=2.5cm]{lego_glue}				
 		}				
 	\mynextcolumn
 		\mydefinition{Same Idea}{
@@ -215,19 +135,20 @@
 			``Standardized'' service composition instead of highly individual glue code.
 		}	
 		\myexample{}{
-			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_components} 
+			\pic[width=.27\linewidth,height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_orchestration}
+			\pic[width=.27\linewidth,height=1.75cm]{lego_orchestration}
 				\vspace*{\fill}
 					$=$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.35\linewidth,height=1.75cm]{lego_product}
+			\pic[width=.35\linewidth,height=1.75cm]{lego_product}
 		}	
 	\end{mycolumns}	
 \end{frame}
 
+\subsection{Service Composition}
 \begin{frame}{Service ``Composition''}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Orchestration}{

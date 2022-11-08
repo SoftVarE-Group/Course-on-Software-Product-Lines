@@ -87,6 +87,7 @@
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Modularity}
 \begin{frame}{Modularity}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Modularization}{
@@ -106,11 +107,11 @@
 		\vspace{-1cm}
 		\myexampletight{High Coupling, Low Cohesion}{
 			\centering
-			\includegraphics[width=0.5\textwidth]{cohesion_coupling_1}
+			\pic[width=0.5\textwidth]{cohesion_coupling_1}
 		}
 		\myexampletight{Low Coupling, High Cohesion}{
 			\centering
-			\includegraphics[width=0.5\textwidth]{cohesion_coupling_2}
+			\pic[width=0.5\textwidth]{cohesion_coupling_2}
 		}
 	\end{mycolumns}
 	\begin{mycolumns}[widths={50,50},animation=none]	
@@ -138,11 +139,12 @@
 			\end{itemize}
 		}
 		\myexampletight{}{
-			\includegraphics[width=\linewidth,page=18,trim=5 115 5 5,clip]{lego} 
+			\pic[width=\linewidth,page=18,trim=5 115 5 5,clip]{lego} 
 		}
 	\end{mycolumns}	
 \end{frame}
 
+\subsection{Software Components}
 \begin{frame}{Components}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Component \mysource{\szyperski}}{			
@@ -174,6 +176,7 @@
 	\end{mycolumns}	
 \end{frame}
 
+\subsection{Components vs. Objects/Classes}
 \begin{frame}{Components vs. Objects/Classes}
 	\begin{mycolumns}[widths={40,60},animation=none]
 		\mynote{Commonalities}{			
@@ -196,7 +199,7 @@
 	\end{mycolumns}	
 \end{frame}
 
-\begin{frame}[fragile]{Example: A Color Component}
+\begin{frame}[fragile]{Example: A Color Component \mytitlesource{\fospl}}
 	\begin{mycolumns}[columns=2,widths={40,60}]
 			\myexample{A Reusable Component}{
 				\begin{itemize}
@@ -286,7 +289,7 @@ public class Node {
 	}
 \end{frame}
 
-
+\subsection{Implementation of Product Lines}
 \begin{frame}{Component-Based Implementation of Software Product Lines}
 	\begin{mycolumns}[widths={40,60},animation=none]
 		\mydefinition{General Idea}{					
@@ -296,23 +299,23 @@ public class Node {
 			\end{itemize}
 		}
 		\myexample{Vision}{
-			\includegraphics[width=.38\linewidth,height=1.75cm]{lego_components} 
+			\pic[width=.38\linewidth,height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$\Longrightarrow$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.47\linewidth,height=1.75cm]{lego_product}
+			\pic[width=.47\linewidth,height=1.75cm]{lego_product}
 		}
 	\mynextcolumn
 		\myexample{Reality}{
-			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_components} 
+			\pic[width=.27\linewidth,height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.27\linewidth,height=1.75cm]{lego_glue}
+			\pic[width=.27\linewidth,height=1.75cm]{lego_glue}
 				\vspace*{\fill}
 					$=$ 
 				\vspace*{\fill}	
-			\includegraphics[width=.35\linewidth,height=1.75cm]{lego_product}
+			\pic[width=.35\linewidth,height=1.75cm]{lego_product}
 		}			
 		\mynote{Glue Code and Customization}{
 			\begin{itemize}
@@ -323,14 +326,25 @@ public class Node {
 	\end{mycolumns}	
 \end{frame}
 
-\begin{frame}{The Library Scaling Problem}
-TODO
-\end{frame}
-
-\subsection{Recap: UML Component Diagram}
-\subsection{Vision: Component Markets}
 \subsection{The Library Scaling Problem}
-\subsection{Components in Java}
-\subsection{Components for Features}
-\subsection{Discussion}
-
+\begin{frame}{The Library Scaling Problem}
+	\begin{mycolumns}[widths={40,60},animation=none]
+		\myexampletight{Decomposition \& Reuse}{
+			\centering
+			\pic[width=.95\linewidth]{tangram}
+		}
+	\mynextcolumn
+		\mydefinition{What is the optimal size of a component?}{
+			\begin{itemize}
+				\item Large components (vertical scaling): Typically not widely reusable
+				\item Small components (horizontal scaling): Limited payoff for component integrators
+			\end{itemize}
+		}
+		\mynote{Practical Compromise}{
+			\begin{itemize}
+				\item Mostly vertically scaled (i.e., high payoff) components within a few important, narrow domains (e.g., user interface construction systems).
+				\item In other words: There is no general market for arbitrary components, but a few specialized market segments.
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
