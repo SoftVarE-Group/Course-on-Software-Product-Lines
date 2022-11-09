@@ -97,6 +97,7 @@
 				\item Precisely defined, minimal interfaces (low coupling)
 			\end{itemize}						
 		}
+		\pause
 		\mydefinition{Coupling and Cohesion}{
 			\begin{itemize}
 				\item \emph{Cohesion}: Measure of how well the parts of a module work together (intra-module communication).
@@ -130,6 +131,7 @@
 				\item Modular decomposition = divide and conquer
 			\end{itemize}						
 		}
+		\pause
 	\mynextcolumn
 		\mynote{Modularization and Software Product Lines}{
 			\begin{itemize}
@@ -169,10 +171,12 @@
 				\item May stem from third-party vendors (make-or-by-decisions, markets for components).
 			\end{itemize}			
 		}
+		\pause
 		\myexampletight{UML Component Diagrams}{
 			\centering
 			\pic[width=\linewidth]{component_diagram_uml.png}
-		}	
+		}
+		\pause
 	\end{mycolumns}	
 \end{frame}
 
@@ -188,6 +192,7 @@
 				\item etc.				
 			\end{itemize}
 		}
+		\pause
 	\mynextcolumn
 		\mynote{Differences}{
 			\begin{itemize}
@@ -236,7 +241,7 @@ class ColorMapping { ~/* ... /*~ }
 \end{frame}
 
 \begin{frame}[fragile]{Example: A Color Component}
-	\begin{mycolumns}[columns=2,widths={60,40}]
+	\begin{mycolumns}[columns=2,widths={60,40},animation=none]
 {\small
 \begin{codetight}{}
 public class Graph {
@@ -291,7 +296,7 @@ public class Node {
 
 \subsection{Implementation of Product Lines}
 \begin{frame}{Component-Based Implementation of Software Product Lines}
-	\begin{mycolumns}[widths={40,60},animation=none]
+	\begin{mycolumns}[widths={40,60}]
 		\mydefinition{General Idea}{					
 			\begin{itemize}
 				\item Every feature is implemented by a dedicated component.
@@ -340,6 +345,7 @@ public class Node {
 				\item Small components (horizontal scaling): Limited payoff for component integrators
 			\end{itemize}
 		}
+		\pause
 		\mynote{Practical Compromise}{
 			\begin{itemize}
 				\item Mostly vertically scaled (i.e., high payoff) components within a few important, narrow domains (e.g., user interface construction systems).

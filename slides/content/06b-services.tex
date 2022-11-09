@@ -33,6 +33,7 @@
 		}
 	\end{mycolumns}
 	~
+	\pause
 	\mynote{}{
 		As a consequence, each (micro-)service can be implemented using different technology stacks, whereas components are bound to the same technology (given by container or middleware).
 	}
@@ -46,12 +47,14 @@
 			\pic[width=.95\linewidth]{tangram}			
 		}
 	\mynextcolumn		
+		\pause
 		\mynote{How small is a Microservice?}{
 			\begin{itemize}
 				\item Components are very unspecific of how to deal with the general requirement ``not too small but not too big''.
-				\item On the contrary, there is a clear philosophy behind microservice architectures, largely driven by organizational constraints wrt.\ agile teams and continuous delivery
+				\item On the contrary, there is a clear philosophy behind microservice architectures, largely driven by organizational constraints wrt.\ agile teams and continuous delivery.
 			\end{itemize}
 		}
+		\pause
 		\mydefinition{}{
 			\mycite{If the codebase is too big to be \emph{managed by a small team}, looking to break it down is very sensible. [...] The smaller the service, the more you \emph{maximize the benefits and downsides} of microservice architecture.}{Sam Newman, 2015}% [...] The golden rule: can you make a change to a service and deploy it by itself without changing anything else?
 		}		
@@ -70,15 +73,18 @@
 			\mycite{You build it, you run it.}{Amazon CTO Werner Vogel, 2006}			
 		}				
 	\mynextcolumn		
+		\pause
 		\mynote{Consequences}{
 			\begin{itemize}
 				\item Microservices are supposed to be split along business capabilities (e.g., purchase, sale, ...) instead of technical concerns (e.g., UI, persistence, ...)
 				\item Each microservice is built (full stack) {\em and} operated by a small agile team that takes over full responsibility (cf. DevOps) 
 			\end{itemize}
 		}
+		\pause
 		\mydefinition{}{
 			\mycite{[A microservice] could be re-written in two weeks.}{\href{https://www.rea-group.com/blog/micro-services-what-even-are-they/}{Jon Eaves, 2014}}
 		}
+		\pause
 		\mydefinition{}{
 			\mycite{Every team should be small enough that it can be fed with two pizzas.}{\href{https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success}{Jeff Bezos, 2018}}
 		}
@@ -98,9 +104,11 @@
 			\end{itemize}
 		}
 	\mynextcolumn
+		\pause
 		\myexampletight{The Microservice ``Hype''}{
 			\pic[width=\linewidth]{microservices}\\
 			\vspace{0.3cm}
+			\pause
 			\pic[width=\linewidth]{microservices-comparison}
 		}
 	\end{mycolumns}	
@@ -125,12 +133,14 @@
 			\pic[width=.65\linewidth,height=2.5cm]{lego_glue}				
 		}				
 	\mynextcolumn
+		\pause
 		\mydefinition{Same Idea}{
 			\begin{itemize}
 				\item Features are implemented as services.
 				\item Feature selection determines the services to be composed.
 			\end{itemize}
 		}	
+		\pause
 		\mynote{However}{
 			``Standardized'' service composition instead of highly individual glue code.
 		}	
@@ -150,7 +160,7 @@
 
 \subsection{Service Composition}
 \begin{frame}{Service ``Composition''}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={50,50}]
 		\mydefinition{Orchestration}{
 			Description of an executable (business-)process as a combination of services (centralized perspective, e.g., using WS-BPEL).
 		}
