@@ -1,6 +1,6 @@
 \subsection{Hot Spots and Plug-Ins}
 \begin{frame}{Framework with Plug-Ins}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={50,50}]
 		\mydefinition{Framework and Hot Spot \mysource{\fospl\mypages{80--81}}}{
 			A \emph{framework} is a set of classes that embodies an abstract design for solutions to a family of related problems, and supports reuse at a larger granularity than classes. A framework is open for \emph{extension} at explicit \emph{hot spots}.				
 		}
@@ -13,7 +13,7 @@
 	\mynextcolumn
 		\vspace{-0.7cm}
 		\mynote{Inversion of Control}{
-			Hollywood principle: ``Don't call us, we'll call you''\\
+			Hollywood principle: ``Don't call us, we call you''\\
 			\centering 
 			\pic[width=0.75\linewidth]{library_vs_framework}
 		}
@@ -69,7 +69,7 @@
 
 \subsection{Basic Design Principles}
 \begin{frame}{Simple Java Example: A Family of Dialogs \mytitlesource{\fospl}}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={50,50}]
 		\myexampletight{}{
 			\centering \pic[width=0.8\linewidth]{dialog1}
 		}
@@ -298,7 +298,7 @@ public class CalcPlugin implements Plugin {
 
 \subsection{Plug-In Loading and Management}
 \begin{frame}{Plug-In Loading and Management}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={50,50}]
 		\mynote{Simple example vs.\ reality}{
 			Simplification in our previous example:
 			\begin{itemize}
@@ -387,6 +387,7 @@ public class Application {
 					(e.g., syntax highlighting, compiler, etc.)
 			\end{itemize}
 		}
+		\pause
 		\mynote{Specifically in Eclipse}{
 			\begin{itemize}
 				\item Actually a set of (recursively nested) frameworks
@@ -445,14 +446,19 @@ public class Application {
 			\pic[width=.65\linewidth,height=2.5cm]{lego_orchestration}				
 		}				
 	\mynextcolumn		
+		\pause
 		\mydefinition{Same Idea}{
 			\begin{itemize}
 				\item Features are implemented by different plug-ins
 				\item Feature selection determines the plug-ins to be loaded and registered 
 			\end{itemize}
-		}	
+		}
+		\pause
+		\mynote{}{
+				However: Neither glue code nor explicit service composition required.
+		}
 		\myexample{}{
-			\pic[width=.31\linewidth,height=1.75cm]{lego_product} 
+			\pic[width=.31\linewidth,height=1.75cm]{lego_product_partial} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
@@ -462,11 +468,9 @@ public class Application {
 				\vspace*{\fill}	
 			\pic[width=.31\linewidth,height=1.75cm]{lego_product}
 		}	
+		\pause
 		\mynote{}{
-			\begin{itemize}
-				\item Neither glue code nor explicit service composition required (TODO Räder).
-				\item But: Full automation comes at a price (s.\ preplanning problem).
-			\end{itemize}
+				But: Full automation comes at a price (s.\ preplanning problem).
 		}			
 	\end{mycolumns}	
 \end{frame}
@@ -540,8 +544,8 @@ public class ColorPlugin implements GraphPlugin {
 \end{frame}
 
 \subsection{Discussion}
-\begin{frame}{Challenges and Problems }
-	\begin{mycolumns}[widths={50,50},animation=none]
+\begin{frame}{Challenges and Problems}
+	\begin{mycolumns}[widths={50,50}]
 		\myexample{}{
 			In our example, we can observe that:
 			\begin{itemize}
