@@ -1,0 +1,319 @@
+\subsection{Recap: Object-Oriented Key Concepts}
+
+\begin{frame}{Recap: Object-Oriented Key Concepts}
+	\leftorright{
+		\mydefinition{Encapsulation}{Abstraction \& Information Hiding}		
+		\mydefinition{Composition}{Nested objects}	
+		\mydefinition{Message Passing}{Delegating responsibility}
+		\mydefinition{Distribution of Responsibility}{Separation of concerns}	
+		\mydefinition{Inheritance}{Conceptual hierarchy, polymorphism, reuse}
+	}{
+		\pic[width=0.8\linewidth]{oo-concepts-illustration} % was illustriert was? warum ist square kein rectangle?
+	}
+\end{frame}
+
+\begin{frame}{Recap: Design Patterns (for Variability) \mytitlesource{\gof}}
+	\leftorright{
+		\vspace{-10mm}
+		\mynote{Design patterns \deutsch{Entwurfsmuster}}{
+			\begin{itemize}
+				\item Document common solutions to concrete yet frequently occurring design problems.
+				\item Suggest a concrete implementation for a specific object-oriented programming problem.
+			\end{itemize}
+		}		
+		\mynote{Design patterns for variability}{
+			\begin{itemize}
+				\item Many Gang of Four (GoF) design patterns for designing software around stable abstractions and interchangeable (i.e., variable) parts, e.g.
+				\begin{itemize}
+					\item Template Method
+					\item Abstract Factory
+					\item Decorator
+				\end{itemize}
+			\end{itemize}
+		}				
+	}{
+		\pic[width=\linewidth]{gof}
+	}
+\end{frame}
+
+\begin{frame}{Recap: Modularity - Components, Services, and Frameworks}
+	\begin{mycolumns}[widths={40,60},animation=none]
+		\myexample{Component-/Service-Based SPLs}{
+			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
+				\vspace*{\fill}
+					$+$ 
+				\vspace*{\fill}	
+			\pic[width=.23\linewidth,height=1.0cm]{lego_orchestration}
+				\vspace*{\fill}
+					$=$ 
+				\vspace*{\fill}	
+			\pic[width=.3\linewidth,height=1.0cm]{lego_product}
+		}		
+		\myexample{Specification of ``composition'' (glue code, orchestration)}{
+			\centering
+			\pic[width=.45\linewidth,height=2.5cm]{lego_orchestration}				
+		}				
+	\mynextcolumn		
+		\myexample{Framework-Based SPLs}{
+			\pic[width=.31\linewidth,height=1.75cm]{lego_product_partial} 
+				\vspace*{\fill}
+					$+$ 
+				\vspace*{\fill}	
+			\pic[width=.27\linewidth,height=1.75cm]{lego_components}
+				\vspace*{\fill}
+					$=$ 
+				\vspace*{\fill}	
+			\pic[width=.31\linewidth,height=1.75cm]{lego_product}
+		}	
+		\mynote{}{
+			Neither glue code nor service composition required.
+		}			
+	\end{mycolumns}	
+\end{frame}
+
+\begin{frame}[fragile]{Recap: Extending Basic Graphs by Plug-Ins?}
+	\tiny\begin{mycolumns}[columns=2,widths={50,50}]
+\begin{codetight}{}
+public class Graph {
+	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
+	// ...	
+	@public void registerPlugin(GraphPlugin p){
+		plugins.add(p);
+	}@
+	public void addNode(int id, Color c){
+		Node n = new Node(id);
+		@notifyAdd(n, c);@
+		nodes.add(n);
+	}
+	public void print() {
+		for (Node n : nodes) {
+			@notifyPrint(n);@
+			// ...
+		}
+		// ...
+	}
+	@private void notifyAdd(Node n, Color c) {
+		for (GraphPlugin p : plugins) {
+			p.aboutToAdd(n, c);
+		}
+	}
+	private void notifyPrint(Node n) {
+		for (GraphPlugin p : plugins) {
+			p.aboutToPrint(n);
+		}
+	}@
+	// ...
+}
+\end{codetight}
+		\mynextcolumn
+\begin{codetight}{}
+public interface GraphPlugin {
+	public void aboutToAdd(Node n, Color c);
+	public void aboutToAdd(Edge e, Weight w);
+	public void aboutToPrint(Node n);
+	public void aboutToPrint(Edge e);
+}
+\end{codetight}
+\begin{codetight}{}
+public class ColorPlugin implements GraphPlugin {
+	private Map<Node, Color> map = new HashMap<Node, Color>();
+
+	public void aboutToAdd(Node n, Color c) {
+		map.put(n, c);
+	}
+	
+	public void aboutToAdd(Edge e, Weight w) {
+		~// do nothing~
+	}
+	
+	public void aboutToPrint(Node n) {
+		Color c = map.get(n);
+		Color.setDisplayColor(c);
+	}
+	
+	public void aboutToPrint(Edge e) {
+		~// do nothing~
+	}
+}
+\end{codetight}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Recap: Challenges and Problems}
+	\begin{mycolumns}[widths={50,50}]
+		\myexample{}{
+			In our example, we can observe that:
+			\begin{itemize}
+				\item There are lots of empty methods in the ColorPlugin 
+				\item The Framework consults all registered plug-ins before printing a node or edge
+			\end{itemize}
+		}		
+		\mydefinition{General Challenge: Cross-cutting Concerns}{
+			Implementing cross-cutting concerns as plug-ins 
+			\begin{itemize}				
+				\item typically leads to huge interfaces, large parts of which are irrelevant for a dedicated plug-in 
+				\item causes lots of communication overhead between plug-ins and framework
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexample{}{
+			If we were not familiar with our graph library, would we anticipate that:
+			\begin{itemize}
+				\item Colors and weights should be part of the Plugin interface?
+				\item Every plug-in needs to be notified that the framework is about to print a node or edge? 
+			\end{itemize}
+		}
+		\mydefinition{Generally known as Preplanning Problem}{
+			\begin{itemize}
+				\item Hard to identify and foresee the relevant hot spots and nature of extensions
+				\item Developing a framework needs lots of expertise and excellent domain knowledge 
+			\end{itemize}
+		}	
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Preplanning Problem}
+
+\begin{frame}{Preplanning Problem}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mynote{Components, Services, and Frameworks}{
+			Extensions are not possible ad-hoc, but must be foreseen and planned in advance:
+			\begin{itemize}
+				\item Frameworks: Hot spots / extension points
+				\item Components/services: Provided and required interfaces 
+			\end{itemize}
+			\emph{$\Rightarrow$ No modular extension without a suitable extension point / interface!}
+		}
+	\mynextcolumn
+		\mynote{And classical OO language concepts?}{
+			Subtyping and polymorphism allow for ad-hoc extensions to some extent, but:
+			\begin{itemize}
+				\item Often, client code and/or basic implementation need to be adapted, too (non-modular)
+				\item Limited flexibility of inheritance hierarchies (no ``mix and match'' supporting arbitrary feature combinations)
+			\end{itemize}
+			\emph{$\Rightarrow$ No variable extension without loosing modularity!}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Crosscutting Concerns}
+
+\begin{frame}{Crosscutting Concerns}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{Concern \mysource{\fospl\mypages{55}}}{
+			A concern is an area of interest or focus in a system, and features are the concerns of primary interest in product-line engineering.
+		}
+	\mynextcolumn
+		\mydefinition{Crosscutting (Concern) \mysource{\fospl\mypages{55}}}{
+			Crosscutting is a structural relationship between the representations of two concerns. 
+			It is an alternative to hierarchical and block structure.
+		}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Tyranny of the Dominant Decomposition}
+
+\begin{frame}{Tyranny of the Dominant Decomposition}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{Tyranny of the Dominant Decomposition}{
+			\begin{itemize}
+				\item Many concerns can be modularized, but not always at the same time.
+				\item Developers choose a decomposition, but some other concerns cut across.
+				\item Simultaneous modularization along different dimensions is not possible.
+			\end{itemize}
+		}
+	\mynextcolumn
+		\mynote{}{
+			Crosscutting concerns are inherently difficult to separate using traditional mechanisms.
+			\begin{itemize}
+				\item Logging: Each time a method is called.
+				\item Chaching/Pooling: Each time an object is created.
+				\item Synchronization/Locking: Extension of many methods with lock/unlock calls.
+			\end{itemize}
+			Features in a software product line are often crosscutting (e.g., color and weight in our graph example).
+		}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Another Example: Arithmetic Expressions}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\myexample{}{
+			\begin{itemize}
+				\item Arithemtic expressions are stored in a tree structure.
+				\item Terms (i.e., sub-trees) can be evaluated and printed.
+			\end{itemize}
+		}
+		\mynote{Question}{
+			How to separate data structures and operations such that both can be extended independently of each other?
+		}
+	\mynextcolumn
+		\myexampletight{}{
+			\pic[width=0.7\linewidth]{expressions}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Arithmetic Expressions - Data-centric Implementation}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{Implementation Variant 1: Data-centric}{
+			\begin{itemize}
+				\item Recursive class structure (composite pattern)
+				\item For each operation (eval, print, ...) there is a dedicated method in each class (Number, Plus, ...) 				
+			\end{itemize}
+		}
+		\mynote{Terms are modular, but...}{
+			\begin{itemize}
+				\item New operations, e.g. drawTree or simplify, cannot simply be added
+				\item All existing classes must be adjusted!
+				\item Operations cut across the expressions.
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexampletight{}{
+			\pic[width=\linewidth]{data_centered}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Arithmetic Expressions - Operation-centric Implementation}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mydefinition{Implementation Variant 2: Operation-centric}{
+			\begin{itemize}
+				\item Just a single accept method per class (visitor pattern).
+				\item Each operation is implemented by a dedicated visitor.				
+			\end{itemize}
+		}
+		\mynote{Operations are modular, but...}{
+			\begin{itemize}
+				\item New expressions, e.g. Min or Power, cannot simply be added
+				\item For each new class, all visitor classes must be adjusted
+				\item Expressions cut across operations
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexampletight{}{
+			\pic[width=\linewidth]{method_centered}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{Lessons Learned from the Simple Example}
+	\mynote{}{
+		Hardly impossible to modularize expressions and operations at the same time!
+	}
+	\begin{mycolumns}[widths={50,50},animation=none]
+		\mynote{Data-centric approach}{
+			\begin{itemize}
+				\item New expressions can be added directly: modular.
+				\item New operations must be added to all classes: not modular.
+			\end{itemize}
+		}
+	\mynextcolumn
+		\mynote{Method-centric approach}{
+			\begin{itemize}
+				\item New operations can be added as another visitor: modular.
+				\item For new expressions, all existing visitors must be extended: not modular.
+			\end{itemize}
+		}			
+	\end{mycolumns}
+\end{frame}

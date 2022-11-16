@@ -8,71 +8,84 @@
 \input{template/lecture}
 
 \subtitle{7. Languages for Features}
-\author{Thomas Thüm}
+\author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
 
 \begin{document}
 
 \input{template/header}
 
-\section{Limits of Object-Oriented Programming}
+\section{Limits of Object-Orientation}
 % of Classical Programming Paradigms
 % of Teachniques for Application Software
 
-\subsection{Expression Problem? Preplanning? Tyrany}
-\subsection{Multiple Inheritance}
-\subsection{Mixins}
+%\subsection{Expression Problem? Preplanning? Tyrany}
+%\subsection{Multiple Inheritance}
+%\subsection{Mixins}
 %\subsection{Design Patterns}
-\subsection{Default Methods}
-\subsection{\ldots}
+%\subsection{Default Methods}
+%\subsection{\ldots}
 
-%\input{content/missing}
+\input{content/07a-limitations-oop}
 
 \lessonslearned{
-	\item \ldots
+	\item Important problems of previous approaches
+	\begin{itemize}
+		\item Inflexible inheritance hierarchies (especially with runtime variability, frameworks, components, services)
+		\item Feature traceability (especially with runtime variability, branches, build systems, preprocessors)	
+		\item Preplanning problem (esp. with frameworks, components, services)
+		\item Cross-cutting issues (esp. with frameworks, components, services)
+	\end{itemize}
 }{
-	\item \ldots
+	\item s.\ previous lectures
 }{
-	\ldots
+	Looking at our graph implementation serving as running example throughout the course: 
+	\begin{itemize}
+		\item Which concern is the dominant one regarding modular decomposition? %data structures
+		\item What are crosscutting concerns? %color, weight, ...
+		\item Could you rewrite the design to come up with a different decomposition?
+	\end{itemize}
 }
 
 \sectionend
 
 \section{Feature-Oriented Programming}
 
-\subsection{Motivation}
-% Feature Traceability, Crosscutting Concerns, Preplanning Problem, Unflexible Inheritance Hierarchies
-\subsection{Feature-Oriented Programming}
-% idea, collaborations, roles, feature modules
-\subsection{Feature Composition}
-% with FeatureHouse, AHEAD?, FeatureC++, different realizations (mixins, jampack)?
-\subsection{Principle of Uniformity}
-% 
-
-\subsection{Delta-Oriented Programming}
+%\subsection{Delta-Oriented Programming}
 % see spl07b.tex in old Latex slides (slides created by Thomas Thuem)
 
-%\input{content/missing}
+\input{content/07b-fop}
 
 \lessonslearned{
-	\item \ldots
+	\item TODO
 }{
-	\item \ldots
+	\item Batory et al.: Scaling Step-Wise Refinement. IEEE Transactions on Software Engineering, 30(6), 2004.
+	\item Apel et al.: Language-Independent and Automated Software Composition: The FeatureHouse Experience. IEEE TSE, 39(1), 2013.
+	\item \fospl, Chapter 6.1
+	\item \featureide, Part 4
 }{
-	\ldots
+	\item Why is class refinement in FOP different from inheritance in OOP, although it looks very similar?
+	\item To some extent, FOP can be considered as static counterpart to the Decorator design pattern in OOP. Why?
+	\item Consider the composition operator in FOP and the merge operator of traditional version control systems. Which are the major differences?
+	\item In which sense does FOP violate the classical principles of information hiding and encapsulation of OPOP? What are the consequences?
+	\item What might be the reasons that FOP has not yet been widely adopted in practice?
 }
 
 \sectionend
 
 \section{Aspect-Oriented Programming}
 
-\subsection{Cross-Cutting Concerns}
+\input{content/07c-aop}
 
 \lessonslearned{
-	\item \ldots
+	\item TODO
 }{
-	\item \ldots
+  \item Kiczales et al: Aspect-oriented programming. Proc. Europ. Conf. Object-Oriented Programming. 1997
+	\item Filman et al.: Aspect-oriented software development. Addison-Wesley. 2005
+	\item \fospl, Chapter 6.2
 }{
-	\ldots
+	\item Which features particularly benefit from the concept of quantification?
+	\item What similarities and differences do you see between FOP and AOP?
+	\item To what extent can FOP and AOP be combined profitably?
 }
 
 \input{template/footer}
