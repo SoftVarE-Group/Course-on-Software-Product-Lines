@@ -41,7 +41,7 @@
 			\end{itemize}
 		}
 	\mynextcolumn
-		\mydefinition{Collaborations in OOP \mysource{\fospl\mypages{131}}}{
+		\mydefinition{Collaborations in Java \mysource{\fospl\mypages{131}}}{
 			\begin{itemize}
 				\item A \emph{collaboration} is a set of interacting classes, each class playing a distinct role, to achieve a certain function or capability. 
 				\item A \emph{role} defines the responsibilities a class takes in a collaboration.
@@ -81,7 +81,7 @@
 	\end{mycolumns}
 	\myexampletight{}{
 		\centering
-		\pic[width=1.0\linewidth]{feature-modules}
+		\pic[width=0.95\linewidth]{feature-modules}
 	}
 \end{frame}
 
@@ -114,7 +114,7 @@
 		\mydefinition{Composer}{
 			\begin{itemize}
 				\item AHEAD (Algebraic Hierarchical Equations for Application Design) + jampack/mixin
-				\item An application is constructed by composing layers
+				\item Application constructed by composing layers
 				\item Internally, the composer invokes a variety of tools to perform its task
 			\end{itemize}
 		}
@@ -166,6 +166,11 @@ class Node {
 		System.out.print(id);
 	}
 }
+~
+~
+~
+~
+~
 \end{codetight}
 	\mynextcolumn
 \begin{codetight}{Edge.jak}
@@ -179,6 +184,8 @@ class Edge {
 		a.print(); b.print();
 	}
 }
+~
+~
 \end{codetight}			
 	\end{mycolumns}
 \end{frame}
@@ -260,7 +267,7 @@ refines class Edge {
 \end{frame}
 
 \begin{frame}[fragile]{AHEAD: Composition Using Jampack}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={35,65},animation=none]
 		\mydefinition{Jampack}{
 			\begin{itemize}
 				\item Jampack superimposes the refinement chain into a single class.
@@ -360,10 +367,10 @@ class Edge extends Edge$$Directed {
 \end{frame}
 
 \begin{frame}[fragile]{Composition: Order Matters!}
+	\mynote{}{
+		Class refinements themselves are (largely) independent of the order in which they are eventually composed.
+	}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mynote{}{
-			Class refinements themselves are (largely) independent of the order in which they are eventually composed.
-		}
 {\tiny
 \begin{codetight}{(a) Edge.jak}
 class Edge {
@@ -395,7 +402,7 @@ refines class Edge {
 		\mynote{}{
 			However, the order in which features are applied is important (e.g., earlier features in the sequence may add elements that are refined by later features). 
 		}
-\begin{codetight}{Composition Order (a),(b),(c)  TODO: nochmals}
+\begin{codetight}{Composition Order (a),(b),(c)}
 class Edge {
 	private Node start;
 	private Weight weight;
@@ -403,6 +410,56 @@ class Edge {
 		System.out.print("Edge between " + a + " and " + b);
 		System.out.print(" directed from " + start);
 		System.out.print(" weighted with " + weight);
+	}
+}
+\end{codetight}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}[fragile]{Composition: Order Matters!}
+	\mynote{}{
+		Class refinements themselves are (largely) independent of the order in which they are eventually composed.
+	}
+	\begin{mycolumns}[widths={50,50},animation=none]
+{\tiny
+\begin{codetight}{(a) Edge.jak}
+class Edge {
+	void print() {
+		System.out.print("Edge between " + a + " and " + b);
+	}
+}
+\end{codetight}
+\begin{codetight}{(b) Edge.jak}
+refines class Edge {
+	...
+	void print() {
+		Super().print();
+		System.out.print(" directed from " + start);
+	}
+}
+\end{codetight}
+\begin{codetight}{(c) Edge.jak}
+refines class Edge {
+	...
+	void print() {
+		Super().print();
+		System.out.print(" weighted with " + weight);
+	}
+}
+\end{codetight}
+}
+	\mynextcolumn
+		\mynote{}{
+			However, the order in which features are applied is important (e.g., earlier features in the sequence may add elements that are refined by later features). 
+		}
+\begin{codetight}{Composition Order (a),(c),(b)}
+class Edge {
+	private Node start;
+	private Weight weight;
+	void print() {
+		System.out.print("Edge between " + a + " and " + b);
+		System.out.print(" weighted with " + weight);
+		System.out.print(" directed from " + start);
 	}
 }
 \end{codetight}
@@ -511,19 +568,20 @@ class Edge {
 \begin{frame}{FeatureHouse: Overview}
 	\myexampletight{}{
 		\centering
-		\pic[width=0.9\linewidth]{featurehouse}
+		\pic[width=0.85\linewidth]{featurehouse}
 	}
 \end{frame}
 
 \begin{frame}{FeatureHouse: Composition}
 	\myexampletight{}{
 		\centering
-		\pic[width=0.9\linewidth]{featurehouse_composition}
+		\pic[width=0.77\linewidth]{featurehouse_composition}
 	}
 \end{frame}
 
 \begin{frame}[fragile]{Example: Java Support in FeatureHouse}
 	\begin{mycolumns}[widths={60,40},animation=none]
+{\small
 \begin{codetight}{}
 class Edge {
 	private Node a, b;
@@ -550,6 +608,7 @@ class Edge {
 	}
 }
 \end{codetight}
+}
 	\mynextcolumn
 		\mynote{Differences compared to Jak}{
 			\begin{itemize}
