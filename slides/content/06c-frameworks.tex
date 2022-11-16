@@ -175,7 +175,7 @@ public class Application extends JFrame {
 		button.setText(@plugin.getButtonText()@);
 		p.add(button, BorderLayout.EAST);
 		textfield = new JTextField("");
-		textfield.setText(@plugin.getInititalText()@);
+		textfield.setText(@plugin.getInitialText()@);
 		textfield.setPreferredSize(new Dimension(200, 20));
 		p.add(textfield, BorderLayout.WEST);		
 		button.addActionListener(/*... @plugin.buttonClicked();@ ...*/);
@@ -194,7 +194,7 @@ public class Application extends JFrame {
 public interface Plugin {
 	String getApplicationTitle();
 	String getButtonText();
-	String getInititalText();
+	String getInitialText();
 	void buttonClicked();
 	void setApplication(Application app);
 }
@@ -209,7 +209,7 @@ public class CalcPlugin implements Plugin {
 	public String getButtonText() {
 		return "calculate";
 	}
-	public String getInititalText() {
+	public String getInitialText() {
 		return "10 / 2 + 6";
 	}
 	public void buttonClicked() {
@@ -247,7 +247,7 @@ public class Application extends JFrame @implements InputProvider@ {
 		button.setText(plugin.getButtonText());
 		p.add(button, BorderLayout.EAST);
 		textfield = new JTextField("");
-		textfield.setText(plugin.getInititalText());
+		textfield.setText(plugin.getInitialText());
 		textfield.setPreferredSize(new Dimension(200, 20));
 		p.add(textfield, BorderLayout.WEST);		
 		button.addActionListener(/* . . . plugin.buttonClicked(); . . . */);		
@@ -269,7 +269,7 @@ public interface InputProvider {
 public interface Plugin {
 	String getApplicationTitle();
 	String getButtonText();
-	String getInititalText();
+	String getInitialText();
 	void buttonClicked();
 	@void setInputProvider(InputProvider p);@
 }
@@ -280,7 +280,7 @@ public class CalcPlugin implements Plugin {
 
 	public String getApplicationTitle() { /*...*/ }
 	public String getButtonText() { /*...*/ }
-	public String getInititalText() { /*...*/ }
+	public String getInitialText() { /*...*/ }
 	public void buttonClicked() {
 		calculate(@inputProvider.getInput()@);
 	}
