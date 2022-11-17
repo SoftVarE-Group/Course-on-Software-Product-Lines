@@ -147,7 +147,8 @@ public class ColorPlugin implements GraphPlugin {
 				\item There are lots of empty methods in the ColorPlugin 
 				\item The framework consults all registered plug-ins before printing a node or edge
 			\end{itemize}
-		}		
+		}	
+		\pause
 		\mydefinition{General Challenge: Cross-cutting Concerns}{
 			Implementing cross-cutting concerns as plug-ins 
 			\begin{itemize}				
@@ -155,6 +156,7 @@ public class ColorPlugin implements GraphPlugin {
 				\item causes lots of communication overhead between plug-ins and framework
 			\end{itemize}
 		}
+		\pause
 	\mynextcolumn
 		\myexample{}{
 			If we were not familiar with our graph library, would we anticipate that:
@@ -163,6 +165,7 @@ public class ColorPlugin implements GraphPlugin {
 				\item Every plug-in needs to be notified that the framework is about to print a node or edge? 
 			\end{itemize}
 		}
+		\pause
 		\mydefinition{Generally known as Preplanning Problem}{
 			\begin{itemize}
 				\item Hard to identify and foresee the relevant hot spots and nature of extensions

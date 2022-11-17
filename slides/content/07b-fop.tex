@@ -142,6 +142,7 @@
 			\end{itemize}
 		}
 	\mynextcolumn
+		\vspace{-1.5cm}\begin{flushright}\pic[width=3.8cm]{fop-horizontal}\end{flushright}
 	\end{mycolumns}
 	\begin{mycolumns}[columns=3,widths={43,27,30},animation=none]
 \begin{codetight}{Graph.jak}
@@ -191,6 +192,7 @@ class Edge {
 \end{frame}
 
 \begin{frame}[fragile]{Jak: Class Refinment – New Members}
+	\vspace{-1.5cm}\begin{flushright}\pic[width=3.0cm]{fop-vertical}\end{flushright}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Mixin-Based Inheritance}{
 			Subclasses, called mixins, are abstract in the sense that they can be applied to \emph{different} concrete superclasses.
@@ -210,13 +212,13 @@ class Edge {
 \end{codetight}
 \begin{codetight}{Edge.jak}
 refines class Edge {
-	private Node start;
+	@private Node start;@
 	...
 }
 \end{codetight}
 \begin{codetight}{Edge.jak}
 refines class Edge {
-	private Weight weight;
+	@private Weight weight;@
 	...
 }
 \end{codetight}
@@ -225,6 +227,7 @@ refines class Edge {
 \end{frame}
 
 \begin{frame}[fragile]{Jak: Class Refinment – Method Extensions}
+	\vspace{-1.5cm}\begin{flushright}\pic[width=2.8cm]{fop-vertical}\end{flushright}
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{Mixin-Based Inheritance}{
 			Subclasses, called mixins, are abstract in the sense that they can be applied to \emph{different} concrete superclasses.
@@ -248,8 +251,8 @@ class Edge {
 refines class Edge {
 	...
 	void print() {
-		Super().print();
-		System.out.print(" directed from " + start);
+		@Super().print();@
+		@System.out.print(" directed from " + start);@
 	}
 }
 \end{codetight}
@@ -257,8 +260,8 @@ refines class Edge {
 refines class Edge {
 	...
 	void print() {
-		Super().print();
-		System.out.print(" weighted with " + weight);
+		@Super().print();@
+		@System.out.print(" weighted with " + weight);@
 	}
 }
 \end{codetight}
@@ -370,6 +373,7 @@ class Edge extends Edge$$Directed {
 	\mynote{}{
 		Class refinements themselves are (largely) independent of the order in which they are eventually composed.
 	}
+	\pause
 	\begin{mycolumns}[widths={50,50},animation=none]
 {\tiny
 \begin{codetight}{(a) Edge.jak}
@@ -399,8 +403,10 @@ refines class Edge {
 \end{codetight}
 }
 	\mynextcolumn
+		\pause
 		\mynote{}{
-			However, the order in which features are applied is important (e.g., earlier features in the sequence may add elements that are refined by later features). 
+			However, the order in which features are applied is important 
+			(e.g., earlier features in the sequence may add elements that are refined by later features). 
 		}
 \begin{codetight}{Composition Order (a),(b),(c)}
 class Edge {
@@ -420,6 +426,7 @@ class Edge {
 	\mynote{}{
 		Class refinements themselves are (largely) independent of the order in which they are eventually composed.
 	}
+	\pause
 	\begin{mycolumns}[widths={50,50},animation=none]
 {\tiny
 \begin{codetight}{(a) Edge.jak}
@@ -449,8 +456,10 @@ refines class Edge {
 \end{codetight}
 }
 	\mynextcolumn
+		\pause
 		\mynote{}{
-			However, the order in which features are applied is important (e.g., earlier features in the sequence may add elements that are refined by later features). 
+			However, the order in which features are applied is important 
+			(e.g., earlier features in the sequence may add elements that are refined by later features). 
 		}
 \begin{codetight}{Composition Order (a),(c),(b)}
 class Edge {
@@ -471,6 +480,7 @@ class Edge {
 		\mynote{}{
 			The order in which compositions are to be applied is an input parameter of the composer tool.
 		}
+		\pause
 		\mynote{Composition order in FeatureIDE}{
 			\begin{itemize}
 				\item In FeatureIDE, a total order can be defined based on the feature model

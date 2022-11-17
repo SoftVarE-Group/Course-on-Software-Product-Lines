@@ -115,6 +115,7 @@ aspect Weighted {
 		
 		~
 		
+		\pause
 		\mynote{Open Question}{			
 			How to specify the join points an aspect (i.e., an advice) affects?
 		}
@@ -139,21 +140,24 @@ aspect Weighted {
 			\end{itemize}
 		}
 	\mynextcolumn
+{\small
 \begin{codetight}{Anonymous Pointcut}
 aspect A1 {
-	after() : execution(int MathUtil.twice(int)) {
+	after() : @execution(int MathUtil.twice(int))@ {
 		System.out.println("MathUtil.twice executed");
 	}
 }
 \end{codetight}			
 \begin{codetight}{Explicit Pointcut}
 aspect A2 {
-	pointcut executeTwice() : execution(int MathUtil.twice(int));
-	after() : executeTwice() {
+	@pointcut executeTwice() : 
+			execution(int MathUtil.twice(int));@
+	after() : @executeTwice()@ {
 		System.out.println("MathUtil.twice executed");
 	}
 }
-\end{codetight}			
+\end{codetight}	
+}
 	\end{mycolumns}
 \end{frame}
 
@@ -161,7 +165,7 @@ aspect A2 {
 	\begin{mycolumns}[widths={50,50},animation=none]
 \begin{codetight}{Call of a method}
 aspect A1 {
-	after() : call(int MathUtil.twice(int)) {
+	after() : @call(int MathUtil.twice(int))@ {
 		System.out.println("MathUtil.twice called");
 	}
 }
@@ -172,8 +176,8 @@ class Test {
 	public static void main(String[] args) {
 		MathUtil u = new MathUtil();
 		int i = 2;
-		i = u.twice(i);
-		i = u.twice(i);
+		@i = u.twice(i);@
+		@i = u.twice(i);@
 		System.out.println(i);
 	}
 }
@@ -198,7 +202,7 @@ aspect A1 {
 \end{codetight}
 \begin{codetight}{Constructor call}
 aspect A1 {
-	after() : call(MathUtil.new()) {
+	after() : @call(MathUtil.new())@ {
 		System.out.println("MathUtil created");
 	}
 }
@@ -207,7 +211,7 @@ aspect A1 {
 \begin{codetight}{Base Program}
 class Test {
 	public static void main(String[] args) {
-		MathUtil u = new MathUtil();
+		MathUtil u = @new MathUtil()@;
 		int i = 2;
 		i = u.twice(i);
 		i = u.twice(i);
@@ -242,8 +246,7 @@ aspect A1 {
 \end{codetight}
 		\mynote{And many more}{
 			\begin{itemize}
-				\item get: field access (read)
-				\item set: field access (write)
+				\item get/set: field access (read/write)
 				\item etc.
 			\end{itemize}
 		}
@@ -294,6 +297,9 @@ aspect A1 {
 				\item [+] Class or any subclass
 			\end{itemize}
 		}		
+		
+		\vspace{1cm}
+		
 		\mynote{Logical Connectors}{
 			Pointcuts can be connected by usual logical operators \&\&, $\mid\mid$, and !
 		}
@@ -306,7 +312,7 @@ aspect A1 {
 	\begin{mycolumns}[widths={38,62},animation=none]
 		\mynote{}{
 			\begin{itemize}
-				\item Additional code before, after or instead of the join point: before, after, around
+				\item Additional code before, after or instead of the join point: \emph{before}, \emph{after}, \emph{around}
 				\item Around-Advice allows to continue the original join point using the keyword proceed
 				\item Keyword \emph{proceed} corresponds to keyword \emph{original/super} in FOP
 			\end{itemize}
@@ -320,21 +326,21 @@ public class Test2 {
 	}
 }
 aspect AdviceTest {
-	before(): execution(void Test2.foo()) {
+	@before()@: execution(void Test2.foo()) {
 		System.out.println("before foo()");
 	}
-	after(): execution(void Test2.foo()) {
+	@after()@: execution(void Test2.foo()) {
 		System.out.println("after foo()");
 	}
-	void around(): execution(void Test2.foo()) {
+	@void around()@: execution(void Test2.foo()) {
 		System.out.println("around begin");
 		proceed();
 		System.out.println("around end");
 	}
-	after() returning (): execution(void Test2.foo()) {
+	@after() returning ()@: execution(void Test2.foo()) {
 		System.out.println("after returning from foo()");
 	}
-	after() throwing (RuntimeException e): execution(void Test2.foo()) {
+	@after() throwing (RuntimeException e)@: execution(void Test2.foo()) {
 		System.out.println("after foo() throwing "+e);
 	}
 }
@@ -352,10 +358,10 @@ aspect AdviceTest {
 \begin{codetight}{}
 aspect A1 {
 	after() : call(int MathUtil.twice(int)) {
-		System.out.println(thisJoinPoint);
-		System.out.println(thisJoinPoint.getSignature());
-		System.out.println(thisJoinPoint.getKind());
-		System.out.println(thisJoinPoint.getSourceLocation());
+		System.out.println(@thisJoinPoint@);
+		System.out.println(@thisJoinPoint.getSignature()@);
+		System.out.println(@thisJoinPoint.getKind()@);
+		System.out.println(@thisJoinPoint.getSourceLocation()@);
 	}
 }
 \end{codetight}
@@ -369,23 +375,23 @@ Test.java:5
 \end{frame}
 
 \begin{frame}[fragile]{Parameterized Pointcuts}
-	\begin{mycolumns}[widths={60,40},animation=none]
+	\begin{mycolumns}[widths={58,42},animation=none]
 \begin{codetight}{}
 aspect A1 {
-	pointcut execTwice(int value) :
-			execution(int MathUtil.twice(int)) && args(value);
-	after(int value) : execTwice(value) {
-		System.out.println("MathUtil.twice executed with parameter " + value);
+	pointcut execTwice(@int value@) :
+			execution(int MathUtil.twice(int)) && args(@value@);
+	after(@int value@) : execTwice(@value@) {
+		System.out.println("MathUtil.twice executed with parameter " + @value@);
 	}
 }
 \end{codetight}
-\begin{codetight}{}
-aspect A1 {
-	after(int value) : execution(int MathUtil.twice(int)) && args(value) {
-		System.out.println("MathUtil.twice executed with parameter " + value);
-	}
-}
-\end{codetight}
+%\begin{codetight}{}
+%aspect A1 {
+	%after(int value) : execution(int MathUtil.twice(int)) && args(value) {
+		%System.out.println("MathUtil.twice executed with parameter " + value);
+	%}
+%}
+%\end{codetight}
 	\mynextcolumn
 \begin{codetight}{Base Program}
 class Test {
@@ -419,10 +425,10 @@ class MathUtil {
 	\mynextcolumn
 \begin{codetight}{}
 aspect A1 {
-	pointcut P1(Main s, MathUtil t): 
+	pointcut P1(Main @s@, MathUtil @t@): 
 		call(* MathUtil.twice(*)) 
-		&& this(s) 
-		&& target(t);
+		&& @this(s)@ 
+		&& @target(t)@;
 }
 \end{codetight}	
 	\end{mycolumns}
@@ -541,6 +547,7 @@ aspect ColorFeature {
 			\end{itemize}
 		}
 	\mynextcolumn
+		\pause
 		\mydefinition{Fragile-Pointcut Problem}{
 			Base program may be modified such that the set of join points changes in an undesired way:
 			\begin{itemize}
@@ -552,8 +559,10 @@ aspect ColorFeature {
 			Example: Renaming a method that is (is not) to be advised
 		}
 	\end{mycolumns}
+	\pause
 	\mynote{Obliviousness worsens the fragile-pointcut problem}{
-		Because the base programmer does not know about aspects, it is more likely that changes may break aspect bindings and that nobody notices that.
+		Because the base programmer does not know about aspects, 
+		it is more likely that changes may break aspect bindings and that nobody notices that.
 	}
 \end{frame}
 
@@ -568,6 +577,7 @@ aspect ColorFeature {
 			\end{itemize}
 		}
 	\mynextcolumn
+		\pause
 		\mynote{Disadvantages}{
 			\begin{itemize}
 				\item Requires adoption of a rather complex extension mechanism (new language and paradigm).
