@@ -100,11 +100,9 @@ aspect Weighted {
 		}
 		\mydefinition{Join-Points in AspectJ:}{
 			\begin{itemize}
-				\item Calling a method
-				\item Execution of a method
+				\item Calling/executing a method/constructor
 				\item Access to a field (read or write)
 				\item Catching an Exception
-				\item Initialization of a class or object
 				\item Execution of a Advice
 				\item \ldots
 			\end{itemize}
@@ -114,6 +112,9 @@ aspect Weighted {
 			\centering
 			\pic[width=1.0\linewidth]{join_point_example}
 		}
+		
+		~
+		
 		\mynote{Open Question}{			
 			How to specify the join points an aspect (i.e., an advice) affects?
 		}

@@ -51,7 +51,7 @@
 		}		
 		\myexample{Specification of ``composition'' (glue code, orchestration)}{
 			\centering
-			\pic[width=.45\linewidth,height=2.5cm]{lego_orchestration}				
+			\pic[width=.45\linewidth,height=1.7cm]{lego_orchestration}				
 		}				
 	\mynextcolumn		
 		\myexample{Framework-Based SPLs}{
@@ -145,7 +145,7 @@ public class ColorPlugin implements GraphPlugin {
 			In our example, we can observe that:
 			\begin{itemize}
 				\item There are lots of empty methods in the ColorPlugin 
-				\item The Framework consults all registered plug-ins before printing a node or edge
+				\item The framework consults all registered plug-ins before printing a node or edge
 			\end{itemize}
 		}		
 		\mydefinition{General Challenge: Cross-cutting Concerns}{
@@ -175,7 +175,7 @@ public class ColorPlugin implements GraphPlugin {
 \subsection{Preplanning Problem}
 
 \begin{frame}{Preplanning Problem}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={45,55},animation=none]
 		\mynote{Components, Services, and Frameworks}{
 			Extensions are not possible ad-hoc, but must be foreseen and planned in advance:
 			\begin{itemize}
@@ -248,13 +248,14 @@ public class ColorPlugin implements GraphPlugin {
 		}
 	\mynextcolumn
 		\myexampletight{}{
-			\pic[width=0.7\linewidth]{expressions}
+			\centering
+			\pic[width=0.5\linewidth]{expressions}
 		}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Arithmetic Expressions - Data-centric Implementation}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={40,60},animation=none]
 		\mydefinition{Implementation Variant 1: Data-centric}{
 			\begin{itemize}
 				\item Recursive class structure (composite pattern)
@@ -276,7 +277,7 @@ public class ColorPlugin implements GraphPlugin {
 \end{frame}
 
 \begin{frame}{Arithmetic Expressions - Operation-centric Implementation}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[widths={40,60},animation=none]
 		\mydefinition{Implementation Variant 2: Operation-centric}{
 			\begin{itemize}
 				\item Just a single accept method per class (visitor pattern).
