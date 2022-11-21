@@ -41,6 +41,7 @@
 			\end{itemize}
 		}
 	\mynextcolumn
+		\pause
 		\mydefinition{Collaborations in Java \mysource{\fospl\mypages{131}}}{
 			\begin{itemize}
 				\item A \emph{collaboration} is a set of interacting classes, each class playing a distinct role, to achieve a certain function or capability. 
@@ -426,7 +427,6 @@ class Edge {
 	\mynote{}{
 		Class refinements themselves are (largely) independent of the order in which they are eventually composed.
 	}
-	\pause
 	\begin{mycolumns}[widths={50,50},animation=none]
 {\tiny
 \begin{codetight}{(a) Edge.jak}
@@ -456,7 +456,6 @@ refines class Edge {
 \end{codetight}
 }
 	\mynextcolumn
-		\pause
 		\mynote{}{
 			However, the order in which features are applied is important 
 			(e.g., earlier features in the sequence may add elements that are refined by later features). 
