@@ -280,9 +280,12 @@ aspect A1 {
 	pointcut P3() : execution(int MathUtil.twice(*));
 	pointcut P4() : execution(int *.twice(int));
 	pointcut P5() : execution(int MathUtil.twice(..));
+	pointcut P6() : execution(int *Util.tw*(int));
+	pointcut P7() : execution(int *.twice(int));
+	pointcut P8() : execution(int MathUtil+.twice(int));
 }
 \end{codetight}
-\begin{codetight}{Logial Connections of Pointcuts}
+\begin{codetight}{Logical Connections of Pointcuts}
 aspect A1 {
 	pointcut P2(): call(* MathUtil.*(..)) && !call(* MathUtil.twice(*));
 	pointcut P3(): execution(* MathUtil.twice(..)) && args(int);
@@ -536,7 +539,7 @@ aspect ColorFeature {
 
 \subsection{Discussion}
 
-\begin{frame}{Controversial: Obliviousness and Fragile-Pointcut Problem}
+\begin{frame}[fragile]{Controversial: Obliviousness and Fragile-Pointcut Problem}
 	\begin{mycolumns}[widths={45,55},animation=none]
 		\mydefinition{Principle of Obliviousness}{
 			Base program is (deliberately) supposed to be oblivious wrt.\ the aspects that ``hook into'' the system:
@@ -544,6 +547,12 @@ aspect ColorFeature {
 				\item Base program developers implement their concerns as if there were no aspects.
 				\item Aspect programmers extend the base program.
 			\end{itemize}
+		}
+		\uncover<3->{
+			\mynote{Obliviousness worsens the fragile-pointcut problem}{
+				Because the base programmer does not know about aspects, 
+				it is more likely that changes may break aspect bindings and that nobody notices that.
+			}
 		}
 	\mynextcolumn
 		\pause
@@ -554,15 +563,20 @@ aspect ColorFeature {
 				\item Join points may be captured by aspects accidentally
 			\end{itemize}
 		}
-		\myexampletight{}{
-			Example: Renaming a method that is (is not) to be advised
-		}
+		\begin{codetight}{}
+class Chess {
+	void drawKing() {...}
+	void drawQueen() {...}
+	void drawKnight() {...}
+	@void draw() {...}@ // new method matches pointcut!
+}
+aspect UpdateDisplay {
+	pointcut drawn : execution(* draw*(..));
+}
+		\end{codetight}
 	\end{mycolumns}
 	\pause
-	\mynote{Obliviousness worsens the fragile-pointcut problem}{
-		Because the base programmer does not know about aspects, 
-		it is more likely that changes may break aspect bindings and that nobody notices that.
-	}
+	
 \end{frame}
 
 \begin{frame}{Discussion}
