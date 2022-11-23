@@ -1,16 +1,68 @@
 % discuss each technique wrt. its properties
 
+\subsection{Runtime Variability}
 \subsection{Clone-and-Own}
 % probably three slides: ad-hoc, with version control, with build systems
-\subsection{Runtime Variability and Preprocessors}
-% probably feasible on the same slide
+\subsection{Conditional Compilation}
 \subsection{Components and Services}
 % probably feasible on the same slide
 \subsection{White-Box and Black-Box Frameworks}
 % probably requires two slides
 \subsection{X-Oriented Programming}
 % X=feature/aspect/delta
-\subsection{Design Patterns?}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% TODO \subsection{Design Patterns?}
+
 \subsection{Comparison of Implementation Techniques}
+\begin{frame}
+	\centering
+	\begin{tabular}{|p{30mm}|p{20mm}|p{20mm}|p{20mm}|p{20mm}|}
+		\hline
+		 & Compile-Time Variability & Features & Product \mbox{Generation} & Feature \mbox{Traceability} \\
+		\hline
+		Runtime \mbox{Variability} & no (very limited for immutable global variables) & yes & yes (except for preference dialogs) & no \\
+		% automated generation not for preference dialogs
+		% 
+		\hline
+		Clone-and-Own & yes (only for implemented products) & no & no (limited generation with build systems) & no \\
+		\hline
+		Conditional Compilation & yes & yes & yes & with tool support \\
+		\hline
+		Components and Services & yes & only coarse grained & no (except pure exchange) & only coarse grained \\
+		\hline
+		Frameworks with Plug-Ins & yes & only coarse grained & yes & only coarse grained \\
+		\hline
+		FOP and AOP & yes & yes & yes & yes \\
+		\hline
+	\end{tabular}
+\end{frame}
+
 % large table with all properties: automatic generation from feature selection, feature modularization, ...
 
