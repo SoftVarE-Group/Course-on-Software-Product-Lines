@@ -229,16 +229,20 @@
 
 \subsection{Problem and Solution Space}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T]
+	\begin{mycolumns}[widths={35},T]
 		\begin{definition}{Problem Space\mysource{\fospl\mypage{21}}}
 			\mycite{The \emph{problem space} takes the perspective of stakeholders and their problems, requirements, and views of the entire domain and individual products. Features are, in fact, domain abstractions that characterize the problem space.}
 		\end{definition}
-		\todo{add feature model + configuration}
+		{\small\featureDiagram{Graph,abstract[Directed,optional,concrete][Weighted,optional,concrete][OptimalConnection,optional,concrete]}}
+		
+		\centering
+		\pic[width=.4\linewidth]{preprocessor-wilderness-problem-space}
 	\mynextcolumn
 		\begin{definition}{Solution Space\mysource{\fospl\mypage{21}}}
 			\mycite{The \emph{solution space} represents the developer’s and vendor’s perspectives. It is characterized by the terminology of the developer, which includes names of functions, classes, and program parameters. The solution space covers the design, implementation, and validation and verification of features and their combinations in suitable ways to facilitate systematic reuse.}
 		\end{definition}
-		\todo{add source code and generated code}
+		\centering
+		\pic[width=.6\linewidth,trim=20 20 20 40,clip]{preprocessor-wilderness-solution-space}
 	\end{mycolumns}
 \end{frame}
 % TODO move to the beginning of this lecture?
