@@ -22,11 +22,17 @@
 \input{content/08a-domainengineering}
 
 \lessonslearned{
-	\item \ldots
+	\item domain engineering: domain analysis, domain design, domain implementation, domain testing
+	\item application engineering: application analysis, application design, application implementation, application testing
+	\item domain scoping, product-line requirements, product requirements
 }{
-	\item \ldots
+	\item \fospl % TODO which chapters?
+	\item \sple % TODO which chapters?
 }{
-	\ldots
+	\begin{enumerate}
+		\item Where to spend more resources in domain engineering or in application engineering?
+		\item What should not be done in domain engineering?
+	\end{enumerate}
 }
 
 \sectionend
@@ -36,13 +42,21 @@
 \input{content/08b-techniques}
 
 \lessonslearned{
-	\item \ldots
+	\item eight implementation techniques
+	\item three strategies for runtime variability / clone-and-own
+	\item two strategies for conditional compilation
+	\item choice based on four criteria, but there are more
 }{
-	\item \ldots
+	\item[] \fospl % TODO which chapters?
 }{
-	\ldots
-	
-	fill the table: one row for each room, discuss classification in your group
+	\begin{enumerate}
+		\item Which techniques enable interfaces between features?
+		\item Which techniques require most code clones?
+		\item Which techniques can modularize heterogeneous or homogeneous cross-cutting concerns?
+	\end{enumerate}
+%	\ldots
+%	
+%	fill the table: one row for each room, discuss classification in your group
 }
 
 \sectionend
@@ -52,11 +66,13 @@
 \input{content/08c-adoption}
 
 \lessonslearned{
-	\item \ldots
+	\item adoption strategies to introduce a product line
+	\item proactive, extractive, reactive
+	\item all applied in practice
 }{
-	\item \ldots
+	\item[] \fospl\mypages{39--42}
 }{
-	\ldots
+	Are combinations of the adoption strategies feasible?
 }
 
 \begin{frame}{\inserttitle}
