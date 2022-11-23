@@ -1,14 +1,98 @@
+\subsection{Product-Line Adoption}
+\begin{frame}{\myframetitle}
+	\Huge\centering How to introduce a product line in practice?
+\end{frame}
+
 \subsection{Proactive Adoption Strategy}
-% as introduced in Part 1
-\subsection{Reactive Adoption Strategy}
-% implement some products (i.e., their features) first
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl\mypage{40}}}
+	\begin{mycolumns}[animation=none]
+		\begin{definition}{Proactive Adoption}
+			\begin{itemize}
+				\item development of a product line from scratch
+				\item process model as presented in Part~1
+				\item often seen as idealistic, academic
+				\item comparable to the waterfall model
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item desired variability planned first
+				\item potentially higher code quality
+			\end{itemize}
+		\end{note}
+		\begin{note}{Disadvantages}
+			\begin{itemize}
+				\item high up-front investment and risks
+				\item late time-to-market
+				\item production stop: developers develop product line rather products
+				\item no reuse of existing products
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
+
 \subsection{Extractive Adoption Strategy}
-% take existing variants into account
-% one variant or several cloned variants
-\subsection{Strategies in Practice}
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl\mypages{40--41}}}
+	\begin{mycolumns}[animation=none]
+		\begin{definition}{Extractive Adoption}
+			\begin{itemize}
+				\item migrate one existing product into a product line (with or without runtime variability)
+				\item or: migrate several cloned products into a product line (cf.\ clone-and-own)
+				\item often motivated by maintenance problems after inconsistent evolution
+				\item requires identification of commonalities and variabilities
+				\item extraction of reusable artifacts
+				\item very common in practice
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item lower risks and up-front investment
+				\item all products remain in production
+			\end{itemize}
+		\end{note}
+		\begin{note}{Disadvantages}
+			\begin{itemize}
+				\item code quality depends on tools for extraction
+				\item limited choice of implementation techniques
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Reactive Adoption Strategy}
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl\mypages{41--42}}}
+	\begin{mycolumns}[animation=none]
+		\begin{definition}{Reactive Adoption}
+			\begin{itemize}
+				\item start with one or a few products
+				\item incrementally develop more features resulting in more products
+				\item gradually reach the ideal product line
+				\item requires to identify order among features (products)
+				\item comparable to agile methods
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item less up-front investment that the proactive strategy
+				\item also applicable for evolution of a product line (not only adoption)
+			\end{itemize}
+		\end{note}
+		\begin{note}{Disadvantages}
+			\begin{itemize}
+				\item more changes to architecture and design necessary as not all features planned up-front
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
+
+% TODO \subsection{Strategies in Practice}
 % typically combinations of the above strategies
 % reports on the use of those strategies
-\subsection{Virtual Platform?}
+
+% TODO \subsection{Virtual Platform?}
 % continuum between clone-and-own and product lines
 % classification between ad-hoc clone-and-own and product line with fully automatic generation
 
