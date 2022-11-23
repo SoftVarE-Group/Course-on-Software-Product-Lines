@@ -41,28 +41,33 @@
 % TODO \subsection{Design Patterns?}
 
 \subsection{Comparison of Implementation Techniques}
-\begin{frame}
+\begin{frame}{\myframetitle}
 	\centering
-	\begin{tabular}{|p{30mm}|p{20mm}|p{20mm}|p{20mm}|p{20mm}|}
+	\begin{tabular}{|p{32mm}|p{32mm}|p{14mm}|p{27mm}|p{14mm}|}
 		\hline
 		 & Compile-Time Variability & Features & Product \mbox{Generation} & Feature \mbox{Traceability} \\
-		\hline
+		\hline\pause
 		Runtime \mbox{Variability} & no (very limited for immutable global variables) & yes & yes (except for preference dialogs) & no \\
 		% automated generation not for preference dialogs
 		% 
-		\hline
+		\hline\pause
 		Clone-and-Own & yes (only for implemented products) & no & no (limited generation with build systems) & no \\
-		\hline
+		\hline\pause
 		Conditional Compilation & yes & yes & yes & with tool support \\
-		\hline
-		Components and Services & yes & only coarse grained & no (except pure exchange) & only coarse grained \\
-		\hline
+		\hline\pause
+		Components \linebreak Services & yes & only coarse grained & no (except pure exchange) & only coarse grained \\
+		\hline\pause
 		Frameworks with Plug-Ins & yes & only coarse grained & yes & only coarse grained \\
-		\hline
-		FOP and AOP & yes & yes & yes & yes \\
+		\hline\pause
+		FOP \linebreak AOP & yes & yes & yes & yes \\
 		\hline
 	\end{tabular}
+	\pause
+	\begin{note}{Further Criteria}
+		interfaces between features? code duplication necessary? modularization of homogeneous extensions? \ldots
+	\end{note}
 \end{frame}
+% TODO animate table adding only columns relevant so far
 
 % large table with all properties: automatic generation from feature selection, feature modularization, ...
 
