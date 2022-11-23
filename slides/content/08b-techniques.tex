@@ -177,7 +177,67 @@ public class Config {
 
 \subsection{Recap: Conditional Compilation}
 
-\subsubsection{Preprocessors}
+\subsubsection*{Build Systems}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={60}]
+		\mydefinition{How to Implement Features with Build Systems?}{
+			\begin{itemize}
+				\item step 1: model variability in a feature model
+				\item step 2: in build scripts, in- and exclude files based on feature selection
+				\item step 3: pass a feature selection at build time
+			\end{itemize}
+			$\Rightarrow$ one build script per group of related features
+		}
+		\myexampletight{}{
+			\centering
+			\featureDiagram{Anesthesia Device,abstract
+			[Monitoring,abstract,mandatory
+				[Display,abstract,or[LCD,concrete,alternative][OLED,concrete]]
+				[Wi-Fi,abstract
+					[HTTP Server,concrete,mandatory]]]
+			[History,optional,concrete]
+			[Libraries,abstract,mandatory
+				[Storage,abstract,optional[NVS,concrete,alternative][FRAM,concrete]]
+				[RTC,concrete,optional[Battery,concrete,mandatory]]]}
+
+			$History \pimplies Storage \pand RTC$
+		}
+	\mynextcolumn
+		\myexampletight{}{
+			\centering
+			\pic[width=.65\linewidth]{pignap-features}
+		}
+\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\mynote{Advantages}{
+			\begin{itemize}
+				\item compile-time variability\\
+					$\Rightarrow$ \emph{fast, small binaries} with smaller attack surface and without disclosing secrets
+				\item automated generation of arbitrary products\\
+					$\Rightarrow$ \emph{free feature selection}
+				\item allows in- and exclusion of individual files or even entire subsystems\\
+					$\Rightarrow$ high-level, \emph{modular variability}
+			\end{itemize}
+		}
+	\mynextcolumn
+		\mynote{Challenges}{
+			\begin{itemize}
+				\item not easily reconfigurable at run- or load-time
+				\item build scripts may become complex, there is no limit to what can be done (e.g., you can run arbitrary shell commands on files)\\
+					$\Rightarrow$ \emph{hard to understand and analyze}
+				\item no simple in- and exclusion of individual lines or chunks of code\\
+				$\Rightarrow$ high-level use \emph{only}!
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
+
+
+\subsubsection*{Preprocessors}
 
 \begin{frame}{\myframetitle}
 	\setlength\leftmargini{4mm}%
@@ -245,7 +305,7 @@ public class Config {
 
 \subsection{Recap: Modular Features}
 
-\subsubsection{Components}
+\subsubsection*{Components}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60}]
@@ -283,7 +343,7 @@ public class Config {
 	\end{mycolumns}	
 \end{frame}
 
-\subsubsection{Services}
+\subsubsection*{Services}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60},animation=none]
@@ -328,7 +388,7 @@ public class Config {
 	\end{mycolumns}	
 \end{frame}
 
-\subsubsection{Frameworks}
+\subsubsection*{Frameworks with Plug-Ins}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60},animation=none]
@@ -410,10 +470,9 @@ public class Config {
 	\end{mycolumns}
 \end{frame}
 
-
 \subsection{Recap: Languages for Features}
 
-\subsubsection{Feature-Oriented Programming}
+\subsubsection*{Feature-Oriented Programming}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={65,35},animation=none]
@@ -457,9 +516,7 @@ public class Config {
 	\end{mycolumns}
 \end{frame}
 
-
-
-\subsubsection{Aspect-Oriented Programming}
+\subsubsection*{Aspect-Oriented Programming}
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[widths={45,55},animation=none]
@@ -552,7 +609,7 @@ aspect ColorFeature {
 		\hline\pause
 		Clone-and-Own & yes (only for implemented products) & no & no (limited generation with build systems) & no \\
 		\hline\pause
-		Conditional Compilation & yes & yes & yes & with tool support \\
+		Build\,Systems \linebreak Preprocessors & yes & yes & yes & with tool support \\
 		\hline\pause
 		Components \linebreak Services & yes & only coarse grained & no (except pure exchange) & only coarse grained \\
 		\hline\pause
