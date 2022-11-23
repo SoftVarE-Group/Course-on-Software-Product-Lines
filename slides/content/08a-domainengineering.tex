@@ -167,9 +167,12 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\begin{definition}{Application Design}
+		\begin{definition}{Application Design\mysource{\sple\mypages{32--33}}}
 			\begin{itemize}
-				\item 
+				\item create application architecture
+				\item derived from reference architecture
+				\item based on feature selection
+				\item design decisions for application-specific requirements
 			\end{itemize}
 		\end{definition}
 	\end{mycolumns}
@@ -194,7 +197,7 @@
 				\item ideally: fully automated generation (aka.\ \emph{product derivation})
 				\item full automation not feasible \ldots
 					\begin{enumerate}
-						\item when custom development is needed
+						\item when custom development is needed (i.e., for application-specific requirements)
 						\item for clone-and-own, components, services
 					\end{enumerate}
 			\end{itemize}
@@ -217,9 +220,11 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\begin{definition}{Application Testing}
+		\begin{definition}{Application Testing\mysource{\sple\mypages{33--34}}}
 			\begin{itemize}
-				\item 
+				\item testing of the application
+				\item reuse of test artifacts from domain testing
+				\item new test artifacts for custom development
 			\end{itemize}
 		\end{definition}
 	\end{mycolumns}
@@ -260,17 +265,17 @@
 	\end{mycolumns}
 	\pause
 	\begin{mycolumns}[columns=3,widths={10,70,10},animation=none]
-		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{01}{Product Requirements}
+		\renewcommand{\projectcartoonwidth}{1}\projectcartoon{01}{Product Requirements}
 	\mynextcolumn
 		\begin{note}{Application Engineering}
 			\renewcommand{\projectcartoonwidth}{.15}%
-			\hprojectcartoon{02}{Application Analysis}%
-			\hprojectcartoon{03}{Application Design}%
-			\hprojectcartoon{04}{Application Implementation}%
-			\hprojectcartoon{05}{Application Testing}
+			\projectcartoon{02}{Application Analysis}%
+			\projectcartoon{03}{Application Design}%
+			\projectcartoon{04}{Application Implementation}%
+			\projectcartoon{05}{Application Testing}
 		\end{note}
 	\mynextcolumn
-		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{13}{Product}
+		\renewcommand{\projectcartoonwidth}{1}\projectcartoon{13}{Product}
 	\end{mycolumns}
 \end{frame}
 % lecture 8: show how linux in lecture 4+5 relates to problem space (kconfig)/mapping (kbuild)/solution space (cpp) - put this into the four-quadrant model
