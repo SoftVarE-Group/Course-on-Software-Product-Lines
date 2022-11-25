@@ -1,42 +1,278 @@
 
+\newcommand{\notleftright}{\mathrel{\ooalign{$\Leftrightarrow$\cr\hidewidth$/$\hidewidth}}}
+
 \subsection{The Use of Feature-Mapping Analyses}
 
-% ignoriert völlig Source-Code, nur Mapping, sprach-unabhängig, eher simpel umzusetzen
-% kann nur einfache anomalien finden
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={45,55}]
+		\mynote{Recap: A Typical Product Line}{
+			\begin{itemize}
+				\item embedded or systems programming (e.g., Linux)
+				\item implemented with conditional compilation
+				\begin{itemize}
+					\item build systems (e.g., KBuild)
+					\item preprocessors (e.g., CPP)
+				\end{itemize}
+				\item feature traceability only implicit\\
+					$\Rightarrow$ there is code scattering and tangling
+			\end{itemize}
+		}
+		\mydefinition{Recap: Feature Mapping}{
+			\begin{itemize}
+				\item \todots
+			\end{itemize}
+		}
+		\mynextcolumn
+		\myexample{Asking Questions About the Feature Mapping}{
+			\begin{itemize}
+				\item Are there contradictory or unnecessary preprocessor annotations in the code?
+				\item Is the code even included in any product?
+				\item If so, in how many products is the code included?
+				\item \ldots
+			\end{itemize}
+		}
+		\myexampletight{Running Example}{
+			\centering
+			\featureDiagram{Graph,concrete[Node,concrete,mandatory[Labeled,concrete,optional][Colored,concrete,optional]][Edge,concrete,mandatory[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]]}
+			$\pnot (Directed \pand Undirected)$\\
+			$Hyper \pimplies Undirected$\\
+			$Directed \notleftright (Undirected \pand Hyper)$\\
+			\todo{revise CTCs}
+		}
+	\end{mycolumns}
+\end{frame}
 
 % mit quadranten starten
 %wir gucken uns jetzt Source Code an (evtl. linke zwei (VL 4, Problem Space) + rechte zwei Quadranten (VL 10+, Solution Space))
 % wechselwirkung zw. sol und problem space (mapping+FM)
 
-% show how linux in lecture 4+5 relates to problem space (kconfig)/mapping (kbuild)/solution space (cpp)
-
 \subsection{Presence Conditions}
 
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[columns=3,widths={40,23,37},animation=none]
+		\mydefinition{Presence Condition}{
+			A \emph{presence condition (PC)} for a code location (i.e., a line/chunk/file) is a formula that describes the circumstances under which the code location is included in a product.
+		}
+		\mynote{}{
+			\begin{itemize}
+				\item useful for implementation techniques with code scattering and tangling
+				\item e.g., build systems (file PCs) or preprocessors (line/chunk PCs)
+				\item here: C preprocessor
+			\end{itemize}
+		}
 	\mynextcolumn
+		\myexampletight{Presence Conditions}{
+			\small
+			\begin{flushright}
+				$\top$\\
+				$Labeled$\\
+				$Labeled$\\
+				$Labeled$\\
+				$Colored$\\
+				$Colored$\\
+				$Colored$\\
+				$\top$\\
+				$\top$\\
+				$\top$\\
+				$Directed$\\
+				$Directed$\\
+				$\pnot Dir \pand Hyper$\\
+				$\pnot Dir \pand Hy \pand Un$\\
+				$\pnot Dir \pand Hy \pand Un$\\
+				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
+				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
+				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
+				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
+				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
+				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
+				$\top$
+			\end{flushright}
+		}
+	\mynextcolumn
+		\begin{cpptight}[basicstyle=\small]{Product-Line Implementation}
+class Node {
+#ifdef LABELED
+	string label;
+#endif
+#ifdef COLORED
+	string color;
+#endif
+};
+
+class Edge {
+#ifdef DIRECTED
+	Node fromNode, toNode;
+#elifdef HYPER
+#ifdef UNDIRECTED
+	set<Node> nodeSet;
+#elifdef DIRECTED
+	map<Node, set<Node>> nodeMap;
+#endif
+#elifndef DIRECTED
+#error Unsupported edge type.
+#endif
+};
+		\end{cpptight}
 	\end{mycolumns}
 \end{frame}
 
 \subsection{Detecting Dead Code}
 
-% dead code paper (tartler beteiligt, erlangen evtl., TDS+:ATC14/EuroSys11) in linux? technik zum code auskommentieren, nicht alles ist ungewollt
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[columns=3,widths={40,23,37},animation=none]
+		\mydefinition{Dead Code}{
+			A line/chunk/file of code is \emph{dead} when
 
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
+			\begin{itemize}
+				\item no product includes it.
+				\item or, equivalently:\\
+					its presence condition $PC$ is contradictory (i.e., $PC \mequals \bot$).
+			\end{itemize}
+		}
+		\mynote{}{
+			calculated by querying a \emph{satisfiability solver} whether $PC$ is not satisfiable (i.e., $\pnot SAT(PC)$)
+		}
+		\mynote{What causes dead code?}{
+			\begin{itemize}
+				\item confusion due to nested \texttt{\#ifdef}
+				\item domain modeling mistakes
+				\item can be intended! \mysource{\href{https://dl.acm.org/doi/10.1145/3442391.3442406}{Hentze~et~al.~2021}}
+			\end{itemize}
+		}
 	\mynextcolumn
+		\myexampletight{Presence Conditions}{
+			\small\vspace*{-1.7ex}
+			\begin{flushright}
+				{\color{gray}$\top$}\\
+				{\color{gray}$Labeled$}\\
+				{\color{gray}$Labeled$}\\
+				{\color{gray}$Labeled$}\\
+				{\color{gray}$Colored$}\\
+				{\color{gray}$Colored$}\\
+				{\color{gray}$Colored$}\\
+				{\color{gray}$\top$}\\
+				{\color{gray}$\top$}\\
+				{\color{gray}$\top$}\\
+				{\color{red}$Directed$}\\
+				{\color{gray}$Directed$}\\
+				{\color{red}$\pnot Dir \pand Hyper$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{gray}$\top$}
+			\end{flushright}
+		}
+	\mynextcolumn
+		\begin{cpptight}[basicstyle=\small]{Product-Line Implementation}
+class Node {
+#ifdef LABELED
+	string label;
+#endif
+#ifdef COLORED
+	string color;
+#endif
+};
+
+class Edge {
+#ifdef DIRECTED
+	Node fromNode, toNode;
+#elifdef HYPER
+#ifdef UNDIRECTED
+	set<Node> nodeSet;
+#elifdef DIRECTED
+	@map<Node, set<Node>> nodeMap;@
+#endif
+#elifndef DIRECTED
+#error Unsupported edge type.
+#endif
+};
+		\end{cpptight}
 	\end{mycolumns}
 \end{frame}
 
+% dead code paper (tartler beteiligt, erlangen evtl., TDS+:ATC14/EuroSys11) in linux? technik zum code auskommentieren, nicht alles ist ungewollt
+
 \subsection{Detecting Superfluous Annotations}
 
-% Mapping + FM
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[columns=3,widths={40,23,37},animation=none]
+		\mydefinition{Superfluous Annotation}{
+			An annotation is (partly) \emph{superfluous}
 
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		%general definition
+			\begin{itemize}
+				\item when it can be omitted (or simplified) without consequences.
+				\item or, equivalently:\\
+					its presence condition $PC$ is contradictory (i.e., $PC \mequals \bot$).
+			\end{itemize}
+		}
+		\mynote{}{
+			calculated by querying a \emph{satisfiability solver} whether $PC$ is not satisfiable (i.e., $\pnot SAT(PC)$)
+		}
+		\mynote{What causes dead code?}{
+			\begin{itemize}
+				\item confusion due to nested \texttt{\#ifdef}
+				\item domain modeling mistakes
+				\item can be intended! \mysource{\href{https://dl.acm.org/doi/10.1145/3442391.3442406}{Hentze~et~al.~2021}}
+			\end{itemize}
+		}
 	\mynextcolumn
-		%small example
+		\myexampletight{Presence Conditions}{
+			\small\vspace*{-1.7ex}
+			\begin{flushright}
+				{\color{gray}$\top$}\\
+				{\color{gray}$Labeled$}\\
+				{\color{gray}$Labeled$}\\
+				{\color{gray}$Labeled$}\\
+				{\color{gray}$Colored$}\\
+				{\color{gray}$Colored$}\\
+				{\color{gray}$Colored$}\\
+				{\color{gray}$\top$}\\
+				{\color{gray}$\top$}\\
+				{\color{gray}$\top$}\\
+				{\color{gray}$Directed$}\\
+				{\color{gray}$Directed$}\\
+				{\color{gray}$\pnot Dir \pand Hyper$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{gray}$\top$}
+			\end{flushright}
+		}
+	\mynextcolumn
+		\begin{cpptight}[basicstyle=\small]{Product-Line Implementation}
+class Node {
+#ifdef LABELED
+	string label;
+#endif
+#ifdef COLORED
+	string color;
+#endif
+};
+
+class Edge {
+#ifdef DIRECTED
+	Node fromNode, toNode;
+#elifdef HYPER
+#ifdef UNDIRECTED
+	set<Node> nodeSet;
+#elifdef DIRECTED
+	map<Node, set<Node>> nodeMap;
+#endif
+#elifndef @DIRECTED@
+#error Unsupported edge type.
+#endif
+};
+		\end{cpptight}
 	\end{mycolumns}
 \end{frame}
 
@@ -44,6 +280,9 @@
 
 %bezug auf FM-analyse
 % + variability smells erwähnen
+
+% show how linux in lecture 4+5 relates to problem space (kconfig)/mapping (kbuild)/solution space (cpp)
+% maybe consider FM + KBuild? the whole chain?
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
@@ -57,5 +296,14 @@
 	\begin{mycolumns}
 		\href{https://youtu.be/jVe7f32mLCQ?t=125}{demo video available} (minute 3 and 4): dead code block, superfluous annotations, generation of all products, error propagation, unit testing
 	\mynextcolumn
+		\mynote{Discussion}{
+			\begin{itemize}
+				\item only the feature mapping is analyzed, the source code is ignored
+				\begin{itemize}
+					\item pro: simple, language-independent
+					\item con: can only find simple anomalies
+				\end{itemize}
+			\end{itemize}
+		}
 	\end{mycolumns}
 \end{frame}

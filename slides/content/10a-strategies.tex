@@ -48,22 +48,28 @@
 \subsection{Recap: Quality Assurance}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
-	\hfill%
-	\only<1|handout:0>{\includegraphics[height=\textheightwithtitle,page=1]{quality-assurance}}%
-	\only<2|handout:0>{\includegraphics[height=\textheightwithtitle,page=2]{quality-assurance}}%
-	\only<3|handout:0>{\includegraphics[height=\textheightwithtitle,page=3]{quality-assurance}}%
-	\only<4|handout:0>{\includegraphics[height=\textheightwithtitle,page=4]{quality-assurance}}%
-	\only<5|handout:1>{\includegraphics[height=\textheightwithtitle,page=5]{quality-assurance}}%
-	\only<6|handout:0>{\includegraphics[height=\textheightwithtitle,page=6]{quality-assurance}}%
+	\begin{mycolumns}[widths={45}]
+		\mynote{}{
+			\begin{itemize}
+				\item last lecture:\\
+					how to \emph{avoid} variability bugs (esp. feature interactions)
+				\item this + next lecture:\\
+					how to \emph{find} variability bugs
+			\end{itemize}
+		}
+	\mynextcolumn
+		\only<1|handout:0>{\includegraphics[height=\textheightwithtitle,page=1]{quality-assurance}}%
+		\only<2|handout:0>{\includegraphics[height=\textheightwithtitle,page=2]{quality-assurance}}%
+		\only<3|handout:0>{\includegraphics[height=\textheightwithtitle,page=3]{quality-assurance}}%
+		\only<4|handout:0>{\includegraphics[height=\textheightwithtitle,page=4]{quality-assurance}}%
+		\only<5|handout:1>{\includegraphics[height=\textheightwithtitle,page=5]{quality-assurance}}%
+		\only<6|handout:0>{\includegraphics[height=\textheightwithtitle,page=6]{quality-assurance}}%
+	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{}
-	\todo{motivating example that software quality matters, static analysis matters}
-\end{frame}
+\widexkcdframe{1700}
 
 \subsection{Automated Analysis of Product Lines}
-
-%avoiding bugs is nice - finding bugs is also necessary
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t,widths={47}]
