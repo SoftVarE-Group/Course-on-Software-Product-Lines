@@ -19,7 +19,8 @@
 		}
 		\mydefinition{Recap: Feature Mapping}{
 			\begin{itemize}
-				\item \todots
+				\item specifies which features correspond to which artifacts (individual files/lines, components/feature modules/aspects)
+				\item connects the problem space to the solution space
 			\end{itemize}
 		}
 		\mynextcolumn
@@ -31,13 +32,12 @@
 				\item \ldots
 			\end{itemize}
 		}
-		\myexampletight{Running Example}{
+		\myexampletight{Running Example: Graph Product Line}{
 			\centering
-			\featureDiagram{Graph,concrete[Node,concrete,mandatory[Labeled,concrete,optional][Colored,concrete,optional]][Edge,concrete,mandatory[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]]}
+			\featureDiagram{Graph,concrete[Node,concrete,mandatory[Colored,concrete,optional]][Edge,concrete,mandatory[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]]}
 			$\pnot (Directed \pand Undirected)$\\
 			$Hyper \pimplies Undirected$\\
-			$Directed \notleftright (Undirected \pand Hyper)$\\
-			\todo{revise CTCs}
+			$Directed \por Hyper$
 		}
 	\end{mycolumns}
 \end{frame}
@@ -49,25 +49,25 @@
 \subsection{Presence Conditions}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={40,23,37},animation=none]
+	\vspace*{-4ex}
+	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\mydefinition{Presence Condition}{
-			A \emph{presence condition (PC)} for a code location (i.e., a line/chunk/file) is a formula that describes the circumstances under which the code location is included in a product.
+			A \emph{presence condition (PC)} for a code location (i.e., a line or file) is a formula that describes the circumstances under which the code location is included in a product.
 		}
 		\mynote{}{
 			\begin{itemize}
 				\item useful for implementation techniques with code scattering and tangling
-				\item e.g., build systems (file PCs) or preprocessors (line/chunk PCs)
-				\item here: C preprocessor
+				\item e.g., build systems (file PCs) or preprocessors (line PCs)
+				\item here: line PCs for the C preprocessor
 			\end{itemize}
 		}
 	\mynextcolumn
 		\myexampletight{Presence Conditions}{
-			\small
+			\small\vspace*{-1.3ex}
 			\begin{flushright}
+
+				{\color{black}$\top$}\\
 				$\top$\\
-				$Labeled$\\
-				$Labeled$\\
-				$Labeled$\\
 				$Colored$\\
 				$Colored$\\
 				$Colored$\\
@@ -82,18 +82,18 @@
 				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
 				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
 				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
+				$\pnot Dir \pand \pnot Hy$\\
 				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
 				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
 				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
+				$\pnot Dir \pand \pnot Hy$\\
 				$\top$
 			\end{flushright}
 		}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\small]{Product-Line Implementation}
+		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
-#ifdef LABELED
 	string label;
-#endif
 #ifdef COLORED
 	string color;
 #endif
@@ -108,8 +108,10 @@ class Edge {
 #elifdef DIRECTED
 	map<Node, set<Node>> nodeMap;
 #endif
-#elifndef DIRECTED
-#error Unsupported edge type.
+#else
+#ifndef DIRECTED
+	pair<Node, Node> nodePair;
+#endif
 #endif
 };
 		\end{cpptight}
@@ -119,14 +121,15 @@ class Edge {
 \subsection{Detecting Dead Code}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={40,23,37},animation=none]
+	\vspace*{-4ex}
+	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\mydefinition{Dead Code}{
-			A line/chunk/file of code is \emph{dead} when
+			A line or file of code is \emph{dead} when
 
 			\begin{itemize}
 				\item no product includes it.
 				\item or, equivalently:\\
-					its presence condition $PC$ is contradictory (i.e., $PC \mequals \bot$).
+					its presence condition $PC$ is contradictory (i.e., $PC \mimplies \bot$).
 			\end{itemize}
 		}
 		\mynote{}{
@@ -141,38 +144,36 @@ class Edge {
 		}
 	\mynextcolumn
 		\myexampletight{Presence Conditions}{
-			\small\vspace*{-1.7ex}
+			\small\vspace*{-1.3ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
-				{\color{gray}$Labeled$}\\
-				{\color{gray}$Labeled$}\\
-				{\color{gray}$Labeled$}\\
+				{\color{gray}$\top$}\\
 				{\color{gray}$Colored$}\\
 				{\color{gray}$Colored$}\\
 				{\color{gray}$Colored$}\\
 				{\color{gray}$\top$}\\
 				{\color{gray}$\top$}\\
 				{\color{gray}$\top$}\\
-				{\color{red}$Directed$}\\
+				{\color{green}$Directed$}\\
 				{\color{gray}$Directed$}\\
-				{\color{red}$\pnot Dir \pand Hyper$}\\
+				{\color{green}$\pnot Dir \pand Hyper$}\\
 				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
 				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
 				{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 				{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 				{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\top$}
 			\end{flushright}
 		}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\small]{Product-Line Implementation}
+		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
-#ifdef LABELED
 	string label;
-#endif
 #ifdef COLORED
 	string color;
 #endif
@@ -187,8 +188,10 @@ class Edge {
 #elifdef DIRECTED
 	@map<Node, set<Node>> nodeMap;@
 #endif
-#elifndef DIRECTED
-#error Unsupported edge type.
+#else
+#ifndef DIRECTED
+	pair<Node, Node> nodePair;
+#endif
 #endif
 };
 		\end{cpptight}
@@ -200,34 +203,32 @@ class Edge {
 \subsection{Detecting Superfluous Annotations}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={40,23,37},animation=none]
+	\vspace*{-4ex}
+	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\mydefinition{Superfluous Annotation}{
-			An annotation is (partly) \emph{superfluous}
+			An annotation is \emph{superfluous}
 
 			\begin{itemize}
-				\item when it can be omitted (or simplified) without consequences.
+				\item when it can be omitted without consequences.
 				\item or, equivalently:\\
-					its presence condition $PC$ is contradictory (i.e., $PC \mequals \bot$).
+					its presence condition $PC$ is implied by the enclosing presence condition $PC'$ (i.e., $PC' \mimplies PC$).
 			\end{itemize}
 		}
 		\mynote{}{
-			calculated by querying a \emph{satisfiability solver} whether $PC$ is not satisfiable (i.e., $\pnot SAT(PC)$)
+			calculated by querying a \emph{satisfiability solver} whether $PC' \pand \pnot PC$ is not satisfiable (i.e., $\pnot SAT(PC' \pand \pnot PC)$)
 		}
-		\mynote{What causes dead code?}{
+		\myexample{}{
 			\begin{itemize}
-				\item confusion due to nested \texttt{\#ifdef}
-				\item domain modeling mistakes
-				\item can be intended! \mysource{\href{https://dl.acm.org/doi/10.1145/3442391.3442406}{Hentze~et~al.~2021}}
+				\item {\color{green}$PC' = \pnot Dir \pand \pnot Hy$}
+				\item {\color{red}$PC = \pnot Dir \pand \pnot Hy \pand \pnot Dir$}
 			\end{itemize}
 		}
 	\mynextcolumn
 		\myexampletight{Presence Conditions}{
-			\small\vspace*{-1.7ex}
+			\small\vspace*{-1.3ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
-				{\color{gray}$Labeled$}\\
-				{\color{gray}$Labeled$}\\
-				{\color{gray}$Labeled$}\\
+				{\color{gray}$\top$}\\
 				{\color{gray}$Colored$}\\
 				{\color{gray}$Colored$}\\
 				{\color{gray}$Colored$}\\
@@ -242,18 +243,18 @@ class Edge {
 				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{green}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{green}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\top$}
 			\end{flushright}
 		}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\small]{Product-Line Implementation}
+		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
-#ifdef LABELED
 	string label;
-#endif
 #ifdef COLORED
 	string color;
 #endif
@@ -268,37 +269,246 @@ class Edge {
 #elifdef DIRECTED
 	map<Node, set<Node>> nodeMap;
 #endif
-#elifndef @DIRECTED@
-#error Unsupported edge type.
+#else
+#ifndef @DIRECTED@
+	pair<Node, Node> nodePair;
+#endif
 #endif
 };
 		\end{cpptight}
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Considering the Feature Model}
+\subsection{Joining the Problem and Solution Space}
 
-%bezug auf FM-analyse
-% + variability smells erwähnen
-
-% show how linux in lecture 4+5 relates to problem space (kconfig)/mapping (kbuild)/solution space (cpp)
-% maybe consider FM + KBuild? the whole chain?
-
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[widths={67,33}]
+		\mynote{}{
+			\begin{itemize}
+				\item right now, we only consider \emph{line PCs} (from the preprocessor)
+				\item but: a line is only included if its file is included, too\\
+					$\Rightarrow$ we also have to consider \emph{file PCs} (from the build system)
+				\item also: we want to ignore invalid configurations\\
+					$\Rightarrow$ we also have to consider the \emph{feature model} $FM$
+				\item idea: \emph{join} feature model, file, and line presence condition:\\
+					$PC_{location} \defeq \Phi(FM) \pand PC_{file} \pand PC_{line}$
+			\end{itemize}
+		}
+		\myexampletight{Suppose we have the feature model \ldots}{
+			\centering
+			\featureDiagram{Graph,concrete[Node,concrete,mandatory[Colored,concrete,optional]][Edge,concrete,mandatory[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]]}
+			$\pnot (Directed \pand Undirected) \pand (Hyper \pimplies Undirected) \pand (Directed \por Hyper)$
+		}
 	\mynextcolumn
+		\begin{cpptight}[basicstyle=\tiny]{\ldots\ and two files: \texttt{node.cpp} \ldots}
+class Node {
+	string label;
+#ifdef COLORED
+	string color;
+#endif
+};
+		\end{cpptight}
+		\begin{cpptight}[basicstyle=\tiny]{\ldots\ and \texttt{edge.cpp}}
+class Edge {
+#ifdef DIRECTED
+	Node fromNode, toNode;
+#elifdef HYPER
+#ifdef UNDIRECTED
+	set<Node> nodeSet;
+#elifdef DIRECTED
+	map<Node, set<Node>> nodeMap;
+#endif
+#else
+#ifndef DIRECTED
+	pair<Node, Node> nodePair;
+#endif
+#endif
+};
+		\end{cpptight}
 	\end{mycolumns}
+\end{frame}
+
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
+		\emph{Problem Space}
+		\myexampletight{}{
+			\centering
+			\featureDiagram{G,concrete[N,concrete,mandatory[C,concrete,optional]][E,concrete,mandatory[D,concrete,optional][U,concrete,optional][H,concrete,optional]]}
+			$\pnot (Directed \pand Undirected)$\\
+			$Hyper \pimplies Undirected$\\
+			$Directed \por Hyper$
+		}
+		\vspace*{-5ex}
+		\begin{align*}
+			\big\downarrow\Phi
+		\end{align*}
+		\vspace*{-5ex}
+		\myexampletight{}{
+			\vspace*{-4ex}
+			\color{black}
+			\begin{align*}
+				&Graph \pand Node \pand Edge \\
+				\pand &\pnot (Directed \pand Undirected) \\
+				\pand &(Hyper \pimplies Undirected)\\
+				\pand &(Directed \por Hyper)
+			\end{align*}
+		}
+	\mynextcolumn
+		\emph{Solution Space $\rightarrow$}
+		\myexampletight{File PC \tiny\texttt{node.cpp}}{
+			\Huge\centering\rotatebox{45}{$Node$}
+			\vspace*{0.2ex}
+		}
+		\myexampletight{File PC \tiny\texttt{edge.cpp}}{
+			\vspace*{4.5ex}
+			\Huge\centering\rotatebox{45}{\color{black}$Edge$}
+			\vspace*{4.5ex}
+		}
+	\mynextcolumn
+		\myexampletight{Line PCs \tiny\texttt{node.cpp}}{
+			\tiny\vspace*{-1.3ex}
+			\begin{flushright}
+				{\color{black}$\top$}\\
+				{\color{black}$\top$}\\
+				{\color{black}$Colored$}\\
+				{\color{black}$Colored$}\\
+				{\color{black}$Colored$}\\
+				{\color{black}$\top$}
+			\end{flushright}
+		}
+		\myexampletight{Line PCs \tiny\texttt{edge.cpp}}{
+			\tiny\vspace*{-1.3ex}
+			\begin{flushright}
+				{\color{black}$\top$}\\
+				{\color{black}$Directed$}\\
+				{\color{black}$Directed$}\\
+				{\color{black}$\pnot Dir \pand Hyper$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{black}$\top$}
+			\end{flushright}
+		}
+	\mynextcolumn
+		\begin{cpptight}[basicstyle=\tiny]{\texttt{node.cpp}}
+class Node {
+	string label;
+#ifdef COLORED
+	string color;
+#endif
+};
+		\end{cpptight}
+		\begin{cpptight}[basicstyle=\tiny]{\texttt{edge.cpp}}
+class Edge {
+#ifdef DIRECTED
+	Node fromNode, toNode;
+#elifdef HYPER
+#ifdef UNDIRECTED
+	set<Node> nodeSet;
+#elifdef DIRECTED
+	map<Node, set<Node>> nodeMap;
+#endif
+#else
+#ifndef DIRECTED
+	pair<Node, Node> nodePair;
+#endif
+#endif
+};
+		\end{cpptight}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
+		\myexampletight{Feature-Model Formula}{
+			\vspace*{-4ex}
+			\color{red}
+			\begin{align*}
+				&Graph \pand Node \pand Edge \\
+				\pand &\pnot (Directed \pand Undirected) \\
+				\pand &(Hyper \pimplies Undirected)\\
+				\pand &(Directed \por Hyper)
+			\end{align*}
+		}
+	\mynextcolumn
+		\myexampletight{File PC \tiny\texttt{edge.cpp}}{
+			\vspace*{4.5ex}
+			\Huge\centering\rotatebox{45}{\color{red}$Edge$}
+			\vspace*{4.5ex}
+		}
+	\mynextcolumn
+		\myexampletight{Line PCs \tiny\texttt{edge.cpp}}{
+			\tiny\vspace*{-1.3ex}
+			\begin{flushright}
+				{\color{black}$\top$}\\
+				{\color{black}$Directed$}\\
+				{\color{black}$Directed$}\\
+				{\color{black}$\pnot Dir \pand Hyper$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{black}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{black}$\top$}
+			\end{flushright}
+		}
+	\mynextcolumn
+		\begin{cpptight}[basicstyle=\tiny]{\texttt{edge.cpp}}
+class Edge {
+#ifdef DIRECTED
+	Node fromNode, toNode;
+#elifdef HYPER
+#ifdef UNDIRECTED
+	set<Node> nodeSet;
+#elifdef DIRECTED
+	map<Node, set<Node>> nodeMap;
+#endif
+#else
+#ifndef DIRECTED
+	@pair<Node, Node> nodePair;@
+#endif
+#endif
+};
+		\end{cpptight}
+	\end{mycolumns}
+	\begin{alignat*}{3}
+		PC_{location} \defeq~&\Phi(FM) &~\pand~& PC_{\texttt{edge.cpp}} &~\pand~& PC_{\texttt{pair<Node, Node> nodePair;}}\\
+		=~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand (D \por H) &~\pand~& E &~\pand~& \pnot D \pand \pnot H \pand \pnot D\\
+		\mequals~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand {\color{red}(D \por H)} &~\pand~& E &~\pand~& {\color{red}\pnot D \pand \pnot H} \pand \pnot D\\
+		\mimplies~&(D \por H) \pand \pnot D \pand \pnot H\\
+		\mimplies~&\bot \text{ -- so this code is dead after all!}
+	\end{alignat*}
 \end{frame}
 
 \subsection{Feature-Mapping Analyses in FeatureIDE}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{mycolumns}[widths={57,43}]
+		\pic[width=\linewidth]{featureide-dead-code}
+		~
 		\href{https://youtu.be/jVe7f32mLCQ?t=125}{demo video available} (minute 3 and 4): dead code block, superfluous annotations, generation of all products, error propagation, unit testing
 	\mynextcolumn
 		\mynote{Discussion}{
 			\begin{itemize}
-				\item only the feature mapping is analyzed, the source code is ignored
+				\item we can now \emph{identify anomalies}:
+				\begin{itemize}
+					\item unused code
+					\item mistakes in preprocessor annotations
+					\item disagreements between problem and solution space
+				\end{itemize}
+				\item but: we only analyze the feature mapping and \emph{ignore the actual code}
 				\begin{itemize}
 					\item pro: simple, language-independent
 					\item con: can only find simple anomalies
