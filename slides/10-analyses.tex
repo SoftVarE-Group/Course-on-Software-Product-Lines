@@ -1,7 +1,7 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 \def\university{}
 
@@ -45,11 +45,20 @@
 \input{content/10b-mapping}
 
 \lessonslearned{
-	\item \todots
+	\item feature-mapping analyses alleviate the impact of code scattering and tangling
+	\item they are usually not necessary when there is good feature traceability
+	\item they cannot detect bugs in the actual code
 }{
-	\item \todots
+	\item \fospl, Chapter 10
 }{
-	\todots
+	Above, we assumed that we know all presence conditions already.
+	How can we automatically extract presence conditions from code that uses the C preprocessor?
+	What problems might occur?
+	% - there might be #includes that contain macro definitions
+	% - there might be macros to be expanded, which can get complex quickly
+	% - it is not always trivial to distinguish feature macros from compiler- or system-specific macros
+	% - there is #undef (or re-#define), which opens another can of worms
+	% see works on TypeChef (C. Kästner), SuperC (P. Gazillo), FeatureCoPP (K. Ludwig), PCLocator (E. Kuiter)
 }
 
 \sectionend

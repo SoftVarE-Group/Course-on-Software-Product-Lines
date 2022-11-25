@@ -1,7 +1,7 @@
 
 \newcommand{\notleftright}{\mathrel{\ooalign{$\Leftrightarrow$\cr\hidewidth$/$\hidewidth}}}
 
-\subsection{The Use of Feature-Mapping Analyses}
+\subsection{Automated Analysis of Feature Mappings}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={45,55}]
@@ -42,10 +42,6 @@
 	\end{mycolumns}
 \end{frame}
 
-% mit quadranten starten
-%wir gucken uns jetzt Source Code an (evtl. linke zwei (VL 4, Problem Space) + rechte zwei Quadranten (VL 10+, Solution Space))
-% wechselwirkung zw. sol und problem space (mapping+FM)
-
 \subsection{Presence Conditions}
 
 \begin{frame}[fragile]{\myframetitle}
@@ -62,36 +58,37 @@
 			\end{itemize}
 		}
 	\mynextcolumn
-		\myexampletight{Presence Conditions}{
+		\uncover<3->{\myexampletight{Presence Conditions}{
 			\small\vspace*{-1.3ex}
 			\begin{flushright}
 
-				{\color{black}$\top$}\\
+				\uncover<4->{{\color{black}$\top$}\\
 				$\top$\\
 				$Colored$\\
 				$Colored$\\
 				$Colored$\\
-				$\top$\\
-				$\top$\\
+				$\top$\\}
+				\uncover<5->{$\top$\\
 				$\top$\\
 				$Directed$\\
 				$Directed$\\
-				$\pnot Dir \pand Hyper$\\
+				$\pnot Dir \pand Hyper$\\}
+				\uncover<6->{$\pnot Dir \pand Hy \pand Un$\\
 				$\pnot Dir \pand Hy \pand Un$\\
-				$\pnot Dir \pand Hy \pand Un$\\
 				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
 				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
-				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\
-				$\pnot Dir \pand \pnot Hy$\\
+				$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$\\}
+				\uncover<7->{$\pnot Dir \pand \pnot Hy$\\
 				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
 				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
 				$\pnot Dir \pand \pnot Hy \pand \pnot Dir$\\
 				$\pnot Dir \pand \pnot Hy$\\
-				$\top$
+				$\top$}
 			\end{flushright}
-		}
+		}}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
+		\begin{uncoverenv}<2->
+			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
 	string label;
 #ifdef COLORED
@@ -114,7 +111,8 @@ class Edge {
 #endif
 #endif
 };
-		\end{cpptight}
+			\end{cpptight}
+		\end{uncoverenv}
 	\end{mycolumns}
 \end{frame}
 
@@ -135,15 +133,15 @@ class Edge {
 		\mynote{}{
 			calculated by querying a \emph{satisfiability solver} whether $PC$ is not satisfiable (i.e., $\pnot SAT(PC)$)
 		}
-		\mynote{What causes dead code?}{
+		\uncover<3->{\mynote{What causes dead code?}{
 			\begin{itemize}
 				\item confusion due to nested \texttt{\#ifdef}
 				\item domain modeling mistakes
 				\item can be intended! \mysource{\href{https://dl.acm.org/doi/10.1145/3442391.3442406}{Hentze~et~al.~2021}}
 			\end{itemize}
-		}
+		}}
 	\mynextcolumn
-		\myexampletight{Presence Conditions}{
+		\uncover<2->{\myexampletight{Presence Conditions}{
 			\small\vspace*{-1.3ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
@@ -169,9 +167,10 @@ class Edge {
 				{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\top$}
 			\end{flushright}
-		}
+		}}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
+		\begin{uncoverenv}<2->
+			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
 	string label;
 #ifdef COLORED
@@ -194,11 +193,10 @@ class Edge {
 #endif
 #endif
 };
-		\end{cpptight}
+			\end{cpptight}
+		\end{uncoverenv}
 	\end{mycolumns}
 \end{frame}
-
-% dead code paper (tartler beteiligt, erlangen evtl., TDS+:ATC14/EuroSys11) in linux? technik zum code auskommentieren, nicht alles ist ungewollt
 
 \subsection{Detecting Superfluous Annotations}
 
@@ -217,14 +215,14 @@ class Edge {
 		\mynote{}{
 			calculated by querying a \emph{satisfiability solver} whether $PC' \pand \pnot PC$ is not satisfiable (i.e., $\pnot SAT(PC' \pand \pnot PC)$)
 		}
-		\myexample{}{
+		\uncover<2->{\myexample{}{
 			\begin{itemize}
 				\item {\color{green}$PC' = \pnot Dir \pand \pnot Hy$}
 				\item {\color{red}$PC = \pnot Dir \pand \pnot Hy \pand \pnot Dir$}
 			\end{itemize}
-		}
+		}}
 	\mynextcolumn
-		\myexampletight{Presence Conditions}{
+	\uncover<2->{\myexampletight{Presence Conditions}{
 			\small\vspace*{-1.3ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
@@ -250,9 +248,10 @@ class Edge {
 				{\color{green}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\top$}
 			\end{flushright}
-		}
+		}}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
+		\begin{uncoverenv}<2->
+			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
 	string label;
 #ifdef COLORED
@@ -275,14 +274,15 @@ class Edge {
 #endif
 #endif
 };
-		\end{cpptight}
+			\end{cpptight}
+		\end{uncoverenv}
 	\end{mycolumns}
 \end{frame}
 
 \subsection{Joining the Problem and Solution Space}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[widths={67,33}]
+	\begin{mycolumns}[widths={67,33},animation=none]
 		\mynote{}{
 			\begin{itemize}
 				\item right now, we only consider \emph{line PCs} (from the preprocessor)
@@ -294,21 +294,22 @@ class Edge {
 					$PC_{location} \defeq \Phi(FM) \pand PC_{file} \pand PC_{line}$
 			\end{itemize}
 		}
-		\myexampletight{Suppose we have the feature model \ldots}{
+		\uncover<2->{\myexampletight{Suppose we have the feature model \ldots}{
 			\centering
 			\featureDiagram{Graph,concrete[Node,concrete,mandatory[Colored,concrete,optional]][Edge,concrete,mandatory[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]]}
 			$\pnot (Directed \pand Undirected) \pand (Hyper \pimplies Undirected) \pand (Directed \por Hyper)$
-		}
+		}}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\tiny]{\ldots\ and two files: \texttt{node.cpp} \ldots}
+		\begin{uncoverenv}<3->
+			\begin{cpptight}[basicstyle=\tiny]{\ldots\ and two files: \texttt{node.cpp} \ldots}
 class Node {
 	string label;
 #ifdef COLORED
 	string color;
 #endif
 };
-		\end{cpptight}
-		\begin{cpptight}[basicstyle=\tiny]{\ldots\ and \texttt{edge.cpp}}
+			\end{cpptight}
+			\begin{cpptight}[basicstyle=\tiny]{\ldots\ and \texttt{edge.cpp}}
 class Edge {
 #ifdef DIRECTED
 	Node fromNode, toNode;
@@ -324,14 +325,15 @@ class Edge {
 #endif
 #endif
 };
-		\end{cpptight}
+			\end{cpptight}
+		\end{uncoverenv}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
 		\emph{Problem Space}
-		\myexampletight{}{
+		\uncover<5->{\myexampletight{}{
 			\centering
 			\featureDiagram{G,concrete[N,concrete,mandatory[C,concrete,optional]][E,concrete,mandatory[D,concrete,optional][U,concrete,optional][H,concrete,optional]]}
 			$\pnot (Directed \pand Undirected)$\\
@@ -352,10 +354,10 @@ class Edge {
 				\pand &(Hyper \pimplies Undirected)\\
 				\pand &(Directed \por Hyper)
 			\end{align*}
-		}
+		}}
 	\mynextcolumn
 		\emph{Solution Space $\rightarrow$}
-		\myexampletight{File PC \tiny\texttt{node.cpp}}{
+		\uncover<4->{\myexampletight{File PC \tiny\texttt{node.cpp}}{
 			\Huge\centering\rotatebox{45}{$Node$}
 			\vspace*{0.2ex}
 		}
@@ -363,9 +365,9 @@ class Edge {
 			\vspace*{4.5ex}
 			\Huge\centering\rotatebox{45}{\color{black}$Edge$}
 			\vspace*{4.5ex}
-		}
+		}}
 	\mynextcolumn
-		\myexampletight{Line PCs \tiny\texttt{node.cpp}}{
+		\uncover<3->{\myexampletight{Line PCs \tiny\texttt{node.cpp}}{
 			\tiny\vspace*{-1.3ex}
 			\begin{flushright}
 				{\color{black}$\top$}\\
@@ -395,17 +397,18 @@ class Edge {
 				{\color{black}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{black}$\top$}
 			\end{flushright}
-		}
+		}}
 	\mynextcolumn
-		\begin{cpptight}[basicstyle=\tiny]{\texttt{node.cpp}}
+		\begin{uncoverenv}<2->
+			\begin{cpptight}[basicstyle=\tiny]{\texttt{node.cpp}}
 class Node {
 	string label;
 #ifdef COLORED
 	string color;
 #endif
 };
-		\end{cpptight}
-		\begin{cpptight}[basicstyle=\tiny]{\texttt{edge.cpp}}
+			\end{cpptight}
+			\begin{cpptight}[basicstyle=\tiny]{\texttt{edge.cpp}}
 class Edge {
 #ifdef DIRECTED
 	Node fromNode, toNode;
@@ -421,7 +424,8 @@ class Edge {
 #endif
 #endif
 };
-		\end{cpptight}
+			\end{cpptight}
+		\end{uncoverenv}
 	\end{mycolumns}
 \end{frame}
 
@@ -484,11 +488,11 @@ class Edge {
 		\end{cpptight}
 	\end{mycolumns}
 	\begin{alignat*}{3}
-		PC_{location} \defeq~&\Phi(FM) &~\pand~& PC_{\texttt{edge.cpp}} &~\pand~& PC_{\texttt{pair<Node, Node> nodePair;}}\\
-		=~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand (D \por H) &~\pand~& E &~\pand~& \pnot D \pand \pnot H \pand \pnot D\\
-		\mequals~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand {\color{red}(D \por H)} &~\pand~& E &~\pand~& {\color{red}\pnot D \pand \pnot H} \pand \pnot D\\
-		\mimplies~&(D \por H) \pand \pnot D \pand \pnot H\\
-		\mimplies~&\bot \text{ -- so this code is dead after all!}
+		PC_{location} \defeq~&\uncover<2->{\Phi(FM) &~\pand~& PC_{\texttt{edge.cpp}} &~\pand~& PC_{\texttt{pair<Node, Node> nodePair;}}\\}
+		\uncover<3->{=~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand (D \por H) &~\pand~& E &~\pand~& \pnot D \pand \pnot H \pand \pnot D\\}
+		\uncover<4->{\mequals~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand {\color{red}(D \por H)} &~\pand~& E &~\pand~& {\color{red}\pnot D \pand \pnot H} \pand \pnot D\\}
+		\uncover<5->{\mimplies~&(D \por H) \pand \pnot D \pand \pnot H\\}
+		\uncover<6->{\mimplies~&\bot \text{ -- so this code is dead after all!}}
 	\end{alignat*}
 \end{frame}
 
@@ -504,7 +508,7 @@ class Edge {
 			\begin{itemize}
 				\item we can now \emph{identify anomalies}:
 				\begin{itemize}
-					\item unused code
+					\item dead (unused) code
 					\item mistakes in preprocessor annotations
 					\item disagreements between problem and solution space
 				\end{itemize}
