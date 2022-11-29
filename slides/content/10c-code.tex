@@ -1,30 +1,107 @@
-% Code + Mapping + FM
-
 \subsection{Automated Analysis of Variable Code}
 
-\subsection{One or two of the following:}
-
-\subsection{Type Checking} % Hauptfokus
-
-%\subsection{Static Analysis} - ist mapping
-
-%\subsection{Model Checking}
-
-\subsection{Theorem Proving / Variability Encoding}
-%variability encoding, aber nur auf einer Folie
-% #ifdef in if überführen + welche Tools kann man jetzt easy anwenden?
-
-\subsection{} % venn diagram for *-based analyses
-
-\begin{frame}{}
-	% \begin{venndiagram3sets}[labelOnlyA={\parbox{1.2cm}{\centering Product-\\Based}},labelOnlyB={Feature-Based},labelOnlyC={3},
-	% 	labelOnlyAB={4},labelOnlyAC={5},labelOnlyBC={6},labelABC={7}]
-	% \end{venndiagram3sets}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[t,widths={46}]
+		\myexample{Asking Questions About\\the Feature Mapping \ldots}{
+			\begin{itemize}
+				\item Are there contradictory or unnecessary preprocessor annotations in the code?
+				\item Is the code even included in any product?
+				\item If so, in how many products is the code included?
+				\item \ldots
+			\end{itemize}
+		}
+		\mynote{}{
+			only finds code-agnostic anomalies
+		}
+		\mynextcolumn
+		\myexample{\ldots\ and the Variable Code}{
+			\begin{itemize}
+				\item Can every product be generated (e.g., compiled)?\\
+					$\Rightarrow$ to find all \emph{syntax and type errors}
+				\item Do all tests succeed for every product?\\
+					$\Rightarrow$ to find some \emph{runtime and logic errors}
+				\item Does every product adhere to its specification?\\
+					$\Rightarrow$ to \emph{rule out} runtime and logic errors
+				\item \ldots
+			\end{itemize}
+		}
+		\mynote{}{
+			now: analyze (non-)functional properties of all products
+		}
+		\myexample{Today's Example}{
+			type checking for C preprocessor code
+		}
+	\end{mycolumns}
 \end{frame}
 
-\subsection{Complexity of Product-Line Analyses} % "analyses in the wild?"
+\subsection{Variability-Aware Type Checking}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Product-Line Analyses in the Wild}
+
+\subsubsection*{Automated Analysis \ldots}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[t,columns=3]
+		\textbf{Lecture 4.3}
+		\mydefinition{\ldots\ of Feature Models}{
+			analyze only the feature model
+		}
+	\mynextcolumn
+		\textbf{Lecture 10.2}
+		\mydefinition{\ldots\ of Feature Mappings}{
+			analyze the feature mapping (considering the feature model)
+		}
+	\mynextcolumn
+		\textbf{Lecture 10.3}
+		\mydefinition{\ldots\ of Variable Code}{
+			analyze the variable code (considering the feature model and feature mapping)
+		}
+	\end{mycolumns}
+	\begin{mycolumns}[t,columns=3]
+		\myexample{}{
+			\begin{itemize}
+				\item void, core/dead features
+				\item decision propagation
+				\item atomic sets, redundant constraints
+				\item \ldots
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexample{}{
+			\begin{itemize}
+				\item dead code
+				\item superfluous annotations
+				\item degree of code scattering and tangling
+				\item \ldots
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexample{}{
+			\begin{itemize}
+				\item parsing, type checking
+				\item static analysis
+				\item model checking, theorem proving
+				\item \ldots
+			\end{itemize}
+		}
+	\end{mycolumns}
+	\begin{mycolumns}[t,columns=2,widths={32}]
+	\mynextcolumn
+		\mynote{}{
+			here: \emph{family-based} analysis strategies for \emph{conditional compilation}
+		}
+	\end{mycolumns}
+\end{frame}
 
 %number crunching, wie groß sind SPLs, product-based skaliert nicht, wann brauchen wir typechef, ...
+
+\subsubsection*{Product-Line Complexity}
 
 \begin{frame}{\myframetitle}
 	\leftorright{
@@ -56,4 +133,3 @@
 	}
 \end{frame}
 
-% we had: AAFM, AA Feature Mapping, AA of Variable Code
