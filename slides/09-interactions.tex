@@ -1,7 +1,7 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 \def\university{}
 
@@ -41,95 +41,6 @@
 \section{What is a Feature Interaction?}
 
 \input{content/09a-interactions}
-
-\subsection{Examples for Feature Interactions}
-% skype+baby monitor
-% beamer+notebook
-% esp+abs: both control brakes and motor
-\begin{frame}{A Common Interaction of Toasters}
-	\leftandright{
-		\only<1|handout:0>{\includegraphics[width=\linewidth]{toast1}}%
-		\only<2|handout:0>{\includegraphics[width=\linewidth]{toast2}}%
-		\only<3-|handout:1>{\includegraphics[width=\linewidth]{toast3}}%
-		\uncover<5->{\myexample{}{\centering no interaction for \emph{$T_1 \pand T_2$} and  $\pnot T_1 \pand \pnot T_2$}}
-	}{
-		\only<4->{\includegraphics[width=\linewidth]{toast4}}%
-		\uncover<6->{\myexample{}{\centering unwanted interaction for \emph{$T_1 \pand \pnot T_2$} and  $\pnot T_1 \pand T_2$}}
-	}
-\end{frame}
-
-\begin{frame}{An Interaction of Clothes}
-	\centering\includegraphics[width=\linewidth,page=14,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-\begin{frame}{An Interaction of Clothes}
-	\centering\includegraphics[width=\linewidth,page=15,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-\begin{frame}{An Interaction of Clothes}
-	\centering\includegraphics[width=\linewidth,page=16,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-
-\begin{frame}{An Interaction of Android Apps}
-	\centering\includegraphics[width=\linewidth,page=11,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-
-\begin{frame}{Can We Trust Our Scans?}
-	\centering\includegraphics[width=\linewidth,page=28,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-
-\begin{frame}{Known Interactions of Lenovo Hardware}
-	\centering\includegraphics[height=\textheightwithtitle,page=19]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-\begin{frame}{Known Interactions of Lenovo Hardware}
-	\centering\includegraphics[height=\textheightwithtitle,page=20]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-\begin{frame}{Known Interactions of Lenovo Hardware}
-	\centering\includegraphics[height=\textheightwithtitle,page=21]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-\begin{frame}
-	\centering\includegraphics[width=\linewidth,page=22,trim=40 20 40 0,clip]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
-
-\subsection{Static and Dynamic Interactions}
-\begin{frame}{Interactions with Preprocessors}
-	\centering
-	\includegraphics[height=\textheightwithtitle,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}
-\end{frame}
-\begin{frame}{No Interaction}
-	\centering
-	\includegraphics[height=\textheightwithtitle,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}
-\end{frame}
-\begin{frame}{A Static Interaction}
-	\centering
-	\includegraphics[height=\textheightwithtitle,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
-\end{frame}
-\begin{frame}{Another Static Interaction}
-	\centering
-	\includegraphics[height=\textheightwithtitle,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
-\end{frame}
-\begin{frame}{A Dynamic Interaction}
-	\centering
-	\includegraphics[height=\textheightwithtitle,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
-\end{frame}
-
-\subsection{Unwanted and Wanted Interactions} % Desired + Undesired
-% \href{https://github.com/SoftVarE-Group/Slides/blob/main/2021/2021-09-08-SPLC-Keynote.pdf}{\mycite{Every unwanted feature interaction waits to be fixed or at least documented in form of a constraint.}} T:SPLC21 
-
-\subsection{Pairwise Interactions}
-\subsection{Higher-Order Interactions}
-
-\begin{frame}{Interaction on Data and Control Flow \mytitlesource{\essentialconfigurationcomplexity}}
-	\centering
-	\essentialconfigurationcomplexitylink{\includegraphics[height=\textheightwithtitle,page=2,trim=55 495 225 75,clip]{2016/2016-ASE-Meinicke}}
-\end{frame}
-\begin{frame}{Execution Traces in Configurable Systems \mytitlesource{\essentialconfigurationcomplexity}}
-	\essentialconfigurationcomplexitylink{\includegraphics[width=\linewidth,page=8,trim=55 520 55 55,clip]{2016/2016-ASE-Meinicke}}
-\end{frame}
-
-% example from the The Variability Bug Database
-
-% TODO explain duality between partial configurations and conjunctions of literals (cf. elevator product line by Varshosaz et al.)
-
-%\input{content/missing}
 
 \lessonslearned{
 	\item \ldots
