@@ -86,20 +86,25 @@ refines class Graph {
 	\mynote{Question}{
 		What makes a good strategy to implement coordination code for feature interactions (while solving/avoiding the optional-feature problem)?
 	}
+	\pause
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\mydefinition{1. Variability}{
 			For every valid configuration (according to feature model), we can generate a product that implements this configuration.
 		}
+		\pause
 		\mydefinition{2. Implementation effort}{
 			Should not require overwhelming implementation effort (would not be attractive in practice).
 		}
+		\pause
 	\mynextcolumn
 		\mydefinition{3. Binary size and performance}{
 			Should not increase binary size or decrease performance of products compared to an individual implementation of each product.
 		}
+		\pause
 		\mydefinition{4. Code quality}{
 			Should not reduce code quality, which would make the product line harder to maintain. 
 		}
+		\pause
 	\end{mycolumns}
 \end{frame}
 
@@ -109,8 +114,8 @@ refines class Graph {
 	\mydefinition{Strategy}{
 		Declare implementation dependency as domain dependency in the feature model.
 	}
-	\mynotetight{Consequences}{
-		\centering\includegraphics[width=0.9\linewidth,page=1]{interaction-handling}
+	\mynotetight{}{
+		\centering\includegraphics[width=0.7\linewidth,page=1]{interaction-handling}
 	}
 \end{frame}
 
@@ -133,7 +138,7 @@ refines class Graph {
 		}
 		\vspace{3mm}
 		\mynote{}{
-			Same implementation as before, but we make implementation dependency $ShortestPath \pimplies Weighted$ explicit.
+			Same implementation as before, but we make implementation dependency explicit: $ShortestPath$ requires $Weighted$.
 		}
 	\mynextcolumn
 {\small
@@ -164,10 +169,12 @@ refines class Graph {
 \end{frame}
 
 \begin{frame}{S1 (b): Adapt Feature Model - Exclude Feature Combinations}
-	\mydefinition{}{
+	\mydefinition{Strategy}{
 		Declare problematic feature combinations as mutually exclusive in the feature model.
 	}
-	\centering\includegraphics[width=0.9\linewidth,page=2]{interaction-handling}
+	\mynotetight{}{
+		\centering\includegraphics[width=0.7\linewidth,page=2]{interaction-handling}
+	}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
@@ -192,6 +199,7 @@ refines class Graph {
 			We may safely assume any uniform weight because $ShortestPath$ and $Weighted$ are mutually exclusive.
 		}
 	\mynextcolumn
+\vspace{-3mm}
 {\small
 \begin{codetight}{layer: BasicGraph}
 class Edge {
@@ -208,10 +216,10 @@ refines class Edge {
 \begin{codetight}{layer: ShortestPath}
 refines class Graph {
 	List shortestPath(Node a, Node b){
-		float w1 = 1.0; 
-		float w2 = 1.0;
+		@float w1 = 1.0;@
+		@float w2 = 1.0;@
 		...
-		if(w1 > w2) 
+		@if(w1 > w2)@
 		... 
 	}
 }
@@ -223,11 +231,11 @@ refines class Graph {
 \subsection{S2: Orthogonal Implementation}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{}{
+	\mydefinition{Strategy}{
 		Orthogonal implementation with no dedicated coordination of interaction.
 	}
-	\mynotetight{Consequences}{
-		\centering\includegraphics[width=0.9\linewidth,page=3]{interaction-handling}
+	\mynotetight{}{
+		\centering\includegraphics[width=0.7\linewidth,page=3]{interaction-handling}
 	}
 \end{frame}
 
@@ -269,7 +277,7 @@ refines class Edge {
 \begin{codetight}{layer: ShortestPath}
 refines class Graph {
 	List shortestPath(Node a, Node b){
-		// ignore weights
+		@// ignore weights@
 		... 
 	}
 }
@@ -281,11 +289,11 @@ refines class Graph {
 \subsection{S3: Duplicate Implementations}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{}{
+	\mydefinition{Strategy}{
 		Multiple implementations of a feature, with and without coordination code.
 	}
-	\mynotetight{Consequences}{
-		\centering\includegraphics[width=0.9\linewidth,page=4]{interaction-handling}
+	\mynotetight{}{
+		\centering\includegraphics[width=0.7\linewidth,page=4]{interaction-handling}
 	}
 \end{frame}
 
@@ -324,11 +332,11 @@ refines class Graph {
 \subsection{S4: Move Source Code}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{}{
+	\mydefinition{Strategy}{
 		Move all the coordination code to one of the features (or to a third one all interacting features depend on).
 	}
-	\mynotetight{Consequences}{
-		\centering\includegraphics[width=0.9\linewidth,page=5]{interaction-handling}
+	\mynotetight{}{
+		\centering\includegraphics[width=0.7\linewidth,page=5]{interaction-handling}
 	}
 \end{frame}
 
@@ -337,7 +345,7 @@ refines class Graph {
 \begin{codetight}{layer: BasicGraph}
 class Edge {
 	private Node a, b;
-	double weight = 1.0;
+	@double weight = 1.0;@
 	...
 }
 \end{codetight}	
@@ -360,14 +368,14 @@ refines class Graph {
 	\end{mycolumns}
 \end{frame}
 
-\subsection{S5: Conditional Compilation / Optional Weaving}
+\subsection{S5: Conditional Compilation}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{}{
+	\mydefinition{Strategy}{
 		Coordination code is only executed if both features are selected.
 	}
-	\mynotetight{Consequences}{
-		\centering\includegraphics[width=0.9\linewidth,page=6]{interaction-handling}
+	\mynotetight{}{
+		\centering\includegraphics[width=0.7\linewidth,page=6]{interaction-handling}
 	}
 \end{frame}
 
@@ -391,9 +399,9 @@ refines class Graph {
 	List shortestPath(Node a, Node b){
 		Edge e1, e2;
 		...
-#ifdef WEIGHTED		
-		if(e1.weight > e2.weight) 
-#endif
+@#ifdef WEIGHTED@		
+		if(e1.weight > e2.weight) ...
+@#endif@
 		... 
 	}
 }
@@ -404,11 +412,11 @@ refines class Graph {
 \subsection{S6: Derivative Modules}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{}{
+	\mydefinition{Strategy}{
 		Create a dedicated module for code that coordinates features.
 	}
-	\mynotetight{Consequences}{
-		\centering\includegraphics[width=0.9\linewidth,page=7]{interaction-handling}
+	\mynotetight{}{
+		\centering\includegraphics[width=0.7\linewidth,page=7]{interaction-handling}
 	}
 \end{frame}
 
@@ -441,8 +449,10 @@ refines class Graph {
 	\end{mycolumns}
 \end{frame}
 
-%\begin{frame}{\myframetitle}
-	\centering\includegraphics[width=\linewidth,page=8,trim=40 30 40 70,clip]{interaction-handling}
-%\end{frame}
+\subsection{Overview and Discussion}
+
+\begin{frame}{Overview and Discussion}
+	\centering\includegraphics[width=0.9\linewidth,page=8,trim=40 25 40 25,clip]{interaction-handling}
+\end{frame}
 
 
