@@ -8,7 +8,7 @@
 \input{template/lecture}
 
 \subtitle{9. Feature Interactions}
-\author{Thomas Thüm}
+\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
 \foruniversity{}
 	{\setpicture[35]{ovgu-winter3}\setcopyright{Photo: Hannah Theile (OVGU)}}
 	{\setpicture{oct20-south4}}
@@ -152,27 +152,19 @@
 
 \section{How to Handle Feature Interactions?}
 
-% discuss techniques and refer to previous examples (message: it depends when what is feasible)
-\subsection{S1: Exclude Feature Combinations}
-% example: leonovo option compatibility matrix (even if not strictly enforced)
-% example: web configurators (Thinkpad)
-\subsection{S2: Orthogonal Implementation}
-\subsection{S3: Duplicate Implementations}
-\subsection{S4: Move Source Code}
-\subsection{S5: Preprocessors}
-\subsection{S6: Derivative Modules}
-\subsection{Overview on all Strategies}
-\subsection{When to Handle?}
-% spreadshirt example: fixing foreground+background colors for every order
-
-%\input{content/missing}
+\input{content/09b-handling}
 
 \lessonslearned{
-	\item \ldots
+	\item Adaptation of feature model to avoid (undesired) feature interactions. 
+	\item Strategies to implement coordination code for known feature interactions.
+	\item Discussion of the strenghts and weaknesses of each of the strategies.
 }{
-	\item \ldots
+	\item Kästner et al.: On the impact of the optional feature problem: Analysis and case studies. SPLC 2009.
+	\item \fospl, Chapter 9
 }{
-	\ldots
+	Looking back at our graph library and the feature interaction between $ShortestPath$ and $Weighted$. Which strategy would you choose to handle this interaction? Why?
+	
+	Can you think of other feature interactions for the graph library (you may also add additional features)? Again, how would you handle them? 
 }
 
 \sectionend
