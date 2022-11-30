@@ -37,7 +37,7 @@
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
-	\begin{mycolumns}%[widths={40,40}]
+	\begin{mycolumns}
 		\myexampletight{The Problem: Unwanted Interaction of Colors}{\centering\includegraphics[width=\linewidth,page=16,trim=50 60 360 130,clip]{2021/2021-09-08-SPLC-Keynote}}
 	\mynextcolumn
 		\myexampletight{The Solution: Choose Other Colors}{\centering\includegraphics[width=\linewidth,page=16,trim=360 60 50 130,clip]{2021/2021-09-08-SPLC-Keynote}}
@@ -48,12 +48,30 @@
 \end{frame}
 
 \begin{frame}{An Interaction of Android Apps}
-	\centering\includegraphics[width=\linewidth,page=11,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
+	\begin{mycolumns}[widths={67},animation=none]
+		\only<1-2|handout:0>{\includegraphics[width=\linewidth,page=11,trim=40 30 280 100,clip]{2021/2021-09-08-SPLC-Keynote}}%
+		\only<3->{\includegraphics[width=\linewidth,page=11,trim=40 30 40 100,clip]{2021/2021-09-08-SPLC-Keynote}}%
+		\only<4->{\begin{note}{}%
+			\centering which of those 3.5 million Android apps interact?\\where to document?\\whom to blame?%
+		\end{note}}%
+	\mynextcolumn
+		\begin{example}{Skype vs BabyMonitor}
+			\begin{itemize}
+			\item Skype app installed and used for years
+			\item BabyMonitor installed, carefully tried and used for months
+			\item BabyMonitor can call any other number (i.e., works without internet)
+			\item automatic update of the Skype app
+			\item update causes a question to be asked for every call
+			\item \alt<-2>{what is the problem?}{found baby crying as no one answered the dialog}
+			\end{itemize}
+		\end{example}
+	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Can We Trust Our Scans?}
-	\centering\includegraphics[width=\linewidth,page=28,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
-\end{frame}
+%\begin{frame}{Can We Trust Our Scans?}
+%	\centering\includegraphics[width=\linewidth,page=28,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
+%\end{frame}
+% TODO add scanner example? is it really dependent on multiple options? or only on one particular setting
 
 \begin{frame}{Known Interactions of Lenovo Hardware}
 	\centering\includegraphics[height=\textheightwithtitle,page=19]{2021/2021-09-08-SPLC-Keynote}
