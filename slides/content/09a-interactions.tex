@@ -70,11 +70,15 @@
 			\mycite{A \emph{feature interaction} between two or more features is an
 emergent behavior that cannot be easily deduced from the behaviors associated
 with the individual features involved.}
+
+			for short: interaction
 		\end{definition}
-		\begin{definition}{Inadvertent Feature Interaction\mysource{\fospl\mypage{214}}}
+		\begin{definition}{Unintended Interaction\mysource{\fospl\mypage{214}}}
 			\mycite{An \emph{inadvertent feature interaction} occurs when a feature influences the
 behavior of another feature in an unexpected way (for example, regarding the
 expected control flow, program or data state, or visible behavior).}
+
+			here: wanted vs unwanted (inadvertent)
 		\end{definition}
 	\mynextcolumn
 		\begin{definition}{Feature-Interaction Problem\mysource{\fospl\mypage{214}}}
@@ -168,7 +172,7 @@ expected control flow, program or data state, or visible behavior).}
 		\begin{note}{Detection of Interactions}
 			\begin{itemize}
 				\item static interactions \lectureanalyses
-				\item dynmaic interactions \lecturetesting
+				\item dynamic interactions \lecturetesting
 				\item next: interactions of more than two features
 			\end{itemize}
 		\end{note}
@@ -184,24 +188,50 @@ expected control flow, program or data state, or visible behavior).}
 	\begin{mycolumns}
 		\begin{definition}{Kinds of Interactions}
 			\begin{itemize}
-				\item intended and inadvertent interactions
+				\item wanted and unwanted interactions
 				\item static and dynamic interactions
-				\item interactions of features with the base code
+				\item one-wise interactions (interaction of features with the base code)
 				\item pair-wise interactions (between two features)
 				\item higher-order interactions (between more than two features)
 			\end{itemize}
 		\end{definition}
+		\begin{example}{Variability Bug Database\mysource{\VBDb}}
+			\begin{itemize}
+				\item database of known feature interactions
+				\item operating system Linux (43 interactions)
+				\item web server Apache (23)
+				\item system tool Busybox (18)
+				\item 3D printer firmware Marlin (14)
+			\end{itemize}
+		\end{example}
 	\mynextcolumn
+		\myexampletight{Patterns of Feature Interactions\mysource{\VBDb}}{\pic[width=\linewidth]{variabilitybugdatabase-patterns}}
 	\end{mycolumns}
 \end{frame}
 % TODO example from the The Variability Bug Database?
 
-\begin{frame}{Interaction on Data and Control Flow \mytitlesource{\essentialconfigurationcomplexity}}
-	\centering
-	\essentialconfigurationcomplexitylink{\includegraphics[height=\textheightwithtitle,page=2,trim=55 495 225 75,clip]{2016/2016-ASE-Meinicke}}
+\begin{frame}{Interaction on Data and Control Flow \mytitlesource{\essentialconfigurationcomplexity}}\setlength\leftmargini{3mm}
+	\begin{mycolumns}[widths={70}]
+		\essentialconfigurationcomplexitylink{\includegraphics[width=\linewidth,page=2,trim=55 495 225 75,clip]{2016/2016-ASE-Meinicke}}
+	\mynextcolumn
+		\begin{note}{How do Features Interact?}
+			\begin{itemize}
+				\item given a program with runtime variability
+				\item given one test case (i.e., concrete inputs)
+				\item how much does the execution depend on the configuration?
+				\item how many values for each variable? (green)
+				\item how many different control flows? (red)
+				\item blue color not relevant here (minimal overhead during simultaneous execution)
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}	
 \end{frame}
 \begin{frame}{Execution Traces in Configurable Systems \mytitlesource{\essentialconfigurationcomplexity}}
 	\essentialconfigurationcomplexitylink{\includegraphics[width=\linewidth,page=8,trim=55 520 55 55,clip]{2016/2016-ASE-Meinicke}}
+
+	\begin{note}{}
+		\centering insights: not all features interact. some statements may lead to higher interactions than others.
+	\end{note}
 \end{frame}
 
 % TODO explain duality between partial configurations and conjunctions of literals (cf. elevator product line by Varshosaz et al.)
