@@ -496,6 +496,48 @@ class Edge {
 	\end{alignat*}
 \end{frame}
 
+\subsection{Analyzing Feature Modules}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={34,66},animation=none]
+		\myexampletight{}{
+			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
+		}
+		\uncover<2->{\myexample{Feature-Model Formula}{
+			\small
+			$\Phi(FM) = Store \pand Type \pand (SS \por MS) \pand (\pnot SS \por \pnot MS)$
+		}
+		\myexample{Valid Configurations}{
+			\vspace*{-2ex}
+			\small
+			\leftandright{
+				{\color{black}$\{SS\}$}\\
+				$\{SS, AC\}$
+			}{
+				{\color{black}$\{MS\}$}\\
+				$\{MS, AC\}$\\
+			}
+		}}
+	\mynextcolumn
+		\uncover<3->{\pic[width=\linewidth]{fop-csur-example}}
+	\end{mycolumns}
+	\uncover<3->{\mynote{}{Is there dead code? Are there superfluous annotations?}}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={34,66},animation=none]
+		\myexampletight{}{
+			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
+		}
+		\uncover<2->{\mynotetight{Recap: 1:1 Feature Mapping!}{
+			\pic[width=\linewidth,clip,trim=0 120 250 0]{feature_komposition1}
+		}}
+	\mynextcolumn
+		\pic[width=\linewidth]{fop-csur-example}
+	\end{mycolumns}
+	\uncover<3->{\mynote{}{\sout{Is} {\color{red}Are} there \sout{dead code} {\color{red}dead features}? Are there \sout{superfluous annotations} {\color{red}redundant constraints}?}}
+\end{frame}
+
 \subsection{Feature-Mapping Analyses in FeatureIDE}
 
 \begin{frame}{\myframetitle}
@@ -517,6 +559,7 @@ class Edge {
 					\item pro: simple, language-independent
 					\item con: can only find simple anomalies
 				\end{itemize}
+				\item difficulty depends on the feature traceability (harder for conditional compilation than for FOP)
 			\end{itemize}
 		}
 	\end{mycolumns}

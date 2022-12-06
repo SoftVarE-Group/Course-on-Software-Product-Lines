@@ -29,18 +29,80 @@
 			now: analyze (non-)functional properties of all products
 		}
 		\myexample{Today's Example}{
-			type checking for C preprocessor code
+			type checking for FOP and conditional compilation
 		}
 	\end{mycolumns}
 \end{frame}
 
 \subsection{Variability-Aware Type Checking}
 
+\subsubsection{Analyzing Feature Modules}
+
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{mycolumns}[widths={35,65},animation=none]
+		\myexampletight{}{
+			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
+		}
+		\myexample{Feature-Model Formula}{
+			\small
+			$\Phi(FM) = Store \pand Type \pand (SS \por MS) \pand (\pnot SS \por \pnot MS)$
+		}
+		\myexample{Valid Configurations}{
+			\vspace*{-2ex}
+			\small
+			\leftandright{
+				{\color{black}$\{SS\}$}\\
+				$\{SS, AC\}$
+			}{
+				{\color{black}$\{MS\}$}\\
+				$\{MS, AC\}$\\
+			}
+		}
+		\uncover<2->{\mynote{}{
+			Is there a type error in \emph{any} product?
+			\uncover<3->{What about $\{SS, AC\}$?}
+		}}
 	\mynextcolumn
+		\only<-2>{\pic[width=\linewidth]{fop-csur-example-error-blind}}
 	\end{mycolumns}
 \end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={35,65},animation=none]
+		\mydefinition{Reachability Condition of $id$}{
+			guarantees that each reference to $id$ is \emph{resolvable}:\\
+			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies PC_{def}^{id})$\\[1ex]
+			or, with a SAT solver:\\
+			$\pnot SAT(\Phi(FM) \pand PC_{ref} \pand \pnot PC_{def})$
+		}
+		\mydefinition{Type-Safe Product-Line}{
+			in a \emph{type-safe} SPL, all references must be reachable (i.e., all reachability conditions hold)\\
+			{\color{gray}\ldots\ and many more conditions \ldots}
+		}
+		\myexample{}{
+			$\Phi(FM) \mimplies (SS \por MS)$ holds,\\
+			$\Phi(FM) \mimplies (AC \pimplies MS)$ does not\\[1ex]
+			$\Rightarrow$ $\{SS, AC\}$ has no \texttt{readAll}!
+		}
+	\mynextcolumn
+		\pic[width=\linewidth]{fop-csur-example-error}
+	\end{mycolumns}
+\end{frame}
+
+\subsubsection{Analyzing Conditional Compilation}
+
+\begin{frame}{\myframetitle}
+\end{frame}
+
+% \mydefinition{Conflict Condition of $id$}{
+% 	guarantees that $id$ is \emph{defined once}:\\
+% 	$\Phi(FM) \mimplies \pnot (PC_{def_1}^{id} \pand PC_{def_2}^{id})$\\[1ex]
+% 	or, with a SAT solver:\\
+% 	$\pnot SAT(\Phi(FM) \pand PC_{src} \pand \pnot PC_{dst})$
+% }
+% \myexample{}{
+% 	$VM \mimplies (AccessControl \pimplies MultiStore)$
+% }
 
 \subsection{Product-Line Analyses in the Wild}
 
@@ -94,7 +156,7 @@
 	\begin{mycolumns}[t,columns=2,widths={32}]
 	\mynextcolumn
 		\mynote{}{
-			here: \emph{family-based} analysis strategies for \emph{conditional compilation}
+			here: \emph{family-based} analysis strategies for \emph{conditional compilation/FOP}
 		}
 	\end{mycolumns}
 \end{frame}
