@@ -58,12 +58,12 @@
 				$\{MS, AC\}$\\
 			}
 		}
-		\uncover<2->{\mynote{}{
+		\uncover<3->{\mynote{}{
 			Is there a type error in \emph{any} product?
-			\uncover<3->{What about $\{SS, AC\}$?}
+			\uncover<4->{What about $\{SS, AC\}$?}
 		}}
 	\mynextcolumn
-		\only<-2>{\pic[width=\linewidth]{fop-csur-example-error-blind}}
+		\only<2->{\pic[width=\linewidth]{fop-csur-example-error-blind}}
 	\end{mycolumns}
 \end{frame}
 
@@ -76,15 +76,15 @@
 			\small
 			$\pnot SAT(\Phi(FM) \pand PC_{ref} \pand \bigwedge_{def} \pnot PC_{def})$
 		}
-		\mydefinition{Type-Safe Product-Line}{
-			in a \emph{type-safe} SPL, all references must always be defined (i.e., \emph{all} reachability conditions must hold)\\
-			{\color{gray}\ldots\ and many more conditions \ldots}
-		}
-		\myexample{}{
+		\uncover<2->{\myexample{}{
 			$\Phi(FM) \mimplies (AC \pimplies SS \por MS)$ holds,\\
 			$\Phi(FM) \mimplies (AC \pimplies MS)$ does not\\[1ex]
 			$\Rightarrow$ $\{SS, AC\}$ has no \texttt{readAll}!
-		}
+		}}
+		\uncover<3->{\mydefinition{Type-Safe Product-Line}{
+			in a \emph{type-safe} SPL, all references must always be defined (i.e., \emph{all} reachability conditions must hold)\\
+			{\color{gray}\ldots\ and many more conditions \ldots}
+		}}
 	\mynextcolumn
 		\pic[width=\linewidth]{fop-csur-example-error}
 	\end{mycolumns}
@@ -123,9 +123,9 @@
 			$~~\pand \pnot ((Hy \pand Un) \pand (Hy \pand Dir)))$\\[1ex]
 			holds, because a graph is {\color{blue}never} {\color{red}directed} and an ({\color{green}undirected}) {\color{red}hypergraph} {\color{blue}at the same time}
 		}}
+		\uncover<4->{\myexample{}{all reachable, no conflicts}}
 	\mynextcolumn
-		\begin{uncoverenv}<2->
-			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
+		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node { ... };
 
 class Edge {
@@ -146,8 +146,7 @@ std::ostream& operator<<(
 	std::ostream &s, const Edge &e) {
 	return s << e.nodes;
 }
-			\end{cpptight}
-		\end{uncoverenv}
+		\end{cpptight}
 	\end{mycolumns}
 \end{frame}
 

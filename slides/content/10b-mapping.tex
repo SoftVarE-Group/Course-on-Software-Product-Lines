@@ -529,13 +529,13 @@ class Edge {
 		\myexampletight{}{
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
 		}
-		\uncover<2->{\mynotetight{Recap: 1:1 Feature Mapping!}{
+		\mynotetight{Recap: 1:1 Feature Mapping!}{
 			\pic[width=\linewidth,clip,trim=0 120 250 0]{feature_komposition1}
-		}}
+		}
 	\mynextcolumn
 		\pic[width=\linewidth]{fop-csur-example}
 	\end{mycolumns}
-	\uncover<3->{\mynote{}{\sout{Is} {\color{red}Are} there \sout{dead code} {\color{red}dead features}? Are there \sout{superfluous annotations} {\color{red}redundant constraints}?}}
+	\uncover<2->{\mynote{}{\sout{Is} {\color{red}Are} there \sout{dead code} {\color{red}dead features}? Are there \sout{superfluous annotations} {\color{red}redundant constraints}?}}
 \end{frame}
 
 \subsection{Feature-Mapping Analyses in FeatureIDE}
