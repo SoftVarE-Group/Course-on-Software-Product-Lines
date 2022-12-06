@@ -39,7 +39,7 @@
 \subsubsection{Analyzing Feature Modules}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={35,65},animation=none]
+	\begin{mycolumns}[widths={37,63},animation=none]
 		\myexampletight{}{
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
 		}
@@ -68,19 +68,20 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={35,65},animation=none]
+	\begin{mycolumns}[widths={37,63},animation=none]
 		\mydefinition{Reachability Condition of $id$}{
-			guarantees that each reference to $id$ is \emph{resolvable}:\\
-			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies PC_{def}^{id})$\\[1ex]
+			guarantees that a given \emph{reference} to $id$ is also \emph{defined} somewhere:\\[1ex]
+			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies \bigvee_{def} PC_{def}^{id})$\\[1ex]
 			or, with a SAT solver:\\
-			$\pnot SAT(\Phi(FM) \pand PC_{ref} \pand \pnot PC_{def})$
+			\small
+			$\pnot SAT(\Phi(FM) \pand PC_{ref} \pand \bigwedge_{def} \pnot PC_{def})$
 		}
 		\mydefinition{Type-Safe Product-Line}{
-			in a \emph{type-safe} SPL, all references must be reachable (i.e., all reachability conditions hold)\\
+			in a \emph{type-safe} SPL, all references must always be defined (i.e., \emph{all} reachability conditions must hold)\\
 			{\color{gray}\ldots\ and many more conditions \ldots}
 		}
 		\myexample{}{
-			$\Phi(FM) \mimplies (SS \por MS)$ holds,\\
+			$\Phi(FM) \mimplies (AC \pimplies SS \por MS)$ holds,\\
 			$\Phi(FM) \mimplies (AC \pimplies MS)$ does not\\[1ex]
 			$\Rightarrow$ $\{SS, AC\}$ has no \texttt{readAll}!
 		}
@@ -91,20 +92,131 @@
 
 \subsubsection{Analyzing Conditional Compilation}
 
-\begin{frame}{\myframetitle}
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}[columns=3,widths={37,29,34},animation=none]
+		\myexampletight{}{
+			\centering
+			\featureDiagram{Graph,concrete[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]}
+			{\color{blue}$\pnot (Directed \pand Undirected)$}\\
+			{\color{green}$Hyper \pimplies Undirected$}\\
+			{\color{red}$Directed \por Hyper$}
+		}
+		\uncover<2->{\mydefinition{Reachability Condition of $id$}{
+			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies \bigvee_{def} PC_{def}^{id})$
+		}}
+		\uncover<3->{\mydefinition{Conflict Condition of $id$, def's $d_i$}{
+			guarantees that no definition of $id$ \emph{conflicts} with another:\\[1ex]
+			$\Phi(FM) \mimplies \bigwedge_{d_1 \neq d_2} \pnot (PC_{d_1}^{id} \pand PC_{d_2}^{id}))$
+		}}
+	\mynextcolumn
+	\uncover<2->{\myexample{Is $e.nodes$ reachable?}{
+			\small
+			$\Phi(FM) \mimplies (\top \pimplies$\\
+			$~~Dir \por (Hy \pand Un) \por (Hy \pand Dir))$\\[1ex]
+			holds, because each graph is {\color{red}directed} or an ({\color{green}undirected}) {\color{red}hypergraph}
+		}}
+		\uncover<3->{\myexample{Does $e.nodes$ conflict?}{
+			\small
+			$\Phi(FM) \mimplies ($\\
+			$~~\pnot (Dir \pand (Hy \pand Un))$\\
+			$~\pand \pnot (Dir \pand (Hy \pand Dir))$\\
+			$~~\pand \pnot ((Hy \pand Un) \pand (Hy \pand Dir)))$\\[1ex]
+			holds, because a graph is {\color{blue}never} {\color{red}directed} and an ({\color{green}undirected}) {\color{red}hypergraph} {\color{blue}at the same time}
+		}}
+	\mynextcolumn
+		\begin{uncoverenv}<2->
+			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
+class Node { ... };
+
+class Edge {
+#ifdef DIRECTED
+	pair<Node, Node> nodes;
+#endif
+#ifdef HYPER
+#ifdef UNDIRECTED
+	set<Node> nodes;
+#endif
+#ifdef DIRECTED
+	map<Node, set<Node>> nodes;
+#endif
+#endif
+};
+
+std::ostream& operator<<(
+	std::ostream &s, const Edge &e) {
+	return s << e.nodes;
+}
+			\end{cpptight}
+		\end{uncoverenv}
+	\end{mycolumns}
 \end{frame}
 
-% \mydefinition{Conflict Condition of $id$}{
-% 	guarantees that $id$ is \emph{defined once}:\\
-% 	$\Phi(FM) \mimplies \pnot (PC_{def_1}^{id} \pand PC_{def_2}^{id})$\\[1ex]
-% 	or, with a SAT solver:\\
-% 	$\pnot SAT(\Phi(FM) \pand PC_{src} \pand \pnot PC_{dst})$
-% }
-% \myexample{}{
-% 	$VM \mimplies (AccessControl \pimplies MultiStore)$
-% }
+\subsubsection{Discussion}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\mynote{Just the Tip of the Iceberg}{
+			\begin{itemize}
+				\item here, we only discussed reachability and conflict conditions
+				\item but: actual type checking requires a table of all identifiers, their types, and their PCs (and a lot more SAT queries)
+				\item the practical difficulty depends:
+				\begin{itemize}
+					\item FOP (due to superimposition)\\
+						$\Rightarrow$ no conflict conditions required
+					\item good feature traceability (e.g., FOP)\\
+						$\Rightarrow$ trivial PCs, simpler implementation
+					\item ignoring the feature model\\
+						$\Rightarrow$ better performance (false positives!)
+				\end{itemize}
+			\end{itemize}
+		}
+	\mynextcolumn
+		\myexample{The TypeChef Project \mysource{\href{https://dl.acm.org/doi/10.1145/2048066.2048128}{Kästner~et~al.~2011}}}{
+			\begin{itemize}
+				\item a variability-aware lexer, parser framework, and type system for C code with \texttt{\#ifdef}'s
+				\item skips preprocessing, instead builds an abstract syntax tree (AST) annotated with presence conditions
+				\item \href{https://ckaestne.github.io/TypeChef/typechef-poster.png}{poster} with examples
+				\item does it scale?\\[1ex]
+				{\small Busybox (811 features): \mycite{We need 57 minutes to type check all modules.}} \mysource{\href{https://dl.acm.org/doi/10.1145/2384616.2384673}{ref}}\\[1ex]
+				{\small Linux (6065 features): \mycite{We successfully parsed [it in] roughly 85 hours on a single machine.}} \mysource{\href{https://dl.acm.org/doi/10.1145/2048066.2048128}{ref}} % not practically possible, can be used to motivate testing in next lecture
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
 
 \subsection{Product-Line Analyses in the Wild}
+
+\subsubsection*{Product-Line Complexity}
+
+\begin{frame}{\myframetitle}
+	\leftorright{
+		\mydefinition{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}{
+			In a timeframe of 24h \ldots
+			\begin{enumerate}
+				\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}
+				\item[\textbf{C1}] All products can be generated and \emph{tested}
+				\item[\textbf{C2}] Not C1, but all \emph{products} can be \emph{generated}
+				\item[\textbf{C3}] Not C2, but all \emph{configurations} can be \emph{generated} (AllSAT)
+				\item[\textbf{C4}] Not C3, but the \emph{number of valid configurations} can be computed (\ssat{})
+				\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)
+				\item[\textbf{C6}] It cannot be computed whether there is a valid configuration
+			\end{enumerate}
+		}
+	}{
+		\myexample{Examples}{
+			% also put examples of analysis strategies here, and which kind of mapping/code analysis scales for which class?
+			\begin{enumerate}
+				\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}
+				\item[\textbf{C1}] $< 2000$ products for 1 min per product
+				\item[\textbf{C2}] $< 90000$ products for 1 s per product
+				\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration
+				\item[\textbf{C4}] older versions of Linux/Automotive05
+				\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
+				\item[\textbf{C6}] No example known
+			\end{enumerate}
+		}
+	}
+\end{frame}
 
 \subsubsection*{Automated Analysis \ldots}
 
@@ -156,42 +268,7 @@
 	\begin{mycolumns}[t,columns=2,widths={32}]
 	\mynextcolumn
 		\mynote{}{
-			here: \emph{family-based} analysis strategies for \emph{conditional compilation/FOP}
+			here: \emph{family-based} analysis strategies for \emph{conditional compilation} and \emph{feature-oriented programming}
 		}
 	\end{mycolumns}
 \end{frame}
-
-%number crunching, wie groß sind SPLs, product-based skaliert nicht, wann brauchen wir typechef, ...
-
-\subsubsection*{Product-Line Complexity}
-
-\begin{frame}{\myframetitle}
-	\leftorright{
-		\mydefinition{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}{
-			In a timeframe of 24h \ldots
-			\begin{enumerate}
-				\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}
-				\item[\textbf{C1}] All products can be generated and \emph{tested}
-				\item[\textbf{C2}] Not C1, but all \emph{products} can be \emph{generated}
-				\item[\textbf{C3}] Not C2, but all \emph{configurations} can be \emph{generated} (AllSAT)
-				\item[\textbf{C4}] Not C3, but the \emph{number of valid configurations} can be computed (\ssat{})
-				\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)
-				\item[\textbf{C6}] It cannot be computed whether there is a valid configuration
-			\end{enumerate}
-		}
-	}{
-		\myexample{Examples}{
-			% also put examples of analysis strategies here, and which kind of mapping/code analysis scales for which class?
-			\begin{enumerate}
-				\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}
-				\item[\textbf{C1}] $< 2000$ products for 1 min per product
-				\item[\textbf{C2}] $< 90000$ products for 1 s per product
-				\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration
-				\item[\textbf{C4}] older versions of Linux/Automotive05
-				\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
-				\item[\textbf{C6}] No example known
-			\end{enumerate}
-		}
-	}
-\end{frame}
-
