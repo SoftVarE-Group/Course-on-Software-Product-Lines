@@ -11,7 +11,7 @@
 \author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
 \foruniversity{}
 	{
-		%\setpicture[50]{ovgu-autumn3}\setcopyright{Photo: Hannah Theile (OVGU)} % add new picuter
+		%\setpicture[50]{ovgu-autumn3}\setcopyright{Photo: Hannah Theile (OVGU)} % add new picture
 	}
 	{\setpicture{oct20-south4}}
 
@@ -68,11 +68,17 @@
 \input{content/10c-code}
 
 \lessonslearned{
-	\item \todots
+	\item with family-based analyses of variable code, we can analyze (non-)functional properties of all products at once
+	\item type checking all products at once is possible for product lines up to medium size
+	\item for huge product lines (e.g., Linux), it is infeasible
 }{
-	\item \todots
+	\item \fospl, Chapter 10
+	\item \typechef
 }{
-	\todots
+	Suppose you have a preprocessor-based product line (with \texttt{\#ifdef}'s).
+	If you could turn it into a single, large runtime-variable product (with \texttt{if}'s), you could use an off-the-shelf compiler to find any type error in any product.
+
+	Is this possible? What problems might occur?
 }
 
 \input{template/footer}
