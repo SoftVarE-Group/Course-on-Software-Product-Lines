@@ -24,8 +24,8 @@
 \end{frame}
 
 \begin{frame}{Recap: Black-Box Testing \deutschertitel{Funktionstest}}
-	\leftandright{
-		\mynote{Motivation \mysource{\ludewiglichter}}{
+	\begin{mycolumns}
+		\begin{note}{Motivation \mysource{\ludewiglichter}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item source code not always available (e.g., outsourced components, obfuscated code)
@@ -34,20 +34,31 @@
 				%\item invalid inputs not tested
 				\item errors are not equally distributed
 			\end{itemize}
-		}
-		\vspace{-1mm}
-		\mydefinition{Black-Box Testing \mysource{\ludewiglichter}}{
+		\end{note}
+		\begin{definition}{Black-Box Testing \mysource{\ludewiglichter}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item test-case design based on specification
 				\item source code and its inner structure is ignored (assumed as a black-box)
 			\end{itemize}
-		}{}
-	}{
-		\todo{discuss difference between test cases and sample configurations}
-		
-		% TODO \todo{table with chances how to combine white-box and black-box}
-	}
+		\end{definition}
+	\mynextcolumn
+		\begin{note}{Sample Configuration $\neq$ Test Case}
+			\begin{itemize}
+				\item test case: concrete inputs and expected outputs for a program
+				\item sample configuration: selection of features to derive the program
+				\item both needed when testing product lines
+				\item often confused in the literature
+				\item test case derivation
+					\begin{itemize}
+						\item out of scope here % TODO add pointers to literature
+						\item global tests (i.e., identical for all configurations)
+						\item product-line implementation technique used to automatically derive configuration-specific tests \lectureprocess
+					\end{itemize}
+				\item on next slides: idea of black-box testing applied to derive sample configuration
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Pairwise Interaction Testing}
