@@ -1,7 +1,7 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	%handout, % handout mode without animations, comment out to add animations
+	handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 \def\university{}
 
@@ -25,7 +25,7 @@
 		\only<2|handout:0>{\includegraphics[width=\linewidth,page=3]{quality-assurance}}%
 		\only<3|handout:0>{\includegraphics[width=\linewidth,page=4]{quality-assurance}}%
 		\only<4|handout:1>{\includegraphics[width=\linewidth,page=5]{quality-assurance}}%
-		\only<5|handout:0>{\includegraphics[width=\linewidth,page=7]{quality-assurance}}%
+		\only<5-|handout:0>{\includegraphics[width=\linewidth,page=7]{quality-assurance}}%
 	\mynextcolumn
 		\begin{note}{Lectures on Quality Assurance}
 			how to \emph{avoid} variability bugs (esp. feature interactions) \ldots
@@ -38,6 +38,11 @@
 			\begin{itemize}
 				\item<+-> \emph{statically} \lectureanalyses
 				\item<+-> \emph{dynamically} \lecturetesting
+				\begin{itemize}
+					\item<+-> challenges of product-line testing in Part I
+					\item<+-> black-box testing in Part II
+					\item<+-> white-box testing in Part III
+				\end{itemize}
 			\end{itemize}
 		\end{note}
 	\end{mycolumns}
@@ -56,7 +61,7 @@
 	\item testing one configuration
 	\item sample-based testing
 }{
-	\item \ldots
+	\item[]
 }{
 	Recap on feature interactions: What are examples of interactions that cannot be detected statically \lectureanalyses\ and could be missed when testing a single configuration only?
 }

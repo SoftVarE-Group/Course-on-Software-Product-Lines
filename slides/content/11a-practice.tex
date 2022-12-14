@@ -34,40 +34,38 @@
 	\leftorright{
 		\centering\featureDiagramConfigurableDatabase
 		
-		\myexample{Recap: 26 Valid Configurations \lecturemodeling}{
-			\todo{update list based on the example (here and on later slides)}
-
+		\begin{example}{Recap: 26 Valid Configurations \lecturemodeling}
 			\footnotesize
-			\leftandright{
-				$\{B,G,W\}$\\
-				$\{B,P,W\}$\\
-				$\{B,G,P,W\}$\\
-				$\{B,D,W\}$\\
-				$\{B,G,D,W\}$\\
-				$\{B,P,D,W\}$\\
-				$\{B,G,P,D,W\}$\\
-				$\{B,P,T,W\}$\\
-				$\{B,G,P,T,W\}$\\
-				$\{B,D,T,W\}$\\
-				$\{B,G,D,T,W\}$\\
-				$\{B,P,D,T,W\}$\\
-				$\{B,G,P,D,T,W\}$
-			}{
-				$\{B,G,U\}$\\
-				$\{B,P,U\}$\\
-				$\{B,G,P,U\}$\\
-				$\{B,D,U\}$\\
-				$\{B,G,D,U\}$\\
-				$\{B,P,D,U\}$\\
-				$\{B,G,P,D,U\}$\\
-				$\{B,P,T,U\}$\\
-				$\{B,G,P,T,U\}$\\
-				$\{B,D,T,U\}$\\
-				$\{B,G,D,T,U\}$\\
-				$\{B,P,D,T,U\}$\\
-				$\{B,G,P,D,T,U\}$
-			}
-		}
+			\begin{mycolumns}[animation=none]
+				$\{C,G,W\}$\\
+				$\{C,P,W\}$\\
+				$\{C,G,P,W\}$\\
+				$\{C,D,W\}$\\
+				$\{C,G,D,W\}$\\
+				$\{C,P,D,W\}$\\
+				$\{C,G,P,D,W\}$\\
+				$\{C,P,T,W\}$\\
+				$\{C,G,P,T,W\}$\\
+				$\{C,D,T,W\}$\\
+				$\{C,G,D,T,W\}$\\
+				$\{C,P,D,T,W\}$\\
+				$\{C,G,P,D,T,W\}$
+			\mynextcolumn
+				$\{C,G,L\}$\\
+				$\{C,P,L\}$\\
+				$\{C,G,P,L\}$\\
+				$\{C,D,L\}$\\
+				$\{C,G,D,L\}$\\
+				$\{C,P,D,L\}$\\
+				$\{C,G,P,D,L\}$\\
+				$\{C,P,T,L\}$\\
+				$\{C,G,P,T,L\}$\\
+				$\{C,D,T,L\}$\\
+				$\{C,G,D,T,L\}$\\
+				$\{C,P,D,T,L\}$\\
+				$\{C,G,P,D,T,L\}$
+			\end{mycolumns}
+		\end{example}
 	}{
 		\vspace{-7mm}
 		\mynote{Discussion}{
@@ -82,65 +80,66 @@
 	}
 \end{frame}
 
-\begin{frame}
-	\begin{mycolumns}[animation=none]
+\begin{frame}{Recap: Feature Model of the Linux Kernel}
+	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,page=1,trim=100 510 100 170,clip]{2020/2020-SPLC-Thuem}}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[animation=none,widths={60}]
+		\myexampletight{Recap: Industrial Configuration Spaces \lectureintroduction}{
+			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
+		}
+	\mynextcolumn
 		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
 		\vspace{-7mm}
 		
-		\mynote{Edsger W. Dijkstra (1972) \mysource{\thehumbleprogrammer}}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}}
+		\mynote{Edsger W. Dijkstra (1972)}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}\mysource{\thehumbleprogrammer}}
 		% 1930-2002, ACM Turing Award winner
-	\mynextcolumn
-		\myexampletight{\small Recap: Industrial Configuration Spaces \lectureintroduction}{
-			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=.8\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
-		}
 	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{Recap: Feature Model of the Linux Kernel}
-	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,page=1,trim=100 510 100 170,clip]{2020/2020-SPLC-Thuem}}
 \end{frame}
 
 \newcommand{\eemph}[1]{{\color{red}\textbf{#1}}}
 
 \subsection{Testing One Configuration}
 \begin{frame}{\myframetitle}
-	\leftorright{
+	\begin{mycolumns}[b]
 		\centering\featureDiagramConfigurableDatabase
 		
-		\myexample{Which Valid Configuration to Test?}{
+		\begin{example}{Recap: 26 Valid Configurations \lecturemodeling}
 			\footnotesize
 			\leftandright{
-				$\{B,G,W\}$\\
-				$\{B,P,W\}$\\
-				$\{B,G,P,W\}$\\
-				$\{B,D,W\}$\\
-				$\{B,G,D,W\}$\\
-				$\{B,P,D,W\}$\\
-				$\{B,G,P,D,W\}$\\
-				$\{B,P,T,W\}$\\
-				$\{B,G,P,T,W\}$\\
-				$\{B,D,T,W\}$\\
-				$\{B,G,D,T,W\}$\\
-				$\{B,P,D,T,W\}$\\
-				\eemph{$\{B,G,P,D,T,W\}$}
+				$\{C,G,W\}$\\
+				$\{C,P,W\}$\\
+				$\{C,G,P,W\}$\\
+				$\{C,D,W\}$\\
+				$\{C,G,D,W\}$\\
+				$\{C,P,D,W\}$\\
+				$\{C,G,P,D,W\}$\\
+				$\{C,P,T,W\}$\\
+				$\{C,G,P,T,W\}$\\
+				$\{C,D,T,W\}$\\
+				$\{C,G,D,T,W\}$\\
+				$\{C,P,D,T,W\}$\\
+				\emph{$\{C,G,P,D,T,W\}$}
 			}{
-				$\{B,G,U\}$\\
-				$\{B,P,U\}$\\
-				$\{B,G,P,U\}$\\
-				$\{B,D,U\}$\\
-				$\{B,G,D,U\}$\\
-				$\{B,P,D,U\}$\\
-				$\{B,G,P,D,U\}$\\
-				$\{B,P,T,U\}$\\
-				$\{B,G,P,T,U\}$\\
-				$\{B,D,T,U\}$\\
-				$\{B,G,D,T,U\}$\\
-				$\{B,P,D,T,U\}$\\
-				\emph{$\{B,G,P,D,T,U\}$}
+				$\{C,G,L\}$\\
+				$\{C,P,L\}$\\
+				$\{C,G,P,L\}$\\
+				$\{C,D,L\}$\\
+				$\{C,G,D,L\}$\\
+				$\{C,P,D,L\}$\\
+				$\{C,G,P,D,L\}$\\
+				$\{C,P,T,L\}$\\
+				$\{C,G,P,T,L\}$\\
+				$\{C,D,T,L\}$\\
+				$\{C,G,D,T,L\}$\\
+				$\{C,P,D,T,L\}$\\
+				$\{C,G,P,D,T,L\}$
 			}
-		}
-	}{
-		\mynote{Discussion}{
+		\end{example}
+	\mynextcolumn
+		\pause\vspace{-10mm}
+		\begin{note}{Discussion}
 			\begin{itemize}
 				\setlength\itemsep{.4em}
 				\item applicable to large product lines
@@ -149,9 +148,12 @@
 				\item strategy in practice: all-yes-config (configuration with many features selected)
 				\item unnoticed feature interactions \lectureinteractions
 			\end{itemize}
-		}
-		\todo{picture on known interaction from \lectureinteractions}
-	}
+		\end{note}
+		\pause
+		\begin{example}{What about interactions with missing features?}
+			\centering\pic[width=.5\linewidth]{toast4}
+		\end{example}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Sample-Based Testing}
@@ -162,6 +164,7 @@
 				\item to analyze the product line, just analyze \emph{some sample products}
 				\item sample \deutsch{Stichprobe} refers to subset of all valid configurations
 				\item common technique to test a product line
+				\item sample configurations chosen by experts, randomly, or systematically
 			\end{itemize}
 		\end{definition}
 		\begin{note}{Advantages and Challenges}
@@ -176,13 +179,13 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Expert Knowledge in Sampling}
+% TODO \subsection{Expert Knowledge in Sampling}
 
-\subsection{Random Sampling}
+% TODO \subsection{Random Sampling}
 
-\subsection{Excursus: Uniform Random Sampling}
+% TODO probably too much content anyway: \subsection{Excursus: Uniform Random Sampling}
 
-\subsection{Testing the Linux Kernel}
+% TODO \subsection{Testing the Linux Kernel}
 % allyesconfig
 
 %\subsection{Automation in Product Sampling} ???
