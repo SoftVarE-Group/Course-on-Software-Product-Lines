@@ -71,38 +71,38 @@
 				\item every pairwise interaction is covered by at least one configuration in the sample $S$
 			\end{itemize}
 		}
-		\myexample{Configurations with the Interaction Get $\wedge$ Put}{
+		\begin{example}{Configurations with the Interaction Get $\wedge$ Put}
 			\footnotesize
 			\leftandright{
-				$\{B,G,W\}$\\
-				$\{B,P,W\}$\\
-				\emph{$\{B,G,P,W\}$}\\
-				$\{B,D,W\}$\\
-				$\{B,G,D,W\}$\\
-				$\{B,P,D,W\}$\\
-				\eemph{$\{B,G,P,D,W\}$}\\
-				$\{B,P,T,W\}$\\
-				\eemph{$\{B,G,P,T,W\}$}\\
-				$\{B,D,T,W\}$\\
-				$\{B,G,D,T,W\}$\\
-				$\{B,P,D,T,W\}$\\
-				\eemph{$\{B,G,P,D,T,W\}$}
+				$\{C,G,W\}$\\
+				$\{C,P,W\}$\\
+				\emph{$\{C,G,P,W\}$}\\
+				$\{C,D,W\}$\\
+				$\{C,G,D,W\}$\\
+				$\{C,P,D,W\}$\\
+				\emph{$\{C,G,P,D,W\}$}\\
+				$\{C,P,T,W\}$\\
+				\emph{$\{C,G,P,T,W\}$}\\
+				$\{C,D,T,W\}$\\
+				$\{C,G,D,T,W\}$\\
+				$\{C,P,D,T,W\}$\\
+				\emph{$\{C,G,P,D,T,W\}$}
 			}{
-				$\{B,G,U\}$\\
-				$\{B,P,U\}$\\
-				\eemph{$\{B,G,P,U\}$}\\
-				$\{B,D,U\}$\\
-				$\{B,G,D,U\}$\\
-				$\{B,P,D,U\}$\\
-				\eemph{$\{B,G,P,D,U\}$}\\
-				$\{B,P,T,U\}$\\
-				\eemph{$\{B,G,P,T,U\}$}\\
-				$\{B,D,T,U\}$\\
-				$\{B,G,D,T,U\}$\\
-				$\{B,P,D,T,U\}$\\
-				\eemph{$\{B,G,P,D,T,U\}$}
+				$\{C,G,L\}$\\
+				$\{C,P,L\}$\\
+				\emph{$\{C,G,P,L\}$}\\
+				$\{C,D,L\}$\\
+				$\{C,G,D,L\}$\\
+				$\{C,P,D,L\}$\\
+				\emph{$\{C,G,P,D,L\}$}\\
+				$\{C,P,T,L\}$\\
+				\emph{$\{C,G,P,T,L\}$}\\
+				$\{C,D,T,L\}$\\
+				$\{C,G,D,T,L\}$\\
+				$\{C,P,D,T,L\}$\\
+				\emph{$\{C,G,P,D,T,L\}$}
 			}
-		}
+		\end{example}
 	}{
 		\mynote{Discussion}{
 			\begin{itemize}
@@ -137,18 +137,17 @@
 
 \begin{frame}{Pairwise Coverage}
 	\leftorright{
-		\vspace{5mm}
+		\centering\featureDiagramConfigurableDatabase
+
 		\mydefinition{Interactions to Cover}{
 			\begin{itemize}
 				\setlength\itemsep{.5em}
-				\item exclude invalid combinations (e.g., $W \wedge U$)
-				\item exclude abstract features (e.g., $API$)
-				\item exclude features contained in every configuration (e.g., $B$)
+				\item exclude invalid combinations (e.g., $W \wedge L$)
+				\item exclude abstract features (e.g., $API$, $OS$)
+				\item exclude features contained in every configuration (e.g., $C$)
 			\end{itemize}
 			% TODO \todo{add formal definitions based on \lecturemodeling}
 		}
-
-		\centering\featureDiagramConfigurableDatabase
 	}{
 		\vspace{-10mm}
 		\myexample{Pairwise Interactions}{
@@ -158,27 +157,27 @@
 				\epair{G}{D}{2}{3}{1}{5}
 				\epair{G}{T}{3}{2}{1}{5}
 				\epair{G}{W}{4}{2}{1}{6}
-				\epair{G}{U}{2}{4}{6}{1}
+				\epair{G}{L}{2}{4}{6}{1}
 				\epair{P}{D}{1}{3}{2}{4}
 				\epair{P}{T}{1}{5}{6}{2}
 				\epair{P}{W}{1}{3}{4}{2}
-				\epair{P}{U}{3}{1}{2}{4}
+				\epair{P}{L}{3}{1}{2}{4}
 				\epair{D}{T}{1}{2}{3}{4}
 				\epair{D}{W}{1}{2}{4}{3}
-				\epair{D}{U}{2}{1}{3}{4}
+				\epair{D}{L}{2}{1}{3}{4}
 				\epair{T}{W}{1}{3}{4}{2}
-				\epair{T}{U}{3}{1}{2}{4}
-				& {\redandgray{1}$W \wedge \neg U$} & {\redandgray{2}$\neg W \wedge U$} & \\
+				\epair{T}{L}{3}{1}{2}{4}
+				& {\redandgray{1}$W \wedge \neg L$} & {\redandgray{2}$\neg W \wedge L$} & \\
 			\end{tabular} 
 		}
 		\myexample{Pairwise Coverage with Six Configurations}{
 			\footnotesize\color{lightgray}
-			{\redandgray{1}$\{B,P,D,T,W\}$}\\
-			{\redandgray{2}$\{B,G,D,U\}$}\\
-			{\redandgray{3}$\{B,G,P,T,U\}$}\\
-			{\redandgray{4}$\{B,G,W\}$}\\
-			{\redandgray{5}$\{B,P,W\}$}\\
-			{\redandgray{6}$\{B,D,T,U\}$}\\
+			{\redandgray{1}$\{C,P,D,T,W\}$}\\
+			{\redandgray{2}$\{C,G,D,L\}$}\\
+			{\redandgray{3}$\{C,G,P,T,L\}$}\\
+			{\redandgray{4}$\{C,G,W\}$}\\
+			{\redandgray{5}$\{C,P,W\}$}\\
+			{\redandgray{6}$\{C,D,T,L\}$}\\
 		}
 	}
 \end{frame}
