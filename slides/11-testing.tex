@@ -1,27 +1,60 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % handout mode without animations, comment out to add animations
 ]{beamer}
 \def\university{}
 
 \input{template/lecture}
 
 \subtitle{11. Product-Line Testing}
-\author{Thomas Thüm}
+\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
 
 \begin{document}
 
 \input{template/header}
 
+\begin{frame}{\inserttitle}
+	\lectureseriesoverview[11]
+\end{frame}
+
+\begin{frame}{Recap: Quality Assurance \mytitlesource{\ludewiglichter}}
+	\begin{mycolumns}[widths={60},animation=none]
+		%\only<1|handout:0>{\includegraphics[width=\linewidth,page=1]{quality-assurance}}%
+		\only<1|handout:0>{\includegraphics[width=\linewidth,page=8]{quality-assurance}}%
+		\only<2|handout:0>{\includegraphics[width=\linewidth,page=3]{quality-assurance}}%
+		\only<3|handout:0>{\includegraphics[width=\linewidth,page=4]{quality-assurance}}%
+		\only<4|handout:1>{\includegraphics[width=\linewidth,page=5]{quality-assurance}}%
+		\only<5|handout:0>{\includegraphics[width=\linewidth,page=7]{quality-assurance}}%
+	\mynextcolumn
+		\begin{note}{Lectures on Quality Assurance}
+			how to \emph{avoid} variability bugs (esp. feature interactions) \ldots
+			\begin{itemize}
+				\item<+-> with processes (e.g., domain scoping) \lectureprocess
+				\item<+-> with guidelines \lectureinteractions
+			\end{itemize}
+
+			how to \emph{find} variability bugs \ldots
+			\begin{itemize}
+				\item<+-> \emph{statically} \lectureanalyses
+				\item<+-> \emph{dynamically} \lecturetesting
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
+
 % TODO add xkcd from SWT? \widexkcd{974} % salt 12s
 
-\section{Product-Line Testing in Practice}
+\section{Product-Line Testing}
+% TODO \section{Product-Line Testing in Practice} practice part still missing
 
 \input{content/11a-practice}
 
 \lessonslearned{
-	\item \ldots
+	\item recap on software testing
+	\item testing all configurations
+	\item testing one configuration
+	\item sample-based testing
 }{
 	\item \ldots
 }{
@@ -67,6 +100,10 @@
 %	\item Post questions to Moodle, if any
 %	\\\hfill\qrcode{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=4496} % TODO in 2023 update link
 %}
+
+\begin{frame}{\inserttitle}
+	\lectureseriesoverview[11]
+\end{frame}
 
 \input{template/footer}
 

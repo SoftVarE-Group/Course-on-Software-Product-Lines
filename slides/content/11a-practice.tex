@@ -1,29 +1,17 @@
 % TODO famous example for a product line failure?
 
-\subsection{Recap: Quality Assurance}
-
-\begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
-	\hfill%
-	\only<1|handout:0>{\includegraphics[height=\textheightwithtitle,page=1]{quality-assurance}}%
-	\only<2|handout:0>{\includegraphics[height=\textheightwithtitle,page=2]{quality-assurance}}%
-	\only<3|handout:0>{\includegraphics[height=\textheightwithtitle,page=3]{quality-assurance}}%
-	\only<4|handout:0>{\includegraphics[height=\textheightwithtitle,page=4]{quality-assurance}}%
-	\only<5|handout:1>{\includegraphics[height=\textheightwithtitle,page=5]{quality-assurance}}%
-	\only<6|handout:0>{\includegraphics[height=\textheightwithtitle,page=7]{quality-assurance}}%
-\end{frame}
-
-\begin{frame}{Recap: Software Testing}
-	\leftorright{
+\subsection{Recap: Software Testing}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
 		\vspace{7mm}
-		\uncover<1-3>{\mydefinition{Software Testing \mysource{\sommerville}}{\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}}{}}
-		\uncover<2-3>{\mydefinition{Validation Testing \mysource{\sommerville}}{\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}}{}}
-		\uncover<3-3>{\mydefinition{Defect Testing \mysource{\sommerville}}{\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}}{}}
-	}{
+		\uncover<1->{\mydefinition{Software Testing \mysource{\sommerville}}{\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}}{}}
+		\uncover<2->{\mydefinition{Validation Testing \mysource{\sommerville}}{\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}}{}}
+		\uncover<3->{\mydefinition{Defect Testing \mysource{\sommerville}}{\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}}{}}
+	\mynextcolumn
 		\vspace{-12mm}
-		\uncover<4>{\mynote{V\&V \mysource{\seeconomics}}{\mycite{\emph{Validation}: Are we building the right product?\\\emph{Verification}: Are we building the product right?}}} 
+		\uncover<4->{\mynote{V\&V \mysource{\seeconomics}}{\mycite{\emph{Validation}: Are we building the right product?\\\emph{Verification}: Are we building the product right?}}} 
 		% TODO better visualization of V&V (see Inas slides). move to V model?
-		\vspace{-2mm}
-		\uncover<5>{\mynote{Stages of Testing \mysource{\sommerville}}{
+		\uncover<5->{\mynote{Stages of Testing \mysource{\sommerville}}{
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item[1.] \mycite{\emph{Development testing}, where the system is tested during development to discover
@@ -34,41 +22,10 @@
 				own environment}
 			\end{itemize}
 		}}
-		\vspace{-2mm}
-		\uncover<6>{\mynote{}{\mycite{In \emph{manual testing}, a tester runs the program with some test data and
+		\uncover<6->{\mynote{}{\mycite{In \emph{manual testing}, a tester runs the program with some test data and
 				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.} \mysource{\sommerville}}}
-	}
+	\end{mycolumns}
 \end{frame}
-
-\begin{frame}
-	\leftorright{
-		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
-		\vspace{-7mm}
-		
-		\mynote{Edsger W. Dijkstra (1972) \mysource{\thehumbleprogrammer}}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}}
-		% 1930-2002, ACM Turing Award winner
-	}{
-		\todo{illustration for many configurations from previous slides}
-	}
-\end{frame}
-
-% \subsection{Sample-Based Testing} % originally from lecture 10, may be useful here
-
-% \begin{frame}{\myframetitle}
-% 	\begin{mycolumns}
-% 		\mydefinition{Intuition}{
-% 			\begin{itemize}
-% 				\item to analyze the product line, just analyze \emph{some products} (which products?)
-% 				\item e.g., \emph{sample-based testing} \lecturetesting
-% 			\end{itemize}
-% 		}
-% 		\mynote{Advantages and Challenges}{
-% 			\todots
-% 		}
-% 	\mynextcolumn
-% 		\pic[width=\linewidth,page=10]{lego-analyses}
-% 	\end{mycolumns}
-% \end{frame}
 
 \subsection{Testing All Configurations}
 \begin{frame}{\myframetitle}
@@ -120,10 +77,21 @@
 				\item (some) large product lines: not even the number of valid configurations is known
 			\end{itemize}
 		}
+	}
+\end{frame}
+
+\begin{frame}
+	\begin{mycolumns}[animation=none]
+		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
+		\vspace{-7mm}
+		
+		\mynote{Edsger W. Dijkstra (1972) \mysource{\thehumbleprogrammer}}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}}
+		% 1930-2002, ACM Turing Award winner
+	\mynextcolumn
 		\myexampletight{\small Recap: Industrial Configuration Spaces \lectureintroduction}{
 			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=.8\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Recap: Feature Model of the Linux Kernel}
@@ -184,11 +152,27 @@
 	}
 \end{frame}
 
-% Dijkstra: we cannot test everything, and not all configurations
-% complete test: all inputs, for all products/variants/configurations
-% sampling technique (Stichprobenverfahren)
-% recap: Testing All Configurations (remember numbers from intro? take 1ms per config)
-% recap: Testing One Configuration (cp. allyesconfig, feature interactions may not be visible)
+\subsection{Sample-Based Testing}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\begin{definition}{Intuition}
+			\begin{itemize}
+				\item to analyze the product line, just analyze \emph{some sample products}
+				\item sample \deutsch{Stichprobe} refers to subset of all valid configurations
+				\item common technique to test a product line
+			\end{itemize}
+		\end{definition}
+		\begin{note}{Advantages and Challenges}
+			\begin{itemize}
+				\item lower effort than testing all configurations
+				\item higher chance to detect defects than testing one configuration
+				\item challenge: how many configurations to test? which configurations to test?
+			\end{itemize}
+		\end{note}
+	\mynextcolumn
+		\pic[width=\linewidth,page=10]{lego-analyses}
+	\end{mycolumns}
+\end{frame}
 
 \subsection{Expert Knowledge in Sampling}
 
