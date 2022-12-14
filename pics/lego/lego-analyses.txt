@@ -1,1 +1,1 @@
-Author: Elias Kuiter
+Authors: Thomas Thuem, Elias Kuiter
