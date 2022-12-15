@@ -61,7 +61,8 @@
 	\item testing one configuration
 	\item sample-based testing
 }{
-	\item[]
+	\item \samplingsurvey: overview on sampling literature
+	\item \samplingsurveydatabase: database on sampling algorithms and evaluations
 }{
 	Recap on feature interactions: What are examples of interactions that cannot be detected statically \lectureanalyses\ and could be missed when testing a single configuration only?
 }
@@ -73,11 +74,14 @@
 \input{content/11b-cit}
 
 \lessonslearned{
-	\item \ldots
+	\item recap on black-box testing and test-case design
+	\item combinatorial interation testing: pairwise testing, t-wise testing
+	\item efficiency: number of configurations, time to compute sample
+	\item effectiveness: percentage of found defects
 }{
-	\item \ldots
+	\item \icpl: most popular algorithm for t-wise 
 }{
-	\ldots
+	Why is it hard to find a good trade-off between efficiency and effectiveness?
 }
 
 \sectionend
@@ -87,24 +91,17 @@
 \input{content/11c-solutionspace}
 
 \lessonslearned{
-	\item \ldots
+	\item recap on white-box testing and coverage criteria
+	\item coverage of ifdef blocks
+	\item t-wise presence condition coverage
+	\item overview on techniques, coverage criteria, input data for sampling
 }{
-	\item \ldots
+	\item \tartlerconfigurationcoverage: covering every ifdef block (but not their absence)
+	\item \krieterpresenceconditioncoverage: solution-space sampling as discussed in this part
+	\item \hentzesolutionspacesampling: translation of presence conditions into feature model + reuse of problem-space sampling
 }{
-	\ldots
+	Does the order of configurations matter during testing?\mysource{\alhajjajiprioritization}
 }
-
-%\lessonslearned{
-%	\item Testing software product lines
-%	\item All configurations? one configuration? feature interactions!
-%	\item Combinatorial interaction testing: pairwise and t-wise
-%	\item Sample coverage (effectiveness) vs sample size (testing efficiency) vs time to compute the sample (sampling efficiency)
-%	\item Further Reading: \icpl
-%}{
-%	\item Quiz on the complete product-line lecture
-%	\item Post questions to Moodle, if any
-%	\\\hfill\qrcode{https://moodle.uni-ulm.de/mod/moodleoverflow/discussion.php?d=4496} % TODO in 2023 update link
-%}
 
 \mode<beamer>{\begin{frame}{\inserttitle}
 	\lectureseriesoverview[11]
