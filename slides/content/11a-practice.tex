@@ -3,15 +3,11 @@
 \subsection{Recap: Software Testing}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\vspace{7mm}
 		\uncover<1->{\mydefinition{Software Testing \mysource{\sommerville}}{\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}}{}}
 		\uncover<2->{\mydefinition{Validation Testing \mysource{\sommerville}}{\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}}{}}
 		\uncover<3->{\mydefinition{Defect Testing \mysource{\sommerville}}{\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}}{}}
 	\mynextcolumn
-		\vspace{-12mm}
-		\uncover<4->{\mynote{V\&V \mysource{\seeconomics}}{\mycite{\emph{Validation}: Are we building the right product?\\\emph{Verification}: Are we building the product right?}}} 
-		% TODO better visualization of V&V (see Inas slides). move to V model?
-		\uncover<5->{\mynote{Stages of Testing \mysource{\sommerville}}{
+		\uncover<4->{\mynote{Stages of Testing \mysource{\sommerville}}{
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item[1.] \mycite{\emph{Development testing}, where the system is tested during development to discover
@@ -22,8 +18,8 @@
 				own environment}
 			\end{itemize}
 		}}
-		\uncover<6->{\mynote{}{\mycite{In \emph{manual testing}, a tester runs the program with some test data and
-				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.} \mysource{\sommerville}}}
+		\uncover<5->{\mynote{Manual vs Automated Testing \mysource{\sommerville}}{\mycite{In \emph{manual testing}, a tester runs the program with some test data and
+				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.}}}
 	\end{mycolumns}
 \end{frame}
 
@@ -85,10 +81,11 @@
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none,widths={60}]
+	\begin{mycolumns}[widths={60}]
 		\myexampletight{Recap: Industrial Configuration Spaces \lectureintroduction}{
 			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
 		}
+		\uncover<3->{\mynote{}{Why being complete on the configurations then?}}
 	\mynextcolumn
 		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
 		\vspace{-7mm}
@@ -101,7 +98,7 @@
 \newcommand{\eemph}[1]{{\color{red}\textbf{#1}}}
 
 \subsection{Testing One Configuration}
-\begin{frame}{\myframetitle}
+\begin{frame}[b]{\myframetitle}
 	\begin{mycolumns}[b]
 		\centering\featureDiagramConfigurableDatabase
 		
@@ -167,6 +164,7 @@
 				\item sample configurations chosen by experts, randomly, or systematically
 			\end{itemize}
 		\end{definition}
+		\pause
 		\begin{note}{Advantages and Challenges}
 			\begin{itemize}
 				\item lower effort than testing all configurations
@@ -175,6 +173,7 @@
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
+		\pause
 		\pic[width=\linewidth,page=10]{lego-analyses}
 	\end{mycolumns}
 \end{frame}

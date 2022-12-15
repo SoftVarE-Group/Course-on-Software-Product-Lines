@@ -37,9 +37,9 @@
 		\item<+-> both problems detected with pairwise coverage, but presence conditions are more complicated in practice
 		\item<+-> also: pairwise coverage often too much effort for large configuration spaces / continuous integration
 	\end{itemize}
-	\begin{definition}{\myframetitle\mysource{\tartlerconfigurationcoverage}}
+	\onslide<+->{\begin{definition}{\myframetitle\mysource{\tartlerconfigurationcoverage}}
 		every block selected for at least one configuration in the sample (cf.\ statement coverage)
-	\end{definition}
+	\end{definition}}
 \end{frame}
 
 \subsection{Presence-Condition Coverage}
@@ -86,46 +86,47 @@
 
 \subsection{Overview on Coverage Criteria}
 \begin{frame}{\myframetitle}
-	%\leftorright{
-		\mydefinition{Techniques \& Coverage Criteria \mysource{\samplingsurvey}}{
-			\includegraphics[width=\linewidth,page=4,trim=50 100 310 610,clip]{2018/2018-SPLC-Varshosaz}
-		}
-%	}{
-%	}
+	\begin{definition}{Techniques \& Coverage Criteria \mysource{\samplingsurvey}}
+		\includegraphics[width=\linewidth,page=4,trim=50 100 310 610,clip]{2018/2018-SPLC-Varshosaz}
+	\end{definition}
 \end{frame}
 
-\subsection{Overview on Input for Sampling Algorithms}
+\subsection{Input for Sampling Algorithms}
 \begin{frame}{\myframetitle}
-	\leftandright{
-		\mydefinition{Input Data \mysource{\samplingsurvey}}{
+	\begin{mycolumns}
+		\begin{definition}{Input Data \mysource{\samplingsurvey}}
 			\includegraphics[width=\linewidth,page=3,trim=350 430 90 310,clip]{2018/2018-SPLC-Varshosaz}
-		}
-		\myexample{Domain Knowledge \mysource{\samplingsurvey}}{
+		\end{definition}
+		\pause
+		\begin{example}{Domain Knowledge \mysource{\samplingsurvey}}
 			\begin{itemize}
 				\item except the feature model
 				\item e.g., configurations choosen by experts
 				\item e.g., feature model specialized prior to sampling
 			\end{itemize}
-		}
-	}{
-		\myexample{Part 2: Combinatorial Interaction Testing}{
+		\end{example}
+	\mynextcolumn
+		\pause\vspace{-5mm}
+		\begin{example}{Part 2: Combinatorial Interaction Testing}
 			\begin{itemize}
 				\item (Problem-Space Sampling)
 				\item \emph{feature model} used to consider only valid configurations
 			\end{itemize}
-		}
-		\myexample{Part 3: Solution-Space Sampling}{
+		\end{example}
+		\pause
+		\begin{example}{Part 3: Solution-Space Sampling}
 			\begin{itemize}
 				\item mapping from features to \emph{implementation artifacts} used
 				\item \emph{feature model} used to consider only valid configurations
 			\end{itemize}
-		}
-		\myexample{Combinatorial Reduction of Tests \mysource{\reducingconfigurations}}{
+		\end{example}
+		\pause
+		\begin{example}{Combinatorial Reduction of Tests \mysource{\reducingconfigurations}}
 			\begin{itemize}
 				\item which configurations matter for each test?
 				\item analyze \emph{unit tests} and \emph{impl. artifacts}
 				\item \emph{feature model} used to consider only valid configurations
 			\end{itemize}
-		}
-	}
+		\end{example}
+	\end{mycolumns}
 \end{frame}

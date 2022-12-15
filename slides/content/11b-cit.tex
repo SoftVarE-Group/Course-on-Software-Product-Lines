@@ -1,30 +1,38 @@
 \subsection{Test-Case Design in Single-System Engineering}
 \begin{frame}{Recap: Test-Case Design \deutschertitel{Testfallentwurf}}
-	\leftorright{
-		\uncover<1>{\mydefinition{Systematic Test \mysource{\ludewiglichter}}{A systematic test is a test, in which
+	\begin{mycolumns}
+		\begin{definition}{Systematic Test \mysource{\ludewiglichter}}
+			A systematic test is a test, in which
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item[1.] the setup is defined,
 				\item[2.] the inputs are chosen systematically,
 				\item[3.] the results are documented and evaluated by criteria being defined prior to the test. 
 			\end{itemize}
-		}{}}
-		\uncover<2>{\mydefinition{Test Case \mysource{\ludewiglichter}}{In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.}{}}
-	}{
-		\mynote{Goal \mysource{\ludewiglichter}}{Detect a large number of failures with a low number of test cases. A test case (execution) is \emph{positive}, if it detects a failure, and \emph{successful} if it detects an unknown failure.}
-		\mydefinition{An ideal test case is \ldots \mysource{\ludewiglichter}}{
+		\end{definition}
+		\pause
+		\begin{definition}{Test Case \mysource{\ludewiglichter}}
+			In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
+		\end{definition}
+	\mynextcolumn
+		\pause
+		\begin{note}{Goal \mysource{\ludewiglichter}}
+			Detect a large number of failures with a low number of test cases. A test case (execution) is \emph{positive}, if it detects a failure, and \emph{successful} if it detects an unknown failure.
+		\end{note}
+		\pause
+		\begin{definition}{An ideal test case is \ldots \mysource{\ludewiglichter}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item representative: represents a large number of feasible test cases
 				\item failure sensitive: has a high probability to detect a failure
 				\item non-redundant: does not check what other test cases already check
 			\end{itemize}
-		}{}
-	}
+		\end{definition}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Recap: Black-Box Testing \deutschertitel{Funktionstest}}
-	\begin{mycolumns}
+	\begin{mycolumns}[widths={40}]
 		\begin{note}{Motivation \mysource{\ludewiglichter}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
@@ -35,6 +43,7 @@
 				\item errors are not equally distributed
 			\end{itemize}
 		\end{note}
+		\pause
 		\begin{definition}{Black-Box Testing \mysource{\ludewiglichter}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
@@ -43,6 +52,7 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
+		\pause
 		\begin{note}{Sample Configuration $\neq$ Test Case}
 			\begin{itemize}
 				\item test case: concrete inputs and expected outputs for a program
@@ -63,14 +73,7 @@
 
 \subsection{Pairwise Interaction Testing}
 \begin{frame}{\myframetitle}
-	\leftorright{
-		\mydefinition{Pairwise Interaction Testing}{
-			\begin{itemize}
-				\setlength\itemsep{.5em}
-				\item test a sample set $S \subseteq C$ of all valid configurations $C$ with pairwise coverage
-				\item every pairwise interaction is covered by at least one configuration in the sample $S$
-			\end{itemize}
-		}
+	\begin{mycolumns}
 		\begin{example}{Configurations with the Interaction Get $\wedge$ Put}
 			\footnotesize
 			\leftandright{
@@ -103,8 +106,17 @@
 				\emph{$\{C,G,P,D,T,L\}$}
 			}
 		\end{example}
-	}{
-		\mynote{Discussion}{
+		\pause
+		\begin{definition}{Pairwise Interaction Testing}
+			\begin{itemize}
+				\setlength\itemsep{.5em}
+				\item test a sample set $S \subseteq C$ of all valid configurations $C$ with pairwise coverage
+				\item every pairwise interaction is covered by at least one configuration in the sample $S$
+			\end{itemize}
+		\end{definition}
+	\mynextcolumn
+		\pause
+		\begin{note}{Discussion}
 			\begin{itemize}
 				\setlength\itemsep{.4em}
 				\item applicable to large product lines
@@ -113,8 +125,9 @@
 				\item still requires good test cases (program inputs)
 				\item hard to compute small sample sets
 			\end{itemize}
-		}
-		\mydefinition{Pairwise Interactions}{
+		\end{note}
+		\pause
+		\begin{definition}{Pairwise Interactions}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
 				\item \emph{up-to} four interactions between $A$ and $B$
@@ -122,8 +135,8 @@
 				\item one selected: $\neg A \wedge B$, $A \wedge \neg B$
 				\item none selected: $\neg A \wedge \neg B$
 			\end{itemize}
-		}
-	}
+		\end{definition}
+	\end{mycolumns}
 \end{frame}
 
 \newcommand{\pair}[2]{$#1 \wedge #2$ & $#1 \wedge \neg #2$ & $\neg #1 \wedge #2$ & $\neg #1 \wedge \neg #2$\\}
@@ -136,7 +149,7 @@
 }
 
 \begin{frame}{Pairwise Coverage}
-	\leftorright{
+	\begin{mycolumns}[animation=none]
 		\centering\featureDiagramConfigurableDatabase
 
 		\mydefinition{Interactions to Cover}{
@@ -148,7 +161,7 @@
 			\end{itemize}
 			% TODO \todo{add formal definitions based on \lecturemodeling}
 		}
-	}{
+	\mynextcolumn
 		\vspace{-10mm}
 		\myexample{Pairwise Interactions}{
 			\centering\footnotesize\color{lightgray}
@@ -179,9 +192,9 @@
 			{\redandgray{5}$\{C,P,W\}$}\\
 			{\redandgray{6}$\{C,D,T,L\}$}\\
 		}
-	}
+	\end{mycolumns}
 \end{frame}
-% TODO use different colors for the different configurations (instead of separate handouts)
+% TODO use different colors for the different configurations (instead of separate handouts) + animation showing all pairs in the first place
 
 \subsection{T-Wise Interaction Testing}
 \begin{frame}{\myframetitle}
@@ -254,23 +267,21 @@
 \subsection{Efficiency of Combinatorial Interaction Testing}
 %\subsection{Combinatorial Interaction Testing with ICPL}
 \begin{frame}{\myframetitle\ \mytitlesource{\icpl}}
-	\leftorright{
-		\myexampletight{Assumption: All Features are Optional}{
-			\centering\footnotesize\featureDiagramEightOptionalFeatures
-		}
-		
+	\myexampletight{Assumption: All Features are Optional}{
+		\centering\footnotesize\featureDiagramEightOptionalFeatures
+	}
+
+	\pause
+	\begin{mycolumns}
 		\myexampletight{Number of Configurations in Pairwise Sample}{
 			\includegraphics[width=\linewidth,page=4]{cit-plots}
 		}
-	}{%
-		\myexampletight{Assumption: All Features are Optional}{
-			\centering\footnotesize\featureDiagramEightOptionalFeatures
-		}
-		
+	\mynextcolumn
+		\pause
 		\myexampletight{Number of Configurations in T-Wise Sample}{
 			\includegraphics[width=\linewidth,page=5]{cit-plots}
 		}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\icpl}}
