@@ -185,7 +185,7 @@
 
 \subsection{T-Wise Interaction Testing}
 \begin{frame}{\myframetitle}
-	\leftorright{
+	\begin{mycolumns}[widths={65}]
 		\mydefinition{T-Wise Interaction Testing}{
 			\begin{itemize}
 				\setlength\itemsep{.5em}
@@ -193,37 +193,63 @@
 				\item t-wise coverage: every t-wise interaction is covered by at least one configuration in the sample
 				\item t=1: every feature is selected and also deselected
 				\item t=2: pairwise interaction coverage
-				\item t=3: every combination of three features
+				\item t=3: every combination of three features covered
 			\end{itemize}
 		}
-	}{
-		\myexample{{T=3 Interactions for the Features $G$, $P$, and $D$}}{
-			$G \wedge P \wedge D$ \hfill $G \wedge P \wedge \neg D$ \hfill $G \wedge \neg P \wedge D$
-			
-			$G \wedge \neg P \wedge \neg D$ \hfill $\neg G \wedge P \wedge D$ \hfill $\neg G \wedge P \wedge \neg D$
-			
-			$\neg G \wedge \neg P \wedge D$ \hfill $\neg G \wedge \neg P \wedge \neg D$
-		}
-	}
+	\mynextcolumn
+		\begin{example}{{T=3 Interactions}}
+			for the features $G$, $P$, and $D$:
+
+			\leftandright{
+				$G \wedge P \wedge D$\\
+				$G \wedge P \wedge \neg D$\\
+				$G \wedge \neg P \wedge D$\\
+				$G \wedge \neg P \wedge \neg D$
+			}{
+				$\neg G \wedge P \wedge D$\\
+				$\neg G \wedge P \wedge \neg D$\\
+				$\neg G \wedge \neg P \wedge D$\\
+				$\neg G \wedge \neg P \wedge \neg D$
+			}
+		\end{example}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Algorithms for Combinatorial Interaction Testing}
-
-% TODO \subsection{A Greedy Algorithm}
 \begin{frame}{\myframetitle}
-%\begin{frame}{Einfache Heuristik für Pairwise Interaction Testing}
-%	Greedy-Algorithmus: Wähle immer die Konfiguration als nächstes, die die meisten fehlenden Interaktionen abdeckt
-%	\vspace{2mm}\pause
-%	\begin{itemize}
-%		\item Erste Konfiguration frei wählbar (jede deckt am Anfang die gleiche Anzahl von Interaktionen ab: eine pro Paar)
-%		\item Stoppe wenn keine Interaktionen übrig
-%		\item Findet ggfs.\ nicht die kleinste Teilmenge an Konfigurationen
-%		\item Bessere Algorithmen wurden in den letzten Jahren vorgeschlagen (z.B. ICPL)
-%	\end{itemize}
+	\begin{mycolumns}[widths={63}]
+		\begin{definition}{A Greedy Algorithm}
+			idea: select configuration that cover most of the missing interactions in each step
+			\begin{enumerate}
+				\item randomly choose first configuration (each covers one interaction of every line)
+				\item find next optimal configuration
+				\item repeat steps 2--3 until all interactions covered
+			\end{enumerate}
+		\end{definition}
+		\pause
+		\begin{note}{Challenges and Optimizations}
+			\begin{itemize}
+				\item non-deterministic: different sample for each run (cf.\ Step 1)
+				\item starting with all-yes-config? covers more code
+				\item Step 2: iterating over all valid configurations does not scale
+				\item greedy strategy: optimal configuration in each step does not guarantee optimal sample
+			\end{itemize}
+		\end{note}
+	\mynextcolumn
+		\pause
+		\begin{definition}{ICPL\mysource{\icpl}}
+			\begin{itemize}
+				\item widespread greedy algorithm
+				\item maintains several partial configurations
+				\item iterates over all interactions
+				\item tries to integrate interaction into existing partial configuration
+				\item create new partial configuration if not possible
+				\item avoids extensive Step 2
+				\item performance shown on next slides
+			\end{itemize}
+		\end{definition}
+	\end{mycolumns}
 \end{frame}
-% TODO introduce ICPL
-
-% TODO \subsection{Meta-Heuristic Search}
 
 \subsection{Efficiency of Combinatorial Interaction Testing}
 %\subsection{Combinatorial Interaction Testing with ICPL}
