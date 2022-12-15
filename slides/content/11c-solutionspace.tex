@@ -42,39 +42,47 @@
 	\end{definition}
 \end{frame}
 
-\subsection{Presence-Condition Coverage \todo{not final}}
+\subsection{Presence-Condition Coverage}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={65}]
-		\mydefinition{Presence-Condition Coverage}{
+	\begin{mycolumns}[widths={48}]
+		\begin{definition}{Presence-Condition Coverage\mysource{\krieterpresenceconditioncoverage}}
 			\begin{itemize}
-				\setlength\itemsep{.5em}
 				\item application of t-wise interaction testing to presence conditions
+				\item recap presence condition: formula specifying exactly those configurations under which a block is present
 				\item t-wise presence condition coverage: every t-wise interaction of presence conditions is covered by at least one configuration in the sample
-				\item t=1: every block is selected and also deselected (i.e., more than Tartler's coverage of )
+				\item t=1: every block is selected and also deselected (i.e., more than Tartler's coverage of ifdef blocks)
 				\item t=2: every combination of two blocks covered
-				\item t=3: every combination of three features covered
+				\item t=3: every combination of three blocks covered
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\begin{example}{{T=3 Interactions}}
-			for the features $G$, $P$, and $D$:
+		\pause
+		\begin{example}{{T=3 Presence-Condition Interactions}}
+			for the blocks $a$, $b$, and $c$ with presence conditions $A$, $B$, and $C$:
 
 			\leftandright{
-				$G \wedge P \wedge D$\\
-				$G \wedge P \wedge \neg D$\\
-				$G \wedge \neg P \wedge D$\\
-				$G \wedge \neg P \wedge \neg D$
+				$A \wedge B \wedge C$\\
+				$A \wedge B \wedge \neg C$\\
+				$A \wedge \neg B \wedge C$\\
+				$A \wedge \neg B \wedge \neg C$
 			}{
-				$\neg G \wedge P \wedge D$\\
-				$\neg G \wedge P \wedge \neg D$\\
-				$\neg G \wedge \neg P \wedge D$\\
-				$\neg G \wedge \neg P \wedge \neg D$
+				$\neg A \wedge B \wedge C$\\
+				$\neg A \wedge B \wedge \neg C$\\
+				$\neg A \wedge \neg B \wedge C$\\
+				$\neg A \wedge \neg B \wedge \neg C$
 			}
 		\end{example}
+		\pause
+		\begin{note}{Presence-Condition Coverage\mysource{\krieterpresenceconditioncoverage}}
+			\begin{itemize}
+				\item coverage of solution space (not problem space)
+				\item aka.\ solution-space sampling
+				\item for same t: often fewer configurations and similar effectiveness than feature interaction coverage
+				\item also feasible by translating presence conditions into feature model \mysource{\hentzesolutionspacesampling}
+			\end{itemize}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
-
-%\subsection{Encoding Solution Space in Feature Models}
 
 \subsection{Overview on Coverage Criteria}
 \begin{frame}{\myframetitle}
