@@ -1,6 +1,5 @@
 \subsection{Coverage in Single-System Engineering}
 \begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
-	\vspace{-7mm}
 	\leftorright{
 		\mydefinition{White-Box Testing \deutsch{Strukturtest}}{
 			\begin{itemize}
@@ -25,22 +24,55 @@
 \end{frame}
 
 \subsection{Coverage of Ifdef Blocks}
-\begin{frame}{\myframetitle}
-	%\leftorright{
-		\myexample{An Elevator Product Line \mysource{\samplingsurvey}}{
-			\includegraphics[width=\linewidth,page=3,trim=40 530 70 100,clip]{2018/2018-SPLC-Varshosaz}
-		}
-%		\mynote{}{
-			\begin{itemize}
-				\item compiler error in Line~29 for partial configuration $(\{FIFO\},\{DirectedCall\})$ / feature interaction $FIFO \pand \pnot DirectedCall$: field \texttt{dreq} undefined
-				\item null pointer exception in Line~8 for partial configuration $(\{DirectedCall\},\{FIFO\})$ / feature interaction $DirectedCall \pand \pnot FIFO$
-			\end{itemize}
-%		}
-%	}{
-%	}
+\begin{frame}[b]
+	\begin{example}{Can You Spot Problems in the Elevator Product Line?\mysource{\samplingsurvey}}
+		\centering\includegraphics[width=.8\linewidth,page=3,trim=40 530 70 100,clip]{2018/2018-SPLC-Varshosaz}
+	\end{example}
+	\pause
+	\begin{itemize}
+		\item<+-> Line~29: compiler error (i.e., field \texttt{dreq} undefined) %for partial configuration $(\{FIFO\},\{DirectedCall\})$ / 
+		due to feature interaction $FIFO \pand \pnot DirectedCall$
+		\item<+-> Line~8: null pointer exception %for partial configuration $(\{DirectedCall\},\{FIFO\})$ / 
+		due to feature interaction $DirectedCall \pand \pnot FIFO$
+		\item<+-> both problems detected with pairwise coverage, but presence conditions are more complicated in practice
+		\item<+-> also: pairwise coverage often too much effort for large configuration spaces / continuous integration
+	\end{itemize}
+	\begin{definition}{\myframetitle\mysource{\tartlerconfigurationcoverage}}
+		every block selected for at least one configuration in the sample (cf.\ statement coverage)
+	\end{definition}
 \end{frame}
 
-\subsection{Presence-Condition Coverage}
+\subsection{Presence-Condition Coverage \todo{not final}}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={65}]
+		\mydefinition{Presence-Condition Coverage}{
+			\begin{itemize}
+				\setlength\itemsep{.5em}
+				\item application of t-wise interaction testing to presence conditions
+				\item t-wise presence condition coverage: every t-wise interaction of presence conditions is covered by at least one configuration in the sample
+				\item t=1: every block is selected and also deselected (i.e., more than Tartler's coverage of )
+				\item t=2: every combination of two blocks covered
+				\item t=3: every combination of three features covered
+			\end{itemize}
+		}
+	\mynextcolumn
+		\begin{example}{{T=3 Interactions}}
+			for the features $G$, $P$, and $D$:
+
+			\leftandright{
+				$G \wedge P \wedge D$\\
+				$G \wedge P \wedge \neg D$\\
+				$G \wedge \neg P \wedge D$\\
+				$G \wedge \neg P \wedge \neg D$
+			}{
+				$\neg G \wedge P \wedge D$\\
+				$\neg G \wedge P \wedge \neg D$\\
+				$\neg G \wedge \neg P \wedge D$\\
+				$\neg G \wedge \neg P \wedge \neg D$
+			}
+		\end{example}
+	\end{mycolumns}
+\end{frame}
 
 %\subsection{Encoding Solution Space in Feature Models}
 
