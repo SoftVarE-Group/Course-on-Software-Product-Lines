@@ -1,0 +1,207 @@
+\documentclass[
+	aspectratio=169, % default is 43
+	8pt, % font size, default is 11pt
+	handout, % handout mode without animations, comment out to add animations
+]{beamer}
+\def\university{magdeburg}
+
+\input{template/lecture}
+
+\subtitle{14. Conclusion}
+\author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
+\foruniversity{}
+	{\setpicture[10]{ovgu-winter7}\setcopyright{Photo: Ulrich Arendt (OVGU)}}
+	{\setpicture{oct20-south4}}
+
+\newcommand{\addsummary}[5][]{
+	\subsection{#3}
+	\begin{frame}{\inserttitle}
+		\lectureseriesoverview[#4]
+	\end{frame}
+	\foreach \x in {#1}{
+		\begin{frame}{}\hspace*{-1cm}\includegraphics[page=\x]{#2}\end{frame}
+	}
+	\begin{frame}{}
+		\myexample{Selected Questions and Tasks for Lecture #4}{
+			\begin{itemize}\item #5 \item \ldots\end{itemize}
+		}
+	\end{frame}
+}
+\newcommand{\also}{\item}
+
+\begin{document}
+
+\input{template/header}
+
+\section{Ad-Hoc Approaches for Variability}
+
+\addsummary[3,16]{01-introduction}{Introduction}{1}{
+	what is a software product line (feature, product, domain)?
+	\also who needs software variability, and why?
+	\also is XY a software product line? why, why not?
+	\also what is challenging about SPL engineering (compared to traditional software engineering)?
+	\also name your own (non-)example for a software product line
+}
+
+\addsummary[9,13]{02-runtime}{Runtime Variability and Design Patterns}{2}{
+	what is runtime variability (binding time)?
+	\also how can configuration parameters be supplied?
+	\also (when) does the validity of parameters need to be checked?
+	\also how can runtime variability be realized in the code? which way is preferred when?
+	\also implement feature XY in a given excerpt of source code
+	\also what problems are associated with runtime variability?
+	\also how can design patterns be used to implement variability? which design patterns for variability are there?
+	\also when should runtime variability (not) be used?
+}
+
+\addsummary[7,21]{03-cloneandown}{Compile-Time Variability with Clone-and-Own}{3}{
+	what is compile-time variability (clone-and-own, software configuration management)?
+	\also when should clone-and-own by unmanaged, managed with version control, or managed with build systems?
+	\also create a variant for feature XY in the given version control history
+	\also what problems are associated with clone-and-own?
+	\also when should clone-and-own (not) be used?
+}
+
+\sectionend
+
+\section{Modeling and Implementing Features}
+
+\addsummary[11,49]{04-modeling}{Feature Modeling}{4}{
+	what is feature modeling? when is it needed?
+	\also what representations of feature models are there? are they equivalent?
+	\also would you recommend Excel for feature modeling? why, why not?
+	\also given a feature model, explain its syntax and semantics
+	\also what are the pros and cons of feature modeling?
+	\also create a feature model with XY valid configurations
+	\also how can feature models by analyzed? what analyses are there?
+	\also transform a given feature model into a propositional formula
+	\also what is a (\#)SAT solver? what is it used for?
+}
+
+\addsummary[9,17]{05-conditional}{Conditional Compilation}{5}{
+	what is conditional compilation (build system, preprocessor, granularity, feature traceability)?
+	\also explain the given CPP/Munge/Antenna code
+	\also what is the difference between build system and preprocessor variability? can they be combined?
+	\also implement feature XY in a given excerpt of source code
+	\also what problems are associated with conditional compilation?
+	\also how can features be traced?
+	\also when should conditional compilation (not) be used?
+}
+
+\addsummary{06-modular}{Modular Features}{6}{
+
+}
+
+\addsummary{07-languages}{Languages for Features}{7}{
+
+}
+
+\addsummary{08-process}{Development Process}{8}{
+
+}
+
+\sectionend
+
+\section{Quality Assurance and Maintenance}
+
+\addsummary{09-interactions}{Feature Interactions}{9}{
+
+}
+
+\addsummary{10-analyses}{Product-Line Analyses}{10}{
+
+}
+
+\addsummary{11-testing}{Product-Line Testing}{11}{
+
+}
+
+\addsummary{12-evonance}{Evolution and Maintenance}{12}{
+
+}
+
+\sectionend
+
+\section{What Next?}
+
+\subsection{Prepare for the Exam}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
+		\mydefinition{Our Oral Exam}{
+			\begin{itemize}
+				\item takes $\approx 20$ minutes
+				\item starts with questions on lectures 1 and 4
+				\item for lectures 2, 3, and 5--7, you draw a random implementation technique, which you have to explain and discuss
+				\item then you draw another technique, which you have to compare to the first
+				\item finally, some questions on lectures 8--12
+			\end{itemize}
+		}
+	\mynextcolumn
+		\mynote{Tips}{
+			\begin{itemize}
+				\item if you have questions, ask them now
+				\item for practicing, answer the questions on the slides above
+				\item also use the exam preparation material posted on Elearning
+				\item review the exercise tasks
+				\item ``roleplay'' an oral exam with a fellow student
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Take More Courses}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[t]
+		\mynote{Student Conference}{
+			\begin{itemize}
+				\item Master course in the summer term
+				\item you will learn how to write a (short) scientific paper on a given topic
+				\item usually a literature survey on database or software engineering topics
+				\item three draft milestones, two review rounds, two presentations
+				\item lectures on academic writing, the publication process, and research ethics
+				\item recommended for those who pursue an academic career or want to practice for writing a thesis
+			\end{itemize}
+		}
+	\mynextcolumn
+		\mynote{Scientific Team Project}{
+			\begin{itemize}
+				\item Bachelor/Master course in the summer term
+				\item you will conduct a small research project on a database topic
+				\item includes a literature survey and implementation
+				\item summarized in a project report
+				\item difference to student conference: less focus on academic (thesis) writing, more on implementation and team collaboration
+			\end{itemize}
+		}
+		\mynote{}{individual projects also possible}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Write Your Thesis}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[t]
+		\mynote{Openings for Bachelor/Master Theses}{
+			\begin{itemize}
+				\item our thesis topics focus on potential new research contributions
+				\item industry collaborations possible if there is a relation to our research
+				\item example thesis topics \href{https://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.170/projects/spldev/thesis_topics_22-06-29.pdf}{here} (most taken)
+				\item if interested, contact Elias at \href{mailto:kuiter@ovgu.de}{kuiter@ovgu.de}
+			\end{itemize}
+		}
+	\mynextcolumn
+		\mynote{Open Position for Research Assistant}{
+			\begin{itemize}
+				\item we are searching for a student interested in contributing to the new FeatureIDE library
+				\item you are: an excellent Java developer familiar with (or willing to familiarize with) modern Java constructs (lambdas, streams, futures)
+				\item if interested, contact Elias at \href{mailto:kuiter@ovgu.de}{kuiter@ovgu.de}
+				\item programming test required
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
+
+\input{template/footer}
+
+\end{document}

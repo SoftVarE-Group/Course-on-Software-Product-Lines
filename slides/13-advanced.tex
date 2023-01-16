@@ -1,0 +1,61 @@
+\documentclass[
+	aspectratio=169, % default is 43
+	8pt, % font size, default is 11pt
+	handout, % handout mode without animations, comment out to add animations
+]{beamer}
+\def\university{magdeburg}
+
+\input{template/lecture}
+
+\subtitle{13. Advanced Topics in Software Variability}
+\author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
+\foruniversity{}
+	{\setpicture[0]{ovgu-winter6}\setcopyright{Photo: Ulrich Arendt (OVGU)}}
+	{\setpicture{oct20-south4}}
+
+\begin{document}
+
+\input{template/header}
+
+\section{Today's Speakers}
+
+\subsection{Paul Bittner: Classifying Edits to Variability in Source Code}
+\subsection{Elias Kuiter: Tseitin or not Tseitin? The Impact of CNF Transformations on Feature-Model Analyses}
+\subsection{Tobias Heß: tba}
+
+\begin{frame}{\insertsection}
+	\vspace{-5mm}
+	\begin{mycolumns}[t,columns=3,animation=none]
+		\mynote{Paul Maximilian Bittner}{
+			\centering
+			\href{https://www.uni-ulm.de/in/sp/team/paul-maximilian-bittner/}{\adjincludegraphics[height=.45\textheight,trim={.125\width} 0 {.125\width} 0,clip]{paul-bittner}}
+
+			\small PhD student at University of Ulm
+		}
+	\mynextcolumn
+		\mynote{Elias Kuiter}{
+			\centering
+			\href{https://www.dbse.ovgu.de/en/Staff/Elias+Kuiter.html}{\includegraphics[height=.45\textheight]{elias-kuiter}}
+
+			\small PhD student in Magdeburg
+		}
+	\mynextcolumn
+		\mynote{Tobias Heß}{
+			\centering
+			\href{https://www.uni-ulm.de/in/sp/team/tobias-hess/}{\includegraphics[height=.45\textheight]{tobias-hess}}
+
+			\small PhD student at University of Ulm
+		}
+	\end{mycolumns}
+	\begin{mycolumns}[t,columns=3,animation=none]
+		\small \myexample{}{Classifying Edits to Variability in Source Code}
+	\mynextcolumn
+		\small \myexample{}{Tseitin or not Tseitin? The Impact of CNF Transformations on Feature-Model Analyses}
+	\mynextcolumn
+		\small \myexample{}{tba}
+\end{mycolumns}
+\end{frame}
+
+\input{template/footer}
+
+\end{document}
