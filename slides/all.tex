@@ -1,0 +1,53 @@
+\documentclass[
+	aspectratio=169, % default is 43
+	8pt, % font size, default is 11pt
+	handout, % handout mode without animations, comment out to add animations
+]{beamer}
+\def\university{}
+
+\input{template/lecture}
+
+\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
+\foruniversity{}
+	{\setpicture[70]{ovgu-autumn1}\setcopyright{Photo: Hannah Theile (OVGU)}}
+	{\setpicture{oct20-south4}}
+
+\usepackage{multido}
+\usepackage{pdfpages}
+\newcommand{\addlecture}[2]{
+	\section{#2}
+	\pdfximage{#1.pdf}
+	\multido{\i=1+1}{\the\pdflastximagepages}{%
+		\begin{frame}\includepdf[pages=\i]{#1}\end{frame}
+    }
+}
+\setbeamertemplate{section in toc}[sections numbered]
+
+\begin{document}
+	
+\usebackgroundtemplate{}
+\AtBeginSection[]{}
+
+\addtocontents{toc}{Ad-Hoc Approaches for Variability}
+\addlecture{01-introduction}{Introduction}
+\addlecture{02-runtime}{Runtime Variability and Design Patterns}
+\addlecture{03-cloneandown}{Compile-Time Variability with Clone-and-Own}
+\sectionend
+
+\addtocontents{toc}{Modeling and Implementing Features}
+\addlecture{04-modeling}{Feature Modeling}
+\addlecture{05-conditional}{Conditional Compilation}
+\addlecture{06-modular}{Modular Features}
+\addlecture{07-languages}{Languages for Features}
+\addlecture{08-process}{Development Process}
+\sectionend
+
+\addtocontents{toc}{Quality Assurance and Maintenance}
+\addlecture{09-interactions}{Feature Interactions}
+\addlecture{10-analyses}{Product-Line Analyses}
+\addlecture{11-testing}{Product-Line Testing}
+%\addlecture{12-evonance}{Evolution and Maintenance}
+\addlecture{13-advanced}{Advanced Topics in Software Variability}
+\addlecture{14-conclusion}{Conclusion}
+
+\end{document}
