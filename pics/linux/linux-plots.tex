@@ -112,16 +112,19 @@
 		\begin{tikzpicture}
 			\begin{axis}[
 				ylabel=Number of Products,
-				ymax=8500,
-				ytick={1000,2000,3000,4000,5000,6000,7000,8000},
-				yticklabels={$10^{1000}$,$10^{2000}$,$10^{3000}$,$10^{4000}$,$10^{5000}$,$10^{6000}$,$10^{7000}$,$10^{8000}$},
+				xmin={2002-01-01},
+				xmax={2011-01-01},
+				xtick={2002-01-01,2003-01-01,2004-01-01,2005-01-01,2006-01-01,2007-01-01,2008-01-01,2009-01-01,2010-01-01,2011-01-01},
+				ymax=800,
+				ytick={400,500,600,700,800},
+				yticklabels={$10^{400}$,$10^{500}$,$10^{600}$,$10^{700}$,$10^{800}$},
 				scaled y ticks=false]
 				\addplot+[mark options={color=black,fill=orange,fill opacity=.5}] table [only marks,col sep=comma,x=release_date,y=products_log10] {\productsnonempty};
 				\addplot[black] table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=products_log10}}] {\productsnonempty};
-				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,940.89) {};
-				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,3069.90) {};
-				\node [coordinate,pin=above:{v4.0}] at (axis cs:2015-04-12,4289.37) {};
-				\node [coordinate,pin=above:{v4.8 ($10^{5019}$)}] at (axis cs:2016-09-25,5019.45) {};
+				\node [coordinate,pin=above:{v2.5.45}] at (axis cs:2002-10-30,407) {};
+				\node [coordinate,pin=above:{v2.6.0}] at (axis cs:2003-12-18,469) {};
+				\node [coordinate,pin=above:{v2.6.15}] at (axis cs:2006-01-03,597) {};
+				\node [coordinate,pin=above:{v2.6.22}] at (axis cs:2007-07-08,725) {};
 			\end{axis}
 		\end{tikzpicture}
 	\end{frame}
@@ -133,17 +136,18 @@
 			\begin{semilogyaxis}[
 				width=.93\linewidth,
 				ylabel=Time for Counting (logarithmic),
-				ymax=30000000000,
-				ytick={1,1000,60000,3600000,86400000,2419200000,31536000000},
-				yticklabels={1 ms,1 sec,1 min,1 hour,1 day,4 weeks,1 year},
+				xmin={2002-01-01},
+				xmax={2011-01-01},
+				xtick={2002-01-01,2003-01-01,2004-01-01,2005-01-01,2006-01-01,2007-01-01,2008-01-01,2009-01-01,2010-01-01,2011-01-01},
+				ymax=36000000000000,
+				ytick={1,1000000000,600000000000,36000000000000},
+				yticklabels={1 ms,1 sec,1 min,1 hour},
 				]
-				\addplot+[mark options={color=black,fill=red,fill opacity=.5}] table [only marks,col sep=comma,x=release_date,y=time_in_ms] {\products};
-				\addplot[black] table [mark=none,col sep=comma,x=release_date,y={create col/linear regression={x=JulianDayMod,y=time_in_ms}}] {\products};
-				\node [coordinate,pin=above:{v2.6.12}] at (axis cs:2005-06-18,334) {};
-				\node [coordinate,pin=above:{v3.0}] at (axis cs:2011-07-21,13773) {};
-				\node [coordinate,pin=above left:{v4.0}] at (axis cs:2015-04-12,1855100) {};
-				\node [coordinate,pin=above:{v4.8 (46 min)}] at (axis cs:2016-09-25,2740432) {};
-				\node [coordinate,pin=right:{timeout}] at (axis cs:2018-08-12,3600000) {};
+				\addplot+[mark options={color=black,fill=red,fill opacity=.5}] table [only marks,col sep=comma,x=release_date,y=time_in_ns] {\products};
+				\node [coordinate,pin=below:{v2.6.0}] at (axis cs:2003-12-18,6910410931) {};
+				\node [coordinate,pin=below:{v2.6.15}] at (axis cs:2006-01-03,580649456776) {};
+				\node [coordinate,pin=above:{v2.6.22}] at (axis cs:2007-07-08,1664656373704) {};
+				 \node [coordinate,pin=above:{timeout}] at (axis cs:2005-06-17,1800000000000) {};
 			\end{semilogyaxis}
 		\end{tikzpicture}
 	\end{frame}
