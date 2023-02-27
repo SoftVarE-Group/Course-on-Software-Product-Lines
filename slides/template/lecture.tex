@@ -1,5 +1,5 @@
 \usepackage{../SoftVarE-SlideTemplate/beamerthemeuulm} % use the inofficial uulm beamer theme
-\uulmlogos{,uulm,,unibe-flat-crop,,ovgu-blue,}
+\uulmlogos{,uulm,,unibe,,ovgu-blue,}
 \setmycolumnsdefault{animation=keep} % animate all columns per default
 
 \title{Software Product Lines} % short title is used for the slide footer but optional
@@ -40,35 +40,6 @@
 
 % emphasizing links
 \hypersetup{linkcolor = black, citecolor = black, filecolor = black, runcolor = black, urlcolor = red, colorlinks=true}
-
-% UNIVERSITY-SPECIFIC ADJUSTMENTS
-% or: a product line of product-line lectures ;-)
-% usage: \def\university{ulm}
-
-\expandafter\def\csname \university\endcsname{}
-\newcommand{\foruniversity}[4][]{\ifdefined\bern#2\else\ifdefined\magdeburg#3\else\ifdefined\ulm#4\else#1\fi\fi\fi}
-
-\let\originalauthor\author
-\renewcommand{\author}[1]{
-	\foruniversity[\originalauthor{#1}]
-		{\originalauthor{Timo Kehrer, Sandra Greiner}}
-		{\originalauthor{Gunter Saake, Elias Kuiter}}
-		{\originalauthor{Thomas Thüm, Chico Sundermann}}
-}
-
-\newcommand{\inputforuniversity}[1]{
-	\foruniversity
-		{\input{#1bern}}
-		{\input{#1magdeburg}}
-		{\input{#1ulm}}
-}
-
-\newcommand{\uploadpractice}{
-	\centering\foruniversity
-		{}
-		{\fancyqr{https://bit.ly/spl-practice}\\[1ex]{\href{https://bit.ly/spl-practice}{\texttt{bit.ly/spl-practice}}}}
-		{}
-}
 
 % GRAPHICSPATH
 
@@ -132,6 +103,7 @@
 \usepackage{silence} % ignore some warnings
 \WarningFilter{latex}{You have requested package} % ignore warning for loading packages from submodules
 \usepackage{fancyqr} % QR codes for practice task, credits to Florian Sihler
+\usepackage{ifthen} % \ifuniversity
 
 % INCLUDED TEMPLATE FILES
 
@@ -257,3 +229,5 @@
 
 % TODO: add reference slide at the end for picture licenses
 % TODO: QR codes for uploading practice solutions
+
+\input{template/universities}

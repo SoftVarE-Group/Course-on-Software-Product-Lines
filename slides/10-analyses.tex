@@ -1,17 +1,15 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % < do not remove this comment, it is used by the Makefile >
 ]{beamer}
-\def\university{}
+\def\university{} % < do not remove this comment, it is used by the Makefile >
 
 \input{template/lecture}
 
 \subtitle{10. Product-Line Analyses}
 \author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
-\foruniversity{}
-	{\setpicture[70]{ovgu-winter4}\setcopyright{Photo: Jana Dünnhaupt (OVGU)}}
-	{\setpicture{oct20-south4}}
+\ifuniversity{magdeburg}{\setpicture[70]{ovgu-winter4}\setcopyright{Photo: Jana Dünnhaupt (OVGU)}}
 
 \usepackage{algpseudocode}
 

@@ -1,0 +1,77 @@
+% UNIVERSITY-SPECIFIC ADJUSTMENTS
+% or: a product line of product-line lectures ;-)
+% usage: \def\university{ulm}
+
+\ifdefined\university
+\else
+\def\university{}
+\fi
+
+\newcommand{\ifuniversity}[2]{\ifthenelse{\equal{\university}{#1}}{#2}{}}
+\newcommand{\inputifuniversity}[1]{\IfFileExists{#1-\university}{\input{#1-\university}}{}}
+
+% TITLE
+\ifuniversity{ulm}{\title{Software Product Lines}}
+\ifuniversity{bern}{\title{Software Product Lines}}
+\ifuniversity{magdeburg}{\title{Implementation Techniques for Software Product Lines}}
+\ifuniversity{wernigerode}{\title{Requirements Engineering II -- Software Product Lines}}
+
+% LECTURERS AND TUTORS
+\makeatletter
+\let\author@old\author
+\renewcommand{\author}[1]{
+	\ifuniversity{ulm}{\author@old{Thomas Thüm, Chico Sundermann}}
+	\ifuniversity{bern}{\author@old{Timo Kehrer, Sandra Greiner}}
+	\ifuniversity{magdeburg}{\author@old{Gunter Saake, Elias Kuiter}}
+	\ifuniversity{wernigerode}{\author@old{Elias Kuiter}}
+	\ifuniversity{}{\author@old{#1}}
+}
+\makeatother
+
+% COLOR SCHEME, LOGOS, PICTURES
+\ifuniversity{ulm}{
+	% copied from beamerthemeuulm.sty
+	\definecolor{uulmaccent}{HTML}{A9A28D}
+	\definecolor{green}{HTML}{56AA1C}
+	\definecolor{red}{HTML}{A32638}
+	\definecolor{orange}{HTML}{DF6D07}
+	\definecolor{blue}{HTML}{26547C}
+	\uulmlogos{uulm}
+	\setpicture{oct20-south4}
+}
+
+\ifuniversity{bern}{
+	% todo
+	\uulmlogos{unibe}
+}
+
+\ifuniversity{magdeburg}{
+	% OVGU colors: https://www.cd.ovgu.de/Logo_+Farbe_+Schrift/Farbe.html
+	% FIN colors: https://www.cd.ovgu.de/Fakult%C3%A4ten/Informatik.html
+	\definecolor{uulmaccent}{RGB}{77,77,77} % accent gray
+	\definecolor{green}{RGB}{5,165,53} % natural sciences
+	\definecolor{red}{RGB}{209,63,88} % mathematics
+	\definecolor{orange}{RGB}{243,145,0} % humanities
+	\definecolor{blue}{RGB}{0,104,180} % computer science
+	\setbeamercolor{mypagenumber}{fg=white,bg=blue}
+	\setbeamercolor{titlebox}{fg=white,bg=blue}
+	\uulmlogos{ovgu-blue}
+}
+
+\ifuniversity{wernigerode}{
+	\definecolor{uulmaccent}{HTML}{a09377}
+	\definecolor{lightaccent}{HTML}{e9e9e5}
+	\uulmlogos{hs-harz}
+	\setbeamercolor{titlebox}{fg=black,bg=lightaccent}
+	\setbeamercolor{mypagenumber}{fg=black,bg=lightaccent}
+	%todo setpicture
+}
+
+% QR CODES
+\newcommand{\uploadpractice}{
+	\centering
+	\ifuniversity{magdeburg}{
+		\fancyqr{https://bit.ly/spl-practice}\\[1ex]
+		\href{https://bit.ly/spl-practice}{\texttt{bit.ly/spl-practice}}
+	}
+}

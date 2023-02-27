@@ -1,17 +1,15 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % < do not remove this comment, it is used by the Makefile >
 ]{beamer}
-\def\university{}
+\def\university{} % < do not remove this comment, it is used by the Makefile >
 
 \input{template/lecture}
 
 \subtitle{2. Runtime Variability and Design Patterns}
 \author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
-\foruniversity{}
-	{\setpicture[300]{magdeburg-canal}}
-	{\setpicture{oct20-south4}}
+\ifuniversity{magdeburg}{\setpicture[300]{magdeburg-canal}}
 
 % Tables
 \usepackage{booktabs}

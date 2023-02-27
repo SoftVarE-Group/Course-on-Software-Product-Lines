@@ -1,17 +1,15 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % < do not remove this comment, it is used by the Makefile >
 ]{beamer}
-\def\university{}
+\def\university{} % < do not remove this comment, it is used by the Makefile >
 
 \input{template/lecture}
 
 \subtitle{5. Conditional Compilation}
 \author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
-\foruniversity{}
-	{\setpicture[300]{magdeburg-river}}
-	{\setpicture{oct20-south4}}
+\ifuniversity{magdeburg}{\setpicture[300]{magdeburg-river}}
 
 \begin{document}
 

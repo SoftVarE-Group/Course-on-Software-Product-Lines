@@ -1,23 +1,26 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % < do not remove this comment, it is used by the Makefile >
 ]{beamer}
-\def\university{}
+\def\university{} % < do not remove this comment, it is used by the Makefile >
 
 \input{template/lecture}
 
 \subtitle{1. Introduction}
 \author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
-\foruniversity{}
-	{\setpicture[70]{ovgu-autumn1}\setcopyright{Photo: Hannah Theile (OVGU)}}
-	{\setpicture{oct20-south4}}
+\ifuniversity{magdeburg}{\setpicture[70]{ovgu-autumn1}\setcopyright{Photo: Hannah Theile (OVGU)}}
 
 \begin{document}
 
 \input{template/header}
 
 \section{Introduction to Product Lines}
+
+\begin{frame}
+	\ifuniversity{ulm}{for ulm}
+	\ifuniversity{magdeburg}{for md}
+\end{frame}
 
 \input{content/01a-productlines}
 
@@ -68,7 +71,7 @@
 \section{Course Organization}
 
 \input{content/01c-course-general}
-\inputforuniversity{content/01c-course-}
+\inputifuniversity{content/01c-course}
 
 \lessonslearned{
 	\item focus: how to implement features

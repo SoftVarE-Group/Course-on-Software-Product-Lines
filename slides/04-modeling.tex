@@ -1,17 +1,15 @@
 \documentclass[
 	aspectratio=169, % default is 43
 	8pt, % font size, default is 11pt
-	handout, % handout mode without animations, comment out to add animations
+	%handout, % < do not remove this comment, it is used by the Makefile >
 ]{beamer}
-\def\university{}
+\def\university{} % < do not remove this comment, it is used by the Makefile >
 
 \input{template/lecture}
 
 \subtitle{4. Feature Modeling}
 \author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
-\foruniversity{}
-	{\setpicture[50]{ovgu-autumn3}\setcopyright{Photo: Hannah Theile (OVGU)}}
-	{\setpicture{oct20-south4}}
+\ifuniversity{magdeburg}{\setpicture[50]{ovgu-autumn3}\setcopyright{Photo: Hannah Theile (OVGU)}}
 
 \begin{document}
 

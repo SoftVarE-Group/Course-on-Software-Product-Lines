@@ -6,16 +6,26 @@
 
 [![Lecture Topics](topics.png)](slides/all_compressed.pdf)
 
-## Setup
+## Contributors
 
-Clone this repository with:
+- Thomas Thüm (University of Ulm, Germany)
+- Timo Kehrer (University of Bern, Switzerland)
+- Elias Kuiter (University of Magdeburg, Germany)
+
+## Usage in Lectures
+
+- University of Bern, Switzerland: Software Product Lines (Winter Term 2022/23)
+- University of Magdeburg, Germany: implementation Techniques for Software Product Lines (Winter Term 2022/23)
+- Harz University of Applies Sciences, Wernigerode, Germany: Requirements Engineering II - Software Product Lines (Summer Term 2023)
+- University of Ulm, Germany: Software Product Lines (Summer Term 2023)
+
+## Getting Started
 
 ```
 git clone --recursive git@github.com:SoftVarE-Group/Course-on-Software-Product-Lines
+cd Course-on-Software-Product-Lines/slides
+make UNIVERSITY=... HANDOUT=... # for valid values, see Makefile
 ```
-
-In `slides/01-introduction.tex` (or a sibling file), set your university at the top and whether you want animations or a handout.
-Then compile with LaTeX.
 
 ## License
 
