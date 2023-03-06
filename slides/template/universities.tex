@@ -7,8 +7,9 @@
 \def\university{}
 \fi
 
-\newcommand{\ifuniversity}[2]{\ifthenelse{\equal{\university}{#1}}{#2}{}}
-\newcommand{\inputifuniversity}[1]{\IfFileExists{#1-\university}{\input{#1-\university}}{}}
+\newcommand{\ifuniversity}[3][]{\ifthenelse{\equal{\university}{#2}}{#3}{#1}}
+\newcommand{\unlessuniversity}[3][]{\ifuniversity[#3]{#2}{#1}}
+\newcommand{\inputuniversity}[1]{\IfFileExists{#1-\university}{\input{#1-\university}}{}}
 
 % TITLE
 \ifuniversity{ulm}{\title{Software Product Lines}}

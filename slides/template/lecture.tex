@@ -31,8 +31,11 @@
 				\setcounter{enumi}{8}
 				\item {\emphifequal{#1}{9}Feature Interactions}
 				\item {\emphifequal{#1}{10}Product-Line Analyses}
-				\item {\emphifequal{#1}{11}Product-Line Testing}
-				\item {\emphifequal{#1}{12}Evolution and Maintenance}
+				\unlessuniversity{wernigerode}{\item {\emphifequal{#1}{11}Product-Line Testing}}
+				\item {\emphifequal{#1}{12}
+					\unlessuniversity{wernigerode}{Evolution and Maintenance}
+					\ifuniversity{wernigerode}{Cost Estimation}
+				}
 			\end{enumerate}
 		}
 	\end{mycolumns}
