@@ -1,60 +1,63 @@
 \begin{frame}{Organization}
-    \begin{mycolumns}[columns=3,widths={50,40,10}]
-        \mynote{}{
-            \begin{itemize}
-                \item English slides
-                \item German lecture and exercises
-            \end{itemize}
-        }
-        \mynote{}{
-            \begin{itemize}
-                \item who are you?
-            \end{itemize}
-        }
-    \mynextcolumn
-        \mynote{Who am I?}{
-            \centering
-            \href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\includegraphics[width=0.5\linewidth]{elias-kuiter}}\\[.5ex]
-            \href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\emph{Elias Kuiter}}\\[.5ex]
-            \small PhD student in Magdeburg\\[.5ex]
-            FeatureIDE core developer
-        }
-    \mynextcolumn
-    \end{mycolumns}
-    %todo: connection to previous course
+	\begin{mycolumns}[widths={28}]
+		\mydefinition{Who am I?}{
+			\centering
+			\href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\includegraphics[width=0.8\linewidth]{elias-kuiter}}\\[.5ex]
+			\href{https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html}{\emph{Elias Kuiter}}\\[.5ex]
+			\small PhD student in Magdeburg\\[.5ex]
+			FeatureIDE core developer
+		}
+	\mynextcolumn
+		\mynote{Lecture (Elias)}{
+			\begin{itemize}
+				\item slides in English, lectures and exercises in German
+				\item once per week
+				\begin{itemize}
+					\item on Thursday, 11.30am--1pm
+					\item today: in room 5.301, otherwise: online via Zoom
+				\end{itemize}
+				\item material available on Stud.IP
+			\end{itemize}
+		}
+		\mynote{Exercise (Sandy)}{
+			\begin{itemize}
+				\item once per week on Thursday, 13.30am--3pm, in room 5.301
+			\end{itemize}
+		}
+		\mynote{Final Presentation \deutsch{Prüfungsleistung}}{
+			\begin{itemize}
+				\item 20-minute presentation on a recent product-line paper
+				\item planned for the last appointment (June 15)
+			\end{itemize}
+		}
+	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Organization}
-    \begin{mycolumns}
-        \mynote{Lecture}{
-            \begin{itemize}
-                \item once per week
-                \begin{itemize}
-                    \item on Thursday, 11.30am--1pm
-                    \item in room 5.301
-                    \item most weeks: online via Zoom
-                    \item 13 appointments from March 16 until June 15 (not on Ascension Day)
-                \end{itemize}
-                \item held by Elias
-                \item slides are available on \texttt{\href{todo}{todo}}
-            \end{itemize}
-        }
-    \mynextcolumn
-        \mynote{Exercise}{
-            \begin{itemize}
-                \item once per week
-                \begin{itemize}
-                    \item right after the lecture
-                \end{itemize}
-                \item held by Sandy
-                \item exercise sheets are available on \texttt{\href{todo}{todo}}
-            \end{itemize}
-        }
-        \mynote{Final Presentation \deutsch{Prüfungsleistung}}{
-            \begin{itemize}
-                \item 20-minute presentation on a recent product-line paper you may choose
-                \item planned for the last two lecture appointments
-            \end{itemize}
-        }
-    \end{mycolumns}
+\begin{frame}{Requirements Engineering I vs. II}
+	\footnotesize%
+	\begin{mycolumns}[columns=3,widths={10,70,10},animation=none]
+		\renewcommand{\projectcartoonwidth}{1}\projectcartoon{01}{}
+	\mynextcolumn
+		\begin{note}{}
+			\renewcommand{\projectcartoonwidth}{.15}%
+			\projectcartoon{02}{}%
+			\projectcartoon{03}{}%
+			\projectcartoon{04}{}%
+			\projectcartoon{05}{}
+		\end{note}
+	\mynextcolumn
+	\end{mycolumns}
+	\begin{mycolumns}[columns=3,widths={10,70,10},animation=none]
+		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{01}{Product Requirements}
+	\mynextcolumn
+		\begin{note}{}
+			\renewcommand{\projectcartoonwidth}{.15}%
+			\hprojectcartoon{02}{Application Analysis}%
+			\projectcartoon{03}{Application Design}%
+			\projectcartoon{04}{Application Implementation}%
+			\projectcartoon{05}{Application Testing}
+		\end{note}
+	\mynextcolumn
+		\renewcommand{\projectcartoonwidth}{1}\projectcartoon{13}{Product}
+	\end{mycolumns}
 \end{frame}
