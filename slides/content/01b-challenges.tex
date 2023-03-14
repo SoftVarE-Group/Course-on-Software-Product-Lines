@@ -11,22 +11,12 @@
 			\item in practice: a common source for inconsistencies and bugs
 			\end{itemize}
 		}
-		
-		\myexample{Cloning Parts of Software}{~\hfill\includegraphics[width=.2\linewidth]{pants-blue}\hfill\includegraphics[width=.2\linewidth]{pants-red}\hfill~}
 	\mynextcolumn
-		\mynote{Types of Software Clones\mysource{\softwareclonedetection\mypage{1167}}}{
-			\begin{itemize}
-			\item Type 1: identical except whitespaces and comments
-			\item Type 2: syntactically similar (e.g., changed identifiers, \ldots)
-			\item Type 3: copied with modifications (e.g., inserted or removed statements)
-			\item Type 4: similar functionality without textual similarities
-			\end{itemize}
-		}
+		\myexample{Cloning Parts of Software}{~\hfill\includegraphics[width=.2\linewidth]{pants-blue}\hfill\includegraphics[width=.2\linewidth]{pants-red}\hfill~}
 
 		\myexample{Cloning Whole Products (Clone-and-Own)}{~\hfill\includegraphics[width=.2\linewidth]{130}\hfill\includegraphics[width=.2\linewidth]{230}\hfill~}
 	\end{mycolumns}
 \end{frame}
-% TODO simplify this slide? rather hard stuff already
 
 \subsection{Feature Traceability}
 \begin{frame}{\myframetitle}
@@ -42,7 +32,7 @@
 
 \subsection{Automated Generation}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={38,5},animation=none]
+	\begin{mycolumns}[columns=3,widths={37,7},animation=none]
 		\myexampletight{Features}{
 			\foreach \animation/\handout/\page in {1-2/0/5,3-4/0/6,5-6/0/7,7-8/0/8,9-10/0/9,11-/1/10} {%
 				\only<\animation|handout:\handout>{\includegraphics[width=\linewidth,page=\page,trim=45 0 45 0,clip]{lego}}%
@@ -80,7 +70,6 @@
 		}}
 	\end{mycolumns}
 \end{frame}
-% TODO removed following picture here, move it to somewhere else? \href{https://pxhere.com/en/photo/920906}{\includegraphics[width=\linewidth]{car-tower}}
 
 \subsection{Combinatorial Explosion}
 \begin{frame}{\myframetitle}
@@ -100,7 +89,7 @@
 			\small%
 			\begin{itemize}
 				\item in practice: not all combinations of features valid
-				\item many industrial product lines too large to specify all valid combinations manually
+				\item many industrial product lines too large to specify all valid combinations separately
 				\item largest automotive product line has about $1.7 \cdot 10^{1534}$ products
 			\end{itemize}
 		}
@@ -217,7 +206,7 @@
 			\includegraphics[width=\linewidth,page=3]{linux-plots}%
 			\begin{itemize}
 				\item number of products grows by factor 100.000 each month
-				\item the current kernel is likely to have roughly $10^{1600}$ products
+				\item the current kernel is likely to have more than $10^{1500}$ products
 			\end{itemize}
 		}
 	\mynextcolumn
