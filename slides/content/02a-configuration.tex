@@ -1,6 +1,7 @@
 \begin{frame}{Recap: Software Product Lines}
 	\begin{mycolumns}
-		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
+		\begin{definition}{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}
+			\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
 				\item a set of software-intensive systems (aka.\ products or variants)
 				\item that share a common, managed set of features 
@@ -8,7 +9,7 @@
 				\item and that are developed from a common set of core assets in a prescribed way.\myciteend
 			\end{itemize}
 			\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
-		}
+		\end{definition}
 	\mynextcolumn
 		\pic[width=\linewidth,page=24]{lego}
 	\end{mycolumns}
@@ -18,21 +19,21 @@
 
 \begin{frame}{How to Implement Software Product Lines?}
 	\begin{mycolumns}[widths={50},animation=none]
-		\includegraphics[width=\linewidth]{metaproduct2}	
+		\pic[width=\linewidth]{metaproduct2}	
 	\mynextcolumn
-		\mynote{Key Issues}{
+		\begin{note}{Key Issues}
 			\begin{itemize}
 			\item Systematic reuse of implementation artifacts
 			\item Explicit handling of variability
 			\end{itemize}
-		}
-		\uncover<2->{\mydefinition{Variability\mysource{\fospl\mypage{48}}}{
+		\end{note}
+		\uncover<2->{\begin{definition}{Variability\mysource{\fospl\mypage{48}}}
 			\mycite{\emph{Variability} is the ability to derive different products from a common set of artifacts.}
-		}}
+		\end{definition}}
 		~
-		\uncover<3->{\mynote{Variability-Intensive System}{
+		\uncover<3->{\begin{note}{Variability-Intensive System}
 			Any software product line is a variability-intensive system. % TODO Timo: do we really need this term? where does this definition come from?
-		}}
+		\end{note}}
 	\end{mycolumns}
 \end{frame}
 
@@ -44,11 +45,11 @@
 
 \begin{frame}{Example: Command-Line Parameters}
 	\begin{mycolumns}[t]
-		\centering\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
+		\centering\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir}
 
 		Description of configuration options
 	\mynextcolumn
-		\centering\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
+		\centering\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
 
 		Two different instances? \pause\pause separator \emph{,} in file sizes
 	\end{mycolumns}
@@ -57,13 +58,13 @@
 \subsection{Preference Dialogs}
 
 \begin{frame}{Example: Preference Dialogs}
-	\centering\includegraphics[width=0.75\linewidth]{preferences-eclipse}
+	\centering\pic[width=0.75\linewidth]{preferences-eclipse}
 \end{frame}
 
 \subsection{Configuration Files}
 
 \begin{frame}{Example: Configuration Files}
-	\centering\includegraphics[width=0.75\linewidth]{configfile-eclipse-ini} % TODO das sind ja eigentlich auch nur CLI options - besser eine richtige INI Datei?
+	\centering\pic[width=0.75\linewidth]{configfile-eclipse-ini} % TODO these are merely CLI options. shall we use an INI file or a file in some standard key-value format?
 \end{frame}
 
 \subsection{Runtime Variability}
@@ -78,18 +79,18 @@
 	\end{mycolumns}
 		
 	\uncover<2->{
-		\begin{mycolumns}[widths={57},animation=none]
-			\mynote{Configuration Options}{
+		\begin{mycolumns}[t,widths={57},animation=none]
+			\begin{note}{Configuration Options}
 				\begin{itemize}
 					\item Behavior of a program is determined by configuration options being interpreted at runtime
 					\item Choices offered by variability are decided at runtime
 					\item Configuration may happen interactively (command-line parameters, preference dialogs) or non-interactively (configuration files)
 				\end{itemize}
-			}			
+			\end{note}
 		\mynextcolumn	
-			\mydefinition{Runtime Variability\mysource{\fospl\mypage{49}}}{
+			\begin{definition}{Runtime Variability\mysource{\fospl\mypage{49}}}
 				Runtime variability \deutsch{Laufzeitvariabilität} is decided after compilation when the program is started (aka.\ load-time variability) or during program execution.
-			}	
+			\end{definition}
 		\end{mycolumns}
 	}
 \end{frame}
@@ -101,16 +102,16 @@
 \begin{frame}{Example: Graph Library}
 	A simple library for graphs providing \ldots\\~\\
 	\begin{mycolumns}[t]
-		\myexample{\ldots\ Data Structures}{
+		\begin{example}{\ldots\ Data Structures}
 			\begin{itemize}
 				\item Directed/undirected edges
 				\item Weighted/unweighted edges 
 				\item Colored/uncolored nodes
 				\item \ldots
 			\end{itemize}
-		}		
+		\end{example}
 	\mynextcolumn
-		\myexample{\ldots\ and Algorithms}{
+		\begin{example}{\ldots\ and Algorithms}
 			\begin{itemize}
 				\item Vertex numbering
 				\item Vertex coloring 
@@ -118,50 +119,50 @@
 				\item Minimum spanning tree 
 				\item \ldots
 			\end{itemize}
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Features of a Graph}
 	\begin{mycolumns}[t,columns=4]
-		\includegraphics[width=\linewidth,page=1]{graphs}
-		\includegraphics[width=\linewidth,page=3]{graphs}
+		\pic[width=\linewidth,page=1]{graphs}
+		\pic[width=\linewidth,page=3]{graphs}
 		\centering\Huge\vdots
 	\mynextcolumn
-		\includegraphics[width=\linewidth,page=5]{graphs}
-		\includegraphics[width=\linewidth,page=7]{graphs}
+		\pic[width=\linewidth,page=5]{graphs}
+		\pic[width=\linewidth,page=7]{graphs}
 		\centering\Huge\vdots
 	\mynextcolumn
-		\includegraphics[width=\linewidth,page=11]{graphs}
-		\includegraphics[width=\linewidth,page=13]{graphs}
+		\pic[width=\linewidth,page=11]{graphs}
+		\pic[width=\linewidth,page=13]{graphs}
 		\centering\Huge\vdots
 	\mynextcolumn
-		\includegraphics[width=\linewidth,page=15]{graphs}
-		\includegraphics[width=\linewidth,page=17]{graphs}		
+		\pic[width=\linewidth,page=15]{graphs}
+		\pic[width=\linewidth,page=17]{graphs}		
 		\centering\Huge\vdots
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Features as Configuration Options}
 	\begin{mycolumns}[columns=3,widths={25,25},animation=none]
-		\myexampletight{Directed}{\includegraphics[width=\linewidth,page=3]{graphs}}
-		\myexampletight{Colored}{\includegraphics[width=\linewidth,page=11]{graphs}}
+		\myexampletight{Directed}{\pic[width=\linewidth,page=3]{graphs}}
+		\myexampletight{Colored}{\pic[width=\linewidth,page=11]{graphs}}
 	\mynextcolumn
-		\myexampletight{Weighted}{\includegraphics[width=\linewidth,page=5]{graphs}}
-		\myexampletight{Weighted, Colored}{\includegraphics[width=\linewidth,page=15]{graphs}}
+		\myexampletight{Weighted}{\pic[width=\linewidth,page=5]{graphs}}
+		\myexampletight{Weighted, Colored}{\pic[width=\linewidth,page=15]{graphs}}
 	\mynextcolumn
-		\pause\includegraphics[width=0.45\linewidth,page=6]{graphs}
+		\pause\pic[width=0.45\linewidth,page=6]{graphs}
 		\hfill
-		\includegraphics[width=0.45\linewidth,page=12]{graphs}
+		\pic[width=0.45\linewidth,page=12]{graphs}
 		
 		~\pause
 		
-		\mynote{Configuration of Graph Data Structures}{
+		\begin{note}{Configuration of Graph Data Structures}
 			\begin{itemize}
 				\item Typically, configuration options are \emph{flags}
 				\item Their boolean value determines which features are \emph{activated} / \emph{deactivated}
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -187,10 +188,10 @@
 		\end{note}}
 	\mynextcolumn
 	\mynextcolumn
-		\myexampletight{Directed\\~}{\includegraphics[width=\linewidth,page=3]{graphs}}	
-		\myexampletight{Colored\\~}{\includegraphics[width=\linewidth,page=11]{graphs}}	
+		\myexampletight{Directed\\~}{\pic[width=\linewidth,page=3]{graphs}}	
+		\myexampletight{Colored\\~}{\pic[width=\linewidth,page=11]{graphs}}	
 	\mynextcolumn
-		\myexampletight{Weighted\\~}{\includegraphics[width=\linewidth,page=5]{graphs}}	
-		\myexampletight{Weighted,\\Colored}{\includegraphics[width=\linewidth,page=15]{graphs}}
+		\myexampletight{Weighted\\~}{\pic[width=\linewidth,page=5]{graphs}}	
+		\myexampletight{Weighted,\\Colored}{\pic[width=\linewidth,page=15]{graphs}}
 	\end{mycolumns}
 \end{frame}

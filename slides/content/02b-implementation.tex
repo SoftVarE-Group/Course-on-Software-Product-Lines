@@ -3,7 +3,7 @@
 
 % TODO font in code examples is very small, there are many cloned examples, some fixes available in later lectures already
 
-% TODO use mycolumns, definition, note, example environments consistently
+% TODO check animations for all slides with code examples
 
 \subsection{Recap and Motivating Example}
 
@@ -13,8 +13,7 @@
 
 \begin{frame}[fragile]{A Non-Variable Graph Implementation}
 	\begin{tiny}
-		\begin{columns}
-			\column{.45\textwidth}
+		\begin{mycolumns}
 \begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
@@ -44,7 +43,7 @@ public class Color {
 	static void setDisplayColor(Color c) {...}
 }
 \end{codetight}	
-			\column{.45\textwidth}
+			\mynextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -75,14 +74,13 @@ public class Weight {
 	void print() {...}
 }
 \end{codetight}
-		\end{columns}
+		\end{mycolumns}
 	\end{tiny}
 \end{frame}
 
 \begin{frame}[fragile]{``Symbolic'' Feature Traces}
 	\begin{tiny}
-		\begin{columns}
-			\column{.45\textwidth}
+		\begin{mycolumns}
 \begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
@@ -112,7 +110,7 @@ public class Graph {
 	static void setDisplayColor(Color c) {...}
 }~
 \end{codetight}	
-			\column{.45\textwidth}
+		\mynextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -143,18 +141,17 @@ public class Edge {
 	void print() {...}
 }@
 \end{codetight}
-		\end{columns}
+		\end{mycolumns}
 	\end{tiny}
 \end{frame}
 
 \begin{frame}[fragile]{Adding Variability}
-		\begin{columns}
-			\column{.45\textwidth}
-				\begin{definition}{The Basic Idea}
-					Conditional statements \ldots
+	\begin{mycolumns}
+		\begin{definition}{The Basic Idea}
+			Conditional statements \ldots
 
-					controlled by configuration options
-				\end{definition}
+			controlled by configuration options
+		\end{definition}
 \begin{tiny}
 \begin{codetight}{}
 public class Graph {
@@ -176,7 +173,7 @@ public class Graph {
 }
 \end{codetight}
 \end{tiny}	
-			\column{.45\textwidth}
+	\mynextcolumn
 \begin{tiny}
 \begin{codetight}{}
 public class Node {
@@ -206,14 +203,13 @@ public class Edge {
 }
 \end{codetight}
 \end{tiny}	
-		\end{columns}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Global Variables}
 
 \begin{frame}[fragile]{\myframetitle}
-		\begin{columns}
-			\column{.45\textwidth}
+	\begin{mycolumns}
 \begin{tiny}
 \begin{codetight}{}
 public class Config {
@@ -241,7 +237,7 @@ public class Graph {
 }
 \end{codetight}
 \end{tiny}	
-			\column{.45\textwidth}
+		\mynextcolumn
 \begin{tiny}
 \begin{codetight}{}
 public class Node {
@@ -271,14 +267,13 @@ public class Edge {
 }
 \end{codetight}
 \end{tiny}	
-		\end{columns}
+	\end{mycolumns}
 \end{frame}
 
 % TODO add literature on global variables? https://dl.acm.org/doi/pdf/10.1145/99370.99374
 
 \begin{frame}[fragile]{Special Case: Immutable Global Variables}
-		\begin{columns}
-			\column{.45\textwidth}
+	\begin{mycolumns}
 \begin{tiny}
 \begin{codetight}{}
 public class Config {
@@ -306,22 +301,21 @@ public class Graph {
 }
 \end{codetight}
 \end{tiny}	
-			\column{.45\textwidth}
-				\begin{definition}{Idea}
-					Use static configuration when configuration parameters are known at compile time
-				\end{definition}
-				\uncover<2->{\begin{note}{Discussion}
-					\textbf{Advantage}: Compiler optimizations may remove dead code
+	\mynextcolumn
+		\begin{definition}{Idea}
+			Use static configuration when configuration parameters are known at compile time
+		\end{definition}
+		\uncover<2->{\begin{note}{Discussion}
+			\textbf{Advantage}: Compiler optimizations may remove dead code
 
-					\textbf{Disadvantage}: No external configuration by the end-user
-				\end{note}}
-		\end{columns}
+			\textbf{Disadvantage}: No external configuration by the end-user
+		\end{note}}
+	\end{mycolumns}
 \end{frame}
 
-\subsection{Method Parameters and Parameter Passing} % bsp berkeleydb, manche parameter werden durch das ganze system gereicht
+\subsection{Method Parameters and Parameter Passing}
 \begin{frame}[fragile]{\myframetitle}
-	\begin{columns}
-		\column{.45\textwidth}
+	\begin{mycolumns}
 \begin{tiny}
 \begin{codetight}{}
 public class Graph {
@@ -355,26 +349,26 @@ public class Edge {
 }
 \end{codetight}
 \end{tiny}	
-		\column{.45\textwidth}
-			\begin{definition}{Idea}
-				\begin{itemize}
-					\item A class exposes its configuration parameters as part of its interface (i.e., method parameters)
-					\item Parameter values are passed along with each method invocation
-				\end{itemize}
-			\end{definition}
-			\uncover<2->{\begin{note}{Discussion}
-				\textbf{Advantage}: Different instantiations (e.g., colored and uncolored graphs) within the same program
+	\mynextcolumn
+		\begin{definition}{Idea}
+			\begin{itemize}
+				\item A class exposes its configuration parameters as part of its interface (i.e., method parameters)
+				\item Parameter values are passed along with each method invocation
+			\end{itemize}
+		\end{definition}
+		\uncover<2->{\begin{note}{Discussion}
+			\textbf{Advantage}: Different instantiations (e.g., colored and uncolored graphs) within the same program
 
-				\textbf{Disadvantage}: May lead to methods with many parameters (code smell!)
-			\end{note}}
-			% TODO name code smell and give reference?
-	\end{columns}
+			\textbf{Disadvantage}: May lead to methods with many parameters (code smell!)
+		\end{note}}
+		% TODO name code smell and give reference?
+	\end{mycolumns}
 \end{frame}
+% TODO BerkeleyDB as further example? some parameters propagated through the whole system
 
 \subsection{Reconfiguration at Runtime?}
 \begin{frame}[fragile]{\myframetitle}
-		\begin{columns}
-			\column{.45\textwidth}
+	\begin{mycolumns}
 \begin{tiny}
 \begin{codetight}{}
 public class Config {
@@ -401,20 +395,20 @@ public class Node {
 }
 \end{codetight}
 \end{tiny}	
-			\column{.45\textwidth}
-				\begin{definition}{Idea}
-					Alter feature selection without stopping and restarting the program
-				\end{definition}
-				\uncover<2->{\begin{example}{Though Experiment}
-					What happens when we change the value of \texttt{COLORED} from \texttt{false} to \texttt{true} (at runtime)?
-				\end{example}}
-				\uncover<3->{\begin{note}{Discussion}
-					\begin{itemize} 
-						\item Feature-specific code may depend on certain initialization steps or assume certain invariants
-						\item Just updating the values of configuration options does not update the current state of the program (source of bugs!)
-					\end{itemize}
-				\end{note}}
-		\end{columns}
+	\mynextcolumn
+		\begin{definition}{Idea}
+			Alter feature selection without stopping and restarting the program
+		\end{definition}
+		\uncover<2->{\begin{example}{Though Experiment}
+			What happens when we change the value of \texttt{COLORED} from \texttt{false} to \texttt{true} (at runtime)?
+		\end{example}}
+		\uncover<3->{\begin{note}{Discussion}
+			\begin{itemize} 
+				\item Feature-specific code may depend on certain initialization steps or assume certain invariants
+				\item Just updating the values of configuration options does not update the current state of the program (source of bugs!)
+			\end{itemize}
+		\end{note}}
+	\end{mycolumns}
 \end{frame}
 % TODO refer to ICSE'23 paper?
 
@@ -422,22 +416,13 @@ public class Node {
 
 \subsection{Code Scattering, Tangling, and Replication}
 \begin{frame}{Problem: Code Scattering \deutsch{Verstreuung}}
-	\begin{center}
-		\vspace{-2mm}
-		\includegraphics[scale=1.0]{scattering}
-	\end{center}
+	\centering\pic[scale=1.0]{scattering}
 \end{frame}
 
 \begin{frame}{Problem: Code Tangling \deutsch{Vermischung}}
-	\begin{center}
-		\vspace{-2mm}
-		\includegraphics[scale=1.0]{tangling}
-	\end{center}
+	\centering\pic[scale=1.0]{tangling}
 \end{frame}
 
 \begin{frame}{Problem: Code Replication (aka.\ Code Clones)}
-	\begin{center}
-		\vspace{-2mm}
-		\includegraphics[scale=1.0]{replication}
-	\end{center}
+	\centering\pic[scale=1.0]{replication}
 \end{frame}

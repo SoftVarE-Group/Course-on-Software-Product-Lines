@@ -1,28 +1,35 @@
-\subsection{Object-Oriented Key Concepts}
+\subsection{Recap on Object-Orientation and Design Patterns}
 
-\begin{frame}{Recap: Object-Oriented Key Concepts}
-	\leftorright{
-		\mydefinition{Encapsulation}{Abstraction \& Information Hiding}		
-		\mydefinition{Composition}{Nested objects}	
-		\mydefinition{Message Passing}{Delegating responsibility}
-		\mydefinition{Distribution of Responsibility}{Separation of concerns}	
-		\mydefinition{Inheritance}{Conceptual hierarchy, polymorphism, reuse}
-	}{
+\begin{frame}{Recap: Object-Oriented Key Concepts} % TODO better structure for this slide?
+	\begin{mycolumns}
+		\begin{definition}{Encapsulation}
+			Abstraction and information hiding
+		\end{definition}
+		\begin{definition}{Composition}
+			Nested objects
+		\end{definition}
+		\begin{definition}{Message Passing}
+			Delegating responsibility
+		\end{definition}
+		\begin{definition}{Distribution of Responsibility}
+			Separation of concerns
+		\end{definition}
+		\begin{definition}{Inheritance}
+			Conceptual hierarchy, polymorphism, reuse
+		\end{definition}
+	\mynextcolumn
 		\pic[width=0.8\linewidth]{oo-concepts-illustration} % was illustriert was? warum ist square kein rectangle?
-	}
+	\end{mycolumns}
 \end{frame}
 
-\subsection{Design Patterns}
-
 \begin{frame}{Recap: Design Patterns\ \mytitlesource{\gof}}
-	\leftorright{
-		\vspace{-10mm}
-		\mynote{Design patterns \deutsch{Entwurfsmuster}}{
+	\begin{mycolumns}[widths={60}]
+		\begin{definition}{Design patterns \deutsch{Entwurfsmuster}}
 			\begin{itemize}
 				\item Document common solutions to concrete yet frequently occurring design problems.
 				\item Suggest a concrete implementation for a specific object-oriented programming problem.
 			\end{itemize}
-		}		
+		\end{definition}	
 		\mynote{Design patterns for variability}{
 			\begin{itemize}
 				\item Many Gang of Four (GoF) design patterns for designing software around stable abstractions and interchangeable (i.e., variable) parts, e.g.
@@ -33,9 +40,9 @@
 				\end{itemize}
 			\end{itemize}
 		}				
-	}{
-		\pic[width=\linewidth]{gof}
-	}
+	\mynextcolumn
+		\mynotetight{}{\pic[width=\linewidth]{gof}}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Template Method Pattern}
@@ -239,9 +246,9 @@ public abstract class GraphDecorator implements IGraph {
 		\end{columns}
 Usage Example: 
 \begin{tiny}
-\begin{codetight}{} % zu klein
+\begin{codetight}{}
 IGraph g = new WeightedGraph(new ColoredGraph(new Graph(new WeightedEdgeFactory())));
-\end{codetight}
+\end{codetight} % TODO font too small
 \end{tiny}	
 \end{frame}
 
