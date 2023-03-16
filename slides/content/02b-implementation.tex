@@ -1,18 +1,14 @@
-\begin{frame}{Recap: Variability and Binding Times}
-	\begin{mycolumns}[widths={45},animation=none]
-		\includegraphics[width=\linewidth]{metaproduct2}	
-	\mynextcolumn
-		\mydefinition{Binding Time}{
-			\begin{itemize}
-				\item Variability offers choices.
-				\item Derivation of a product requires to make decisions (aka. binding).
-				\item Decisions may be bound at different binding times.
-			\end{itemize}
-		}	
-		\uncover<2->{\mynote{When, how and by whom?}{
-			In the sequel: Focus on how\ldots
-		}}
-	\end{mycolumns}
+% TODO prominently add feature toggles including literature
+% P. Hodgson. Feature Toggles. \url{https://martinfowler.com/articles/feature-toggles.html}
+
+% TODO font in code examples is very small, there are many cloned examples, some fixes available in later lectures already
+
+% TODO use mycolumns, definition, note, example environments consistently
+
+\subsection{Recap and Motivating Example}
+
+\begin{frame}<2>{Recap: Variability and Binding Times}
+	\frameVariabilityAndBindingTimes
 \end{frame}
 
 \begin{frame}[fragile]{A Non-Variable Graph Implementation}
@@ -151,13 +147,14 @@ public class Edge {
 	\end{tiny}
 \end{frame}
 
-\begin{frame}[fragile]{Adding Variability: A Basic Idea}
+\begin{frame}[fragile]{Adding Variability}
 		\begin{columns}
 			\column{.45\textwidth}
-				\mynote{}{
-					Conditional statements, controlled by configuration parameters.
-				}
-				\vspace{5mm}
+				\begin{definition}{The Basic Idea}
+					Conditional statements \ldots
+
+					controlled by configuration options
+				\end{definition}
 \begin{tiny}
 \begin{codetight}{}
 public class Graph {
@@ -277,6 +274,8 @@ public class Edge {
 		\end{columns}
 \end{frame}
 
+% TODO add literature on global variables? https://dl.acm.org/doi/pdf/10.1145/99370.99374
+
 \begin{frame}[fragile]{Special Case: Immutable Global Variables}
 		\begin{columns}
 			\column{.45\textwidth}
@@ -308,26 +307,21 @@ public class Graph {
 \end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
-				\mynote{Idea}{ 
-					\begin{itemize}
-						\item Static configuration when configuration parameters are known at compile time.
-					\end{itemize}					
-				}
-				\uncover<2->{\mynote{Discussion}{ 
-					\begin{itemize}
-						\item {\bf Advantage:} Compiler optimizations may remove dead code.
-					\end{itemize}					
-					\begin{itemize}
-						\item {\bf Disadvantage:} No external configuration by the end-user.
-					\end{itemize}
-				}}
+				\begin{definition}{Idea}
+					Use static configuration when configuration parameters are known at compile time
+				\end{definition}
+				\uncover<2->{\begin{note}{Discussion}
+					\textbf{Advantage}: Compiler optimizations may remove dead code
+
+					\textbf{Disadvantage}: No external configuration by the end-user
+				\end{note}}
 		\end{columns}
 \end{frame}
 
 \subsection{Method Parameters and Parameter Passing} % bsp berkeleydb, manche parameter werden durch das ganze system gereicht
 \begin{frame}[fragile]{\myframetitle}
-		\begin{columns}
-			\column{.45\textwidth}
+	\begin{columns}
+		\column{.45\textwidth}
 \begin{tiny}
 \begin{codetight}{}
 public class Graph {
@@ -361,22 +355,20 @@ public class Edge {
 }
 \end{codetight}
 \end{tiny}	
-			\column{.45\textwidth}
-				\mynote{Idea}{ 
-					\begin{itemize}
-						\item A class exposes its configuration parameters as part of its interface (i.e., method parameters).
-						\item Parameter values are passed along method invocations.
-					\end{itemize}
-				}				
-				\uncover<2->{\mynote{Discussion}{ 
-					\begin{itemize}
-						\item {\bf Advantage:} Different instantiations (e.g., colored and uncolored graphs) within the same program.
-					\end{itemize}					
-					\begin{itemize}
-						\item {\bf Disadvantage:} May lead to methods with many parameters (code smell!).
-					\end{itemize}
-				}}
-		\end{columns}
+		\column{.45\textwidth}
+			\begin{definition}{Idea}
+				\begin{itemize}
+					\item A class exposes its configuration parameters as part of its interface (i.e., method parameters)
+					\item Parameter values are passed along with each method invocation
+				\end{itemize}
+			\end{definition}
+			\uncover<2->{\begin{note}{Discussion}
+				\textbf{Advantage}: Different instantiations (e.g., colored and uncolored graphs) within the same program
+
+				\textbf{Disadvantage}: May lead to methods with many parameters (code smell!)
+			\end{note}}
+			% TODO name code smell and give reference?
+	\end{columns}
 \end{frame}
 
 \subsection{Reconfiguration at Runtime?}
@@ -396,13 +388,13 @@ public class Node {
 	~Color color;~
 	...
 	Node(){
-		~if (Conf.COLORED) { 
-			color = new Color(); 
+		~if (Config.COLORED) {
+			color = new Color();
 		}~
 	}
 	void print() {
-		~if (Conf.COLORED) { 
-			Color.setDisplayColor(color); 
+		~if (Config.COLORED) {
+			Color.setDisplayColor(color);
 		}~
 		System.out.print(id);
 	}
@@ -410,25 +402,25 @@ public class Node {
 \end{codetight}
 \end{tiny}	
 			\column{.45\textwidth}
-				\mynote{Idea}{ 
-					\begin{itemize}
-						\item Alter feature selection without stopping and restarting the program.
-					\end{itemize}
-				}	
-				~
-				\uncover<2->{\mynote{}{
-					What happens when we change the value of {\tt COLORED} from {\tt false} to {\tt true} (at runtime)?
-				}}
-				\uncover<3->{\mynote{Discussion}{ 
+				\begin{definition}{Idea}
+					Alter feature selection without stopping and restarting the program
+				\end{definition}
+				\uncover<2->{\begin{example}{Though Experiment}
+					What happens when we change the value of \texttt{COLORED} from \texttt{false} to \texttt{true} (at runtime)?
+				\end{example}}
+				\uncover<3->{\begin{note}{Discussion}
 					\begin{itemize} 
-						\item Feature-specific code may depend on certain initialization steps or assume certain invariants.
-						\item Just updating the values of configuration parameters does not update the current state of the program.
+						\item Feature-specific code may depend on certain initialization steps or assume certain invariants
+						\item Just updating the values of configuration options does not update the current state of the program (source of bugs!)
 					\end{itemize}
-				}}
+				\end{note}}
 		\end{columns}
 \end{frame}
+% TODO refer to ICSE'23 paper?
 
-\subsection{Code Scattering}
+% TODO overview on all techniques should be added here
+
+\subsection{Code Scattering, Tangling, and Replication}
 \begin{frame}{Problem: Code Scattering \deutsch{Verstreuung}}
 	\begin{center}
 		\vspace{-2mm}
@@ -436,7 +428,6 @@ public class Node {
 	\end{center}
 \end{frame}
 
-\subsection{Code Tangling}
 \begin{frame}{Problem: Code Tangling \deutsch{Vermischung}}
 	\begin{center}
 		\vspace{-2mm}
@@ -444,8 +435,7 @@ public class Node {
 	\end{center}
 \end{frame}
 
-\subsection{Code Replication}
-\begin{frame}{Problem: Code Replication}
+\begin{frame}{Problem: Code Replication (aka.\ Code Clones)}
 	\begin{center}
 		\vspace{-2mm}
 		\includegraphics[scale=1.0]{replication}

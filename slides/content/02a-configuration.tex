@@ -37,32 +37,18 @@
 \end{frame}
 
 \begin{frame}{Variability and Binding Times}
-	\begin{mycolumns}[widths={45},animation=none]
-		\includegraphics[width=\linewidth]{metaproduct2}	
-	\mynextcolumn
-		\mydefinition{Binding Time \deutsch{Bindungszeitpunkt}\mysource{\fospl\mypage{48}}}{
-			\begin{itemize}
-				\item Variability offers choices
-				\item Derivation of a product requires to make decisions (aka. binding)
-				\item Decisions may be bound at different binding times
-			\end{itemize}
-		}
-		~
-		\uncover<2->{\mynote{When? By whom? How?}{
-			In the sequel: Focus on when and by whom\ldots
-		}}
-	\end{mycolumns}
+	\frameVariabilityAndBindingTimes
 \end{frame}
 
 \subsection{Command-Line Parameters}
 
 \begin{frame}{Example: Command-Line Parameters}
 	\begin{mycolumns}[t]
-		\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
+		\centering\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
 
 		Description of configuration options
 	\mynextcolumn
-		\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
+		\centering\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
 
 		Two different instances? \pause\pause separator \emph{,} in file sizes
 	\end{mycolumns}
@@ -71,13 +57,13 @@
 \subsection{Preference Dialogs}
 
 \begin{frame}{Example: Preference Dialogs}
-	\includegraphics[width=0.75\linewidth]{preferences-eclipse}
+	\centering\includegraphics[width=0.75\linewidth]{preferences-eclipse}
 \end{frame}
 
 \subsection{Configuration Files}
 
 \begin{frame}{Example: Configuration Files}
-	\includegraphics[width=0.75\linewidth]{configfile-eclipse-ini} % das sind ja eigentlich auch nur CLI options - besser eine richtige INI Datei?
+	\centering\includegraphics[width=0.75\linewidth]{configfile-eclipse-ini} % TODO das sind ja eigentlich auch nur CLI options - besser eine richtige INI Datei?
 \end{frame}
 
 \subsection{Runtime Variability}
@@ -102,7 +88,7 @@
 			}			
 		\mynextcolumn	
 			\mydefinition{Runtime Variability\mysource{\fospl\mypage{49}}}{
-				Runtime variability \deutsch{Laufzeitvariabilität} is decided after compilation when the program is started (aka. load-time variability) or during program execution.
+				Runtime variability \deutsch{Laufzeitvariabilität} is decided after compilation when the program is started (aka.\ load-time variability) or during program execution.
 			}	
 		\end{mycolumns}
 	}

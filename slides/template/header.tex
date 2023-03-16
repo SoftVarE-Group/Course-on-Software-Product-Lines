@@ -7,3 +7,27 @@
 		\maketitle[]
 	\fi
 }
+
+% shared slide content
+
+% introduced: 02a-configuration
+% reused: 02b-implementation
+\newcommand{\frameVariabilityAndBindingTimes}{
+	\begin{mycolumns}[widths={45},animation=none]
+		\includegraphics[width=\linewidth]{metaproduct2}
+	\mynextcolumn
+		\begin{definition}{Binding Time \deutsch{Bindungszeitpunkt}\mysource{\fospl\mypage{48}}}
+			\begin{itemize}
+				\item Variability offers choices
+				\item Derivation of a product requires to make decisions (aka. binding)
+				\item Decisions may be bound at different binding times
+			\end{itemize}
+		\end{definition}
+		~
+		\uncover<2->{\begin{note}{When? By whom? How?}
+			Part~1: \emph{when} and \emph{by whom}
+
+			Part~2: \emph{how}
+		\end{note}}
+	\end{mycolumns}
+}
