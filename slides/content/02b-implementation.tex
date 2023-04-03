@@ -12,23 +12,23 @@
 \end{frame}
 
 \begin{frame}[fragile]{A Non-Variable Graph Implementation}
-	\begin{tiny}
-		\begin{mycolumns}
+	\small
+	\begin{mycolumns}[t,columns=3,widths={43,30,32}]
 \begin{codetight}{}
-public class Graph {
+class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
 
 	Edge add(Node n, Node m) {
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		e.weight = new Weight();
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}
 	Edge add(Node n, Node m, Weight w) {
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		e.weight = w;
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}
 	void print() {
@@ -38,14 +38,9 @@ public class Graph {
 	}
 }
 \end{codetight}
+	\mynextcolumn
 \begin{codetight}{}
-public class Color {
-	static void setDisplayColor(Color c) {...}
-}
-\end{codetight}	
-			\mynextcolumn
-\begin{codetight}{}
-public class Node {
+class Node {
 	int id = 0;
 	Color color = new Color();
 
@@ -56,12 +51,19 @@ public class Node {
 }
 \end{codetight}
 \begin{codetight}{}
-public class Edge {
+class Color {
+	static void setDisplayColor
+		(Color c) {...}
+}
+\end{codetight}
+	\mynextcolumn
+\begin{codetight}{}
+class Edge {
 	Node a, b;
-	Weight weight = new Weight();
+	Weight weight;
 
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
+	Edge(Node a, Node b) {
+		this.a = a; this.b = b;
 	}
 	void print() {
 		a.print(); b.print();
@@ -70,32 +72,31 @@ public class Edge {
 }
 \end{codetight}
 \begin{codetight}{}
-public class Weight {
+class Weight {
 	void print() {...}
 }
 \end{codetight}
-		\end{mycolumns}
-	\end{tiny}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{``Symbolic'' Feature Traces}
-	\begin{tiny}
-		\begin{mycolumns}
+	\small
+	\begin{mycolumns}[t,columns=3,widths={43,30,32}]
 \begin{codetight}{}
-public class Graph {
+class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
 
 	Edge add(Node n, Node m) {
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		@e.weight = new Weight();@
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}
 	@Edge add(Node n, Node m, Weight w) {
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		e.weight = w;
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}@
 	void print() {
@@ -105,14 +106,9 @@ public class Graph {
 	}
 }
 \end{codetight}
+	\mynextcolumn
 \begin{codetight}{}
-~public class Color {
-	static void setDisplayColor(Color c) {...}
-}~
-\end{codetight}	
-		\mynextcolumn
-\begin{codetight}{}
-public class Node {
+class Node {
 	int id = 0;
 	~Color color = new Color();~
 
@@ -123,12 +119,19 @@ public class Node {
 }
 \end{codetight}
 \begin{codetight}{}
-public class Edge {
+~class Color {
+	static void setDisplayColor
+		(Color c) {...}
+}~
+\end{codetight}
+	\mynextcolumn
+\begin{codetight}{}
+class Edge {
 	Node a, b;
-	@Weight weight = new Weight();@
+	@Weight weight;@
 
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
+	Edge(Node a, Node b) {
+		this.a = a; this.b = b;
 	}
 	void print() {
 		a.print(); b.print();
@@ -137,49 +140,45 @@ public class Edge {
 }
 \end{codetight}
 \begin{codetight}{}
-@public class Weight {
+@class Weight {
 	void print() {...}
 }@
 \end{codetight}
-		\end{mycolumns}
-	\end{tiny}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Adding Variability}
-	\begin{mycolumns}
-		\begin{definition}{The Basic Idea}
+	\small
+	\begin{mycolumns}[b,widths={53},height=70mm]
+		{\normalsize \begin{definition}{The Basic Idea}
 			Conditional statements \ldots
 
 			controlled by configuration options
-		\end{definition}
-\begin{tiny}
+		\end{definition}}
 \begin{codetight}{}
-public class Graph {
+class Graph {
 	...
 	Edge add(Node n, Node m) {
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		@if (WEIGHTED) { e.weight = new Weight(); }@
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}
 	@Edge add(Node n, Node m, Weight w) {
 		if (!WEIGHTED) { throw new RuntimeException(); }
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		e.weight = w;
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}@
-	...
 }
 \end{codetight}
-\end{tiny}	
 	\mynextcolumn
-\begin{tiny}
 \begin{codetight}{}
-public class Node {
+class Node {
 	~Color color;~
 	...
-	Node(){
+	Node() {
 		~if (COLORED) { color = new Color(); }~
 	}
 	void print() {
@@ -189,12 +188,11 @@ public class Node {
 }
 \end{codetight}
 \begin{codetight}{}
-public class Edge {
-	@Weight weight;@ 
+class Edge {
+	@Weight weight;@
 	...
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
-		@if (WEIGHTED) { weight = new Weight(); }@
+	Edge(Node a, Node b) {
+		this.a = a; this.b = b;
 	}
 	void print() {
 		a.print(); b.print();
@@ -202,15 +200,13 @@ public class Edge {
 	}
 }
 \end{codetight}
-\end{tiny}	
 	\end{mycolumns}
 \end{frame}
 
 \subsection{Global Variables}
-
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}
-\begin{tiny}
+	\small
+	\begin{mycolumns}[b,widths={51},height=70mm]
 \begin{codetight}{}
 public class Config {
 	~public static boolean COLORED = true;~
@@ -218,47 +214,47 @@ public class Config {
 }
 \end{codetight}
 \begin{codetight}{}
-public class Graph {
+class Graph {
 	...
 	Edge add(Node n, Node m) {
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		@if (Config.WEIGHTED) { e.weight = new Weight(); }@
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}
 	@Edge add(Node n, Node m, Weight w) {
-		if (!Config.WEIGHTED) { throw new RuntimeException(); }
+		if (!Config.WEIGHTED) {
+			throw new RuntimeException();
+		}
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		e.weight = w;
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}@
-	...
 }
 \end{codetight}
-\end{tiny}	
-		\mynextcolumn
-\begin{tiny}
+	\mynextcolumn
 \begin{codetight}{}
-public class Node {
+class Node {
 	~Color color;~
 	...
-	Node(){
+	Node() {
 		~if (Config.COLORED) { color = new Color(); }~
 	}
 	void print() {
-		~if (Config.COLORED) { Color.setDisplayColor(color); }~
+		~if (Config.COLORED) {
+			Color.setDisplayColor(color);
+		}~
 		System.out.print(id);
 	}
 }
 \end{codetight}
 \begin{codetight}{}
-public class Edge {
+class Edge {
 	@Weight weight;@
 	...
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
-		@if (Config.WEIGHTED) { weight = new Weight(); }@
+	Edge(Node a, Node b) {
+		this.a = a; this.b = b;
 	}
 	void print() {
 		a.print(); b.print();
@@ -266,15 +262,14 @@ public class Edge {
 	}
 }
 \end{codetight}
-\end{tiny}	
 	\end{mycolumns}
 \end{frame}
 
 % TODO add literature on global variables? https://dl.acm.org/doi/pdf/10.1145/99370.99374
 
 \begin{frame}[fragile]{Special Case: Immutable Global Variables}
-	\begin{mycolumns}
-\begin{tiny}
+	\begin{mycolumns}[widths={56}]
+		\small
 \begin{codetight}{}
 public class Config {
 	~public static final boolean COLORED = true;~
@@ -282,25 +277,23 @@ public class Config {
 }
 \end{codetight}
 \begin{codetight}{}
-public class Graph {
+class Graph {
 	...
 	Edge add(Node n, Node m) {
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		@if (Config.WEIGHTED) { e.weight = new Weight(); }@
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}
 	@Edge add(Node n, Node m, Weight w) {
 		if (!Config.WEIGHTED) { throw new RuntimeException(); }
 		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
 		e.weight = w;
+		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}@
-	...
 }
 \end{codetight}
-\end{tiny}	
 	\mynextcolumn
 		\begin{definition}{Idea}
 			Use static configuration when configuration parameters are known at compile time
@@ -313,49 +306,49 @@ public class Graph {
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Method Parameters and Parameter Passing}
+\subsection{Method Parameters}
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}
-\begin{tiny}
-\begin{codetight}{}
-public class Graph {
-	@boolean weighted;@
-	~boolean colored;~
-	...
-	Graph(@boolean _weighted@, ~boolean _colored~) {
-		@weighted = _weighted;@
-		~colored = _colored;~
-	}
-	
-	Edge add(Node n, Node m) {
-		Edge e = new Edge(n, m, @weighted@);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		@if (weighted) { e.weight = new Weight(); }@
-		return e;
-	}
-	...
-}
-\end{codetight}
-\begin{codetight}{}
-public class Edge {
-	@boolean weighted;@
-	@Weight weight;@ 
-	...
-	Edge(Node _a, Node _b, @boolean weighted@) {
-		a = _a; b = _b;
-		@if (weighted) { weight = new Weight(); }@
-	}
-	...
-}
-\end{codetight}
-\end{tiny}	
-	\mynextcolumn
+	\begin{mycolumns}[t]
 		\begin{definition}{Idea}
 			\begin{itemize}
 				\item A class exposes its configuration parameters as part of its interface (i.e., method parameters)
 				\item Parameter values are passed along with each method invocation
 			\end{itemize}
 		\end{definition}
+		\small
+\begin{codetight}{}
+class Graph {
+	boolean @weighted@, ~colored~;
+	...
+	Graph(@boolean weighted@, ~boolean colored~) {
+		@this.weighted = weighted;@ ~this.colored = colored;~
+	}
+	Edge add(Node n, Node m) {
+		Edge e = new Edge(n, m, @weighted@);
+		@if (weighted) { e.weight = new Weight(); }@
+		nodes.add(n); nodes.add(m); edges.add(e);
+		return e;
+	}
+}
+\end{codetight}
+	\mynextcolumn
+	\small
+\begin{codetight}{}
+class Edge {
+	@boolean weighted;@
+	@Weight weight;@
+	...
+	Edge(Node a, Node b, @boolean weighted@) {
+		this.a = a; this.b = b;
+		@this.weighted = weighted;@
+	}
+	void print() {
+		a.print(); b.print();
+		@if (weighted) { weight.print(); }@
+	}
+}
+\end{codetight}
+		\normalsize
 		\uncover<2->{\begin{note}{Discussion}
 			\textbf{Advantage}: Different instantiations (e.g., colored and uncolored graphs) within the same program
 
@@ -364,12 +357,13 @@ public class Edge {
 		% TODO name code smell and give reference?
 	\end{mycolumns}
 \end{frame}
+
 % TODO BerkeleyDB as further example? some parameters propagated through the whole system
 
 \subsection{Reconfiguration at Runtime?}
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}
-\begin{tiny}
+	\begin{mycolumns}[widths={45}]
+		\small
 \begin{codetight}{}
 public class Config {
 	~public static boolean COLORED = false;~
@@ -394,7 +388,6 @@ public class Node {
 	}
 }
 \end{codetight}
-\end{tiny}	
 	\mynextcolumn
 		\begin{definition}{Idea}
 			Alter feature selection without stopping and restarting the program
@@ -426,3 +419,4 @@ public class Node {
 \begin{frame}{Problem: Code Replication (aka.\ Code Clones)}
 	\centering\pic[scale=1.0]{replication}
 \end{frame}
+% TODO pictures on scattering, tangling, replication not consistent with prior examples + example does not contain replicated code anymore
