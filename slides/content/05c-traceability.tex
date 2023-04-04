@@ -80,7 +80,7 @@ public class Weight {
 
 \begin{frame}[fragile]{\myframetitle}
 	\small\begin{mycolumns}[columns=3,T,animation=none,widths={43,32}]
-\begin{codetight}{} % TODO: colors not readable on projector
+\begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
 	List edges = new ArrayList();
@@ -103,7 +103,7 @@ public class Graph {
 		}
 	}
 }
-\end{codetight}
+\end{codetight} % TODO colors not readable on projector
 		\mynextcolumn
 \begin{codetight}{}
 public class Node {
@@ -146,9 +146,9 @@ public class Edge {
 			\setlength\leftmargini{4mm}
 			\begin{enumerate}[(a)]
 				\item single systems? 
-				\item runtime variability? {\tiny\lectureruntime}
-				\item clone-and-own? {\tiny\lecturecloneandown}
-				\item conditional compilation? {\tiny\lecturefeatures}
+				\item runtime variability?\\\mysource{\lectureruntime}
+				\item clone-and-own?\\\mysource{\lecturecloneandown}
+				\item conditional compilation?\mysource{\lecturefeatures}
 			\end{enumerate}
 		\end{note}
 	\end{mycolumns}
@@ -270,8 +270,8 @@ public class Edge {
 		\begin{note}{What is different with physical separation?}
 			\begin{itemize}
 				\item features physically separated from each other
-				\item dedicated components, services, plug-ins \lecturemodules
-				\item dedicated modules, folders, files \lecturelanguages
+				\item dedicated components, services, plug-ins\\\mysource{\lecturemodules}
+				\item dedicated modules, folders, files \mysource{\lecturelanguages}
 			\end{itemize}
 		\end{note}
 	\end{mycolumns}
@@ -340,7 +340,7 @@ public class Edge {
 				\item possible to show overlapping features
 				\item supporting development despite scattering and tangling
 				\item no need to handle separators and logical connectors:\\\mycite{\texttt{,}}, \mycite{\texttt{||}}
-				\item efficient detection of type errors \lectureanalyses
+				\item efficient detection of type errors\mysource{\lectureanalyses}
 			\end{itemize}
 		\end{example}
 	\end{mycolumns}

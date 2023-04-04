@@ -1,125 +1,60 @@
 \subsection{Problems with Runtime Variability}
 
 \begin{frame}{Recap: How to Implement Software Product Lines?}
-	\begin{mycolumns}[widths={45},animation=none]
-		\includegraphics[width=\linewidth]{metaproduct2}	
-	\mynextcolumn
-		\mynote{Key Issues}{
-			\begin{itemize}
-			\item Systematic reuse of implementation artifacts.
-			\item Explicit handling of variability.
-			\end{itemize}
-		}
-		\uncover<2->{\mydefinition{Variability\mysource{\fospl\mypage{48}}}{
-			Variability is the ability to derive different products from a common set of artifacts.
-		}}
-		\uncover<3->{\mynote{}{
-			Any software product line is a variability-intensive system.
-		}}
-	\end{mycolumns}
+	\frameImplementSPLs
 \end{frame}
 
 \begin{frame}{Recap: Variability and Binding Times}
-	\begin{mycolumns}[widths={45},animation=none]
-		\includegraphics[width=\linewidth]{metaproduct2}	
-	\mynextcolumn
-		\mydefinition{Binding Time}{
-			\begin{itemize}
-				\item Variability offers choices.
-				\item Derivation of a product requires to make decisions (aka. binding).
-				\item Decisions may be bound at different binding times.
-			\end{itemize}
-		}	
-		
-		~
-		
-		\uncover<2->{\mynote{}{
-			When, how and by whom?
-		}}
-	\end{mycolumns}
+	\frameVariabilityAndBindingTimes
 \end{frame}
 
 \begin{frame}{Recap: Runtime Variability}
-	\begin{mycolumns}[widths={45},animation=keep]
-		\mynote{Basic Principles}{
-			{\bf Configuration/Runtime Parameters:}
+	\begin{mycolumns}[t]
+		\begin{note}{Basic Principles}
+			{\bf Variability with Configuration Options:}
 			\begin{itemize}
-				\item Conditional statements controlled by configuration parameters
-				\item Global variables vs.\ method parameter passing
-			\end{itemize}	
-			\vspace{2mm}
+				\item Conditional statements controlled by configuration options
+				\item Global variables vs.\ method parameters
+			\end{itemize}
 			{\bf Object-Orientation and Design Patterns:}
 			\begin{itemize}
 				\item Template Method
 				\item Abstract Factory
 				\item Decorator
-				\item etc.
 			\end{itemize}	
-		}
+		\end{note}
 	\mynextcolumn
-		\mynote{Problems}{
-			{\bf Conditional Statements:}
-			\begin{itemize}
-				\item Code scattering, tangling, and replication.
-			\end{itemize}	
-			\vspace{2mm}
-			{\bf Design Patterns for Variability:}
-			\begin{itemize}
-				\item Trade-offs and potential negative side effects.
-				\item Constraints that may restrict their usage.
-			\end{itemize}	
-			\vspace{2mm}
-			{\bf More generally:}
-			\begin{itemize}
-				\item Variable parts are always delivered.
-				\item Not well-suited for compile-time binding.
-			\end{itemize}	
-		}	
+		\frameRuntimeVariabilityProblems
 	\end{mycolumns}	
 \end{frame}
 
 \subsection{Compile-Time Variability}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=2,widths={40,60},animation=none]
-		\mynote{Problems with Runtime Variability}{	
-			{\bf Conditional Statements:}
-			\begin{itemize}
-				\item Code scattering, tangling, and replication.
-			\end{itemize}	
-			{\bf Design Patterns for Variability:}
-			\begin{itemize}
-				\item Trade-offs and potential negative side effects.
-				\item Constraints that may restrict their usage.
-			\end{itemize}	
-			{\bf More generally:}
-			\begin{itemize}
-				\item Variable parts are always delivered.
-				\item Not well-suited for compile-time binding.
-			\end{itemize}	
-		}			
+	\begin{mycolumns}[widths={50},animation=none]
+		\frameRuntimeVariabilityProblems		
 	\mynextcolumn
-		\uncover<2->{\mydefinition{Compile-Time Variability\mysource{\fospl\mypage{49}}}{
-			Compile-time variability is decided before or at compile time.
-		}}	
-		\uncover<3->{\mynote{}{
+		\uncover<2->{\begin{definition}{Compile-Time Variability\mysource{\fospl\mypage{49}}}
+			Compile-time variability is decided before or at compile time. % TODO check quote. mycite?
+		\end{definition}}
+		\uncover<3->{\begin{note}{}
 			{\bf Goals:}
 			\begin{itemize}
-				\item Only required source code is compiled.
-				\item Smaller and highly optimized variants.
+				\item Only required source code is compiled
+				\item Smaller and highly optimized variants
 			\end{itemize}				
 			{\bf Challenge:}
 			\begin{itemize}
-				\item How to implement options and alternatives (i.e., variability)?
+				\item How to implement options and alternatives (i.e.,~variability)?
 			\end{itemize}	
-		}}
-		\uncover<4->{\mynote{In This Lecture}{
-			Simple concepts and techniques for a few variants.
-		}}
+		\end{note}}
+		\uncover<4->{\begin{note}{In this Lecture}
+			Simple concepts and techniques for a few variants
+		\end{note}}
 	\end{mycolumns}	
 \end{frame}
 
-\subsection{Ad-Hoc/Unmanaged Clone-and-Own}
+\subsection{Ad-Hoc/Unmanaged Clone-and-Own} % TODO use one term consistently
 
 \begin{frame}{Ad-Hoc/Unmanaged Clone-and-Own}
 	\begin{mycolumns}[columns=2,widths={50,50},animation=none]

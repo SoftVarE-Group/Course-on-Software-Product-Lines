@@ -11,7 +11,29 @@
 % shared slide content
 
 % introduced: 02a-configuration
-% reused: 02b-implementation
+% reused: 03a-intro
+\newcommand{\frameImplementSPLs}{
+	\begin{mycolumns}[widths={50},animation=none]
+		\pic[width=\linewidth]{metaproduct2}
+	\mynextcolumn
+		\begin{note}{Key Issues}
+			\begin{itemize}
+			\item Systematic reuse of implementation artifacts
+			\item Explicit handling of variability
+			\end{itemize}
+		\end{note}
+		\uncover<2->{\begin{definition}{Variability\mysource{\fospl\mypage{48}}}
+			\mycite{\emph{Variability} is the ability to derive different products from a common set of artifacts.}
+		\end{definition}}
+		~
+		\uncover<3->{\begin{note}{Variability-Intensive System}
+			Any software product line is a variability-intensive system. % TODO Timo: do we really need this term? where does this definition come from?
+		\end{note}}
+	\end{mycolumns}
+}
+
+% introduced: 02a-configuration
+% reused: 02b-implementation, 03a-intro
 \newcommand{\frameVariabilityAndBindingTimes}{
 	\begin{mycolumns}[widths={45},animation=none]
 		\pic[width=\linewidth]{metaproduct2}
@@ -25,9 +47,30 @@
 		\end{definition}
 		~
 		\uncover<2->{\begin{note}{When? By whom? How?}
-			Part~1: \emph{when} and \emph{by whom}
+			\lectureruntime\parta: \emph{when} and \emph{by whom}
 
-			Part~2: \emph{how}
+			\lectureruntime\partb: \emph{how}
 		\end{note}}
 	\end{mycolumns}
+}
+
+% introduced: 03a-intro
+% reused: 03a-intro
+\newcommand{\frameRuntimeVariabilityProblems}{
+	\begin{note}{Problems of Runtime Variability}
+		{\bf Conditional Statements:}
+		\begin{itemize}
+			\item Code scattering, tangling, and replication
+		\end{itemize}
+		{\bf Design Patterns for Variability:}
+		\begin{itemize}
+			\item Trade-offs and potential negative side effects
+			\item Constraints that may restrict their usage
+		\end{itemize}
+		{\bf In General:}
+		\begin{itemize}
+			\item Variable parts are always delivered
+			\item Not well-suited for compile-time binding
+		\end{itemize}
+	\end{note}
 }
