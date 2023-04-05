@@ -23,8 +23,15 @@
 	stringstyle=\color{red},
 }
 
+% easy font size selection
+\lstdefinestyle{small}{basicstyle=\sf\small\selectfont}
+\lstdefinestyle{footnotesize}{basicstyle=\sf\footnotesize\selectfont}
+\lstdefinestyle{scriptsize}{basicstyle=\sf\scriptsize\selectfont}
+\lstdefinestyle{tiny}{basicstyle=\sf\tiny\selectfont}
+
 % language-specific styles
 \definelanguage{code}{
+	style=small,
 	language=Java,
 	keywordstyle=\bf,
 	moredelim=**[is][\color{red}]{@}{@},

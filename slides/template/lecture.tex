@@ -116,6 +116,7 @@
 \WarningFilter{latex}{You have requested package} % ignore warning for loading packages from submodules
 \usepackage{fancyqr} % QR codes for practice task, credits to Florian Sihler
 \usepackage{ifthen} % \ifuniversity
+\usepackage[absolute,overlay]{textpos} % absolute positioning in myframeicon with textblock*
 
 % INCLUDED TEMPLATE FILES
 
@@ -225,9 +226,17 @@
     \end{frame}
 }
 
-% TODO merge into template
+% TODO merge into template?
 % automatic frame title
 \newcommand{\myframetitle}{\insertsubsection{}\ifnum\thesubsubsection=0\else\ -- \insertsubsubsection{}\fi}
+% frame icon on fixed position in upper right corner
+\newcommand{\myframeicon}[1]{ % TODO needs to be revised: ideally aligned with absolute positioning, such that it can be used at the end of the slide content (potentially drawn on top of the slide content if needed)
+	\begin{textblock*}{1.07\textwidth}(0.035\textwidth,0\textwidth)
+		\begin{flushright}
+			#1
+		\end{flushright}
+	\end{textblock*}
+}
 % setter for title picture + copyright notice
 \newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}
 \newcommand{\setcopyright}[1]{\def\thecopyright{#1}}
