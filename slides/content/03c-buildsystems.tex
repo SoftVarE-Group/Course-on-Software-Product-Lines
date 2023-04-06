@@ -1,16 +1,13 @@
 
-\begin{frame}{Recap: Software Configuration Management}
-	\vspace{2mm}
-	\pic[width=0.7\linewidth]{configuration-management-2}
+\begin{frame}<2>{Recap: Software Configuration Management}
+	\frameSoftwareConfigurationManagement
 \end{frame}
 
 \subsection{Build Systems}
 
 \begin{frame}{Tool Support: Build Systems}
-	\begin{mycolumns}[columns=2,widths={50,50},animation=none]
-		\pic[width=\linewidth]{ant-hello-world}		
-	\mynextcolumn
-		\mydefinition{Build Systems}{	
+	\begin{mycolumns}[widths={40},animation=none]
+		\begin{definition}{Build Systems} % TODO source missing
 			\begin{itemize}
 				\item Automation of the build process through build scripts
 				\item Multiple steps with dependencies/conditions
@@ -19,7 +16,7 @@
 					\item call compiler, 
 					\item start other tools, 
 					\item \ldots
-				\end{itemize}	
+				\end{itemize}
 				\item Tools: 
 				\begin{itemize}
 					\item make
@@ -28,66 +25,60 @@
 					\ldots
 				\end{itemize}
 			\end{itemize}
-		}
+		\end{definition}
+	\mynextcolumn
+		\pic[width=\linewidth]{ant-hello-world}
 	\end{mycolumns}	
 \end{frame}
 
 \subsection{Variability through Build Scripts}
 
 \begin{frame}{Variability through Build Scripts}
-	\begin{flushright}		
-		\vspace{-1cm}
-		\pic[scale=0.27]{buildsystems}
-		~~~~~~~~~~~~~~~~~
-	\end{flushright}
-	\begin{mycolumns}[columns=2,widths={50,50},animation=none]
-		\vspace{-8cm}
-		\mynote{Basic Idea}{	
+	\vspace{-\textheightoftitle}
+	\begin{mycolumns}
+		\begin{note}{Basic Idea}
 			\begin{itemize}
-				\item One build script per variant.
-				\item Include/exclude files when translating.
-				\item Overwrite variant-specific files.
+				\item One build script per variant
+				\item Include/exclude files when translating
+				\item Overwrite variant-specific files
 			\end{itemize}
-		}		
+		\end{note}
 	\mynextcolumn
-		~	
+		\centering\pic[height=\textheightwithouttitle]{buildsystems}
 	\end{mycolumns}	
 \end{frame}
 
 \begin{frame}[fragile]{Example: Graph Library}
-\begin{tiny}	
-	\begin{mycolumns}[columns=4,widths={10,30,10,60},animation=none]
-		~
-	\mynextcolumn
-		\vspace{2mm}
-		\pic[width=\linewidth]{buildsystems-graphs-1} % TODO ist die fehlende Kante zu Graph beabsichtigt? das kann ja nicht klappen, oder?
-	\mynextcolumn
-		~
+	\begin{mycolumns}[b,animation=none,height=\textheightwithtitle]
+		\centering\pic[height=\textheightwithtitle]{buildsystems-graphs-1} % TODO Graph.java and Edge.java need to be switched in the upper part + what about Node.java and Weight.java?
 	\mynextcolumn
 \begin{codetight}{}
-public class Edge {
+class Edge {
 	Node a, b;
 
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
+	Edge(Node a, Node b) {
+		this.a = a; this.b = b;
 	}
-	...
+	void print() {
+		a.print(); b.print();
+	}
 }
 \end{codetight}
-\vspace{1cm}
 \begin{codetight}{}
-public class Edge {
+class Edge {
 	Node a, b;
 	@Weight weight = new Weight();@
 
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
+	Edge(Node a, Node b) {
+		this.a = a; this.b = b;
 	}
-	...
+	void print() {
+		a.print(); b.print();
+		@weight.print();@
+	}
 }
 \end{codetight}
 	\end{mycolumns}
-\end{tiny}
 \end{frame}
 
 \begin{frame}[fragile]{Example: Graph Library}

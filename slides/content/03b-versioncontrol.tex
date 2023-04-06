@@ -2,18 +2,11 @@
 \subsection{Software Configuration Management}
 
 \begin{frame}{Excursus: Software Configuration Management}
-	\begin{mycolumns}[t,widths={40}]
-		\begin{definition}{Software Configuration Management} % TODO source missing
-			Policies, processes, and tools for managing evolving software systems:
-			\begin{itemize}
-				\item Version control 
-				\item System building
-				\item Release management
-				\item Change management
-				\item Collaborative work
-			\end{itemize}	
-		\end{definition}
-	\mynextcolumn
+	\frameSoftwareConfigurationManagement
+\end{frame}
+
+\begin{frame}{Excursus: Software Configuration Management}
+	\begin{mycolumns}[widths={45},animation=none]
 		\begin{definition}{Basic Terms and Definitions} % TODO source missing
 			\begin{itemize}
 				\item {\bf Software Item}: An (atomic) artifact that can be uniquely identified
@@ -22,18 +15,17 @@
 					\item {\bf Revision}: A new version that replaces an old one
 					\item {\bf Variant}: A version that co-exists with another one
 				\end{itemize}
-				\item {\bf Configuration}: A set of software items that together form a functioning (partial) system % TODO term is confusing and overloaded in next lecture
-				\item {\bf Baseline}: A stable configuration that represents a point of reference for further development
-				\item {\bf Release}: A baseline delivered to customers
+				\uncover<2->{
+					\item {\bf Configuration}: A set of software items that together form a functioning (partial) system % TODO term is confusing and overloaded in next lecture + it appears to me that this was only needed in the good old days with CVS with versioning on a per file basis
+					\item {\bf Baseline}: A stable configuration that represents a point of reference for further development
+					\item {\bf Release}: A baseline delivered to customers
+				}
 			\end{itemize}
 		\end{definition}
+	\mynextcolumn
+		\only<1|handout:0>{\pic[width=\linewidth]{configuration-management-1}}%
+		\only<2-|handout:1>{\pic[width=\linewidth]{configuration-management-2}}%
 	\end{mycolumns}	
-\end{frame}
-
-\begin{frame}{Excursus: Software Configuration Management}
-	\centering
-	\only<1|handout:0>{\pic[width=0.7\linewidth]{configuration-management-1}}%
-	\only<2-|handout:1>{\pic[width=0.7\linewidth]{configuration-management-2}}%
 \end{frame}
 
 \begin{frame}{Example: A Conceptual Organization of our Graph Library}
@@ -83,34 +75,34 @@
 \subsection{Discussion}
 
 \begin{frame}{Clone-and-Own with Version Control}
-	\begin{mycolumns}[columns=2,widths={50,50},animation=keep]
-		\mynote{Summary and Observations}{			
-			Clone-and-Own with Provenance: % TODO provenance not introduced
+	\begin{mycolumns}[widths={60}]
+		\begin{note}{Observations}
 			\begin{itemize}
-				\item Supports keeping tracking of revisions and variants
-				\item Creation of new variants is supported by merging of branches
+				\item aka.\ \emph{managed clone-and-own} (opposed to ad-hoc clone-and-own)
+				\item Supports keeping tracking of revisions and variants\\-- aka.\ \emph{provenance} \deutsch{Herkunft}
+				\item Creation of new variants is partially supported by merging of branches
 				\item Propagation of changes between variants is supported by cherrypicking changes
-			\end{itemize}	
+			\end{itemize}
 			However:
 			\begin{itemize}
 				\item Versioning is typically limited to entire system variants (i.e., branches)
 				\item No flexible combination of software items
 			\end{itemize}
-		}	
+		\end{note}
 	\mynextcolumn
-		\mynote{Advantages}{	
+		\begin{note}{Advantages}
 			\begin{itemize}
-				\item Well-established and stable systems.
-				\item Well-known known process.
-				\item Good tool integration.	
+				\item Well-established and stable systems
+				\item Well-known known process
+				\item Good tool integration	
 			\end{itemize}
-		}
-		\mynote{Disadvantages}{	
+		\end{note}
+		\begin{note}{Disadvantages}
 			\begin{itemize}
-				\item Development of variants, not features: flexible combination of features not directly possible.
-				\item No structured reuse (copy \& edit).
-				\item Merging and cherrypicking not fully automated.	
-			\end{itemize}			
-		}
-	\end{mycolumns}	
+				\item Development of variants, not features: flexible combination of features not directly possible
+				\item No structured reuse (copy \& edit)
+				\item Merging and cherrypicking not fully automated
+			\end{itemize}	
+		\end{note}
+	\end{mycolumns}
 \end{frame}
