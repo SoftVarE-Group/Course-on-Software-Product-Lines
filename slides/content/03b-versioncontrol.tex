@@ -2,9 +2,9 @@
 \subsection{Software Configuration Management}
 
 \begin{frame}{Excursus: Software Configuration Management}
-	\begin{mycolumns}[columns=2,widths={35,63},animation=keep]
-		\mydefinition{Software Configuration Management (SCM)}{	
-			Policies, processes and tools for managing evolving software systems:
+	\begin{mycolumns}[t,widths={40}]
+		\begin{definition}{Software Configuration Management} % TODO source missing
+			Policies, processes, and tools for managing evolving software systems:
 			\begin{itemize}
 				\item Version control 
 				\item System building
@@ -12,35 +12,36 @@
 				\item Change management
 				\item Collaborative work
 			\end{itemize}	
-		}	
+		\end{definition}
 	\mynextcolumn
-		\mydefinition{Basic Terms and Definitions}{	
+		\begin{definition}{Basic Terms and Definitions} % TODO source missing
 			\begin{itemize}
-				\item {\bf Software Item}: An (atomic) artifact that can be uniquely identified 
-				\item {\bf Version}: A modified software item.
+				\item {\bf Software Item}: An (atomic) artifact that can be uniquely identified
+				\item {\bf Version}: A modified software item
 				\begin{itemize}
-					\item {\bf Revision}: A new version that replaces an old one.
-					\item {\bf Variant}: A version that co-exists with another one.
+					\item {\bf Revision}: A new version that replaces an old one
+					\item {\bf Variant}: A version that co-exists with another one
 				\end{itemize}
-				\item {\bf Configuration}: A set of software items that together form a functioning (partial) system.
-				\item {\bf Baseline}: A stable configuration that represents a point of reference for further development.
-				\item {\bf Release}: A baseline delivered to customers.				
+				\item {\bf Configuration}: A set of software items that together form a functioning (partial) system % TODO term is confusing and overloaded in next lecture
+				\item {\bf Baseline}: A stable configuration that represents a point of reference for further development
+				\item {\bf Release}: A baseline delivered to customers
 			\end{itemize}
-		}
+		\end{definition}
 	\end{mycolumns}	
 \end{frame}
 
 \begin{frame}{Excursus: Software Configuration Management}
-	\vspace{2mm}
+	\centering
 	\only<1|handout:0>{\pic[width=0.7\linewidth]{configuration-management-1}}%
 	\only<2-|handout:1>{\pic[width=0.7\linewidth]{configuration-management-2}}%
 \end{frame}
 
 \begin{frame}{Example: A Conceptual Organization of our Graph Library}
-	\vspace{2mm}
+	\centering
 	\only<1|handout:0>{\pic[width=0.8\linewidth]{configuration-management-graphs-1}}%
 	\only<2-|handout:1>{\pic[width=0.8\linewidth]{configuration-management-graphs-2}}%
 \end{frame}
+% TODO axis labels missing on this slide
 
 %\begin{frame}{Tool Support: Version Control Systems}
 	%\only<1|handout:0>{\pic[width=\linewidth,page=1]{branching}}%
@@ -51,32 +52,32 @@
 \subsection{Version Control Systems}
 
 \begin{frame}{Tool Support: Version Control Systems}
-\begin{large}
-	\hspace{70mm}
-	\uncover<4->{$\text{cherrypick := patch}(\Delta(r8,r10),r11)$}\\
-	\vspace{8mm}
-	\only<1|handout:0>{\pic[width=0.8\linewidth]{versioncontrol-1}}%
-	\only<2|handout:0>{\pic[width=0.8\linewidth]{versioncontrol-2}}%
-	\only<3-|handout:1>{\pic[width=0.8\linewidth]{versioncontrol-3}}\\
-	\vspace{8mm}
-	\hspace{40mm}
-	\uncover<4->{$\text{merge := 3-way-merge}(r4,\Delta(r4,r7),\Delta(r4,r9))$}
-\end{large}
+	\centering
+	\uncover<4->{\hspace{30mm}$\text{cherrypick := patch}(\Delta(r8,r10),r11)$}
+
+	\vfill
+	\only<1|handout:0>{\pic[width=0.6\linewidth]{versioncontrol-1}}%
+	\only<2|handout:0>{\pic[width=0.6\linewidth]{versioncontrol-2}}%
+	\only<3-|handout:1>{\pic[width=0.6\linewidth]{versioncontrol-3}}\\
+
+	\vfill
+	\uncover<5->{$\text{merge := 3-way-merge}(r4,\Delta(r4,r7),\Delta(r4,r9))$}
 \end{frame}
 % TODO no actual merges shown, only fast-forward
+% TODO cherry pick needs to point to an arrow, not a node
 
 \subsection{Supporting Clone-and-Own Development}
 
 \begin{frame}{Example: Graph Library under Version Control}
-	\pic[width=0.7\linewidth]{versioncontrol-graphs-1.pdf}
+	\centering\pic[width=0.7\linewidth]{versioncontrol-graphs-1}
 \end{frame}
 
 \begin{frame}{Example: Graph Library under Version Control}
-	\pic[width=0.7\linewidth]{versioncontrol-graphs-2.pdf}
+	\centering\pic[width=0.7\linewidth]{versioncontrol-graphs-2}
 \end{frame}
 
 \begin{frame}{Example: Graph Library under Version Control}
-	\pic[width=0.7\linewidth]{versioncontrol-graphs-3.pdf}
+	\centering\pic[width=0.7\linewidth]{versioncontrol-graphs-3}
 \end{frame}
 
 \subsection{Discussion}
