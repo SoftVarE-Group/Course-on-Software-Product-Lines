@@ -75,15 +75,7 @@
 	\end{mycolumns}	
 \end{frame}
 
-% TODO add types of clones
-%		\mynote{Types of Software Clones\mysource{\softwareclonedetection\mypage{1167}}}{
-%			\begin{itemize}
-%			\item Type 1: identical except whitespaces and comments
-%			\item Type 2: syntactically similar (e.g., changed identifiers, \ldots)
-%			\item Type 3: copied with modifications (e.g., inserted or removed statements)
-%			\item Type 4: similar functionality without textual similarities
-%			\end{itemize}
-%		}
+\subsection{Variability with Clone-and-Own}
 
 \begin{frame}[fragile]{Example for Ad-Hoc Clone-and-Own}
 	\myframeicon{\pic[scale=0.25,page=6]{graphs}}
@@ -423,6 +415,41 @@ public class Graph {
 		\hfill
 		\pic[scale=0.15]{eve}%
 		\pic[scale=0.15,page=16]{graphs}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Software Clones}
+
+\begin{frame}<2>{Recap: \myframetitle\ \mytitlesource{\lectureintroduction}}
+	\frameSoftwareClones
+\end{frame}
+
+\begin{frame}[b]{Types of \myframetitle}
+	\begin{mycolumns}[b,height=\textheightwithtitle]
+		\begin{definition}{Types of Software Clones\mysource{\softwareclonedetection\mypage{1167}}}
+			\begin{itemize}
+			\item Type 1: identical except whitespaces and comments
+			\item Type 2: syntactically similar (e.g., changed identifiers, \ldots)
+			\item Type 3: copied with modifications (e.g., inserted or removed statements)
+			\item Type 4: similar functionality without textual similarities
+			\end{itemize}
+		\end{definition}
+		\begin{example}{Cloning Parts of Software}
+			~\hfill\includegraphics[width=.2\linewidth]{pants-blue}\hfill\includegraphics[width=.2\linewidth]{pants-red}\hfill~
+		\end{example}
+	\mynextcolumn
+		\begin{note}{Relevant Types for Clone-and-\emph{Own}?}
+			\begin{itemize}
+			\item Type 1: may happen if clones diverge and comments need to reflect actual changes
+			\item Type 2: may happen if clones diverge and identifier names are not appropriate anymore
+			\item Type 3: actually necessary for clone-and-own
+			\item Type 4: may happen if same functionality is implemented again (simply unknown or merge/cherrypick infeasible) \mysource{see \lecturemodeling}
+			\end{itemize}
+			Every difference is an obstacle for future maintenance (cf.\ merge and cherrypick)
+		\end{note}
+		\begin{example}{Cloning Whole Products (Clone-and-Own)}
+			~\hfill\includegraphics[width=.2\linewidth]{130}\hfill\includegraphics[width=.2\linewidth]{230}\hfill~
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
