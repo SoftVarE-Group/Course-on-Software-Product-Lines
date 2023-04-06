@@ -49,8 +49,8 @@
 \end{frame}
 
 \begin{frame}[fragile]{Example: Graph Library}
-	\begin{mycolumns}[b,animation=none,height=\textheightwithtitle]
-		\centering\pic[height=\textheightwithtitle]{buildsystems-graphs-1} % TODO Graph.java and Edge.java need to be switched in the upper part + what about Node.java and Weight.java?
+	\begin{mycolumns}[b,columns=3,widths={50,32},height=\textheightwithtitle,animation=none]
+		\hfill\pic[height=\textheightwithtitle]{buildsystems-graphs-1} % TODO Graph.java and Edge.java need to be switched in the upper part + what about Node.java and Weight.java?
 	\mynextcolumn
 \begin{codetight}{}
 class Edge {
@@ -64,6 +64,7 @@ class Edge {
 	}
 }
 \end{codetight}
+\vspace{2mm}
 \begin{codetight}{}
 class Edge {
 	Node a, b;
@@ -78,75 +79,69 @@ class Edge {
 	}
 }
 \end{codetight}
+	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Example: Graph Library}
-\begin{tiny}	
-	\begin{mycolumns}[columns=4,widths={10,30,10,60},animation=none]
-		~
-	\mynextcolumn
-		\vspace{2mm}
-		\pic[width=\linewidth]{buildsystems-graphs-2}	
-	\mynextcolumn
-		~
+	\begin{mycolumns}[b,columns=3,widths={50,43},height=\textheightwithtitle,animation=none]
+		\hfill\pic[height=\textheightwithtitle]{buildsystems-graphs-2} % TODO requires arrow to edge and graph in the upper part + what about Node.java, Weight.java, EdgeFactory.java?
 	\mynextcolumn
 \begin{codetight}{}
-public class Graph implements IGraph {
-	@EdgeFactory ef;@
+class Graph {
+	@EdgeFactory edgeFactory;@
 	...
-	@public Graph(EdgeFactory _ef) {
-		ef = _ef;@
-	}
-	public Edge add(Node n, Node m) {
-		@Edge e = ef.createEdge(n, m);@
+	@Graph(EdgeFactory edgeFactory) {
+		this.edgeFactory = edgeFactory;
+	}@
+	Edge add(Node n, Node m) {
+		@Edge e = edgeFactory.createEdge(n, m);@
 		nodes.add(n); nodes.add(m); edges.add(e);
 		return e;
 	}
-	...
 }
 \end{codetight}
 \begin{codetight}{}
-public class Edge {
+class Edge {
 	Node a, b;
 	...
 }
 \end{codetight}
-\vspace{0.5cm}
+\vspace{2mm}
 \begin{codetight}{}
-public class WeightedEdge extends Edge {
-	Node a, b;
+class WeightedEdge extends Edge {
 	@Weight weight = new Weight();@
 	...
 }
 \end{codetight}
+	\mynextcolumn
 	\end{mycolumns}
-\end{tiny}
 \end{frame}
 
 \subsection{Discussion}
 
 \begin{frame}{Discussion}
-	\begin{flushright}		
-		\vspace{-1cm}
-		\pic[scale=0.27]{buildsystems}
-		~~~~~~~~~~~~~~~~~
-	\end{flushright}
-	\begin{mycolumns}[columns=2,widths={50,50},animation=none]
-		\vspace{-8cm}
-		\mynote{Comparison to Version Control Systems}{	
+	\vspace{-\textheightoftitle}
+	\begin{mycolumns}[b,animation=none]
+		\begin{note}{Comparison to Version Control Systems}
 			\begin{itemize}
-				\item Supports combination of more fine-grained software items (i.e., files).
-				\item However: No provenance support.
+				\item Supports combination of more fine-grained software items (i.e., files)
+				\item However: Limited support for provenance
 			\end{itemize}
-		}	
-		\mynote{More generally:}{	
+		\end{note}
+		\begin{note}{In General}
 			\begin{itemize}
-				\item Combination of items (i.e., files) $\neq$ combination of features.
-				\item All variants are potentially affected by changes to the basic variant.
+				\item Combination of items (i.e., files) $\neq$ combination of features
+				\item Changes to the basic variant may have undesired side-effects
+					\begin{itemize}
+						\item Some variants are updated but do not need those changes
+						\item Some variants are updated but incompatible to those changes
+						\item Variants with copied files are not automatically updated
+					\end{itemize}
 			\end{itemize}
-		}		
+		\end{note}
 	\mynextcolumn
-		~	
-	\end{mycolumns}	
+		\centering\pic[height=\textheightwithouttitle]{buildsystems}
+	\end{mycolumns}
 \end{frame}
+% TODO a general discussion of advantages and disadvantages is missing here
