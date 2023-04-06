@@ -32,6 +32,8 @@
 }{
 	\item\fospl\mychapter{3.1.1}\mypages{48--49}\\--- brief introduction of compile-time variability
 	% TODO add literature pointers on clone-and-own
+	% TODO add literature on code clones? \softwareclonedetection\mypage{1167}
+	% TODO add literature on clone-and-own? virtual platform's L0 clones?
 }{
 	\begin{itemize}
 		\item What are the reasons why clone-and-own is very popular in practice?
@@ -51,6 +53,9 @@
 	\item Version control systems as a widespread tool supporting clone-and-own in practice
 }{
 	\item \fospl\mychapter{5.1}\mypages{99--105}\\--- introduction of variability with version control (not~explicitly calling it clone-and-own)
+	\item \staplesandhill\ --- experience report on managed clone-and-own with version control and build systems
+	% TODO add literature? \summerville\mychapter{25}
+	% TODO add literature on clone-and-own? virtual platform's L1 clones?
 }{
 	\begin{itemize}
 		\item Which software configuration management concepts are supported by version control systems?
@@ -68,18 +73,45 @@
 \lessonslearned{
 	\item Variability through build scripts
 	\item Granularity of clones: Individual files
-	\item Combination of files $\neq$ combination of features
+	\item Combination of files\\$\neq$ combination of features
 }{
-	\item \fospl\mychapter{5.2}\mypages{105--110}\\--- introduction of variability with build systems (not~explicitly calling it clone-and-own)
+	\item \fospl\mychapter{5.2.2 and 5.2.4}\mypages{106--110}\\--- brief introduction of clone-and-own with build systems (not~explicitly calling it clone-and-own)
+	\item \staplesandhill\ --- experience report on managed clone-and-own with version control and build systems
 }{
 	\begin{itemize}
 		\item Which software configuration management concepts are supported by build systems?
 		\item What are the commonalities and differences of clone-and-own with version control and clone-and-own with build systems?
 		\item What are the strengths and weaknesses?
+		% TODO \item What is the effort to convert ad-hoc clone-and-own into managed clone-and-own?
 	\end{itemize}
 }
 
-% TODO Thomas: add exam questions here
+\faq{
+	\item What are problems of runtime variability?
+	\item What is compile-time variability?
+	\item What is (ad-hoc) clone-and-own?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of (ad-hoc) clone-and-own?
+	\item When (not) to use (ad-hoc) clone-and-own?
+	\item What is better runtime or compile-time variability?
+}{
+	\item What is software configuration management and version control (used~for)?
+	\item What is the difference between version, revision, variant, configuration, baseline, release, merge, cherrypick, revision control?
+	\item How can version control be used for clone-and-own? Illustrate!
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of version control for variability?
+	\item When (not) to use clone-and-own with version control?
+	\item Shall we use version control at all?
+}{
+	\item What are build systems (used~for)?
+	\item How can build systems be used for clone-and-own? Illustrate!
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of build systems for variability?
+	\item When (not) to use clone-and-own with build systems?
+	\item Shall we use build systems at all?
+	\item What is the granularity of clones for all three techniques?
+	\item What is the effort to migrate from ad-hoc clone-and-own to managed clone-and-own?
+}
 
 \input{template/footer}
 

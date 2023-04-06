@@ -6,8 +6,9 @@
 \end{frame}
 
 \begin{frame}{Excursus: Software Configuration Management}
+	\myframeicon{\mysource{\fospl\mypages{100--101}}} % TODO source missing for configuration and baseline
 	\begin{mycolumns}[widths={45},animation=none]
-		\begin{definition}{Basic Terms and Definitions} % TODO source missing
+		\begin{definition}{Basic Terms and Definitions}
 			\begin{itemize}
 				\item {\bf Software Item}: An (atomic) artifact that can be uniquely identified
 				\item {\bf Version}: A modified software item
@@ -27,6 +28,8 @@
 		\only<2-|handout:1>{\pic[width=\linewidth]{configuration-management-2}}%
 	\end{mycolumns}	
 \end{frame}
+% TODO introduce terms variation in time and variation in space? intentional versioning?
+% TODO introduce what branches are designed for? development branches, release branches, feature branches, bug fixes \fospl\mypages{101--102}
 
 \begin{frame}{Example: A Conceptual Organization of our Graph Library}
 	\centering
@@ -72,13 +75,15 @@
 	\centering\pic[width=0.7\linewidth]{versioncontrol-graphs-3}
 \end{frame}
 
+% TODO we have not yet discussed how features could be developed in separate branches \fospl\mypage{103}
+
 \subsection{Discussion}
 
 \begin{frame}{Clone-and-Own with Version Control}
 	\begin{mycolumns}[widths={60}]
 		\begin{note}{Observations}
 			\begin{itemize}
-				\item aka.\ \emph{managed clone-and-own} (opposed to ad-hoc clone-and-own)
+				\item Aka.\ \emph{managed clone-and-own} (opposed to ad-hoc clone-and-own)
 				\item Supports keeping track of revisions and variants\\-- aka.\ \emph{provenance} \deutsch{Herkunft}
 				\item Creation of new variants is partially supported by merging of branches
 				\item Propagation of changes between variants is supported by cherrypicking changes
@@ -90,19 +95,29 @@
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-		\begin{note}{Advantages}
+		\begin{note}{Advantages\mysource{\fospl\mypage{104}}}
 			\begin{itemize}
 				\item Well-established and stable systems
 				\item Well-known known process
 				\item Good tool integration	
 			\end{itemize}
 		\end{note}
-		\begin{note}{Disadvantages}
+		\begin{note}{Disadvantages\mysource{\fospl\mypages{104--105}}}
 			\begin{itemize}
 				\item Development of variants, not features: flexible combination of features not directly possible
 				\item No structured reuse (copy \& edit)
 				\item Merging and cherrypicking not fully automated
 			\end{itemize}	
 		\end{note}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{No Version Control at All?}
+	\begin{mycolumns}[columns=3,widths={20,60},animation=none]
+	\mynextcolumn
+		\begin{note}{Revision Control $\subset$ Version Control}
+			\mycite{Unless only few small variations are required for few customers, the use of version control systems should be restricted to \emph{revision control}.}\mysource{\fospl\mypage{104}}
+		\end{note}
+	\mynextcolumn
 	\end{mycolumns}
 \end{frame}

@@ -121,20 +121,22 @@ class WeightedEdge extends Edge {
 	\end{mycolumns}
 \end{frame}
 
+% TODO new slide about experience report by \staplesandhill\ Section~3--6
+
 \subsection{Discussion}
 
 \begin{frame}{Clone-and-Own with Build Systems}
 	\vspace{-\textheightoftitle}
-	\begin{mycolumns}[b,animation=none]
+	\begin{mycolumns}[b,widths={55},animation=none]
 		\begin{note}{Comparison to Version Control Systems}
 			\begin{itemize}
 				\item Supports combination of more fine-grained software items (i.e., files)
-				\item However: Limited support for provenance
+				\item However: Only limited support for provenance
 			\end{itemize}
 		\end{note}
 		\begin{note}{In General}
 			\begin{itemize}
-				\item Combination of items (i.e., files) $\neq$ combination of features
+				\item Combination of items (i.e., files)\\$\neq$ combination of features
 				\item Changes to the basic variant may have undesired side-effects
 					\begin{itemize}
 						\item Some variants are updated but do not need those changes
@@ -147,4 +149,5 @@ class WeightedEdge extends Edge {
 		\centering\pic[height=\textheightwithouttitle]{buildsystems}
 	\end{mycolumns}
 \end{frame}
-% TODO a general discussion of advantages and disadvantages is missing here
+
+% TODO a general discussion of advantages and disadvantages is missing here, see \fospl\mypages{108--110} (but be aware that the book is mixing two ways of using build systems)
