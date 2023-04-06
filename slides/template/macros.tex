@@ -25,23 +25,46 @@
 \newcommand{\lessonslearned}[3]{
 	\subsection{Summary}
 	\begin{frame}{\insertsection{} -- \myframetitle}
-		\leftandright{
-			\mydefinition{Lessons Learned}{
+		\begin{mycolumns}[animation=none]
+			\begin{definition}{Lessons Learned}
 				\begin{itemize}
 					#1
 				\end{itemize}
-			}
-			\uncover<2->{\mynote{Further Reading}{
+			\end{definition}
+			\uncover<2->{\begin{note}{Further Reading}
 				\small % references take space, can be a little smaller
 				\begin{itemize}
 					#2
 				\end{itemize}
-			}}
-		}{
-			\uncover<3->{\myexample{Practice}{
+			\end{note}}
+		\mynextcolumn
+			\uncover<3->{\begin{example}{Practice}
 				#3
-			}}
-		}
+			\end{example}}
+		\end{mycolumns}
+	\end{frame}
+}
+
+\newcommand{\faq}[3]{
+	\subsection{FAQ}
+	\begin{frame}{\myframetitle: \insertsubtitle{}}
+		\small
+		\begin{mycolumns}[t,columns=3,widths={34,34,34}]
+			Part~\parta
+			\begin{itemize}
+				#1
+			\end{itemize}
+		\mynextcolumn
+			Part~\partb
+			\begin{itemize}
+				#2
+			\end{itemize}
+		\mynextcolumn
+			Part~\partc
+			\begin{itemize}
+				#3
+			\end{itemize}
+		\end{mycolumns}
 	\end{frame}
 }
 
