@@ -1,10 +1,10 @@
 \subsection{Problems with Runtime Variability}
 
-\begin{frame}{Recap: How to Implement Software Product Lines?}
+\begin{frame}<3>{Recap: How to Implement Software Product Lines?}
 	\frameImplementSPLs
 \end{frame}
 
-\begin{frame}{Recap: Variability and Binding Times}
+\begin{frame}<1>{Recap: Variability and Binding Times}
 	\frameVariabilityAndBindingTimes
 \end{frame}
 
@@ -87,7 +87,7 @@
 
 \begin{frame}[fragile]{Example for Ad-Hoc Clone-and-Own}
 	\myframeicon{\includegraphics[scale=0.25,page=6]{graphs}}
-	\begin{mycolumns}[b,columns=3,widths={43,32}]
+	\begin{mycolumns}[b,columns=3,widths={43,32},animation=none]
 \begin{codetight}{}
 class Graph {
 	List nodes = new ArrayList();
@@ -153,7 +153,7 @@ public class Node {
 		\includegraphics[scale=0.25]{alice}%
 		\includegraphics[scale=0.25,page=2]{graphs}
 	}
-	\begin{mycolumns}[b,columns=3,widths={43,32}]
+	\begin{mycolumns}[b,columns=3,widths={43,32},animation=none]
 \begin{codetight}{}
 class Graph {
 	List nodes = new ArrayList();
@@ -219,7 +219,7 @@ public class Node {
 		\includegraphics[scale=0.25]{alice}%
 		\includegraphics[scale=0.25,page=2]{graphs}
 	}
-	\begin{mycolumns}[b,columns=3,widths={43,32}]
+	\begin{mycolumns}[b,columns=3,widths={43,32},animation=none]
 \begin{codetight}{}
 class Graph {
 	List nodes = new ArrayList();
@@ -271,7 +271,7 @@ public class Node {
 		\includegraphics[scale=0.25]{bob}%
 		\includegraphics[scale=0.25,page=12]{graphs}
 	}
-	\begin{mycolumns}[b,columns=3,widths={43,26}]
+	\begin{mycolumns}[b,columns=3,widths={43,26},animation=none]
 \begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
@@ -339,7 +339,7 @@ public class Node {
 	\hfill~
 \end{frame}
 
-\begin{frame}{Problem: Feature Combinations}
+\begin{frame}{Clone-and-Own Problems: Feature Combinations}
 	\myframeicon{
 		\includegraphics[scale=0.25]{eve}%
 		\includegraphics[scale=0.25,page=16]{graphs}
@@ -376,7 +376,7 @@ public class Node {
 	}
 \end{frame}
 
-\begin{frame}[fragile]{Problem: Evolution and Maintenance}
+\begin{frame}[fragile]{Clone-and-Own Problems: Evolution \& Maintenance}
 	\myframeicon{
 		\includegraphics[scale=0.2,page=6]{graphs}\\[-9mm]
 		\includegraphics[scale=0.2,page=26]{graphs}~~~
