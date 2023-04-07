@@ -46,22 +46,23 @@
 	\end{frame}
 }
 
+% TODO would be great to also show the section titles on this slide, but not sure how to do this
 \newcommand{\faq}[3]{
 	\subsection{FAQ}
-	\begin{frame}{\myframetitle: \insertsubtitle{}}
+	\begin{frame}{\emph{FAQ} -- \insertsubtitle{}}
 		\small
-		\begin{mycolumns}[t,columns=3,widths={34,34,34}]
-			Part~\parta
+		\begin{mycolumns}[t,columns=3,widths={34,34,34},animation=none]
+			\emph{\large Lecture~\insertlecturenumber\parta}
 			\begin{itemize}
 				#1
 			\end{itemize}
 		\mynextcolumn
-			Part~\partb
+			\emph{\large Lecture~\insertlecturenumber\partb}
 			\begin{itemize}
 				#2
 			\end{itemize}
 		\mynextcolumn
-			Part~\partc
+			\emph{\large Lecture~\insertlecturenumber\partc}
 			\begin{itemize}
 				#3
 			\end{itemize}

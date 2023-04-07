@@ -4,9 +4,9 @@
 
 \title{Software Product Lines} % short title is used for the slide footer but optional
 
-% TODO if we give each lecture a specific number this could be used as default value here, simplifying the highlighting at beginning and end of each lecture (could be done in header and footer essentially)
 \newcommand{\emphifequal}[2]{\ifthenelse{\equal{#1}{#2}}{\color{blue}\bfseries}{}}
-\newcommand{\lectureseriesoverview}[1][]{ % shown at the start and end of each part
+\newcommand{\lectureseriesoverview}[1][]{ % shown at the start and end of each lecture
+	\setlength{\leftmargini}{3.5ex}
 	\begin{mycolumns}[columns=3,t,animation=none]
 		\mydefinition{\emphifequal{#1}{I}Part I: Ad-Hoc Approaches for Variability}{
 			\begin{enumerate}
@@ -139,7 +139,7 @@
 \newcommand{\evaluatingsharpsatsolvers}{\evaluatingsharpsatsolverslink{Sundermann~et~al.~2020}}
 \newcommand{\essentialconfigurationcomplexitylink}[1]{\href{https://raw.githubusercontent.com/SoftVarE-Group/Papers/main/2016/2016-ASE-Meinicke.pdf}{#1}}
 \newcommand{\essentialconfigurationcomplexity}{\essentialconfigurationcomplexitylink{Meinicke~et~al.~2016}}
-\newcommand{\featureide}{\href{https://link.springer.com/book/10.1007\%2F978-3-319-61443-4}{Meinicke~et~al.~2013}}
+\newcommand{\featureide}{\href{https://link.springer.com/book/10.1007\%2F978-3-319-61443-4}{Meinicke~et~al.~2017}}
 \newcommand{\featurecommander}{\href{https://www.tu-chemnitz.de/informatik/ST/research/material/xenomai/}{Feature~Commander}}
 \newcommand{\fortyproductlines}{\href{https://dl.acm.org/doi/abs/10.1145/1806799.1806819}{Liebig~et~al.~2010}}
 \newcommand{\fospl}{\href{https://link.springer.com/book/10.1007/978-3-642-37521-7}{Apel~et~al.~2013}}
@@ -176,8 +176,21 @@
 
 % HACKS TO WORKAROUND PROBLEMS WITH THE TEMPLATE
 
-% TODO command to add extra space after each section manually
-\newcommand{\sectionend}{\addtocontents{toc}{\vspace{2mm}}}
+\ifsectiontitleslide
+\AtBeginSection{
+    \ifsectionoverview
+    \begin{frame}%{\thesection.~\insertsection}
+        \linespread{.5}
+        \vfill
+        \tableofcontents[currentsection,hideothersubsections]
+    \end{frame}
+    \else
+    \begin{frame}
+        \usebeamerfont{section title}\textbf{\thesection.~\insertsection}
+    \end{frame}
+    \fi
+}
+\fi
 
 % TODO hack to switch the lecture title with its subtitle on the title slide + add photo copyright notice
 \makeatletter
@@ -217,16 +230,61 @@
 }
 \makeatother
 
-% TODO Benno: the title is currently not possible with the template
+\makeatletter
 \renewcommand{\contentoverview}{
-    \begin{frame}{\inserttitle\ -- \insertsubtitle}
-        \linespread{.5}
-        \vfill
-        \begin{multicols}{2}
-            \tableofcontents
-        \end{multicols}
+    \begin{frame}[plain]
+        \linespread{.5}\setbeamerfont{section in toc}{size=\normalsize}\setbeamerfont{subsection in toc}{size=\small}
+        \vskip0pt plus 1filll
+		\begin{mycolumns}[t,columns=3,animation=none]
+			\tableofcontents[sections={1}]
+		\mynextcolumn
+			\tableofcontents[sections={2}]
+		\mynextcolumn
+			\tableofcontents[sections={3}]
+		\end{mycolumns}
+
+        \vskip0pt plus 1filll
+        \mode<beamer>{\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
+            \LARGE\textbf{\insertsubtitle}\hspace*{20pt}
+        \end{beamercolorbox}}%
+        \mode<handout>{\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
+            \LARGE\textbf{\insertsubtitle\ -- Handout}\hspace*{20pt}
+        \end{beamercolorbox}}%
+        \nointerlineskip%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
+            \small
+            \inserttitle\ $\vert$
+            \insertauthor\
+            \ifx \insertdate \empty \else $\vert$ \insertdate \fi
+            \hspace*{20pt}
+        \end{beamercolorbox}%
+        \nointerlineskip
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
+            \vspace{-1ex}%
+            \hspace{10pt}
+            \@mainlogo
+            \hspace{10pt}
+        \end{beamercolorbox}%
     \end{frame}
 }
+\makeatother
+% TODO remove the two commands below, as we do not seem to need them anymore
+%\newcommand{\sectionend}{\addtocontents{toc}{\vspace{2mm}}}
+\newcommand{\sectionend}{\addtocontents{toc}{}}
+
+% change section numbers to letters
+% https://tex.stackexchange.com/questions/268024/numbering-by-letters-in-beamer-table-of-contents
+%\newcommand{\lecturenumber}[1]{\newcommand{\insertlecturenumber}{#1}}
+\renewcommand{\thesection}{\insertlecturenumber\alph{section}}
+\defbeamertemplate{subsection in toc}{bullets}{%
+  \parbox[t]{1em}{\textbullet\hfill}%
+  \parbox[t]{\dimexpr\textwidth-1em\relax}{\inserttocsubsection}\par}
+\makeatletter
+\defbeamertemplate{section in toc}{sections numbered roman}{%
+  \insertlecturenumber\@alph\inserttocsectionnumber.\ %
+  \inserttocsection\par}
+\makeatother
+\setbeamertemplate{section in toc}[sections numbered roman]
 
 % TODO merge into template?
 % automatic frame title
@@ -250,7 +308,5 @@
 
 % TODO: add reference slide at the end for picture licenses
 % TODO: QR codes for uploading practice solutions
-
-% TODO removed following picture in introductory slides, move it to somewhere else? \href{https://pxhere.com/en/photo/920906}{\includegraphics[width=\linewidth]{car-tower}}
 
 \input{template/universities}
