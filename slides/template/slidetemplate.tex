@@ -1,0 +1,143 @@
+% HACKS TO WORKAROUND PROBLEMS WITH THE TEMPLATE
+
+% emphasizing links
+\hypersetup{linkcolor = black, citecolor = black, filecolor = black, runcolor = black, urlcolor = red, colorlinks=true}
+
+% load href target from file: \href{file.txt}{text}
+\newcommand\hreffile[1]{%
+	\CatchFileDef\myurl{#1}{\catcode`\#=12\catcode`\%=12\endlinechar=-1}%
+	\expandafter\href\expandafter{\myurl}}
+\newcommand{\pic}[2][]{%
+	\IfFileExists{#2.txt}{\hreffile{#2.txt}}{}{\includegraphics[#1]{#2}}}
+
+\ifsectiontitleslide
+\AtBeginSection{
+    \ifsectionoverview
+    \begin{frame}%{\thesection.~\insertsection}
+        \linespread{.5}
+        \vfill
+        \tableofcontents[currentsection,hideothersubsections]
+    \end{frame}
+    \else
+    \begin{frame}
+        \usebeamerfont{section title}\textbf{\thesection.~\insertsection}
+    \end{frame}
+    \fi
+}
+\fi
+
+% TODO hack to switch the lecture title with its subtitle on the title slide + add photo copyright notice
+\makeatletter
+\setbeamercolor{copyrightbox}{fg=white}
+\renewcommandx{\maketitle}[2][1=apr21-o25a,2=150]{
+    {
+    \def \picture {#1}
+    \ifx \picture \empty \else \usebackgroundtemplate{\pic[trim=0 0 0 #2,clip,width=\paperwidth]{#1}} \fi
+    \begin{frame}[plain]
+        \vskip0pt plus 1filll
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,left]{copyrightbox}
+            \tiny
+			\ifdefined\thecopyright
+				\hspace{1mm}\thecopyright
+			\fi
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
+            \LARGE\textbf{\insertsubtitle}\hspace*{20pt}
+        \end{beamercolorbox}%
+        \nointerlineskip%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
+            \small
+            \inserttitle\ $\vert$
+            \insertauthor\
+            \ifx \insertdate \empty \else $\vert$ \insertdate \fi
+            \hspace*{20pt}
+        \end{beamercolorbox}%
+        \nointerlineskip
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
+            \vspace{-1ex}%
+            \hspace{10pt}
+            \@mainlogo
+            \hspace{10pt}
+        \end{beamercolorbox}%
+    \end{frame}
+    }
+}
+\makeatother
+
+\makeatletter
+\renewcommand{\contentoverview}{
+    \begin{frame}[plain]
+        \linespread{.5}\setbeamerfont{section in toc}{size=\normalsize}\setbeamerfont{subsection in toc}{size=\small}
+        \vskip0pt plus 1filll
+		\begin{mycolumns}[t,columns=3,animation=none]
+			\tableofcontents[sections={1}]
+		\mynextcolumn
+			\tableofcontents[sections={2}]
+		\mynextcolumn
+			\tableofcontents[sections={3}]
+		\end{mycolumns}
+
+        \vskip0pt plus 1filll
+        \mode<beamer>{\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
+            \LARGE\textbf{\insertsubtitle}\hspace*{20pt}
+        \end{beamercolorbox}}%
+        \mode<handout>{\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
+            \LARGE\textbf{\insertsubtitle\ -- Handout}\hspace*{20pt}
+        \end{beamercolorbox}}%
+        \nointerlineskip%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{subtitlebox}
+            \small
+            \inserttitle\ $\vert$
+            \insertauthor\
+            \ifx \insertdate \empty \else $\vert$ \insertdate \fi
+            \hspace*{20pt}
+        \end{beamercolorbox}%
+        \nointerlineskip
+        \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
+            \vspace{-1ex}%
+            \hspace{10pt}
+            \@mainlogo
+            \hspace{10pt}
+        \end{beamercolorbox}%
+    \end{frame}
+}
+\makeatother
+% TODO remove the two commands below, as we do not seem to need them anymore
+%\newcommand{\sectionend}{\addtocontents{toc}{\vspace{2mm}}}
+\newcommand{\sectionend}{\addtocontents{toc}{}}
+
+% change section numbers to letters
+% https://tex.stackexchange.com/questions/268024/numbering-by-letters-in-beamer-table-of-contents
+%\newcommand{\lecturenumber}[1]{\newcommand{\insertlecturenumber}{#1}}
+\renewcommand{\thesection}{\insertlecturenumber\alph{section}}
+\defbeamertemplate{subsection in toc}{bullets}{%
+  \parbox[t]{1em}{\textbullet\hfill}%
+  \parbox[t]{\dimexpr\textwidth-1em\relax}{\inserttocsubsection}\par}
+\makeatletter
+\defbeamertemplate{section in toc}{sections numbered roman}{%
+  \insertlecturenumber\@alph\inserttocsectionnumber.\ %
+  \inserttocsection\par}
+\makeatother
+\setbeamertemplate{section in toc}[sections numbered roman]
+
+% TODO merge into template?
+% automatic frame title
+\newcommand{\myframetitle}{\insertsubsection{}\ifnum\thesubsubsection=0\else\ -- \insertsubsubsection{}\fi}
+% frame icon on fixed position in upper right corner
+\newcommand{\myframeicon}[1]{ % TODO needs to be revised: ideally aligned with absolute positioning, such that it can be used at the end of the slide content (potentially drawn on top of the slide content if needed)
+	\begin{textblock*}{1.07\textwidth}(0.035\textwidth,0\textwidth)
+		\begin{flushright}
+			#1
+		\end{flushright}
+	\end{textblock*}
+}
+% setter for title picture + copyright notice
+\newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}
+\newcommand{\setcopyright}[1]{\def\thecopyright{#1}}
+\newcommand{\picborder}[1]{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{.75pt}\fcolorbox{uulmaccent}{white}{#1}}}
+
+% TODO improve itemize + enumerate margins
+\setlength{\leftmargini}{2.5ex}
+% \setbeamertemplate{enumerate item}{\makebox[.5\labelwidth][l]{\insertenumlabel.}}
+
+% TODO add reference slide at the end for picture licenses
