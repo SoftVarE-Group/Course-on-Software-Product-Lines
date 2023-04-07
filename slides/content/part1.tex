@@ -1,0 +1,249 @@
+% TODO INTRODUCTION
+
+\ifuniversity{ulm}{\setpicture[250]{apr21-o25a}}
+\ifuniversity{magdeburg}{\setpicture[70]{ovgu-autumn1}\setcopyright{Photo: Hannah Theile (OVGU)}}
+
+\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
+\lecture{Introduction}{introduction}
+
+\inputuniversity{content/01-prelude}
+
+\section{Introduction to Product Lines}
+\input{content/01a-productlines}
+\lessonslearned{
+	\item mass customization\\= mass production + customization
+	\item features, products, domains
+	\item software product lines
+	\item product-line engineering
+}{
+	\item \fospl, Chapter~1\mypages{3--15} --- introduction close to this lecture, further examples
+	\item \seiwhitepaperspl\mypages{2--8} --- what is not a product line?
+	% TODO add further reference? \sple\mypage{14}
+}{
+	\begin{itemize}
+		\item What other examples of product lines do you know?
+		\item Exemplify the differences between feature, product, domain, and product line for these examples.
+		\item Are these product lines related to software?
+	\end{itemize}
+}
+
+\section{Challenges of Product Lines}
+\input{content/01b-challenges}
+\lessonslearned{
+	\item why are product lines challenging?
+	\item selected challenges:
+		\begin{enumerate}
+		\item software clones
+		\item feature traceability
+		\item automated generation
+		\item combinatorial explosion
+		\item feature interactions
+		\item continuous growth
+		\end{enumerate}
+}{
+	\item[] see later lectures
+}{
+	\begin{itemize}
+		\item Form groups of 2--3 students
+		\item Explain 2--3 of the six challenges to your colleagues
+		\item Can you find own examples for these challenges?
+	\end{itemize}
+}
+
+\section{Course Organization}
+\input{content/01c-course}
+\inputuniversity{content/01c-course}
+\lessonslearned{
+	\item focus: how to implement features
+	\item focus: how to model valid combinations
+	\item focus: how to do quality assurance
+	\item prerequisites, course overview, formalities
+}{
+	\item \fospl\ --- best book for this lecture
+	\item \featureide\ --- more practical guide on tool support
+}{
+	\begin{itemize}
+		\item Ask questions on the course organization!
+		\item Form teams for the practical tasks.
+	\end{itemize}
+}
+
+\faq{
+	\item What is customization/handcrafting, mass production, mass customization?
+	\item What are example (software) products for each of those?
+	\item What is the one-size-fits-all or swiss-army-knife principle? \deutsch{Eierlegende Wollmilchsau}
+	\item What is a feature, product/variant, domain, software product line?
+	\item What is the difference between product-line engineering and single-system engineering?
+	\item What are advantages of product-line engineering?
+}{
+	\item What are software clones,\\feature traceability,\\automated generation,\\ combinatorial explosion,\\feature interactions,\\and continuous growth?
+	\item Why are those challenging when developing product lines?
+	\item What are examples for these six fundamental challenges?
+	\item How do those challenges interact with each other?
+	\item How complex is the Linux kernel?
+	\item At which pace is the Linux kernel developed?
+}{
+	\color{gray}\item What you should know?
+	\item What you will learn?
+	\item What you might need?
+	\item Who are the authors of this course?
+	\item How is this course organized?
+}
+
+\input{template/footer}
+
+% TODO RUNTIME VARIABILITY AND DESIGN PATTERNS
+
+\ifuniversity{ulm}{\setpicture[275]{apr21-o25b}}
+\ifuniversity{magdeburg}{\setpicture[300]{magdeburg-canal}}
+
+\author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
+\lecture{Runtime Variability and Design Patterns}{runtime}
+
+\section{Configuration of Runtime Variability}
+\input{content/02a-configuration}
+\lessonslearned{
+	\item External setting of configuration options through command-line parameters, preference dialogs, configuration files
+	\item Validity of combinations may be affected by dependencies between features
+}{
+	\item \fospl\mychapter{3}\mypages{47--49}\\--- brief introduction of binding times
+	% TODO better literature pointers?
+}{
+	\begin{itemize}
+		\item Do you know any practical examples making use of runtime variability?
+		\item How does the configuration take place?
+		\item Is the configuration checked for validity?
+	\end{itemize}
+}
+
+\section{Realization of Runtime Variability}
+\input{content/02b-implementation}
+\lessonslearned{
+	\item Global (immutable) variables or (lengthy) parameter lists
+	\item Reconfiguration at runtime is possible (in principle)
+	\item Variability is spread over the entire program
+	\item Variable parts are always delivered
+}{
+	\item \fospl\mychapter{4}
+	\item \featureide\mychapter{17.1}
+	% TODO more details on what to expect in this literature
+}{
+	\begin{itemize} % die aufgaben sind ein bisschen theoretisch
+		\item Why are code scattering, tangling and replication problematic?
+		\item What are the problems of variable parts being always delivered?
+	\end{itemize}
+}
+
+\section{Design Patterns for Variability}
+\input{content/02c-patterns}
+\lessonslearned{
+	\item Variability through object-orientation and design patterns
+	\item Extension through delegation vs.\ inheritance
+	\item Limitations and drawbacks w.r.t.\ feature combinations
+}{
+	\item \oosoftwareconstruction\mychapter{3--4}
+	\item \gof\mychapter{1--4}
+	% TODO more details on what to expect in this literature
+}{
+	\begin{itemize}
+		\item What characterizes a modular software design and why can it support variability?
+		\item In which sense are object-oriented solutions more modular than simple conditional statements?
+		\item Do you know of other design patterns supporting variability?
+	\end{itemize}
+}
+
+% TODO Thomas: add exam questions here
+
+\input{template/footer}
+
+% COMPILE-TIME VARIABILITY WITH CLONE-AND-OWN
+
+\ifuniversity{ulm}{\setpicture[200]{apr21-south}}
+\ifuniversity{magdeburg}{\setpicture[70]{ovgu-autumn2}\setcopyright{Photo: Hannah Theile (OVGU)}}
+
+\author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
+\lecture{Compile-Time Variability with Clone-and-Own}{cloneandown}
+
+\section{Compile-Time Variability and Clone-and-Own}
+\input{content/03a-intro}
+\lessonslearned{
+	\item Compile-time variability is decided before or at compile time
+	\item In clone-and-own, new variants of a software system are created by copying and adapting an existing variant
+	\item Simple paradigm, but suffering from maintenance problems in the long run
+}{
+	\item\fospl\mychapter{3.1.1}\mypages{48--49}\\--- brief introduction of compile-time variability
+	\item\softwareclonedetection\mysection{2}\mypages{1167--1168}\\--- brief introduction to software clones, their types, reasons, (dis)advantages
+	\item\virtualplatform\ --- brief introduction to ad-hoc clone-and-own (L0)
+	% TODO better literature pointers on clone-and-own?
+}{
+	\begin{itemize}
+		\item What are the reasons why clone-and-own is very popular in practice?
+		\item What is the order of magnitude of the number of variants that can be reasonably maintained in clone-and-own?
+		\item Have you ever applied the principle of clone-and-own? If so, where and how?
+	\end{itemize}
+}
+
+\section{Clone-and-Own with Version Control}
+\input{content/03b-versioncontrol}
+\lessonslearned{
+	\item Software configuration management as a traditional discipline of managing the evolution of variability-intensive systems
+	\item Version control systems as a widespread tool supporting clone-and-own in practice
+}{
+	\item \fospl\mychapter{5.1}\mypages{99--105}\\--- introduction of variability with version control (not~explicitly calling it clone-and-own)
+	\item \staplesandhill\ --- experience report on managed clone-and-own with version control and build systems
+	\item\virtualplatform\ --- brief introduction to clone-and-own with version control (L1)
+	% TODO add literature? \summerville\mychapter{25}
+}{
+	\begin{itemize}
+		\item Which software configuration management concepts are supported by version control systems?
+		\item Do you know other version control systems than Git?
+		\item If so, in which way are they different from Git?
+	\end{itemize}
+}
+
+\section{Clone-and-Own with Build Systems}
+\input{content/03c-buildsystems}
+\lessonslearned{
+	\item Variability through build scripts
+	\item Granularity of clones: Individual files
+	\item Combination of files\\$\neq$ combination of features
+}{
+	\item \fospl\mychapter{5.2.2 and 5.2.4}\mypages{106--110}\\--- brief introduction of clone-and-own with build systems (not~explicitly calling it clone-and-own)
+	\item \staplesandhill\ --- experience report on managed clone-and-own with version control and build systems
+}{
+	\begin{itemize}
+		\item Which software configuration management concepts are supported by build systems?
+		\item What are the commonalities and differences of clone-and-own with version control and clone-and-own with build systems?
+		\item What are the strengths and weaknesses?
+		% TODO \item What is the effort to convert ad-hoc clone-and-own into managed clone-and-own?
+	\end{itemize}
+}
+
+\faq{
+	\item What are problems of runtime variability?
+	\item What is compile-time variability?
+	\item What is (ad-hoc) clone-and-own?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of (ad-hoc) clone-and-own?
+	\item When (not) to use (ad-hoc) clone-and-own?
+	\item What is better runtime or compile-time variability?
+}{
+	\item What is software configuration management and version control (used~for)?
+	\item What is the difference between version, revision, variant, configuration, baseline, release, merge, cherrypick, revision control?
+	\item How can version control be used for clone-and-own? Illustrate!
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of version control for variability?
+	\item When (not) to use clone-and-own with version control?
+	\item Shall we use version control at all?
+}{
+	\item What are build systems (used~for)?
+	\item How can build systems be used for clone-and-own? Illustrate!
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of build systems for variability?
+	\item When (not) to use clone-and-own with build systems?
+	\item Shall we use build systems at all?
+	\item What is the granularity of clones for all three techniques?
+	\item What is the effort to migrate from ad-hoc clone-and-own to managed clone-and-own?
+}
+
+\input{template/footer}

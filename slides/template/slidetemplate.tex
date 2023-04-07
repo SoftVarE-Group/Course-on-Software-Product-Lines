@@ -1,7 +1,7 @@
 % HACKS TO WORKAROUND PROBLEMS WITH THE TEMPLATE
 
 % emphasizing links
-\hypersetup{linkcolor = black, citecolor = black, filecolor = black, runcolor = black, urlcolor = red, colorlinks=true}
+%\hypersetup{linkcolor = black, citecolor = black, filecolor = black, runcolor = black, urlcolor = red, colorlinks=true}
 
 % load href target from file: \href{file.txt}{text}
 \newcommand\hreffile[1]{%
@@ -67,16 +67,20 @@
 \makeatletter
 \renewcommand{\contentoverview}{
     \begin{frame}[plain]
-        \linespread{.5}\setbeamerfont{section in toc}{size=\normalsize}\setbeamerfont{subsection in toc}{size=\small}
-        \vskip0pt plus 1filll
-		\begin{mycolumns}[t,columns=3,animation=none]
-			\tableofcontents[sections={1}]
-		\mynextcolumn
-			\tableofcontents[sections={2}]
-		\mynextcolumn
-			\tableofcontents[sections={3}]
-		\end{mycolumns}
-
+		\label{lecture\insertlecturenumber}
+        \setbeamerfont{section in toc}{size=\small}\setbeamerfont{subsection in toc}{size=\footnotesize}
+		\begin{beamercolorbox}[wd=.95\paperwidth,ht=28ex,dp=2ex]{lectureseries}
+			{\footnotesize\lectureseriesoverview[\insertlecturenumber]}
+        \end{beamercolorbox}
+		\begin{beamercolorbox}[wd=.95\paperwidth,ht=12ex,dp=2ex]{lecture}
+			\begin{mycolumns}[t,columns=3,animation=none]
+				\setlength{\parskip}{.5ex}\tableofcontents[sections={1}]
+			\mynextcolumn
+				\setlength{\parskip}{.5ex}\tableofcontents[sections={2}]
+			\mynextcolumn
+				\setlength{\parskip}{.5ex}\tableofcontents[sections={3}]
+			\end{mycolumns}
+        \end{beamercolorbox}
         \vskip0pt plus 1filll
         \mode<beamer>{\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}
             \LARGE\textbf{\insertsubtitle}\hspace*{20pt}

@@ -1,0 +1,29 @@
+\input{template/lecture}
+
+\makeatletter
+\AtBeginPart{%
+	\beamer@tocsectionnumber=0\relax
+	\setcounter{section}{0}
+	\setcounter{framenumber}{0}
+}
+\makeatother
+
+\AtBeginLecture{
+	\part{}
+	\subtitle{\insertlecturenumber. \insertlecture}
+
+	\contentoverview
+
+	\mode<beamer>{
+		\ifdefined\thepicture
+			\maketitle[\thepicture][\thepictureoffset]
+		\else
+			\maketitle[]
+		\fi
+		\addtocounter{framenumber}{-2}
+
+		\begin{frame}{\inserttitle} % TODO avoid this page for first lecture? avoid this page in handout?
+			\lectureseriesoverview[\insertlecturenumber]
+		\end{frame}
+	}
+}

@@ -5,112 +5,12 @@
 ]{beamer}
 \def\university{} % < do not remove this comment, it is used by the Makefile >
 
-\input{template/lecture}
+\input{template/lecture-ng}
 
-\renewcommand{\insertlecturenumber}{1}
-\subtitle{1. Introduction}
-\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
-
-\ifuniversity{ulm}{\setpicture[250]{apr21-o25a}}
-\ifuniversity{magdeburg}{\setpicture[70]{ovgu-autumn1}\setcopyright{Photo: Hannah Theile (OVGU)}}
+\includeonlylecture{introduction}
 
 \begin{document}
 
-\input{template/header}
-\inputuniversity{content/01-prelude}
-
-\section{Introduction to Product Lines}
-
-\input{content/01a-productlines}
-
-\lessonslearned{
-	\item mass customization\\= mass production + customization
-	\item features, products, domains
-	\item software product lines
-	\item product-line engineering
-}{
-	\item \fospl, Chapter~1\mypages{3--15} --- introduction close to this lecture, further examples
-	\item \seiwhitepaperspl\mypages{2--8} --- what is not a product line?
-	% TODO add further reference? \sple\mypage{14}
-}{
-	\begin{itemize}
-		\item What other examples of product lines do you know?
-		\item Exemplify the differences between feature, product, domain, and product line for these examples.
-		\item Are these product lines related to software?
-	\end{itemize}
-}
-
-\sectionend
-
-\section{Challenges of Product Lines}
-
-\input{content/01b-challenges}
-
-\lessonslearned{
-	\item why are product lines challenging?
-	\item selected challenges:
-		\begin{enumerate}
-		\item software clones
-		\item feature traceability
-		\item automated generation
-		\item combinatorial explosion
-		\item feature interactions
-		\item continuous growth
-		\end{enumerate}
-}{
-	\item[] see later lectures
-}{
-	\begin{itemize}
-		\item Form groups of 2--3 students
-		\item Explain 2--3 of the six challenges to your colleagues
-		\item Can you find own examples for these challenges?
-	\end{itemize}
-}
-
-\sectionend
-
-\section{Course Organization}
-
-\input{content/01c-course}
-\inputuniversity{content/01c-course}
-
-\lessonslearned{
-	\item focus: how to implement features
-	\item focus: how to model valid combinations
-	\item focus: how to do quality assurance
-	\item prerequisites, course overview, formalities
-}{
-	\item \fospl\ --- best book for this lecture
-	\item \featureide\ --- more practical guide on tool support
-}{
-	\begin{itemize}
-		\item Ask questions on the course organization!
-		\item Form teams for the practical tasks.
-	\end{itemize}
-}
-
-\faq{
-	\item What is customization/handcrafting, mass production, mass customization?
-	\item What are example (software) products for each of those?
-	\item What is the one-size-fits-all or swiss-army-knife principle? \deutsch{Eierlegende Wollmilchsau}
-	\item What is a feature, product/variant, domain, software product line?
-	\item What is the difference between product-line engineering and single-system engineering?
-	\item What are advantages of product-line engineering?
-}{
-	\item What are software clones,\\feature traceability,\\automated generation,\\ combinatorial explosion,\\feature interactions,\\and continuous growth?
-	\item Why are those challenging when developing product lines?
-	\item What are examples for these six fundamental challenges?
-	\item How do those challenges interact with each other?
-	\item How complex is the Linux kernel?
-	\item At which pace is the Linux kernel developed?
-}{
-	\color{gray}\item What you should know?
-	\item What you will learn?
-	\item What you might need?
-	\item Who are the authors of this course?
-	\item How is this course organized?
-}
-
-\input{template/footer}
+\input{content/part1}
 
 \end{document}
