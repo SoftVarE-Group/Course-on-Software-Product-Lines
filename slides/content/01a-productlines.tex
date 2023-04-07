@@ -11,13 +11,13 @@
 		
 		~
 		
-		\uncover<2->{\mydefinition{Customization \deutschertitel{Maßschneiderung}}{
+		\uncover<2->{\begin{definition}{Customization \deutschertitel{Maßschneiderung}}
 			\begin{itemize}
 			\item aka.\ handcrafting
 			\item labor-intensive production
 			\item highly individual goods
 			\end{itemize}
-		}}
+		\end{definition}}
 	\end{mycolumns}
 \end{frame}
 
@@ -62,9 +62,10 @@
 \end{frame}
 
 \subsection{Mass Production}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\mydefinition{Mass Production \deutschertitel{Massenproduktion}\mysource{\fospl\mypages{3--4}}}{
+\begin{frame}[b]{\myframetitle}
+	\vspace{-\textheightoftitle}
+	\begin{mycolumns}[b]
+		\begin{definition}{Mass Production \deutschertitel{Massenproduktion}\mysource{\fospl\mypages{3--4}}}
 			\begin{itemize}
 			\item consequence of industrialization
 			\item goods are produced from standardized parts
@@ -72,19 +73,19 @@
 			\item reduced costs, improved quality
 			\item but: (almost) no individualism
 			\end{itemize}
-		}
-		\myexample{Principle: One Size Fits All}{
+		\end{definition}
+		\uncover<2->{\begin{example}{Principle: One Size Fits All}
 			\begin{itemize}
 			\item t-shirts: XS, S, M, L, XL, XXL
 			\item swiss-army knife \deutsch{Eierlegende Wollmilchsau}
 			\end{itemize}
-		}
-		\centering\pic[width=.5\linewidth]{wollmilchsau}
+		\end{example}
+		\centering\pic[width=.45\linewidth]{wollmilchsau}}
 	\mynextcolumn
-		\vspace{-8mm}
 		\pic[width=\linewidth]{swiss-army-knife}
-		\mynote{Mass Production for Software?\mysource{\fospl\mypage{7}}}{\mycite{The idea is to provide software that satisfies the
-		needs of most customers, which leads almost automatically to the situation, in which customers miss desired functionality and are overwhelmed with functionality they do not need actually (just think of any contemporary office or graphics program). It is often this generality that makes software complex, slow, and buggy.}}
+		\uncover<3->{\begin{note}{Mass Production for Software?\mysource{\fospl\mypage{7}}}
+			\mycite{The idea is to provide software that satisfies the needs of most customers, which leads almost automatically to the situation, in which customers miss desired functionality and are overwhelmed with functionality they do not need actually (just think of any contemporary office or graphics program). It is often this generality that makes software complex, slow, and buggy.}
+		\end{note}}
 	\end{mycolumns}
 \end{frame}
 % industrial revolution/era:
@@ -99,31 +100,31 @@
 \end{frame}
 \begin{frame}{\myframetitle\ \deutschertitel{Kundenindividuelle Massenproduktion}}
 	\begin{mycolumns}[widths={45}]
-		\mydefinition{Mass Customization\mysource{\fospl\mypage{4}}}{
+		\begin{definition}{Mass Customization\mysource{\fospl\mypage{4}}}
 			\begin{itemize}
 			\item = mass production + customization
 			\item customized, individual goods at costs similar to mass production
 			\end{itemize}
-		}
-	
+		\end{definition}
 		\myexampletight{Car Configuration}{\pic[width=\linewidth]{toyota-aygo-wheels}}
 	\mynextcolumn
 		\myexampletight{Car Production}{\pic[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}
-		
-		\myexample{Other Domains}{bikes, computers, electronics, tools, medicine, clothing, food, financial services, \ldots, software?}
+		\begin{example}{Other Domains}
+			bikes, computers, electronics, tools, medicine, clothing, food, financial services, \ldots, software?
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Mass Customization for Software?}
-	\begin{mycolumns}[widths={55}]
-		\mydefinition{Mass Customization for Software?}{
+	\begin{mycolumns}[b,widths={55},animation=none]
+		\begin{definition}{Mass Customization for Software?}
 			\begin{itemize}
 			\item customization: individual software developed using Waterfall model or Scrum
 			\item mass production: standard software developed once for millions or billions of users (e.g.,~Whatsapp messenger)
 			\item mass customization: software product lines
 			\end{itemize}
-		}
-		\mynote{Why Software Product Lines?}{
+		\end{definition}
+		\uncover<2->{\begin{note}{Why Software Product Lines?}
 			\begin{itemize}
 			\item resource limitations: memory, performance, energy
 			\item different hardware
@@ -131,9 +132,9 @@
 			\item goal: avoid expensive customization
 			\item how is software developed?
 			\end{itemize}
-		}
+		\end{note}}
 	\mynextcolumn
-		\pic[width=\linewidth,page=24]{lego}
+		\pic[width=\linewidth,trim=250 0 0 0,clip]{car-tower}
 	\end{mycolumns}
 \end{frame}
 
@@ -157,15 +158,18 @@
 \subsection{Features and Products of a Domain}
 \begin{frame}{What is a Feature?}
 	\begin{mycolumns}[widths={45},t]
-		\uncover<2->{\mydefinition{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}{\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}}}
+		\uncover<2->{\begin{definition}{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}
+			\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}
+		\end{definition}}
 		\centering\xkcd{2369}{width=.9\linewidth,trim=35 35 35 35,clip}
 	\mynextcolumn
-		\uncover<3->{\mynote{Feature in a Product Line \mysource{\fospl\mypage{18}}}{\mycitebegin Features are used in product-line engineering
+		\uncover<3->{\begin{note}{Feature in a Product Line \mysource{\fospl\mypage{18}}}
+			\mycitebegin Features are used in product-line engineering
 			\begin{itemize}
 				\item to specify and communicate commonalities and differences of the products between stakeholders \deutsch{Akteure} and
 				\item to guide structure, reuse, and variation across all phases of the software life cycle.\myciteend
 			\end{itemize}
-		}}
+		\end{note}}
 		\renewcommand{\projectcartoonwidth}{.18}\scriptsize
 		\uncover<4->{\waterfallcartoon}\\
 	\end{mycolumns}
@@ -178,31 +182,30 @@
 %an optional or incremental unit of Zave 2003) 
 
 \begin{frame}{What is a Product?}
-	\begin{mycolumns}[t]
-		\mydefinition{Product \deutsch{Produkt} \mysource{\fospl\mypage{19}}}{\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}}
-		
-		\mynote{Note on Terminology}{
+	\begin{mycolumns}[t,animation=none]
+		\begin{definition}{Product \deutsch{Produkt} \mysource{\fospl\mypage{19}}}
+			\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}
+		\end{definition}
+		\uncover<2->{\begin{note}{Note on Terminology}
 			\begin{itemize}
-				\item in this course:
-				
-					product = product variant = variant
+				\item in this course:\\product = product variant = variant
 				\item software product: a product consisting only of software
 				\item software is more than a program: requirements, models, source code, tests, documentation
 				\item this course focuses on source code
 			\end{itemize}
-		}
+		\end{note}}
 		% TODO exemplify difference between hardware product, software product (VLC?), and program (reuse pictures from before)
 	\mynextcolumn
-		\myexampletight{Product Map for Eclipse (excerpt)}{
+		\uncover<3->{\myexampletight{Product Map for Eclipse (excerpt)}{
 			\pic[width=\linewidth,trim=0 460 635 0,clip]{eclipse-product-map}
-		}
+		}}
 	\end{mycolumns}
 \end{frame}
 % TODO Venn diagram could also be a good visualization: products correspond to sets and features to set elements
 
 \begin{frame}{What is a Domain?}
-	\begin{mycolumns}
-		\mydefinition{Domain \deutsch{Domäne} \mysource{\fospl\mypage{19}}}{ % TODO cite CE00 here too?
+	\begin{mycolumns}[animation=none]
+		\begin{definition}{Domain \deutsch{Domäne} \mysource{\fospl\mypage{19}}} % TODO cite CE00 here too?
 			\mycitebegin A \emph{domain} is an area of knowledge that:
 			\begin{itemize}
 				\item is scoped to maximize the satisfaction of the requirements of its stakeholders,
@@ -210,14 +213,14 @@
 				\item and includes the knowledge of how to build software systems (or parts of
 				software systems) in that area.\myciteend
 			\end{itemize}
-		}
-		\mynote{Features of a Domain}{
+		\end{definition}
+		\uncover<2->{\begin{note}{Features of a Domain}
 			\begin{itemize}
 				\item a feature is a domain abstraction
 				\item identification of features in a domain requires domain expertise
 				\item later: select features for a product line?
 			\end{itemize}
-		}
+		\end{note}}
 	\mynextcolumn
 		\pic[width=.5\linewidth]{many-cars}
 
@@ -231,7 +234,8 @@
 \subsection{Software Product Line}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={78},columns=1]
-		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
+		\begin{definition}{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}
+			\mycitebegin A \emph{software product line} is
 			\begin{itemize}
 				\item a set of software-intensive systems \uncover<2->{\myexampletight{}{aka.\ products or variants}}
 				\item that share a common, managed set of features \uncover<3->{\myexampletight{}{common set, but not all products have all features in common}}
@@ -239,7 +243,7 @@
 				\item and that are developed from a common set of core assets in a prescribed way.\myciteend \uncover<5->{\myexampletight{}{aka.\ planned, structured reuse \deutsch{Wiederverwendung von vorbereiteten Teilen}}}
 				\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
 			\end{itemize}
-		}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
 % variants / platforms / domain / variant generation
@@ -247,35 +251,35 @@
 
 \subsection{Product-Line Engineering}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\mydefinition{Product-Line Engineering\mysource{\sple\mypage{14}}}{
+	\begin{mycolumns}[animation=none]
+		\begin{definition}{Product-Line Engineering\mysource{\sple\mypage{14}}}
 			\mycite{\emph{Software product-line engineering} is a paradigm to develop software applications (software-intensive systems and software products) using software platforms and mass customization.}
 %			\begin{itemize}
 %			\item aka.\ product-line development \mysource{\seiwhitepaperspl\mypage{207}}
 %			\end{itemize}
-		}
-		\mynote{Promises of Product Lines \mysource{\fospl\mypages{9--10}}}{
+		\end{definition}
+		\uncover<2->{\begin{note}{Promises of Product Lines \mysource{\fospl\mypages{9--10}}}
 			\begin{itemize}
 				\item tailor-made \deutsch{Maßschneiderung}
 				\item reduced costs \deutsch{Kostenreduzierung}
 				\item improved quality \deutsch{Qualitätssteigerung}
 				\item reduced time-to-market \deutsch{Reduzierung der Produktentwicklungszeit}
 			\end{itemize}
-		}
+		\end{note}}
 	\mynextcolumn
 		\vspace{-5mm}
-		\mynotetight{Idea of Product-Line Engineering}{
+		\uncover<3->{\mynotetight{Idea of Product-Line Engineering}{
 			Reduce effort per product by means of an up-front investment for the product line:
 			
 			\includegraphics[width=\linewidth,trim=30 60 30 50,clip]{product-line-vs-single-system}
-		}
-		\mydefinition{Single-System Engineering}{
+		}}
+		\uncover<4->{\begin{definition}{Single-System Engineering}
 			\begin{itemize}
 			%\item aka.\ single-system development \mysource{\seiwhitepaperspl\mypage{7}}
 			\item \deutsch{Einzelsystementwicklung}
 			\item classical software development that is not considered as product-line engineering
 			\end{itemize}
-		}
+		\end{definition}}
 	\end{mycolumns}
 \end{frame}
 

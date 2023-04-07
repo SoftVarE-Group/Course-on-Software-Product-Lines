@@ -7,9 +7,12 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40}]
 		%\mydefinition{Feature Traceability \mysource{\fospl\mypage{54}}}{\mycite{Feature traceability is the ability to trace a feature from the problem space (for example, the feature model) to the solution space (that is, its manifestation in design and code artifacts).}}
-		\mydefinition{Feature Traceability}{Feature traceability is the ability to trace a feature throughout the software life cycle (i.e., from requirements to source code).}
-
-		\myexample{Intuition on Feature Traceability}{find feature \includegraphics[width=.17\linewidth]{pants-blue} in product \includegraphics[width=.17\linewidth]{230}}
+		\begin{definition}{Feature Traceability}
+			Feature traceability is the ability to trace a feature throughout the software life cycle (i.e., from requirements to source code).
+		\end{definition}
+		\begin{example}{Intuition on Feature Traceability}
+			find feature \includegraphics[width=.17\linewidth]{pants-blue} in product \includegraphics[width=.17\linewidth]{230}
+		\end{example}
 	\mynextcolumn
 		\myexampletight{Feature Traceability with Colored Source Code}{\includegraphics[width=\linewidth]{feature-traceability}}
 	\end{mycolumns}
@@ -35,24 +38,24 @@
 \end{frame}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={45},animation=none]
-		\myexample{Product Line with Features}{
+		\begin{example}{Product Line with Features}
 			\only<1-2|handout:0>{\includegraphics[width=\linewidth]{metaproduct}}%
 			\only<3->{\includegraphics[width=\linewidth]{metaproduct2}}%
-		}
+		\end{example}
 	\mynextcolumn
-		\mydefinition{Goal}{
+		\begin{definition}{Goal}
 			\begin{itemize}
 			\item automatic generation of products
 			\item based on a (descriptive) selection of features
 			\end{itemize}
-		}
-		\uncover<2->{\mynote{Challenges}{
+		\end{definition}
+		\uncover<2->{\begin{note}{Challenges}
 			\begin{itemize}
 			\item how to map features to source code?
 			\item how to combine source code of multiple features?
 			\item how to define valid combinations of features?
 			\end{itemize}
-		}}
+		\end{note}}
 	\end{mycolumns}
 \end{frame}
 
@@ -90,16 +93,16 @@
 		\only<1-2|handout:0>{\includegraphics[width=\linewidth,page=24]{lego}}%
 		\only<3->{\includegraphics[width=\linewidth,page=25]{lego}}%
 	\mynextcolumn
-		\myexample{Example Interaction}{
+		\begin{example}{Example Interaction}
 			phone \includegraphics[width=.14\linewidth]{phone} cannot be used with helmet \includegraphics[width=.14\linewidth]{helmet}
-		}
-		\uncover<2->{\mynote{Challenges}{
+		\end{example}
+		\uncover<2->{\begin{note}{Challenges}
 			\begin{itemize}
 			\item interaction typically unknown in advance
 			\item interactions occur in some but not all combinations
 			\item challenge for quality assurance
 			\end{itemize}
-		}}
+		\end{note}}
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
@@ -112,7 +115,7 @@
 \subsection{Continuing Change and Growth}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={42}]
-		\mydefinition{Lehman's Laws of Software Evolution (excerpt) \mysource{\lehmanslaws}}{
+		\begin{definition}{Lehman's Laws of Software Evolution (excerpt) \mysource{\lehmanslaws}}
 			\begin{itemize}
 				\item Continuing Change: systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
 				\item Increasing Complexity: complexity increases during evolution unless work is done to maintain or reduce it % As an E-type system evolves its complexity increases unless work is done to maintain or reduce it.
@@ -123,15 +126,15 @@
 				\item Declining Quality: quality will decline unless rigorously maintained and adapted to operational environment changes %The quality of E-type systems will appear to be declining unless they are rigorously maintained and adapted to operational environment changes.
 				%\item Feedback System: %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\mynote{Essence of the Laws}{
+		\begin{note}{Essence of the Laws}
 			\begin{itemize}
 				\item software that is used will be modified
 				\item when modified, its complexity will increase (unless one does actively work against it)
 			\end{itemize}
-		}
-		\myexample{Consequences for Product Lines}{
+		\end{note}
+		\begin{example}{Consequences for Product Lines}
 			\begin{itemize}
 				\item number of features and size of implementation increases over time
 				\item discussed challenges increase over time
@@ -143,21 +146,21 @@
 						\item more feature interactions
 					\end{itemize}
 			\end{itemize}
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Evolution of the Linux Kernel}
 	\begin{mycolumns}
-		\myexample{}{
+		\begin{example}{}
 			\begin{itemize}
 				\item about $60,000$ commits per year
 				\item in peak weeks: new commit every 5 minutes
 				\item in average weeks: every 9 minutes
 			\end{itemize}
-		}
+		\end{example}
 	\mynextcolumn
-		\vspace{-12mm} % TODO Benno: hack. not sure how to improve this.
+		\vspace{-\textheightoftitle}
 		\pic[width=\linewidth,trim=100 70 110 80,clip]{linux-stack-plot}
 	\end{mycolumns}
 	\twodimensionalanalysislink{\includegraphics[width=.8\linewidth,page=1,trim=80 420 80 260,clip]{2019/2019-VariVolution-Thuem}}
