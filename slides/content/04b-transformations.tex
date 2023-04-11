@@ -46,7 +46,7 @@
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
 			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{red}Concrete Format};
-		\end{tikzpicture}
+		\end{tikzpicture} % TODO why is feature model to configuration map considered semi-automatically?
 
 		\mynote{Problems}{
 			\begin{enumerate}
@@ -57,10 +57,11 @@
 		}
 	\end{mycolumns}
 \end{frame}
+% TODO this diagram shows plenty of opportunities for exercise tasks
 
 \subsection{UVL, the Universal Variability Language}
 
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}[fragile]{\myframetitle\ \mytitlesource{\uvlwebsite}}
 	\begin{mycolumns}
 \begin{uvltight}[basicstyle=\normalsize]{}
 features
@@ -92,7 +93,7 @@ constraints
 		\mynote{Universal Variability Language (UVL)}{
 			\begin{itemize}
 				\item textual language for feature modeling
-				\item adds advanced modeling constructs (e.g., attributes, cardinalities, submodels, \ldots)
+				\item adds advanced modeling constructs (e.g.,~attributes, cardinalities, submodels, \ldots)
 			\end{itemize}
 		}
 	\end{mycolumns}
@@ -140,6 +141,7 @@ constraints
 		}
 	\end{mycolumns}
 \end{frame}
+% TODO do we really need this slide? semantics was already defined in Part 4a for feature models
 
 \subsection{Propositional Formulas}
 
@@ -148,22 +150,14 @@ constraints
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\mydefinition{Syntax of Propositional Formulas}{
-			Inductive definition of \emph{(propositional) formulas}\\\deutsch{(aussagenlogische) Formeln}:
+			Inductive definition of \emph{propositional formulas}\\\deutsch{aussagenlogische Formeln}:
 			\begin{itemize}
-				\item the \emph{(Boolean) truth values} $\top$, $\bot$
-				\item any \emph{(Boolean) variable} $X$
+				\item the \emph{Boolean truth values} $\top$, $\bot$
+				\item any \emph{Boolean variable} $X$
     			\item any \emph{negation} $\pnot \phi$ of a formula $\phi$
     			\item any \emph{conjunction} $(\phi \pand \psi)$ of formulas $\phi$ and $\psi$
 				\item any \emph{disjunction} $(\phi \por \psi)$, \emph{implication} $(\phi \pimplies \psi)$, or \emph{biimplication} $(\phi \pequals \psi)$
 			\end{itemize}
-		}
-		\mynote{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}{
-			\vspace*{-4ex} % TODO Benno: why is this hack needed?
-			\begin{align*}
-				           &~Transactions \pimplies (Put \por Delete) \\
-				\equiv     &~Transactions \pimplies Put \por Delete \\
-				\not\equiv &~(Transactions \pimplies Put) \por Delete
-			\end{align*}
 		}
 	\mynextcolumn
 		\mydefinition{Informal Semantics of Propositional Formulas}{
@@ -188,14 +182,23 @@ constraints
 				\end{cases}
 			\end{equation*}
 		}
-		\mynote{Differences to First-Order Logic}{
-			\begin{itemize}
-				\item no quantifiers $\forall, \exists$
-    			\item no predicates $P(\ldots)$ (e.g., $=$, $>$, $isA$)
-    			\item no functions $f(\ldots)$ (e.g., $+$, $\ast$, $typeOf$)
-				\item no constants (e.g., $42$, ``hello'')
-			\end{itemize}
+		\myexample{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}{
+			\vspace*{-4ex} % TODO Benno: why is this hack needed?
+			\begin{align*}
+				           &~Transactions \pimplies (Put \por Delete) \\
+				\equiv     &~Transactions \pimplies Put \por Delete \\
+				\not\equiv &~(Transactions \pimplies Put) \por Delete
+			\end{align*}
 		}
+% TODO removed this part as we only need propositional logic anyway
+%		\mynote{Differences to First-Order Logic}{
+%			\begin{itemize}
+%				\item no quantifiers $\forall, \exists$
+%    			\item no predicates $P(\ldots)$ (e.g., $=$, $>$, $isA$)
+%    			\item no functions $f(\ldots)$ (e.g., $+$, $\ast$, $typeOf$)
+%				\item no constants (e.g., $42$, ``hello'')
+%			\end{itemize}
+%		}
 	\end{mycolumns}
 \end{frame}
 
@@ -267,15 +270,15 @@ constraints
 				\only<9-12|handout:1>{
 					\begin{align*}
 								&~\Phi(FM)({\{C, A, G, O, W\}}) \\
-						=		&~\Phi(FM)(\cfg[2-]{C, A, G, O, W}{P, D, T, L}) \\
-						\uncover<10->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fs{O} \pequals \fs{C}) \\
-						\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fs{W} \por \fd{L} \pequals \fs{O}) \\
-						\pand &~\pnot (\fs{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
-						\uncover<11->{=&~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fs{\top} \pequals \fs{\top}) \\
-						\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fs{\top} \por \fd{\bot} \pequals \fs{\top}) \\
-						\pand &~\pnot (\fs{\top} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
-						\uncover<12->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
-						=		&~\fs{\top}}
+						\equiv	&~\Phi(FM)(\cfg[2-]{C, A, G, O, W}{P, D, T, L}) \\
+						\uncover<10->{\equiv &~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fs{O} \pequals \fs{C}) \\
+								&~\pand (\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fs{W} \por \fd{L} \pequals \fs{O}) \\
+								&~\pand \pnot (\fs{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
+						\uncover<11->{\equiv &~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fs{\top} \pequals \fs{\top}) \\
+								&~\pand (\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fs{\top} \por \fd{\bot} \pequals \fs{\top}) \\
+								&~\pand \pnot (\fs{\top} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
+						\uncover<12->{\equiv &~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
+						\equiv	&~\fs{\top}}
 					\end{align*}
 					\uncover<12->{\emph{$\leadsto$ configuration is valid}\\
 					\phantom{$\leadsto$ }(read-only database on Windows)}
@@ -283,15 +286,15 @@ constraints
 				\only<13-|handout:2>{
 					\begin{align*}
 								&~\Phi(FM)({\{C, A, G\}}) \\
-						=		&~\Phi(FM)(\cfg[2-]{C, A, G}{P, D, T, O, W, L}) \\
-						\uncover<14->{=&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fd{O} \pequals \fs{C}) \\
-						\pand &~(\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fd{W} \por \fd{L} \pequals \fd{O}) \\
-						\pand &~\pnot (\fd{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
-						\uncover<15->{=&~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fd{\bot} \pequals \fs{\top}) \\
-						\pand &~(\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fd{\bot} \por \fd{\bot} \pequals \fd{\bot}) \\
-						\pand &~\pnot (\fd{\bot} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
-						\uncover<16->{=&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fd{\bot} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
-						=		&~\fd{\bot}} % TODO: only show \pand and phi(fm) = and parentheses at the end
+						\equiv	&~\Phi(FM)(\cfg[2-]{C, A, G}{P, D, T, O, W, L}) \\
+						\uncover<14->{\equiv&~\fs{C} \pand (\fs{A} \pequals \fs{C}) \pand (\fd{T} \pimplies \fs{C}) \pand (\fd{O} \pequals \fs{C}) \\
+								&~\pand (\fs{G} \por \fd{P} \por \fd{D} \pequals \fs{A}) \pand (\fd{W} \por \fd{L} \pequals \fd{O}) \\
+								&~\pand \pnot (\fd{W} \pand \fd{L}) \pand (\fd{T} \pimplies \fd{P} \por \fd{D}) \\}
+						\uncover<15->{\equiv&~\fs{\top} \pand (\fs{\top} \pequals \fs{\top}) \pand (\fd{\bot} \pimplies \fs{\top}) \pand (\fd{\bot} \pequals \fs{\top}) \\
+								&~\pand (\fs{\top} \por \fd{\bot} \por \fd{\bot} \pequals \fs{\top}) \pand (\fd{\bot} \por \fd{\bot} \pequals \fd{\bot}) \\
+								&~\pand \pnot (\fd{\bot} \pand \fd{\bot}) \pand (\fd{\bot} \pimplies \fd{\bot} \por \fd{\bot}) \\}
+						\uncover<16->{\equiv&~\fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fd{\bot} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \pand \fs{\top} \\
+						\equiv	&~\fd{\bot}} % TODO: only show \pand and phi(fm) = and parentheses at the end
 					\end{align*}
 					\uncover<16->{\emph{$\leadsto$ configuration is invalid}\\
 					\phantom{$\leadsto$ }($\lightning$ no operating system)}
@@ -345,7 +348,7 @@ constraints
 
 \subsection{CNF as a Universal Formula Language}
 
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle} % TODO unmotivated topic switch after prior slide?
 	\begin{mycolumns}[animation=none]
 		\mydefinition{Recap: Conjunctive Normal Form}{
 			\begin{itemize}
@@ -412,7 +415,7 @@ constraints
 			}
 		}
 	\end{mycolumns}
-\end{frame}
+\end{frame} % TODO would be more intuitive to me if clauses are green (as they are good to go)
 
 \subsubsection*{DIMACS}
 
@@ -506,7 +509,7 @@ p cnf 5 6
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
 			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
-		\end{tikzpicture}
+		\end{tikzpicture} % TODO would prefer another color for concrete formats, as they have nothing to do with the red boxes on thoses slides. what about green? needs to be changed consistently in all slides of this lecture
 	\mynextcolumn
 		\mynote{Problems}{
 			\begin{enumerate}
@@ -540,7 +543,7 @@ p cnf 5 6
 
 \begin{frame}{\myframetitle}
 	\centering
-	\pic[width=.7\linewidth,trim=10 10 0 10,clip]{constraints-in-excel}
+	\pic[width=.8\linewidth,trim=10 10 0 10,clip]{constraints-in-excel}
 
 	\textbf{``It's installed anyway.''}
 \end{frame}
@@ -579,6 +582,7 @@ config X86_64
 				\item transformation into formula or feature model possible, but not trivial \mysource{\href{https://dl.acm.org/doi/abs/10.1145/3468264.3468578}{Oh~et~al.~2021}}
 			\end{itemize}
 		}
-	\hspace*{-3mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,trim=180 510 100 170,clip]{2020/2020-SPLC-Thuem}}
+		\hspace*{-0.07253886\linewidth}%=2*0.035/(1-0.035)
+		\linuxbddlink{\includegraphics[width=1.3\linewidth,trim=220 510 60 180,clip]{2020/2020-SPLC-Thuem}}
 	\end{mycolumns}
 \end{frame}

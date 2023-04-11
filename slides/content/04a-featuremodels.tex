@@ -60,6 +60,13 @@
 \subsection{Specifying Valid Configurations}
 
 \newcommand{\feat}[1]{{\emph{#1}}}
+\newcommand{\exampleFeatureSetConfigDB}{
+	\vspace*{-4ex}
+	\begin{align*}
+		\text{Feature set } F = \{&\textbf{C}onfigDB, \textbf{G}et, \textbf{P}ut, \textbf{D}elete,\\
+		&\textbf{T}ransactions, \textbf{W}indows, \textbf{L}inux\}
+	\end{align*}
+}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
@@ -68,17 +75,13 @@
 				\item a \emph{configuration} \deutsch{Konfiguration} over a set of features $F$ selects and deselects features in $F$
 				\item formally: a pair $(S, D)$ such that $S, D \subseteq F$ and $S, D$ are disjoint ($S \cap D = \varnothing$)
 				\item is \emph{complete} \deutsch{vollständig} if all features are covered ($S \cup D = F$) and \emph{partial} \deutsch{partiell} otherwise
-				\item a complete configuration is \emph{valid} \deutsch{gültig} if it ``makes sense'' in the domain and \emph{invalid} \deutsch{ungültig} otherwise
+				\item a complete configuration is \emph{valid} \deutsch{gültig} if it ``makes sense'' in the domain and \emph{invalid} \deutsch{ungültig} otherwise % TODO why only complete configurations? probably easier to understand here, but validity could also be useful for partial configurations later
 				\item we often abbreviate complete configurations with $S \equiv (S, F \setminus S)$
 			\end{itemize}
 		}
 	\mynextcolumn
 		\myexample{}{
-			\vspace*{-4ex}
-			\begin{align*}
-				\text{Feature set } F = \{&ConfigDB, Get, Put, Delete,\\
-				&Transactions, Windows, Linux\}
-			\end{align*}
+			\exampleFeatureSetConfigDB
 			Examples for \emph{complete} configurations:
 			\begin{itemize}
 				\item \emph{valid} (read-only database on Windows):
@@ -134,8 +137,8 @@
 		}
 
 		\mydefinition{Configuration Map}{
-			\begin{itemize}
-				\item a \emph{configuration map} over $F$ is a set of complete configurations $C \subseteq F$
+			\begin{itemize} % TODO symbol C is overloaded on this slide. shall we use M for configuration map?
+				\item a \emph{configuration map} over $F$ is a set of complete configurations $C \subseteq F$ % TODO seems to be wrong, this rule holds for every element in a configuration map
 				\item a complete configuration $S$ is \emph{valid} if it occurs in the configuration map ($S \in C$)
 				\item also known as product map
 				\item[+] precise
@@ -145,15 +148,8 @@
 		}
 	\mynextcolumn
 		\myexample{}{
-			\vspace*{-4ex}
-			\begin{align*}
-				\text{Feature set } F = \{&ConfigDB, Get, Put, Delete,\\
-				&Transactions, Windows, Linux\}
-			\end{align*}
-			
-			Configuration map:
-			
-			\small
+			\exampleFeatureSetConfigDB
+			Configuration map:\\\small
 			\leftandright{
 				{\color{black}$\{C,G,W\}$}\\
 				$\{C,P,W\}$\\
@@ -202,7 +198,7 @@
 
 \begin{frame}{\myframetitle\ \mytitlesource{\fospl; \foda\mypages{63--72}; \batorygrammars}}
 	\begin{mycolumns}
-		\myexampletight{}{
+		\myexampletight{}{ % TODO do we really need these borders here and on the next slides?
 			\centering
 			\featureDiagramConfigurableDatabase
 			
@@ -232,11 +228,11 @@
 			\mydefinition{Tree Constraints}{
 				\begin{itemize}
 					\item the \emph{root feature} is always required
-					\item each feature requires its parent
+					\item each feature requires its parent (aka.~\emph{parent-child-relationship})
 					\item an \emph{optional feature} can be (de-)selected freely when its parent is selected
 					\item a \emph{mandatory feature} is required by its parent
-					\item \emph{or group}: at least one feature must be selected when the parent is selected
-					\item \emph{alternative group}: exactly one feature must be selected when the parent is selected
+					\item \emph{or group}: at least one child feature must be selected when the parent is selected
+					\item \emph{alternative group}: exactly one child feature must be selected when the parent is selected
 				\end{itemize}
 			}
 		}
@@ -324,9 +320,8 @@
 			\small\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer's point of view. But it's also [\ldots] important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven't realized that. They implemented the same features.} -- {\footnotesize Interview with Practitioners}\mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}
 		}
 
-		\mynote{Pro: Tool Support}{
+		\mynote{Pro: Tool Support}{ % TODO would be great to show more tool logos here from our community, and possibly also for commercial tools (upon request)
 			\pic[width=.3\linewidth]{featureide-logo},\hspace{2mm}\href{https://biglever.com/solution/gears/}{Gears},\hspace{2mm}\href{https://www.pure-systems.com/de/purevariants}{pure::variants},\hspace{2mm}\ldots% end goal: the lecture shows how to realize a automated configurator that does not allow invalid configurations
-
 		}
 	\mynextcolumn
 		\mynote{Con: Challenges}{

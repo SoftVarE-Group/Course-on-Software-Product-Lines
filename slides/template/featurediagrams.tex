@@ -60,6 +60,20 @@
 	$ShortestPath \pimplies Weighted$
 }
 
+\newcommand{\featureDiagramABCDEFG}{
+	\featureDiagram{
+		Root,concrete
+		[A,concrete,optional
+			[C,concrete,or]
+			[D,concrete]
+		]
+		[B,concrete,mandatory
+			[E,concrete,alternative]
+			[F,concrete]
+		]
+	}
+}
+
 \newcommand{\featureDiagramEightOptionalFeatures}{
 	\featureDiagram{
 		SPL,abstract
