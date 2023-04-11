@@ -7,88 +7,12 @@
 
 \input{template/lecture}
 
-\subtitle{9. Feature Interactions}
-\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
-
-\ifuniversity{ulm}{\setpicture[350]{may21-west2}}
-\ifuniversity{magdeburg}{\setpicture[35]{ovgu-winter3}\setcopyright{Photo: Hannah Theile (OVGU)}}
+\includeonlylecture{interactions}
 
 \begin{document}
 
-\input{template/header}
-
-\begin{frame}{\inserttitle}
-	\lectureseriesoverview[9]
-\end{frame}
-
-% TODO move to Lecture 10?
-%\subsection{Recap: Software Quality}
-%\begin{frame}{\myframetitle} % caution: slide copied from testing lecture
-%	\rightorleft{
-%		\mydefinition{Quality \mysource{\ludewiglichter}}{Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.}
-%		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
-%	}{
-%		\vspace{-12mm}
-%		\centering
-%		\pic[width=\linewidth,trim=0 240 0 300,clip]{andy-hunt}
-%		\vspace{-7mm}
-%		
-%		\mynote{Andy Hunt \mysource{\thepragmaticprogrammer}}{\mycite{No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first.}}
-%		% co-authored The Pragmatic Programmer, known for the Agile Manifesto
-%	}
-%\end{frame}
-
-\section{What is a Feature Interaction?}
-
-\input{content/09a-interactions}
-
-\lessonslearned{
-	\item feature interaction and feature-interaction problem
-	\item wanted/unwanted, static/dynamic, one-wise/pair-wise/higher-order
-	\item examples: customization of clothes, Android apps, toaster, preprocessor code, runtime variability, Variability Bug Database
-}{
-	\item \fospl\ Chapter 9 \mypages{213--217}
-}{
-	Do you know further examples of feature interactions?
-}
-
-\sectionend
-
-\section{How to Handle Feature Interactions?}
-
-\input{content/09b-handlinginteractions}
-
-\lessonslearned{
-	\item Adaptation of feature model to avoid (undesired) feature interactions. 
-	\item Strategies to implement coordination code for known feature interactions.
-	\item Discussion of the strenghts and weaknesses of each of the strategies.
-}{
-	\item Kästner et al.: On the impact of the optional feature problem: Analysis and case studies. SPLC 2009.
-	\item \fospl, Chapter 9
-}{
-	Looking back at our graph library and the feature interaction between $ShortestPath$ and $Weighted$. Which strategy would you choose to handle this interaction? Why?
-	
-	Can you think of other feature interactions for the graph library (you may also add additional features)? Again, how would you handle them? 
-}
-
-\sectionend
-
-\section{How to Avoid Feature Interactions?}
-
-\input{content/09c-avoidinginteractions}
-
-\lessonslearned{
-	\item reduction of variability
-	\item which features are actually needed?
-	\item documentation of interactions that cannot be avoided
-}{
-	\item[] 
-}{
-	Who checks the compatibility of Lenovo products?
-}
-
-% TODO Thomas: add exam questions here
-
-\input{template/footer}
+\input{content/part1}
+\input{content/part2}
+\input{content/part3}
 
 \end{document}

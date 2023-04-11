@@ -7,107 +7,12 @@
 
 \input{template/lecture}
 
-\subtitle{11. Product-Line Testing}
-\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
-
-% TODO \ifuniversity{ulm}{\setpicture[200]{}}
-\ifuniversity{magdeburg}{\setpicture[110]{ovgu-winter5}\setcopyright{Photo: Hannah Theile (OVGU)}}
+\includeonlylecture{testing}
 
 \begin{document}
 
-\input{template/header}
-
-\begin{frame}{\inserttitle}
-	\lectureseriesoverview[11]
-\end{frame}
-
-\begin{frame}{Recap: Quality Assurance \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}[widths={60},animation=none]
-		%\only<1|handout:0>{\includegraphics[width=\linewidth,page=1]{quality-assurance}}%
-		\only<1|handout:0>{\includegraphics[width=\linewidth,page=8]{quality-assurance}}%
-		\only<2|handout:0>{\includegraphics[width=\linewidth,page=3]{quality-assurance}}%
-		\only<3|handout:0>{\includegraphics[width=\linewidth,page=4]{quality-assurance}}%
-		\only<4|handout:1>{\includegraphics[width=\linewidth,page=5]{quality-assurance}}%
-		\only<5-|handout:0>{\includegraphics[width=\linewidth,page=7]{quality-assurance}}%
-	\mynextcolumn
-		\begin{note}{Lectures on Quality Assurance}
-			how to \emph{avoid} variability bugs (esp. feature interactions) \ldots
-			\begin{itemize}
-				\item<+-> with processes\mysource{\lectureprocess}\\(e.g., domain scoping)
-				\item<+-> with guidelines\mysource{\lectureinteractions}
-			\end{itemize}
-
-			how to \emph{find} variability bugs \ldots
-			\begin{itemize}
-				\item<+-> \emph{statically}\mysource{\lectureanalyses}
-				\item<+-> \emph{dynamically}\mysource{\lecturetesting}\\
-				\begin{itemize}
-					\item<+-> challenges of product-line testing in Part~\parta
-					\item<+-> black-box testing in Part~\partb
-					\item<+-> white-box testing in Part~\partc
-				\end{itemize}
-			\end{itemize}
-		\end{note}
-	\end{mycolumns}
-\end{frame}
-
-% TODO add xkcd from SWT? \widexkcd{974} % salt 12s
-
-\section{Challenges of Product-Line Testing}
-% TODO \section{Product-Line Testing in Practice} practice part still missing
-
-\input{content/11a-practice}
-
-\lessonslearned{
-	\item recap on software testing
-	\item testing all configurations
-	\item testing one configuration
-	\item sample-based testing
-}{
-	\item \samplingsurvey: overview on sampling literature
-	\item \samplingsurveydatabase: database on sampling algorithms and evaluations
-}{
-	Recap on feature interactions: What are examples of interactions that cannot be detected statically (cf.\ \lectureanalyses) and could be missed when testing a single configuration only?
-}
-
-\sectionend
-
-\section{Combinatorial Interaction Testing}
-
-\input{content/11b-cit}
-
-\lessonslearned{
-	\item recap on black-box testing and test-case design
-	\item combinatorial interation testing: pairwise testing, t-wise testing
-	\item efficiency: number of configurations, time to compute sample
-	\item effectiveness: percentage of found defects
-}{
-	\item \icpl: most popular algorithm for t-wise 
-}{
-	Why is it hard to find a good trade-off between efficiency and effectiveness?
-}
-
-\sectionend
-
-\section{Solution-Space Sampling}
-
-\input{content/11c-solutionspace}
-
-\lessonslearned{
-	\item recap on white-box testing and coverage criteria
-	\item coverage of ifdef blocks
-	\item t-wise presence condition coverage
-	\item overview on techniques, coverage criteria, input data for sampling
-}{
-	\item \tartlerconfigurationcoverage: covering every ifdef block (but not their absence)
-	\item \krieterpresenceconditioncoverage: solution-space sampling as discussed in this part
-	\item \hentzesolutionspacesampling: translation of presence conditions into feature model + reuse of problem-space sampling
-}{
-	Does the order of configurations matter during testing?\mysource{\alhajjajiprioritization}
-}
-
-% TODO Thomas: add exam questions here
-
-\input{template/footer}
+\input{content/part1}
+\input{content/part2}
+\input{content/part3}
 
 \end{document}

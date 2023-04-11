@@ -1,7 +1,324 @@
 % TODO L09 FEATURE INTERACTIONS
 
+\ifuniversity{ulm}{\setpicture[350]{may21-west2}}
+\ifuniversity{magdeburg}{\setpicture[35]{ovgu-winter3}\setcopyright{Photo: Hannah Theile (OVGU)}}
+
+\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
+\lecture{Feature Interactions}{interactions}
+
+% TODO move to Lecture 10?
+%\subsection{Recap: Software Quality}
+%\begin{frame}{\myframetitle} % caution: slide copied from testing lecture
+%	\rightorleft{
+%		\mydefinition{Quality \mysource{\ludewiglichter}}{Quality is the entirety of properties and characteristics of a product or process that indicate adequacy with respect to given requirements.}
+%		\mydefinition{Quality Assurance \mysource{\ludewiglichter}}{Quality assurance \deutsch{Qualitätssicherung} are all activities with the goal to improve the quality.}
+%	}{
+%		\vspace{-12mm}
+%		\centering
+%		\pic[width=\linewidth,trim=0 240 0 300,clip]{andy-hunt}
+%		\vspace{-7mm}
+%		
+%		\mynote{Andy Hunt \mysource{\thepragmaticprogrammer}}{\mycite{No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first.}}
+%		% co-authored The Pragmatic Programmer, known for the Agile Manifesto
+%	}
+%\end{frame}
+
+\section{What is a Feature Interaction?}
+\input{content/09a-interactions}
+\lessonslearned{
+	\item feature interaction and feature-interaction problem
+	\item wanted/unwanted, static/dynamic, one-wise/pair-wise/higher-order
+	\item examples: customization of clothes, Android apps, toaster, preprocessor code, runtime variability, Variability Bug Database
+}{
+	\item \fospl\ Chapter 9 \mypages{213--217}
+}{
+	Do you know further examples of feature interactions?
+}
+
+\section{How to Handle Feature Interactions?}
+\input{content/09b-handlinginteractions}
+\lessonslearned{
+	\item Adaptation of feature model to avoid (undesired) feature interactions. 
+	\item Strategies to implement coordination code for known feature interactions.
+	\item Discussion of the strenghts and weaknesses of each of the strategies.
+}{
+	\item Kästner et al.: On the impact of the optional feature problem: Analysis and case studies. SPLC 2009.
+	\item \fospl, Chapter 9
+}{
+	Looking back at our graph library and the feature interaction between $ShortestPath$ and $Weighted$. Which strategy would you choose to handle this interaction? Why?
+	
+	Can you think of other feature interactions for the graph library (you may also add additional features)? Again, how would you handle them? 
+}
+
+\section{How to Avoid Feature Interactions?}
+\input{content/09c-avoidinginteractions}
+\lessonslearned{
+	\item reduction of variability
+	\item which features are actually needed?
+	\item documentation of interactions that cannot be avoided
+}{
+	\item[] 
+}{
+	Who checks the compatibility of Lenovo products?
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}
+
 % TODO L10 PRODUCT-LINE ANALYSES
+
+\ifuniversity{ulm}{\setpicture[225]{may21-west4}}
+\ifuniversity{magdeburg}{\setpicture[70]{ovgu-winter4}\setcopyright{Photo: Jana Dünnhaupt (OVGU)}}
+
+\author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
+\lecture{Product-Line Analyses}{analyses}
+
+\section{Analysis Strategies}
+\input{content/10a-strategies}
+\lessonslearned{
+	\item product-line analyses are needed for quality assurance
+	\item \emph{product-based}: simple, but does not scale
+	\item \emph{feature-based}: fairly simple, but misses interactions
+	\item \emph{family-based}: efficient, but most complex
+}{
+	\item \fospl, Chapter 10
+	\item \analysisstrategies
+}{
+	Can you imagine other analysis strategies than product-based, feature-based, and family-based?
+	How could such strategies look like?
+}
+
+\section{Analyzing Feature Mappings}
+\input{content/10b-mapping}
+\lessonslearned{
+	\item feature-mapping analyses alleviate the impact of code scattering and tangling
+	\item they are usually not necessary when there is good feature traceability
+	\item they cannot detect bugs in the actual code
+}{
+	\item \fospl, Chapter 10
+}{
+	Above, we assumed that we know all presence conditions already.
+	How can we automatically extract presence conditions from code that uses the C preprocessor?
+	What problems might occur?
+	% - there might be #includes that contain macro definitions
+	% - there might be macros to be expanded, which can get complex quickly
+	% - it is not always trivial to distinguish feature macros from compiler- or system-specific macros
+	% - there is #undef (or re-#define), which opens another can of worms
+	% see works on TypeChef (C. Kästner), SuperC (P. Gazillo), FeatureCoPP (K. Ludwig), PCLocator (E. Kuiter)
+}
+
+\section{Analyzing Variable Code}
+\input{content/10c-code}
+\lessonslearned{
+	\item with family-based analyses of variable code, we can analyze (non-)functional properties of all products at once
+	\item type checking all products at once is possible for product lines up to medium size
+	\item for huge product lines (e.g., Linux), it is infeasible
+}{
+	\item \fospl, Chapter 10
+	\item \typechef
+}{
+	Suppose you have a preprocessor-based product line (with \texttt{\#ifdef}'s).
+	If you could turn it into a single, large runtime-variable product (with \texttt{if}'s), you could use an off-the-shelf compiler to find any type error in any product.
+
+	Is this possible? What problems might occur?
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}
 
 % TODO L11 PRODUCT-LINE TESTING
 
+% TODO \ifuniversity{ulm}{\setpicture[200]{}}
+\ifuniversity{magdeburg}{\setpicture[110]{ovgu-winter5}\setcopyright{Photo: Hannah Theile (OVGU)}}
+
+\author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
+\lecture{Product-Line Testing}{testing}
+
+\begin{frame}{Recap: Quality Assurance \mytitlesource{\ludewiglichter}}
+	\begin{mycolumns}[widths={60},animation=none]
+		%\only<1|handout:0>{\includegraphics[width=\linewidth,page=1]{quality-assurance}}%
+		\only<1|handout:0>{\includegraphics[width=\linewidth,page=8]{quality-assurance}}%
+		\only<2|handout:0>{\includegraphics[width=\linewidth,page=3]{quality-assurance}}%
+		\only<3|handout:0>{\includegraphics[width=\linewidth,page=4]{quality-assurance}}%
+		\only<4|handout:1>{\includegraphics[width=\linewidth,page=5]{quality-assurance}}%
+		\only<5-|handout:0>{\includegraphics[width=\linewidth,page=7]{quality-assurance}}%
+	\mynextcolumn
+		\begin{note}{Lectures on Quality Assurance}
+			how to \emph{avoid} variability bugs (esp. feature interactions) \ldots
+			\begin{itemize}
+				\item<+-> with processes\mysource{\lectureprocess}\\(e.g., domain scoping)
+				\item<+-> with guidelines\mysource{\lectureinteractions}
+			\end{itemize}
+
+			how to \emph{find} variability bugs \ldots
+			\begin{itemize}
+				\item<+-> \emph{statically}\mysource{\lectureanalyses}
+				\item<+-> \emph{dynamically}\mysource{\lecturetesting}\\
+				\begin{itemize}
+					\item<+-> challenges of product-line testing in Part~\parta
+					\item<+-> black-box testing in Part~\partb
+					\item<+-> white-box testing in Part~\partc
+				\end{itemize}
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
+
+% TODO add xkcd from SWT? \widexkcd{974} % salt 12s
+
+\section{Challenges of Product-Line Testing}
+% TODO \section{Product-Line Testing in Practice} practice part still missing
+\input{content/11a-practice}
+\lessonslearned{
+	\item recap on software testing
+	\item testing all configurations
+	\item testing one configuration
+	\item sample-based testing
+}{
+	\item \samplingsurvey: overview on sampling literature
+	\item \samplingsurveydatabase: database on sampling algorithms and evaluations
+}{
+	Recap on feature interactions: What are examples of interactions that cannot be detected statically (cf.\ \lectureanalyses) and could be missed when testing a single configuration only?
+}
+
+\section{Combinatorial Interaction Testing}
+\input{content/11b-cit}
+\lessonslearned{
+	\item recap on black-box testing and test-case design
+	\item combinatorial interation testing: pairwise testing, t-wise testing
+	\item efficiency: number of configurations, time to compute sample
+	\item effectiveness: percentage of found defects
+}{
+	\item \icpl: most popular algorithm for t-wise 
+}{
+	Why is it hard to find a good trade-off between efficiency and effectiveness?
+}
+
+\section{Solution-Space Sampling}
+\input{content/11c-solutionspace}
+\lessonslearned{
+	\item recap on white-box testing and coverage criteria
+	\item coverage of ifdef blocks
+	\item t-wise presence condition coverage
+	\item overview on techniques, coverage criteria, input data for sampling
+}{
+	\item \tartlerconfigurationcoverage: covering every ifdef block (but not their absence)
+	\item \krieterpresenceconditioncoverage: solution-space sampling as discussed in this part
+	\item \hentzesolutionspacesampling: translation of presence conditions into feature model + reuse of problem-space sampling
+}{
+	Does the order of configurations matter during testing?\mysource{\alhajjajiprioritization}
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}
+
 % TODO L12 EVOLUTION AND MAINTENANCE
+
+% TODO numbering does not work this way anymore: \ifuniversity{ulm}{\subtitle{13. Evolution and Maintenance}}
+% TODO \setpicture[200]{}
+
+\author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
+\lecture{Evolution and Maintenance}{evonance}
+
+\section{Evolution of Feature Models}
+% what is evolution? what is maintenance?
+% why is evolution important? "the world is running on software. changing the world means changing the software." - jimmy koppel
+\subsection{Growing Configuration Spaces}
+% plots showing the increase in features/constraints/configurations
+\subsection{Classification of Changes}
+% refactoring, specialization, generalization
+% examples for each type + advantages from this knowledge
+% Venn diagram
+\begin{frame}{\insertsubsection}
+	\begin{mycolumns}
+		\href{https://github.com/SoftVarE-Group/Papers/blob/main/2009/2009-ICSE-Thuem.pdf}{\includegraphics[width=\linewidth,page=3,trim=70 200 330 460,clip]{2009/2009-ICSE-Thuem}}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+% TODO add examples from spl09.tex (authored by Thomas Thuem)
+\subsection{Automated Classification}
+% how to use a SAT solver for this
+% derive formulas, from tautology to SAT query (mention laws on equivalent feature models?)
+% only mention: added/removed features, abstract features, scalability issues
+\subsection{Frequency of Feature Model Changes}
+% in comparison to number of commits, how many commits change feature model, mapping, code (Hildesheim? Pett?)
+\subsection{Outlook on Co-Evolution}
+% outlook on related topics: co-evolution patterns (Fever, refinement theory), refactorings including artifacts, co-evolution of feature model and configurations (GuyDance)
+% Sampling/Analysis/Testing under Evolution?
+% Continuous Integration for Product Lines?
+%\input{content/missing}
+\lessonslearned{
+	\item \ldots
+}{
+	\item \ldots
+	% TODO literature presenting laws to translate tree constraints into cross-tree constraints and back https://www.jucs.org/jucs_14_21/algebraic_laws_for_feature/jucs_14_21_3573_3591_gheyi.pdf
+}{
+	\ldots
+}
+
+\section{Reverse/Reengineering of Feature Models}
+\subsection{Reengineering and Reverse Engineering}
+\subsection{Recap: Adoption Strategies}
+\subsection{Reverse Engineering from Configurations}
+\subsection{Reverse Engineering from Formulas}
+\subsection{Outlook on Reverse Engineering Solution Space}
+% Migration to New Implementation Technique?
+% some transitions can be automated, others not, use for taxonomy in continuum between clone-and-own and product lines?
+% TODO managed clone-and-own? VariantSync?
+%\input{content/missing}
+\lessonslearned{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\ldots
+}
+
+\section{Term Summary and Outlook}
+\subsection{Lecture Summary}
+\subsection{Other Courses?}
+\subsection{Open Research Questions?}
+\subsection{Open Thesis Topics?}
+%\input{content/missing}
+\lessonslearned{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\ldots
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}
