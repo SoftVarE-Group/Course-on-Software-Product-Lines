@@ -15,15 +15,40 @@
 	\contentoverview
 
 	\mode<beamer>{
+		\addtocounter{framenumber}{-1}
 		\ifdefined\thepicture
 			\maketitle[\thepicture][\thepictureoffset]
 		\else
 			\maketitle[]
 		\fi
-		\addtocounter{framenumber}{-2}
 
-		\begin{frame}{\inserttitle} % TODO avoid this page for first lecture? avoid this page in handout?
+		\addtocounter{framenumber}{-1}
+		\begin{frame}{\inserttitle} % TODO avoid this page for first lecture?
 			\lectureseriesoverview[\insertlecturenumber]
+		\end{frame}
+
+		\addtocounter{framenumber}{-1}
+		\begin{frame}{\insertsubtitle}
+	        \vfill
+			\setbeamerfont{section in toc}{size=\LARGE}
+			\tableofcontents[hideallsubsections]
+		\end{frame}
+	}
+}
+
+\AtBeginSection{
+	\mode<handout>{
+	    \begin{frame}{\insertsubtitle}
+	        \linespread{.5}
+	        \vfill
+	        \tableofcontents[currentsection,hideothersubsections]
+	    \end{frame}
+	}
+	\mode<beamer>{
+		\begin{frame}{\insertsubtitle}
+	        \vfill
+			\setbeamerfont{section in toc}{size=\LARGE}
+			\tableofcontents[currentsection,hideallsubsections]
 		\end{frame}
 	}
 }

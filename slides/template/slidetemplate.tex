@@ -10,22 +10,6 @@
 \newcommand{\pic}[2][]{%
 	\IfFileExists{#2.txt}{\hreffile{#2.txt}}{}{\includegraphics[#1]{#2}}}
 
-\ifsectiontitleslide
-\AtBeginSection{
-    \ifsectionoverview
-    \begin{frame}%{\thesection.~\insertsection}
-        \linespread{.5}
-        \vfill
-        \tableofcontents[currentsection,hideothersubsections]
-    \end{frame}
-    \else
-    \begin{frame}
-        \usebeamerfont{section title}\textbf{\thesection.~\insertsection}
-    \end{frame}
-    \fi
-}
-\fi
-
 % TODO hack to switch the lecture title with its subtitle on the title slide + add photo copyright notice
 \makeatletter
 \setbeamercolor{copyrightbox}{fg=white}
