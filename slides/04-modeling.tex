@@ -5,99 +5,13 @@
 ]{beamer}
 \def\university{} % < do not remove this comment, it is used by the Makefile >
 
-\input{template/lecture}
+\input{template/lecture-ng}
 
-\subtitle{4. Feature Modeling}
-\author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
-
-\ifuniversity{ulm}{\setpicture[200]{may21-south}}
-\ifuniversity{magdeburg}{\setpicture[50]{ovgu-autumn3}\setcopyright{Photo: Hannah Theile (OVGU)}}
+\includeonlylecture{modeling}
 
 \begin{document}
 
-\input{template/header}
-
-\begin{frame}{\inserttitle}
-	\lectureseriesoverview[4]
-\end{frame}
-
-\section{Feature Models}
-
-\input{content/04a-featuremodels}
-
-\lessonslearned{
-	\item features, dependencies between features, and configurations
-	\item feature models: abstract and concrete features, tree and cross-tree constraints
-	\item tree constraints: optional, mandatory, or group, alternative group
-}{
-	\item \fospl, Section~2.3 Feature Modeling
-	\item Thorsten Berger et al. (2013): \href{https://doi.org/10.1145/2430502.2430513}{A Survey of Variability Modeling in Industrial Practice}
-	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
-}{
-	\begin{itemize}
-		\item sketch a feature model with features $A, B, C, \ldots$ that has 7 valid configurations (pen and paper preferred)
-		\item discuss in groups whether your solutions are syntactically correct and have the right number of configurations
-	\end{itemize}
-
-	\uploadpractice
-}
-
-\sectionend
-
-\section{Transforming Feature Models}
-
-\input{content/04b-transformations}
-
-\lessonslearned{
-	\item to understand large configuration spaces, we need formal semantics and machine-readable representations
-	\item propositional formulas satisfy many (though not all) needs for such a representation
-}{
-	\item Don Batory (2005): \href{https://doi.org/10.1007/11554844_3}{Feature Models, Grammars, and Propositional Formulas}
-	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
-}{
-	Translate the following feature diagram into a formula and then into CNF:
-
-	\centering
-	\featureDiagram{Root[A,optional[C,or][D]][B,mandatory[E,alternative][F]]}
-
-	$D \pimplies E$
-
-	\uploadpractice
-}
-
-\sectionend
-
-\section{Analyzing Feature Models}
-
-\input{content/04c-analyses}
-
-\lessonslearned{
-	\item with solvers, we can build reliable configurators for product lines
-	\item SAT-based analyses: void feature model, core/dead features, decision propagation
-	\item \ssat{}-based analyses: variability factor, feature commonality
-}{
-	\item \fospl, Section~10.1 Analysis of Feature Models
-	\item David Benavides et al. (2010): \href{https://doi.org/10.1016/j.is.2010.01.001}{Automated Analysis of Feature Models 20 Years Later: A Literature Review}
-	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}
-}{
-	Consider this feature diagram:
-
-	\begin{center}
-		\featureDiagram{Root[A,optional[C,or][D]][B,mandatory[E,alternative][F]]}
-	\end{center}
-
-	How can you \ldots
-	\begin{itemize}
-		\item make this feature model void
-		\item make exactly one feature dead
-	\end{itemize}
-	\ldots{} by adding one constraint, respectively?
-
-	Name a partial configuration for which only two products exist.
-}
-
-% TODO Thomas: add exam questions here
-
-\input{template/footer}
+\input{content/part1}
+\input{content/part2}
 
 \end{document}
