@@ -5,82 +5,13 @@
 ]{beamer}
 \def\university{} % < do not remove this comment, it is used by the Makefile >
 
-\input{template/lecture}
+\input{template/lecture-ng}
 
-\subtitle{8. Development Process}
-\author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
-
-\ifuniversity{ulm}{\setpicture[250]{may21-west1}}
-\ifuniversity{magdeburg}{\setpicture[15]{ovgu-winter2}\setcopyright{Photo: Hannah Theile (OVGU)}}
+\includeonlylecture{process}
 
 \begin{document}
 
-\input{template/header}
-
-\begin{frame}{\inserttitle}
-	\lectureseriesoverview[8]
-\end{frame}
-
-\section{Process Model for Product Lines}
-
-\input{content/08a-domainengineering}
-
-\lessonslearned{
-	\item domain engineering: domain analysis, domain design, domain implementation, domain testing
-	\item application engineering: application analysis, application design, application implementation, application testing
-	\item domain scoping, product-line requirements, product requirements
-}{
-	\item \fospl % TODO which chapters?
-	\item \sple % TODO which chapters?
-}{
-	\begin{enumerate}
-		\item Where to spend more resources in domain engineering or in application engineering?
-		\item What should not be done in domain engineering?
-	\end{enumerate}
-}
-
-\sectionend
-
-\section{Implementation of Product Lines}
-
-\input{content/08b-techniques}
-
-\lessonslearned{
-	\item eight implementation techniques
-	\item three strategies for runtime variability / clone-and-own
-	\item two strategies for conditional compilation
-	\item choice based on four criteria, but there are more
-}{
-	\item[] \fospl % TODO which chapters?
-}{
-	\begin{enumerate}
-		\item Which techniques enable interfaces between features?
-		\item Which techniques require most code clones?
-		\item Which techniques can modularize cross-cutting concerns?
-	\end{enumerate}
-%	\ldots
-%	
-%	fill the table: one row for each room, discuss classification in your group
-}
-
-\sectionend
-
-\section{Adoption of Product Lines}
-
-\input{content/08c-adoption}
-
-\lessonslearned{
-	\item adoption strategies to introduce a product line
-	\item proactive, extractive, reactive
-	\item all applied in practice
-}{
-	\item[] \fospl\mypages{39--42}
-}{
-	Are combinations of the adoption strategies feasible?
-}
-
-% TODO Thomas: add exam questions here
-
-\input{template/footer}
+\input{content/part1}
+\input{content/part2}
 
 \end{document}

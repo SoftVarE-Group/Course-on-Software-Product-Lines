@@ -5,93 +5,13 @@
 ]{beamer}
 \def\university{} % < do not remove this comment, it is used by the Makefile >
 
-\input{template/lecture}
+\input{template/lecture-ng}
 
-\subtitle{5. Conditional Compilation}
-\author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
-
-\ifuniversity{ulm}{\setpicture[75]{may21-north2}}
-\ifuniversity{magdeburg}{\setpicture[300]{magdeburg-river}}
+\includeonlylecture{conditional}
 
 \begin{document}
 
-\input{template/header}
-
-\begin{frame}{\inserttitle}
-	\lectureseriesoverview[5]
-\end{frame}
-
-\section{Features with Build Systems}
-
-\input{content/05a-buildsystems}
-
-\lessonslearned{
-	\item ad-hoc variability is lacking
-	\item features with build systems allow for automated generation of products and free feature selection
-	\item build systems include entire files, not lines or chunks
-}{
-	\item \fospl\mychapter{5.2.1}\mypages{105--106}\\--- brief introduction to variability in build scripts
-	% TODO add literature? van der Storm T (2004).Variability and component composition. In: Proc. Int’l Conf. Software Reuse (ICSR) Lecture notes in computer science, vol 3107. Springer, pp 157–166
-	\item \fospl\mychapter{5.2.3}\mypages{107--108}\\--- variability in build scripts of the Linux kernel
-	% TODO add literature? Berger T, She S, Czarnecki K, Wa ̨sowski A (2010a) Feature-to-code mapping in two large product lines. In: Proc. Int’l Software Product Line Conference (SPLC). Lecture Notes in Computer Science, vol 6287. Springer, pp 498–499
-	% TODO add literature? Dietrich C, Tartler R, Schröder-Preikschat W, Lohmann D (2012b) Understanding Linux feature distribution. In: Proc. AOSD Workshop on Modularity In Systems Software (MISS). ACM Press, pp 15–20
-	% TODO add work on KernelHaven
-}{
-	Choose a build system and sketch how it may be used to implement this SPL (file structure and build script):
-
-	\begin{center}
-		\small\featureDiagramConfigurableDatabase
-	\end{center}
-
-	\uploadpractice
-}
-
-\sectionend
-
-\section{Features with Preprocessors}
-
-\input{content/05b-preprocessors}
-
-\lessonslearned{
-	\item granularity of variability at file level is not sufficient
-	\item preprocessors facilitate fine-grained variability within files
-	\item a widely applied preprocessor is the C Preprocessor
-	\item industrial systems often combine preprocessors and build systems for features
-}{
-	\item \fospl, Section~5.3 Preprocessors
-}{
-	\begin{enumerate}
-		\item Antenna performs an in-place transformation on implementation artifacts.
-		What might be the benefits of using an in-place approach? Do you see any drawbacks?
-		\item The preprocessors we have seen so far are also called lexical preprocessors.
-		What is emphasized by the notion of lexical and can you think of other preprocessing approaches?
-		\item The literature on software product lines has coined the term ``\#ifdef hell''.
-		What could be meant with this?
-	\end{enumerate}
-}
-
-\sectionend
-
-\section{Feature Traceability}
-
-\input{content/05c-traceability}
-
-\lessonslearned{
-	\item preprocessor variability suffers from scattering and tangling
-	\item feature traceability can be established with tool support (e.g., Feature Commander)
-	\item virtual separation of concerns is an alternative to preprocessors (e.g., CIDE)
-}{
-	\item \fospl, Section~3.2.2 Feature Traceability
-	\item \fospl, Section~7 Advanced, Tool-Driven Variability Mechanisms
-}{
-	\begin{enumerate}
-		\item Why is it beneficial to have feature traceability even for single systems?
-		\item Using disciplined annotations, only optional nodes in the abstract syntax tree can be annotated (i.e., assigned to features); if we remove them, no syntax error occurs. What are examples of optional and non-optional (i.e., mandatory) types of nodes in Java?
-	\end{enumerate}
-}
-
-% TODO Thomas: add exam questions here
-
-\input{template/footer}
+\input{content/part1}
+\input{content/part2}
 
 \end{document}

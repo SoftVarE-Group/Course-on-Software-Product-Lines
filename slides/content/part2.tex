@@ -1,4 +1,4 @@
-% TODO FEATURE MODELING
+% TODO L04 FEATURE MODELING
 
 \ifuniversity{ulm}{\setpicture[200]{may21-south}}
 \ifuniversity{magdeburg}{\setpicture[50]{ovgu-autumn3}\setcopyright{Photo: Hannah Theile (OVGU)}}
@@ -82,10 +82,299 @@
 
 \input{template/footer}
 
-% TODO CONDITIONAL COMPILATION
+% TODO L05 CONDITIONAL COMPILATION
 
-% TODO MODULAR FEATURES
+\ifuniversity{ulm}{\setpicture[75]{may21-north2}}
+\ifuniversity{magdeburg}{\setpicture[300]{magdeburg-river}}
 
-% TODO LANGUAGES FOR FEATURES
+\author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
+\lecture{Conditional Compilation}{conditional}
 
-% TODO DEVELOPMENT PROCESS
+\section{Features with Build Systems}
+\input{content/05a-buildsystems}
+\lessonslearned{
+	\item ad-hoc variability is lacking
+	\item features with build systems allow for automated generation of products and free feature selection
+	\item build systems include entire files, not lines or chunks
+}{
+	\item \fospl\mychapter{5.2.1}\mypages{105--106}\\--- brief introduction to variability in build scripts
+	% TODO add literature? van der Storm T (2004).Variability and component composition. In: Proc. Int’l Conf. Software Reuse (ICSR) Lecture notes in computer science, vol 3107. Springer, pp 157–166
+	\item \fospl\mychapter{5.2.3}\mypages{107--108}\\--- variability in build scripts of the Linux kernel
+	% TODO add literature? Berger T, She S, Czarnecki K, Wa ̨sowski A (2010a) Feature-to-code mapping in two large product lines. In: Proc. Int’l Software Product Line Conference (SPLC). Lecture Notes in Computer Science, vol 6287. Springer, pp 498–499
+	% TODO add literature? Dietrich C, Tartler R, Schröder-Preikschat W, Lohmann D (2012b) Understanding Linux feature distribution. In: Proc. AOSD Workshop on Modularity In Systems Software (MISS). ACM Press, pp 15–20
+	% TODO add work on KernelHaven
+}{
+	Choose a build system and sketch how it may be used to implement this SPL (file structure and build script):
+
+	\begin{center}
+		\small\featureDiagramConfigurableDatabase
+	\end{center}
+
+	\uploadpractice
+}
+
+\section{Features with Preprocessors}
+\input{content/05b-preprocessors}
+\lessonslearned{
+	\item granularity of variability at file level is not sufficient
+	\item preprocessors facilitate fine-grained variability within files
+	\item a widely applied preprocessor is the C Preprocessor
+	\item industrial systems often combine preprocessors and build systems for features
+}{
+	\item \fospl, Section~5.3 Preprocessors
+}{
+	\begin{enumerate}
+		\item Antenna performs an in-place transformation on implementation artifacts.
+		What might be the benefits of using an in-place approach? Do you see any drawbacks?
+		\item The preprocessors we have seen so far are also called lexical preprocessors.
+		What is emphasized by the notion of lexical and can you think of other preprocessing approaches?
+		\item The literature on software product lines has coined the term ``\#ifdef hell''.
+		What could be meant with this?
+	\end{enumerate}
+}
+
+\section{Feature Traceability}
+\input{content/05c-traceability}
+\lessonslearned{
+	\item preprocessor variability suffers from scattering and tangling
+	\item feature traceability can be established with tool support (e.g., Feature Commander)
+	\item virtual separation of concerns is an alternative to preprocessors (e.g., CIDE)
+}{
+	\item \fospl, Section~3.2.2 Feature Traceability
+	\item \fospl, Section~7 Advanced, Tool-Driven Variability Mechanisms
+}{
+	\begin{enumerate}
+		\item Why is it beneficial to have feature traceability even for single systems?
+		\item Using disciplined annotations, only optional nodes in the abstract syntax tree can be annotated (i.e., assigned to features); if we remove them, no syntax error occurs. What are examples of optional and non-optional (i.e., mandatory) types of nodes in Java?
+	\end{enumerate}
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}
+
+% TODO L06 MODULAR FEATURES
+
+\ifuniversity{ulm}{\setpicture[250]{may21-q37}}
+\ifuniversity{magdeburg}{\setpicture[35]{ovgu-autumn4}\setcopyright{Photo: Hannah Theile (OVGU)}}
+
+\author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
+\lecture{Modular Features}{modular}
+
+\section{Components}
+\input{content/06a-components}
+\lessonslearned{
+	\item Modularity = information hiding and data encapsulation
+	\item Components foster a modular software architecture and design
+	\item Reuse within and beyond product lines
+	\item No automated product derivation, glue code is necessary
+}{
+	\item \szyperski
+	\item \fospl, Chapter 4.4
+}{
+	\begin{itemize}
+		\item Consider the feature traceability problem in a component-based implementation. How would you localize a feature? Does it still suffer from scattering, tangling and replication? 
+		\item We have introduced a simple color component which we reused in our graph implementation. Could we consider the graph library itself as another component? What about its reusability?
+		\item How can product-line engineering help to find the right trade-offs regarding the library scaling problem?
+	\end{itemize}
+}
+
+\section{Services and Microservices}
+\input{content/06b-services}
+\lessonslearned{
+	\item Services are another kind of module implemented and operated independently of each other 
+	\item Microservices have a clear philosophy regarding their size, driven by organizational constraints
+	\item Reuse within and beyond product lines
+	\item No automated product derivation, orchestration or choreography is necessary
+}{
+	\item \fospl, Chapter 4.4
+}{
+	\begin{itemize}
+		\item We have talked a lot about promises of microservices. Do you also see any drawbacks?
+		\item In a component-based product-line implementation, practitioners often rely on clone-and-own for glue code. How could we handle variability in service orchestrations?
+	\end{itemize}
+}
+
+\section{Frameworks with Plug-Ins}
+\input{content/06c-frameworks}
+\lessonslearned{
+	\item A framework is open to extension by integrating plug-ins at explicit hot spots.
+	\item The framework takes full control over all plug-ins (load-time and run-time).
+	\item Enables full automation but requires preplanning effort.
+}{
+	\item \fospl, Chapter 4.3
+}{
+	\begin{itemize}
+		\item Remember two fundamental principles in object-oriented programming; how do they relate to frameworks with plug-ins?
+		\begin{itemize}
+			\item Interface Segregation Principle: ``Clients should not be forced to depend upon interfaces that they do not use''.
+			\item Open-Closed Principle: ``Classes should be open for extension but closed for modification''.
+		\end{itemize}
+		\item In general: Where are the limitations of a modular approach?
+	\end{itemize}
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}
+
+% TODO L07 LANGUAGES FOR FEATURES
+
+\ifuniversity{ulm}{\setpicture[325]{may21-q47}}
+\ifuniversity{magdeburg}{\setpicture[100]{ovgu-winter1}\setcopyright{Photo: Hannah Theile (OVGU)}}
+
+\author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
+\lecture{Languages for Features}{languages}
+
+\section{Limits of Object Orientation}
+\input{content/07a-limitations-oop}
+\lessonslearned{
+	\item Important problems of previous approaches
+	\begin{itemize}
+		\item Inflexible inheritance hierarchies (especially with runtime variability, frameworks, components, services)
+		\item Feature traceability (especially with runtime variability, branches, build systems, preprocessors)	
+		\item Preplanning problem (esp. with frameworks, components, services)
+		\item Cross-cutting issues (esp. with frameworks, components, services)
+	\end{itemize}
+}{
+	\item s.\ previous lectures
+}{
+	Looking at our graph implementation serving as running example throughout the course: 
+	\begin{itemize}
+		\item Which concern is the dominant one regarding modular decomposition? %data structures
+		\item What are crosscutting concerns? %color, weight, ...
+		\item Could you rewrite the design to come up with a different decomposition?
+	\end{itemize}
+}
+
+\section{Feature-Oriented Programming}
+\input{content/07b-fop}
+\lessonslearned{
+	\item Idea: Mixin-based inheritance getting rid of the traditional limitations of inflexible inheritance hierarchies.
+	\item Supports encapsulation of (cross-cutting) concerns and feature traceability by design.
+	\item Largely academic approach not yet adopted in industry.
+}{
+	\item Batory et al.: Scaling Step-Wise Refinement. IEEE Transactions on Software Engineering, 30(6), 2004.
+	\item Apel et al.: Language-Independent and Automated Software Composition: The FeatureHouse Experience. IEEE TSE, 39(1), 2013.
+	\item \fospl, Chapter 6.1
+	\item \featureide, Part 4
+}{
+	\begin{itemize}
+		\item Why is class refinement in FOP different from inheritance in OOP, although it looks very similar?
+		\item To some extent, FOP can be considered as static counterpart to the Decorator design pattern in OOP. Why?
+		\item Consider the composition operator in FOP and the merge operator of traditional version control systems. Which are the major differences?
+		\item In which sense does FOP violate the classical principles of information hiding and encapsulation of OOP? What are the consequences?
+		\item What might be the reasons that FOP has not yet been widely adopted in practice?
+	\end{itemize}
+}
+
+\section{Aspect-Oriented Programming}
+\input{content/07c-aop}
+\lessonslearned{
+	\item Idea: "`In programs P, whenever condition C arises, perform action A"'.
+	\item AspectJ: Sophisticated joint-point model and powerful language to quantify over join points (through pointcuts).
+	\item Supports encapsulation of (cross-cutting) concerns and feature traceability by design.
+	\item Practical acceptance limited due to fragile-pointcut problem.	
+}{
+	\item Kiczales et al: Aspect-oriented programming. Proc. Europ. Conf. Object-Oriented Programming. 1997
+	\item Filman et al.: Aspect-oriented software development. Addison-Wesley. 2005
+	\item \fospl, Chapter 6.2
+}{
+	\begin{itemize}
+		\item Which features particularly benefit from the concept of quantification?
+		\item What similarities and differences do you see between FOP and AOP?
+		\item To what extent can FOP and AOP be combined profitably?
+	\end{itemize}
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}
+
+% TODO L08 DEVELOPMENT PROCESS
+
+\ifuniversity{ulm}{\setpicture[250]{may21-west1}}
+\ifuniversity{magdeburg}{\setpicture[15]{ovgu-winter2}\setcopyright{Photo: Hannah Theile (OVGU)}}
+
+\author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
+\lecture{Development Process}{process}
+
+\section{Process Model for Product Lines}
+\input{content/08a-domainengineering}
+\lessonslearned{
+	\item domain engineering: domain analysis, domain design, domain implementation, domain testing
+	\item application engineering: application analysis, application design, application implementation, application testing
+	\item domain scoping, product-line requirements, product requirements
+}{
+	\item \fospl % TODO which chapters?
+	\item \sple % TODO which chapters?
+}{
+	\begin{enumerate}
+		\item Where to spend more resources in domain engineering or in application engineering?
+		\item What should not be done in domain engineering?
+	\end{enumerate}
+}
+
+\section{Implementation of Product Lines}
+\input{content/08b-techniques}
+\lessonslearned{
+	\item eight implementation techniques
+	\item three strategies for runtime variability / clone-and-own
+	\item two strategies for conditional compilation
+	\item choice based on four criteria, but there are more
+}{
+	\item[] \fospl % TODO which chapters?
+}{
+	\begin{enumerate}
+		\item Which techniques enable interfaces between features?
+		\item Which techniques require most code clones?
+		\item Which techniques can modularize cross-cutting concerns?
+	\end{enumerate}
+%	\ldots
+%	
+%	fill the table: one row for each room, discuss classification in your group
+}
+
+\section{Adoption of Product Lines}
+\input{content/08c-adoption}
+\lessonslearned{
+	\item adoption strategies to introduce a product line
+	\item proactive, extractive, reactive
+	\item all applied in practice
+}{
+	\item[] \fospl\mypages{39--42}
+}{
+	Are combinations of the adoption strategies feasible?
+}
+
+% TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+
+\input{template/footer}

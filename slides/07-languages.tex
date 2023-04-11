@@ -5,107 +5,13 @@
 ]{beamer}
 \def\university{} % < do not remove this comment, it is used by the Makefile >
 
-\input{template/lecture}
+\input{template/lecture-ng}
 
-\subtitle{7. Languages for Features}
-\author{Timo Kehrer, Thomas Thüm, Elias Kuiter}
-
-\ifuniversity{ulm}{\setpicture[325]{may21-q47}}
-\ifuniversity{magdeburg}{\setpicture[100]{ovgu-winter1}\setcopyright{Photo: Hannah Theile (OVGU)}}
+\includeonlylecture{languages}
 
 \begin{document}
 
-\input{template/header}
-
-\begin{frame}{\inserttitle}
-	\lectureseriesoverview[7]
-\end{frame}
-
-\section{Limits of Object-Orientation}
-% of Classical Programming Paradigms
-% of Teachniques for Application Software
-
-%\subsection{Expression Problem? Preplanning? Tyrany}
-%\subsection{Multiple Inheritance}
-%\subsection{Mixins}
-%\subsection{Design Patterns}
-%\subsection{Default Methods}
-%\subsection{\ldots}
-
-\input{content/07a-limitations-oop}
-
-\lessonslearned{
-	\item Important problems of previous approaches
-	\begin{itemize}
-		\item Inflexible inheritance hierarchies (especially with runtime variability, frameworks, components, services)
-		\item Feature traceability (especially with runtime variability, branches, build systems, preprocessors)	
-		\item Preplanning problem (esp. with frameworks, components, services)
-		\item Cross-cutting issues (esp. with frameworks, components, services)
-	\end{itemize}
-}{
-	\item s.\ previous lectures
-}{
-	Looking at our graph implementation serving as running example throughout the course: 
-	\begin{itemize}
-		\item Which concern is the dominant one regarding modular decomposition? %data structures
-		\item What are crosscutting concerns? %color, weight, ...
-		\item Could you rewrite the design to come up with a different decomposition?
-	\end{itemize}
-}
-
-\sectionend
-
-\section{Feature-Oriented Programming}
-
-%\subsection{Delta-Oriented Programming}
-% see spl07b.tex in old Latex slides (slides created by Thomas Thuem)
-
-\input{content/07b-fop}
-
-\lessonslearned{
-	\item Idea: Mixin-based inheritance getting rid of the traditional limitations of inflexible inheritance hierarchies.
-	\item Supports encapsulation of (cross-cutting) concerns and feature traceability by design.
-	\item Largely academic approach not yet adopted in industry.
-}{
-	\item Batory et al.: Scaling Step-Wise Refinement. IEEE Transactions on Software Engineering, 30(6), 2004.
-	\item Apel et al.: Language-Independent and Automated Software Composition: The FeatureHouse Experience. IEEE TSE, 39(1), 2013.
-	\item \fospl, Chapter 6.1
-	\item \featureide, Part 4
-}{
-	\begin{itemize}
-		\item Why is class refinement in FOP different from inheritance in OOP, although it looks very similar?
-		\item To some extent, FOP can be considered as static counterpart to the Decorator design pattern in OOP. Why?
-		\item Consider the composition operator in FOP and the merge operator of traditional version control systems. Which are the major differences?
-		\item In which sense does FOP violate the classical principles of information hiding and encapsulation of OOP? What are the consequences?
-		\item What might be the reasons that FOP has not yet been widely adopted in practice?
-	\end{itemize}
-}
-
-\sectionend
-
-\section{Aspect-Oriented Programming}
-
-\input{content/07c-aop}
-
-\lessonslearned{
-	\item Idea: "`In programs P, whenever condition C arises, perform action A"'.
-	\item AspectJ: Sophisticated joint-point model and powerful language to quantify over join points (through pointcuts).
-	\item Supports encapsulation of (cross-cutting) concerns and feature traceability by design.
-	\item Practical acceptance limited due to fragile-pointcut problem.	
-}{
-	\item Kiczales et al: Aspect-oriented programming. Proc. Europ. Conf. Object-Oriented Programming. 1997
-	\item Filman et al.: Aspect-oriented software development. Addison-Wesley. 2005
-	\item \fospl, Chapter 6.2
-}{
-	\begin{itemize}
-		\item Which features particularly benefit from the concept of quantification?
-		\item What similarities and differences do you see between FOP and AOP?
-		\item To what extent can FOP and AOP be combined profitably?
-	\end{itemize}
-}
-
-% TODO Thomas: add exam questions here
-
-\input{template/footer}
+\input{content/part1}
+\input{content/part2}
 
 \end{document}
