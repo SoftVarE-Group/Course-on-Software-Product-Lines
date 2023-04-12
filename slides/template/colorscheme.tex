@@ -1,13 +1,18 @@
 % default colors
 % used in standalone pictures and when no university is selected
 \definecolor{black}{HTML}{000000}
-\definecolor{uulmlogoblue}{HTML}{0000AA}
-\definecolor{uulmblue}{HTML}{0000AA}
-\definecolor{uulmaccent}{HTML}{AAAAAA}
-\definecolor{green}{HTML}{00AA00}
-\definecolor{red}{HTML}{AA0000}
-\definecolor{orange}{HTML}{AA5500}
-\definecolor{blue}{HTML}{0000AA}
-\ifdefined\setfaculty
-	\setfaculty{infIngPsy}
+\definecolor{green}{HTML}{33BB33}
+\definecolor{red}{HTML}{BB3333}
+\definecolor{orange}{HTML}{BB6600}
+\definecolor{blue}{HTML}{3333BB}
+\definecolor{uulmaccent}{HTML}{999999}
+
+\definecolor{uulmlogoblue}{named}{blue}
+\definecolor{uulmblue}{named}{blue}
+
+\ifdarkmode
+	\colorlet{green}{green!85!white}
+	\colorlet{red}{red!85!white}
+	\colorlet{orange}{orange!85!white}
+	\colorlet{blue}{blue!85!white}
 \fi
