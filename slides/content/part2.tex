@@ -6,14 +6,14 @@
 \author{Elias Kuiter, Thomas Thüm, Timo Kehrer}
 \lecture{Feature Modeling}{modeling}
 
-\section{Feature Models}
+\section{Feature Models and Configurations}
 \input{content/04a-featuremodels} % this part is required to compile Part b
 \lessonslearned{
 	\item features, dependencies between features, and configurations
 	\item feature models: abstract and concrete features, tree and cross-tree constraints
 	\item tree constraints: optional, mandatory, or group, alternative group
 }{ % TODO unify literature pointer (see Lecture 1-3)
-	\item \fospl, Section~2.3 Feature Modeling
+	\item \fospl\mysection{2.3}\mypages{26--39}\\--- introduction to feature modeling
 	\item Thorsten Berger et al. (2013): \href{https://doi.org/10.1145/2430502.2430513}{A Survey of Variability Modeling in Industrial Practice} % TODO is this really a good fit?
 
 	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
@@ -34,7 +34,7 @@
 	\item propositional formulas satisfy many (though not all) needs for such a representation
 }{ % TODO unify literature pointer (see Lecture 1-3)
 	\item Don Batory (2005): \href{https://doi.org/10.1007/11554844_3}{Feature Models, Grammars, and Propositional Formulas}
-	\item \uvlwebsite\ -- official website for the Universal Variability Language with examples, grammar, literature pointers
+	\item \uvlwebsite\ --- official website for the Universal Variability Language with examples, grammar, literature pointers
 	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
 }{
 	Translate the following feature diagram into a formula and then into CNF:
@@ -54,9 +54,10 @@
 	\item SAT-based analyses: void feature model, core/dead features, decision propagation
 	\item \ssat{}-based analyses: variability factor, feature commonality
 }{ % TODO unify literature pointer (see Lecture 1-3)
-	\item \fospl, Section~10.1 Analysis of Feature Models
-	\item David Benavides et al. (2010): \href{https://doi.org/10.1016/j.is.2010.01.001}{Automated Analysis of Feature Models 20 Years Later: A Literature Review}
-	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}
+	\item \fospl\mysection{10.1}\mypages{244--254}\\--- introduction to feature-model analysis
+	\item David Benavides et al. (2010): \href{https://doi.org/10.1016/j.is.2010.01.001}{Automated Analysis of Feature Models 20 Years Later: A Literature Review}\\--- old but extensive literature survey
+	\item Chico Sundermann et al. (2021): \href{https://doi.org/10.1145/3442391.3442404}{Applications of \#SAT Solvers on Feature Models}\\--- experiments on the scalability of \ssat{} solvers % TODO replace by EMSE paper?
+	% TODO we could add the paper about web configurators here
 }{
 	\begin{center}
 		\featureDiagramABCDEFG
@@ -72,14 +73,29 @@
 	Name a partial configuration for which only two products exist.
 } % TODO these are three tasks and probably too much for this lecture. we could choose one of those and leave the rest for the exercise.
 
-% TODO Thomas: add exam questions here
-%\faq{
-%	\item \ldots
-%}{
-%	\item \ldots
-%}{
-%	\item \ldots
-%}
+\faq{
+	\item What is feature modeling? When is it needed?
+	\item How can we specify valid combinations of features?
+	\item What is a complete, partial, valid, invalid configuration?
+	\item What are (dis-)advantages of natural language, configuration map, and feature models?
+	\item What is the graphical syntax and semantics of feature models?
+	\item Give an example feature model!
+}{
+	\item What representations of feature models are available? Are they equivalent?
+	\item How to represent feature models textually?
+	\item What is UVL (used for)?
+	\item How to identify whether a configuration is valid?
+	\item How to translate feature model into a propositional formula?
+	\item What are DIMACS and KConfig (used for)?
+	\item Would you recommend Excel for feature model? Why (not)?
+}{
+	\item Why can configuration become challenging?
+	\item How can we identify problems with feature models and configurations?
+	\item How can feature models by analyzed? What analyses are available?
+	\item What solvers can be used to analyze feature models?
+	\item What is the difference between SAT, \ssat, and ALLSAT?
+	\item Why are solvers useful when creating configurations?
+}
 
 \input{template/footer}
 

@@ -16,7 +16,7 @@
 	\item software product lines
 	\item product-line engineering
 }{
-	\item \fospl, Chapter~1\mypages{3--15} --- introduction close to this lecture, further examples
+	\item \fospl\mychapter{1}\mypages{3--15} --- introduction close to this lecture, further examples
 	\item \seiwhitepaperspl\mypages{2--8} --- what is not a product line?
 	% TODO add further reference? \sple\mypage{14}
 }{
@@ -69,10 +69,10 @@
 }
 
 \faq{
-	\item What is customization/handcrafting, mass production, mass customization?
-	\item What are example (software) products for each of those?
+	\item What is a software product line, feature, product/variant, domain?
+	\item What is customization, handcrafting, mass production, mass customization?
+	\item What are example for each of those?
 	\item What is the one-size-fits-all or swiss-army-knife principle? \deutsch{Eierlegende Wollmilchsau}
-	\item What is a feature, product/variant, domain, software product line?
 	\item What is the difference between product-line engineering and single-system engineering?
 	\item What are advantages of product-line engineering?
 }{
@@ -125,7 +125,7 @@
 	\item Variable parts are always delivered
 }{
 	\item \fospl\mychapter{4}
-	\item \featureide\mychapter{17.1}
+	\item \featureide\mysection{17.1}
 	% TODO more details on what to expect in this literature
 }{
 	\begin{itemize} % die aufgaben sind ein bisschen theoretisch
@@ -153,6 +153,21 @@
 }
 
 % TODO Thomas: add exam questions here
+\faq{
+	\item \ldots
+}{
+	\item \ldots
+}{
+	\item \ldots
+}
+%	what is runtime variability (binding time)?
+%	\also how can configuration parameters be supplied?
+%	\also (when) does the validity of parameters need to be checked?
+%	\also how can runtime variability be realized in the code? which way is preferred when?
+%	\also implement feature XY in a given excerpt of source code
+%	\also what problems are associated with runtime variability?
+%	\also how can design patterns be used to implement variability? which design patterns for variability are there?
+%	\also when should runtime variability (not) be used?
 
 \input{template/footer}
 
@@ -171,7 +186,7 @@
 	\item In clone-and-own, new variants of a software system are created by copying and adapting an existing variant
 	\item Simple paradigm, but suffering from maintenance problems in the long run
 }{
-	\item\fospl\mychapter{3.1.1}\mypages{48--49}\\--- brief introduction of compile-time variability
+	\item\fospl\mysection{3.1.1}\mypages{48--49}\\--- brief introduction of compile-time variability
 	\item\softwareclonedetection\mysection{2}\mypages{1167--1168}\\--- brief introduction to software clones, their types, reasons, (dis)advantages
 	\item\virtualplatform\ --- brief introduction to ad-hoc clone-and-own (L0)
 	% TODO better literature pointers on clone-and-own?
@@ -189,7 +204,7 @@
 	\item Software configuration management as a traditional discipline of managing the evolution of variability-intensive systems
 	\item Version control systems as a widespread tool supporting clone-and-own in practice
 }{
-	\item \fospl\mychapter{5.1}\mypages{99--105}\\--- introduction of variability with version control (not~explicitly calling it clone-and-own)
+	\item \fospl\mysection{5.1}\mypages{99--105}\\--- introduction of variability with version control (not~explicitly calling it clone-and-own)
 	\item \staplesandhill\ --- experience report on managed clone-and-own with version control and build systems
 	\item\virtualplatform\ --- brief introduction to clone-and-own with version control (L1)
 	% TODO add literature? \summerville\mychapter{25}
@@ -208,7 +223,7 @@
 	\item Granularity of clones: Individual files
 	\item Combination of files\\$\neq$ combination of features
 }{
-	\item \fospl\mychapter{5.2.2 and 5.2.4}\mypages{106--110}\\--- brief introduction of clone-and-own with build systems (not~explicitly calling it clone-and-own)
+	\item \fospl\mysection{5.2.2 and 5.2.4}\mypages{106--110}\\--- brief introduction of clone-and-own with build systems (not~explicitly calling it clone-and-own)
 	\item \staplesandhill\ --- experience report on managed clone-and-own with version control and build systems
 }{
 	\begin{itemize}
