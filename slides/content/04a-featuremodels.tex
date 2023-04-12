@@ -1,6 +1,6 @@
 \subsection{Recap: Software Product Lines}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
+\begin{frame}{\myframetitle\ \mytitlesource{\lectureintroduction}}
+	\begin{mycolumns}[t]
 		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
 				\item a set of software-intensive systems
@@ -10,13 +10,14 @@
 				\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
 			\end{itemize}
 		}
+		\mydefinition{Product \mysource{\fospl\mypage{19}}}{
+			\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}
+		}
 	\mynextcolumn
 		\mydefinition{Feature \mysource{\fospl\mypage{18}}}{
 			\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}
 		}
-		\mydefinition{Product \mysource{\fospl\mypage{19}}}{
-			\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}
-		}
+		\centering\xkcd{2369}{width=.9\linewidth,trim=35 35 35 35,clip}
 	\end{mycolumns}
 \end{frame}
 
@@ -54,8 +55,6 @@
 		}
 	\end{mycolumns}
 \end{frame}
-
-\xkcdframe{2369}
 
 \subsection{Specifying Valid Configurations}
 

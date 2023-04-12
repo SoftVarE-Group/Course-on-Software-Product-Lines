@@ -2,12 +2,92 @@
 
 \subsection{Configurators in the Wild}
 
-\subsubsection*{Notebooks}
+% TODO excurs on selectors? amazon-tshirt, ebay-smartphone-case
+
+% TODO unclear why certain options are missing: windows10-sign-in-options
+
+\subsubsection*{Cars}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[b,widths={67}]
+		\myexampletight{Configuring a car \ldots}{
+			\centering\small
+			\only<1-3>{\pic[width=\linewidth]{toyota-aygo-wheels0}}%
+			\only<4-5|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels}}%
+			\only<6-7|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels2}}%
+			\only<8-9|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels2b}}%
+			\only<10|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels}}%
+			\only<11-12|handout:0>{\pic[width=.8\linewidth]{toyota-aygo-color}}%
+			\only<13|handout:0>{\pic[width=.8\linewidth]{toyota-aygo-color2}}%
+			\only<14|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels3}}%
+			\only<15-|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels4}}%
+		}
+	\mynextcolumn
+		\vspace{-\textheightoftitle}
+		\myexample{\ldots\ is complicated!}{
+			\begin{enumerate}
+				\item the default configuration
+				\uncover<3->{\item we want \textbf{black cap}}
+				\uncover<5->{\item we want \textbf{white wheels}}
+				\uncover<6->{\item black cap unavailable,\\red selected automatically\\(not blue!)}
+				\uncover<7->{\item fine, back to \textbf{black wheels}}
+				\uncover<9->{\item and, back to \textbf{black cap}}
+				\uncover<11->{\item \textbf{confirm selection} to continue with selection of the car color}
+				\uncover<12->{\item we want a \textbf{red car}}
+				\uncover<14->{\item popup dialog: black wheels unavailable (no automatic selection! preview of unavailable wheels!)}
+			\end{enumerate}
+			what now? back to Step 3?
+		}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[t,columns=3,widths={33,22}]
+		\myexampletight{Configuring a Car \ldots}{
+			\pic[width=\linewidth]{toyota-aygo-wheels3}\\\centering
+			10. cancel the dialog
+		}
+	\mynextcolumn
+		\myexampletight{with a Weird Price}{
+			\centering\pic[width=\linewidth]{toyota-aygo-costs}
+		}
+	\mynextcolumn
+		\myexampletight{with 8 Wheels!}{
+			\includegraphics[width=\linewidth]{toyota-aygo-costs3}
+		}
+	\end{mycolumns}
+	\begin{mycolumns}[columns=3,widths={20,60},animation=none]
+	\mynextcolumn
+		\uncover<4->{\mynote{}{
+			\begin{itemize}
+				\item canceling the dialog was not considered and lead to an invalid state (i.e., configuration)
+				\item humans check these configurations, but some errors are only found during production
+				\item many constraints: appear arbitrary, not explained
+			\end{itemize}
+		}}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={70,30}]
-		\myexampletight{Configuring a Notebook}{
-			\only<1,3->{\pic[width=\linewidth]{thinkpad-x1-yoga-display}}\only<2|handout:0>{\pic[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}
+		\myexampletight{Configuring a German Car\mysource{example from \lectureintroduction}}{
+			\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}
+		}
+	\mynextcolumn
+		\mynote{}{
+			Why does the telephone conflict with Microsoft Office?
+		}
+	\end{mycolumns}
+\end{frame}
+
+\subsubsection*{Notebooks}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={65}]
+		\myexampletight{Configuring a Notebook}{ % it is on purpose that both pictures are shown in handout
+			\only<1>{\pic[width=\linewidth]{thinkpad-x1-yoga-display}}
+			\only<2->{\pic[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}
 		}
 	\mynextcolumn
 		\mynote{}{
@@ -28,53 +108,6 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection*{Cars}
-
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40,60},animation=none]
-	\mynextcolumn
-		\myexampletight{Configuring a Car}{
-			\pic[width=\linewidth]{toyota-aygo-wheels}
-		}
-	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40,60},reverse]
-		\mynote{}{
-			it is possible to create inconsistent states, leading to an invalid product
-		}
-	\mynextcolumn
-		\myexampletight{Configuring a Car with a Weird Price}{
-			\centering\pic[width=.55\linewidth]{toyota-aygo-costs}
-		}
-	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40,60},reverse]
-		\mynote{}{
-			What happens if we ordered this \ldots?
-		}
-	\mynextcolumn
-		\myexampletight{Configuring a Car with 8 Wheels!}{
-			\includegraphics[width=\linewidth]{toyota-aygo-costs3}
-		}
-	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70,30}]
-		\myexampletight{Configuring a German Car}{
-			\includegraphics[width=\linewidth]{bmw-series1-confassistant-bluetooth}
-		}
-	\mynextcolumn
-		\mynote{}{
-			Why does the telephone conflict with Microsoft Office?
-		}
-	\end{mycolumns}
-\end{frame}
-
 \subsubsection*{Linux Kernel}
 
 \begin{frame}{\myframetitle}
@@ -88,7 +121,7 @@
 				\item configures KConfig models
 				\item generates a \texttt{.config} file
 				\item widely used to configure Linux
-				\item still: it is possible to create invalid products
+				\item still: it is possible to create invalid configurations and products
 			\end{itemize}
 		}
 	\end{mycolumns}
