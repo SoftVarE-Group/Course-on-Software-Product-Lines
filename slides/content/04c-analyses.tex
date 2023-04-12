@@ -165,13 +165,13 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{SAT, \ssat{}, and AllSAT Solvers}
+\subsection{SAT, \ssat{}, and AllSAT}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\mydefinition{Recap: Boolean Satisfiability Problem (SAT)}{
 			\begin{itemize}
-				\item \emph{decision problem}: is there any assignment that satisfies a given formula?
+				\item \emph{decision problem}: is there any assignment $A$ that satisfies a given formula?
 				\item formally: $SAT(\phi) \mequals \exists A \colon \phi(A) = \top$
 				\item known to be \emph{NP-complete}:\\
 					in theory, difficult to solve if $P \neq NP$;\\
@@ -185,7 +185,7 @@
 		\myexample{}{
 			\begin{itemize}
 				\item $X \pimplies Y$ is satisfiable
-				\item $X \por \pnot X$ is satisfiable (even tautological)
+				\item $X \por \pnot X$ is satisfiable (even a tautology)
 				\item $X \pand \pnot X$ is not satisfiable (why?)
 			\end{itemize}
 		}
@@ -199,19 +199,19 @@
 				\item answered by \emph{\ssat{} solvers}
 			\end{itemize}
 		}
-		\mydefinition{Solution Enumeration Problem (AllSAT)}{
+		\uncover<3->{\mydefinition{Solution Enumeration Problem (AllSAT)}{
 			\begin{itemize}
 				\item \emph{enumeration problem}: which assignments satisfy a given formula?
 				\item $AllSAT(\phi) = \{A \mid \phi(A) = \top\}$
 				\item at least as hard as \ssat{} (probably harder)
 				\item answered by \emph{AllSAT solvers}
 			\end{itemize}
-		}
+		}}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Automated Analysis of Feature Models}
-	\begin{mycolumns}
+	\begin{mycolumns}[widths={52}]
 		\myexample{Asking Questions About Feature Models}{
 			\begin{itemize}
 				\item Is a given configuration valid? $\Rightarrow$ \emph{evaluate}
@@ -256,7 +256,9 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Consistency, Cardinality, and Enumeration Queries}
+% TODO I think I need a table here illustrating how the three different solvers can be combined with the three/four queries - to understand what comes next and in which order
+
+\subsection{Consistency, Cardinality, and Enumeration}
 
 \subsubsection{Feature Model}
 
@@ -355,7 +357,11 @@
 		\emph{Feasibility of \ssat{}-Based Analyses}
 	
 		\myexampletight{Time to Count Products of Linux}{
-			\includegraphics[width=\linewidth,page=4]{linux-plots}
+			\includegraphics[width=\linewidth,page=4]{linux-plots}\\[-7mm]
+			\begin{itemize}
+				\item the solver from 2023 can solve models from 2003 % TODO which solver?
+				\item can we analyze the models from 2023 in 2043?
+			\end{itemize}
 		}
 	\end{mycolumns}
 \end{frame}
@@ -379,7 +385,7 @@
 		\mynote{}{
 			AllSAT does not scale to realistic feature models!\\
 			50 features, configurations \`a 1 Byte $\approx$ 1 Petabyte
-		}
+		} % TODO better example? what about the number of features such that it cannot be stored on all servers of the world? or we take a reasonable size of a hard disk in a notebook? 5 terrabyte? I (Thomas) cannot imagine a petabyte.
 		\myexampletight{}{
 			\leftandright{
 				\centering
@@ -430,7 +436,7 @@
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
 			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
-		\end{tikzpicture}
+		\end{tikzpicture} % TODO position of "Concrete Format" not optimal. gray out irrelevant parts? not sure what to look at here.
 	\end{mycolumns}
 \end{frame}
 
@@ -511,9 +517,8 @@
 	\begin{mycolumns}[t]
 		\emph{Consistency of Partial Configurations (SAT)}
 		\mydefinition{Valid Partial Configuration}{
-			\begin{itemize}
-				\item does a partial configuration $C = ({\color{green}S}, {\color{red}D})$ contain a mistake?
-			\end{itemize}
+			Is a partial configuration $C = ({\color{green}S}, {\color{red}D})$ consistent with the feature model? % TODO would be easier if term valid could be used here
+
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -561,7 +566,7 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={60,40}]
-		\myexampletight{}{
+		\myexampletight{}{ % TODO would be great to show an explanation here
 			\pic[width=\textwidth]{featureide-feature-model-editor-waffle}
 		}
 	\mynextcolumn
@@ -619,7 +624,7 @@
 			\end{tikzpicture}
 		}
 	\mynextcolumn
-		\mydefinition{\ldots and Beyond}{
+		\mydefinition{\ldots\ and Beyond}{
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
