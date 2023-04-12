@@ -147,13 +147,9 @@
     \end{frame}
 }
 \makeatother
-% TODO remove the two commands below, as we do not seem to need them anymore
-%\newcommand{\sectionend}{\addtocontents{toc}{\vspace{2mm}}}
-\newcommand{\sectionend}{\addtocontents{toc}{}}
 
 % change section numbers to letters
 % https://tex.stackexchange.com/questions/268024/numbering-by-letters-in-beamer-table-of-contents
-%\newcommand{\lecturenumber}[1]{\newcommand{\insertlecturenumber}{#1}}
 \renewcommand{\thesection}{\insertlecturenumber\alph{section}}
 \defbeamertemplate{subsection in toc}{bullets}{%
   \parbox[t]{1em}{\textbullet\hfill}%
