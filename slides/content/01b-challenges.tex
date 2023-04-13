@@ -11,7 +11,7 @@
 			Feature traceability is the ability to trace a feature throughout the software life cycle (i.e., from requirements to source code).
 		\end{definition}
 		\begin{example}{Intuition on Feature Traceability}
-			find feature \includegraphics[width=.17\linewidth]{pants-blue} in product \includegraphics[width=.17\linewidth]{230}
+			find feature \pic[width=.17\linewidth]{pants-blue} in product \pic[width=.17\linewidth]{230}
 		\end{example}
 	\mynextcolumn
 		\myexampletight{Feature Traceability with Colored Source Code}{\picDark[width=\linewidth]{feature-traceability}}
@@ -23,7 +23,7 @@
 	\begin{mycolumns}[columns=3,widths={37,7},animation=none]
 		\myexampletight{Features}{
 			\foreach \animation/\handout/\page in {1-2/0/5,3-4/0/6,5-6/0/7,7-8/0/8,9-10/0/9,11-/1/10} {%
-				\only<\animation|handout:\handout>{\includegraphics[width=\linewidth,page=\page,trim=45 0 45 0,clip]{lego}}%
+				\only<\animation|handout:\handout>{\pic[width=\linewidth,page=\page,trim=45 0 45 0,clip]{lego}}%
 			}%
 		}
 	\mynextcolumn
@@ -31,7 +31,7 @@
 	\mynextcolumn
 		\myexampletight{Products}{
 			\foreach \animation/\handout/\page in {1/0/3,2-3/0/11,4-5/0/12,6-7/0/13,8-9/0/14,10-11/0/15,12-/1/18} {%
-				\only<\animation|handout:\handout>{\includegraphics[width=\linewidth,page=\page]{lego}}%
+				\only<\animation|handout:\handout>{\pic[width=\linewidth,page=\page]{lego}}%
 			}%
 		}
 	\end{mycolumns}
@@ -39,8 +39,8 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={45},animation=none]
 		\begin{example}{Product Line with Features}
-			\only<1-2|handout:0>{\includegraphics[width=\linewidth]{metaproduct}}%
-			\only<3->{\includegraphics[width=\linewidth]{metaproduct2}}%
+			\only<1-2|handout:0>{\pic[width=\linewidth]{metaproduct}}%
+			\only<3->{\pic[width=\linewidth]{metaproduct2}}%
 		\end{example}
 	\mynextcolumn
 		\begin{definition}{Goal}
@@ -63,7 +63,7 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={49}]
 		\myexampletight{Combinatorial Explosion}{
-			\includegraphics[width=\linewidth,page=6]{cit-plots}%
+			\pic[width=\linewidth,page=6]{cit-plots}%
 			\small%
 			\begin{itemize}
 				\item assumption: all combinations of features are valid
@@ -73,7 +73,7 @@
 		}
 	\mynextcolumn
 		\myexampletight{Industrial Configuration Spaces \mysource{\evaluatingsharpsatsolvers}}{
-			\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}%
+			\evaluatingsharpsatsolverslink{\pic[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}%
 			\small%
 			\begin{itemize}
 				\item in practice: not all combinations of features valid
@@ -84,17 +84,17 @@
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
-	\centering\href{https://github.com/SoftVarE-Group/Slides/blob/main/2021/2021-02-10-VaMoS-SharpSATApplications.pdf}{\includegraphics[height=\textheightwithtitle,page=9,trim=60 15 15 5,clip]{2021/2021-02-10-VaMoS-SharpSATApplications}}
+	\centering\href{https://github.com/SoftVarE-Group/Slides/blob/main/2021/2021-02-10-VaMoS-SharpSATApplications.pdf}{\pic[height=\textheightwithtitle,page=9,trim=60 15 15 5,clip]{2021/2021-02-10-VaMoS-SharpSATApplications}}
 \end{frame}
 
 \subsection{Feature Interactions}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\only<1-2|handout:0>{\includegraphics[width=\linewidth,page=24]{lego}}%
-		\only<3->{\includegraphics[width=\linewidth,page=25]{lego}}%
+		\only<1-2|handout:0>{\pic[width=\linewidth,page=24]{lego}}%
+		\only<3->{\pic[width=\linewidth,page=25]{lego}}%
 	\mynextcolumn
 		\begin{example}{Example Interaction}
-			phone \includegraphics[width=.14\linewidth]{phone} cannot be used with helmet \includegraphics[width=.14\linewidth]{helmet}
+			phone \pic[width=.14\linewidth]{phone} cannot be used with helmet \pic[width=.14\linewidth]{helmet}
 		\end{example}
 		\uncover<2->{\begin{note}{Challenges}
 			\begin{itemize}
@@ -164,13 +164,13 @@
 		\vspace{-\textheightoftitle}
 		\picDark[width=\linewidth,trim=100 70 110 80,clip]{linux-stack-plot}
 	\end{mycolumns}
-	\twodimensionalanalysislink{\includegraphics[width=.8\linewidth,page=1,trim=80 420 80 260,clip]{2019/2019-VariVolution-Thuem}}
+	\twodimensionalanalysislink{\pic[width=.8\linewidth,page=1,trim=80 420 80 260,clip]{2019/2019-VariVolution-Thuem}}
 \end{frame}
 
 \begin{frame}{Evolution of the Linux Kernel}
 	\begin{mycolumns}
 		\myexampletight{Size of the Code Base}{
-			\includegraphics[width=\linewidth,page=1]{linux-plots}%
+			\pic[width=\linewidth,page=1]{linux-plots}%
 			\begin{itemize}
 				\item from 4 to 24 millions in 17 years
 				\item about one million LOC added every year
@@ -179,7 +179,7 @@
 		}
 	\mynextcolumn
 		\myexampletight{Number of Features}{
-			\includegraphics[width=\linewidth,page=2]{linux-plots}%
+			\pic[width=\linewidth,page=2]{linux-plots}%
 			\begin{itemize}
 				\item about 800 new features every year
 				\item about 15 new features every week
@@ -192,7 +192,7 @@
 \begin{frame}{Evolution of the Linux Kernel}
 	\begin{mycolumns}
 		\myexampletight{Number of Products}{
-			\includegraphics[width=\linewidth,page=3]{linux-plots}%
+			\pic[width=\linewidth,page=3]{linux-plots}%
 			\begin{itemize}
 				\item number of products grows by factor 100.000 each month
 				\item the current kernel is likely to have more than $10^{1500}$ products
@@ -200,7 +200,7 @@
 		}
 	\mynextcolumn
 		\myexampletight{Time to Count Products}{
-			\includegraphics[width=\linewidth,page=4]{linux-plots}%
+			\pic[width=\linewidth,page=4]{linux-plots}%
 			\begin{itemize}
 				\item most kernel versions before 2006 can be computed within 1 minute
 				\item most kernel versions after 2006 cannot be computed within 1 hour
