@@ -14,7 +14,7 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\pic[width=\linewidth]{oo-concepts-illustration} % TODO what illustrates which concept? why is square not a rectangle or rectangle not a square?
+		\picDark[width=\linewidth]{oo-concepts-illustration} % TODO what illustrates which concept? why is square not a rectangle or rectangle not a square?
 	\end{mycolumns}
 \end{frame}
 
@@ -50,7 +50,7 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\pic[width=\linewidth]{templatemethod}
+		\picDark[width=\linewidth]{templatemethod}
 	\end{mycolumns}
 \end{frame}
 
@@ -65,7 +65,7 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\pic[width=\linewidth]{abstractfactory}
+		\pic[width=\linewidth]{abstractfactory} % TODO not readible in dark mode
 	\end{mycolumns}
 \end{frame}
 
@@ -80,7 +80,7 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\pic[width=\linewidth]{decorator}
+		\picDark[width=\linewidth]{decorator}
 	\end{mycolumns}
 \end{frame}
 
@@ -88,9 +88,9 @@
 
 \begin{frame}{Object-Oriented Design of our Graph Library}
 	\begin{mycolumns}[widths={40}]
-		\pic[width=\linewidth]{graphlib-oo-node-edge}
+		\picDark[width=\linewidth]{graphlib-oo-node-edge}
 	\mynextcolumn
-		\pic[width=\linewidth]{graphlib-oo-graph}
+		\picDark[width=\linewidth]{graphlib-oo-graph}
 	\end{mycolumns}
 \end{frame}
 
@@ -123,7 +123,7 @@ class Graph {
 }@
 \end{codetight}
 	\mynextcolumn
-		\centering\pic[width=.7\linewidth]{graphlib-oo-node-edge}
+		\centering\picDark[width=.7\linewidth]{graphlib-oo-node-edge}
 	\end{mycolumns}
 \end{frame}
 
@@ -152,7 +152,7 @@ class EdgeFactory {
 }
 \end{codetight}
 	\mynextcolumn
-		\centering\pic[width=.75\linewidth]{graphlib-oo-node-edge}	
+		\centering\picDark[width=.75\linewidth]{graphlib-oo-node-edge}	
 \begin{codetight}{}
 @class WeightedEdgeFactory extends EdgeFactory {
 	Edge createEdge(Node a, Node b) {
@@ -166,7 +166,7 @@ class EdgeFactory {
 \end{frame}
 
 \begin{frame}{Feature Combinations?}
-	\centering\pic[width=.5\linewidth]{graphlib-oo-diamond}
+	\centering\picDark[width=.5\linewidth]{graphlib-oo-diamond}
 \end{frame}
 
 \begin{frame}{Diamond Problem}
@@ -180,14 +180,14 @@ class EdgeFactory {
 			% Multiple Inheritance is like a parachute. You don't often need it, but when you do, you really need it. Grady Booch? this one does not really fit here
 		\end{note}
 	\mynextcolumn
-		\pic[width=\linewidth]{graphlib-oo-diamond-commented}
+		\picDark[width=\linewidth]{graphlib-oo-diamond-commented}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Static Modeling of Feature Combinations}
 	\begin{mycolumns}[columns=3,widths={10,80},animation=none]
 	\mynextcolumn
-		\includegraphics[width=\linewidth]{graphlib-oo-combinatorial}
+		\picDark[width=\linewidth]{graphlib-oo-combinatorial}
 		\mynote{}{
 			Even if multiple inheritance is supported, statically combining features through inheritance is tedious (or infeasible).
 		}
@@ -220,7 +220,7 @@ abstract class GraphDecorator implements IGraph {
 }@
 \end{codetight} % TODO old slides had a further example. add it?
 	\mynextcolumn
-		\pic[width=\linewidth]{graphlib-oo-decorator}
+		\picDark[width=\linewidth]{graphlib-oo-decorator}
 	\end{mycolumns}
 	\small
 \begin{codetight}{Example Usage}
@@ -240,6 +240,6 @@ IGraph graph = @new WeightedGraph(@~new ColoredGraph(~new Graph(@new WeightedEdg
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-		\pic[width=\linewidth]{graphlib-oo-decorator}
+		\picDark[width=\linewidth]{graphlib-oo-decorator}
 	\end{mycolumns}
 \end{frame}
