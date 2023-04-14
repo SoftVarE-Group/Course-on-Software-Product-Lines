@@ -20,7 +20,7 @@
 ## Getting Started
 
 ```
-git clone --recursive git@github.com:SoftVarE-Group/Course-on-Software-Product-Lines
+git clone --recursive https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines.git
 cd Course-on-Software-Product-Lines/slides
 make UNIVERSITY=... HANDOUT=... # for valid values, see Makefile
 ```
