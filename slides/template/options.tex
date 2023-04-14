@@ -1,0 +1,15 @@
+% either read options from make, or use default option values
+\ifdefined\ismake
+\else
+	\def\ishandout{} % for printing, does not include animations
+	% \def\isdarkmode{} % only for editing, handouts, and videos (not recommendet for lectures)
+	\def\university{} % < do not remove this comment, it is used by the Makefile >
+\fi
+
+% pass options to beamer and the theme
+\ifdefined\ishandout
+	\PassOptionsToClass{handout}{beamer}
+\fi
+\ifdefined\isdarkmode
+	\PassOptionsToPackage{darkmode}{../SoftVarE-SlideTemplate/beamerthemeuulm}
+\fi

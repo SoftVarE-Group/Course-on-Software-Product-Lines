@@ -1,25 +1,26 @@
-UNIVERSITY= # <empty>, ulm, bern, magdeburg, wernigerode
-HANDOUT= # <empty>, y
+handout?=y# n, y
+darkmode?=n# n, y
+university?=# <empty>, ulm, bern, magdeburg, wernigerode
 
 TEX_FILES := $(wildcard *.tex)
-TEX_FILES := $(filter-out 00-overview.tex, $(TEX_FILES))
-TEX_FILES := $(filter-out all.tex, $(TEX_FILES))
 PDF_FILES = $(TEX_FILES:.tex=.pdf)
 
-MARKER = % < do not remove this comment, it is used by the Makefile >
-ifeq ($(HANDOUT),y)
-	HANDOUT_PREFIX=
+ifeq ($(handout),y)
+	def_handout=\def\ishandout{}
 else
-	HANDOUT_PREFIX=%
+	def_handout=
 endif
 
-all: $(PDF_FILES) 00-overview.pdf all.pdf
+ifeq ($(darkmode),y)
+	def_darkmode=\def\isdarkmode{}
+else
+	def_darkmode=
+endif
+
+all: $(PDF_FILES)
 
 %.pdf: %.tex
-	echo $(UNIVERSITY) $(HANDOUT)
-	sed -i 's/\(university{\).*\(} $(strip $(MARKER))\)/\1$(strip $(UNIVERSITY))\2/' $<
-	sed -i 's/.*\(handout, $(strip $(MARKER))\)/	$(strip $(HANDOUT_PREFIX))\1/' $<
-	latexmk --shell-escape -pdf $<
+	latexmk -pdf -pdflatex='pdflatex %O -interaction=nonstopmode -synctex=1 -halt-on-error "\def\ismake{}$(def_handout)$(def_darkmode)\def\university{$(university)}\input{%S}"' $<
 	latexmk -c
 	
 clean: *.tex

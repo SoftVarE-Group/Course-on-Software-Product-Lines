@@ -22,7 +22,7 @@
 ```
 git clone --recursive https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines.git
 cd Course-on-Software-Product-Lines/slides
-make UNIVERSITY=... HANDOUT=... # for valid values, see Makefile
+make HANDOUT=... DARKMODE=... UNIVERSITY=... # for valid values, see Makefile
 ```
 
 ## License
