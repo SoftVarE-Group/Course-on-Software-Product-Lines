@@ -136,13 +136,13 @@
 		}
 
 		\mydefinition{Configuration Map}{
-			\begin{itemize} % TODO symbol C is overloaded on this slide. shall we use M for configuration map?
-				\item a \emph{configuration map} over $F$ is a set of complete configurations $C \subseteq F$ % TODO seems to be wrong, this rule holds for every element in a configuration map
-				\item a complete configuration $S$ is \emph{valid} if it occurs in the configuration map ($S \in C$)
+			\begin{itemize}
+				\item a \emph{configuration map} over $F$ is a set of complete configurations $M \subseteq \power{F}$
+				\item a complete configuration $S$ is \emph{valid} if it occurs in the configuration map ($S \in M$)
 				\item also known as product map
 				\item[+] precise
 				\item[--] not human-readable
-				\item[--] redundant, explodes in size ($0 \leq \abs{C} \leq 2^{\abs{F}}$)
+				\item[--] redundant, explodes in size ($0 \leq \abs{M} \leq 2^{\abs{F}}$)
 			\end{itemize}
 		}
 	\mynextcolumn
@@ -197,12 +197,10 @@
 
 \begin{frame}{\myframetitle\ \mytitlesource{\fospl; \foda\mypages{63--72}; \batorygrammars}}
 	\begin{mycolumns}
-		\myexampletight{}{ % TODO do we really need these borders here and on the next slides?
-			\centering
-			\featureDiagramConfigurableDatabase
-			
-			\featureDiagramLegend
-		}
+		\centering
+		\featureDiagramConfigurableDatabase
+		
+		\featureDiagramLegend
 	\mynextcolumn
 		\mydefinition{Feature Model \deutsch{Feature-Modell}}{
 			\begin{itemize}
@@ -236,10 +234,8 @@
 			}
 		}
 	\mynextcolumn
-		\myexampletight{}{
-			\centering
-			\featureDiagramConfigurableDatabase
-		}
+		\centering
+		\featureDiagramConfigurableDatabase
 		\uncover<3|handout:1>{
 			\mydefinition{Cross-Tree Constraints}{
 				\begin{itemize}
@@ -255,26 +251,24 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
-		\myexampletight{}{
-			\centering
-			\featureDiagramConfigurableDatabase[_fm]
-			\featureDiagramOverlay{
-				\only<2|handout:0>{
-					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm),(OS_fm),(Windows_fm)}
-					\featureDeselected{(Put_fm)(Delete_fm),(Transactions_fm),(Linux_fm)}
-				}
-				\only<3|handout:0>{
-					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm)(Put_fm)(Delete_fm),(Linux_fm)}
-					\featureDeselected{(Windows_fm)}
-				}
-				\only<4|handout:0>{
-					\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm)}
-					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)(Linux_fm),(Transactions_fm)(OS_fm)}
-				}
-				\only<5|handout:0>{
-					\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm),(Linux_fm)}
-					\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)}
-				}
+		\centering
+		\featureDiagramConfigurableDatabase[_fm]
+		\featureDiagramOverlay{
+			\only<2|handout:0>{
+				\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm),(OS_fm),(Windows_fm)}
+				\featureDeselected{(Put_fm)(Delete_fm),(Transactions_fm),(Linux_fm)}
+			}
+			\only<3|handout:0>{
+				\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm)(Put_fm)(Delete_fm),(Linux_fm)}
+				\featureDeselected{(Windows_fm)}
+			}
+			\only<4|handout:0>{
+				\featureSelected{(ConfigDB_fm),(API_fm),(Get_fm)}
+				\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)(Linux_fm),(Transactions_fm)(OS_fm)}
+			}
+			\only<5|handout:0>{
+				\featureSelected{(ConfigDB_fm),(API_fm)(Transactions_fm)(OS_fm),(Get_fm),(Linux_fm)}
+				\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)}
 			}
 		}
 	\mynextcolumn
@@ -296,10 +290,8 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[columns=3,widths={5,90,5},animation=none]
 	\mynextcolumn
-		\myexampletight{}{
-			\centering
-			\featureDiagramWaffle
-		}
+		\centering
+		\featureDiagramWaffle
 		\mynote{}{
 			\begin{itemize}
 				\item abstract and concrete features can be assigned arbitrarily

@@ -19,7 +19,7 @@
 				$\{C,G,P,D,T,L\}$
 			}
 		}
-		\myexampletight{Feature Model}{
+		\myexampletight{Feature Diagram (Graphical Feature Model)}{
 			\centering\tiny
 			\featureDiagramConfigurableDatabase
 		}
@@ -35,7 +35,7 @@
 			\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {toString} (nat);
 			\uncover<5->{\path [dotted, ->] (nat) edge[bend left] node[sloped,yshift=1mm] {\textbf{P3}} (fd);}
 			
-			\uncover<4->{\path [dotted, ->] (fd) edge[bend left] node[sloped,yshift=1mm] {\textbf{P2}} (cfg);}
+			\uncover<4->{\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {\textbf{P2}} (cfg);}
 			\uncover<5->{\path [dotted, ->] (cfg) edge[bend left] node[sloped,yshift=1mm] {\textbf{P3}} (fd);}
 
 			\node (trans) at (-1,-2.8) {};
@@ -46,7 +46,7 @@
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
 			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{red}Concrete Format};
-		\end{tikzpicture} % TODO why is feature model to configuration map considered semi-automatically? also the term feature diagram has not been introduced before
+		\end{tikzpicture}
 
 		\mynote{Problems}{
 			\begin{enumerate}
@@ -141,6 +141,7 @@ constraints
 		}
 	\end{mycolumns}
 \end{frame}
+% TODO first show the simpler version of the tikz picture, then animate towards the above, animate together with text
 % TODO do we really need this slide? semantics was already defined in Part 4a for feature models
 
 \subsection{Propositional Formulas}
@@ -190,15 +191,6 @@ constraints
 				\not\equiv &~(Transactions \pimplies Put) \por Delete
 			\end{align*}
 		}
-% TODO removed this part as we only need propositional logic anyway
-%		\mynote{Differences to First-Order Logic}{
-%			\begin{itemize}
-%				\item no quantifiers $\forall, \exists$
-%    			\item no predicates $P(\ldots)$ (e.g., $=$, $>$, $isA$)
-%    			\item no functions $f(\ldots)$ (e.g., $+$, $\ast$, $typeOf$)
-%				\item no constants (e.g., $42$, ``hello'')
-%			\end{itemize}
-%		}
 	\end{mycolumns}
 \end{frame}
 
@@ -529,7 +521,7 @@ p cnf 5 6
 				\item[P2] Propositional Formulas $\Rightarrow$ \emph{Semantics}
 				\begin{itemize}
 					\item[(a)] evaluate feature-model formula
-					\item[(b)] \emph{???}
+					\item[(b)] Lecture \lecturemodeling\partc{}
 				\end{itemize}
 				\item[P3] \color{gray}{(i) e.g., \bakarnaturallanguage\\(ii) e.g., \czarneckithereandbackagain}
 			\end{enumerate}
@@ -539,16 +531,18 @@ p cnf 5 6
 
 \subsection{Feature Models in the Wild}
 
-\subsubsection*{Excel, Again}
+% \subsubsection*{Excel, Again}
 
-\begin{frame}{\myframetitle}
-	\centering
-	\picDark[width=.8\linewidth,trim=10 10 0 10,clip]{constraints-in-excel}
+% \begin{frame}{\myframetitle}
+% 	\centering
+% 	\picDark[width=.8\linewidth,trim=10 10 0 10,clip]{constraints-in-excel}
 
-	\textbf{``It's installed anyway.''}
-\end{frame}
+% 	\textbf{``It's installed anyway.''}
+% \end{frame}
+% TODO maybe not necessary?
 
 \subsubsection*{Linux Kernel}
+% TODO move everything related to Linux from this lecture to 05a
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}
