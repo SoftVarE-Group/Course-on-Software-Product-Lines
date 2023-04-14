@@ -4,8 +4,6 @@
 
 *If you have any feedback, please contact [Thomas Thüm](mailto:thomas.thuem@uni-ulm.de).*
 
-[![Lecture Topics](topics.png)](slides/all_compressed.pdf)
-
 ## Contributors
 
 - Thomas Thüm (University of Ulm, Germany)
