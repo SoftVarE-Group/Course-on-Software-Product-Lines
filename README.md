@@ -22,7 +22,8 @@
 ```
 git clone --recursive https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines.git
 cd Course-on-Software-Product-Lines/slides
-make HANDOUT=... DARKMODE=... UNIVERSITY=... # for valid values, see Makefile
+make # to compile all slides with default options
+make <lecture>.pdf handout=... darkmode=... university=... # to compile one lecture with given options (for valid values, see Makefile)
 ```
 
 ## License
