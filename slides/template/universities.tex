@@ -26,11 +26,19 @@
 	\ifuniversity{bern}{\author@old{Timo Kehrer, Sandra Greiner}}
 	\ifuniversity{magdeburg}{\author@old{Gunter Saake, Elias Kuiter}}
 	\ifuniversity{wernigerode}{\author@old{Elias Kuiter}}
+	\ifuniversity{recording}{\author@old{#1}}
 	\ifuniversity{}{\author@old{#1}}
 }
 \makeatother
 
 % COLOR SCHEME, LOGOS, PICTURES
+\ifuniversity{recording}{
+	\renewcommand{\deutsch}[1]{} % no German in English recordings
+	\setpicture[550]{jun22-clouds3} % default picture
+}{
+	\hypersetup{linkcolor=uulm@text, citecolor=red, filecolor=red, runcolor=red, urlcolor=red, colorlinks=true} % emphasizing links, but not when recording
+}
+
 \ifuniversity{ulm}{
 	% copied from beamerthemeuulm.sty
 	\definecolor{black}{HTML}{000000}
