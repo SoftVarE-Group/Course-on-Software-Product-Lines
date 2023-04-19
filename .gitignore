@@ -15,6 +15,7 @@
 *.synctex*
 *.listing
 *.pdf
+/slides/template/options.tex
 /pics/preprocessors/fortyproductlines-paper.pdf
 /pics/interactions/variabilitybugdatabase-paper.pdf
 build
