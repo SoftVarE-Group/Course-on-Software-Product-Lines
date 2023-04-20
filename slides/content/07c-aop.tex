@@ -2,24 +2,24 @@
 
 \begin{frame}{Recap: Motivation}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\myexampletight{Modularization of Cross-Cutting Concerns}{
+		\begin{exampletight}{Modularization of Cross-Cutting Concerns}
 			\centering
 			\pic[width=1.0\linewidth]{aop-motivation-1}
-		}
-		\myexample{Feature Traceability}{
+		\end{exampletight}
+		\begin{example}{Feature Traceability}
 			find feature \includegraphics[width=.15\linewidth]{pants-blue} in product \includegraphics[width=.15\linewidth]{230}
-		}
+		\end{example}
 	\mynextcolumn
-		\myexampletight{Flexible Extension / Minimal Preplanning}{
+		\begin{exampletight}{Flexible Extension / Minimal Preplanning}
 			\centering
 			\pic[width=1.0\linewidth]{aop-motivation-2}
-		}
+		\end{exampletight}
 		
 		~
 		
-		\mynote{}{
+		\begin{note}{}
 			Achieving all this requires novel implementation techniques that overcome the limitations of classical object-oriented paradigms.
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -27,44 +27,44 @@
 
 \begin{frame}{Aspects and Aspect Weaving}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{Aspect \mysource{\fospl\mypages{143--145}}}{
+		\begin{definition}{Aspect \mysource{\fospl\mypages{143--145}}}
 			An aspect encapsulates the implementation of a crosscutting concern.
-		}
-		\mydefinition{Aspect Weaving \mysource{\fospl\mypages{143--145}}}{
+		\end{definition}
+		\begin{definition}{Aspect Weaving \mysource{\fospl\mypages{143--145}}}
 			An aspect weaver merges the separate aspects of a program and the base program at user-selected program locations.
-		}
-		\mynote{}{
+		\end{definition}
+		\begin{note}{}
 			\begin{itemize}
 				\item Localizing a crosscutting concern within one code unit eliminates code scattering and tangling.
 				\item An aspect can affect multiple other concerns with one piece of code, thereby avoiding code replication.
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\pic[width=1.0\linewidth]{aspect-weaving}
-		}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Aspects and Aspect Weaving in Java: AspectJ}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{}{
+		\begin{definition}{}
 			AspectJ is an aspect-oriented language extension of Java.
 			\begin{itemize}
 				\item Base program is written in Java (i.e., components = classes)
 				\item Aspects are written in Java but typically include a multitute of new language constructs introduced by AspectJ
 				\item Aspect weaver (aka.\ AspectJ Compiler) follows a compile-time binding approach (though certain decisions are made at runtime, s.\ later).
 			\end{itemize}
-		}
-		\mynote{}{
+		\end{definition}
+		\begin{note}{}
 			AspectJ is the most popular and widely used aspect-oriented language, all examples in this lecture will be given in AspectJ.
-		}
+		\end{note}
 	\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\pic[width=1.0\linewidth]{aspect-weaving}
-		}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
@@ -72,12 +72,12 @@
 
 \begin{frame}[fragile]{Static Extensions through Inter-Type Declarations}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{Inter-Type Declaration \mysource{\fospl\mypages{143--145}}}{
+		\begin{definition}{Inter-Type Declaration \mysource{\fospl\mypages{143--145}}}
 			An inter-type declaration injects a method, field, or interface from inside an aspect into an existing class or interface.
-		}
-		\mynote{Typical Usage}{
+		\end{definition}
+		\begin{note}{Typical Usage}
 			Add field X / method Y to class Z
-		}
+		\end{note}
 	\mynextcolumn
 \begin{codetight}{}
 aspect Weighted {
@@ -92,13 +92,13 @@ aspect Weighted {
 
 \begin{frame}{Dynamic Extensions through Join Points}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{Joint Point \mysource{\fospl\mypages{143--145}}}{
+		\begin{definition}{Joint Point \mysource{\fospl\mypages{143--145}}}
 			A join point is an event in the execution of a program at which aspects can be woven into the program.
-		}
-		\mydefinition{Advice}{
+		\end{definition}
+		\begin{definition}{Advice}
 			Code which is being executed when a join point matches. 
-		}
-		\mydefinition{Join-Points in AspectJ:}{
+		\end{definition}
+		\begin{definition}{Join-Points in AspectJ:}
 			\begin{itemize}
 				\item Calling/executing a method/constructor
 				\item Access to a field (read or write)
@@ -106,19 +106,19 @@ aspect Weighted {
 				\item Execution of a Advice
 				\item \ldots
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\pic[width=1.0\linewidth]{join_point_example}
-		}
+		\end{exampletight}
 		
 		~
 		
 		\pause
-		\mynote{Open Question}{			
+		\begin{note}{Open Question}		
 			How to specify the join points an aspect (i.e., an advice) affects?
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -126,19 +126,19 @@ aspect Weighted {
 
 \begin{frame}[fragile]{Quantification through Pointcuts}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{Pointcut \mysource{\fospl\mypages{143--145}}}{
+		\begin{definition}{Pointcut \mysource{\fospl\mypages{143--145}}}
 			A pointcut is a declarative specification of the join points that an aspect affects. It is a predicate that determines whether a given join point matches.
-		}
-		\mydefinition{Quantification \mysource{\fospl\mypages{143--145}}}{
+		\end{definition}
+		\begin{definition}{Quantification \mysource{\fospl\mypages{143--145}}}
 			Quantification is the process of selecting multiple join points based on a declarative specification (that is, based on a pointcut).
-		}
-		\myexample{}{
+		\end{definition}
+		\begin{example}{}
 			\begin{itemize}
 				\item Execute Advice X whenever the method setWeight of class Edge is called
 				\item Execute Advice Y whenever any field in class Edge is accessed
 				\item Execute Advice Z whenever a public method is called anywhere in the system and the method initialize has been called beforehand
 			\end{itemize}
-		}
+		\end{example}
 	\mynextcolumn
 {\small
 \begin{codetight}{Anonymous Pointcut}
@@ -244,12 +244,12 @@ aspect A1 {
 	}
 }
 \end{codetight}
-		\mynote{And many more}{
+		\begin{note}{And many more}
 			\begin{itemize}
 				\item get/set: field access (read/write)
 				\item etc.
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 \begin{codetight}{Base Program}
 class Test {
@@ -292,19 +292,19 @@ aspect A1 {
 }
 \end{codetight}
 	\mynextcolumn
-		\mynote{Wildcard Symbols}{
+		\begin{note}{Wildcard Symbols}
 			\begin{itemize}
 				\item [*] Exactly one value
 				\item [..] Arbitrary many values
 				\item [+] Class or any subclass
 			\end{itemize}
-		}		
+		\end{note}
 		
 		\vspace{1cm}
 		
-		\mynote{Logical Connectors}{
+		\begin{note}{Logical Connectors}
 			Pointcuts can be connected by usual logical operators \&\&, $\mid\mid$, and !
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -312,13 +312,13 @@ aspect A1 {
 
 \begin{frame}[fragile]{Advice}
 	\begin{mycolumns}[widths={38,62},animation=none]
-		\mynote{}{
+		\begin{note}{}
 			\begin{itemize}
 				\item Additional code before, after or instead of the join point: \emph{before}, \emph{after}, \emph{around}
 				\item Around-Advice allows to continue the original join point using the keyword proceed
 				\item Keyword \emph{proceed} corresponds to keyword \emph{original/super} in FOP
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 {\small
 \begin{codetight}{}
@@ -353,9 +353,9 @@ aspect AdviceTest {
 
 \begin{frame}[fragile]{thisJoinPoint}
 	\begin{mycolumns}[widths={30,70},animation=none]
-		\mynote{}{
+		\begin{note}{}
 			In an advice, \emph{thisJoinPoint} can be used to get more information about the current join point.
-		}
+		\end{note}
 	\mynextcolumn
 \begin{codetight}{}
 aspect A1 {
@@ -417,13 +417,13 @@ class MathUtil {
 
 \begin{frame}[fragile]{Pointcuts this and target}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mynote{}{
+		\begin{note}{}
 			\begin{itemize}
 				\item \emph{execution}: this and target capture the object on which the method is called
 				\item \emph{call, set, and get}: this captures the object that calls the method or accesses the field; 
 																	target captures the object on which the method is called or the field is accessed.
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 \begin{codetight}{}
 aspect A1 {
@@ -438,16 +438,16 @@ aspect A1 {
 
 \begin{frame}[fragile]{Order Matters: Aspect Precendence}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mynote{}{
+		\begin{note}{}
 			Order in which aspect weaver process the aspects may be relevant when multiple aspects extend the same join point.
-		}
-		\myexample{Example}{
+		\end{note}
+		\begin{example}{Example}
 			\begin{itemize}
 				\item 1st aspect implements synchronization with around advice
 				\item 2nd aspect implements logging with after-advice on the same join point
 				\item Depending on the order of weaving, the logging code will be synchronized or not
 			\end{itemize}
-		}
+		\end{example}
 	\mynextcolumn
 \begin{codetight}{Explicit definition using declare precedence}
 aspect DoubleWeight {
@@ -460,24 +460,24 @@ aspect DoubleWeight {
 
 \begin{frame}{Aspect Weaving: Behind the Scenes }
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{Weaving in AspectJ (Conceptually)}{
+		\begin{definition}{Weaving in AspectJ (Conceptually)}
 			\begin{itemize}
 				\item Inter-type declarations are added to respective classes
 				\item Each advice is converted into a method
 				\item Pointcuts: Add method call from the join points to the advice
 				\item Dynamic extensions: Insert source code at all potential join points that checks dynamic conditions and, if conditions hold, calls the advice method.
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\mynote{Weaving in AspectJ (Technically)}{
+		\begin{note}{Weaving in AspectJ (Technically)}
 			AspectJ Compiler; conceptual effect is only visible in Bytecode
-		}
-		\mynote{Other Options}{
+		\end{note}
+		\begin{note}{Other Options}
 			\begin{itemize}
 				\item Source transformation: Base Program + Aspects $\rightarrow$ Java (s. FOP/Jak).
 				\item Evaluation at runtime: Meta-Object Protocol, interpreted languages, ...
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -507,19 +507,19 @@ aspect Profiler {
 
 \begin{frame}[fragile]{Aspects for Product Lines}
 	\begin{mycolumns}[widths={45,55},animation=none]
-		\mydefinition{Basic Idea}{
+		\begin{definition}{Basic Idea}
 			\begin{itemize}
 				\item Implement one aspect per feature.
 				\item Feature selection determines the aspects which are included in the weaving process.
 			\end{itemize}
-		}
-		\mynote{}{
+		\end{definition}
+		\begin{note}{}
 			\begin{itemize}
 				\item Aspects encapsulate changes to be made to existing classes. 
 				\item However, aspects do not encapsulate new classes introduced by a feature (only nested classes within an aspect)\\
 					\emph{$\Rightarrow$ Gives rise to a combination of FOP and AOP.}
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 \begin{codetight}{A Color Feature for Graphs}
 aspect ColorFeature {
@@ -541,28 +541,28 @@ aspect ColorFeature {
 
 \begin{frame}[fragile]{Controversial: Obliviousness and Fragile-Pointcut Problem}
 	\begin{mycolumns}[widths={45,55},animation=none]
-		\mydefinition{Principle of Obliviousness}{
+		\begin{definition}{Principle of Obliviousness}
 			Base program is (deliberately) supposed to be oblivious wrt.\ the aspects that ``hook into'' the system:
 			\begin{itemize}
 				\item Base program developers implement their concerns as if there were no aspects.
 				\item Aspect programmers extend the base program.
 			\end{itemize}
-		}
+		\end{definition}
 		\uncover<3->{
-			\mynote{Obliviousness worsens the fragile-pointcut problem}{
+			\begin{note}{Obliviousness worsens the fragile-pointcut problem}
 				Because the base programmer does not know about aspects, 
 				it is more likely that changes may break aspect bindings and that nobody notices that.
-			}
+			\end{note}
 		}
 	\mynextcolumn
 		\pause
-		\mydefinition{Fragile-Pointcut Problem}{
+		\begin{definition}{Fragile-Pointcut Problem}
 			Base program may be modified such that the set of join points changes in an undesired way:
 			\begin{itemize}
 				\item Join points may be removed accidentally 
 				\item Join points may be captured by aspects accidentally
 			\end{itemize}
-		}
+		\end{definition}
 		\begin{codetight}{}
 class Chess {
 	void drawKing() {...}
@@ -581,22 +581,22 @@ aspect UpdateDisplay {
 
 \begin{frame}{Discussion}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mynote{Advantages}{
+		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Separation of (possibly crosscutting) feature code into distinct aspects.
 				\item Direct feature traceability from feature to its implementation in an aspect.
 				\item Little or no preplanning effort required.
 				\item Fine-grained variability driven by the join-point model of the aspect-oriented language.
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 		\pause
-		\mynote{Disadvantages}{
+		\begin{note}{Disadvantages}
 			\begin{itemize}
 				\item Requires adoption of a rather complex extension mechanism (new language and paradigm).
 				\item No unifying theory like no language-independent framework.
 				\item Program evolution and maintenance affected by fragile-pointcut problem.
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
