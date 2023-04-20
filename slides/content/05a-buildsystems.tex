@@ -1,41 +1,41 @@
 \subsection{How to Implement Features?}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\myexampletight{Given a feature model for graphs \ldots}{
+		\begin{exampletight}{Given a feature model for graphs \ldots}
 			\centering\featureDiagramGraphs
 			%\featureDiagramLegend
-		}
-		\myexample{\ldots\ we can derive a valid configuration}{
+		\end{exampletight}
+		\begin{example}{\ldots\ we can derive a valid configuration}
 			\small
-			\leftmiddleandright{
+			\begin{mycolumns}[columns=3,animation=none]
 				$\{G\}$\\
 				$\{G,C\}$\\
 				$\{G,D\}$\\
 				$\{G,C,D\}$\\
-			}{
+			\mynextcolumn
 				$\{G,W\}$\\
 				$\{G,C,W\}$\\
 				$\{G,D,W\}$\\
 				$\{G,C,D,W\}$\\
-			}{
+			\mynextcolumn
 				$\{G,W,S\}$\\
 				$\{G,C,W,S\}$\\
 				$\{G,D,W,S\}$\\
 				$\{G,C,D,W,S\}$\\
-			}
-		}
+			\end{mycolumns}
+		\end{example}
 	\mynextcolumn
 		\vspace{-10mm}
-		\myexampletight{How to Generate Products Automatically?}{
+		\begin{exampletight}{How to Generate Products Automatically?}
 			\centering\foreach \page in {2,12,4,14,6,16,8,18,10,20,42,44}{\pic[width=.23\linewidth,page=\page]{graphs} }
-		}
-		\mynote{Goals}{
+		\end{exampletight}
+		\begin{note}{Goals}
 			\begin{itemize}
 				\item descriptive specification of a product (i.e., a configuration, a selection of features)
 				\item automated generation of a product with compile-time variability
 			\end{itemize}
 			Focus of the next three lectures \ldots
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -115,11 +115,11 @@ public class Edge {
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\leftandright{
+		\begin{mycolumns}[animation=none]
 			\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir}
-		}{
+		\mynextcolumn
 			\picDark[width=\linewidth]{configfile-eclipse-ini}
-		}
+		\end{mycolumns}
 
 		\begin{definition}{How to? -- Command-Line Options / Configuration Files}
 			\begin{itemize}
@@ -195,22 +195,34 @@ public class Config {
 \subsection{Recap: Clone-and-Own with Build Systems}
 \begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
 	\begin{mycolumns}[columns=2,widths={76},animation=none]
-		\leftandright{
-			\myexample{Case Study: Anesthesia Device}{
+		\begin{mycolumns}[animation=none]
+			\begin{example}{Case Study: Anesthesia Device}
 				\begin{itemize}
 					\item C application
 					\item targets embedded devices (ESP32)
 					\item configurations are hard-coded as build scripts
 				\end{itemize}
+			\end{example}
+		\mynextcolumn
+			\uncover<4->{
+				\begin{exampletight}{{\color{red}Production Device}: OLED, Clock}
+					\centering\pic[height=25mm]{pignap-cfg-production-oled}
+				\end{exampletight}
 			}
-		}{
-			\uncover<4->{\myexampletight{{\color{red}Production Device}: OLED, Clock}{\centering\pic[height=25mm]{pignap-cfg-production-oled}}}
-		}
-		\leftandright{
-			\uncover<2->{\myexampletight{{\color{green}Prototype}: OLED Display}{\centering\pic[height=25mm]{pignap-cfg-prototype-oled}}}
-		}{
-			\uncover<3->{\myexampletight{{\color{blue}Prototype}: LCD, Real-Time Clock}{\centering\pic[height=25mm]{pignap-cfg-prototype-lcd-rtc}}}
-		}
+		\end{mycolumns}
+		\begin{mycolumns}[animation=none]
+			\uncover<2->{
+				\begin{exampletight}{{\color{green}Prototype}: OLED Display}
+					\centering\pic[height=25mm]{pignap-cfg-prototype-oled}
+				\end{exampletight}
+			}
+		\mynextcolumn
+			\uncover<3->{
+				\begin{exampletight}{{\color{blue}Prototype}: LCD, Real-Time Clock}
+					\centering\pic[height=25mm]{pignap-cfg-prototype-lcd-rtc}
+				\end{exampletight}
+			}
+		\end{mycolumns}
 	\mynextcolumn
 		\only<1|handout:0>{\pic[width=\linewidth,page=1]{pignap-variants}}%
 		\only<2|handout:0>{\pic[width=\linewidth,page=2]{pignap-variants}}%
@@ -222,15 +234,15 @@ public class Config {
 \subsection{Introducing Features to Build Systems}
 \begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
 	\begin{mycolumns}[widths={60}]
-		\mydefinition{How to Implement Features with Build Systems?}{
+		\begin{definition}{How to Implement Features with Build Systems?}
 			\begin{itemize}
 				\item step 1: model variability in a feature model
 				\item step 2: in build scripts, in- and exclude files based on feature selection
 				\item step 3: pass a feature selection at build time
 			\end{itemize}
 			$\Rightarrow$ one build script per group of related features
-		}
-		\myexampletight{}{
+		\end{definition}
+		\begin{exampletight}{}
 			\centering
 			\featureDiagram{Anesthesia Device,abstract
 			[Monitoring,abstract,mandatory
@@ -243,12 +255,12 @@ public class Config {
 				[RTC,concrete,optional[Battery,concrete,mandatory]]]}
 
 			$History \pimplies Storage \pand RTC$
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\pic[width=.65\linewidth]{pignap-features}
-		}
+		\end{exampletight}
 \end{mycolumns}
 \end{frame}
 
@@ -264,7 +276,7 @@ config IA32_EMULATION
 	depends on X86_64
 	help Include code to run legacy 32-bit programs under a 64-bit kernel. You should likely enable this, unless you're 100% sure that you don't have any 32-bit programs left.
 \end{kconfigtight}
-		\mydefinition{KBuild\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/makefiles.html}{kernel.org}}}{
+		\begin{definition}{KBuild\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/makefiles.html}{kernel.org}}}
 			\begin{itemize}
 				\item a style for writing Makefiles in Linux
 				\item defines goals with Make variables
@@ -275,7 +287,7 @@ config IA32_EMULATION
 				\end{itemize}
 				\item full power of Make $\Rightarrow$ hard to comprehend
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
 		\begin{kbuildtight}[basicstyle=\small]{Feature Mapping with KBuild \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kbuild}{linux/arch/x86/Kbuild}}}
 # link these subdirectories statically:
@@ -305,7 +317,9 @@ obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}
-		\mynote{Recap: Interactive Linux Kernel Configurator}{\pic[width=\linewidth]{linux-menuconfig-emulation}}
+		\begin{note}{Recap: Interactive Linux Kernel Configurator}
+			\pic[width=\linewidth]{linux-menuconfig-emulation}
+		\end{note}
 
 		\begin{kconfigtight}[basicstyle=\footnotesize]{Feature Model and Example Configuration}
 			config AUDIT ... # configured as NO
@@ -334,7 +348,9 @@ audit-class- := audit.o
 obj-?y? +=
 		\end{kbuildtight}
 
-		\mynote{}{\small i.e., \texttt{entry, realmode, kernel, mm, ia32, hyperv, ia32\_signal.o} are compiled}
+		\begin{note}{}
+			\small i.e., \texttt{entry, realmode, kernel, mm, ia32, hyperv, ia32\_signal.o} are compiled
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -343,7 +359,7 @@ obj-?y? +=
 \subsection{Discussion of Features with Build Systems}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mynote{Advantages}{
+		\begin{note}{Advantages}
 			\begin{itemize}
 				\item compile-time variability\\
 					$\Rightarrow$ \emph{fast, small binaries} with smaller attack surface and without disclosing secrets
@@ -352,9 +368,9 @@ obj-?y? +=
 				\item allows in- and exclusion of individual files or even entire subsystems\\
 					$\Rightarrow$ high-level, \emph{modular variability}
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
-		\mynote{Challenges}{
+		\begin{note}{Challenges}
 			\begin{itemize}
 				\item not easily reconfigurable at run- or load-time
 				\item build scripts may become complex, there is no limit to what can be done (e.g., you can run arbitrary shell commands on files)\\
@@ -362,6 +378,6 @@ obj-?y? +=
 				\item no simple in- and exclusion of individual lines or chunks of code\\
 				$\Rightarrow$ high-level use \emph{only}!
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}

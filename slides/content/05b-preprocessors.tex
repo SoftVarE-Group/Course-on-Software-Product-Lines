@@ -4,7 +4,7 @@
 \subsection{Granularity of Variability}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
-		\mydefinition{Granularity of Variability}{
+		\begin{definition}{Granularity of Variability}
 			\begin{itemize}
 				\item Depending on the implementation technique, variability can be introduced at different levels of granularity.
 				\item A level of granularity refers to
@@ -13,13 +13,13 @@
 					\item the hierarchical structure of an implementation artifact (e.g., given by its syntax)
 				\end{itemize}
 			\end{itemize}
-		}
-		\myexample{Granularity Levels in Java}{
+		\end{definition}
+		\begin{example}{Granularity Levels in Java}
 			Archives $>$ packages $>$ classes $>$ members $>$ statements
-		}
+		\end{example}
 		\pause
 	\mynextcolumn
-		\mynote{What we have seen so far?}{
+		\begin{note}{What we have seen so far?}
 			\begin{itemize}
 				\item Coarse-grained: Clone-and-own with version control (entire variants)
 				\item Medium-grained: Clone-and-own with build systems (file level)
@@ -27,11 +27,11 @@
 				\item Medium-grained: Design patterns for variability (class or member level)
 				\item Fine-grained: Runtime parameters (statement level) 
 			\end{itemize}
-		}
+		\end{note}
 		\pause
-		\mynote{What is missing?}{
+		\begin{note}{What is missing?}
 			Yet no approach supporting fine-grained compile-time variability!
-		}		
+		\end{note}		
 	\end{mycolumns}
 \end{frame}
 % Christian's paper?
@@ -89,9 +89,15 @@
 			\end{itemize}}
 		\end{definition}
 	\mynextcolumn
-		\myexampletight{Example Input}{\picDark[scale=.3]{preprocessor-c}}
+		\begin{exampletight}{Example Input}
+			\picDark[scale=.3]{preprocessor-c}
+		\end{exampletight}
 	\mynextcolumn
-		\uncover<4->{\myexampletight{Example Output (Simplified)}{\picDark[scale=.15]{preprocessor-c-output}}}
+		\uncover<4->{
+			\begin{exampletight}{Example Output (Simplified)}
+				\picDark[scale=.15]{preprocessor-c-output}
+			\end{exampletight}
+		}
 		\uncover<5->{\begin{note}{Why simplified?}
 			\begin{itemize}
 				\item preprocessed file can get very long due to to included header files
@@ -312,21 +318,21 @@
 
 \begin{frame}[fragile]{Problem: Source-Code ``Obfuscation''}
 	\begin{mycolumns}[animation=none]
-		\mynote{Observations on Readability}{
+		\begin{note}{Observations on Readability}
 			\begin{itemize}
 				\item Mixing \emph{two languages} (C and \#ifdefs, or Java and Munge, ...)
 				\item Control flow difficult to understand
 				\item Long annotations hard to find
 				\item Extra line breaks destroy layout
 			\end{itemize}
-		}
-		\mydefinition{Problem: Undisciplined Annotations}{
+		\end{note}
+		\begin{definition}{Problem: Undisciplined Annotations}
 			\begin{itemize}
 				\item the preprocessor language (e.g., \#ifdefs) does not care about the preprocessed language (e.g., C)
 				\item allows for ``undisciplined'' preprocessor usage (precise definition later)
 				\item considerably worsens readability
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
 		\begin{cpptight}[basicstyle=\small]{Can you read this source code?\mysource{\href{https://dl.acm.org/doi/abs/10.1145/1960275.1960299}{{Liebig~et~al.~2011; xterm}}}}
 #if ~defined(__GLIBC__)~
@@ -354,7 +360,7 @@
 
 \begin{frame}{Discussion of Features with Preprocessors}
 	\begin{mycolumns}[animation=none]
-		\mynote{Advantages}{
+		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Well-known and mature tools, readily available
 				\item Easy to use\\
@@ -365,10 +371,10 @@
 				\item Little \emph{preplanning} required\\
 				$\Rightarrow$ variability can be added to an existing project
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 		\pause
-		\mynote{Challenges}{
+		\begin{note}{Challenges}
 			\begin{itemize}
 				\item \emph{Scattering} and \emph{tangling}\\
 				$\Rightarrow$ separation of concerns?
@@ -378,7 +384,7 @@
 				\item Often used in an ad-hoc or \emph{undisciplined} fashion
 				\item Prone to subtle syntax, type, or runtime errors which are hard to detect
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -386,39 +392,39 @@
 
 \subsection{Preprocessor-Based Product Lines in the Wild}
 \begin{frame}{\myframetitle\mysource{\fortyproductlines}}
-	\leftorright{
+	\begin{mycolumns}[forget]
 		\begin{exampletight}{Number of Features}
 			\centering\pic[width=.8\linewidth,page=1]{fortyproductlines}\\Lines of Code
 		\end{exampletight}
-	}{
+	\mynextcolumn
 		\begin{exampletight}{Percentage of Variable Code}
 			\centering\pic[width=.8\linewidth,page=2]{fortyproductlines}\\Lines of Code
 		\end{exampletight}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\mysource{\fortyproductlines}}
-	\leftorright{
+	\begin{mycolumns}[forget]
 		\begin{exampletight}{Lines of Variable Code}
 			\centering\pic[width=.8\linewidth,page=3]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	}{
+	\mynextcolumn
 		\begin{exampletight}{Average Nesting Depth}
 			\centering\pic[width=.8\linewidth,page=6]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\mysource{\fortyproductlines}}
-	\leftorright{
+	\begin{mycolumns}[forget]
 		\begin{exampletight}{Average Number of Feature References}
 			\centering\pic[width=.8\linewidth,page=4]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	}{
+	\mynextcolumn
 		\begin{exampletight}{Average Number of Features per Annotation}
 			\centering\pic[width=.8\linewidth,page=5]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	}
+	\end{mycolumns}
 \end{frame}
 % TODO create own plots for the data?
 % TODO add pictures from Rodrigues et al. @ INFSOF’16 (Assessing ﬁne-grained feature dependencies): methods with directives vs product lines
