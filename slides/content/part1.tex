@@ -1,7 +1,7 @@
 % TODO L01 INTRODUCTION
 
 \ifuniversity{recording}{\date{April 19, 2023}\setpicture[250]{apr21-o25a}}
-\ifuniversity{ulm}{\date{April 18, 2023}\setpicture[250]{apr21-o25a}}
+\ifuniversity{ulm}{\date{April 20, 2023}\setpicture[250]{apr21-o25a}}
 \ifuniversity{magdeburg}{\setpicture[70]{ovgu-autumn1}\setcopyright{Photo: Hannah Theile (OVGU)}}
 
 \author{Thomas Thüm, Timo Kehrer, Elias Kuiter}
@@ -153,22 +153,37 @@
 	\end{itemize}
 }
 
-% TODO Thomas: add exam questions here
 \faq{
-	\item \ldots
+	\item What is variability, runtime variability, and binding time?
+	\item What is the connection between variability, variability-intensive systems, and software product lines?
+	\item How can configuration options be supplied?
+	\item How can command-line parameters, preference dialogs, and configuration files be used to offer variability?
+	\item What is the principle behind configuration options and when does the configuration happen?
+	\item What are potential features of a graph library?
+	\item What are examples for runtime variability? When are configuration options specified? By whom?
+	\item When is the validity of configuration options checked?
 }{
-	\item \ldots
+	\item How to realize runtime variability in source code?
+	\item What is the best strategy?
+	\item How can (immutable) global variables and method parameters be used to realize variability?
+	%\item How to trace features in non-variable implementations?
+	%\item How can configuration options be realized (for a graph library)?
+	\item Why is the development of runtime variability challenging?
+	\item What are code scattering, code tangling, and code replication?
+	\item Does runtime variability allow reconfiguration at runtime?
+	\item How to develop new features or variants with runtime variability? Exemplify!
+	\item What are (dis)advantages of runtime variability?
+	\item When (not) to use runtime variability?
 }{
-	\item \ldots
+	\item What are design patterns (used for)?
+	\item Why are design patterns relevant for variable software?
+	\item Which design patterns are relevant for variable software?
+	\item What are intent, motivation, and idea for template method, abstract factory, and decorator pattern?
+	\item Given an example class diagram, which pattern is applied or should be applied? Why?
+	\item What is the diamond problem? How does it affect variable software?
+	\item Is multiple inheritance useful to combine features? Exemplify!
+	\item What are limitations of design patterns (for variable software)?
 }
-%	what is runtime variability (binding time)?
-%	\also how can configuration parameters be supplied?
-%	\also (when) does the validity of parameters need to be checked?
-%	\also how can runtime variability be realized in the code? which way is preferred when?
-%	\also implement feature XY in a given excerpt of source code
-%	\also what problems are associated with runtime variability?
-%	\also how can design patterns be used to implement variability? which design patterns for variability are there?
-%	\also when should runtime variability (not) be used?
 
 \input{template/footer}
 
