@@ -54,6 +54,20 @@
 	\end{mycolumns}
 \end{frame}
 
+% design patterns as uml class diagrams modeled with diagrams.net
+\newcommand{\objectadapter}[1]{\pic[#1,page=1,trim=110 240 495 200,clip]{diagramsnet-designpatterns-print}}
+\newcommand{\composite}[1]{\pic[#1,page=2,trim=200 300 405 115,clip]{diagramsnet-designpatterns-print}}
+\newcommand{\decorator}[1]{\pic[#1,page=4,trim=185 205 355 135,clip]{diagramsnet-designpatterns-print}}
+\newcommand{\decoratorexample}[1]{\pic[#1,page=5,trim=185 260 340 135,clip]{diagramsnet-designpatterns-print}}
+
+\newcommand{\singleton}[1]{\pic[#1,page=6,trim=55 425 665 85,clip]{diagramsnet-designpatterns-print}}
+\newcommand{\singletonexample}[1]{\pic[#1,page=7,trim=55 425 665 85,clip]{diagramsnet-designpatterns-print}}
+\newcommand{\abstractfactory}[1]{\pic[#1,page=8,trim=200 350 280 65,clip]{diagramsnet-designpatterns-print}}
+
+\newcommand{\observer}[1]{\pic[#1,page=9,trim=285 350 320 55,clip]{diagramsnet-designpatterns-print}}
+
+\newcommand{\profcalculator}[1]{\pic[#1,trim=190 185 130 105,clip]{diagramsnet-designpatterns-print}}
+
 \subsection{Abstract Factory Pattern}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40}]
@@ -65,13 +79,16 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\pic[width=\linewidth]{abstractfactory} % TODO not readible in dark mode
+		\tcbset{uulm@tightboxstyle/.append style={colback=white}} % hack to fix partially transparent background
+		\begin{exampletight}{}
+			\abstractfactory{width=\linewidth}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
 \subsection{Decorator Pattern}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40}]
+	\begin{mycolumns}[widths={45}]
 		\begin{definition}{Decorator \mysource{\gof\mypages{175--184}}}
 			\begin{itemize}
 				\item {\bf Intent:} \mycite{Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.}
@@ -80,7 +97,10 @@
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\picDark[width=\linewidth]{decorator}
+		\tcbset{uulm@tightboxstyle/.append style={colback=white}} % hack to fix partially transparent background
+		\begin{exampletight}{}
+			\decorator{width=\linewidth}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
