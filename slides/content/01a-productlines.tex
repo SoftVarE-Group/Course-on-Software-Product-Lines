@@ -106,9 +106,13 @@
 			\item customized, individual goods at costs similar to mass production
 			\end{itemize}
 		\end{definition}
-		\myexampletight{Car Configuration}{\pic[width=\linewidth]{toyota-aygo-wheels}}
+		\begin{exampletight}{Car Configuration}
+			\pic[width=\linewidth]{toyota-aygo-wheels}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{Car Production}{\pic[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}}
+		\begin{exampletight}{Car Production}
+			\pic[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}
+		\end{exampletight}
 		\begin{example}{Other Domains}
 			bikes, computers, electronics, tools, medicine, clothing, food, financial services, \ldots, software?
 		\end{example}
@@ -196,9 +200,11 @@
 		\end{note}}
 		% TODO exemplify difference between hardware product, software product (VLC?), and program (reuse pictures from before)
 	\mynextcolumn
-		\uncover<3->{\myexampletight{Product Map for Eclipse (excerpt)}{
-			\picDark[width=\linewidth,trim=0 460 635 0,clip]{eclipse-product-map}
-		}}
+		\uncover<3->{
+			\begin{exampletight}{Product Map for Eclipse (excerpt)}
+				\picDark[width=\linewidth,trim=0 460 635 0,clip]{eclipse-product-map}
+			\end{exampletight}
+		}
 	\end{mycolumns}
 \end{frame}
 % TODO Venn diagram could also be a good visualization: products correspond to sets and features to set elements
@@ -237,10 +243,26 @@
 		\begin{definition}{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}
 			\mycitebegin A \emph{software product line} is
 			\begin{itemize}
-				\item a set of software-intensive systems \uncover<2->{\myexampletight{}{aka.\ products or variants}}
-				\item that share a common, managed set of features \uncover<3->{\myexampletight{}{common set, but not all products have all features in common}}
-				\item satisfying the specific needs of a particular market segment or mission \uncover<4->{\myexampletight{}{aka.\ domain \deutsch{Domäne, Einsatzgebiet, Marktsegment}}}
-				\item and that are developed from a common set of core assets in a prescribed way.\myciteend \uncover<5->{\myexampletight{}{aka.\ planned, structured reuse \deutsch{Wiederverwendung von vorbereiteten Teilen}}}
+				\item a set of software-intensive systems \uncover<2->{
+					\begin{exampletight}{}
+						aka.\ products or variants
+					\end{exampletight}
+				}
+				\item that share a common, managed set of features \uncover<3->{
+					\begin{exampletight}{}
+						common set, but not all products have all features in common
+					\end{exampletight}
+				}
+				\item satisfying the specific needs of a particular market segment or mission \uncover<4->{
+					\begin{exampletight}{}
+						aka.\ domain \deutsch{Domäne, Einsatzgebiet, Marktsegment}
+					\end{exampletight}
+				}
+				\item and that are developed from a common set of core assets in a prescribed way.\myciteend \uncover<5->{
+					\begin{exampletight}{}
+						aka.\ planned, structured reuse \deutsch{Wiederverwendung von vorbereiteten Teilen}
+					\end{exampletight}
+				}
 				\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
 			\end{itemize}
 		\end{definition}
@@ -268,11 +290,11 @@
 		\end{note}}
 	\mynextcolumn
 		\vspace{-5mm}
-		\uncover<3->{\mynotetight{Idea of Product-Line Engineering}{
+		\uncover<3->{\begin{notetight}{Idea of Product-Line Engineering}
 			Reduce effort per product by means of an up-front investment for the product line:
 			
 			\pic[width=\linewidth,trim=30 60 30 50,clip]{product-line-vs-single-system}
-		}}
+		\end{notetight}}
 		\uncover<4->{\begin{definition}{Single-System Engineering}
 			\begin{itemize}
 			%\item aka.\ single-system development \mysource{\seiwhitepaperspl\mypage{7}}

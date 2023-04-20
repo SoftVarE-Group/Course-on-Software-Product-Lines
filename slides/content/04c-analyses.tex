@@ -10,7 +10,7 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[b,widths={67}]
-		\myexampletight{Configuring a car \ldots}{
+		\begin{exampletight}{Configuring a car \ldots}
 			\centering\small
 			\only<1-3>{\pic[width=\linewidth]{toyota-aygo-wheels0}}%
 			\only<4-5|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels}}%
@@ -21,10 +21,10 @@
 			\only<13|handout:0>{\pic[width=.8\linewidth]{toyota-aygo-color2}}%
 			\only<14|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels3}}%
 			\only<15-|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels4}}%
-		}
+		\end{exampletight}
 	\mynextcolumn
 		\vspace{-\textheightoftitle}
-		\myexample{\ldots\ is complicated!}{
+		\begin{example}{\ldots\ is complicated!}
 			\begin{enumerate}
 				\item the default configuration
 				\uncover<3->{\item we want \textbf{black cap}}
@@ -37,47 +37,49 @@
 				\uncover<14->{\item popup dialog: black wheels unavailable (no automatic selection! preview of unavailable wheels!)}
 			\end{enumerate}
 			what now? back to Step 3?
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t,columns=3,widths={33,22}]
-		\myexampletight{Configuring a Car \ldots}{
+		\begin{exampletight}{Configuring a Car \ldots}
 			\pic[width=\linewidth]{toyota-aygo-wheels3}\\\centering
 			10. cancel the dialog
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{with a Weird Price}{
+		\begin{exampletight}{with a Weird Price}
 			\centering\picDark[width=\linewidth]{toyota-aygo-costs}
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{with 8 Wheels!}{
+		\begin{exampletight}{with 8 Wheels!}
 			\picDark[width=\linewidth]{toyota-aygo-costs3}
-		}
+		\end{exampletight}
 	\end{mycolumns}
 	\begin{mycolumns}[columns=3,widths={20,60},animation=none]
 	\mynextcolumn
-		\uncover<4->{\mynote{}{
-			\begin{itemize}
-				\item canceling the dialog was not considered and lead to an invalid state (i.e., configuration)
-				\item humans check these configurations, but some errors are only found during production
-				\item many constraints: appear arbitrary, not explained
-			\end{itemize}
-		}}
+		\uncover<4->{
+			\begin{note}{}
+				\begin{itemize}
+					\item canceling the dialog was not considered and lead to an invalid state (i.e., configuration)
+					\item humans check these configurations, but some errors are only found during production
+					\item many constraints: appear arbitrary, not explained
+				\end{itemize}
+			\end{note}
+		}
 	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={70,30}]
-		\myexampletight{Configuring a German Car\mysource{example from \lectureintroduction}}{
+		\begin{exampletight}{Configuring a German Car\mysource{example from \lectureintroduction}}
 			\picDark[width=\linewidth]{bmw-series1-confassistant-bluetooth}
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\mynote{}{
+		\begin{note}{}
 			Why does the telephone conflict with Microsoft Office?
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -85,26 +87,26 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={65}]
-		\myexampletight{Configuring a Notebook}{ % it is on purpose that both pictures are shown in handout
+		\begin{exampletight}{Configuring a Notebook} % it is on purpose that both pictures are shown in handout
 			\only<1>{\picDark[width=\linewidth]{thinkpad-x1-yoga-display}}
 			\only<2->{\picDark[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\mynote{}{
+		\begin{note}{}
 			can detect mistakes, but provides no explanations or fixes
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={70,30}]
-		\myexampletight{Still Configuring a Notebook}{
+		\begin{exampletight}{Still Configuring a Notebook}
 			\picDark[width=\linewidth]{thinkpad-x1-yoga-office}
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\mynote{}{
+		\begin{note}{}
 			allows some feature combinations and not others, prices are opaque
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -112,18 +114,18 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={60,40}]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\pic[width=\textwidth]{linux-menuconfig} % sudo apt install make flex bison libncurses5-dev && make menuconfig
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\mynote{make menuconfig}{
+		\begin{note}{make menuconfig}
 			\begin{itemize}
 				\item configures KConfig models
 				\item generates a \texttt{.config} file
 				\item widely used to configure Linux
 				\item still: it is possible to create invalid configurations and products
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -131,23 +133,23 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mynote{Open Questions}{
+		\begin{note}{Open Questions}
 			\begin{itemize}
 				\item How do such configurators work?
 				\item How to avoid inconsistencies?
 				\item How to provide explanations and fixes?
     			\item How to get all valid configurations automatically? (\emph{P2(b)})
 			\end{itemize}
-		}
-		\mydefinition{Automated Analysis of Feature Models}{
+		\end{note}
+		\begin{definition}{Automated Analysis of Feature Models}
 			\begin{itemize}
 				\item up until now: \emph{creation} and \emph{transformation} of feature models
 				\item now: \emph{analysis} of feature models to improve our understanding of a configuration space
 				\item for brevity: product = valid configuration
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\myexample{Asking Questions About Feature Models}{
+		\begin{example}{Asking Questions About Feature Models}
 			\begin{itemize}
 				\item Is a given configuration valid?
 				\item Is there any product at all?\\
@@ -161,7 +163,7 @@
 				\item \color{gray}{(How do two feature model versions differ?)}
 				\item \color{gray}{(Why is \ldots? How to fix \ldots?)}
 			\end{itemize}
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
@@ -169,7 +171,7 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mydefinition{Recap: Boolean Satisfiability Problem (SAT)}{
+		\begin{definition}{Recap: Boolean Satisfiability Problem (SAT)}
 			\begin{itemize}
 				\item \emph{decision problem}: is there any assignment $A$ that satisfies a given formula?
 				\item formally: $SAT(\phi) \mequals \exists A \colon \phi(A) = \top$
@@ -181,16 +183,16 @@
 					competitively developed over several decades;\\
 					takes a CNF in DIMACS format as input
 			\end{itemize}
-		}
-		\myexample{}{
+		\end{definition}
+		\begin{example}{}
 			\begin{itemize}
 				\item $X \pimplies Y$ is satisfiable
 				\item $X \por \pnot X$ is satisfiable (even a tautology)
 				\item $X \pand \pnot X$ is not satisfiable (why?)
 			\end{itemize}
-		}
+		\end{example}
 	\mynextcolumn
-		\mydefinition{Sharp Satisfiability Problem (\ssat{})}{
+		\begin{definition}{Sharp Satisfiability Problem (\ssat{})}
 			\begin{itemize}
 				\item \emph{counting problem}: how many assignments satisfy a given formula?
 				\item $\ssat(\phi) = \abs{\{A \mid \phi(A) = \top\}}$
@@ -198,21 +200,23 @@
 					at least as hard as SAT (probably harder)
 				\item answered by \emph{\ssat{} solvers}
 			\end{itemize}
+		\end{definition}
+		\uncover<3->{
+			\begin{definition}{Solution Enumeration Problem (AllSAT)}
+				\begin{itemize}
+					\item \emph{enumeration problem}: which assignments satisfy a given formula?
+					\item $AllSAT(\phi) = \{A \mid \phi(A) = \top\}$
+					\item at least as hard as \ssat{} (probably harder)
+					\item answered by \emph{AllSAT solvers}
+				\end{itemize}
+			\end{definition}
 		}
-		\uncover<3->{\mydefinition{Solution Enumeration Problem (AllSAT)}{
-			\begin{itemize}
-				\item \emph{enumeration problem}: which assignments satisfy a given formula?
-				\item $AllSAT(\phi) = \{A \mid \phi(A) = \top\}$
-				\item at least as hard as \ssat{} (probably harder)
-				\item answered by \emph{AllSAT solvers}
-			\end{itemize}
-		}}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Automated Analysis of Feature Models}
 	\begin{mycolumns}[widths={52}]
-		\myexample{Asking Questions About Feature Models}{
+		\begin{example}{Asking Questions About Feature Models}
 			\begin{itemize}
 				\item Is a given configuration valid? $\Rightarrow$ \emph{evaluate}
 				\item \emph{Is} there any valid configuration at all?\\
@@ -222,16 +226,16 @@
 				\item \emph{Is} a given partial configuration consistent?\\
 					\emph{How many}/\emph{which} valid configurations include it?\\
 			\end{itemize}
-		}
-		\mynote{Choosing the Right Solver}{
+		\end{example}
+		\begin{note}{Choosing the Right Solver}
 			\begin{itemize}
 				\item ``is?''~~~~~~~~~~~~$\approx$ SAT solver query
 				\item ``how many?''~$\approx$ \ssat{} solver query
 				\item ``which?''~~~~~~\,$\approx$ AllSAT solver query
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
-		\mydefinition{Typical Feature-Model Analysis Process}{
+		\begin{definition}{Typical Feature-Model Analysis Process}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -249,10 +253,10 @@
 							(query) edge node[yshift=-2mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT\\\ssat{}\\AllSAT} (answer)
 							(answer) edge node [yshift=2mm]{\small interpret} (result);
 			\end{tikzpicture}
-		}
-		\mynote{}{
+		\end{definition}
+		\begin{note}{}
 			for brevity, we assume that $\phi = CNF(\Phi(FM))$ for a given feature model $FM$
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -265,7 +269,7 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t]
 		\emph{Consistency of Feature Models (SAT)}
-		\mydefinition{Void/Consistent Feature Model}{
+		\begin{definition}{Void/Consistent Feature Model}
 			\begin{itemize}
 				\item are there grave modeling errors?
 				\item is it possible to configure any product at all?
@@ -281,10 +285,10 @@
 							(answer) edge node [yshift=2mm,sloped]{\small $\bot$} (void)
 							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
 			\end{tikzpicture}
-		}
+		\end{definition}
 		\mynextcolumn
 		\emph{Cardinality of Feature Models (\ssat{})}
-		\mydefinition{How Many Products Are There?}{
+		\begin{definition}{How Many Products Are There?}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -292,8 +296,8 @@
 				\node [block, right =10mm of query] (answer) {$\abs{C}$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
-		}
-		\mydefinition{Variability Factor: Share of Products?}{
+		\end{definition}
+		\begin{definition}{Variability Factor: Share of Products?}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -303,36 +307,36 @@
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer)
 							(answer) edge node [yshift=2mm,sloped]{} (num);
 			\end{tikzpicture}
-		}
+		\end{definition}
 	\end{mycolumns}
 	\begin{mycolumns}[t]
-		\myexampletight{}{
-			\leftandright{
+		\begin{exampletight}{}
+			\begin{mycolumns}[animation=none]
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				void
-			}{
+			\mynextcolumn
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				consistent
-			}
-		}
+			\end{mycolumns}
+		\end{exampletight}
 		\mynextcolumn
-		\myexampletight{}{
-			\leftandright{
+		\begin{exampletight}{}
+			\begin{mycolumns}[animation=none]
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				$0$ products, VF $0$
-			}{
+			\mynextcolumn
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				$2$ products, VF $\frac{2}{8}$
-			}
-		}
+			\end{mycolumns}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
@@ -340,7 +344,7 @@
 	\begin{mycolumns}[t]
 		\emph{Feasibility of SAT-Based Analyses}
 
-		\mynote{Is SAT-Based Analysis ``Easy''?}{
+		\begin{note}{Is SAT-Based Analysis ``Easy''?}
 			\begin{itemize}
 				\item provocative claim: \mycite{SAT-based analysis of feature models is easy} \mysource{\href{https://dl.acm.org/doi/10.5555/1753235.1753267}{Mendonca~et~al.~2009}}
 				\item easy $=$ performs much better than expected (although NP-complete)
@@ -352,17 +356,17 @@
 						(e.g., what we discuss next)
 				\end{itemize}
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 		\emph{Feasibility of \ssat{}-Based Analyses}
 	
-		\myexampletight{Time to Count Products of Linux}{
+		\begin{exampletight}{Time to Count Products of Linux}
 			\pic[width=\linewidth,page=4]{linux-plots}\\[-7mm]
 			\begin{itemize}
 				\item the solver from 2023 can solve models from 2003 % TODO which solver?
 				\item can we analyze the models from 2023 in 2043?
 			\end{itemize}
-		}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
@@ -370,7 +374,7 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
 		\emph{Enumeration of Feature Models (AllSAT)}
-		\mydefinition{Which Products Are There?}{
+		\begin{definition}{Which Products Are There?}
 			\begin{itemize}
 				\item \emph{P2(b)}: How to get all products?
 			\end{itemize}
@@ -381,24 +385,24 @@
 				\node [block, right =10mm of query] (answer) {$C$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small AllSAT} (answer);
 			\end{tikzpicture}
-		}
-		\mynote{}{
+		\end{definition}
+		\begin{note}{}
 			AllSAT does not scale to realistic feature models!\\
 			50 features, configurations \`a 1 Byte $\approx$ 1 Petabyte
-		} % TODO better example? what about the number of features such that it cannot be stored on all servers of the world? or we take a reasonable size of a hard disk in a notebook? 5 terrabyte? I (Thomas) cannot imagine a petabyte.
-		\myexampletight{}{
-			\leftandright{
+		\end{note} % TODO better example? what about the number of features such that it cannot be stored on all servers of the world? or we take a reasonable size of a hard disk in a notebook? 5 terrabyte? I (Thomas) cannot imagine a petabyte.
+		\begin{exampletight}{}
+			\begin{mycolumns}[animation=none]
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				$\varnothing$
-			}{
+			\mynextcolumn
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				$\{\{Root, X\},\{Root, Y\}\}$
-			}
-		}
+			\end{mycolumns}
+		\end{exampletight}
 	\mynextcolumn
 		\centering
 		\sffamily
@@ -445,7 +449,7 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t]
 		\emph{Consistency of Features (SAT)}
-		\mydefinition{Core/Dead Feature}{
+		\begin{definition}{Core/Dead Feature}
 			\begin{itemize}
 				\item can a feature $F$ be (de-)selected at all?
 			\end{itemize}
@@ -470,10 +474,10 @@
 							(answer) edge node [yshift=2mm,sloped]{\small $\bot$} (void)
 							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
 			\end{tikzpicture}
-		}
+		\end{definition}
 		\mynextcolumn
 		\emph{Cardinality of Features (\ssat{})}
-		\mydefinition{How Many Products Include Feature $F$?}{
+		\begin{definition}{How Many Products Include Feature $F$?}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -481,8 +485,8 @@
 				\node [block, right =10mm of query] (answer) {$\abs{\{S \in C \mid F \in S\}}$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
-		}
-		\mydefinition{Commonality: How Dead is This Feature?}{
+		\end{definition}
+		\begin{definition}{Commonality: How Dead is This Feature?}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -492,22 +496,22 @@
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer)
 							(answer) edge node [yshift=2mm,sloped]{} (num);
 			\end{tikzpicture}
-		}
+		\end{definition}
 	\end{mycolumns}
 	\begin{mycolumns}[t]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
 			$X$ is dead, $Root$ and $Y$ are core
-		}
+		\end{exampletight}
 		\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
 			$X$: 0 products, $Root$ and $Y$: 1 products
-		}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
@@ -516,7 +520,7 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t]
 		\emph{Consistency of Partial Configurations (SAT)}
-		\mydefinition{Valid Partial Configuration}{
+		\begin{definition}{Valid Partial Configuration}
 			Is a partial configuration $C = ({\color{green}S}, {\color{red}D})$ consistent with the feature model? % TODO would be easier if term valid could be used here
 
 			\centering
@@ -530,10 +534,10 @@
 							(answer) edge node [yshift=2mm,sloped]{\small $\bot$} (void)
 							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
 			\end{tikzpicture}
-		}
+		\end{definition}
 		\mynextcolumn
 		\emph{Cardinality of Partial Configurations (\ssat{})}
-		\mydefinition{How Many Products Are Still Configurable for $C$?}{
+		\begin{definition}{How Many Products Are Still Configurable for $C$?}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -541,22 +545,22 @@
 				\node [block, right =10mm of query] (answer) {$\abs{\{(S', D') \in C \mid {\color{green}S} \subseteq S', {\color{red}D} \in D'\}}$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
-		}
+		\end{definition}
 	\end{mycolumns}
 	\begin{mycolumns}[t]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,optional][Y,concrete,optional]}\\$X \pimplies Y$}
 
 			\cfg{Root}{X} \checkmark
-		}
+		\end{exampletight}
 		\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,optional][Y,concrete,optional]}\\$X \pimplies Y$}
 
 			\cfg{Root}{X}: 2 products
-		}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
@@ -566,13 +570,13 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={60,40}]
-		\myexampletight{}{ % TODO would be great to show an explanation here
+		\begin{exampletight}{} % TODO would be great to show an explanation here
 			\picDark[width=\textwidth]{featureide-feature-model-editor-waffle}
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\picDark[width=\textwidth]{featureide-feature-model-statistics}
-		}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
@@ -580,14 +584,14 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={60,40}]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\picDark[width=.27\textwidth]{featureide-configuration-editor-step1}
 			$\Rightarrow$
 			\picDark[width=.63\textwidth]{featureide-configuration-editor-step2}
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\mynote{Decision Propagation}{
+		\begin{note}{Decision Propagation}
 			\begin{itemize}
 				\item after each decision (i.e., click) \ldots
 				\begin{itemize}
@@ -597,13 +601,13 @@
 				\item this way it is impossible to configure an invalid product
 				\item explanations for all propagated decisions
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Automated Analysis of Feature Models}
 	\begin{mycolumns}
-		\mydefinition{The Road So Far \ldots}{
+		\begin{definition}{The Road So Far \ldots}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -622,9 +626,9 @@
 							(query) edge node[yshift=-2mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT\\\ssat{}\\AllSAT} (answer)
 							(answer) edge (result);
 			\end{tikzpicture}
-		}
+		\end{definition}
 	\mynextcolumn
-		\mydefinition{\ldots\ and Beyond}{
+		\begin{definition}{\ldots\ and Beyond}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -652,6 +656,6 @@
 				\item improve efficiency of existing analyses
 				\item investigate correctness and compositionality
 			\end{itemize}
-		}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}

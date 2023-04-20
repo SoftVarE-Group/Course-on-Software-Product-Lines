@@ -2,27 +2,27 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[b]
-		\myexample{Natural Language}{
+		\begin{example}{Natural Language}
 			\tiny ``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
 			Optionally, the database can support \feat{transactions}, provided that the API allows for Put or Delete requests.
 			Also, the database targets a supported operating system, which is either \feat{Windows} or \feat{Linux}.''
-		}
-		\myexample{Configuration Map}{
+		\end{example}
+		\begin{example}{Configuration Map}
 			\tiny
-			\leftandright{
+			\begin{mycolumns}[animation=none]
 				$\{C,G,W\}$\\
 				\hspace{4mm}\vdots\\[1ex]
 				$\{C,G,P,D,T,W\}$
-			}{
+			\mynextcolumn
 				$\{C,G,L\}$\\
 				\hspace{4mm}\vdots\\[1ex]
 				$\{C,G,P,D,T,L\}$
-			}
-		}
-		\myexampletight{Feature Diagram (Graphical Feature Model)}{
+			\end{mycolumns}
+		\end{example}
+		\begin{exampletight}{Feature Diagram (Graphical Feature Model)}
 			\centering\tiny
 			\featureDiagramConfigurableDatabase
-		}
+		\end{exampletight}
 	\mynextcolumn
 		\centering
 		\sffamily
@@ -48,13 +48,13 @@
 			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{red}Concrete Format};
 		\end{tikzpicture}
 
-		\mynote{Problems}{
+		\begin{note}{Problems}
 			\begin{enumerate}
 				\item<3->[P1] How to express feature models \emph{textually}?
 				\item<4->[P2] How to (a) validate configurations and (b) get all valid configurations \emph{automatically}?
 				\item<5->[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 % TODO this diagram shows plenty of opportunities for exercise tasks
@@ -85,17 +85,17 @@ constraints
 	Transactions => Put | Delete
 \end{uvltight}
 	\mynextcolumn
-		\myexampletight{A Feature Model ``Sideways''}{
+		\begin{exampletight}{A Feature Model ``Sideways''}
 			\centering
 			\pic[width=\linewidth]{varied-model}
 			$Transactions \pimplies Put \por Delete$
-		}
-		\mynote{Universal Variability Language (UVL)}{
+		\end{exampletight}
+		\begin{note}{Universal Variability Language (UVL)}
 			\begin{itemize}
 				\item textual language for feature modeling
 				\item adds advanced modeling constructs (e.g.,~attributes, cardinalities, submodels, \ldots)
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -125,20 +125,20 @@ constraints
 			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{red}Concrete Format};
 		\end{tikzpicture}
 	\mynextcolumn
-		\mynote{Problems}{
+		\begin{note}{Problems}
 			\begin{enumerate}
 				\item[P1] How to express feature models \emph{textually}?
 				\item[P2] How to (a) validate configurations and (b) get all valid configurations \emph{automatically}?
 				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
-		}
-		\mynote{Solutions}{
+		\end{note}
+		\begin{note}{Solutions}
 			\begin{enumerate}
 				\item[P1] Universal Variability Language $\Rightarrow$ \emph{Syntax}
 				\item[P2] \emph{Semantics}?
 				\item[P3] \color{gray}{--}
 			\end{enumerate}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 % TODO first show the simpler version of the tikz picture, then animate towards the above, animate together with text
@@ -150,7 +150,7 @@ constraints
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mydefinition{Syntax of Propositional Formulas}{
+		\begin{definition}{Syntax of Propositional Formulas}
 			Inductive definition of \emph{propositional formulas}\\\deutsch{aussagenlogische Formeln}:
 			\begin{itemize}
 				\item the \emph{Boolean truth values} $\top$, $\bot$
@@ -159,9 +159,9 @@ constraints
     			\item any \emph{conjunction} $(\phi \pand \psi)$ of formulas $\phi$ and $\psi$
 				\item any \emph{disjunction} $(\phi \por \psi)$, \emph{implication} $(\phi \pimplies \psi)$, or \emph{biimplication} $(\phi \pequals \psi)$
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\mydefinition{Informal Semantics of Propositional Formulas}{
+		\begin{definition}{Informal Semantics of Propositional Formulas}
 			\vspace*{-4ex}
 			\begin{equation*}
 				\begin{rcases}
@@ -182,15 +182,15 @@ constraints
 					\text{``$\phi$ if and only if $\psi$''}
 				\end{cases}
 			\end{equation*}
-		}
-		\myexample{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}{
+		\end{definition}
+		\begin{example}{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}
 			\vspace*{-4ex} % TODO Benno: why is this hack needed?
 			\begin{align*}
 				           &~Transactions \pimplies (Put \por Delete) \\
 				\equiv     &~Transactions \pimplies Put \por Delete \\
 				\not\equiv &~(Transactions \pimplies Put) \por Delete
 			\end{align*}
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
@@ -199,7 +199,7 @@ constraints
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
 		\only<13|handout:2>{\addtocounter{framenumber}{+1}}\only<1-|handout:1-2>{
-			\myexampletight{A Feature Model $FM$ \ldots}{
+			\begin{exampletight}{A Feature Model $FM$ \ldots}
 				\centering\tiny
 				\featureDiagramConfigurableDatabase[_phi]
 				\featureDiagramOverlay{
@@ -239,8 +239,8 @@ constraints
 						\featureDeselected{(Put_phi)(Delete_phi)(Windows_phi)(Linux_phi),(Transactions_phi)(OS_phi)}
 					}
 				}
-			}
-			\myexample{\ldots as a Propositional Formula $\Phi(FM)$}{
+			\end{exampletight}
+			\begin{exampletight}{\ldots as a Propositional Formula $\Phi(FM)$}
 				\vspace*{-4ex}
 				\small
 				\begin{align*}
@@ -253,11 +253,11 @@ constraints
 					\uncover<7->{\pand &~\pnot (Windows \pand Linux) \\}
 					\uncover<8->{\pand &~(Transactions \pimplies Put \por Delete)}
 				\end{align*}
-			}
+			\end{exampletight}
 		}
 	\mynextcolumn
 		\only<9-|handout:1-2>{
-			\myexample{Is This a Valid Configuration?}{
+			\begin{example}{Is This a Valid Configuration?}
 				\vspace*{-4ex}
 				\only<9-12|handout:1>{
 					\begin{align*}
@@ -291,7 +291,7 @@ constraints
 					\uncover<16->{\emph{$\leadsto$ configuration is invalid}\\
 					\phantom{$\leadsto$ }($\lightning$ no operating system)}
 				}
-			}
+			\end{example}
 		}
 	\end{mycolumns}
 \end{frame}
@@ -303,7 +303,7 @@ constraints
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
-		\mydefinition{Algorithm: Translate $FM$ Into $\Phi(FM)$}{
+		\begin{definition}{Algorithm: Translate $FM$ Into $\Phi(FM)$}
 			\begin{enumerate}
 				\item<2-> translate each tree constraint
 				\begin{itemize}
@@ -322,9 +322,9 @@ constraints
 					$\Phi(CTC) \gets \bigwedge_{ctc \in CTC} ctc$
 				\item<10-> $\Phi(FM) \gets \Phi(TC) \pand \Phi(CTC)$
 			\end{enumerate}
-		}
+		\end{definition}
 	\mynextcolumn
-		\mydefinition{}{
+		\begin{definition}{}
 			\vspace*{-4ex}
 			\begin{align*}
 				\uncover<3->{\featureDiagramFn{\Phi}{6ex}{Root,concrete}{Root}}\\
@@ -334,7 +334,7 @@ constraints
 				\uncover<7->{\featureDiagramFn{\Phi}{15ex}{P,concrete[$C_1$,alternative,concrete][\ldots,concrete][$C_n$,concrete]}{\bigvee_{1 \leq i \leq n} C_i \pequals P}}\\
 				\uncover<7->{& \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)}
 			\end{align*}
-		}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
 
@@ -342,7 +342,7 @@ constraints
 
 \begin{frame}{\myframetitle} % TODO unmotivated topic switch after prior slide?
 	\begin{mycolumns}[animation=none]
-		\mydefinition{Recap: Conjunctive Normal Form}{
+		\begin{definition}{Recap: Conjunctive Normal Form}
 			\begin{itemize}
 				\item a \emph{literal} $L$ is a variable $X$ or its negation $\pnot X$
 				\item a \emph{clause} $\clause{C}$ is a disjunction of literals $\clause{\bigvee_{j} L_j}$
@@ -350,24 +350,24 @@ constraints
 				\item intuitively: a set of ``rules'' to be satisfied
 				\item any formula $\phi$ can be transformed into a CNF $\phi'$ that is logically equivalent ($\phi \mequals \phi'$)
 			\end{itemize}
-		}
+		\end{definition}
 		\uncover<2->{
-			\mydefinition{Recap: Laws of Propositional Logic}{
+			\begin{definition}{Recap: Laws of Propositional Logic}
 				\begin{itemize}
 					\item<3-> implication: $\phi \pimplies \psi \mequals \pnot \phi \por \psi$
 					\item<3-> biimplication: $\phi \pequals \psi \mequals (\pnot \phi \por \psi) \pand (\pnot \psi \por \phi)$
 					\item<4-> De Morgan's laws: $\pnot (\phi \pand \psi) \mequals \pnot \phi \por \pnot \psi$
 					\item<5-> distributivity:\,$(\phi \pand \psi) \por \chi \mequals (\phi \por \chi) \pand (\psi \por \chi)$
 				\end{itemize}
-			}
+			\end{definition}
 		}
 	\mynextcolumn
 		\uncover<2->{
-			\myexample{Transforming Part of $\Phi(FM)$ into $CNF(\Phi(FM))$}{
+			\begin{example}{Transforming Part of $\Phi(FM)$ into $CNF(\Phi(FM))$}
 				\vspace*{-4ex}
 				\small
 				% TODO: use color-blind friendly colors
-				\leftandright{
+				\begin{mycolumns}[animation=none]
 					\begin{align*}
 						\uncover<2->{&~\clause{C} \\
 						\pand &~(T \pimplies C) \\
@@ -375,7 +375,7 @@ constraints
 						\pand &~(W \por L \pequals O) \\
 						\pand &~\pnot (W \pand L)}
 					\end{align*}
-				}{
+				\mynextcolumn
 					\begin{align*}
 						\uncover<3->{&~\clause{C} \\
 						\pand &~\clause{(\pnot T \por C)} \\
@@ -384,8 +384,8 @@ constraints
 						\pand &~\clause{(\pnot O \por W \por L)} \\
 						\pand &~\pnot (W \pand L)}
 					\end{align*}
-				}
-				\leftandright{
+				e\end{mycolumns}
+				\begin{mycolumns}[animation=none]
 					\begin{align*}
 						\uncover<4->{&~\clause{C} \\
 						\pand &~\clause{(\pnot T \por C)} \\
@@ -394,7 +394,7 @@ constraints
 						\pand &~\clause{(\pnot O \por W \por L)} \\
 						\pand &~\clause{(\pnot W \por \pnot L)}}
 					\end{align*}
-				}{
+				\mynextcolumn
 					\begin{align*}
 						\uncover<5->{&~\clause{C} \\
 						\pand &~\clause{(\pnot T \por C)} \\
@@ -403,8 +403,8 @@ constraints
 						\pand &~\clause{(\pnot O \por W \por L)} \\
 						\pand &~\clause{(\pnot W \por \pnot L)}}
 					\end{align*}
-				}
-			}
+				\end{mycolumns}
+			\end{example}
 		}
 	\end{mycolumns}
 \end{frame} % TODO would be more intuitive to me if clauses are green (as they are good to go)
@@ -438,7 +438,7 @@ p cnf 5 6
 -4 5 0
 \end{dimacstight}
 	\mynextcolumn
-		\mydefinition{DIMACS Format\mysource{\dimacsformat}}{
+		\begin{definition}{DIMACS Format\mysource{\dimacsformat}}
 			\begin{itemize}
 				\item de facto industry standard for storing CNF
 				\item machine-readable, automated analyses, \ldots
@@ -459,7 +459,7 @@ p cnf 5 6
 						\end{cases}
 					\end{equation*}
 			\end{itemize}
-		}
+		\end{definition}
  	\end{mycolumns}
 \end{frame}
 
@@ -503,7 +503,7 @@ p cnf 5 6
 			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
 		\end{tikzpicture} % TODO would prefer another color for concrete formats, as they have nothing to do with the red boxes on thoses slides. what about green? needs to be changed consistently in all slides of this lecture
 	\mynextcolumn
-		\mynote{Problems}{
+		\begin{note}{Problems}
 			\begin{enumerate}
 				\item[P1] How to express feature models \emph{textually}?
 				\item[P2] How to 
@@ -514,8 +514,8 @@ p cnf 5 6
 				\emph{automatically}?
 				\item[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
-		}
-		\mynote{Solutions}{
+		\end{note}
+		\begin{note}{Solutions}
 			\begin{enumerate}
 				\item[P1] Universal Variability Language $\Rightarrow$ \emph{Syntax}
 				\item[P2] Propositional Formulas $\Rightarrow$ \emph{Semantics}
@@ -525,7 +525,7 @@ p cnf 5 6
 				\end{itemize}
 				\item[P3] \color{gray}{(i) e.g., \bakarnaturallanguage\\(ii) e.g., \czarneckithereandbackagain}
 			\end{enumerate}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -569,13 +569,13 @@ config X86_64
 	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128
 \end{kconfigtight}
 	\mynextcolumn
-		\mydefinition{KConfig Language\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html}{kernel.org}}}{
+		\begin{definition}{KConfig Language\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html}{kernel.org}}}
 			\begin{itemize}
 				\item configuration language used in embedded/OS development (e.g., Linux, Zephyr, ESP32)
 				\item similar to UVL, but has many quirks (e.g., tristate features, \texttt{select})
 				\item transformation into formula or feature model possible, but not trivial \mysource{\href{https://dl.acm.org/doi/abs/10.1145/3468264.3468578}{Oh~et~al.~2021}}
 			\end{itemize}
-		}
+		\end{definition}
 		\hspace*{-0.07253886\linewidth}%=2*0.035/(1-0.035)
 		\linuxbddlink{\pic[width=1.3\linewidth,trim=220 510 60 180,clip]{2020/2020-SPLC-Thuem}}
 	\end{mycolumns}

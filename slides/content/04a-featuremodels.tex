@@ -1,7 +1,8 @@
 \subsection{Recap: Software Product Lines}
 \begin{frame}{\myframetitle\ \mytitlesource{\lectureintroduction}}
 	\begin{mycolumns}[t]
-		\mydefinition{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}{\mycitebegin A \emph{software product line} is 
+		\begin{definition}{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}
+			\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
 				\item a set of software-intensive systems
 				\item that share a common, managed set of features
@@ -9,14 +10,14 @@
 				\item and that are developed from a common set of core assets in a prescribed way.\myciteend
 				\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
 			\end{itemize}
-		}
-		\mydefinition{Product \mysource{\fospl\mypage{19}}}{
+		\end{definition}
+		\begin{definition}{Product \mysource{\fospl\mypage{19}}}
 			\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}
-		}
+		\end{definition}
 	\mynextcolumn
-		\mydefinition{Feature \mysource{\fospl\mypage{18}}}{
+		\begin{definition}{Feature \mysource{\fospl\mypage{18}}}
 			\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}
-		}
+		\end{definition}
 		\centering\xkcd{2369}{width=.9\linewidth,trim=35 35 35 35,clip}
 	\end{mycolumns}
 \end{frame}
@@ -36,7 +37,7 @@
 			\pic[width=\textwidth]{waffle-cherries}
 		}
 		\mynextcolumn
-		\mynote{This is Nice, But \ldots}{
+		\begin{note}{This is Nice, But \ldots}
 			\begin{itemize}
 				\item plate and sugar seem to always be included, a fork is only included for some orders\\
 					$\Rightarrow$ limitations seem \emph{arbitrary}
@@ -44,15 +45,15 @@
 					$\Rightarrow$ order process is \emph{unfair}
 				\item what exactly am I paying for?\\
 					$\Rightarrow$ investments are \emph{unclear}
-				\end{itemize}
-		}
-		\mydefinition{In This Lecture}{
+			\end{itemize}
+		\end{note}
+		\begin{definition}{In This Lecture}
 			\begin{enumerate}
 				\item how to \emph{model and configure} features and their dependencies?
 				\item how to \emph{store and communicate}?
 				\item how to \emph{analyze and understand}?
 			\end{enumerate}
-		}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
 
@@ -69,7 +70,7 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mydefinition{Configuration}{
+		\begin{definition}{Configuration}
 			\begin{itemize}
 				\item a \emph{configuration} \deutsch{Konfiguration} over a set of features $F$ selects and deselects features in $F$
 				\item formally: a pair $(S, D)$ such that $S, D \subseteq F$ and $S, D$ are disjoint ($S \cap D = \varnothing$)
@@ -77,7 +78,7 @@
 				\item a complete configuration is \emph{valid} \deutsch{gültig} if it ``makes sense'' in the domain and \emph{invalid} \deutsch{ungültig} otherwise % TODO why only complete configurations? probably easier to understand here, but validity could also be useful for partial configurations later
 				\item we often abbreviate complete configurations with $S \equiv (S, F \setminus S)$
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
 		\myexample{}{
 			\exampleFeatureSetConfigDB
@@ -103,12 +104,12 @@
 
 \begin{frame}{\myframetitle}\label{frame:natlang}
 	\begin{mycolumns}
-		\mynote{Valid Configuration}{
+		\begin{note}{Valid Configuration}
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
-		}
+		\end{note}
 
-		\mydefinition{Natural Language}{
+		\begin{definition}{Natural Language}
 			\begin{itemize}
 				\item informal description of relationships between features in $F$
 				\item a complete configuration $S$ is \emph{valid} if it conforms to the description
@@ -116,7 +117,7 @@
 				\item[--] sometimes ambiguous
 				\item[--] not machine-readable
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
 		\myexample{}{
 			``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
@@ -130,12 +131,12 @@
 
 \begin{frame}{\myframetitle}\label{frame:cfgmap}
 	\begin{mycolumns}
-		\mynote{Valid Configuration}{
+		\begin{note}{Valid Configuration}
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
-		}
+		\end{note}
 
-		\mydefinition{Configuration Map}{
+		\begin{definition}{Configuration Map}
 			\begin{itemize}
 				\item a \emph{configuration map} over $F$ is a set of complete configurations $M \subseteq \power{F}$
 				\item a complete configuration $S$ is \emph{valid} if it occurs in the configuration map ($S \in M$)
@@ -144,12 +145,12 @@
 				\item[--] not human-readable
 				\item[--] redundant, explodes in size ($0 \leq \abs{M} \leq 2^{\abs{F}}$)
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
 		\myexample{}{
 			\exampleFeatureSetConfigDB
 			Configuration map:\\\small
-			\leftandright{
+			\begin{mycolumns}[animation=none]
 				{\color{black}$\{C,G,W\}$}\\
 				$\{C,P,W\}$\\
 				$\{C,G,P,W\}$\\
@@ -163,7 +164,7 @@
 				$\{C,G,D,T,W\}$\\
 				$\{C,P,D,T,W\}$\\
 				$\{C,G,P,D,T,W\}$
-			}{
+			\mynextcolumn
 				$\{C,G,L\}$\\
 				$\{C,P,L\}$\\
 				$\{C,G,P,L\}$\\
@@ -177,7 +178,7 @@
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
 				{\color{black}$\{C,G,P,D,T,L\}$}
-			}
+			\end{mycolumns}
 		}
 	\end{mycolumns}
 \end{frame}
@@ -202,7 +203,7 @@
 		
 		\featureDiagramLegend
 	\mynextcolumn
-		\mydefinition{Feature Model \deutsch{Feature-Modell}}{
+		\begin{definition}{Feature Model \deutsch{Feature-Modell}}
 			\begin{itemize}
 				\item hierarchy of features
 				\item dependencies between features modeled by tree and cross-tree constraints
@@ -213,7 +214,7 @@
 				\item also known as feature diagram or feature tree
 				\item notation for \emph{optional/mandatory features} and \emph{or/alternative groups}
 			\end{itemize}
-		}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
 
@@ -222,7 +223,7 @@
 \begin{frame}{\myframetitle\ \mytitlesource{\fospl; \batorygrammars}}
 	\begin{mycolumns}[animation=none]
 		\uncover<2-|handout:1>{
-			\mydefinition{Tree Constraints}{
+			\begin{definition}{Tree Constraints}
 				\begin{itemize}
 					\item the \emph{root feature} is always required
 					\item each feature requires its parent (aka.~\emph{parent-child-relationship})
@@ -231,18 +232,18 @@
 					\item \emph{or group}: at least one child feature must be selected when the parent is selected
 					\item \emph{alternative group}: exactly one child feature must be selected when the parent is selected
 				\end{itemize}
-			}
+			\end{definition}
 		}
 	\mynextcolumn
 		\centering
 		\featureDiagramConfigurableDatabase
 		\uncover<3|handout:1>{
-			\mydefinition{Cross-Tree Constraints}{
+			\begin{definition}{Cross-Tree Constraints}
 				\begin{itemize}
 					\item a list of \emph{propositional formulas} expressing further dependencies between features
 					\item each cross-tree constraint must be satisfied
 				\end{itemize}
-			}
+			\end{definition}
 		}
 	\end{mycolumns}
 \end{frame}
@@ -292,13 +293,13 @@
 	\mynextcolumn
 		\centering
 		\featureDiagramWaffle
-		\mynote{}{
+		\begin{note}{}
 			\begin{itemize}
 				\item abstract and concrete features can be assigned arbitrarily
 				\item groups can be used anywhere
 				\item directly below groups, no optional or mandatory markers are allowed
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
@@ -307,21 +308,21 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t]
-		\mynote{Pro: Making Tacit Knowledge Explicit}{
+		\begin{note}{Pro: Making Tacit Knowledge Explicit}
 			\small\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer's point of view. But it's also [\ldots] important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven't realized that. They implemented the same features.} -- {\footnotesize Interview with Practitioners}\mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}
-		}
+		\end{note}
 
-		\mynote{Pro: Tool Support}{ % TODO would be great to show more tool logos here from our community, and possibly also for commercial tools (upon request)
+		\begin{note}{Pro: Tool Support} % TODO would be great to show more tool logos here from our community, and possibly also for commercial tools (upon request)
 			\pic[width=.3\linewidth]{featureide-logo},\hspace{2mm}\href{https://biglever.com/solution/gears/}{Gears},\hspace{2mm}\href{https://www.pure-systems.com/de/purevariants}{pure::variants},\hspace{2mm}\ldots% end goal: the lecture shows how to realize a automated configurator that does not allow invalid configurations
-		}
+		\end{note}
 	\mynextcolumn
-		\mynote{Con: Challenges}{
+		\begin{note}{Con: Challenges}
 			\begin{itemize}
 				\item \emph{domain scoping}: which features?
 				\item \emph{feature interactions}: which dependencies?
 				\item requires infrastructure, consulting, and training
 			\end{itemize}
-		}
+		\end{note}
 
 		\vspace*{2mm}\centering\picDark[width=.85\linewidth]{wollmilchsau}
 	\end{mycolumns}
