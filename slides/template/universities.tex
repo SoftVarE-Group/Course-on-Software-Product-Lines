@@ -34,6 +34,7 @@
 % COLOR SCHEME, LOGOS, PICTURES
 \ifuniversity{recording}{
 	\renewcommand{\deutsch}[1]{} % no German in English recordings
+	\mode<beamer>{\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}} % avoid annoying tool tips during the recording
 	\setpicture[550]{jun22-clouds3} % default picture
 }{
 	\hypersetup{linkcolor=uulm@text, citecolor=red, filecolor=red, runcolor=red, urlcolor=red, colorlinks=true} % emphasizing links, but not when recording
