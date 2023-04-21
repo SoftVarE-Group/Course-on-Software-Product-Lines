@@ -166,10 +166,10 @@
 % automatic frame title
 \newcommand{\myframetitle}{\insertsubsection{}\ifnum\thesubsubsection=0\else\ -- \insertsubsubsection{}\fi}
 % frame icon on fixed position in upper right corner
-\newcommand{\myframeicon}[1]{
-	\begin{tikzpicture}[remember picture,overlay]
-	    \node[xshift=-5mm,yshift=-2.8125mm,anchor=north east,align=right] at (current page.north east){#1};
-	\end{tikzpicture}
+\newcommand{\myframeicon}[1]{%
+	\begin{tikzpicture}[remember picture,overlay]%
+	    \node[xshift=-5mm,yshift=-2.8125mm,anchor=north east,align=right] at (current page.north east){#1};%
+	\end{tikzpicture}%
 }
 % setter for title picture + copyright notice
 \newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}

@@ -34,8 +34,7 @@
 \subsection{Variability with Build Systems}
 
 \begin{frame}{\myframetitle}
-	\myframeicon{\mysource{\staplesandhill}}
-	\vspace{-\textheightoftitle}
+	\myframeicon{\mysource{\staplesandhill}}%
 	\begin{mycolumns}
 		\begin{note}{Basic Idea}
 			\begin{itemize}
@@ -45,13 +44,15 @@
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
+		\vspace{-\textheightoftitle}
+
 		\centering\pic[height=\textheightwithouttitle]{buildsystems} % TODO looks weird in dark mode
 	\end{mycolumns}	
 \end{frame}
 
 % TODO the next two slides could profit from adding the main insights in a short but textual form
 \begin{frame}[fragile]{Example: Graph Library}
-	\myframeicon{\mysource{\fospl\mypage{107}}}
+	\myframeicon{\mysource{\fospl\mypage{107}}}%
 	\begin{mycolumns}[b,columns=3,widths={50,32},height=\textheightwithtitle,animation=none]
 		\hfill\pic[height=\textheightwithtitle]{buildsystems-graphs-1} % TODO what about Node.java and Weight.java? + looks weird in dark mode
 	\mynextcolumn
