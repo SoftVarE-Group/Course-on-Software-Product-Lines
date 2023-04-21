@@ -78,7 +78,7 @@
 \subsection{Variability with Clone-and-Own}
 
 \begin{frame}[fragile]{Example for Ad-Hoc Clone-and-Own}
-	\myframeicon{\pic[scale=0.25,page=6]{graphs}}
+	\myframeicon{\pic[scale=0.25,page=6]{graphs}}%
 	\begin{mycolumns}[b,columns=3,widths={43,32},animation=none]
 \begin{codetight}{}
 class Graph {
@@ -454,7 +454,7 @@ public class Graph {
 	\hfill
 	\pic[scale=0.2,page=26]{graphs}
 
-	\begin{mycolumns}[columns=2,widths={45,55},animation=none]
+	\begin{mycolumns}[columns=2,widths={45,55}]
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Simple and straightforward approach
@@ -473,13 +473,13 @@ public class Graph {
 	\end{mycolumns}	
 	\begin{mycolumns}[columns=3,widths={15,70}]
 	\mynextcolumn
-		\begin{note}{Towards Managed Clone-and-Own}
+		\uncover<3->{\begin{note}{Towards Managed Clone-and-Own}
 			\begin{itemize}
 				\item How can we better manage such clone-and-own development?
 				\item The traditional answer: Software Configuration Management
 				\item In the sequel: Software Configuration Management in practice
 			\end{itemize}
-		\end{note}
+		\end{note}}
 	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
