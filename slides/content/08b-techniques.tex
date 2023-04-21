@@ -72,11 +72,11 @@ public class Edge {
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\leftandright{
+		\begin{mycolumns}[animation=none]
 			\includegraphics[width=\linewidth]{runtime-parameters-win10-cmd-dir}
-		}{
+		\mynextcolumn
 			\includegraphics[width=\linewidth]{configfile-eclipse-ini}
-		}
+		\end{mycolumns}
 
 		\begin{definition}{How to? -- Command-Line Options / Configuration Files}
 			\begin{itemize}
@@ -112,7 +112,7 @@ public class Config {
 				\item very limited compile-time variability:\\\hfill for immutable global variables
 			\end{itemize}
 		\end{note}
-		\mynote{Other Problems}{
+		\begin{note}{Other Problems}
 			{\bf Conditional Statements:}
 			\begin{itemize}
 				\item Code scattering, tangling, and replication.
@@ -122,7 +122,7 @@ public class Config {
 				\item Trade-offs and potential negative side effects.
 				\item Constraints that may restrict their usage.
 			\end{itemize}
-		}	
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -130,14 +130,16 @@ public class Config {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[columns=2,widths={50,50},animation=none]
-		\mydefinition{Clone-and-Own}{
+		\begin{definition}{Clone-and-Own}
 			\begin{itemize}
 				\item New variants of a software system are created by copying and adapting an existing variant.
 				\item Afterwards, cloned variants evolve independently of each other.
 			\end{itemize}	
-		}	
+		\end{definition}	
 		\vspace{3mm}		
-		\myexample{Cloning Whole Products (Clone-and-Own)}{~\hfill\includegraphics[width=.2\linewidth]{130}\hfill\includegraphics[width=.2\linewidth]{230}\hfill~}
+		\begin{example}{Cloning Whole Products (Clone-and-Own)}
+			~\hfill\includegraphics[width=.2\linewidth]{130}\hfill\includegraphics[width=.2\linewidth]{230}\hfill~
+		\end{example}
 	\mynextcolumn
 		\pic[width=\linewidth,page=24]{lego}
 	\end{mycolumns}
@@ -181,15 +183,15 @@ public class Config {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={60}]
-		\mydefinition{How to Implement Features with Build Systems?}{
+		\begin{definition}{How to Implement Features with Build Systems?}
 			\begin{itemize}
 				\item step 1: model variability in a feature model
 				\item step 2: in build scripts, in- and exclude files based on feature selection
 				\item step 3: pass a feature selection at build time
 			\end{itemize}
 			$\Rightarrow$ one build script per group of related features
-		}
-		\myexampletight{}{
+		\end{definition}
+		\begin{exampletight}{}
 			\centering
 			\featureDiagram{Anesthesia Device,abstract
 			[Monitoring,abstract,mandatory
@@ -202,18 +204,18 @@ public class Config {
 				[RTC,concrete,optional[Battery,concrete,mandatory]]]}
 
 			$History \pimplies Storage \pand RTC$
-		}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\pic[width=.65\linewidth]{pignap-features}
-		}
+		\end{exampletight}
 \end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mynote{Advantages}{
+		\begin{note}{Advantages}
 			\begin{itemize}
 				\item compile-time variability\\
 					$\Rightarrow$ \emph{fast, small binaries} with smaller attack surface and without disclosing secrets
@@ -222,9 +224,9 @@ public class Config {
 				\item allows in- and exclusion of individual files or even entire subsystems\\
 					$\Rightarrow$ high-level, \emph{modular variability}
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
-		\mynote{Challenges}{
+		\begin{note}{Challenges}
 			\begin{itemize}
 				\item not easily reconfigurable at run- or load-time
 				\item build scripts may become complex, there is no limit to what can be done (e.g., you can run arbitrary shell commands on files)\\
@@ -232,7 +234,7 @@ public class Config {
 				\item no simple in- and exclusion of individual lines or chunks of code\\
 				$\Rightarrow$ high-level use \emph{only}!
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -261,9 +263,15 @@ public class Config {
 			\end{itemize}}
 		\end{definition}
 	\mynextcolumn
-		\myexampletight{Example Input}{\pic[scale=.3]{preprocessor-c}}
+		\begin{exampletight}{Example Input}
+			\pic[scale=.3]{preprocessor-c}
+		\end{exampletight}
 	\mynextcolumn
-		\uncover<4->{\myexampletight{Example Output (Simplified)}{\pic[scale=.15]{preprocessor-c-output}}}
+		\uncover<4->{
+			\begin{exampletight}{Example Output (Simplified)}
+				\pic[scale=.15]{preprocessor-c-output}
+			\end{exampletight}
+		}
 		\uncover<5->{\begin{note}{Why simplified?}
 			\begin{itemize}
 				\item preprocessed file can get very long due to to included header files
@@ -275,7 +283,7 @@ public class Config {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none]
-		\mynote{Advantages}{
+		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Well-known and mature tools, readily available
 				\item Easy to use\\
@@ -286,10 +294,10 @@ public class Config {
 				\item Little \emph{preplanning} required\\
 				$\Rightarrow$ variability can be added to an existing project
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 		\pause
-		\mynote{Challenges}{
+		\begin{note}{Challenges}
 			\begin{itemize}
 				\item \emph{Scattering} and \emph{tangling}\\
 				$\Rightarrow$ separation of concerns?
@@ -299,7 +307,7 @@ public class Config {
 				\item Often used in an ad-hoc or \emph{undisciplined} fashion
 				\item Prone to subtle syntax, type, or runtime errors which are hard to detect
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -309,21 +317,21 @@ public class Config {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60}]
-		\mydefinition{General Idea}{					
+		\begin{definition}{General Idea}			
 			\begin{itemize}
 				\item Every feature is implemented by a dedicated component.
 				\item Feature selection determines which components shall be integrated to form an application.				
 			\end{itemize}
-		}
-		\myexample{Vision}{
+		\end{definition}
+		\begin{example}{Vision}
 			\pic[width=.38\linewidth,height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$\Longrightarrow$ 
 				\vspace*{\fill}	
 			\pic[width=.47\linewidth,height=1.75cm]{lego_product}
-		}
+		\end{example}
 	\mynextcolumn
-		\myexample{Reality}{
+		\begin{example}{Reality}
 			\pic[width=.27\linewidth,height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
@@ -333,13 +341,13 @@ public class Config {
 					$=$ 
 				\vspace*{\fill}	
 			\pic[width=.35\linewidth,height=1.75cm]{lego_product}
-		}			
-		\mynote{Glue Code and Customization}{
+		\end{example}	
+		\begin{note}{Glue Code and Customization}
 			\begin{itemize}
 				\item Developers must connect components through glue code (exception: If components are only exchanged against alternative components)
 				\item Components may contain run-time variability (e.g., color manager in our example may be parameterized by color model (RGB, CMYK, ...))
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}	
 \end{frame}
 
@@ -347,7 +355,7 @@ public class Config {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60},animation=none]
-		\myexample{Recap: Component-Based Implementation}{
+		\begin{example}{Recap: Component-Based Implementation}
 			\pic[width=.24\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
@@ -357,24 +365,24 @@ public class Config {
 					$=$ 
 				\vspace*{\fill}	
 			\pic[width=.3\linewidth,height=1.0cm]{lego_product}
-		}		
-		\myexample{Plenty of Glue Code}{
+		\end{example}
+		\begin{example}{Plenty of Glue Code}
 			\centering
 			\pic[width=.65\linewidth,height=2.5cm]{lego_glue}				
-		}				
+		\end{example}
 	\mynextcolumn
 		\pause
-		\mydefinition{Same Idea}{
+		\begin{definition}{Same Idea}
 			\begin{itemize}
 				\item Features are implemented as services.
 				\item Feature selection determines the services to be composed.
 			\end{itemize}
-		}	
+		\end{definition}
 		\pause
-		\mynote{However}{
+		\begin{note}{However}
 			``Standardized'' service composition instead of highly individual glue code.
-		}	
-		\myexample{}{
+		\end{note}
+		\begin{example}{}
 			\pic[width=.27\linewidth,height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
@@ -384,7 +392,7 @@ public class Config {
 					$=$ 
 				\vspace*{\fill}	
 			\pic[width=.35\linewidth,height=1.75cm]{lego_product}
-		}	
+		\end{example}
 	\end{mycolumns}	
 \end{frame}
 
@@ -392,7 +400,7 @@ public class Config {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40,60},animation=none]
-		\myexample{Recap: Service-Based Implementation}{
+		\begin{example}{Recap: Service-Based Implementation}
 			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
@@ -402,24 +410,24 @@ public class Config {
 					$=$ 
 				\vspace*{\fill}	
 			\pic[width=.3\linewidth,height=1.0cm]{lego_product}
-		}		
-		\myexample{Still needs some specification of ``composition'' (cf.\ orchestration vs.\ choreography)}{
+		\end{example}	
+		\begin{example}{Still needs some specification of ``composition'' (cf.\ orchestration vs.\ choreography)}
 			\centering
 			\pic[width=.65\linewidth,height=2.5cm]{lego_orchestration}				
-		}				
+		\end{example}
 	\mynextcolumn		
 		\pause
-		\mydefinition{Same Idea}{
+		\begin{definition}{Same Idea}
 			\begin{itemize}
 				\item Features are implemented by different plug-ins
 				\item Feature selection determines the plug-ins to be loaded and registered 
 			\end{itemize}
-		}
+		\end{definition}
 		\pause
-		\mynote{}{
+		\begin{note}{}
 				However: Neither glue code nor explicit service composition required.
-		}
-		\myexample{}{
+		\end{note}
+		\begin{example}{}
 			\pic[width=.31\linewidth,height=1.75cm]{lego_product_partial} 
 				\vspace*{\fill}
 					$+$ 
@@ -429,44 +437,44 @@ public class Config {
 					$=$ 
 				\vspace*{\fill}	
 			\pic[width=.31\linewidth,height=1.75cm]{lego_product}
-		}	
+		\end{example}
 		\pause
-		\mynote{}{
+		\begin{note}{}
 				But: Full automation comes at a price (s.\ preplanning problem).
-		}			
+		\end{note}	
 	\end{mycolumns}	
 \end{frame}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={50,50}]
-		\myexample{}{
+		\begin{example}{}
 			In our example, we can observe that:
 			\begin{itemize}
 				\item There are lots of empty methods in the ColorPlugin 
 				\item The Framework consults all registered plug-ins before printing a node or edge
 			\end{itemize}
-		}		
-		\mydefinition{General Challenge: Cross-cutting Concerns}{
+		\end{example}
+		\begin{definition}{General Challenge: Cross-cutting Concerns}
 			Implementing cross-cutting concerns as plug-ins 
 			\begin{itemize}				
 				\item typically leads to huge interfaces, large parts of which are irrelevant for a dedicated plug-in 
 				\item causes lots of communication overhead between plug-ins and framework
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\myexample{}{
+		\begin{example}{}
 			If we were not familiar with our graph library, would we anticipate that:
 			\begin{itemize}
 				\item Colors and weights should be part of the Plugin interface?
 				\item Every plug-in needs to be notified that the framework is about to print a node or edge? 
 			\end{itemize}
-		}
-		\mydefinition{Generally known as Preplanning Problem}{
+		\end{example}
+		\begin{definition}{Generally known as Preplanning Problem}
 			\begin{itemize}
 				\item Hard to identify and foresee the relevant hot spots and nature of extensions
 				\item Developing a framework needs lots of expertise and excellent domain knowledge 
 			\end{itemize}
-		}	
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
 
@@ -476,26 +484,26 @@ public class Config {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={65,35},animation=none]
-		\mydefinition{Feature Modules}{
+		\begin{definition}{Feature Modules}
 			\begin{itemize}
 				\item Each collaboration maps to a feature and is called a feature module (or layer).
 				\item Feature modules may refine a base implementation by adding new elements or by modifying and extending existing ones.
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
-		\mydefinition{Feature Module Composition}{
+		\begin{definition}{Feature Module Composition}
 			Selected feature modules may be superimposed by lining-up classes according to the roles they play.
-		}
+		\end{definition}
 	\end{mycolumns}
-	\myexampletight{}{
+	\begin{exampletight}{}
 		\centering
 		\pic[width=0.95\linewidth]{feature-modules}
-	}
+	\end{exampletight}
 \end{frame}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mynote{Advantages}{
+		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Easy to use language-based mechanism, requires only minimal language extensions.
 				\item Conceptually uniformly applicable to code and noncode artifacts.
@@ -503,16 +511,16 @@ public class Config {
 				\item Little preplanning required due to mixin-based extension mechanism.
 				\item Direct feature traceability from a feature to its implementation in a feature module.
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
-		\mynote{Disadvantages}{
+		\begin{note}{Disadvantages}
 			\begin{itemize}
 				\item Requires adoption of a language extension and composition tools.
 				\item Tools need to be constructed for every language (although with the help of a framework).
 				\item Only academic tools so far, little experience in practice.
 				\item Granularity restricted to method-level (or other named structural entities).
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -520,19 +528,19 @@ public class Config {
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[widths={45,55},animation=none]
-		\mydefinition{Basic Idea}{
+		\begin{definition}{Basic Idea}
 			\begin{itemize}
 				\item Implement one aspect per feature.
 				\item Feature selection determines the aspects which are included in the weaving process.
 			\end{itemize}
-		}
-		\mynote{}{
+		\end{definition}
+		\begin{note}{}
 			\begin{itemize}
 				\item Aspects encapsulate changes to be made to existing classes. 
 				\item However, aspects do not encapsulate new classes introduced by a feature (only nested classes within an aspect)\\
 					\emph{$\Rightarrow$ Gives rise to a combination of FOP and AOP.}
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 \begin{codetight}{A Color Feature for Graphs}
 aspect ColorFeature {
@@ -552,23 +560,23 @@ aspect ColorFeature {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mynote{Advantages}{
+		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Separation of (possibly crosscutting) feature code into distinct aspects.
 				\item Direct feature traceability from feature to its implementation in an aspect.
 				\item Little or no preplanning effort required.
 				\item Fine-grained variability driven by the join-point model of the aspect-oriented language.
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 		\pause
-		\mynote{Disadvantages}{
+		\begin{note}{Disadvantages}
 			\begin{itemize}
 				\item Requires adoption of a rather complex extension mechanism (new language and paradigm).
 				\item No unifying theory like no language-independent framework.
 				\item Program evolution and maintenance affected by fragile-pointcut problem.
 			\end{itemize}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
