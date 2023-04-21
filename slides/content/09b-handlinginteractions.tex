@@ -16,25 +16,25 @@
 
 \begin{frame}{Handling/Implementing Feature Interactions}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mynote{Assumptions}{
+		\begin{note}{Assumptions}
 			\begin{itemize}
 				\item Interacting features have been already identified
 				\item Interaction is a pairwise interaction (i.e., two features)
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
-		\mydefinition{Problem Description}{
+		\begin{definition}{Problem Description}
 			\begin{itemize}
 				\item Find a strategy to handle the interaction 
 				\item Strategy does not introduce the optional-feature problem
 			\end{itemize}
-		}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Example: A Feature Interaction in our Graph Library}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\featureDiagram{
 				Graph,concrete
@@ -46,14 +46,14 @@
 				[Algorithms,mandatory,abstract,
 					[ShortestPath,optional,concrete]]
 			}
-		}
+		\end{exampletight}
 		\vspace{3mm}
-		\mynote{}{
+		\begin{note}{}
 			\begin{itemize}
 				\item Domain view: $Weighted$ and $ShortestPath$ can be deliberately selected independent of each other.
 				\item Implementation view: $ShortestPath$ requires $Weighted$ due to an implementation dependency (optional-feature problem!).
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
 {\small
 \begin{codetight}{layer: BasicGraph}
@@ -83,44 +83,44 @@ refines class Graph {
 \end{frame}
 
 \begin{frame}{Handling/Implementing Feature Interactions: General Goals}
-	\mynote{Question}{
+	\begin{note}{Question}
 		What makes a good strategy to implement coordination code for feature interactions (while solving/avoiding the optional-feature problem)?
-	}
+	\end{note}
 	\pause
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\mydefinition{1. Variability}{
+		\begin{definition}{1. Variability}
 			For every valid configuration (according to feature model), we can generate a product that implements this configuration.
-		}
+		\end{definition}
 		\pause
-		\mydefinition{2. Implementation effort}{
+		\begin{definition}{2. Implementation effort}
 			Should not require overwhelming implementation effort (would not be attractive in practice).
-		}
+		\end{definition}
 		\pause
 	\mynextcolumn
-		\mydefinition{3. Binary size and performance}{
+		\begin{definition}{3. Binary size and performance}
 			Should not increase binary size or decrease performance of products compared to an individual implementation of each product.
-		}
+		\end{definition}
 		\pause
-		\mydefinition{4. Code quality}{
+		\begin{definition}{4. Code quality}
 			Should not reduce code quality, which would make the product line harder to maintain. 
-		}
+		\end{definition}
 	\end{mycolumns}
 \end{frame}
 
 \subsection{S1: Adapt Feature Model}
 
 \begin{frame}{S1 (a): Adapt Feature Model - Add Domain Dependency}
-	\mydefinition{Strategy}{
+	\begin{definition}{Strategy}
 		Declare implementation dependency as domain dependency in the feature model.
-	}
-	\mynotetight{}{
+	\end{definition}
+	\begin{notetight}{}
 		\centering\includegraphics[width=0.7\linewidth,page=1]{interaction-handling}
-	}
+	\end{notetight}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\featureDiagram{
 				Graph,concrete
@@ -134,11 +134,11 @@ refines class Graph {
 			}
 
 			$ShortestPath \pimplies Weighted$  
-		}
+		\end{exampletight}
 		\vspace{3mm}
-		\mynote{}{
+		\begin{note}{}
 			Same implementation as before, but we make implementation dependency explicit: $ShortestPath$ requires $Weighted$.
-		}
+		\end{note}
 	\mynextcolumn
 {\small
 \begin{codetight}{layer: BasicGraph}
@@ -168,17 +168,17 @@ refines class Graph {
 \end{frame}
 
 \begin{frame}{S1 (b): Adapt Feature Model - Exclude Feature Combinations}
-	\mydefinition{Strategy}{
+	\begin{definition}{Strategy}
 		Declare problematic feature combinations as mutually exclusive in the feature model.
-	}
-	\mynotetight{}{
+	\end{definition}
+	\begin{notetight}{}
 		\centering\includegraphics[width=0.7\linewidth,page=2]{interaction-handling}
-	}
+	\end{notetight}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\featureDiagram{
 				Graph,concrete
@@ -192,11 +192,11 @@ refines class Graph {
 			}
 
 			$\pnot (ShortestPath \pand Weighted)$  
-		}
+		\end{exampletight}
 		\vspace{3mm}
-		\mynote{}{
+		\begin{note}{}
 			We may safely assume any uniform weight because $ShortestPath$ and $Weighted$ are mutually exclusive.
-		}
+		\end{note}
 	\mynextcolumn
 \vspace{-3mm}
 {\small
@@ -230,17 +230,17 @@ refines class Graph {
 \subsection{S2: Orthogonal Implementation}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{Strategy}{
+	\begin{definition}{Strategy}
 		Orthogonal implementation with no dedicated coordination of interaction.
-	}
-	\mynotetight{}{
+	\end{definition}
+	\begin{notetight}{}
 		\centering\includegraphics[width=0.7\linewidth,page=3]{interaction-handling}
-	}
+	\end{notetight}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
 	\begin{mycolumns}[widths={50,50},animation=none]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\featureDiagram{
 				Graph,concrete
@@ -254,11 +254,11 @@ refines class Graph {
 			}
 
 			$\pnot (ShortestPath \pand Weighted)$  
-		}
+		\end{exampletight}
 		\vspace{3mm}
-		\mynote{}{
+		\begin{note}{}
 			Calculation of shortest path ignores weights but merely counts the number of edges on a path.
-		}
+		\end{note}
 	\mynextcolumn
 {\small
 \begin{codetight}{layer: BasicGraph}
@@ -288,12 +288,12 @@ refines class Graph {
 \subsection{S3: Duplicate Implementations}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{Strategy}{
+	\begin{definition}{Strategy}
 		Multiple implementations of a feature, with and without coordination code.
-	}
-	\mynotetight{}{
+	\end{definition}
+	\begin{notetight}{}
 		\centering\includegraphics[width=0.7\linewidth,page=4]{interaction-handling}
-	}
+	\end{notetight}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
@@ -308,9 +308,9 @@ refines class Graph {
 	}
 }
 \end{codetight}
-		\mynote{}{			
+		\begin{note}{}		
 			Selected iff $ShortestPath \pand \pnot Weighted$. 
-		}
+		\end{note}
 	\mynextcolumn
 \begin{codetight}{layer: ShortestPath\_Weighted}
 refines class Graph {
@@ -322,21 +322,21 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-		\mynote{}{
+		\begin{note}{}
 			Selected iff $ShortestPath \pand Weighted$.
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
 \subsection{S4: Move Source Code}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{Strategy}{
+	\begin{definition}{Strategy}
 		Move all the coordination code to one of the features (or to a third one all interacting features depend on).
-	}
-	\mynotetight{}{
+	\end{definition}
+	\begin{notetight}{}
 		\centering\includegraphics[width=0.7\linewidth,page=5]{interaction-handling}
-	}
+	\end{notetight}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
@@ -370,12 +370,12 @@ refines class Graph {
 \subsection{S5: Conditional Compilation}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{Strategy}{
+	\begin{definition}{Strategy}
 		Coordination code is only executed if both features are selected.
-	}
-	\mynotetight{}{
+	\end{definition}
+	\begin{notetight}{}
 		\centering\includegraphics[width=0.7\linewidth,page=6]{interaction-handling}
-	}
+	\end{notetight}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
@@ -411,12 +411,12 @@ refines class Graph {
 \subsection{S6: Derivative Modules}
 
 \begin{frame}{\myframetitle}
-	\mydefinition{Strategy}{
+	\begin{definition}{Strategy}
 		Create a dedicated module for code that coordinates features.
-	}
-	\mynotetight{}{
+	\end{definition}
+	\begin{notetight}{}
 		\centering\includegraphics[width=0.7\linewidth,page=7]{interaction-handling}
-	}
+	\end{notetight}
 \end{frame}
 
 \begin{frame}[fragile]{Example}
@@ -442,9 +442,9 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-		\mynote{}{			
+		\begin{note}{}	
 			Selected iff $ShortestPath \pand Weighted$. 
-		}	
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 

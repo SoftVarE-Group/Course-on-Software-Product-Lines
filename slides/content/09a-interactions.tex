@@ -19,16 +19,24 @@
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
 	\begin{mycolumns}%[widths={40,40}]
-		\myexampletight{The Problem: Unwanted Interaction of Colors}{\centering\includegraphics[width=.9\linewidth,page=15,trim=70 35 385 105,clip]{2021/2021-09-08-SPLC-Keynote}}
+		\begin{exampletight}{The Problem: Unwanted Interaction of Colors}
+			\centering\includegraphics[width=.9\linewidth,page=15,trim=70 35 385 105,clip]{2021/2021-09-08-SPLC-Keynote}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{The Solution: Choose Other Colors}{\centering\includegraphics[width=.9\linewidth,page=15,trim=385 35 70 105,clip]{2021/2021-09-08-SPLC-Keynote}}
+		\begin{exampletight}{The Solution: Choose Other Colors}
+			\centering\includegraphics[width=.9\linewidth,page=15,trim=385 35 70 105,clip]{2021/2021-09-08-SPLC-Keynote}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
 	\begin{mycolumns}
-		\myexampletight{The Problem: Unwanted Interaction of Colors}{\centering\includegraphics[width=\linewidth,page=16,trim=50 60 360 130,clip]{2021/2021-09-08-SPLC-Keynote}}
+		\begin{exampletight}{The Problem: Unwanted Interaction of Colors}
+			\centering\includegraphics[width=\linewidth,page=16,trim=50 60 360 130,clip]{2021/2021-09-08-SPLC-Keynote}
+		\end{exampletight}
 	\mynextcolumn
-		\myexampletight{The Solution: Choose Other Colors}{\centering\includegraphics[width=\linewidth,page=16,trim=360 60 50 130,clip]{2021/2021-09-08-SPLC-Keynote}}
+		\begin{exampletight}{The Solution: Choose Other Colors}
+			\centering\includegraphics[width=\linewidth,page=16,trim=360 60 50 130,clip]{2021/2021-09-08-SPLC-Keynote}
+		\end{exampletight}
 	\end{mycolumns}
 	\uncover<3->{\begin{note}{}
 		\centering seems that contrast is checked for each order (cf.\ application engineering)\\and not for each published design (cf.\ domain engineering)
@@ -102,15 +110,19 @@ expected control flow, program or data state, or visible behavior).}
 \end{frame}
 
 \begin{frame}{A Common Interaction of Toasters}
-	\leftandright{
+	\begin{mycolumns}[animation=none]
 		\only<1|handout:0>{\pic[width=\linewidth]{toast1}}%
 		\only<2|handout:0>{\pic[width=\linewidth]{toast2}}%
 		\only<3-|handout:1>{\pic[width=\linewidth]{toast3}}%
-		\uncover<5->{\myexample{}{\centering no interaction for two toasts (i.e., \emph{$T_1 \pand T_2$} shown) and for no toasts (i.e., $\pnot T_1 \pand \pnot T_2$ not shown)}}
-	}{
+		\uncover<5->{\begin{example}{}
+			\centering no interaction for two toasts (i.e., \emph{$T_1 \pand T_2$} shown) and for no toasts (i.e., $\pnot T_1 \pand \pnot T_2$ not shown)}
+		\end{example}
+	\mynextcolumn
 		\only<4->{\pic[width=\linewidth]{toast4}}%
-		\uncover<6->{\myexample{}{\centering unwanted interaction for one toast\\(i.e., \emph{$T_1 \pand \pnot T_2$} shown and  $\pnot T_1 \pand T_2$ not shown)}}
-	}
+		\uncover<6->{\begin{example}{}
+			\centering unwanted interaction for one toast\\(i.e., \emph{$T_1 \pand \pnot T_2$} shown and  $\pnot T_1 \pand T_2$ not shown)}
+		\end{example}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Example Interactions with Preprocessors}
@@ -205,7 +217,9 @@ expected control flow, program or data state, or visible behavior).}
 			\end{itemize}
 		\end{example}
 	\mynextcolumn
-		\myexampletight{Patterns of Feature Interactions\mysource{\VBDb}}{\pic[width=\linewidth]{variabilitybugdatabase-patterns}}
+		\begin{exampletight}{Patterns of Feature Interactions\mysource{\VBDb}}
+			\pic[width=\linewidth]{variabilitybugdatabase-patterns}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 % TODO example from the The Variability Bug Database?
