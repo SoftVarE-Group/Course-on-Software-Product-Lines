@@ -60,6 +60,7 @@
 	$ShortestPath \pimplies Weighted$
 }
 
+% has been used earlier for practical task in Lecture 4b. not needed anymore?
 \newcommand{\featureDiagramABCDEFG}{
 	\featureDiagram{
 		Root,concrete
@@ -70,6 +71,17 @@
 		[B,concrete,mandatory
 			[E,concrete,alternative]
 			[F,concrete]
+		]
+	}
+}
+
+\newcommand{\featureDiagramABCDE}{
+	\featureDiagram{
+		A,concrete
+		[B,concrete,optional]
+		[C,concrete,mandatory
+			[D,concrete,or]
+			[E,concrete]
 		]
 	}
 }

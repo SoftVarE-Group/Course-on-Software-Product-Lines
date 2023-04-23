@@ -1,5 +1,5 @@
 % TODO add this paper? https://www.sciencedirect.com/science/article/pii/S0950584916300921
-% TODO add examples for undiscriplined ifdefs? https://dl.acm.org/doi/abs/10.1145/1960275.1960299
+% TODO add examples for undisciplined ifdefs? https://dl.acm.org/doi/abs/10.1145/1960275.1960299
 
 \subsection{Granularity of Variability}
 \begin{frame}{\myframetitle}
@@ -15,7 +15,7 @@
 			\end{itemize}
 		\end{definition}
 		\begin{example}{Granularity Levels in Java}
-			Archives $>$ packages $>$ classes $>$ members $>$ statements
+			modules $>$ libraries $>$ packages $>$ classes $>$ members $>$ statements $>$ parameters
 		\end{example}
 		\pause
 	\mynextcolumn
@@ -39,7 +39,7 @@
 % essence: file-level variability is not engough
 
 \subsection{What is a Preprocessor?}
-\begin{frame}{\myframetitle\mysource{\fospl\mypages{110--111}}}
+\begin{frame}{\myframetitle\ \mytitlesource{\fospl\mypages{110--111}}}
 	\begin{mycolumns}
 		\begin{definition}{Preprocessor}
 			\begin{itemize}
@@ -186,18 +186,13 @@
 \end{frame}
 
 \subsection{Preprocessors in FeatureIDE}
-\begin{frame}{\myframetitle\mysource{\featureide}}
+\begin{frame}{\myframetitle\ \mytitlesource{\featureide}}
 	\begin{mycolumns}[animation=none,widths={75}]
 		\only<1|handout:0>{\pic[width=\linewidth]{featureide-antenna-featuremodel}}%
 		\only<2|handout:1>{\pic[width=\linewidth]{featureide-antenna-configuration}}%
 		\only<3|handout:0>{\pic[width=\linewidth]{featureide-antenna-warning}}%
 		\only<4|handout:0>{\pic[width=\linewidth]{featureide-antenna-contentassist}}%
 	\mynextcolumn
-%		\begin{definition}{FeatureIDE\mysource{\featureide}}
-%			\begin{itemize}
-%				\item 
-%			\end{itemize}
-%		\end{definition}
 		\begin{note}{\href{https://www.youtube.com/watch?v=jVe7f32mLCQ}{Demo Video}}
 			\begin{itemize}
 				\item preprocessing with Antenna on command line
@@ -210,7 +205,6 @@
 		\end{note}
 	\end{mycolumns}
 \end{frame}
-% TODO has FeatureIDE been shown/discussed before? ideally, here only present preprocessor integration
 
 \subsection{Discussion of Preprocessors}
 
@@ -256,7 +250,7 @@
 				\item are more likely than for other techniques
 			\end{itemize}
 
-			(see Part 3) % TODO introduce labels for parts? would be able to click on them
+			\mysource{more in \lecturefeatures\partc}
 		\end{note}
 	\end{mycolumns}
 \end{frame}
@@ -382,16 +376,14 @@
 				\item May \emph{obfuscate} source code and severely impact its readability
 				\item Hard to analyze and process for existing IDEs
 				\item Often used in an ad-hoc or \emph{undisciplined} fashion
-				\item Prone to subtle syntax, type, or runtime errors which are hard to detect
+				\item Prone to subtle syntax, type, or runtime errors which are hard to detect \mysource{\lectureinteractions--\lecturetesting}
 			\end{itemize}
 		\end{note}
 	\end{mycolumns}
 \end{frame}
 
-\xkcdframe{619} % linux features 20s
-
 \subsection{Preprocessor-Based Product Lines in the Wild}
-\begin{frame}{\myframetitle\mysource{\fortyproductlines}}
+\begin{frame}{\myframetitle\ \mytitlesource{\fortyproductlines}}
 	\begin{mycolumns}[forget]
 		\begin{exampletight}{Number of Features}
 			\centering\pic[width=.8\linewidth,page=1]{fortyproductlines}\\Lines of Code
@@ -403,7 +395,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle\mysource{\fortyproductlines}}
+\begin{frame}{\myframetitle\ \mytitlesource{\fortyproductlines}}
 	\begin{mycolumns}[forget]
 		\begin{exampletight}{Lines of Variable Code}
 			\centering\pic[width=.8\linewidth,page=3]{fortyproductlines}\\Number of Features
@@ -415,7 +407,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle\mysource{\fortyproductlines}}
+\begin{frame}{\myframetitle\ \mytitlesource{\fortyproductlines}}
 	\begin{mycolumns}[forget]
 		\begin{exampletight}{Average Number of Feature References}
 			\centering\pic[width=.8\linewidth,page=4]{fortyproductlines}\\Number of Features

@@ -103,7 +103,7 @@ public class Graph {
 		}
 	}
 }
-\end{codetight} % TODO colors not readable on projector
+\end{codetight} % TODO colors not readable on projector. still true?
 		\mynextcolumn
 \begin{codetight}{}
 public class Node {
@@ -154,14 +154,14 @@ public class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\subsection{The Feature Traceability Problem}
+\subsection{Feature Traceability Problem}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{mycolumns}
 		\begin{definition}{Recap: Feature Traceability}
 			Feature traceability is the ability to trace a feature throughout the software life cycle (i.e., from requirements to source code).
 		\end{definition}
 		\begin{example}{Recap: Intuition on Feature Traceability}
-			find feature \pic[width=.15\linewidth]{pants-blue} in product \pic[width=.15\linewidth]{230}
+			\centering find feature \pic[width=.15\linewidth]{pants-blue} in product \pic[width=.15\linewidth]{230}
 		\end{example}
 		\pause
 		\begin{definition}{Feature Traceability (revisited) \mysource{\fospl\mypage{54}}}
@@ -189,7 +189,7 @@ public class Edge {
 
 \subsection{Feature Traceability with Colors}
 
-\subsubsection*{Feature Commander}
+\subsubsection{Feature Commander}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none,widths={35}]
 		\begin{definition}{\featurecommander}
@@ -197,7 +197,7 @@ public class Edge {
 				\item each feature can be assigned to a color
 				\item color used to support feature traceability
 				\item features not assigned to a color shown in a shade of grade
-				\item visualizations based on preprocessor macros % TODO check wording
+				\item visualizations based on preprocessor directives
 			\end{itemize}
 		\end{definition}
 		\begin{note}{\href{https://www.tu-chemnitz.de/informatik/ST/research/material/xenomai/video.wmv}{Demo Video}}
@@ -230,7 +230,7 @@ public class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection*{FeatureIDE}
+\subsubsection{FeatureIDE}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[animation=none,widths={65}]
 		\only<1,4-|handout:1>{\pic[width=\linewidth]{feature-traceability}}%
@@ -257,7 +257,7 @@ public class Edge {
 % \href{https://www.youtube.com/watch?v=9QNDu0rMuQQ}{overview on support for colors with FeatureHouse (even in generated code)}
 
 \subsection{Virtual Separation of Concerns}
-\begin{frame}{\myframetitle\mysource{\virtualseparation}}
+\begin{frame}{\myframetitle\ \mytitlesource{\virtualseparation}}
 	\begin{mycolumns}
 		\begin{definition}{Virtual Separation of Concerns}
 			\begin{itemize}
@@ -286,8 +286,8 @@ public class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\subsubsection*{CIDE}
-\begin{frame}{\myframetitle\mysource{\cide}}
+\subsubsection{CIDE}
+\begin{frame}{\myframetitle\ \mytitlesource{\cide}}
 	\begin{mycolumns}[widths={60},animation=none]
 		\pic[width=\linewidth]{cide-open-editor}
 	\mynextcolumn
@@ -322,7 +322,7 @@ public class Edge {
 %Python 	.py 	
 %OSGi Manifest 	MANIFEST.MF 	simple, with simple type system
 
-\begin{frame}{\myframetitle\mysource{\cide}}
+\begin{frame}{\myframetitle\ \mytitlesource{\cide}}
 	\begin{mycolumns}[widths={70},animation=none]
 		\pic[width=\linewidth]{cide-editor-and-outline}
 	\mynextcolumn
@@ -338,7 +338,7 @@ public class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle\mysource{\cide}}
+\begin{frame}{\myframetitle\ \mytitlesource{\cide}}
 	\begin{mycolumns}[widths={65},animation=none]
 		\pic[width=\linewidth]{cide}
 	\mynextcolumn
@@ -355,14 +355,14 @@ public class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle\mysource{\cide}}
+\begin{frame}{\myframetitle\ \mytitlesource{\cide}}
 	\pic[width=\linewidth]{cide-show-single-feature}
 	\begin{example}{}\centering
 		\textbf{view on a feature}: possible to only show a single feature -- in its surrounded code
 	\end{example}
 \end{frame}
 
-\begin{frame}{\myframetitle\mysource{\cide}}
+\begin{frame}{\myframetitle\ \mytitlesource{\cide}}
 	\begin{mycolumns}[widths={45},animation=none]
 		\begin{example}{Why configuration?}
 			\begin{itemize}
@@ -377,7 +377,7 @@ public class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle\mysource{\cide}}
+\begin{frame}{\myframetitle\ \mytitlesource{\cide}}
 	\begin{mycolumns}[widths={45},animation=none]
 		\begin{example}{Why configuration?}
 			\begin{itemize}

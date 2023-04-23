@@ -42,80 +42,22 @@
 \subsection{Problems of Ad-Hoc Approaches for Variability}
 
 \subsubsection{Features with Runtime Variability?}
-\begin{frame}[fragile]{\myframetitle}
-	\footnotesize
-	\begin{mycolumns}[animation=none]
-\begin{codetight}{}
-public class Config {
-	~public static boolean COLORED = true;~
-	@public static boolean WEIGHTED = false;@
-}
-\end{codetight}
-\begin{codetight}{}
-public class Graph {
-	...
-	Edge add(Node n, Node m) {
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		@if (Config.WEIGHTED) { e.weight = new Weight(); }@
-		return e;
-	}
-	@Edge add(Node n, Node m, Weight w) {
-		if (!Config.WEIGHTED) { throw new RuntimeException(); }
-		Edge e = new Edge(n, m);
-		nodes.add(n); nodes.add(m); edges.add(e);
-		e.weight = w;
-		return e;
-	}@
-	...
-}
-\end{codetight}
-	\mynextcolumn
-\begin{codetight}{}
-public class Node {
-	~Color color;~
-	...
-	Node(){
-		~if (Config.COLORED) { color = new Color(); }~
-	}
-	void print() {
-		~if (Config.COLORED) { Color.setDisplayColor(color); }~
-		System.out.print(id);
-	}
-}
-\end{codetight}
-\begin{codetight}{}
-public class Edge {
-	@Weight weight;@
-	...
-	Edge(Node _a, Node _b) {
-		a = _a; b = _b;
-		@if (Config.WEIGHTED) { weight = new Weight(); }@
-	}
-	void print() {
-		a.print(); b.print();
-		@if (Config.WEIGHTED) { weight.print(); }@
-	}
-}
-\end{codetight}
-	\end{mycolumns}
-\end{frame}
-% TODO make example consistent with previous examples
+\againframe{GraphWithGlobalVariables}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40},T]
+	\begin{mycolumns}[b,widths={36}]
 		\picDark[width=\linewidth]{preferences-eclipse}
 
 		\begin{definition}{How to? -- Preference Dialog}
 			\begin{itemize}
 				\item implement runtime variability
 				\item compile the program
-				\item manually adjust preferences based on configuration
 				\item run the program
+				\item \emph{manually adjust preferences based on configuration}
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\begin{mycolumns}[animation=none]
+		\begin{mycolumns}[widths={41},animation=none]
 			\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir}
 		\mynextcolumn
 			\picDark[width=\linewidth]{configfile-eclipse-ini}
@@ -125,13 +67,12 @@ public class Edge {
 			\begin{itemize}
 				\item implement runtime variability
 				\item compile the program
-				\item automatically generate command-line options / configuration files based on configuration
+				\item \emph{automatically generate command-line options / configuration files based on configuration}
 				\item run the program
 			\end{itemize}
 		\end{definition}
 	\end{mycolumns}
 \end{frame}
-% TODO almost identical text on both sides
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[widths={48}]
@@ -195,7 +136,7 @@ public class Config {
 \subsection{Recap: Clone-and-Own with Build Systems}
 \begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
 	\begin{mycolumns}[columns=2,widths={76},animation=none]
-		\begin{mycolumns}[animation=none]
+		\begin{mycolumns}[widths={50},animation=none] % TODO widths needed due to bug #56 in slide template
 			\begin{example}{Case Study: Anesthesia Device}
 				\begin{itemize}
 					\item C application
@@ -210,7 +151,7 @@ public class Config {
 				\end{exampletight}
 			}
 		\end{mycolumns}
-		\begin{mycolumns}[animation=none]
+		\begin{mycolumns}[widths={50},animation=none] % TODO widths needed due to bug #56 in slide template
 			\uncover<2->{
 				\begin{exampletight}{{\color{green}Prototype}: OLED Display}
 					\centering\pic[height=25mm]{pignap-cfg-prototype-oled}
@@ -242,8 +183,7 @@ public class Config {
 			\end{itemize}
 			$\Rightarrow$ one build script per group of related features
 		\end{definition}
-		\begin{exampletight}{}
-			\centering
+		\begin{center}
 			\featureDiagram{Anesthesia Device,abstract
 			[Monitoring,abstract,mandatory
 				[Display,abstract,or[LCD,concrete,alternative][OLED,concrete]]
@@ -255,16 +195,76 @@ public class Config {
 				[RTC,concrete,optional[Battery,concrete,mandatory]]]}
 
 			$History \pimplies Storage \pand RTC$
-		\end{exampletight}
+		\end{center}
 	\mynextcolumn
-		\begin{exampletight}{}
-			\centering
-			\pic[width=.65\linewidth]{pignap-features}
-		\end{exampletight}
-\end{mycolumns}
+		\centering\pic[height=\textheightwithtitle]{pignap-features}
+	\end{mycolumns}
 \end{frame}
 
-\subsection{KBuild -- The Linux Kernel Build System}
+\subsection{The Linux Kernel}
+
+\xkcdframe{619} % linux features 20s
+
+\subsubsection*{KConfig for Feature Modeling}
+
+\begin{frame}[fragile]{\myframetitle}
+	\begin{mycolumns}
+		\begin{kconfigtight}[basicstyle=\small]{Part of the x86 Architecture \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{linux/arch/x86/Kconfig}}}
+config 64BIT
+	bool "64-bit kernel" if "$(ARCH)" = "x86"
+	default "$(ARCH)" != "i386"
+	help
+		Say yes to build a 64-bit kernel (x86_64)
+		Say no to build a 32-bit kernel (i386)
+
+config X86_32
+	def_bool y
+	depends on !64BIT
+	# Options that are inherently 32-bit kernel only:
+	select GENERIC_VDSO_32
+	select ARCH_SPLIT_ARG64
+
+config X86_64
+	def_bool y
+	depends on 64BIT
+	# Options that are inherently 64-bit kernel only:
+	select ARCH_HAS_GIGANTIC_PAGE
+	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128
+\end{kconfigtight}
+	\mynextcolumn
+		\begin{definition}{KConfig Language\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html}{kernel.org}}}
+			\begin{itemize}
+				\item configuration language used in embedded/OS development (e.g., Linux, Zephyr, ESP32)
+				\item similar to UVL, but has many quirks (e.g., tristate features, \texttt{select})
+				\item transformation into formula or feature model possible, but not trivial \mysource{\href{https://dl.acm.org/doi/abs/10.1145/3468264.3468578}{Oh~et~al.~2021}}
+			\end{itemize}
+		\end{definition}
+		\hspace*{-0.07253886\linewidth}%=2*0.035/(1-0.035)
+		\linuxbddlink{\pic[width=1.3\linewidth,trim=220 510 60 180,clip]{2020/2020-SPLC-Thuem}}
+	\end{mycolumns}
+\end{frame}
+
+\subsubsection*{MenuConfig for Configuration}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={60,40}]
+		\begin{exampletight}{}
+			\pic[width=\textwidth]{linux-menuconfig} % sudo apt install make flex bison libncurses5-dev && make menuconfig
+		\end{exampletight}
+	\mynextcolumn
+		\begin{note}{make menuconfig}
+			\begin{itemize}
+				\item configures KConfig models
+				\item generates a \texttt{.config} file
+				\item widely used to configure Linux
+				\item still: it is possible to create invalid configurations and products % TODO does not fit into the storyline anymore. remove?
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
+
+\subsubsection*{KBuild as Build System}
+
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}
 		\begin{kconfigtight}[basicstyle=\footnotesize]{Feature Model with KConfig\mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{linux/arch/x86/Kconfig}}}
@@ -317,9 +317,9 @@ obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}
-		\begin{note}{Recap: Interactive Linux Kernel Configurator}
+		\begin{example}{Interactive Linux Kernel Configurator}
 			\pic[width=\linewidth]{linux-menuconfig-emulation}
-		\end{note}
+		\end{example}
 
 		\begin{kconfigtight}[basicstyle=\footnotesize]{Feature Model and Example Configuration}
 			config AUDIT ... # configured as NO

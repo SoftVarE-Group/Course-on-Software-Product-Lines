@@ -20,11 +20,21 @@
 	\item Damir Nešić et al. (2019): \href{https://doi.org/10.1145/3338906.3338974}{Principles of Feature Modeling}
 	% TODO refer to Kang et al. for introducing feature models? more references to other SPL books?
 }{
-	\begin{itemize}
-		% TODO given a configuration map with 7 configurations, draw a corresponding feature model
-		\item sketch a feature model with features $A, B, C, \ldots$ that has 7 valid configurations (pen and paper preferred)
-		\item discuss in groups whether your feature models are syntactically correct and have the right number of configurations
-	\end{itemize}
+	\begin{enumerate}
+		\item sketch a feature model with features $A, B, C, D, E, F$ that has exactly those 5 valid configurations (pen and paper preferred):\\~
+
+			\begin{mycolumns}[t,columns=3,animation=none]
+				$\{A,B\}$\\
+				$\{A,B,D\}$\\~
+			\mynextcolumn
+				$\{A,C,E\}$\\
+				$\{A,C,F\}$\\
+			\mynextcolumn
+				$\{A,C,E,F\}$\\
+			\end{mycolumns}
+
+		\item discuss in groups whether your feature models are syntactically correct and specify exactly the above configurations
+	\end{enumerate}
 
 	\uploadpractice
 }
@@ -39,15 +49,20 @@
 	\item \uvlwebsite\ --- official website for the Universal Variability Language with examples, grammar, literature pointers
 	\item Alexander Knüppel et al. (2017): \href{https://doi.org/10.1145/3106237.3106252}{Is There a Mismatch Between Real-World Feature Models and Product-Line Research?}
 }{
-	Translate the following feature diagram into a formula and then into CNF:
+	\begin{enumerate}
+		\item translate the following feature diagram into a propositional formula:
 
-	\centering
-	\featureDiagramABCDEFG % TODO why has the root feature a different naming convention? shall we start with A at the root?
+			\begin{center}
+				\featureDiagramABCDE
 
-	$D \pimplies E$
+				$D \pimplies B$
+			\end{center}
+
+		\item check formulas of your colleagues
+	\end{enumerate}
 
 	\uploadpractice
-} % TODO task is likely to take very long and some students will have more problems than others. why not do something like this in the exercise instead?
+}
 
 \section{Analyzing Feature Models}
 \input{content/04c-analyses}
@@ -62,18 +77,19 @@
 	% TODO we could add the paper about web configurators here
 }{
 	\begin{center}
-		\featureDiagramABCDEFG
+		\featureDiagramABCDE
 	\end{center}
 
-	How can you \ldots
-	\begin{enumerate}
-		\item make this feature model void
-		\item make exactly one feature dead
-	\end{enumerate}
-	\ldots{} by adding one constraint, respectively?
-
-	Name a partial configuration for which only two products exist.
-} % TODO these are three tasks and probably too much for this lecture. we could choose one of those and leave the rest for the exercise.
+	think of a constraint that would make exactly one feature dead
+%	How can you \ldots
+%	\begin{enumerate}
+%		\item make this feature model void
+%		\item make exactly one feature dead
+%	\end{enumerate}
+%	\ldots{} by adding one constraint, respectively?
+%
+%	Name a partial configuration for which only two products exist.
+}
 
 \faq{
 	\item What is feature modeling? When is it needed?
@@ -123,11 +139,16 @@
 	% TODO add literature? Dietrich C, Tartler R, Schröder-Preikschat W, Lohmann D (2012b) Understanding Linux feature distribution. In: Proc. AOSD Workshop on Modularity In Systems Software (MISS). ACM Press, pp 15–20
 	% TODO add work on KernelHaven
 }{
-	Choose a build system and sketch how it may be used to implement this SPL (file structure and build script):
-
-	\begin{center}
-		\small\featureDiagramConfigurableDatabase
-	\end{center}
+% example replaced, as this is probably better for the actual exercise
+%	Choose a build system and sketch how it may be used to implement this SPL (file structure and build script):
+%
+%	\begin{center}
+%		\small\featureDiagramConfigurableDatabase
+%	\end{center}
+	\begin{enumerate}
+		\item How are features implemented with build systems different from clone-and-own with build systems?
+		\item What is the respective granularity?
+	\end{enumerate}
 
 	\uploadpractice
 }
@@ -138,9 +159,9 @@
 	\item granularity of variability at file level is not sufficient
 	\item preprocessors facilitate fine-grained variability within files
 	\item a widely applied preprocessor is the C Preprocessor
-	\item industrial systems often combine preprocessors and build systems for features
+	\item industrial systems often combine preprocessors and build systems for features (e.g., Linux kernel)
 }{
-	\item \fospl, Section~5.3 Preprocessors
+	\item \fospl\mysection{5.3} Preprocessors % TODO add pages?
 }{
 	\begin{enumerate}
 		\item Antenna performs an in-place transformation on implementation artifacts.
@@ -159,8 +180,8 @@
 	\item feature traceability can be established with tool support (e.g., Feature Commander)
 	\item virtual separation of concerns is an alternative to preprocessors (e.g., CIDE)
 }{
-	\item \fospl, Section~3.2.2 Feature Traceability
-	\item \fospl, Section~7 Advanced, Tool-Driven Variability Mechanisms
+	\item \fospl\mysection{3.2.2} Feature Traceability % TODO add pages?
+	\item \fospl\mychapter{7} Advanced, Tool-Driven Variability Mechanisms % TODO add pages?
 }{
 	\begin{enumerate}
 		\item Why is it beneficial to have feature traceability even for single systems?
@@ -168,13 +189,36 @@
 	\end{enumerate}
 }
 
-% TODO Thomas: add exam questions here
 \faq{
-	\item \ldots
+	\item What are problems of ad-hoc approaches for variability?
+	%\item What are disadvantages of preference dialogs, command-line options, configuration files, immutable global variables, clone-and-own when implementing features?
+	\item How to implement features with build systems?
+	\item How is it different from clone-and-own with build systems?
+	\item How is the Linux kernel developed in terms of feature model, configuration, and feature mapping?
+	\item What are KConfig, MenuConfig, KBuild (used for)?
+	\item What are tristate features in Linux?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of conditional compilation with build systems?
+	\item When (not) to implement features with build systems?
 }{
-	\item \ldots
+	\item What are different levels of granularity for variability?
+	\item Which granularity level supported by each techniques?
+	\item What is a preprocessor and how does it work?
+	\item What are examples for preprocessors and what are their differences?
+	\item What is better in-place or out-of-place preprocessing?
+	\item What is the problem with fine-grained variability or undisciplined annotations?
+	%\item How do lines of code, number of features, variable code, and nesting depth correlate with each other?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of cond.\ comp.\ with preprocessors?
+	\item When (not) to implement features with preprocessors?
 }{
-	\item \ldots
+	\item Which implementation techniques suffer from code scattering, code tangling, missing traceability?
+	\item What is feature traceability? What is the feature traceability problem?
+	\item What is the difference between problem and solution space?
+	\item How can feature traceability be achieved for preprocessor-based product lines?
+	\item Can feature traceability be automated for every potential feature of a domain? % TODO not sure how well this is reflected in the slides so far
+	\item What is virtual separation of concerns? How is it different from preprocessors or physical separation?
+	\item What is the principle of conditional compilation? How can it be implemented? % TODO not sure how well this is reflected in the slides so far
 }
 
 \input{template/footer}
