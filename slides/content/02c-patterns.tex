@@ -1,6 +1,6 @@
 % TODO several class diagrams shown here seem to be pixel graphics and should be replaced by vectorized ones
 
-\subsection{Recap on Object-Orientation and Design Patterns}
+\subsection{Recap on Object Orientation}
 
 \begin{frame}{Recap: Object Orientation}
 	\begin{mycolumns}[height=50mm]
@@ -18,6 +18,7 @@
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Recap on Design Patterns}
 \begin{frame}{Recap: Design Patterns\ \mytitlesource{\gof}}
 	\begin{mycolumns}[widths={60}]
 		\begin{definition}{Design Patterns \deutsch{Entwurfsmuster}}
@@ -39,7 +40,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Template Method Pattern}
+\subsubsection{Template Method Pattern}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40}]
 		\begin{definition}{Template Method \mysource{\gof\mypages{325--330}}}
@@ -68,7 +69,7 @@
 
 \newcommand{\profcalculator}[1]{\pic[#1,trim=190 185 130 105,clip]{diagramsnet-designpatterns-print}}
 
-\subsection{Abstract Factory Pattern}
+\subsubsection{Abstract Factory Pattern}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={40}]
 		\begin{definition}{Abstract Factory \mysource{\gof\mypages{87--95}}}
@@ -86,7 +87,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Decorator Pattern}
+\subsubsection{Decorator Pattern}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={45}]
 		\begin{definition}{Decorator \mysource{\gof\mypages{175--184}}}
@@ -106,6 +107,7 @@
 
 \subsection{Trade-Offs and Limitations}
 
+\subsubsection{Template Method and Abstract Factory}
 \begin{frame}{Object-Oriented Design of our Graph Library}
 	\begin{mycolumns}[widths={40}]
 		\picDark[width=\linewidth]{graphlib-oo-node-edge}
@@ -185,6 +187,7 @@ class EdgeFactory {
 	\end{mycolumns}
 \end{frame}
 
+\subsubsection{Diamond Problem and Decorator}
 \begin{frame}{Feature Combinations?}
 	\centering\picDark[width=.5\linewidth]{graphlib-oo-diamond}
 \end{frame}

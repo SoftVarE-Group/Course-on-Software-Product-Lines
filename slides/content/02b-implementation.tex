@@ -204,8 +204,7 @@ class Edge {
 \end{frame}
 
 \subsection{Global Variables}
-\begin{frame}[fragile]{\myframetitle}
-	\small
+\begin{frame}[fragile,label=GraphWithGlobalVariables]{\myframetitle}
 	\begin{mycolumns}[b,widths={51},height=70mm]
 \begin{codetight}{}
 public class Config {
@@ -236,8 +235,7 @@ class Graph {
 	\mynextcolumn
 \begin{codetight}{}
 class Node {
-	~Color color;~
-	...
+	~Color color;~ ...
 	Node() {
 		~if (Config.COLORED) { color = new Color(); }~
 	}
@@ -251,8 +249,7 @@ class Node {
 \end{codetight}
 \begin{codetight}{}
 class Edge {
-	@Weight weight;@
-	...
+	@Weight weight;@ ...
 	Edge(Node a, Node b) {
 		this.a = a; this.b = b;
 	}
@@ -360,8 +357,10 @@ class Edge {
 
 % TODO BerkeleyDB as further example? some parameters propagated through the whole system
 
-\subsection{Reconfiguration at Runtime?}
-\begin{frame}[fragile]{\myframetitle}
+\subsection{Problems of Runtime Variability}
+
+\subsubsection{Reconfiguration at Runtime}
+\begin{frame}[fragile]{Reconfiguration at Runtime?}
 	\begin{mycolumns}[widths={45}]
 		\small
 \begin{codetight}{}
@@ -407,15 +406,17 @@ public class Node {
 
 % TODO overview on all techniques should be added here
 
-\subsection{Code Scattering, Tangling, and Replication}
+\subsubsection{Code Scattering}
 \begin{frame}{Problem: Code Scattering \deutsch{Verstreuung}}
 	\centering\pic[scale=1.0]{scattering}
 \end{frame}
 
+\subsubsection{Code Tangling}
 \begin{frame}{Problem: Code Tangling \deutsch{Vermischung}}
 	\centering\pic[scale=1.0]{tangling}
 \end{frame}
 
+\subsubsection{Code Replication}
 \begin{frame}{Problem: Code Replication (aka.\ Code Clones)}
 	\centering\pic[scale=1.0]{replication}
 \end{frame}
