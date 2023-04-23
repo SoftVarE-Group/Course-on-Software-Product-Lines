@@ -25,7 +25,7 @@
 			\end{mycolumns}
 		\end{example}
 	\mynextcolumn
-		\vspace{-10mm}
+		\vspace{-10mm}\pause
 		\begin{exampletight}{How to Generate Products Automatically?}
 			\centering\foreach \page in {2,12,4,14,6,16,8,18,10,20,42,44}{\pic[width=.23\linewidth,page=\page]{graphs} }
 		\end{exampletight}
@@ -42,7 +42,7 @@
 \subsection{Problems of Ad-Hoc Approaches for Variability}
 
 \subsubsection{Features with Runtime Variability?}
-\againframe{GraphWithGlobalVariables}
+\againframe<2>{GraphWithGlobalVariables}
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[b,widths={36}]
@@ -102,7 +102,7 @@ public class Config {
 
 \subsubsection{Features with Clone-and-Own?}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30}]
+	\begin{mycolumns}[widths={30},animation=none]
 		\centering~
 
 		\picDark[scale=0.2]{alice}
@@ -122,6 +122,7 @@ public class Config {
 				\item compile and run the program
 			\end{itemize}
 		\end{definition}
+		\pause
 		\begin{note}{What is missing?}
 			\begin{itemize}
 				\item compile-time variability only for implemented products
