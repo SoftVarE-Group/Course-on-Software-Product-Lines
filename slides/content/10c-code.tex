@@ -2,19 +2,19 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t,widths={46}]
-		\myexample{Asking Questions About\\the Feature Mapping \ldots}{
+		\begin{example}{Asking Questions About\\the Feature Mapping \ldots}
 			\begin{itemize}
 				\item Are there contradictory or unnecessary preprocessor annotations in the code?
 				\item Is the code even included in any product?
 				\item If so, in how many products is the code included?
 				\item \ldots
 			\end{itemize}
-		}
-		\mynote{}{
+		\end{example}
+		\begin{note}{}
 			only finds code-agnostic anomalies
-		}
+		\end{note}
 		\mynextcolumn
-		\myexample{\ldots\ and the Variable Code}{
+		\begin{example}{\ldots\ and the Variable Code}
 			\begin{itemize}
 				\item Can every product be generated (e.g., compiled)?\\
 					$\Rightarrow$ to find all \emph{syntax and type errors}
@@ -24,13 +24,13 @@
 					$\Rightarrow$ to \emph{rule out} runtime and logic errors
 				\item \ldots
 			\end{itemize}
-		}
-		\mynote{}{
+		\end{example}
+		\begin{note}{}
 			now: analyze (non-)functional properties of all products
-		}
-		\myexample{Today's Example}{
+		\end{note}
+		\begin{example}{Today's Example}
 			type checking for FOP and conditional compilation
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
@@ -40,28 +40,30 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={37,63},animation=none]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
-		}
-		\myexample{Feature-Model Formula}{
+		\end{exampletight}
+		\begin{example}{Feature-Model Formula}
 			\small
 			$\Phi(FM) = Store \pand Type \pand (SS \por MS) \pand (\pnot SS \por \pnot MS)$
-		}
-		\myexample{Valid Configurations}{
+		\end{example}
+		\begin{example}{Valid Configurations}
 			\vspace*{-2ex}
 			\small
-			\leftandright{
+			\begin{mycolumns}[animation=none]
 				{\color{black}$\{SS\}$}\\
 				$\{SS, AC\}$
-			}{
+			\mynextcolumn
 				{\color{black}$\{MS\}$}\\
 				$\{MS, AC\}$\\
-			}
+			\end{mycolumns}
+		\end{example}
+		\uncover<3->{
+			\begin{note}{}
+				Is there a type error in \emph{any} product?
+				\uncover<4->{What about $\{SS, AC\}$?}
+			\end{note}
 		}
-		\uncover<3->{\mynote{}{
-			Is there a type error in \emph{any} product?
-			\uncover<4->{What about $\{SS, AC\}$?}
-		}}
 	\mynextcolumn
 		\only<2->{\pic[width=\linewidth]{fop-csur-example-error-blind}}
 	\end{mycolumns}
@@ -69,22 +71,26 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={37,63},animation=none]
-		\mydefinition{Reachability Condition of $id$}{
+		\begin{definition}{Reachability Condition of $id$}
 			guarantees that a given \emph{reference} to $id$ is also \emph{defined} somewhere:\\[1ex]
 			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies \bigvee_{def} PC_{def}^{id})$\\[1ex]
 			or, with a SAT solver:\\
 			\small
 			$\pnot SAT(\Phi(FM) \pand PC_{ref} \pand \bigwedge_{def} \pnot PC_{def})$
+		\end{definition}
+		\uncover<2->{
+			\begin{example}{}
+				$\Phi(FM) \mimplies (AC \pimplies SS \por MS)$ holds,\\
+				$\Phi(FM) \mimplies (AC \pimplies MS)$ does not\\[1ex]
+				$\Rightarrow$ $\{SS, AC\}$ has no \texttt{readAll}!
+			\end{example}
 		}
-		\uncover<2->{\myexample{}{
-			$\Phi(FM) \mimplies (AC \pimplies SS \por MS)$ holds,\\
-			$\Phi(FM) \mimplies (AC \pimplies MS)$ does not\\[1ex]
-			$\Rightarrow$ $\{SS, AC\}$ has no \texttt{readAll}!
-		}}
-		\uncover<3->{\mydefinition{Type-Safe Product-Line}{
-			in a \emph{type-safe} SPL, all references must always be defined (i.e., \emph{all} reachability conditions must hold)\\
-			{\color{gray}\ldots\ and many more conditions \ldots}
-		}}
+		\uncover<3->{
+			\begin{definition}{Type-Safe Product-Line}
+				in a \emph{type-safe} SPL, all references must always be defined (i.e., \emph{all} reachability conditions must hold)\\
+				{\color{gray}\ldots\ and many more conditions \ldots}
+			\end{definition}
+		}
 	\mynextcolumn
 		\pic[width=\linewidth]{fop-csur-example-error}
 	\end{mycolumns}
@@ -94,36 +100,48 @@
 
 \begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[columns=3,widths={37,29,34},animation=none]
-		\myexampletight{}{
+		\begin{exampletight}{}
 			\centering
 			\featureDiagram{Graph,concrete[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]}
 			{\color{blue}$\pnot (Directed \pand Undirected)$}\\
 			{\color{green}$Hyper \pimplies Undirected$}\\
 			{\color{red}$Directed \por Hyper$}
+		\end{exampletight}
+		\uncover<2->{
+			\begin{definition}{Reachability Condition of $id$}
+				$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies \bigvee_{def} PC_{def}^{id})$
+			\end{definition}
 		}
-		\uncover<2->{\mydefinition{Reachability Condition of $id$}{
-			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies \bigvee_{def} PC_{def}^{id})$
-		}}
-		\uncover<3->{\mydefinition{Conflict Condition of $id$, def's $d_i$}{
-			guarantees that no definition of $id$ \emph{conflicts} with another:\\[1ex]
-			$\Phi(FM) \mimplies \bigwedge_{d_1 \neq d_2} \pnot (PC_{d_1}^{id} \pand PC_{d_2}^{id}))$
-		}}
+		\uncover<3->{
+			\begin{definition}{Conflict Condition of $id$, def's $d_i$}
+				guarantees that no definition of $id$ \emph{conflicts} with another:\\[1ex]
+				$\Phi(FM) \mimplies \bigwedge_{d_1 \neq d_2} \pnot (PC_{d_1}^{id} \pand PC_{d_2}^{id}))$
+			\end{definition}
+		}
 	\mynextcolumn
-	\uncover<2->{\myexample{Is $e.nodes$ reachable?}{
+	\uncover<2->{
+		\begin{example}{Is $e.nodes$ reachable?}
 			\small
 			$\Phi(FM) \mimplies (\top \pimplies$\\
 			$~~Dir \por (Hy \pand Un) \por (Hy \pand Dir))$\\[1ex]
 			holds, because each graph is {\color{red}directed} or an ({\color{green}undirected}) {\color{red}hypergraph}
-		}}
-		\uncover<3->{\myexample{Does $e.nodes$ conflict?}{
-			\small
-			$\Phi(FM) \mimplies ($\\
-			$~~\pnot (Dir \pand (Hy \pand Un))$\\
-			$~\pand \pnot (Dir \pand (Hy \pand Dir))$\\
-			$~~\pand \pnot ((Hy \pand Un) \pand (Hy \pand Dir)))$\\[1ex]
-			holds, because a graph is {\color{blue}never} {\color{red}directed} and an ({\color{green}undirected}) {\color{red}hypergraph} {\color{blue}at the same time}
-		}}
-		\uncover<4->{\myexample{}{all reachable, no conflicts}}
+		\end{example}
+	}
+		\uncover<3->{
+			\begin{example}{Does $e.nodes$ conflict?}
+				\small
+				$\Phi(FM) \mimplies ($\\
+				$~~\pnot (Dir \pand (Hy \pand Un))$\\
+				$~\pand \pnot (Dir \pand (Hy \pand Dir))$\\
+				$~~\pand \pnot ((Hy \pand Un) \pand (Hy \pand Dir)))$\\[1ex]
+				holds, because a graph is {\color{blue}never} {\color{red}directed} and an ({\color{green}undirected}) {\color{red}hypergraph} {\color{blue}at the same time}
+			\end{example}
+		}
+		\uncover<4->{
+			\begin{example}{}
+				all reachable, no conflicts
+			\end{example}
+		}
 	\mynextcolumn
 		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node { ... };
@@ -154,7 +172,7 @@ std::ostream& operator<<(
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\mynote{Just the Tip of the Iceberg}{
+		\begin{note}{Just the Tip of the Iceberg}
 			\begin{itemize}
 				\item here, we only discussed reachability and conflict conditions
 				\item but: actual type checking requires a table of all identifiers, their types, and their PCs (and a lot more SAT queries)
@@ -168,9 +186,9 @@ std::ostream& operator<<(
 						$\Rightarrow$ better performance (false positives!)
 				\end{itemize}
 			\end{itemize}
-		}
+		\end{note}
 	\mynextcolumn
-		\myexample{The TypeChef Project \mysource{\typechef}}{
+		\begin{example}{The TypeChef Project \mysource{\typechef}}
 			\begin{itemize}
 				\item a variability-aware lexer, parser framework, and type system for C code with \texttt{\#ifdef}'s
 				\item skips preprocessing, instead builds an abstract syntax tree (AST) annotated with presence conditions
@@ -179,7 +197,7 @@ std::ostream& operator<<(
 				{\small Busybox (811 features): \mycite{We need 57 minutes to type check all modules.}} \mysource{\href{https://dl.acm.org/doi/10.1145/2384616.2384673}{ref}}\\[1ex]
 				{\small Linux (6065 features): \mycite{We successfully parsed [it in] roughly 85 hours on a single machine.}} \mysource{\href{https://dl.acm.org/doi/10.1145/2048066.2048128}{ref}} % not practically possible, can be used to motivate testing in next lecture
 			\end{itemize}
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 
@@ -188,8 +206,8 @@ std::ostream& operator<<(
 \subsubsection*{Product-Line Complexity}
 
 \begin{frame}{\myframetitle}
-	\leftorright{
-		\mydefinition{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}{
+	\begin{mycolumns}[forget]
+		\begin{definition}{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}
 			In a timeframe of 24h \ldots
 			\begin{enumerate}
 				\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}
@@ -200,9 +218,9 @@ std::ostream& operator<<(
 				\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)
 				\item[\textbf{C6}] It cannot be computed whether there is a valid configuration
 			\end{enumerate}
-		}
-	}{
-		\myexample{Examples}{
+		\end{definition}
+	\mynextcolumn
+		\begin{example}{Examples}
 			% also put examples of analysis strategies here, and which kind of mapping/code analysis scales for which class?
 			\begin{enumerate}
 				\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}
@@ -213,8 +231,8 @@ std::ostream& operator<<(
 				\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
 				\item[\textbf{C6}] No example known
 			\end{enumerate}
-		}
-	}
+		\end{example}
+	\end{mycolumns}
 \end{frame}
 
 \subsubsection*{Automated Analysis \ldots}
@@ -222,52 +240,52 @@ std::ostream& operator<<(
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[t,columns=3]
 		\textbf{\lecturemodeling\partc}
-		\mydefinition{\ldots\ of Feature Models}{
+		\begin{definition}{\ldots\ of Feature Models}
 			analyze only the feature model
-		}
+		\end{definition}
 	\mynextcolumn
 		\textbf{\lectureanalyses\partb}
-		\mydefinition{\ldots\ of Feature Mappings}{
+		\begin{definition}{\ldots\ of Feature Mappings}
 			analyze the feature mapping (considering the feature model)
-		}
+		\end{definition}
 	\mynextcolumn
 		\textbf{\lectureanalyses\partc}
-		\mydefinition{\ldots\ of Variable Code}{
+		\begin{definition}{\ldots\ of Variable Code}
 			analyze the variable code (considering the feature model and feature mapping)
-		}
+		\end{definition}
 	\end{mycolumns}
 	\begin{mycolumns}[t,columns=3]
-		\myexample{}{
+		\begin{example}{}
 			\begin{itemize}
 				\item void, core/dead features
 				\item decision propagation
 				\item atomic sets, redundant constraints
 				\item \ldots
 			\end{itemize}
-		}
+		\end{example}
 	\mynextcolumn
-		\myexample{}{
+		\begin{example}{}
 			\begin{itemize}
 				\item dead code
 				\item superfluous annotations
 				\item degree of code scattering and tangling
 				\item \ldots
 			\end{itemize}
-		}
+		\end{example}
 	\mynextcolumn
-		\myexample{}{
+		\begin{example}{}
 			\begin{itemize}
 				\item parsing, type checking
 				\item static analysis
 				\item model checking, theorem proving
 				\item \ldots
 			\end{itemize}
-		}
+		\end{example}
 	\end{mycolumns}
 	\begin{mycolumns}[t,columns=2,widths={32}]
 	\mynextcolumn
-		\mynote{}{
+		\begin{note}{}
 			here: \emph{family-based} analysis strategies for \emph{conditional compilation} and \emph{feature-oriented programming}
-		}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
