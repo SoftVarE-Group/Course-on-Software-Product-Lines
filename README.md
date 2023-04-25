@@ -24,9 +24,13 @@
 - Harz University of Applies Sciences, Wernigerode, Germany: Requirements Engineering II - Software Product Lines (Summer Term 2023)
 - University of Ulm, Germany: Software Product Lines (Summer Term 2023)
 
-## Slides in PDF-Format
+## PDF Slides
 
 To reduce the size of this repository, generated slides are available in a dedicated repository: https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course
+
+## Exercises
+
+Exercise sheets for this course are available in a dedicated repository: https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises
 
 ## Getting Started
 
