@@ -3,23 +3,41 @@
 \subsection{Recap: Software Testing}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}
-		\uncover<1->{\mydefinition{Software Testing \mysource{\sommerville}}{\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}}{}}
-		\uncover<2->{\mydefinition{Validation Testing \mysource{\sommerville}}{\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}}{}}
-		\uncover<3->{\mydefinition{Defect Testing \mysource{\sommerville}}{\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}}{}}
+		\uncover<1->{
+			\begin{definition}{Software Testing \mysource{\sommerville}}
+				\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}
+			\end{definition}
+		}
+		\uncover<2->{
+			\begin{definition}{Validation Testing \mysource{\sommerville}}
+				\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}
+			\end{definition}
+		}
+		\uncover<3->{
+			\begin{definition}{Defect Testing \mysource{\sommerville}}
+				\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}
+			\end{definition}
+		}
 	\mynextcolumn
-		\uncover<4->{\mynote{Stages of Testing \mysource{\sommerville}}{
-			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item[1.] \mycite{\emph{Development testing}, where the system is tested during development to discover
-				bugs and defects}
-				\item[2.] \mycite{\emph{Release testing}, where a separate testing team tests a complete version of the
-				system before it is released to users}
-				\item[3.] \mycite{\emph{User testing}, where users or potential users of a system test the system in their
-				own environment}
-			\end{itemize}
-		}}
-		\uncover<5->{\mynote{Manual vs Automated Testing \mysource{\sommerville}}{\mycite{In \emph{manual testing}, a tester runs the program with some test data and
-				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.}}}
+		\uncover<4->{
+			\begin{note}{Stages of Testing \mysource{\sommerville}}
+				\begin{itemize}
+					\setlength\itemsep{.1em}
+					\item[1.] \mycite{\emph{Development testing}, where the system is tested during development to discover
+					bugs and defects}
+					\item[2.] \mycite{\emph{Release testing}, where a separate testing team tests a complete version of the
+					system before it is released to users}
+					\item[3.] \mycite{\emph{User testing}, where users or potential users of a system test the system in their
+					own environment}
+				\end{itemize}
+			\end{note}
+		}
+		\uncover<5->{
+			\begin{note}{Manual vs Automated Testing \mysource{\sommerville}}
+				\mycite{In \emph{manual testing}, a tester runs the program with some test data and
+				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.}
+			\end{note}
+		}
 	\end{mycolumns}
 \end{frame}
 
@@ -27,7 +45,7 @@
 
 \subsection{Testing All Configurations}
 \begin{frame}{\myframetitle}
-	\leftorright{
+	\begin{mycolumns}[forget]
 		\centering\featureDiagramConfigurableDatabase
 		
 		\begin{example}{Recap: 26 Valid Configurations\mysource{\lecturemodeling}}
@@ -62,9 +80,9 @@
 				$\{C,G,P,D,T,L\}$
 			\end{mycolumns}
 		\end{example}
-	}{
+	\mynextcolumn
 		\vspace{-7mm}
-		\mynote{Discussion}{
+		\begin{note}{Discussion}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
 				\item only feasible for small product lines (few valid configurations)
@@ -72,8 +90,8 @@
 				\item large product lines: not even feasible to generate and compile all configurations
 				\item (some) large product lines: not even the number of valid configurations is known
 			\end{itemize}
-		}
-	}
+		\end{note}
+	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Recap: Feature Model of the Linux Kernel}
@@ -82,15 +100,21 @@
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={60}]
-		\myexampletight{Recap: Industrial Configuration Spaces\mysource{\lectureintroduction}}{
+		\begin{exampletight}{Recap: Industrial Configuration Spaces\mysource{\lectureintroduction}}
 			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
+		\end{exampletight}
+		\uncover<3->{
+			\begin{note}{}
+				Why being complete on the configurations then?
+			\end{note}
 		}
-		\uncover<3->{\mynote{}{Why being complete on the configurations then?}}
 	\mynextcolumn
 		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
 		\vspace{-7mm}
 		
-		\mynote{Edsger W. Dijkstra (1972)}{\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}\mysource{\thehumbleprogrammer}}
+		\begin{note}{Edsger W. Dijkstra (1972)}
+			\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}\mysource{\thehumbleprogrammer}
+		\end{note}
 		% 1930-2002, ACM Turing Award winner
 	\end{mycolumns}
 \end{frame}
@@ -104,7 +128,7 @@
 		
 		\begin{example}{Recap: 26 Valid Configurations\mysource{\lecturemodeling}}
 			\footnotesize
-			\leftandright{
+			\begin{mycolumns}[animation=none]
 				$\{C,G,W\}$\\
 				$\{C,P,W\}$\\
 				$\{C,G,P,W\}$\\
@@ -118,7 +142,7 @@
 				$\{C,G,D,T,W\}$\\
 				$\{C,P,D,T,W\}$\\
 				\emph{$\{C,G,P,D,T,W\}$}
-			}{
+			\mynextcolumn
 				$\{C,G,L\}$\\
 				$\{C,P,L\}$\\
 				$\{C,G,P,L\}$\\
@@ -132,7 +156,7 @@
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
 				$\{C,G,P,D,T,L\}$
-			}
+			\end{mycolumns}
 		\end{example}
 	\mynextcolumn
 		\pause\vspace{-10mm}

@@ -76,7 +76,7 @@
 	\begin{mycolumns}
 		\begin{example}{Configurations with the Interaction Get $\wedge$ Put}
 			\footnotesize
-			\leftandright{
+			\begin{mycolumns}[animation=none]
 				$\{C,G,W\}$\\
 				$\{C,P,W\}$\\
 				\emph{$\{C,G,P,W\}$}\\
@@ -90,7 +90,7 @@
 				$\{C,G,D,T,W\}$\\
 				$\{C,P,D,T,W\}$\\
 				\emph{$\{C,G,P,D,T,W\}$}
-			}{
+			\mynextcolumn
 				$\{C,G,L\}$\\
 				$\{C,P,L\}$\\
 				\emph{$\{C,G,P,L\}$}\\
@@ -104,7 +104,7 @@
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
 				\emph{$\{C,G,P,D,T,L\}$}
-			}
+			\end{mycolumns}
 		\end{example}
 		\pause
 		\begin{definition}{Pairwise Interaction Testing}
@@ -152,7 +152,7 @@
 	\begin{mycolumns}[animation=none]
 		\centering\featureDiagramConfigurableDatabase
 
-		\mydefinition{Interactions to Cover}{
+		\begin{definition}{Interactions to Cover}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
 				\item exclude invalid combinations (e.g., $W \wedge L$)
@@ -160,10 +160,10 @@
 				\item exclude features contained in every configuration (e.g., $C$)
 			\end{itemize}
 			% TODO \todo{add formal definitions based on \lecturemodeling}
-		}
+		\end{definition}
 	\mynextcolumn
 		\vspace{-10mm}
-		\myexample{Pairwise Interactions}{
+		\begin{example}{Pairwise Interactions}
 			\centering\footnotesize\color{lightgray}
 			\begin{tabular}{llll}
 				\epair{G}{P}{3}{2}{1}{6}
@@ -182,8 +182,8 @@
 				\epair{T}{L}{3}{1}{2}{4}
 				& {\redandgray{1}$W \wedge \neg L$} & {\redandgray{2}$\neg W \wedge L$} & \\
 			\end{tabular} 
-		}
-		\myexample{Pairwise Coverage with Six Configurations}{
+		\end{example}
+		\begin{example}{Pairwise Coverage with Six Configurations}
 			\footnotesize\color{lightgray}
 			{\redandgray{1}$\{C,P,D,T,W\}$}\\
 			{\redandgray{2}$\{C,G,D,L\}$}\\
@@ -191,7 +191,7 @@
 			{\redandgray{4}$\{C,G,W\}$}\\
 			{\redandgray{5}$\{C,P,W\}$}\\
 			{\redandgray{6}$\{C,D,T,L\}$}\\
-		}
+		\end{example}
 	\end{mycolumns}
 \end{frame}
 % TODO use different colors for the different configurations (instead of separate handouts) + animation showing all pairs in the first place
@@ -199,7 +199,7 @@
 \subsection{T-Wise Interaction Testing}
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={65}]
-		\mydefinition{T-Wise Interaction Testing}{
+		\begin{definition}{T-Wise Interaction Testing}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
 				\item generalization of pairwise interaction testing
@@ -208,22 +208,22 @@
 				\item t=2: pairwise interaction coverage
 				\item t=3: every combination of three features covered
 			\end{itemize}
-		}
+		\end{definition}
 	\mynextcolumn
 		\begin{example}{{T=3 Interactions}}
 			for the features $G$, $P$, and $D$:
 
-			\leftandright{
+			\begin{mycolumns}[animation=none]
 				$G \wedge P \wedge D$\\
 				$G \wedge P \wedge \neg D$\\
 				$G \wedge \neg P \wedge D$\\
 				$G \wedge \neg P \wedge \neg D$
-			}{
+			\mynextcolumn
 				$\neg G \wedge P \wedge D$\\
 				$\neg G \wedge P \wedge \neg D$\\
 				$\neg G \wedge \neg P \wedge D$\\
 				$\neg G \wedge \neg P \wedge \neg D$
-			}
+			\end{mycolumns}
 		\end{example}
 	\end{mycolumns}
 \end{frame}
@@ -267,26 +267,26 @@
 \subsection{Efficiency of Combinatorial Interaction Testing}
 %\subsection{Combinatorial Interaction Testing with ICPL}
 \begin{frame}{\myframetitle\ \mytitlesource{\icpl}}
-	\myexampletight{Assumption: All Features are Optional}{
+	\begin{exampletight}{Assumption: All Features are Optional}
 		\centering\footnotesize\featureDiagramEightOptionalFeatures
-	}
+	\end{exampletight}
 
 	\pause
 	\begin{mycolumns}
-		\myexampletight{Number of Configurations in Pairwise Sample}{
+		\begin{exampletight}{Number of Configurations in Pairwise Sample}
 			\includegraphics[width=\linewidth,page=4]{cit-plots}
-		}
+		\end{exampletight}
 	\mynextcolumn
 		\pause
-		\myexampletight{Number of Configurations in T-Wise Sample}{
+		\begin{exampletight}{Number of Configurations in T-Wise Sample}
 			\includegraphics[width=\linewidth,page=5]{cit-plots}
-		}
+		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\icpl}}
-	\leftorright{
-		\myexampletight{Time in Minutes to Compute Sample}{
+	\begin{mycolumns}[forget]
+		\begin{exampletight}{Time in Minutes to Compute Sample}
 			\includegraphics[width=\linewidth,page=2]{cit-plots}
 
 			\begin{itemize}
@@ -294,9 +294,9 @@
 				\item about 9h for Linux
 				\item 480 configuration in pairwise sample
 			\end{itemize}
-		}
-	}{
-		\myexampletight{Number of Configurations in Sample}{
+		\end{exampletight}
+	\mynextcolumn
+		\begin{exampletight}{Number of Configurations in Sample}
 			\includegraphics[width=\linewidth,page=3]{cit-plots}
 
 			\begin{itemize}
@@ -305,21 +305,23 @@
 				\item 6,888 features
 				\item 187,193 clauses in conjunctive normal form
 			\end{itemize}
-		}
-	}
+		\end{exampletight}
+	\end{mycolumns}
 \end{frame}
 
 % TODO distinguish testing efficiency and sampling efficiency
 
 \subsection{Effectiveness of Combinatorial Interaction Testing}
 \begin{frame}{\myframetitle}
-	\leftorright{
-		\myexampletight{Effectiveness of Interaction Testing \mysource{\href{https://ieeexplore.ieee.org/document/1321063}{Kuhn et al.\ 2004}}}{
+	\begin{mycolumns}[forget]
+		\begin{exampletight}{Effectiveness of Interaction Testing \mysource{\href{https://ieeexplore.ieee.org/document/1321063}{Kuhn et al.\ 2004}}}
 			\includegraphics[width=\linewidth,page=1]{cit-plots}
-		}
-	}{
-		\mynote{Trade-Off}{large t: high coverage (more effective)
+		\end{exampletight}
+	\mynextcolumn
+		\begin{note}{Trade-Off}
+			large t: high coverage (more effective)
 			
-			small t: low testing effort (more efficient)}
-	}
+			small t: low testing effort (more efficient)
+		\end{note}
+	\end{mycolumns}
 \end{frame}

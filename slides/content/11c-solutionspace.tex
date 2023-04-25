@@ -1,7 +1,7 @@
 \subsection{Coverage in Single-System Engineering}
 \begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
-	\leftorright{
-		\mydefinition{White-Box Testing \deutsch{Strukturtest}}{
+	\begin{mycolumns}[forget]
+		\begin{definition}{White-Box Testing \deutsch{Strukturtest}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item inner structure of test object is used
@@ -9,9 +9,9 @@
 				\item code translated into control flow graph
 				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
 			\end{itemize}
-		}{}
-	}{
-		\mydefinition{Coverage Criteria \deutsch{Überdeckungskriterien}}{
+		\end{definition}
+	\mynextcolumn
+		\begin{definition}{Coverage Criteria \deutsch{Überdeckungskriterien}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
@@ -19,8 +19,8 @@
 				\uncover<4->{\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)}
 				% TODO discuss path coverage?
 			\end{itemize}
-		}{}
-	}
+		\end{definition}
+	\end{mycolumns}
 \end{frame}
 
 \subsection{Coverage of Ifdef Blocks}
@@ -60,17 +60,17 @@
 		\begin{example}{{T=3 Presence-Condition Interactions}}
 			for the blocks $a$, $b$, and $c$ with presence conditions $A$, $B$, and $C$:
 
-			\leftandright{
+			\begin{mycolumns}[animation=none]
 				$A \wedge B \wedge C$\\
 				$A \wedge B \wedge \neg C$\\
 				$A \wedge \neg B \wedge C$\\
 				$A \wedge \neg B \wedge \neg C$
-			}{
+			\mynextcolumn
 				$\neg A \wedge B \wedge C$\\
 				$\neg A \wedge B \wedge \neg C$\\
 				$\neg A \wedge \neg B \wedge C$\\
 				$\neg A \wedge \neg B \wedge \neg C$
-			}
+			\end{mycolumns}
 		\end{example}
 		\pause
 		\begin{note}{Presence-Condition Coverage\mysource{\krieterpresenceconditioncoverage}}
