@@ -7,7 +7,7 @@
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[b,widths={67}]
 		\begin{exampletight}{Configuring a car \ldots}
-			\centering\small
+			\centering\small%
 			\only<1-3>{\pic[width=\linewidth]{toyota-aygo-wheels0}}%
 			\only<4-5|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels}}%
 			\only<6-7|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels2}}%
@@ -15,8 +15,8 @@
 			\only<10|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels}}%
 			\only<11-12|handout:0>{\pic[width=.8\linewidth]{toyota-aygo-color}}%
 			\only<13|handout:0>{\pic[width=.8\linewidth]{toyota-aygo-color2}}%
-			\only<14|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels3}}%
-			\only<15-|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels4}}%
+			\only<14-15|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels3}}%
+			\only<16-|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels4}}%
 		\end{exampletight}
 	\mynextcolumn
 		\vspace{-\textheightoftitle}
@@ -32,7 +32,7 @@
 				\uncover<12->{\item we want a \textbf{red car}}
 				\uncover<14->{\item popup dialog: black wheels unavailable (no automatic selection! preview of unavailable wheels!)}
 			\end{enumerate}
-			what now? back to Step 3?
+			\uncover<15->{what now? back to Step 3?}
 		\end{example}
 	\end{mycolumns}
 \end{frame}
