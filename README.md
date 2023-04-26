@@ -1,6 +1,6 @@
 # Course on Software Product Lines
 
-**Material for lectures on software product lines**
+**[Open educational resources](https://en.wikipedia.org/wiki/Open_educational_resources) for lectures on software product lines**
 
 *If you have any feedback, please contact [Thomas Thüm](mailto:thomas.thuem@uni-ulm.de).*
 
