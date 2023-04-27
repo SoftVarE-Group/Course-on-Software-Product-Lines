@@ -220,24 +220,24 @@
 \begin{codetight}{}
 package components.color;
 
-~// public interface~
+// public interface
 public class ColorComponent {
-	public Color createColor(int r, int g, int b) { ~/* ... /*~ }
-	public void printColor(Color color) { ~/* ... /*~ }
-	public void mapColor(Object o, Color c) { ~/* ... /*~ }
-	public Color getColor(Object o) { ~/* ... /*~ }
+	public Color createColor(int r, int g, int b) { /* ... /* }
+	public void printColor(Color color) { /* ... /* }
+	public void mapColor(Object o, Color c) { /* ... /* }
+	public Color getColor(Object o) { /* ... /* }
 	
-	~// just one component instance~
+	// just one component instance
 	public static ColorComponent getInstance() { return instance; }
 	private static ColorComponent instance = new ColorComponent();
 	private ColorComponent() { super(); }
 }
-public interface Color { ~/* ... /*~ }
+public interface Color { /* ... /* }
 
-~// hidden implementation~
-class ColorImpl implements Color { ~/* ... /*~ }
-class ColorPrinter { ~/* ... /*~ }
-class ColorMapping { ~/* ... /*~ }
+// hidden implementation
+class ColorImpl implements Color { /* ... /* }
+class ColorPrinter { /* ... /* }
+class ColorMapping { /* ... /* }
 \end{codetight} % TODO example does not look correctly rendered
 	\end{mycolumns}
 \end{frame}
@@ -259,7 +259,7 @@ public class Graph {
 		nodes.add(n);
 		return n;
 	}
-	~// ...~
+	// ...
 }
 \end{codetight}
 }

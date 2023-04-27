@@ -160,8 +160,7 @@ public class Ping extends JFrame {
 		\begin{note}{}
 			Plug-in implementation hidden from application.
 		\end{note}
-\tiny
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public class Application extends JFrame {
 	private Plugin plugin;
 	// ...
@@ -191,8 +190,8 @@ public class Application extends JFrame {
 }
 \end{codetight}
 		\mynextcolumn
-{\tiny
-\begin{codetight}{}
+{
+\begin{codetight}[basicstyle=\tiny]{}
 public interface Plugin {
 	String getApplicationTitle();
 	String getButtonText();
@@ -201,7 +200,7 @@ public interface Plugin {
 	void setApplication(Application app);
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public class CalcPlugin implements Plugin {
 	private Application application;
 
@@ -234,8 +233,7 @@ public class CalcPlugin implements Plugin {
 		\begin{note}{}
 			Application implementation hidden from plug-in.
 		\end{note}
-\tiny
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public class Application extends JFrame @implements InputProvider@ {
 	private Plugin plugin;
 	// ...
@@ -263,13 +261,13 @@ public class Application extends JFrame @implements InputProvider@ {
 }
 \end{codetight}
 		\mynextcolumn
-{\tiny
-\begin{codetight}{}
+{
+\begin{codetight}[basicstyle=\tiny]{}
 public interface InputProvider {
 	public String getInput();
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public interface Plugin {
 	String getApplicationTitle();
 	String getButtonText();
@@ -278,7 +276,7 @@ public interface Plugin {
 	@void setInputProvider(InputProvider p);@
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public class CalcPlugin implements Plugin {
 	@private InputProvider inputProvider;@
 
@@ -480,8 +478,8 @@ public class Application {
 \end{frame}
 
 \begin{frame}[fragile]{Example: Extending Basic Graphs by Plug-Ins?}
-	\tiny\begin{mycolumns}[columns=2,widths={50,50}]
-\begin{codetight}{}
+	\begin{mycolumns}[columns=2,widths={50,50}]
+\begin{codetight}[basicstyle=\tiny]{}
 public class Graph {
 	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
 	// ...	
@@ -514,7 +512,7 @@ public class Graph {
 }
 \end{codetight}
 		\mynextcolumn
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public interface GraphPlugin {
 	public void aboutToAdd(Node n, Color c);
 	public void aboutToAdd(Edge e, Weight w);
@@ -522,7 +520,7 @@ public interface GraphPlugin {
 	public void aboutToPrint(Edge e);
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public class ColorPlugin implements GraphPlugin {
 	private Map<Node, Color> map = new HashMap<Node, Color>();
 
