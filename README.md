@@ -28,9 +28,11 @@
 
 To reduce the size of this repository, generated slides are available in a dedicated repository: https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course
 
+<!--
 ## Exercises
 
 Exercise sheets for this course are available in a dedicated repository: https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises
+-->
 
 ## Getting Started
 
