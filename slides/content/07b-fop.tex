@@ -240,15 +240,15 @@ refines class Edge {
 			A method extension is implemented by method overriding and calling the overridden method via the keyword Super.
 		\end{definition}
 	\mynextcolumn
-{\tiny
-\begin{codetight}{Edge.jak}
+{
+\begin{codetight}[basicstyle=\tiny]{Edge.jak}
 class Edge {
 	void print() {
 		System.out.print("Edge between " + a + " and " + b);
 	}
 }
 \end{codetight}
-\begin{codetight}{Edge.jak}
+\begin{codetight}[basicstyle=\tiny]{Edge.jak}
 refines class Edge {
 	...
 	void print() {
@@ -257,7 +257,7 @@ refines class Edge {
 	}
 }
 \end{codetight}
-\begin{codetight}{Edge.jak}
+\begin{codetight}[basicstyle=\tiny]{Edge.jak}
 refines class Edge {
 	...
 	void print() {
@@ -376,26 +376,24 @@ class Edge extends Edge$$Directed {
 	\end{note}
 	\pause
 	\begin{mycolumns}[widths={50,50},animation=none]
-{\tiny
-\begin{codetight}{(a) Edge.jak}
+{
+\begin{codetight}[basicstyle=\tiny]{(a) Edge.jak}
 class Edge {
 	void print() {
 		System.out.print("Edge between " + a + " and " + b);
 	}
 }
 \end{codetight}
-\begin{codetight}{(b) Edge.jak}
-refines class Edge {
-	...
+\begin{codetight}[basicstyle=\tiny]{(b) Edge.jak}
+refines class Edge { ...
 	void print() {
 		Super().print();
 		System.out.print(" directed from " + start);
 	}
 }
 \end{codetight}
-\begin{codetight}{(c) Edge.jak}
-refines class Edge {
-	...
+\begin{codetight}[basicstyle=\tiny]{(c) Edge.jak}
+refines class Edge { ...
 	void print() {
 		Super().print();
 		System.out.print(" weighted with " + weight);
@@ -428,26 +426,24 @@ class Edge {
 		Class refinements themselves are (largely) independent of the order in which they are eventually composed.
 	\end{note}
 	\begin{mycolumns}[widths={50,50},animation=none]
-{\tiny
-\begin{codetight}{(a) Edge.jak}
+{
+\begin{codetight}[basicstyle=\tiny]{(a) Edge.jak}
 class Edge {
 	void print() {
 		System.out.print("Edge between " + a + " and " + b);
 	}
 }
 \end{codetight}
-\begin{codetight}{(b) Edge.jak}
-refines class Edge {
-	...
+\begin{codetight}[basicstyle=\tiny]{(b) Edge.jak}
+refines class Edge { ...
 	void print() {
 		Super().print();
 		System.out.print(" directed from " + start);
 	}
 }
 \end{codetight}
-\begin{codetight}{(c) Edge.jak}
-refines class Edge {
-	...
+\begin{codetight}[basicstyle=\tiny]{(c) Edge.jak}
+refines class Edge { ...
 	void print() {
 		Super().print();
 		System.out.print(" weighted with " + weight);

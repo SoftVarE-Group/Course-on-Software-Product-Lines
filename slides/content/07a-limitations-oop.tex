@@ -89,8 +89,8 @@
 \end{frame}
 
 \begin{frame}[fragile]{Recap: Extending Basic Graphs by Plug-Ins?}
-	\tiny\begin{mycolumns}[columns=2,widths={50,50}]
-\begin{codetight}{}
+	\begin{mycolumns}[columns=2,widths={50,50}]
+\begin{codetight}[basicstyle=\tiny]{}
 public class Graph {
 	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
 	// ...	
@@ -123,7 +123,7 @@ public class Graph {
 }
 \end{codetight}
 		\mynextcolumn
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public interface GraphPlugin {
 	public void aboutToAdd(Node n, Color c);
 	public void aboutToAdd(Edge e, Weight w);
@@ -131,7 +131,7 @@ public interface GraphPlugin {
 	public void aboutToPrint(Edge e);
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\tiny]{}
 public class ColorPlugin implements GraphPlugin {
 	private Map<Node, Color> map = new HashMap<Node, Color>();
 
