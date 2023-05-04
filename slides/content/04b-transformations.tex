@@ -111,7 +111,7 @@ constraints
 			\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {toString} (nat);
 			\path [dotted, ->] (nat) edge[bend left] node[sloped,yshift=1mm] {\textbf{P3}} (fd);
 			
-			\path [dotted, ->] (fd) edge[bend left] node[sloped,yshift=1mm] {\textbf{P2}} (cfg);
+			\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {\textbf{P2}} (cfg);
 			\path [dotted, ->] (cfg) edge[bend left] node[sloped,yshift=1mm] {\textbf{P3}} (fd);
 
 			\node (trans) at (-1,-2.8) {};
@@ -490,7 +490,7 @@ p cnf 5 6
 			\path [dotted, ->] (cnf) edge[bend left=15] node[sloped,yshift=2mm,rotate=270] {(ii)} (phi);
 		
 			\path [->] (cfg) edge[bend right=15] node[sloped,yshift=1mm] {CNF} (cnf);
-			\path [dotted, ->] (cnf.south) edge[bend right=15] node[sloped,yshift=1mm] {\textbf{P2(b)}} (cfg);
+			\path [->] (cnf.south) edge[bend right=15] node[sloped,yshift=1mm] {\textbf{P2(b)}} (cfg);
 
 			\node (trans) at (-1,-4.6) {};
 			\node (trans2) at (2,-4.6) {};
