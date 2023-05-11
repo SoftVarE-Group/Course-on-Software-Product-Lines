@@ -1,15 +1,14 @@
 \subsection{Recap: Runtime Variability}
 
 \begin{frame}[fragile]{\myframetitle}
-	\footnotesize
 	\begin{mycolumns}[animation=none]
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\footnotesize]{}
 public class Config {
 	~public static boolean COLORED = true;~
 	@public static boolean WEIGHTED = false;@
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\footnotesize]{}
 public class Graph {
 	...
 	Edge add(Node n, Node m) {
@@ -29,7 +28,7 @@ public class Graph {
 }
 \end{codetight}
 	\mynextcolumn
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\footnotesize]{}
 public class Node {
 	~Color color;~
 	...
@@ -42,7 +41,7 @@ public class Node {
 	}
 }
 \end{codetight}
-\begin{codetight}{}
+\begin{codetight}[basicstyle=\footnotesize]ef\ishandout{}{}
 public class Edge {
 	@Weight weight;@
 	...
