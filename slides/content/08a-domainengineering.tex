@@ -155,6 +155,20 @@
 \end{frame}
 % TODO note what we see here
 
+\begin{frame}{Domain Scoping in Practice}
+	\begin{mycolumns}[animation=none,widths={70,30}]
+		\centering\picDark[width=\linewidth]{linux-architectures}
+	\mynextcolumn
+		\mynote{Linux Kernel Architectures}{
+			\begin{itemize}
+				\item in Linux, $\approx 20$ CPU architectures are carefully maintained in 2023
+				\item to keep it manageable, obsolete architectures are regurlarly removed
+				\item requires an answer to ``is this architecture still used by a relevant number of people?''
+			\end{itemize}
+		}
+	\end{mycolumns}
+\end{frame}
+
 \begin{frame}{Domain and Application Design}
 	\begin{mycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{03}{}
