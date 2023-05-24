@@ -1,4 +1,4 @@
-\subsection{Recap: How to Implement Features?}
+\subsection[Recap]{Recap: How to Implement Features?}
 \againframe{HowToImplementFeatures}
 
 \begin{frame}{Recap: Features with Build Systems}
@@ -111,7 +111,7 @@
 			\centering
 			\pic[width=.7\linewidth]{component_uml}
 		\end{exampletight}
-		\begin{note}{Context/Deployment Dependencies} % TODO references missing		
+		\begin{note}{Context/Deployment Dependencies} % TODO references missing
 			typically container or middleware (e.g., JavaEE, CORBA, OSGi, etc.)
 		\end{note}
 	\mynextcolumn
@@ -133,7 +133,6 @@
 	\end{mycolumns}	
 \end{frame}
 
-\subsection{Components vs. Objects/Classes}
 \begin{frame}{Components vs. Objects/Classes} % TODO references missing
 	\begin{mycolumns}[widths={33},animation=none]
 		\begin{note}{Commonalities}	
@@ -157,7 +156,8 @@
 	\end{mycolumns}	
 \end{frame}
 
-\begin{frame}[fragile]{Example: A Color Component \mytitlesource{\fospl}}
+\subsection[Example Component]{Example: A Color Component}
+\begin{frame}[fragile]{\myframetitle\ \mytitlesource{\fospl}}
 	\begin{mycolumns}[widths={40}]
 			\begin{example}{A Reusable Component in Java}
 				\begin{itemize}
@@ -191,7 +191,7 @@ class ColorMapping { /* ... */ }
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}[fragile]{Example: A Color Component}
+\begin{frame}[fragile]{\myframetitle}
 	\begin{mycolumns}[b,widths={60},animation=none]
 \begin{codetight}{}
 public class Graph {
@@ -241,8 +241,8 @@ public class Node {
 	\end{note}
 \end{frame}
 
-\subsection{Implementation of Product Lines}
-\begin{frame}{Component-Based Implementation of Software Product Lines} % TODO check license of pictures
+\subsection{Component-Based Product Lines}
+\begin{frame}{\myframetitle} % TODO check license of pictures
 	\begin{mycolumns}[t,widths={40}]
 		\begin{definition}{General Idea}					
 			\begin{itemize}
@@ -251,7 +251,7 @@ public class Node {
 			\end{itemize}
 		\end{definition}
 		\begin{example}{Vision}
-			\pic[height=1.75cm]{lego_components} 
+			\pic[height=1.75cm]{lego_components}
 				\vspace*{\fill}
 					$\Longrightarrow$ 
 				\vspace*{\fill}	
@@ -259,7 +259,7 @@ public class Node {
 		\end{example}
 	\mynextcolumn
 		\begin{example}{Reality}
-			\pic[height=1.75cm]{lego_components} 
+			\pic[height=1.75cm]{lego_components}
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
