@@ -42,56 +42,56 @@
 \end{frame}
 
 \subsection{Modularity}
-\begin{frame}{Modularity}
+\begin{frame}{Modularity} % TODO references missing
 	\begin{mycolumns}[widths={50,50},animation=none]
 		\begin{definition}{Modularization}
-			Consistent application of \emph{information hiding} and \emph{data encapsulation} to achieve:
+			consistent application of \emph{information hiding} and \emph{data encapsulation} to achieve:
 			\begin{itemize}
-				\item Strong logical connection between the inner parts of a module (high cohesion)
-				\item Precisely defined, minimal interfaces (low coupling)
+				\item strong logical connection between the inner parts of a module (high cohesion)
+				\item precisely defined, minimal interfaces (low coupling)
 			\end{itemize}						
 		\end{definition}
 		\pause
 		\begin{definition}{Coupling and Cohesion}
 			\begin{itemize}
-				\item \emph{Cohesion}: Measure of how well the parts of a module work together (intra-module communication).
-				\item \emph{Coupling}: Measure of the complexity of inter-module communication (through interfaces).
+				\item \emph{cohesion}: measure of how well the parts of a module work together\\ $Rightarrow$ intra-module communication
+				\item \emph{coupling}: measure of the complexity of communication across modules\\ $Rightarrow$ inter-module~communication % removed term interface as the term is too narrow
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
 		\vspace{-1cm}
 		\begin{exampletight}{High Coupling, Low Cohesion}
 			\centering
-			\picDark[width=0.5\textwidth]{cohesion_coupling_1}
+			\picDark[width=0.5\textwidth]{cohesion_coupling_1} % TODO picture source?
 		\end{exampletight}
 		\begin{exampletight}{Low Coupling, High Cohesion}
 			\centering
-			\picDark[width=0.5\textwidth]{cohesion_coupling_2}
+			\picDark[width=0.5\textwidth]{cohesion_coupling_2} % TODO picture source?
 		\end{exampletight}
 	\end{mycolumns}
 	\begin{mycolumns}[widths={50,50},animation=none]	
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Why Modularity?}
+\begin{frame}{Why Modularity?} % TODO references missing
 	\begin{mycolumns}[widths={45,55},animation=none]
 		\begin{note}{Traditional Reasons}
 			\begin{itemize}
-				\item Modules can be developed independently of each other (collaborative work)
-				\item Easier to maintain because changes can be made locally
-				\item Data encapsulation promotes stability and reliability
-				\item Software is easier to understand:
-				\item Hiding complexity behind interfaces
-				\item Modular decomposition = divide and conquer
+				\item modules can be developed independently of each other (collaborative work)
+				\item easier to maintain because changes can be made locally
+				\item data encapsulation promotes stability and reliability
+				\item software is easier to understand
+				\item hiding complexity behind interfaces
+				\item decomposition = divide and conquer
 			\end{itemize}						
 		\end{note}
 		\pause
 	\mynextcolumn
 		\begin{note}{Modularization and Software Product Lines}
 			\begin{itemize}
-				\item \emph{Reuse}: Parts of the software can be {\em reused} 
-				\item \emph{Alternatives}: Modules can be {\em exchanged by alternative implementations}
-				\item \emph{Variability}: Modules can be {\em reassembled in a new context} (e.g., in other projects)
+				\item \emph{reuse}: parts of the software can be {\em reused}
+				\item \emph{alternatives}: modules can be {\em exchanged by alternative implementations}
+				\item \emph{variability}: modules can be {\em reassembled in a new context} (e.g., in other projects)
 			\end{itemize}
 		\end{note}
 		\begin{exampletight}{}
@@ -102,99 +102,97 @@
 
 \subsection{Software Components}
 \begin{frame}{Components}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[b,animation=none]
 		\begin{definition}{Component \mysource{\szyperski}}		
 			A software component is a unit of composition with contractually specified \emph{interfaces} and explicit \emph{context dependencies} only. 
-			A software component can be deployed independently and is \emph{subject to composition} by third parties.
+			A software component can be deployed independently and is \emph{subject to composition} by third parties. % TODO real quote? then use \mycite{}
 		\end{definition}
 		\begin{exampletight}{}
 			\centering
-			\pic[width=.7\linewidth]{component_uml.png}
+			\pic[width=.7\linewidth]{component_uml}
 		\end{exampletight}
-		\begin{note}{}		
-			\begin{itemize}
-				\item Context/deployment dependencies: Typically container or middleware (e.g., JavaEE, CORBA, OSGi, etc.)
-			\end{itemize}
+		\begin{note}{Context/Deployment Dependencies} % TODO references missing		
+			typically container or middleware (e.g., JavaEE, CORBA, OSGi, etc.)
 		\end{note}
 	\mynextcolumn
-		\vspace{-0.7cm}
-		\begin{note}{Composition and Reuse: Components}
+		\vspace{-12mm}
+		\begin{note}{Composition and Reuse} % TODO references missing
+			Components \ldots
 			\begin{itemize}
-				\item Are composed with other components to form software systems,
-				\item Are supposed to be re-usable in other software systems,
-				\item May stem from third-party vendors (make-or-buy-decisions, markets for components).
+				\item are composed with other components to form software systems
+				\item are supposed to be re-usable in other software systems
+				\item may stem from third-party vendors: markets for components, make-or-buy-decisions
 			\end{itemize}			
 		\end{note}
 		\pause
 		\begin{exampletight}{UML Component Diagrams}
 			\centering
-			\pic[width=\linewidth]{component_diagram_uml.png}
+			\pic[width=\linewidth]{component_diagram_uml}
 		\end{exampletight}
 		\pause
 	\end{mycolumns}	
 \end{frame}
 
 \subsection{Components vs. Objects/Classes}
-\begin{frame}{Components vs. Objects/Classes}
-	\begin{mycolumns}[widths={40,60},animation=none]
+\begin{frame}{Components vs. Objects/Classes} % TODO references missing
+	\begin{mycolumns}[widths={33},animation=none]
 		\begin{note}{Commonalities}	
-			Lots of similar principles, particularly 
+			Numerous similar principles:
 			\begin{itemize}
-				\item encapsulation and information hiding,  
-				\item accessibility through public interfaces,
-				\item (de-)composition and nested objects/components,
-				\item etc.				
+				\item encapsulation and information hiding
+				\item accessibility through public interfaces
+				\item (de-)composition and nested objects/components
+				\item etc.
 			\end{itemize}
 		\end{note}
 		\pause
 	\mynextcolumn
 		\begin{note}{Differences}
 			\begin{itemize}
-				\item \emph{Objects are smaller} than components by focusing on detailed implementation problems (components aim at abstracting from implementation details).
-				\item \emph{Object are less cohesive and stronger coupled} than components due to (deliberately) delegating lots of responsibilities to other objects, while components aim at maximizing cohesion and minimizing coupling.
-				\item \emph{Objects/classes are reused through inheritance and polymorphism}, while components are reused by being integrated into a component architecture.		
+				\item \emph{objects are smaller} than components by focusing on detailed implementation problems (components aim at abstracting from implementation details)
+				\item \emph{object are less cohesive and stronger coupled} than components due to (deliberately) delegating lots of responsibilities to other objects whereas components aim at maximizing cohesion and minimizing coupling
+				\item \emph{classes are reused through inheritance and polymorphism} whereas components are reused by being integrated into a component architecture
 			\end{itemize}			
 		\end{note}
 	\end{mycolumns}	
 \end{frame}
 
 \begin{frame}[fragile]{Example: A Color Component \mytitlesource{\fospl}}
-	\begin{mycolumns}[columns=2,widths={40,60}]
-			\begin{example}{A Reusable Component}
+	\begin{mycolumns}[widths={40}]
+			\begin{example}{A Reusable Component in Java}
 				\begin{itemize}
-					\item Assume that storing and printing colors is non-trivial (e.g., in our graph library). 
-					\item Implement color management as a reusable component, using Java's visibility mechanism to enforce encapsulation.						
+					\item assume that storing and printing colors is non-trivial (e.g., in our graph library)
+					\item implement color management as a reusable component, using Java's visibility mechanism to enforce encapsulation
 				\end{itemize}
 			\end{example}
 		\mynextcolumn
 \begin{codetight}{}
 package components.color;
 
-// public interface
+// public API
 public class ColorComponent {
-	public Color createColor(int r, int g, int b) { /* ... /* }
-	public void printColor(Color color) { /* ... /* }
-	public void mapColor(Object o, Color c) { /* ... /* }
-	public Color getColor(Object o) { /* ... /* }
+	public Color createColor(int r, int g, int b) { /* ... */ }
+	public void printColor(Color color) { /* ... */ }
+	public void mapColor(Object o, Color c) { /* ... */ }
+	public Color getColor(Object o) { /* ... */ }
 	
 	// just one component instance
 	public static ColorComponent getInstance() { return instance; }
 	private static ColorComponent instance = new ColorComponent();
 	private ColorComponent() { super(); }
 }
-public interface Color { /* ... /* }
+public interface Color { /* ... */ }
 
 // hidden implementation
-class ColorImpl implements Color { /* ... /* }
-class ColorPrinter { /* ... /* }
-class ColorMapping { /* ... /* }
-\end{codetight} % TODO example does not look correctly rendered
+class ColorImpl implements Color { /* ... */ }
+class ColorPrinter { /* ... */ }
+class ColorMapping { /* ... */ }
+\end{codetight}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Example: A Color Component}
-	\begin{mycolumns}[columns=2,widths={60,40},animation=none]
-{\small
+	\begin{mycolumns}[b,widths={60},animation=none]
 \begin{codetight}{}
 public class Graph {
 	private List<Node> nodes = new ArrayList<Node>();
@@ -212,10 +210,8 @@ public class Graph {
 	// ...
 }
 \end{codetight}
-}
 		\mynextcolumn
-\vspace{-0.5cm}
-{\small
+		\vspace{-10mm}
 \begin{codetight}{}
 public class Node {
 	private int id;
@@ -235,73 +231,95 @@ public class Node {
 	}
 }
 \end{codetight}
-}			
 	\end{mycolumns}
 	\begin{note}{}
 		\begin{itemize}
-			\item We can \emph{reuse} the Color Component when implementing the color feature for the graph library (but also for other applications). 
-			\item However, we need to write custom code to ``connect'' our implementation with the component.\\
-				$\Rightarrow$ \emph{Glue Code}
+			\item we can \emph{reuse} the color component when implementing the color feature for the graph library and also for other applications
+			\item however: we need to write custom code to connect our implementation with the component\\
+				$\Rightarrow$ \emph{glue code}
 		\end{itemize}
 	\end{note}
 \end{frame}
 
 \subsection{Implementation of Product Lines}
-\begin{frame}{Component-Based Implementation of Software Product Lines}
-	\begin{mycolumns}[widths={40,60}]
+\begin{frame}{Component-Based Implementation of Software Product Lines} % TODO check license of pictures
+	\begin{mycolumns}[t,widths={40}]
 		\begin{definition}{General Idea}					
 			\begin{itemize}
-				\item Every feature is implemented by a dedicated component.
-				\item Feature selection determines which components shall be integrated to form an application.				
+				\item every feature is implemented by a dedicated component
+				\item feature selection determines which components shall be integrated to form an application
 			\end{itemize}
 		\end{definition}
 		\begin{example}{Vision}
-			\pic[width=.38\linewidth,height=1.75cm]{lego_components} 
+			\pic[height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$\Longrightarrow$ 
 				\vspace*{\fill}	
-			\pic[width=.47\linewidth,height=1.75cm]{lego_product}
+			\pic[height=1.75cm]{lego_product}
 		\end{example}
 	\mynextcolumn
 		\begin{example}{Reality}
-			\pic[width=.27\linewidth,height=1.75cm]{lego_components} 
+			\pic[height=1.75cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
 				\vspace*{\fill}	
-			\pic[width=.27\linewidth,height=1.75cm]{lego_glue}
+			\pic[height=1.75cm]{lego_glue}
 				\vspace*{\fill}
 					$=$ 
 				\vspace*{\fill}	
-			\pic[width=.35\linewidth,height=1.75cm]{lego_product}
+			\pic[height=1.75cm]{lego_product}
 		\end{example}		
 		\begin{note}{Glue Code and Customization}
 			\begin{itemize}
-				\item Developers must connect components through glue code (exception: If components are only exchanged against alternative components)
-				\item Components may contain run-time variability (e.g., color manager in our example may be parameterized by color model (RGB, CMYK, ...))
+				\item developers must connect components through glue code\\exception: components are only exchanged against alternative components with identical interface
+				\item components may contain run-time variability\\e.g., color manager in our example may be parameterized by color model RGB or CMYK
 			\end{itemize}
 		\end{note}
 	\end{mycolumns}	
 \end{frame}
 
-\subsection{The Library Scaling Problem}
+\subsection[Discussion]{Discussion of Components}
 \begin{frame}{The Library Scaling Problem}
-	\begin{mycolumns}[widths={40,60},animation=none]
-		\begin{exampletight}{Decomposition \& Reuse}
-			\centering
-			\pic[width=.95\linewidth]{tangram}
+	\begin{mycolumns}[animation=none]
+		\begin{exampletight}{Decomposition and Reuse}
+			\picDark[width=\linewidth]{tangram} % TODO source? license?
 		\end{exampletight}
 	\mynextcolumn
 		\begin{definition}{What is the optimal size of a component?}
 			\begin{itemize}
-				\item Large components (vertical scaling): Typically not widely reusable
-				\item Small components (horizontal scaling): Limited payoff for component integrators
+				\item large components (vertical scaling):\\typically not widely reusable
+				\item small components (horizontal scaling):\\limited payoff for component integrators
 			\end{itemize}
 		\end{definition}
 		\pause
 		\begin{note}{Practical Compromise}
 			\begin{itemize}
-				\item Mostly vertically scaled (i.e., high payoff) components within a few important, narrow domains (e.g., user interface construction systems).
-				\item In other words: There is no general market for arbitrary components, but a few specialized market segments.
+				\item mostly vertically-scaled components within a few important, narrow domains (e.g., user interface construction systems)
+				\item in other words: there is no general market for arbitrary components, but a few specialized market segments % TODO unclear (Thomas)
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+\end{frame}
+
+\newcommand{\MajorChallengesOfComponents}{
+	\item requires \emph{glue code} for every product: clone-and-own for glue code? glue code with runtime variability?
+	\item no automated generation based on feature selection
+	\item requires preplanning to identify good level of granularity (cf.\ library scaling problem)
+	\item no support for fine-granular variability\\ $\Rightarrow$ often combined with runtime variability within components
+}
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[animation=none]
+		\begin{note}{Advantages}
+			\begin{itemize}
+				\item supports \emph{compile-time variability}
+				\item modular implementation with reduced scattering and tangling (compared to runtime variability and preprocessors)
+			\end{itemize}
+		\end{note}
+	\mynextcolumn
+		\pause
+		\begin{note}{Challenges}
+			\begin{itemize}
+				\MajorChallengesOfComponents
 			\end{itemize}
 		\end{note}
 	\end{mycolumns}
