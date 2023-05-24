@@ -1,62 +1,20 @@
 \subsection{Recap: How to Implement Features?}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}
-		\begin{exampletight}{Given a feature model for graphs \ldots}
-			\centering\featureDiagramGraphs
-			%\featureDiagramLegend
-		\end{exampletight}
-		\begin{example}{\ldots\ we can derive a valid configuration}
-			\small
-			\begin{mycolumns}[columns=3,animation=none]
-				$\{G\}$\\
-				$\{G,C\}$\\
-				$\{G,D\}$\\
-				$\{G,C,D\}$\\
-			\mynextcolumn
-				$\{G,W\}$\\
-				$\{G,C,W\}$\\
-				$\{G,D,W\}$\\
-				$\{G,C,D,W\}$\\
-			\mynextcolumn
-				$\{G,W,S\}$\\
-				$\{G,C,W,S\}$\\
-				$\{G,D,W,S\}$\\
-				$\{G,C,D,W,S\}$\\
-			\end{mycolumns}
-		\end{example}
-	\mynextcolumn		
-		\begin{exampletight}{How to Generate Products Automatically?}
-			\centering\foreach \page in {2,12,4,14,6,16,8,18}{\includegraphics[width=.23\linewidth,page=\page]{graphs} }
-		\end{exampletight}
-		\begin{note}{Goals}
-			\begin{itemize}
-				\item Descriptive specification of a product (i.e., a configuration, a selection of features)
-				\item Automated generation of a product with compile-time variability
-			\end{itemize}			
-		\end{note}
-	\end{mycolumns}
-\end{frame}
+\againframe{HowToImplementFeatures}
 
 \begin{frame}{Recap: Features with Build Systems}
-	\begin{mycolumns}[widths={40,60},animation=none]
-		\begin{exampletight}{}
-			\centering
-			\pic[width=.65\linewidth]{pignap-features}
-		\end{exampletight}
+	\begin{mycolumns}[widths={33},animation=none]
+		\centering\pic[width=\linewidth]{pignap-features}
 	\mynextcolumn
 		\begin{definition}{Conditional Compilation with Build Systems}
 			\begin{itemize}
-				\item Exploit the expressiveness of a build system's configuration language
-				\item In- and exclude individual files or entire directories based on feature selection
+				\item exploit the expressiveness of a build system's configuration language
+				\item include and exclude individual files or entire directories based on feature selection
 			\end{itemize}
 		\end{definition}
 		\uncover<2->{
-			\begin{note}{Major Challenges}
+			\begin{note}{Major Challenges\mysource{\lecturefeatures}}
 				\begin{itemize}
-					\item Build scripts may become complex, there is no limit to what can be done (e.g., you can run arbitrary shell commands on files)\\
-						$\Rightarrow$ \emph{Hard to understand and analyze}
-					\item No simple in- and exclusion of individual lines or chunks of code\\
-						$\Rightarrow$ High-level use \emph{only}!
+					\MajorChallengesOfBuildSystems
 				\end{itemize}
 			\end{note}
 		}
@@ -64,27 +22,19 @@
 \end{frame}
 
 \begin{frame}{Recap: Features with Preprocessors}
-	\begin{mycolumns}[widths={40,60},animation=none]
-		\begin{exampletight}{}
-			\centering
-			\pic[width=\linewidth,page=1,trim=15 20 185 40,clip]{preprocessor-wilderness}
-		\end{exampletight}
+	\begin{mycolumns}[widths={33},animation=none]
+		\pic[width=\linewidth,page=1,trim=15 20 185 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{definition}{Conditional Compilation with Preprocessors}
 			\begin{itemize}
-				\item Use conditional compilation facilities provided by preprocessors 
-				\item Annotate and potentially remove code fragments, depending on feature selection
+				\item use conditional compilation facilities provided by preprocessors 
+				\item annotate and potentially remove code fragments based on feature selection
 			\end{itemize}
 		\end{definition}
 		\uncover<2->{
-			\begin{note}{Major Challenges}
+			\begin{note}{Major Challenges\mysource{\lecturefeatures}}
 				\begin{itemize}
-					\item May \emph{obfuscate} source code and severely impact its readability
-					\item Hard to analyze and process for existing IDEs
-					\item Often used in an ad-hoc or \emph{undisciplined} fashion
-					\item Prone to subtle syntax, type, or runtime errors which are hard to detect
-					\item \emph{Scattering} and \emph{tangling}\\
-						$\Rightarrow$ Separation of concerns?
+					\MajorChallengesOfPreprocessors
 				\end{itemize}
 			\end{note}
 		}

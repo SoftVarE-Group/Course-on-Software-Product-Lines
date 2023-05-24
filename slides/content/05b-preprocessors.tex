@@ -352,17 +352,26 @@
 	\end{mycolumns}
 \end{frame}
 
+\newcommand{\MajorChallengesOfPreprocessors}{
+	\item \emph{scattering} and \emph{tangling}\\
+	$\Rightarrow$ separation of concerns?
+	\item mixes multiple languages in the same development artifact
+	\item may \emph{obfuscate} source code and severely impact its readability
+	\item hard to analyze and process for existing IDEs
+	\item often used in an ad-hoc or \emph{undisciplined} fashion
+	\item prone to subtle syntax, type, or runtime errors which are hard to detect \mysource{\lectureinteractions--\lecturetesting}
+}
 \begin{frame}{Discussion of Features with Preprocessors}
 	\begin{mycolumns}[animation=none]
 		\begin{note}{Advantages}
 			\begin{itemize}
-				\item Well-known and mature tools, readily available
-				\item Easy to use\\
+				\item well-known and mature tools, readily available
+				\item easy to use\\
 				$\Rightarrow$ just annotate and remove
-				\item Supports \emph{compile-time variability}
-				\item Flexible, arbitrary levels of \emph{granularity}
-				\item Can handle code and non-code artifacts (\emph{uniformity})
-				\item Little \emph{preplanning} required\\
+				\item supports \emph{compile-time variability}
+				\item flexible, arbitrary levels of \emph{granularity}
+				\item can handle code and non-code artifacts (\emph{uniformity})
+				\item little \emph{preplanning} required\\
 				$\Rightarrow$ variability can be added to an existing project
 			\end{itemize}
 		\end{note}
@@ -370,13 +379,7 @@
 		\pause
 		\begin{note}{Challenges}
 			\begin{itemize}
-				\item \emph{Scattering} and \emph{tangling}\\
-				$\Rightarrow$ separation of concerns?
-				\item Mixes multiple languages in the same development artifact
-				\item May \emph{obfuscate} source code and severely impact its readability
-				\item Hard to analyze and process for existing IDEs
-				\item Often used in an ad-hoc or \emph{undisciplined} fashion
-				\item Prone to subtle syntax, type, or runtime errors which are hard to detect \mysource{\lectureinteractions--\lecturetesting}
+				\MajorChallengesOfPreprocessors
 			\end{itemize}
 		\end{note}
 	\end{mycolumns}
