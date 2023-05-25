@@ -246,9 +246,10 @@
 	\item \fospl, Chapter 4.4
 }{
 	\begin{itemize}
-		\item Consider the feature traceability problem in a component-based implementation. How would you localize a feature? Does it still suffer from scattering, tangling and replication? 
-		\item We have introduced a simple color component which we reused in our graph implementation. Could we consider the graph library itself as another component? What about its reusability?
-		\item How can product-line engineering help to find the right trade-offs regarding the library scaling problem?
+		%\item Consider the feature traceability problem in a component-based implementation. How would you localize a feature? Does it still suffer from scattering, tangling and replication? % removed this, as this is already covered in the discussion slide now (Thomas)
+		%\item We have introduced a simple color component which we reused in our graph implementation. Could we consider the graph library itself as another component? What about its reusability? % I did not get the point here (Thomas)
+		\item Why is feature modeling relevant for component-based product lines?
+		\item How can product-line engineering help to find the right trade-offs regarding the library scaling problem? % this question is especially helpful, as the LSP is discussed again in the next part
 	\end{itemize}
 }
 
@@ -278,22 +279,43 @@
 	\item \fospl, Chapter 4.3
 }{
 	\begin{itemize}
-		\item Remember two fundamental principles in object-oriented programming; how do they relate to frameworks with plug-ins?
-		\begin{itemize}
-			\item Interface Segregation Principle: ``Clients should not be forced to depend upon interfaces that they do not use''.
-			\item Open-Closed Principle: ``Classes should be open for extension but closed for modification''.
-		\end{itemize}
-		\item In general: Where are the limitations of a modular approach?
+%		\item Remember two fundamental principles in object-oriented programming; how do they relate to frameworks with plug-ins?
+%		\begin{itemize}
+%			\item Interface Segregation Principle: ``Clients should not be forced to depend upon interfaces that they do not use''.
+%			\item Open-Closed Principle: ``Classes should be open for extension but closed for modification''.
+%		\end{itemize}
+%		\item In general: Where are the limitations of a modular approach?
+		\item What are possible extensions for a bike?
+		\item How are bike extensions affected by the preplanning problem?
 	\end{itemize}
 }
 
-% TODO Thomas: add exam questions here
 \faq{
-	\item \ldots
+	\item What are problems of previous implementation techniques?
+	\item How to implement product lines with components?
+	\item What is modularity, cohesion, coupling, glue code? Why does it matter?
+	\item Why is it hard to find the right size for components?
+	\item What is the library scaling problem? How can product-line engineering help?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of components?
+	\item When (not) to implement product lines with components?
 }{
-	\item \ldots
+	\item What is a (micro-)service, orchestration, choreography?
+	\item What are commonalities and differences between components and services?
+	\item How to implement product lines with (micro-)services?
+	\item How are microservices related to Conway's law, single responsibility principle, agile development, DevOps?
+	\item How to compose services?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of services?
+	\item When (not) to implement product lines with services?
 }{
-	\item \ldots
+	\item What are (black-box) frameworks, plug-ins, extension points/hot spots, extensions?
+	\item What is inversion of control? Why is it useful?
+	\item How to hide implementation details from both, framework and plug-ins? Why is it useful?
+	\item How to implement product lines with plug-ins?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of plug-ins?
+	\item When (not) to implement product lines with plug-ins?
 }
 
 \input{template/footer}

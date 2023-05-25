@@ -2,7 +2,7 @@
 \againframe{HowToImplementFeatures}
 
 \begin{frame}{Recap: Features with Build Systems}
-	\begin{mycolumns}[widths={33},animation=none]
+	\begin{mycolumns}[widths={30},animation=none]
 		\centering\pic[width=\linewidth]{pignap-features}
 	\mynextcolumn
 		\begin{definition}{Conditional Compilation with Build Systems}
@@ -22,7 +22,7 @@
 \end{frame}
 
 \begin{frame}{Recap: Features with Preprocessors}
-	\begin{mycolumns}[widths={33},animation=none]
+	\begin{mycolumns}[widths={30},animation=none]
 		\pic[width=\linewidth,page=1,trim=15 20 185 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{definition}{Conditional Compilation with Preprocessors}
@@ -102,7 +102,7 @@
 
 \subsection{Software Components}
 \begin{frame}{Components}
-	\begin{mycolumns}[b,animation=none]
+	\begin{mycolumns}[b]
 		\begin{definition}{Component \mysource{\szyperski}}		
 			A software component is a unit of composition with contractually specified \emph{interfaces} and explicit \emph{context dependencies} only. 
 			A software component can be deployed independently and is \emph{subject to composition} by third parties. % TODO real quote? then use \mycite{}
@@ -124,12 +124,10 @@
 				\item may stem from third-party vendors: markets for components, make-or-buy-decisions
 			\end{itemize}			
 		\end{note}
-		\pause
 		\begin{exampletight}{UML Component Diagrams}
 			\centering
 			\pic[width=\linewidth]{component_diagram_uml}
 		\end{exampletight}
-		\pause
 	\end{mycolumns}	
 \end{frame}
 

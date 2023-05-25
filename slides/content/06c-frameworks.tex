@@ -1,21 +1,24 @@
+% TODO this whole part is inconsistent with the naming of extension points / hot spots. would recommend to only use extension point and just mention hot spot once.
+
 \subsection{Hot Spots and Plug-Ins}
 \begin{frame}{Framework with Plug-Ins}
-	\begin{mycolumns}[widths={50,50}]
+	\begin{mycolumns}[b]
 		\begin{definition}{Framework and Hot Spot \mysource{\fospl\mypages{80--81}}}
-			A \emph{framework} is a set of classes that embodies an abstract design for solutions to a family of related problems, and supports reuse at a larger granularity than classes. A framework is open for \emph{extension} at explicit \emph{hot spots}.				
+			A \emph{framework} is a set of classes that embodies an abstract design for solutions to a family of related problems, and supports reuse at a larger granularity than classes. A framework is open for \emph{extension} at explicit \emph{hot spots} (aka.\ extention point).
 		\end{definition}
 		\begin{definition}{Plug-In \mysource{\fospl\mypages{80--81}}}
 			A \emph{plug-in} extends hot spots of a [...] framework with custom behavior. A plug-in can be separately compiled and deployed.	
 		\end{definition}
 		\begin{note}{}
-			Frameworks with plug-ins are also called "`blackbox frameworks"': Developers need to understand interfaces, but not the internal framework implementation.
+			Frameworks with plug-ins are also called \emph{black-box frameworks}: Developers need to understand interfaces, but not the internal framework implementation.
 		\end{note}
 	\mynextcolumn
-		\vspace{-0.7cm}
+		\vspace{-12mm}
 		\begin{note}{Inversion of Control}
-			Hollywood principle: ``Don't call us, we call you''\\
+			Hollywood principle: \mycite{Don't call us, we call you}
+
 			\centering 
-			\pic[width=0.75\linewidth]{library_vs_framework}
+			\picDark[width=0.8\linewidth]{library_vs_framework}
 		\end{note}
 		\begin{note}{}
 			\begin{itemize}
@@ -69,7 +72,7 @@
 
 \subsection{Basic Design Principles}
 \begin{frame}{Simple Java Example: A Family of Dialogs \mytitlesource{\fospl}}
-	\begin{mycolumns}[widths={50,50}]
+	\begin{mycolumns}
 		\begin{exampletight}{}
 			\centering \pic[width=0.8\linewidth]{dialog1}
 		\end{exampletight}
@@ -97,7 +100,8 @@
 \end{frame}
 	
 \begin{frame}[fragile]{Simple Java Example: A Family of Dialogs}
-	\small\begin{mycolumns}[columns=2,widths={50,50}]
+	\vspace{-2mm}
+	\begin{mycolumns}[b]
 \begin{codetight}{}
 public class Calc extends JFrame {
 	private JTextField textfield;
@@ -156,9 +160,10 @@ public class Ping extends JFrame {
 
 
 \begin{frame}[fragile]{Simple Java Example: A Family of Dialogs}
-	\begin{mycolumns}[columns=2,widths={50,50}]
+	\vspace{-2mm}
+	\begin{mycolumns}
 		\begin{note}{}
-			Plug-in implementation hidden from application.
+			plug-in implementation hidden from application
 		\end{note}
 \begin{codetight}[basicstyle=\tiny]{}
 public class Application extends JFrame {
@@ -229,9 +234,9 @@ public class CalcPlugin implements Plugin {
 \end{frame}
 
 \begin{frame}[fragile]{Simple Example: A Family of Dialogs}
-	\begin{mycolumns}[columns=2,widths={50,50}]
+	\begin{mycolumns}
 		\begin{note}{}
-			Application implementation hidden from plug-in.
+			application implementation hidden from plug-in
 		\end{note}
 \begin{codetight}[basicstyle=\tiny]{}
 public class Application extends JFrame @implements InputProvider@ {
@@ -300,21 +305,23 @@ public class CalcPlugin implements Plugin {
 
 \subsection{Plug-In Loading and Management}
 \begin{frame}{Plug-In Loading and Management}
-	\begin{mycolumns}[widths={50,50}]
-		\begin{note}{Simple example vs.\ reality}
-			Simplification in our previous example:
+	\begin{mycolumns}
+		\begin{note}{Simple Example vs.\ Reality}
+			simplification in our previous example:
 			\begin{itemize}
-				\item A single extension point supporting the registration of a single plug-in 
-				\item Plug-in implementation known at compile-time 
+				\item a single extension point supporting the registration of a single plug-in 
+				\item plug-in implementation known at compile-time 
 			\end{itemize}
-			Typical requirements in practice:
+			typical requirements in practice:
 			\begin{itemize}
-				\item Many extension points supporting the registration of arbitrarily many plug-ins 
-				\item Plug-in implementation provided by third parties (requires load-time variability)
+				\item an extension point typically supports the registration of arbitrarily many plug-ins
+				\item a single plug-in may extend several extension points
+				\item a plug-in may add new extension points to the framework (framework of frameworks)
+				\item plug-in implementation provided by third parties %(requires load-time variability) % TODO sounds wrong to me (Thomas)
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-		\begin{definition}{Plug-in Loader}
+		\begin{definition}{Plug-In Loader}
 			\begin{itemize}
 				\item Searches in a dedicated directory for DLL/JAR/XML files
 				\item Tests whether file implements a plug-in
@@ -323,15 +330,13 @@ public class CalcPlugin implements Plugin {
 			\end{itemize}
 		\end{definition}
 		\begin{definition}{Plug-In Manager}
-			\begin{itemize}
-				\item GUI and/or console interface for plug-in administration and configuration.
-			\end{itemize}
+			GUI and/or console interface for plug-in administration and configuration
 		\end{definition}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Example: Plug-In Loading and Management}
-	\small\begin{mycolumns}[columns=2,widths={50,50}]
+	\begin{mycolumns}[t]
 \begin{codetight}{Plug-In Loader using Java Reflection}
 public class Starter {
 	public static void main(String[] args) {
@@ -377,7 +382,7 @@ public class Application {
 
 \subsection{Frameworks in the Wild}
 \begin{frame}{Frameworks in the Wild: Eclipse}
-	\begin{mycolumns}[widths={70,30},animation=none]
+	\begin{mycolumns}[widths={70},animation=none]
 		\pic[width=\linewidth]{eclipse_overview}
 	\mynextcolumn
 		\vspace{-0.7cm}
@@ -400,7 +405,7 @@ public class Application {
 \end{frame}
 
 \begin{frame}{Frameworks in the Wild: Eclipse \mytitlesource{\featureide}}
-	\begin{mycolumns}[forget]
+	\begin{mycolumns}%[forget]
 		\pic[width=\linewidth]{framework-with-plugins}
 	\mynextcolumn
 		\pic[width=\linewidth]{framework-a-plugin}
@@ -408,30 +413,30 @@ public class Application {
 \end{frame}
 
 \begin{frame}{Frameworks in the Wild: Further Examples}
-	\begin{mycolumns}[widths={75,25},animation=none]
+	\begin{mycolumns}[columns=3,widths={15,70},animation=none]
+	\mynextcolumn
 		\begin{example}{}
 			\begin{itemize}
-				\item Other IDEs (e.g. IntelliJ, ...)
+				\item Other IDEs (e.g., IntelliJ, ...)
 				\item Unit test frameworks (e.g., JUnit, ...)
 				\item Frontend frameworks (e.g., React, Angular ...)
 				\item Backend frameworks (e.g., Spring Boot, Ruby on Rails, Django, ...) 
 				\item Multimedia frameworks (e.g., DirectX, ...)
 				\item Raster/vector graphics editors (e.g., Adobe Photoshop, MS Visio, ...)
-				\item Instant messenger frameworks (z.B. Miranda, Trillian)
-				\item Compiler frameworks (z.B. LLVM, Polyglot, abc, JustAddJ)
+				\item Instant messenger frameworks (e.g., Miranda, Trillian)
+				\item Compiler frameworks (e.g., LLVM, Polyglot, abc, JustAddJ)
 				\item Web browsers (e.g., Firefox, ...)
 				\item E-Mail clients (e.g., Thunderbird, ...)
 				\item etc.
 			\end{itemize}
 		\end{example}		
 	\mynextcolumn
-		~
 	\end{mycolumns}
 \end{frame}
 
 \subsection{Implementation of Product Lines}
 \begin{frame}{Framework-Based Implementation of Software Product Lines}
-	\begin{mycolumns}[widths={40,60},animation=none]
+	\begin{mycolumns}[widths={40},animation=none]
 		\begin{example}{Recap: Service-Based Implementation}
 			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
@@ -457,7 +462,7 @@ public class Application {
 		\end{definition}
 		\pause
 		\begin{note}{}
-				However: Neither glue code nor explicit service composition required.
+				neither glue code nor explicit service composition required
 		\end{note}
 		\begin{example}{}
 			\pic[width=.31\linewidth,height=1.75cm]{lego_product_partial} 
@@ -472,13 +477,13 @@ public class Application {
 		\end{example}
 		\pause
 		\begin{note}{}
-				But: Full automation comes at a price (s.\ preplanning problem).
+				full automation comes at a price (cf.\ preplanning problem)
 		\end{note}		
 	\end{mycolumns}	
 \end{frame}
 
 \begin{frame}[fragile]{Example: Extending Basic Graphs by Plug-Ins?}
-	\begin{mycolumns}[columns=2,widths={50,50}]
+	\begin{mycolumns}
 \begin{codetight}[basicstyle=\tiny]{}
 public class Graph {
 	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
@@ -547,7 +552,7 @@ public class ColorPlugin implements GraphPlugin {
 
 \subsection{Discussion}
 \begin{frame}{Challenges and Problems}
-	\begin{mycolumns}[widths={50,50}]
+	\begin{mycolumns}
 		\begin{example}{}
 			In our example, we can observe that:
 			\begin{itemize}
