@@ -106,10 +106,9 @@
 	\mynextcolumn
 		\pause
 		\begin{exampletight}{The Microservice ``Hype''}
-			\pic[width=\linewidth]{microservices}\\
-			\vspace{0.3cm}
-			\pause
-			\pic[width=\linewidth]{microservices-comparison}
+			\pic[width=\linewidth]{microservices}
+
+			\pause\pic[width=\linewidth]{microservices-comparison}
 		\end{exampletight}
 	\end{mycolumns}	
 \end{frame}
@@ -159,20 +158,24 @@
 \end{frame}
 
 \subsection{Service Composition}
-\begin{frame}{Service ``Composition''}
-	\begin{mycolumns}[widths={50,50}]
-		\begin{definition}{Orchestration}
-			Description of an executable (business-)process as a combination of services (centralized perspective, e.g., using WS-BPEL).
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[t]
+		\begin{definition}{Orchestration \deutsch{Orchestrierung}}
+			Description of an executable (business-)process as a combination of services (centralized perspective).
 		\end{definition}
-		\begin{exampletight}{}
-			\pic[width=\linewidth]{trafficlights}
-		\end{exampletight}
+		\begin{example}{}
+			\href{https://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.html}{Web Services Business Process Execution Language (WS-BPEL)}
+		\end{example}
+
+		\centering\pic[height=35mm]{trafficlights}
 	\mynextcolumn
-		\begin{definition}{Choreography}
-			Each service describes its own task within a service composition (decentralized perspective, e.g, using WS-CDL).
+		\begin{definition}{Choreography \deutsch{Choreographie}}
+			Each service describes its own task within a service composition (decentralized perspective).
 		\end{definition}
-		\begin{exampletight}{}
-			\pic[width=\linewidth]{crossroad}
-		\end{exampletight}
+		\begin{example}{}
+			\href{https://www.w3.org/TR/ws-cdl-10/}{Web Services Choreography Description Language (WS-CDL)}
+		\end{example}
+
+		\centering\pic[height=35mm]{crossroad}
 	\end{mycolumns}	
 \end{frame}
