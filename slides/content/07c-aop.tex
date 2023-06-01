@@ -1,32 +1,11 @@
-\subsection{Motivation}
+\subsection{Recap and Motivation}
 
-\begin{frame}{Recap: Motivation}
-	\begin{mycolumns}[widths={50,50},animation=none]
-		\begin{exampletight}{Modularization of Cross-Cutting Concerns}
-			\centering
-			\pic[width=1.0\linewidth]{aop-motivation-1}
-		\end{exampletight}
-		\begin{example}{Feature Traceability}
-			find feature \includegraphics[width=.15\linewidth]{pants-blue} in product \includegraphics[width=.15\linewidth]{230}
-		\end{example}
-	\mynextcolumn
-		\begin{exampletight}{Flexible Extension / Minimal Preplanning}
-			\centering
-			\pic[width=1.0\linewidth]{aop-motivation-2}
-		\end{exampletight}
-		
-		~
-		
-		\begin{note}{}
-			Achieving all this requires novel implementation techniques that overcome the limitations of classical object-oriented paradigms.
-		\end{note}
-	\end{mycolumns}
-\end{frame}
+\againframe<2>{MotivationFOPandAOP}
 
 \subsection{Aspects and Aspect Weaving}
 
-\begin{frame}{Aspects and Aspect Weaving}
-	\begin{mycolumns}[widths={50,50},animation=none]
+\begin{frame}{\myframetitle\ \deutschertitel{Aspekte und Aspektweben}}
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Aspect \mysource{\fospl\mypages{143--145}}}
 			An aspect encapsulates the implementation of a crosscutting concern.
 		\end{definition}
@@ -42,13 +21,13 @@
 	\mynextcolumn
 		\begin{exampletight}{}
 			\centering
-			\pic[width=1.0\linewidth]{aspect-weaving}
+			\pic[width=\linewidth]{aspect-weaving} % TODO picDark does not work
 		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Aspects and Aspect Weaving in Java: AspectJ}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{}
 			AspectJ is an aspect-oriented language extension of Java.
 			\begin{itemize}
@@ -63,7 +42,7 @@
 	\mynextcolumn
 		\begin{exampletight}{}
 			\centering
-			\pic[width=1.0\linewidth]{aspect-weaving}
+			\pic[width=\linewidth]{aspect-weaving} % TODO picDark does not work
 		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
@@ -71,9 +50,9 @@
 \subsection{Static vs. Dynamic Extensions}
 
 \begin{frame}[fragile]{Static Extensions through Inter-Type Declarations}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Inter-Type Declaration \mysource{\fospl\mypages{143--145}}}
-			An inter-type declaration injects a method, field, or interface from inside an aspect into an existing class or interface.
+			An inter-type declaration \deutsch{Intertypdeklaration} injects a method, field, or interface from inside an aspect into an existing class or interface.
 		\end{definition}
 		\begin{note}{Typical Usage}
 			Add field X / method Y to class Z
@@ -91,7 +70,7 @@ aspect Weighted {
 \end{frame}
 
 \begin{frame}{Dynamic Extensions through Join Points}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Joint Point \mysource{\fospl\mypages{143--145}}}
 			A join point is an event in the execution of a program at which aspects can be woven into the program.
 		\end{definition}
@@ -110,11 +89,8 @@ aspect Weighted {
 	\mynextcolumn
 		\begin{exampletight}{}
 			\centering
-			\pic[width=1.0\linewidth]{join_point_example}
+			\picDark[width=1.0\linewidth]{join_point_example}
 		\end{exampletight}
-		
-		~
-		
 		\pause
 		\begin{note}{Open Question}		
 			How to specify the join points an aspect (i.e., an advice) affects?
@@ -125,14 +101,15 @@ aspect Weighted {
 \subsection{Quantification}
 
 \begin{frame}[fragile]{Quantification through Pointcuts}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Pointcut \mysource{\fospl\mypages{143--145}}}
 			A pointcut is a declarative specification of the join points that an aspect affects. It is a predicate that determines whether a given join point matches.
 		\end{definition}
 		\begin{definition}{Quantification \mysource{\fospl\mypages{143--145}}}
-			Quantification is the process of selecting multiple join points based on a declarative specification (that is, based on a pointcut).
+			Quantification \deutsch{Quantifizierung} is the process of selecting multiple join points based on a declarative specification (that is, based on a pointcut).
 		\end{definition}
 		\begin{example}{}
+			\small
 			\begin{itemize}
 				\item Execute Advice X whenever the method setWeight of class Edge is called
 				\item Execute Advice Y whenever any field in class Edge is accessed
@@ -162,7 +139,7 @@ aspect A2 {
 \end{frame}
 
 \begin{frame}[fragile]{Quantification over other Join Points}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 \begin{codetight}{Call of a method}
 aspect A1 {
 	after() : @call(int MathUtil.twice(int))@ {
@@ -192,7 +169,7 @@ class MathUtil {
 \end{frame}
 
 \begin{frame}[fragile]{Quantification over other Join Points}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 \begin{codetight}{Call of a method}
 aspect A1 {
 	after() : call(int MathUtil.twice(int)) {
@@ -229,7 +206,7 @@ class MathUtil {
 \end{frame}
 
 \begin{frame}[fragile]{Quantification over other Join Points}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 \begin{codetight}{Call of a method}
 aspect A1 {
 	after() : call(int MathUtil.twice(int)) {
@@ -272,8 +249,8 @@ class MathUtil {
 \end{frame}
 
 \begin{frame}[fragile]{Further Quantification Options}
-	\begin{mycolumns}[widths={70,30},animation=none]
-\begin{codetight}{Pointcuts with ``Wildcards''}
+	\begin{mycolumns}[widths={70},animation=none]
+\begin{codetight}{Pointcuts with \mycite{Wildcards}}
 aspect A1 {
 	pointcut P1() : execution(int MathUtil.twice(int));
 	pointcut P2() : execution(* MathUtil.twice(int));
@@ -299,9 +276,6 @@ aspect A1 {
 				\item [+] Class or any subclass
 			\end{itemize}
 		\end{note}
-		
-		\vspace{1cm}
-		
 		\begin{note}{Logical Connectors}
 			Pointcuts can be connected by usual logical operators \&\&, $\mid\mid$, and !
 		\end{note}
@@ -310,8 +284,9 @@ aspect A1 {
 
 \subsection{Executing Additional Code}
 
-\begin{frame}[fragile]{Advice}
-	\begin{mycolumns}[widths={38,62},animation=none]
+\begin{frame}[b,fragile]{Advice}
+	\vspace{-12mm}
+	\begin{mycolumns}[widths={38}]
 		\begin{note}{}
 			\begin{itemize}
 				\item Additional code before, after or instead of the join point: \emph{before}, \emph{after}, \emph{around}
@@ -320,7 +295,6 @@ aspect A1 {
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-{\small
 \begin{codetight}{}
 public class Test2 {
 	void foo() {
@@ -347,12 +321,11 @@ aspect AdviceTest {
 	}
 }
 \end{codetight}
-}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{thisJoinPoint}
-	\begin{mycolumns}[widths={30,70},animation=none]
+	\begin{mycolumns}[widths={30},animation=none]
 		\begin{note}{}
 			In an advice, \emph{thisJoinPoint} can be used to get more information about the current join point.
 		\end{note}
@@ -377,7 +350,7 @@ Test.java:5
 \end{frame}
 
 \begin{frame}[fragile]{Parameterized Pointcuts}
-	\begin{mycolumns}[widths={58,42},animation=none]
+	\begin{mycolumns}[widths={58},animation=none]
 \begin{codetight}{}
 aspect A1 {
 	pointcut execTwice(@int value@) :
@@ -416,7 +389,7 @@ class MathUtil {
 \end{frame}
 
 \begin{frame}[fragile]{Pointcuts this and target}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{note}{}
 			\begin{itemize}
 				\item \emph{execution}: this and target capture the object on which the method is called
@@ -436,8 +409,8 @@ aspect A1 {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}[fragile]{Order Matters: Aspect Precendence}
-	\begin{mycolumns}[widths={50,50},animation=none]
+\begin{frame}[fragile]{Order Matters: Aspect Precedence}
+	\begin{mycolumns}[animation=none]
 		\begin{note}{}
 			Order in which aspect weaver process the aspects may be relevant when multiple aspects extend the same join point.
 		\end{note}
@@ -458,8 +431,8 @@ aspect DoubleWeight {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Aspect Weaving: Behind the Scenes }
-	\begin{mycolumns}[widths={50,50},animation=none]
+\begin{frame}{Aspect Weaving: Behind the Scenes}
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Weaving in AspectJ (Conceptually)}
 			\begin{itemize}
 				\item Inter-type declarations are added to respective classes
@@ -506,7 +479,7 @@ aspect Profiler {
 \end{frame}
 
 \begin{frame}[fragile]{Aspects for Product Lines}
-	\begin{mycolumns}[widths={45,55},animation=none]
+	\begin{mycolumns}[widths={45},animation=none]
 		\begin{definition}{Basic Idea}
 			\begin{itemize}
 				\item Implement one aspect per feature.
@@ -516,8 +489,7 @@ aspect Profiler {
 		\begin{note}{}
 			\begin{itemize}
 				\item Aspects encapsulate changes to be made to existing classes. 
-				\item However, aspects do not encapsulate new classes introduced by a feature (only nested classes within an aspect)\\
-					\emph{$\Rightarrow$ Gives rise to a combination of FOP and AOP.}
+				\item However, aspects do not encapsulate new classes introduced by a feature (only nested classes within an aspect)%\\ 					\emph{$\Rightarrow$ Gives rise to a combination of FOP and AOP.} % TODO too much for this lecture
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
@@ -540,7 +512,7 @@ aspect ColorFeature {
 \subsection{Discussion}
 
 \begin{frame}[fragile]{Controversial: Obliviousness and Fragile-Pointcut Problem}
-	\begin{mycolumns}[widths={45,55},animation=none]
+	\begin{mycolumns}[widths={45}]
 		\begin{definition}{Principle of Obliviousness}
 			Base program is (deliberately) supposed to be oblivious wrt.\ the aspects that ``hook into'' the system:
 			\begin{itemize}
@@ -551,11 +523,10 @@ aspect ColorFeature {
 		\uncover<3->{
 			\begin{note}{Obliviousness worsens the fragile-pointcut problem}
 				Because the base programmer does not know about aspects, 
-				it is more likely that changes may break aspect bindings and that nobody notices that.
+				it is more likely that changes may break aspect bindings and can remain unnoticed for a long time.
 			\end{note}
 		}
 	\mynextcolumn
-		\pause
 		\begin{definition}{Fragile-Pointcut Problem}
 			Base program may be modified such that the set of join points changes in an undesired way:
 			\begin{itemize}
@@ -575,12 +546,10 @@ aspect UpdateDisplay {
 }
 		\end{codetight}
 	\end{mycolumns}
-	\pause
-	
 \end{frame}
 
 \begin{frame}{Discussion}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Separation of (possibly crosscutting) feature code into distinct aspects.
@@ -590,7 +559,6 @@ aspect UpdateDisplay {
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-		\pause
 		\begin{note}{Disadvantages}
 			\begin{itemize}
 				\item Requires adoption of a rather complex extension mechanism (new language and paradigm).

@@ -324,6 +324,8 @@
 
 % TODO L07 LANGUAGES FOR FEATURES
 
+% TODO lecture has way too much content for 60 minutes (even too much for 90 minutes)
+
 \ifuniversity{recoding}{\date{???}\setpicture[325]{may21-q47}\setcopyright{}}
 \ifuniversity{ulm}{\date{June 1, 2023}\setpicture[325]{may21-q47}}
 \ifuniversity{magdeburg}{\setpicture[100]{ovgu-winter1}\setcopyright{Photo: Hannah Theile (OVGU)}}
@@ -334,7 +336,7 @@
 \section{Limits of Object Orientation}
 \input{content/07a-limitations-oop}
 \lessonslearned{
-	\item Important problems of previous approaches
+	\item[] Important problems of previous approaches:
 	\begin{itemize}
 		\item Inflexible inheritance hierarchies (especially with runtime variability, frameworks, components, services)
 		\item Feature traceability (especially with runtime variability, branches, build systems, preprocessors)	
@@ -348,7 +350,7 @@
 	\begin{itemize}
 		\item Which concern is the dominant one regarding modular decomposition? %data structures
 		\item What are crosscutting concerns? %color, weight, ...
-		\item Could you rewrite the design to come up with a different decomposition?
+		\item Can we restructure the implementation to come up with a different decomposition?
 	\end{itemize}
 }
 
@@ -367,16 +369,17 @@
 	\begin{itemize}
 		\item Why is class refinement in FOP different from inheritance in OOP, although it looks very similar?
 		\item To some extent, FOP can be considered as static counterpart to the Decorator design pattern in OOP. Why?
-		\item Consider the composition operator in FOP and the merge operator of traditional version control systems. Which are the major differences?
-		\item In which sense does FOP violate the classical principles of information hiding and encapsulation of OOP? What are the consequences?
-		\item What might be the reasons that FOP has not yet been widely adopted in practice?
+		%\item Consider the composition operator in FOP and the merge operator of traditional version control systems. Which are the major differences?
+		\item In which sense does FOP violate the classical principles of information hiding and encapsulation of OOP? What are the consequences? % TODO this is actually something that should be rather discussed in the lecture already
+		%\item What might be the reasons that FOP has not yet been widely adopted in practice?
 	\end{itemize}
 }
 
 \section{Aspect-Oriented Programming}
-\input{content/07c-aop}
+\input{content/07c-aop} % requires 07b-fop
 \lessonslearned{
-	\item Idea: "`In programs P, whenever condition C arises, perform action A"'.
+	\small
+	\item Idea: \mycite{In programs P, whenever condition C arises, perform action A} % TODO source missing
 	\item AspectJ: Sophisticated joint-point model and powerful language to quantify over join points (through pointcuts).
 	\item Supports encapsulation of (cross-cutting) concerns and feature traceability by design.
 	\item Practical acceptance limited due to fragile-pointcut problem.	
@@ -388,17 +391,39 @@
 	\begin{itemize}
 		\item Which features particularly benefit from the concept of quantification?
 		\item What similarities and differences do you see between FOP and AOP?
-		\item To what extent can FOP and AOP be combined profitably?
+		%\item To what extent can FOP and AOP be combined profitably?
 	\end{itemize}
 }
+% TODO I am missing the terms homogeneous and heterogeneous extensions. these terms are useful to distinguish what feature modules and aspects are better at
 
-% TODO Thomas: add exam questions here
 \faq{
-	\item \ldots
+	\item What are problems of previous implementation techniques?
+	\item What is the preplanning problem?
+	\item What are (crosscutting) concerns?
+	\item What is the tyranny of the dominant decomposition?
+	\item What are crosscutting concerns when implementing arithmetic expressions?
+	\item Why cannot all concerns be modularized with object orientation and design patterns?
 }{
-	\item \ldots
+	\item What is feature-oriented programming and collaboration-based design? What are collaborations, roles, feature modules, class refinements?
+	\item How to compose feature modules?
+	\item What is the difference between Mixin and Jampack? What is better?
+	\item Why does the order matter when composing feature modules? Where does it come from?
+	\item What is the principle of uniformity?
+	%\item What are AHEAD/FeatureHouse? How are they different?
+	\item How to implement product lines with feature modules?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of feature modules?
+	%\item When (not) to implement product lines with feature modules?
 }{
-	\item \ldots
+	\item What is aspect-oriented programming? What are aspects, aspect weaving, join points, pointcuts, pieces of advice, AspectJ?
+	\item What are static/dynamic extensions, quantification, before/after/around advice, inter-type declarations?
+	\item What is aspect precedence (good for)? How is it different from feature modules?
+	\item What are obliviousness and fragile-pointcut problem?
+	\item What are commonalities and differences between feature modules and aspects?
+	\item How to implement product lines with aspects?
+	%\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of aspects?
+	%\item When (not) to implement product lines with aspects?
 }
 
 \input{template/footer}

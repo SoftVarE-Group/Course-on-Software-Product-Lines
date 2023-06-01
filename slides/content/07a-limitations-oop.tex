@@ -76,7 +76,7 @@
 
 \subsection{Crosscutting Concerns}
 
-\begin{frame}{Crosscutting Concerns} % TODO 1:1 quotes? use mycite then?
+\begin{frame}{Crosscutting Concerns \deutschertitel{Querschneidende Belange}} % TODO 1:1 quotes? use mycite then?
 	\begin{mycolumns}[t]
 		\begin{definition}{Concern \mysource{\fospl\mypages{55}}}
 			A concern is an area of interest or focus in a system, and features are the concerns of primary interest in product-line engineering.
@@ -91,7 +91,7 @@
 
 \subsection{Tyranny of the Dominant Decomposition}
 
-\begin{frame}{Tyranny of the Dominant Decomposition} % TODO citation to ICSE'99?
+\begin{frame}{Tyranny of the Dominant Decomposition \deutschertitel{Tyrannei der dominanten Dekomposition}} % TODO citation to ICSE'99?
 	\begin{mycolumns}
 		\begin{definition}{Tyranny of the Dominant Decomposition}
 			\begin{itemize}
@@ -119,7 +119,7 @@
 	\begin{mycolumns}[widths={60}]
 		\begin{exampletight}{$(5 + ln(50)) * 1.73$}
 			\centering
-			\picDark[width=.8\linewidth]{expressions}
+			\picDark[width=.45\linewidth]{expressions}
 		\end{exampletight}
 	\mynextcolumn
 		\begin{example}{}
@@ -134,7 +134,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Arithmetic Expressions - Data-Centric Implementation}
+\begin{frame}{Arithmetic Expressions -- Data-Centric Decomposition}
 	\begin{mycolumns}[widths={40},animation=none]
 		\begin{definition}{Implementation Variant 1:\\Data-Centric}
 			\begin{itemize}
@@ -142,14 +142,13 @@
 				\item For each operation (eval, print, ...) there is a dedicated method in each class (Number, Plus, ...) 				
 			\end{itemize}
 		\end{definition}
-		\pause
-		\begin{note}{Terms are modular, but...}
+		\uncover<2->{\begin{note}{Terms are modular, but...}
 			\begin{itemize}
 				\item New operations, e.g. drawTree or simplify, cannot simply be added
 				\item All existing classes must be adjusted!
 				\item Operations cut across the expressions.
 			\end{itemize}
-		\end{note}
+		\end{note}}
 	\mynextcolumn
 		\begin{exampletight}{}
 			\picDark[width=\linewidth]{data_centered}
@@ -157,7 +156,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Arithmetic Expressions - Operation-Centric Implementation}
+\begin{frame}{Arithmetic Expressions -- Operation-Centric Decomposition}
 	\begin{mycolumns}[widths={40}]
 		\begin{definition}{Implementation Variant 2:\\Operation-Centric}
 			\begin{itemize}
@@ -165,14 +164,13 @@
 				\item Each operation is implemented by a dedicated visitor.				
 			\end{itemize}
 		\end{definition}
-		\pause
-		\begin{note}{Operations are modular, but...}
+		\uncover<2->{\begin{note}{Operations are modular, but...}
 			\begin{itemize}
 				\item New expressions, e.g. Min or Power, cannot simply be added
 				\item For each new class, all visitor classes must be adjusted
 				\item Expressions cut across operations
 			\end{itemize}
-		\end{note}
+		\end{note}}
 	\mynextcolumn
 		\begin{exampletight}{}
 			\picDark[width=\linewidth]{method_centered}
@@ -186,14 +184,14 @@
 	\end{note}
 	\pause
 	\begin{mycolumns}
-		\begin{note}{Data-centric approach}
+		\begin{note}{Data-Centric Decomposition}
 			\begin{itemize}
 				\item New expressions can be added directly: modular.
 				\item New operations must be added to all classes: not modular.
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-		\begin{note}{Operation-centric approach}
+		\begin{note}{Operation-Centric Decomposition}
 			\begin{itemize}
 				\item New operations can be added as another visitor: modular.
 				\item For new expressions, all existing visitors must be extended: not modular.
