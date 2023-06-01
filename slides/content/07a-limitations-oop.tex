@@ -5,57 +5,14 @@
 %\subsection{Default Methods}
 %\subsection{\ldots}
 
-\subsection{Recap: Object-Oriented Key Concepts}
+\subsection{Recap on Modularity} % TODO all titles in this subsection have used the prefix recap before with clone-and-own of slides, but not sure how to do this with againframe
+\againframe{ObjectOrientation}
 
-\begin{frame}{Recap: Object-Oriented Key Concepts}
-	\begin{mycolumns}[forget]
-		\begin{definition}{Encapsulation}
-			Abstraction \& Information Hiding
-		\end{definition}	
-		\begin{definition}{Composition}
-			Nested objects
-		\end{definition}
-		\begin{definition}{Message Passing}
-			Delegating responsibility
-		\end{definition}
-		\begin{definition}{Distribution of Responsibility}
-			Separation of concerns
-		\end{definition}
-		\begin{definition}{Inheritance}
-			Conceptual hierarchy, polymorphism, reuse
-		\end{definition}
-	\mynextcolumn
-		\pic[width=0.8\linewidth]{oo-concepts-illustration} % was illustriert was? warum ist square kein rectangle?
-	\end{mycolumns}
-\end{frame}
+\againframe{DesignPatterns}
 
-\begin{frame}{Recap: Design Patterns (for Variability) \mytitlesource{\gof}}
-	\begin{mycolumns}[forget]
-		\vspace{-10mm}
-		\begin{note}{Design patterns \deutsch{Entwurfsmuster}}
-			\begin{itemize}
-				\item Document common solutions to concrete yet frequently occurring design problems.
-				\item Suggest a concrete implementation for a specific object-oriented programming problem.
-			\end{itemize}
-		\end{note}
-		\begin{note}{Design patterns for variability}
-			\begin{itemize}
-				\item Many Gang of Four (GoF) design patterns for designing software around stable abstractions and interchangeable (i.e., variable) parts, e.g.
-				\begin{itemize}
-					\item Template Method
-					\item Abstract Factory
-					\item Decorator
-				\end{itemize}
-			\end{itemize}
-		\end{note}	
-	\mynextcolumn
-		\pic[width=\linewidth]{gof}
-	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{Recap: Modularity - Components, Services, and Frameworks}
+\begin{frame}{Recap: Modularity - Components, Services, and Frameworks} % TODO such an overview slide could be helpful in Lecture 6 already
 	\begin{mycolumns}[widths={40,60},animation=none]
-		\begin{example}{Component-/Service-Based SPLs}
+		\begin{example}{Component-/Service-Based SPLs} % TODO separate visualization for components?
 			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
 					$+$ 
@@ -88,114 +45,14 @@
 	\end{mycolumns}	
 \end{frame}
 
-\begin{frame}[fragile]{Recap: Extending Basic Graphs by Plug-Ins?}
-	\begin{mycolumns}[columns=2,widths={50,50}]
-\begin{codetight}[basicstyle=\tiny]{}
-public class Graph {
-	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
-	// ...	
-	@public void registerPlugin(GraphPlugin p){
-		plugins.add(p);
-	}@
-	public void addNode(int id, Color c){
-		Node n = new Node(id);
-		@notifyAdd(n, c);@
-		nodes.add(n);
-	}
-	public void print() {
-		for (Node n : nodes) {
-			@notifyPrint(n);@
-			// ...
-		}
-		// ...
-	}
-	@private void notifyAdd(Node n, Color c) {
-		for (GraphPlugin p : plugins) {
-			p.aboutToAdd(n, c);
-		}
-	}
-	private void notifyPrint(Node n) {
-		for (GraphPlugin p : plugins) {
-			p.aboutToPrint(n);
-		}
-	}@
-	// ...
-}
-\end{codetight}
-		\mynextcolumn
-\begin{codetight}[basicstyle=\tiny]{}
-public interface GraphPlugin {
-	public void aboutToAdd(Node n, Color c);
-	public void aboutToAdd(Edge e, Weight w);
-	public void aboutToPrint(Node n);
-	public void aboutToPrint(Edge e);
-}
-\end{codetight}
-\begin{codetight}[basicstyle=\tiny]{}
-public class ColorPlugin implements GraphPlugin {
-	private Map<Node, Color> map = new HashMap<Node, Color>();
+\againframe<2>{GraphsWithPlugins}
 
-	public void aboutToAdd(Node n, Color c) {
-		map.put(n, c);
-	}
-	
-	public void aboutToAdd(Edge e, Weight w) {
-		~// do nothing~
-	}
-	
-	public void aboutToPrint(Node n) {
-		Color c = map.get(n);
-		Color.setDisplayColor(c);
-	}
-	
-	public void aboutToPrint(Edge e) {
-		~// do nothing~
-	}
-}
-\end{codetight}
-	\end{mycolumns}
-\end{frame}
-
-\begin{frame}{Recap: Challenges and Problems}
-	\begin{mycolumns}[widths={50,50}]
-		\begin{example}{}
-			In our example, we can observe that:
-			\begin{itemize}
-				\item There are lots of empty methods in the ColorPlugin 
-				\item The framework consults all registered plug-ins before printing a node or edge
-			\end{itemize}
-		\end{example}	
-		\pause
-		\begin{definition}{General Challenge: Cross-cutting Concerns}
-			Implementing cross-cutting concerns as plug-ins 
-			\begin{itemize}				
-				\item typically leads to huge interfaces, large parts of which are irrelevant for a dedicated plug-in 
-				\item causes lots of communication overhead between plug-ins and framework
-			\end{itemize}
-		\end{definition}
-		\pause
-	\mynextcolumn
-		\begin{example}{}
-			If we were not familiar with our graph library, would we anticipate that:
-			\begin{itemize}
-				\item Colors and weights should be part of the Plugin interface?
-				\item Every plug-in needs to be notified that the framework is about to print a node or edge? 
-			\end{itemize}
-		\end{example}
-		\pause
-		\begin{definition}{Generally known as Preplanning Problem}
-			\begin{itemize}
-				\item Hard to identify and foresee the relevant hot spots and nature of extensions
-				\item Developing a framework needs lots of expertise and excellent domain knowledge 
-			\end{itemize}
-		\end{definition}
-	\end{mycolumns}
-\end{frame}
+\againframe<2>{ChallengesOfPlugins}
 
 \subsection{Preplanning Problem}
 
 \begin{frame}{Preplanning Problem}
-	\begin{mycolumns}[widths={45,55},animation=none]
+	\begin{mycolumns}[t,widths={45}]
 		\begin{note}{Components, Services, and Frameworks}
 			Extensions are not possible ad-hoc, but must be foreseen and planned in advance:
 			\begin{itemize}
@@ -209,6 +66,7 @@ public class ColorPlugin implements GraphPlugin {
 			Subtyping and polymorphism allow for ad-hoc extensions to some extent, but:
 			\begin{itemize}
 				\item Often, client code and/or basic implementation need to be adapted, too (non-modular)
+				\item Design patterns require preplanning of potential future extensions
 				\item Limited flexibility of inheritance hierarchies (no ``mix and match'' supporting arbitrary feature combinations)
 			\end{itemize}
 			\emph{$\Rightarrow$ No variable extension without loosing modularity!}
@@ -218,8 +76,8 @@ public class ColorPlugin implements GraphPlugin {
 
 \subsection{Crosscutting Concerns}
 
-\begin{frame}{Crosscutting Concerns}
-	\begin{mycolumns}[widths={50,50},animation=none]
+\begin{frame}{Crosscutting Concerns} % TODO 1:1 quotes? use mycite then?
+	\begin{mycolumns}[t]
 		\begin{definition}{Concern \mysource{\fospl\mypages{55}}}
 			A concern is an area of interest or focus in a system, and features are the concerns of primary interest in product-line engineering.
 		\end{definition}
@@ -233,8 +91,8 @@ public class ColorPlugin implements GraphPlugin {
 
 \subsection{Tyranny of the Dominant Decomposition}
 
-\begin{frame}{Tyranny of the Dominant Decomposition}
-	\begin{mycolumns}[widths={50,50},animation=none]
+\begin{frame}{Tyranny of the Dominant Decomposition} % TODO citation to ICSE'99?
+	\begin{mycolumns}
 		\begin{definition}{Tyranny of the Dominant Decomposition}
 			\begin{itemize}
 				\item Many concerns can be modularized, but not always at the same time.
@@ -243,7 +101,7 @@ public class ColorPlugin implements GraphPlugin {
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\begin{note}{}
+		\begin{note}{} % TODO use example environment instead? split?
 			Crosscutting concerns are inherently difficult to separate using traditional mechanisms.
 			\begin{itemize}
 				\item Logging: Each time a method is called.
@@ -255,8 +113,15 @@ public class ColorPlugin implements GraphPlugin {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Another Example: Arithmetic Expressions}
-	\begin{mycolumns}[widths={50,50},animation=none]
+\subsection{Example: Arithmetic Expressions}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={60}]
+		\begin{exampletight}{$(5 + ln(50)) * 1.73$}
+			\centering
+			\picDark[width=.8\linewidth]{expressions}
+		\end{exampletight}
+	\mynextcolumn
 		\begin{example}{}
 			\begin{itemize}
 				\item Arithmetic expressions are stored in a tree structure.
@@ -266,17 +131,12 @@ public class ColorPlugin implements GraphPlugin {
 		\begin{note}{Question}
 			How to separate data structures and operations such that both can be extended independently of each other?
 		\end{note}
-	\mynextcolumn
-		\begin{exampletight}{}
-			\centering
-			\pic[width=0.5\linewidth]{expressions}
-		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Arithmetic Expressions - Data-centric Implementation}
-	\begin{mycolumns}[widths={40,60},animation=none]
-		\begin{definition}{Implementation Variant 1: Data-centric}
+\begin{frame}{Arithmetic Expressions - Data-Centric Implementation}
+	\begin{mycolumns}[widths={40},animation=none]
+		\begin{definition}{Implementation Variant 1:\\Data-Centric}
 			\begin{itemize}
 				\item Recursive class structure (composite pattern)
 				\item For each operation (eval, print, ...) there is a dedicated method in each class (Number, Plus, ...) 				
@@ -292,14 +152,14 @@ public class ColorPlugin implements GraphPlugin {
 		\end{note}
 	\mynextcolumn
 		\begin{exampletight}{}
-			\pic[width=\linewidth]{data_centered}
+			\picDark[width=\linewidth]{data_centered}
 		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{Arithmetic Expressions - Operation-centric Implementation}
-	\begin{mycolumns}[widths={40,60},animation=none]
-		\begin{definition}{Implementation Variant 2: Operation-centric}
+\begin{frame}{Arithmetic Expressions - Operation-Centric Implementation}
+	\begin{mycolumns}[widths={40}]
+		\begin{definition}{Implementation Variant 2:\\Operation-Centric}
 			\begin{itemize}
 				\item Just a single accept method per class (visitor pattern).
 				\item Each operation is implemented by a dedicated visitor.				
@@ -315,7 +175,7 @@ public class ColorPlugin implements GraphPlugin {
 		\end{note}
 	\mynextcolumn
 		\begin{exampletight}{}
-			\pic[width=\linewidth]{method_centered}
+			\picDark[width=\linewidth]{method_centered}
 		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
@@ -325,7 +185,7 @@ public class ColorPlugin implements GraphPlugin {
 		Hardly possible to modularize expressions and operations at the same time!
 	\end{note}
 	\pause
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}
 		\begin{note}{Data-centric approach}
 			\begin{itemize}
 				\item New expressions can be added directly: modular.
@@ -333,7 +193,7 @@ public class ColorPlugin implements GraphPlugin {
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-		\begin{note}{Method-centric approach}
+		\begin{note}{Operation-centric approach}
 			\begin{itemize}
 				\item New operations can be added as another visitor: modular.
 				\item For new expressions, all existing visitors must be extended: not modular.
