@@ -1,6 +1,12 @@
 # Course on Software Product Lines
 
-**[Open educational resources](https://en.wikipedia.org/wiki/Open_educational_resources) for lectures on software product lines**
+**[Open educational resources](https://en.wikipedia.org/wiki/Open_educational_resources) on software product lines**
+
+* **LaTeX Slides**: Material for lectures on software product lines 
+* [LaTeX Exercises](https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises): Material for exercises on software product lines 
+* [PDF Slides](https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course): Released version of slides for the lecture on software product lines
+* [Recordings](https://www.youtube.com/playlist?list=PL4hJhdKDPIxha8So7muX2zfNUU8NBoiu3): YouTube playlist with lecture recordings
+
 
 *If you have any feedback, please contact [Thomas Thüm](mailto:thomas.thuem@uni-ulm.de).*
 
@@ -23,10 +29,6 @@
 - University of Magdeburg, Germany: Implementation Techniques for Software Product Lines (Winter Term 2022/23)
 - Harz University of Applies Sciences, Wernigerode, Germany: Requirements Engineering II - Software Product Lines (Summer Term 2023)
 - University of Ulm, Germany: Software Product Lines (Summer Term 2023)
-
-## PDF Slides
-
-To reduce the size of this repository, generated slides are available in a dedicated repository: https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course
 
 <!--
 ## Exercises
