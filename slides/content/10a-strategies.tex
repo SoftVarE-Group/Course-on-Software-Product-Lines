@@ -2,7 +2,7 @@
 
 \newcommand{\familybasedlego}{
 	\begin{tikzpicture}
-		\node (lego) at (0,-1.7) {\pic[height=40mm,page=1]{lego-analyses}};
+		\node (lego) at (0,-1.7) {\picDark[height=40mm,page=1]{lego-analyses}};
 		\node (lego) at (0,-.05) {\huge \textbf{+}};
 		\node (lego) at (0,1) {\footnotesize\featureDiagramLego};
 		\node at (0,-.3) {\mglass{9.5}};
@@ -10,7 +10,7 @@
 }
 
 \newcommand{\summaryproductbased}{
-	\centering\pic[width=.8\linewidth,page=9]{lego-analyses}
+	\centering\picDark[width=.8\linewidth,page=9]{lego-analyses}
 	\begin{note}{Product-Based Strategy}
 		\begin{itemize}
 			\item analyze individual \emph{products}
@@ -23,7 +23,7 @@
 }
 
 \newcommand{\summaryfeaturebased}{
-	\centering\pic[width=.8\linewidth,page=6]{lego-analyses}
+	\centering\picDark[width=.8\linewidth,page=6]{lego-analyses}
 	\begin{note}{Feature-Based Strategy}
 		\begin{itemize}
 			\item analyze individual \emph{features}
@@ -60,12 +60,12 @@
 			\end{note}
 		}
 	\mynextcolumn
-		\only<1|handout:0>{\includegraphics[height=\textheightwithtitle,page=1]{quality-assurance}}%
-		\only<2|handout:0>{\includegraphics[height=\textheightwithtitle,page=2]{quality-assurance}}%
-		\only<3|handout:0>{\includegraphics[height=\textheightwithtitle,page=3]{quality-assurance}}%
-		\only<4|handout:0>{\includegraphics[height=\textheightwithtitle,page=4]{quality-assurance}}%
-		\only<5|handout:1>{\includegraphics[height=\textheightwithtitle,page=5]{quality-assurance}}%
-		\only<6|handout:0>{\includegraphics[height=\textheightwithtitle,page=6]{quality-assurance}}%
+		\only<1|handout:0>{\picDark[height=\textheightwithtitle,page=1]{quality-assurance}}%
+		\only<2|handout:0>{\picDark[height=\textheightwithtitle,page=2]{quality-assurance}}%
+		\only<3|handout:0>{\picDark[height=\textheightwithtitle,page=3]{quality-assurance}}%
+		\only<4|handout:0>{\picDark[height=\textheightwithtitle,page=4]{quality-assurance}}%
+		\only<5|handout:1>{\picDark[height=\textheightwithtitle,page=5]{quality-assurance}}%
+		\only<6|handout:0>{\picDark[height=\textheightwithtitle,page=6]{quality-assurance}}%
 	\end{mycolumns}
 \end{frame}
 
@@ -140,7 +140,7 @@
 			\centering\featureDiagramLego\\$Helmet \pimplies \pnot Phone$
 		\end{exampletight}
 	\mynextcolumn
-		\pic[width=\linewidth,page=9]{lego-analyses}
+		\picDark[width=\linewidth,page=9]{lego-analyses}
 	\end{mycolumns}
 \end{frame}
 
@@ -230,7 +230,7 @@
 			\centering\featureDiagramLego\\$Helmet \pimplies \pnot Phone$
 		\end{exampletight}
 	\mynextcolumn
-		\pic[width=\linewidth,page=6]{lego-analyses}
+		\picDark[width=\linewidth,page=6]{lego-analyses}
 	\end{mycolumns}
 \end{frame}
 
@@ -262,13 +262,13 @@
 			\vspace*{-4ex}
 			\small
 			\begin{align*}
-				\sigma([&\alpha(\gamma(C)) \text{ -- e.g., compile and verify base code}\\
-				&\alpha(\gamma(G)) \text{ -- e.g., compile and verify feature Get}\\
-				&\alpha(\gamma(P)) \text{ -- \ldots}\\
-				&\alpha(\gamma(D))\\
-				&\alpha(\gamma(T))\\
-				&\alpha(\gamma(W))\\
-				&\alpha(\gamma(L))])
+				\sigma([&\alpha(C) \text{ -- e.g., compile and verify base code}\\
+				&\alpha(G) \text{ -- e.g., compile and verify feature Get}\\
+				&\alpha(P) \text{ -- \ldots}\\
+				&\alpha(D)\\
+				&\alpha(T)\\
+				&\alpha(W)\\
+				&\alpha(L)])
 			\end{align*}
 		\end{example}
 	\end{mycolumns}

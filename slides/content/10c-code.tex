@@ -65,7 +65,7 @@
 			\end{note}
 		}
 	\mynextcolumn
-		\only<2->{\pic[width=\linewidth]{fop-csur-example-error-blind}}
+		\only<2->{\picDark[width=\linewidth]{fop-csur-example-error-blind}}
 	\end{mycolumns}
 \end{frame}
 
@@ -92,7 +92,7 @@
 			\end{definition}
 		}
 	\mynextcolumn
-		\pic[width=\linewidth]{fop-csur-example-error}
+		\picDark[width=\linewidth]{fop-csur-example-error}
 	\end{mycolumns}
 \end{frame}
 
@@ -206,30 +206,30 @@ std::ostream& operator<<(
 \subsubsection*{Product-Line Complexity}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[forget]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}
 			In a timeframe of 24h \ldots
 			\begin{enumerate}
-				\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}
-				\item[\textbf{C1}] All products can be generated and \emph{tested}
-				\item[\textbf{C2}] Not C1, but all \emph{products} can be \emph{generated}
-				\item[\textbf{C3}] Not C2, but all \emph{configurations} can be \emph{generated} (AllSAT)
-				\item[\textbf{C4}] Not C3, but the \emph{number of valid configurations} can be computed (\ssat{})
-				\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)
-				\item[\textbf{C6}] It cannot be computed whether there is a valid configuration
+				\uncover<2->{\item[\color{gray}\textbf{NC}] {\color{gray}Products cannot be generated automatically}}
+				\uncover<3->{\item[\textbf{C1}] All products can be generated and \emph{tested}}
+				\uncover<4->{\item[\textbf{C2}] Not C1, but all \emph{products} can be \emph{generated}}
+				\uncover<5->{\item[\textbf{C3}] Not C2, but all \emph{configurations} can be \emph{generated} (AllSAT)}
+				\uncover<6->{\item[\textbf{C4}] Not C3, but the \emph{number of valid configurations} can be computed (\ssat{})}
+				\uncover<7->{\item[\textbf{C5}] Not C4, but \emph{whether there is a valid configuration} can be computed (SAT)}
+				\uncover<8->{\item[\textbf{C6}] It cannot be computed whether there is a valid configuration}
 			\end{enumerate}
 		\end{definition}
 	\mynextcolumn
 		\begin{example}{Examples}
 			% also put examples of analysis strategies here, and which kind of mapping/code analysis scales for which class?
 			\begin{enumerate}
-				\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}
-				\item[\textbf{C1}] $< 2000$ products for 1 min per product
-				\item[\textbf{C2}] $< 90000$ products for 1 s per product
-				\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration
-				\item[\textbf{C4}] older versions of Linux/Automotive05
-				\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)
-				\item[\textbf{C6}] No example known
+				\uncover<2->{\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}}
+				\uncover<3->{\item[\textbf{C1}] $< 2000$ products for 1 min per product}
+				\uncover<4->{\item[\textbf{C2}] $< 90000$ products for 1 s per product}
+				\uncover<5->{\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration}
+				\uncover<6->{\item[\textbf{C4}] older versions of Linux/Automotive05}
+				\uncover<7->{\item[\textbf{C5}] newer versions of Linux/Automotive05\\(see \evaluatingsharpsatsolvers)}
+				\uncover<8->{\item[\textbf{C6}] No example known}
 			\end{enumerate}
 		\end{example}
 	\end{mycolumns}

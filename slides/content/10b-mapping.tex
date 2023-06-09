@@ -26,12 +26,17 @@
 		\mynextcolumn
 		\begin{example}{Asking Questions About the Feature Mapping}
 			\begin{itemize}
-				\item Are there contradictory or unnecessary preprocessor annotations in the code?
 				\item Is the code even included in any product?
+				\item Are there contradictory or unnecessary preprocessor annotations in the code?
 				\item How scattered and tangled is the code?
 				\item \ldots
 			\end{itemize}
 		\end{example}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[widths={45,55}]
 		\begin{exampletight}{Running Example: Graph Product Line}
 			\centering
 			\featureDiagram{Graph,concrete[Node,concrete,mandatory[Colored,concrete,optional]][Edge,concrete,mandatory[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]]}
@@ -39,6 +44,11 @@
 			$Hyper \pimplies Undirected$\\
 			$Directed \por Hyper$
 		\end{exampletight}
+	\mynextcolumn
+		\myexample{An Undirected Hypergraph}{
+			\centering
+			\picDark[width=.8\linewidth]{hypergraph}
+		}
 	\end{mycolumns}
 \end{frame}
 
@@ -63,7 +73,7 @@
 				\small\vspace*{-1.3ex}
 				\begin{flushright}
 
-					\uncover<4->{{\color{black}$\top$}\\
+					\uncover<4->{{$\top$}\\
 					$\top$\\
 					$Colored$\\
 					$Colored$\\
@@ -360,7 +370,6 @@ class Edge {
 		\vspace*{-5ex}
 		\begin{exampletight}{}
 			\vspace*{-4ex}
-			\color{black}
 			\begin{align*}
 				&Graph \pand Node \pand Edge \\
 				\pand &\pnot (Directed \pand Undirected) \\
@@ -378,7 +387,7 @@ class Edge {
 			\end{exampletight}
 			\begin{exampletight}{File PC \tiny\texttt{edge.cpp}}
 				\vspace*{4.5ex}
-				\Huge\centering\rotatebox{45}{\color{black}$Edge$}
+				\Huge\centering\rotatebox{45}{$Edge$}
 				\vspace*{4.5ex}
 			\end{exampletight}
 		}
@@ -387,32 +396,32 @@ class Edge {
 			\begin{exampletight}{Line PCs \tiny\texttt{node.cpp}}
 				\tiny\vspace*{-1.3ex}
 				\begin{flushright}
-					{\color{black}$\top$}\\
-					{\color{black}$\top$}\\
-					{\color{black}$Colored$}\\
-					{\color{black}$Colored$}\\
-					{\color{black}$Colored$}\\
-					{\color{black}$\top$}
+					{$\top$}\\
+					{$\top$}\\
+					{$Colored$}\\
+					{$Colored$}\\
+					{$Colored$}\\
+					{$\top$}
 				\end{flushright}
 			\end{exampletight}
 			\begin{exampletight}{Line PCs \tiny\texttt{edge.cpp}}
 				\tiny\vspace*{-1.3ex}
 				\begin{flushright}
-					{\color{black}$\top$}\\
-					{\color{black}$Directed$}\\
-					{\color{black}$Directed$}\\
-					{\color{black}$\pnot Dir \pand Hyper$}\\
-					{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
-					{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
-					{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-					{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-					{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-					{\color{black}$\pnot Dir \pand \pnot Hy$}\\
-					{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-					{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-					{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-					{\color{black}$\pnot Dir \pand \pnot Hy$}\\
-					{\color{black}$\top$}
+					{$\top$}\\
+					{$Directed$}\\
+					{$Directed$}\\
+					{$\pnot Dir \pand Hyper$}\\
+					{$\pnot Dir \pand Hy \pand Un$}\\
+					{$\pnot Dir \pand Hy \pand Un$}\\
+					{$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+					{$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+					{$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+					{$\pnot Dir \pand \pnot Hy$}\\
+					{$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+					{$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+					{$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+					{$\pnot Dir \pand \pnot Hy$}\\
+					{$\top$}
 				\end{flushright}
 			\end{exampletight}
 		}
@@ -469,21 +478,21 @@ class Edge {
 		\begin{exampletight}{Line PCs \tiny\texttt{edge.cpp}}
 			\tiny\vspace*{-1.3ex}
 			\begin{flushright}
-				{\color{black}$\top$}\\
-				{\color{black}$Directed$}\\
-				{\color{black}$Directed$}\\
-				{\color{black}$\pnot Dir \pand Hyper$}\\
-				{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
-				{\color{black}$\pnot Dir \pand Hy \pand Un$}\\
-				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-				{\color{black}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-				{\color{black}$\pnot Dir \pand \pnot Hy$}\\
-				{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{gray}$\top$}\\
+				{\color{gray}$Directed$}\\
+				{\color{gray}$Directed$}\\
+				{\color{gray}$\pnot Dir \pand Hyper$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-				{\color{black}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-				{\color{black}$\pnot Dir \pand \pnot Hy$}\\
-				{\color{black}$\top$}
+				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{gray}$\top$}
 			\end{flushright}
 		\end{exampletight}
 	\mynextcolumn
@@ -530,16 +539,16 @@ class Edge {
 				\vspace*{-2ex}
 				\small
 				\begin{mycolumns}[animation=none]
-					{\color{black}$\{SS\}$}\\
+					{$\{SS\}$}\\
 					$\{SS, AC\}$
 				\mynextcolumn
-					{\color{black}$\{MS\}$}\\
+					{$\{MS\}$}\\
 					$\{MS, AC\}$\\
 				\end{mycolumns}
 			\end{example}
 		}
 	\mynextcolumn
-		\uncover<3->{\pic[width=\linewidth]{fop-csur-example}}
+		\uncover<3->{\picDark[width=\linewidth]{fop-csur-example}}
 	\end{mycolumns}
 	\uncover<3->{
 		\begin{note}{}
@@ -557,7 +566,7 @@ class Edge {
 			\pic[width=\linewidth,clip,trim=0 120 250 0]{feature_komposition1}
 		\end{notetight}
 	\mynextcolumn
-		\pic[width=\linewidth]{fop-csur-example}
+		\picDark[width=\linewidth]{fop-csur-example}
 	\end{mycolumns}
 	\uncover<2->{
 		\begin{note}{}
@@ -570,7 +579,7 @@ class Edge {
 
 \begin{frame}{\myframetitle}
 	\begin{mycolumns}[widths={57,43}]
-		\pic[width=\linewidth]{featureide-dead-code}
+		\picDark[width=\linewidth]{featureide-dead-code}
 		~
 		\href{https://youtu.be/jVe7f32mLCQ?t=125}{demo video available} (minute 3 and 4): dead code block, superfluous annotations, generation of all products, error propagation, unit testing
 	\mynextcolumn
