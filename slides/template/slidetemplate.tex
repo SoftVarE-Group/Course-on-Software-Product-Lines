@@ -65,7 +65,11 @@
 	\IfFileExists{#2.txt}{\hreffile{#2.txt}}{}{\includegraphics[#1]{#2}}}
 \newcommand{\picDark}[2][]{\pic[#1]{#2}}
 \ifdarkmode
-	\renewcommand{\picDark}[2][]{\pic[#1,decodearray={1 .25 1 .25 1 .25 1 .25}]{#2}}
+	\renewcommand{\picDark}[2][]{%
+		\IfFileExists{#2-dark.png}{\pic[#1]{#2-dark.png}}{%
+		\IfFileExists{#2-dark.pdf}{\pic[#1]{#2-dark.pdf}}{%
+		\pic[#1,decodearray={1 .25 1 .25 1 .25 1 .25}]{#2}}}%
+	}
 \fi
 
 % TODO hack to switch the lecture title with its subtitle on the title slide + add photo copyright notice
