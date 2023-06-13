@@ -1,3 +1,5 @@
+% TODO reuse slides in this part instead of copying them
+
 \subsection{Recap: Runtime Variability}
 
 \begin{frame}[fragile]{\myframetitle}
@@ -580,34 +582,25 @@ aspect ColorFeature {
 \end{frame}
 
 \subsection{Comparison of Implementation Techniques}
-\begin{frame}{\myframetitle}
+\begin{frame}[fragile]{\myframetitle}
 	\centering
-	\begin{tabular}{|p{32mm}|p{32mm}|p{14mm}|p{27mm}|p{14mm}|}
-		\hline
-		 & Compile-Time Variability & Features & Product \mbox{Generation} & Feature \mbox{Traceability} \\
-		\hline\pause
-		Runtime \mbox{Variability} & no (very limited for immutable global variables) & yes & yes (except for preference dialogs) & no \\
-		% automated generation not for preference dialogs
-		% 
-		\hline\pause
-		Clone-and-Own & yes (only for implemented products) & no & no (limited generation with build systems) & no \\
-		\hline\pause
-		Build\,Systems \linebreak Preprocessors & yes & yes & yes & with tool support \\
-		\hline\pause
-		Components \linebreak Services & yes & only coarse grained & no (except pure exchange) & only coarse grained \\
-		\hline\pause
-		Frameworks with Plug-Ins & yes & only coarse grained & yes & only coarse grained \\
-		\hline\pause
-		FOP \linebreak AOP & yes & yes & yes & yes \\
-		\hline
+	\renewcommand{\arraystretch}{1.2}
+	\newcommand{\myexception}[1]{\tiny{}(#1)}
+	\begin{tabular}{p{32mm}p{32mm}p{14mm}p{27mm}p{14mm}}
+		 & Compile-Time Variability & Features & Product Generation & Feature \mbox{Traceability} \pause\\\rowcolor{gray}
+		Clone-and-Own & yes \myexception{only for implemented products} & no & no \myexception{limited generation with build systems} & no \pause\\
+		Runtime Variability & no \myexception{very limited for immutable global variables} & yes & yes \myexception{except for preference \mbox{dialogs}} & no \pause\\\rowcolor{gray}
+		Build Systems & yes & only coarse grained & yes & with tool support \pause\\
+		Preprocessors & yes & only fine grained & yes & with tool support \pause\\\rowcolor{gray}
+		Components/Services & yes & only coarse grained & no \myexception{except pure exchange} & only coarse grained \pause\\
+		Frameworks with Plug-Ins & yes & only coarse grained & yes & only coarse grained \pause\\\rowcolor{gray}
+		Feature Modules/Aspects & yes & yes & yes & yes \pause\\
 	\end{tabular}
-	\pause
 	\begin{note}{Further Criteria}
 		interfaces between features? code duplication necessary? modularization of cross-cutting concerns? \ldots
 	\end{note}
 \end{frame}
-% TODO animate table adding only columns relevant so far
-% TODO conditional compilation: only coarse grained for build systems and only fine grained for preprocessors
+% TODO animate table adding only columns relevant so far https://tex.stackexchange.com/questions/345815/table-column-animation-in-beamer-not-showing-table-lines-and-notes
 
 % large table with all properties: automatic generation from feature selection, feature modularization, ...
 
