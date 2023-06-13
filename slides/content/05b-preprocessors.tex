@@ -67,7 +67,7 @@
 % how to select features? parameters passed to the preprocessor, define in source code
 
 \subsection{CPP -- The C Preprocessor}
-\begin{frame}{\myframetitle}
+\begin{frame}[label=SPLwithPreprocessors]{\myframetitle}
 	\setlength\leftmargini{4mm}%
 	\begin{mycolumns}[T,columns=3,animation=none]
 		\begin{definition}{CPP Directives\mysource{\href{https://en.cppreference.com/w/cpp/preprocessor}{cppreference.com}}}
@@ -361,8 +361,10 @@
 	\item often used in an ad-hoc or \emph{undisciplined} fashion
 	\item prone to subtle syntax, type, or runtime errors which are hard to detect \mysource{\lectureinteractions--\lecturetesting}
 }
-\begin{frame}{Discussion of Features with Preprocessors}
-	\begin{mycolumns}[animation=none]
+\begin{frame}<1-2>[label=DiscussionOfPreprocessors]
+	\frametitle<1-2>{Discussion of Preprocessors}
+	\frametitle<3>{\myframetitle}
+	\begin{mycolumns}
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item well-known and mature tools, readily available
@@ -376,7 +378,6 @@
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
-		\pause
 		\begin{note}{Challenges}
 			\begin{itemize}
 				\MajorChallengesOfPreprocessors

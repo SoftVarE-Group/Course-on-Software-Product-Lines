@@ -1,6 +1,6 @@
 \subsection{(Micro-)Services}
 \begin{frame}{(Micro-)Services}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{(Micro-)Service}
 			\mycite{[A (micro-)service is a module] implemented and operated as a small yet independent system, offering access to its internal logic and data through a well-defined network interface.}
 				{Jamshidi et al., 2018}
@@ -14,10 +14,11 @@
 		\pic[width=\linewidth]{peer-to-peer}
 	\end{mycolumns}
 \end{frame}
+% TODO hard to talk on this slide. we should avoid using all those brackets and rather state the differences between services and microservices explicitly.
 
 \subsection{Services vs. Components}
 \begin{frame}{Services vs.\ Components}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Component}
 			Intra-process communication (i.e., method calls)
 			\begin{center}
@@ -41,7 +42,7 @@
 
 \subsection{Microservice Architectures}
 \begin{frame}{Microservice Architecture: Motivation}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{note}{Recap: The Library Scaling Problem}
 			\centering
 			\pic[width=.95\linewidth]{tangram}			
@@ -62,7 +63,7 @@
 \end{frame}
 
 \begin{frame}{Microservice Architecture: Philosophy and Principles}
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{mycolumns}[animation=none]
 		\begin{definition}{Conway's Law}
 			\mycite{Organizations which design systems [...] are constrained to produce designs which are copies of the communication structures of these organizations.}{\href{https://www.melconway.com/Home/pdf/committees.pdf}{Melvin Edward Conway, 1968}}			
 		\end{definition}
@@ -113,8 +114,10 @@
 \end{frame}
 
 \subsection{Implementation of Product Lines}
-\begin{frame}{Service-Oriented Implementation of Software Product Lines}
-	\begin{mycolumns}[widths={40,60},animation=none]
+\begin{frame}<1-3>[label=SPLwithServices]
+	\frametitle<1-3>{Service-Oriented Implementation of Software Product Lines}
+	\frametitle<4>{\myframetitle}
+	\begin{mycolumns}[widths={40},animation=none]
 		\begin{example}{Recap: Component-Based Implementation}
 			\pic[width=.24\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}

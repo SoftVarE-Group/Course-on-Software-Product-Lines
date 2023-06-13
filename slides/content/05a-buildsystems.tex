@@ -42,7 +42,7 @@
 \subsubsection{Features with Runtime Variability?}
 \againframe<2>{GraphWithGlobalVariables}
 
-\begin{frame}{\myframetitle}
+\begin{frame}[label=SPLwithPreferenceDialogsCommandLineOptionsConfigurationFiles]{\myframetitle}
 	\begin{mycolumns}[b,widths={36}]
 		\picDark[width=\linewidth]{preferences-eclipse}
 
@@ -72,7 +72,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}[fragile,label=SPLwithImmutableGlobalVariables]{\myframetitle}
 	\begin{mycolumns}[widths={48}]
 \begin{codetight}[basicstyle=\small]{}
 public class Config {
@@ -99,7 +99,7 @@ public class Config {
 \end{frame}
 
 \subsubsection{Features with Clone-and-Own?}
-\begin{frame}{\myframetitle}
+\begin{frame}[label=SPLwithCloneAndOwn]{\myframetitle}
 	\begin{mycolumns}[widths={30},animation=none]
 		\centering~
 
@@ -172,7 +172,7 @@ public class Config {
 \end{frame}
 
 \subsection{Introducing Features to Build Systems}
-\begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
+\begin{frame}[label=SPLwithBuildSystems]{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
 	\begin{mycolumns}[widths={60}]
 		\begin{definition}{How to Implement Features with Build Systems?}
 			\begin{itemize}
@@ -355,14 +355,16 @@ obj-?y? +=
 
 % TODO add quote? \mycite{As Kbuild relies on a Turing-complete language, complex conditions can be encoded.} \mysource{\fospl\mypage{108}}
 
-\subsection[Discussion]{Discussion of Features with Build Systems}
+\subsection{Discussion}
 \newcommand{\MajorChallengesOfBuildSystems}{
 	\item build scripts may become complex, there is no limit to what can be done (e.g., you can run arbitrary shell commands on files)\\
 		$\Rightarrow$ \emph{hard to understand and analyze}
 	\item no simple inclusion and exclusion of individual lines or chunks of code\\
 	$\Rightarrow$ high-level use \emph{only}!
 }
-\begin{frame}{\myframetitle}
+\begin{frame}<1-2>[label=DiscussionOfBuildSystems]
+	\frametitle<1-2>{Discussion of Features with Build Systems}
+	\frametitle<3>{\myframetitle}
 	\begin{mycolumns}
 		\begin{note}{Advantages}
 			\begin{itemize}

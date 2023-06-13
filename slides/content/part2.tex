@@ -456,9 +456,9 @@
 \section{Implementation of Product Lines}
 \input{content/08b-techniques}
 \lessonslearned{
-	\item eight implementation techniques
-	\item three strategies for runtime variability / clone-and-own
-	\item two strategies for conditional compilation
+	\item nine implementation techniques
+	\item + three implementation strategies for runtime variability / clone-and-own
+	\item + three configuration strategies for runtime variability
 	\item choice based on four criteria, but there are more
 }{
 	\item[] \fospl % TODO which chapters?
@@ -468,9 +468,6 @@
 		\item Which techniques require most code clones?
 		\item Which techniques can modularize cross-cutting concerns?
 	\end{enumerate}
-%	\ldots
-%	
-%	fill the table: one row for each room, discuss classification in your group
 }
 
 \section{Adoption of Product Lines}
@@ -485,13 +482,28 @@
 	Are combinations of the adoption strategies feasible?
 }
 
-% TODO Thomas: add exam questions here
 \faq{
-	\item \ldots
+	\item How do process models for single-system engineering differ to those for product-line engineering?
+	\item What are the two main phases when developing product lines?
+	\item What are (the phases in) domain and application engineering?
+	\item What is happening in which phase?
+	\item How do phases interplay with each other?
+	\item What is domain scoping? Why is it relevant?
+	\item What is the difference between problem and solution space?
 }{
-	\item \ldots
+	\item How to implement product lines?
+	\item Which implementation techniques exist? What are further variations of those techniques?
+	\item How to develop new features or variants? Exemplify!
+	\item What are (dis)advantages of each technique?
+	\item When to prefer one implementation technique over another?
+	\item Which techniques support compile-time variability, features, product generation, feature traceability, interfaces between features, reduction of code duplication, modularization of crosscutting concerns?
 }{
-	\item \ldots
+	\item How to introduce a product line?
+	\item What are strategies for product-line adoption?
+	\item What are (dis)advantages of product-line adoption strategies?
+	\item When to prefer one adoption strategy over another?
+	\item Are combinations of adoption strategies feasible?
+	\item What is the connection between process models and adoption strategies for product lines?
 }
 
 \input{template/footer}
