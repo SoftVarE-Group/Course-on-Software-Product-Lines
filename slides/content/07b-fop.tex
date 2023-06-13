@@ -1,3 +1,8 @@
+% TODO too many synonyms used in this lecture
+% feature module, collaboration, layer
+% feature-oriented programming, collaboration-based design, mixin-based inheritance
+% ...
+
 \subsection{Motivation}
 
 \begin{frame}[label=MotivationFOPandAOP]{Motivation}
@@ -110,7 +115,7 @@
 			\end{itemize}
 		\end{definition}
 		\begin{definition}{Class Refinement}
-			A class refinement (keyword refines) can add new members to a class and extend existing methods. 
+			A class refinement (keyword \emph{refines}) can add new members to a class and extend existing methods. 
 		\end{definition}
 		\begin{definition}{Composer}
 			\begin{itemize}
@@ -185,11 +190,11 @@ class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}[fragile]{Jak: Class Refinement -- New Members}
+\begin{frame}[fragile]{Jak: Class Refinement -- New Members} % TODO copied slide content on next slide
 	\myframeicon{\picDark[width=25mm]{fop-vertical}}
 	\begin{mycolumns}[animation=none]
-		\begin{definition}{Mixin-Based Inheritance}
-			Subclasses, called mixins, are abstract in the sense that they can be applied to \emph{different} concrete superclasses.
+		\begin{definition}{Mixin-Based Inheritance} % TODO confusing term. it is neither a mixin, nor inheritance.
+			Subclasses are abstract in the sense that they can be applied to \emph{different} concrete superclasses.
 		\end{definition}
 		\begin{definition}{Refinement Chain}
 			A refinement chain is a linear inheritance chain where the bottom-most class of the chain is the only class that is meant to be instantiated.

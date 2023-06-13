@@ -284,14 +284,14 @@ aspect A1 {
 
 \subsection{Executing Additional Code}
 
-\begin{frame}[b,fragile]{Advice}
+\begin{frame}[b,fragile]{Advice (Pieces of Advice)}
 	\vspace{-12mm}
 	\begin{mycolumns}[widths={38}]
 		\begin{note}{}
 			\begin{itemize}
 				\item Additional code before, after or instead of the join point: \emph{before}, \emph{after}, \emph{around}
 				\item Around-Advice allows to continue the original join point using the keyword proceed
-				\item Keyword \emph{proceed} corresponds to keyword \emph{original/super} in FOP
+				\item Keyword \emph{proceed} corresponds to \emph{original/Super} in FOP and \emph{super} in OOP
 			\end{itemize}
 		\end{note}
 	\mynextcolumn
@@ -310,7 +310,7 @@ aspect AdviceTest {
 	}
 	@void around()@: execution(void Test2.foo()) {
 		System.out.println("around begin");
-		proceed();
+		@proceed();@
 		System.out.println("around end");
 	}
 	@after() returning ()@: execution(void Test2.foo()) {
@@ -320,7 +320,7 @@ aspect AdviceTest {
 		System.out.println("after foo() throwing "+e);
 	}
 }
-\end{codetight}
+\end{codetight} % TODO add keywords to listings: aspect, original, Super, proceed, execution, before, after, around, ...
 	\end{mycolumns}
 \end{frame}
 
