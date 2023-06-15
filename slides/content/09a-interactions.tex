@@ -5,7 +5,7 @@
 
 \begin{frame}{An Interaction when Customizing Clothes}
 	\begin{mycolumns}[widths={66}]
-		\includegraphics[width=\linewidth,page=14,trim=30 35 210 105,clip]{2021/2021-09-08-SPLC-Keynote}
+		\mywhite{}{\pic[width=\linewidth,page=14,trim=30 35 210 105,clip]{2021/2021-09-08-SPLC-Keynote}}
 	\mynextcolumn
 		\begin{example}{Customization of Clothes}
 			\begin{itemize}
@@ -18,24 +18,24 @@
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
-	\begin{mycolumns}%[widths={40,40}]
+	\begin{mycolumns}
 		\begin{exampletight}{The Problem: Unwanted Interaction of Colors}
-			\centering\includegraphics[width=.9\linewidth,page=15,trim=70 35 385 105,clip]{2021/2021-09-08-SPLC-Keynote}
+			\centering\pic[width=.9\linewidth,page=15,trim=70 35 385 105,clip]{2021/2021-09-08-SPLC-Keynote}
 		\end{exampletight}
 	\mynextcolumn
 		\begin{exampletight}{The Solution: Choose Other Colors}
-			\centering\includegraphics[width=.9\linewidth,page=15,trim=385 35 70 105,clip]{2021/2021-09-08-SPLC-Keynote}
+			\centering\pic[width=.9\linewidth,page=15,trim=385 35 70 105,clip]{2021/2021-09-08-SPLC-Keynote}
 		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
 	\begin{mycolumns}
 		\begin{exampletight}{The Problem: Unwanted Interaction of Colors}
-			\centering\includegraphics[width=\linewidth,page=16,trim=50 60 360 130,clip]{2021/2021-09-08-SPLC-Keynote}
+			\centering\pic[width=\linewidth,page=16,trim=50 60 360 130,clip]{2021/2021-09-08-SPLC-Keynote}
 		\end{exampletight}
 	\mynextcolumn
 		\begin{exampletight}{The Solution: Choose Other Colors}
-			\centering\includegraphics[width=\linewidth,page=16,trim=360 60 50 130,clip]{2021/2021-09-08-SPLC-Keynote}
+			\centering\pic[width=\linewidth,page=16,trim=360 60 50 130,clip]{2021/2021-09-08-SPLC-Keynote}
 		\end{exampletight}
 	\end{mycolumns}
 	\uncover<3->{\begin{note}{}
@@ -46,8 +46,8 @@
 
 \begin{frame}{An Interaction of Android Apps}
 	\begin{mycolumns}[widths={67},animation=none]
-		\only<1-2|handout:0>{\includegraphics[width=\linewidth,page=11,trim=40 30 280 100,clip]{2021/2021-09-08-SPLC-Keynote}}%
-		\only<3->{\includegraphics[width=\linewidth,page=11,trim=40 30 40 100,clip]{2021/2021-09-08-SPLC-Keynote}}%
+		\mywhite{}{\only<1-2|handout:0>{\pic[width=\linewidth,page=11,trim=40 30 280 100,clip]{2021/2021-09-08-SPLC-Keynote}}%
+		\only<3->{\pic[width=\linewidth,page=11,trim=40 30 40 100,clip]{2021/2021-09-08-SPLC-Keynote}}}%
 		\only<4->{\begin{note}{}%
 			\centering which of those 3.5 million Android apps interact?\\where to document?\\whom to blame?%
 		\end{note}}%
@@ -67,7 +67,7 @@
 % TODO add links to keynote?
 
 %\begin{frame}{Can We Trust Our Scans?}
-%	\centering\includegraphics[width=\linewidth,page=28,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
+%	\centering\pic[width=\linewidth,page=28,trim=40 30 40 70,clip]{2021/2021-09-08-SPLC-Keynote}
 %\end{frame}
 % TODO add scanner example? is it really dependent on multiple options? or only on one particular setting
 
@@ -81,12 +81,10 @@ with the individual features involved.}
 
 			for short: interaction
 		\end{definition}
-		\begin{definition}{Unintended Interaction\mysource{\fospl\mypage{214}}}
-			\mycite{An \emph{inadvertent feature interaction} occurs when a feature influences the
-behavior of another feature in an unexpected way (for example, regarding the
-expected control flow, program or data state, or visible behavior).}
+		\begin{definition}{Inadvertent Interaction\mysource{\fospl\mypage{214}}}
+			\mycite{An \emph{inadvertent feature interaction} occurs when a feature influences the behavior of another feature in an unexpected way (for example, regarding the expected control flow, program or data state, or visible behavior).}
 
-			here: wanted vs unwanted (inadvertent)
+			here simplified as: wanted vs unwanted
 		\end{definition}
 	\mynextcolumn
 		\begin{definition}{Feature-Interaction Problem\mysource{\fospl\mypage{214}}}
@@ -127,9 +125,9 @@ expected control flow, program or data state, or visible behavior).}
 
 \subsection{Example Interactions with Preprocessors}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={75}]
-		\only<1|handout:0>{\includegraphics[width=\linewidth,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
-		\only<2->{\includegraphics[width=\linewidth,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
+	\begin{mycolumns}[widths={70}]
+		\only<1|handout:0>{\pic[width=\linewidth,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
+		\only<2->{\pic[width=\linewidth,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
 	\mynextcolumn
 		\begin{example}{No Interaction?}\setlength\leftmargini{3mm}
 			\begin{itemize}
@@ -141,8 +139,8 @@ expected control flow, program or data state, or visible behavior).}
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={75}]
-		\includegraphics[width=\linewidth,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\begin{mycolumns}[widths={70}]
+		\pic[width=\linewidth,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{example}{Static Interaction}\setlength\leftmargini{3mm}
 			\begin{itemize}
@@ -155,8 +153,8 @@ expected control flow, program or data state, or visible behavior).}
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={75}]
-		\includegraphics[width=\linewidth,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
+	\begin{mycolumns}[widths={70}]
+		\pic[width=\linewidth,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{example}{Other Static Interaction}\setlength\leftmargini{3mm}
 			\begin{itemize}
@@ -170,7 +168,7 @@ expected control flow, program or data state, or visible behavior).}
 \end{frame}
 \begin{frame}{\myframetitle}\setlength\leftmargini{3mm}
 	\begin{mycolumns}[widths={70}]
-		\includegraphics[width=\linewidth,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
+		\pic[width=\linewidth,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
 	\mynextcolumn
 		\begin{example}{Dynamic Interaction?}
 			\begin{itemize}
@@ -226,7 +224,7 @@ expected control flow, program or data state, or visible behavior).}
 
 \begin{frame}{Interaction on Data and Control Flow \mytitlesource{\essentialconfigurationcomplexity}}\setlength\leftmargini{3mm}
 	\begin{mycolumns}[widths={70}]
-		\essentialconfigurationcomplexitylink{\includegraphics[width=\linewidth,page=2,trim=55 495 225 75,clip]{2016/2016-ASE-Meinicke}}
+		\mywhite{}{\essentialconfigurationcomplexitylink{\pic[width=\linewidth,page=2,trim=55 495 225 75,clip]{2016/2016-ASE-Meinicke}}}
 	\mynextcolumn
 		\begin{note}{How do Features Interact?}
 			\begin{itemize}
@@ -241,7 +239,7 @@ expected control flow, program or data state, or visible behavior).}
 	\end{mycolumns}	
 \end{frame}
 \begin{frame}{Execution Traces in Configurable Systems \mytitlesource{\essentialconfigurationcomplexity}}
-	\essentialconfigurationcomplexitylink{\includegraphics[width=\linewidth,page=8,trim=55 520 55 55,clip]{2016/2016-ASE-Meinicke}}
+	\mywhite{}{\essentialconfigurationcomplexitylink{\pic[width=.95\linewidth,page=8,trim=55 520 55 55,clip]{2016/2016-ASE-Meinicke}}}
 
 	\begin{note}{}
 		\centering insights: not all features interact. some statements may lead to higher interactions than others.

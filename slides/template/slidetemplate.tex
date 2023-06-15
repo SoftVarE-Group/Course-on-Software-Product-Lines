@@ -185,3 +185,37 @@
 % \setbeamertemplate{enumerate item}{\makebox[.5\labelwidth][l]{\insertenumlabel.}}
 
 % TODO add reference slide at the end for picture licenses
+
+% ENVIRONMENTS FOR PICTURES NOT READY FOR DARKMODE
+
+\newcommand{\mywhite}[2]{
+	\begin{tcolorbox}[title=#1,colback=white,colframe=white,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
+\newcommand{\mydefinitionwhite}[2]{
+	\begin{tcolorbox}[title=#1,colback=white,colframe=orange!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
+\newcommand{\myexamplewhite}[2]{
+	\begin{tcolorbox}[title=#1,colback=white,colframe=blue!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
+
+\newcommand{\mynotewhite}[2]{
+	\begin{tcolorbox}[title=#1,colback=white,colframe=red!30,coltitle=black,fonttitle=\bfseries,left=0mm,right=0mm,top=0mm,bottom=0mm]
+		\begin{flushleft}
+			#2
+		\end{flushleft}
+	\end{tcolorbox}
+}
