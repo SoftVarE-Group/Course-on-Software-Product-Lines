@@ -1,42 +1,55 @@
-% skype+baby monitor
-% beamer+notebook
-% esp+abs: both control brakes and motor
 \subsection{Examples for Feature Interactions}
 
+% TODO more ideas for examples
+% beamer+notebook
+% esp+abs: both control brakes and motor
+
 \begin{frame}{An Interaction when Customizing Clothes}
-	\begin{mycolumns}[widths={66}]
-		\mywhite{}{\pic[width=\linewidth,page=14,trim=30 35 210 105,clip]{2021/2021-09-08-SPLC-Keynote}}
-	\mynextcolumn
+	\begin{mycolumns}[widths={33},animation=none]
 		\begin{example}{Customization of Clothes}
 			\begin{itemize}
-			\item platforms such as Spreadshirt
-			\item store preselects clothes with certain colors
+			\item platforms to create and buy clothes
+			\item creator preselects clothes with certain colors
 			\item customization with pictures in different colors
 			\item where is the problem?
 			\end{itemize}
 		\end{example}
+	\mynextcolumn
+		\mywhite{uulm Shop \mysource{\href{https://uulm.myspreadshop.de/collections}{myspreadshop.de}}}{
+			\pic[height=40mm]{spreadshirt-shop-2}
+			\hfill
+			\pic[height=40mm]{spreadshirt-shop-3}
+		} % TODO exampletight with white background in darkmode
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
 	\begin{mycolumns}
 		\begin{exampletight}{The Problem: Unwanted Interaction of Colors}
-			\centering\pic[width=.9\linewidth,page=15,trim=70 35 385 105,clip]{2021/2021-09-08-SPLC-Keynote}
+			~
+
+			\centering\picDark[height=50mm]{spreadshirt-email-1}
+
+			~
 		\end{exampletight}
 	\mynextcolumn
 		\begin{exampletight}{The Solution: Choose Other Colors}
-			\centering\pic[width=.9\linewidth,page=15,trim=385 35 70 105,clip]{2021/2021-09-08-SPLC-Keynote}
+			~
+
+			\centering\picDark[height=50mm]{spreadshirt-email-4}
+
+			~
 		\end{exampletight}
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
 	\begin{mycolumns}
-		\begin{exampletight}{The Problem: Unwanted Interaction of Colors}
-			\centering\pic[width=\linewidth,page=16,trim=50 60 360 130,clip]{2021/2021-09-08-SPLC-Keynote}
-		\end{exampletight}
+		\mywhite{The Problem: Unwanted Interaction of Colors}{
+			\centering\pic[height=45mm,trim=50 3550 690 3340,clip]{spreadshirt-order}
+		} % TODO exampletight with white background in darkmode
 	\mynextcolumn
-		\begin{exampletight}{The Solution: Choose Other Colors}
-			\centering\pic[width=\linewidth,page=16,trim=360 60 50 130,clip]{2021/2021-09-08-SPLC-Keynote}
-		\end{exampletight}
+		\mywhite{The Solution: Choose Other Colors}{
+			\centering\pic[height=45mm,trim=50 3255 690 3635,clip]{spreadshirt-order}
+		} % TODO exampletight with white background in darkmode
 	\end{mycolumns}
 	\uncover<3->{\begin{note}{}
 		\centering seems that contrast is checked for each order (cf.\ application engineering)\\and not for each published design (cf.\ domain engineering)
@@ -64,6 +77,7 @@
 		\end{example}
 	\end{mycolumns}
 \end{frame}
+% TODO use pictures directly, add picture showing all apps
 % TODO add links to keynote?
 
 %\begin{frame}{Can We Trust Our Scans?}
@@ -200,7 +214,7 @@ with the individual features involved.}
 			\begin{itemize}
 				\item wanted and unwanted interactions
 				\item static and dynamic interactions
-				\item one-wise interactions (interaction of features with the base code)
+				\item one-wise interactions (interaction of features with the base code and faulty features)
 				\item pair-wise interactions (between two features)
 				\item higher-order interactions (between more than two features)
 			\end{itemize}
