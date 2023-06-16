@@ -1,3 +1,5 @@
+% TODO there is too much information in this part. simply repeating slides is probably not such a good idea. one compromise could be to eliminate all discussion slides and rather present this information only in form of tables
+
 \subsection{Recap: Runtime Variability}
 \againframe<2>{GraphWithGlobalVariables}
 \againframe<2>{SPLwithPreferenceDialogsCommandLineOptionsConfigurationFiles}
@@ -63,7 +65,7 @@
 	\newcommand{\myexception}[1]{\tiny{}(#1)}
 	\begin{tabular}{p{32mm}p{32mm}p{14mm}p{27mm}p{14mm}}
 		 & Compile-Time Variability & Features & Product Generation & Feature \mbox{Traceability} \pause\\\rowcolor{gray}
-		Runtime Variability & no \myexception{very limited for immutable global variables} & yes & yes \mbox{\myexception{except for preference dialogs}} & no \pause\\
+		Runtime Variability & no \myexception{very limited for immutable global variables} & only fine grained & yes \mbox{\myexception{except for preference dialogs}} & no \pause\\
 		Clone-and-Own & yes \linebreak\myexception{only for implemented products} & no & no \myexception{limited generation for clone-and-own with build systems} & no \pause\\\rowcolor{gray}
 		\mbox{Build Systems} \mbox{\myexception{for Conditional Compilation}} & yes & only coarse grained & yes & with tool support \pause\\
 		Preprocessors \mbox{\myexception{for Conditional Compilation}} & yes & only fine grained & yes & with tool support \pause\\\rowcolor{gray}
