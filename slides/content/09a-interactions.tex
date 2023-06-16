@@ -113,13 +113,13 @@ with the individual features involved.}
 		\only<2|handout:0>{\pic[width=\linewidth]{toast2}}%
 		\only<3-|handout:1>{\pic[width=\linewidth]{toast3}}%
 		\uncover<5->{\begin{example}{}
-			\centering no interaction for two toasts (i.e., \emph{$T_1 \pand T_2$} shown) and for no toasts (i.e., $\pnot T_1 \pand \pnot T_2$ not shown)}
-		\end{example}
+			\centering no interaction for two toasts (i.e., \emph{$T_1 \pand T_2$} shown) and for no toasts (i.e., $\pnot T_1 \pand \pnot T_2$ not shown)
+		\end{example}}
 	\mynextcolumn
 		\only<4->{\pic[width=\linewidth]{toast4}}%
 		\uncover<6->{\begin{example}{}
-			\centering unwanted interaction for one toast\\(i.e., \emph{$T_1 \pand \pnot T_2$} shown and  $\pnot T_1 \pand T_2$ not shown)}
-		\end{example}
+			\centering unwanted interaction for one toast\\(i.e., \emph{$T_1 \pand \pnot T_2$} shown and  $\pnot T_1 \pand T_2$ not shown)
+		\end{example}}
 	\end{mycolumns}
 \end{frame}
 
@@ -205,7 +205,7 @@ with the individual features involved.}
 				\item higher-order interactions (between more than two features)
 			\end{itemize}
 		\end{definition}
-		\begin{example}{Variability Bug Database\mysource{\VBDb}}
+		\uncover<2->{\begin{example}{Variability Bug Database\mysource{\VBDb}}
 			\begin{itemize}
 				\item database of known feature interactions
 				\item operating system Linux (43 interactions)
@@ -213,7 +213,7 @@ with the individual features involved.}
 				\item system tool Busybox (18)
 				\item 3D printer firmware Marlin (14)
 			\end{itemize}
-		\end{example}
+		\end{example}}
 	\mynextcolumn
 		\begin{exampletight}{Patterns of Feature Interactions\mysource{\VBDb}}
 			\pic[width=\linewidth]{variabilitybugdatabase-patterns}

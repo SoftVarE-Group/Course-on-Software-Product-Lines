@@ -1,34 +1,20 @@
-%\subsection{Recap: Size of Configuration Spaces}
-%\subsection{Costs of Variability}
-%\subsection{Common Interaction Patterns}
-%% here or together with Variability Bug Database?
-%\subsection{Interactions on Data and Control Flow}
-%% MWK+:ASE16
-%\subsection{Interactions in Automotive Product Lines}
-\subsection{Reduction of Variants as Solution}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[forget]
-		\pic[width=\linewidth]{ford-t-1910}
-	\mynextcolumn
-		\begin{note}{Henry Ford, 1909}
-			\mycite{Any customer can have a car painted any color that he wants so long as it is black.}
-		\end{note}
-		\begin{example}{Why only black?\mysource{\fospl}}
-			\begin{itemize}
-				\item black color dried faster
-				\item faster production
-				\item more products and cheaper production
-			\end{itemize}
-		\end{example}
-	\end{mycolumns}
-\end{frame}
+% TODO \subsection{Recap: Size of Configuration Spaces}
 
-%\subsection{In Practice: Increase of Features and Variants}
+% TODO \subsection{Recap: Increase of Features and Variants}
 % features: Linux
 % variants: Automotive02-05, KfW?
+
+% TODO number of potential interactions?
+
+% TODO variant reduction, prevent the explosion. marketing wants them all. engineering and quality assurance too expensive.
+
+%\subsection{Domain Scoping Revisited}
+
+%\subsection{Costs of Variability}
+
 \subsection{The Choice of Features}
-\begin{frame}{Choose Features Wisely}
-	\begin{mycolumns}[forget]
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}
 		\begin{exampletight}{John Ferguson Smart (2017)}
 			\picDark[width=.98\linewidth,angle=2,trim=0 0 5 0,clip]{unnecessary-features}
 		\end{exampletight}
@@ -45,6 +31,23 @@
 	\end{mycolumns}
 \end{frame}
 
+\begin{frame}{\myframetitle}
+	\begin{mycolumns}[animation=none]
+		\pic[width=\linewidth]{ford-t-1910}
+	\mynextcolumn
+		\begin{note}{Henry Ford, 1909} % TODO source for this quote missing
+			\mycite{Any customer can have a car painted any color that he wants so long as it is black.}
+		\end{note}
+		\uncover<2->{\begin{example}{Why only black?\mysource{\fospl}}
+			\begin{itemize}
+				\item black color dried faster
+				\item faster production
+				\item more products and cheaper production
+			\end{itemize}
+		\end{example}}
+	\end{mycolumns}
+\end{frame}
+
 \subsection{Documentation of Interactions}
 
 \subsubsection*{Incompatibilities of Lenovo Hardware}
@@ -57,7 +60,7 @@
 				\item what to document?
 			\end{itemize}
 		\end{note}
-		\begin{example}{Lenovo's Option Compatibility Matrices}
+		\uncover<2->{\begin{example}{Lenovo's Option Compatibility Matrices}
 			\begin{itemize}
 				\item 7 Excel files for current products (+ archive for old products)
 				\item Excel file for computers contains 32 tables (series)
@@ -65,7 +68,7 @@
 				\item 14k cells contain $>400$ different footnotes
 				\item a footnote explains one incompatibility
 			\end{itemize}
-		\end{example}
+		\end{example}}
 	\mynextcolumn
 		\mywhite{}{\pic[width=\linewidth,page=22,trim=360 20 40 20,clip]{2021/2021-09-08-SPLC-Keynote}}
 	\end{mycolumns}
@@ -98,13 +101,3 @@
 		\end{example}
 	\end{mycolumns}
 \end{frame}
-
-% TODO \subsection{Number of Features in Linux}
-%\begin{frame}{\myframetitle\ \mytitlesource{\href{https://www4.cs.fau.de/Ausarbeitung/MA-I4-2015-04-Hengelein.pdf}{Hengelein 2015}}}
-%	\partofpage{70}{
-%		% TODO \myexampletight{{2005--2015: Number of Features Tripled}}{\pic[width=\linewidth]{linux-features}}
-%	}
-%\end{frame}
-
-% TODO variant reduction, prevent the explosion. marketing wants them all. engineering and quality assurance too expensive.
-

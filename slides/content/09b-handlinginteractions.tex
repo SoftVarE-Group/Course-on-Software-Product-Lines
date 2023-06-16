@@ -15,7 +15,7 @@
 \subsection{Motivation}
 
 \begin{frame}{Handling/Implementing Feature Interactions}
-	\begin{mycolumns}[animation=none]
+	\begin{mycolumns}
 		\begin{note}{Assumptions}
 			\begin{itemize}
 				\item Interacting features have been already identified
@@ -47,12 +47,15 @@
 		}
 
 		~
-		\begin{note}{Optional-Feature Problem}
+		\only<1>{\begin{note}{}
+			What is the problem?
+		\end{note}}
+		\only<2->{\begin{note}{Optional-Feature Problem}
 			\begin{itemize}
 				\item Domain view: $Weighted$ and $ShortestPath$ can be deliberately selected independent of each other.
 				\item Implementation view: $ShortestPath$ requires $Weighted$ due to an implementation dependency.
 			\end{itemize}
-		\end{note}
+		\end{note}}
 	\mynextcolumn
 \begin{codetight}{Feature Module BasicGraph}
 class Edge {
@@ -78,7 +81,7 @@ refines class Graph {
 \end{frame}
 % TODO refines keyword not highlighted
 
-\begin{frame}{Handling/Implementing Feature Interactions: General Goals}
+\begin{frame}{Handling Feature Interactions: General Goals}
 	\begin{note}{Question}
 		What makes a good strategy to implement coordination code for feature interactions (while solving/avoiding the optional-feature problem)?
 	\end{note}
