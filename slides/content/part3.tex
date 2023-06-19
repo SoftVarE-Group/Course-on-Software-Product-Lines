@@ -165,7 +165,7 @@
 \author{Thomas Thüm, Sebastian Krieter, Timo Kehrer, Elias Kuiter}
 \lecture{Product-Line Testing}{testing}
 
-\begin{frame}{Recap: Quality Assurance \mytitlesource{\ludewiglichter}}
+\begin{frame}{Recap: Quality Assurance \deutschertitel{Qualitätssicherung} \mytitlesource{\ludewiglichter}}
 	\begin{mycolumns}[widths={60},animation=none]
 		%\only<1|handout:0>{\includegraphics[width=\linewidth,page=1]{quality-assurance}}%
 		\only<1|handout:0>{\includegraphics[width=\linewidth,page=8]{quality-assurance}}%
@@ -175,13 +175,12 @@
 		\only<5-|handout:0>{\includegraphics[width=\linewidth,page=7]{quality-assurance}}%
 	\mynextcolumn
 		\begin{note}{Lectures on Quality Assurance}
-			how to \emph{avoid} variability bugs (esp. feature interactions) \ldots
+			how to \emph{avoid} variability bugs\\(esp. feature interactions) \ldots
 			\begin{itemize}
 				\item<+-> with processes\mysource{\lectureprocess}\\(e.g., domain scoping)
 				\item<+-> with guidelines\mysource{\lectureinteractions}
 			\end{itemize}
-
-			how to \emph{find} variability bugs \ldots
+			\visible<3->{how to \emph{find} variability bugs \ldots}
 			\begin{itemize}
 				\item<+-> \emph{statically}\mysource{\lectureanalyses}
 				\item<+-> \emph{dynamically}\mysource{\lecturetesting}\\
@@ -216,7 +215,7 @@
 \input{content/11b-cit}
 \lessonslearned{
 	\item recap on black-box testing and test-case design
-	\item combinatorial interation testing: pairwise testing, t-wise testing
+	\item combinatorial interaction testing: pairwise testing, t-wise testing
 	\item efficiency: number of configurations, time to compute sample
 	\item effectiveness: percentage of found defects
 }{
@@ -242,7 +241,11 @@
 
 % TODO Thomas: add exam questions here
 \faq{
-	\item \ldots
+	\item What is the goal of quality assurance?
+	\item What is software testing?
+	\item Why is testing software product lines challenging?
+	\item What are advantages and disadvantages of testing only one configuration?
+	\item What is a sample?
 }{
 	\item \ldots
 }{
