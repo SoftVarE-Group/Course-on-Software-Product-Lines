@@ -1,21 +1,22 @@
 % TODO famous example for a product line failure?
 
 \subsection{Recap: Software Testing}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{}}
 	\begin{mycolumns}
 		\uncover<1->{
-			\begin{definition}{Software Testing \mysource{\sommerville}}
+			\begin{definition}{Software Testing \mysource{\sommerville}}\vspace{-1.5ex}
 				\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}
 			\end{definition}
 		}
 		\uncover<2->{
-			\begin{definition}{Validation Testing \mysource{\sommerville}}
+			\begin{definition}{Validation Testing \mysource{\sommerville}}\vspace{-1.5ex}
 				\mycite{Demonstrate to the developer and the customer that the software meets its requirements.}
 			\end{definition}
 		}
 		\uncover<3->{
-			\begin{definition}{Defect Testing \mysource{\sommerville}}
+			\begin{definition}{Defect Testing \mysource{\sommerville}}\vspace{-1.5ex}
 				\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}
+				
 			\end{definition}
 		}
 	\mynextcolumn
@@ -33,7 +34,7 @@
 			\end{note}
 		}
 		\uncover<5->{
-			\begin{note}{Manual vs Automated Testing \mysource{\sommerville}}
+			\begin{note}{Manual vs Automated Testing \mysource{\sommerville}}\vspace{-1.5ex}
 				\mycite{In \emph{manual testing}, a tester runs the program with some test data and
 				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.}
 			\end{note}
@@ -41,10 +42,43 @@
 	\end{mycolumns}
 \end{frame}
 
+\subsection{Test-Case Design in Single-System Engineering}
+\begin{frame}{Recap: Test-Case Design \deutschertitel{Testfallentwurf}}
+	\begin{mycolumns}
+		\begin{definition}{Systematic Test \mysource{\ludewiglichter}}
+			A systematic test is a test, in which
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item[1.] the setup is defined,
+				\item[2.] the inputs are chosen systematically,
+				\item[3.] the results are documented and evaluated by criteria being defined prior to the test. 
+			\end{itemize}
+		\end{definition}
+		\pause
+		\begin{definition}{Test Case \mysource{\ludewiglichter}}
+			In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
+		\end{definition}
+	\mynextcolumn
+		\pause
+		\begin{note}{Goal \mysource{\ludewiglichter}}%
+			Detect a large number of failures with a low number of test cases. A test case (execution) is \emph{positive}, if it detects a failure, and \emph{successful} if it detects an unknown failure.
+		\end{note}
+		\pause
+		\begin{definition}{An ideal test case is \ldots \mysource{\ludewiglichter}}
+			\begin{itemize}
+				\setlength\itemsep{.1em}
+				\item representative: represents a large number of feasible test cases
+				\item failure sensitive: has a high probability to detect a failure
+				\item non-redundant: does not check what other test cases already check
+			\end{itemize}
+		\end{definition}
+	\end{mycolumns}
+\end{frame}
+
 % TODO recap analysis strategies for product lines and discuss why feature based and family based is typically not feasible for testing
 
 \subsection{Testing All Configurations}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{}}
 	\begin{mycolumns}[forget]
 		\centering\featureDiagramConfigurableDatabase
 		
@@ -85,20 +119,23 @@
 		\begin{note}{Discussion}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
-				\item only feasible for small product lines (few valid configurations)
+				\item only feasible for \emph{small} product lines\\(few valid configurations)
 				\item redundant test effort
-				\item large product lines: not even feasible to generate and compile all configurations
-				\item (some) large product lines: not even the number of valid configurations is known
+				\vspace*{1ex}
+				\item large product lines: not feasible to generate and compile all configurations
+				\begin{itemize}
+					\item (some) large product lines: even number of valid configurations is unknown
+				\end{itemize}
 			\end{itemize}
 		\end{note}
 	\end{mycolumns}
 \end{frame}
 
 \begin{frame}{Recap: Feature Model of the Linux Kernel}
-	\vspace{28mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,page=1,trim=100 510 100 170,clip]{2020/2020-SPLC-Thuem}}
+	\vspace{1mm}~\hspace{-15mm}\href{https://dl.acm.org/doi/abs/10.1145/3382025.3414943}{\includegraphics[width=1.2\linewidth,page=1,trim=100 510 100 170,clip]{2020/2020-SPLC-Thuem}}
 \end{frame}
 
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{}}
 	\begin{mycolumns}[widths={60}]
 		\begin{exampletight}{Recap: Industrial Configuration Spaces\mysource{\lectureintroduction}}
 			\centering\evaluatingsharpsatsolverslink{\includegraphics[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
@@ -109,6 +146,7 @@
 			\end{note}
 		}
 	\mynextcolumn
+		\vspace{-7mm}
 		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\includegraphics[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
 		\vspace{-7mm}
 		
@@ -122,7 +160,7 @@
 \newcommand{\eemph}[1]{{\color{red}\textbf{#1}}}
 
 \subsection{Testing One Configuration}
-\begin{frame}[b]{\myframetitle}
+\begin{frame}[b]{\myframetitle{}}
 	\begin{mycolumns}[b]
 		\centering\featureDiagramConfigurableDatabase
 		
@@ -164,10 +202,11 @@
 			\begin{itemize}
 				\setlength\itemsep{.4em}
 				\item applicable to large product lines
-				\item no redundant test effort (from configurations)
-				\item often not feasible to test all features in one configuration (e.g., Win and Unix)
 				\item strategy in practice: all-yes-config (configuration with many features selected)
-				\item unnoticed feature interactions\mysource{\lectureinteractions}
+				\item no redundant test effort (from configurations)
+				\vspace*{1ex}
+				\item often unfeasible to test all features wit a single configuration (e.g., \texttt{Windows} and \texttt{Linux})
+				\item[$\Rightarrow$] unnoticed feature interactions\mysource{\lectureinteractions}
 			\end{itemize}
 		\end{note}
 		\pause
@@ -178,12 +217,12 @@
 \end{frame}
 
 \subsection{Sample-Based Testing}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{} \deutschertitel{Stichprobenbasiertes Testen}}
 	\begin{mycolumns}
 		\begin{definition}{Intuition}
 			\begin{itemize}
-				\item to analyze the product line, just analyze \emph{some sample products}
-				\item sample \deutsch{Stichprobe} refers to subset of all valid configurations
+				\item to analyze the product line, just analyze \emph{some products}
+				\item sample \deutsch{Stichprobe} refers to a subset of all valid configurations
 				\item common technique to test a product line
 				\item sample configurations chosen by experts, randomly, or systematically
 			\end{itemize}
@@ -191,9 +230,9 @@
 		\pause
 		\begin{note}{Advantages and Challenges}
 			\begin{itemize}
-				\item lower effort than testing all configurations
-				\item higher chance to detect defects than testing one configuration
-				\item challenge: how many configurations to test? which configurations to test?
+				\item[+] lower effort than testing all configurations
+				\item[+] higher chance to detect defects than testing one configuration
+				\item[--] how many configurations to test? which configurations to test?
 			\end{itemize}
 		\end{note}
 	\mynextcolumn

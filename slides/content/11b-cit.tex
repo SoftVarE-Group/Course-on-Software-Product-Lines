@@ -1,36 +1,3 @@
-\subsection{Test-Case Design in Single-System Engineering}
-\begin{frame}{Recap: Test-Case Design \deutschertitel{Testfallentwurf}}
-	\begin{mycolumns}
-		\begin{definition}{Systematic Test \mysource{\ludewiglichter}}
-			A systematic test is a test, in which
-			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item[1.] the setup is defined,
-				\item[2.] the inputs are chosen systematically,
-				\item[3.] the results are documented and evaluated by criteria being defined prior to the test. 
-			\end{itemize}
-		\end{definition}
-		\pause
-		\begin{definition}{Test Case \mysource{\ludewiglichter}}
-			In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
-		\end{definition}
-	\mynextcolumn
-		\pause
-		\begin{note}{Goal \mysource{\ludewiglichter}}
-			Detect a large number of failures with a low number of test cases. A test case (execution) is \emph{positive}, if it detects a failure, and \emph{successful} if it detects an unknown failure.
-		\end{note}
-		\pause
-		\begin{definition}{An ideal test case is \ldots \mysource{\ludewiglichter}}
-			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item representative: represents a large number of feasible test cases
-				\item failure sensitive: has a high probability to detect a failure
-				\item non-redundant: does not check what other test cases already check
-			\end{itemize}
-		\end{definition}
-	\end{mycolumns}
-\end{frame}
-
 \begin{frame}{Recap: Black-Box Testing \deutschertitel{Funktionstest}}
 	\begin{mycolumns}[widths={40}]
 		\begin{note}{Motivation \mysource{\ludewiglichter}}
@@ -72,7 +39,7 @@
 \end{frame}
 
 \subsection{Pairwise Interaction Testing}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{} \deutschertitel{Paarweises Interaktionstesten}}
 	\begin{mycolumns}
 		\begin{example}{Configurations with the Interaction Get $\wedge$ Put}
 			\footnotesize
@@ -127,14 +94,16 @@
 			\end{itemize}
 		\end{note}
 		\pause
-		\begin{definition}{Pairwise Interactions}
+		\begin{definition}{Pairwise Combinations}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
-				\item \emph{up-to} four interactions between $A$ and $B$
-				\item both selected: $A \wedge B$
-				\item one selected: $\neg A \wedge B$, $A \wedge \neg B$
-				\item none selected: $\neg A \wedge \neg B$
-			\end{itemize}
+				\item four combinations between $A$ and $B$
+				\begin{itemize}
+					\item both selected: $A \wedge B$
+					\item one selected: $\neg A \wedge B$ and $A \wedge \neg B$
+					\item none selected: $\neg A \wedge \neg B$
+				\end{itemize}
+				\end{itemize}
 		\end{definition}
 	\end{mycolumns}
 \end{frame}
@@ -148,69 +117,75 @@
 	{\redandgray{#6}$\neg #1 \wedge \neg #2$}\\
 }
 
-\begin{frame}{Pairwise Coverage}
+\begin{frame}{Pairwise Coverage \deutschertitel{Paarweise Überdeckung}}
 	\begin{mycolumns}[animation=none]
-		\centering\featureDiagramConfigurableDatabase
+		\centering
+		\only<1>{\featureDiagramConfigurableDatabase}%
+		\only<2>{\featureDiagramConfigurableDatabaseNoAbstract}%
+		\only<3->{\featureDiagramConfigurableDatabaseNoAbstractNoCore}
 
+		\pause
 		\begin{definition}{Interactions to Cover}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
-				\item exclude invalid combinations (e.g., $W \wedge L$)
-				\item exclude abstract features (e.g., $API$, $OS$)
-				\item exclude features contained in every configuration (e.g., $C$)
+				\item<2-> exclude abstract features (e.g., $API$, $OS$)
+				\item<3-> exclude features contained in every configuration (e.g., $C$)
+				\vspace*{1ex}
+				\item<4-> exclude invalid combinations (e.g., $W \wedge L$)
 			\end{itemize}
 			% TODO \todo{add formal definitions based on \lecturemodeling}
 		\end{definition}
 	\mynextcolumn
 		\vspace{-10mm}
+		\pause\pause
 		\begin{example}{Pairwise Interactions}
 			\centering\footnotesize\color{lightgray}
 			\begin{tabular}{llll}
-				\epair{G}{P}{3}{2}{1}{6}
-				\epair{G}{D}{2}{3}{1}{5}
-				\epair{G}{T}{3}{2}{1}{5}
-				\epair{G}{W}{4}{2}{1}{6}
-				\epair{G}{L}{2}{4}{6}{1}
-				\epair{P}{D}{1}{3}{2}{4}
-				\epair{P}{T}{1}{5}{6}{2}
-				\epair{P}{W}{1}{3}{4}{2}
-				\epair{P}{L}{3}{1}{2}{4}
-				\epair{D}{T}{1}{2}{3}{4}
-				\epair{D}{W}{1}{2}{4}{3}
-				\epair{D}{L}{2}{1}{3}{4}
-				\epair{T}{W}{1}{3}{4}{2}
-				\epair{T}{L}{3}{1}{2}{4}
-				& {\redandgray{1}$W \wedge \neg L$} & {\redandgray{2}$\neg W \wedge L$} & \\
+				\epair{G}{P}{7}{6}{5}{10}
+				\epair{G}{D}{6}{7}{5}{9}
+				\epair{G}{T}{7}{6}{5}{9}
+				\epair{G}{W}{8}{6}{5}{10}
+				\epair{G}{L}{6}{8}{10}{5}
+				\epair{P}{D}{5}{7}{6}{8}
+				\epair{P}{T}{5}{9}{10}{6}
+				\epair{P}{W}{5}{7}{8}{6}
+				\epair{P}{L}{7}{5}{6}{8}
+				\epair{D}{T}{5}{6}{7}{8}
+				\epair{D}{W}{5}{6}{8}{7}
+				\epair{D}{L}{6}{5}{7}{8}
+				\epair{T}{W}{5}{7}{8}{6}
+				\epair{T}{L}{7}{5}{6}{8}
+				& {\redandgray{5}$W \wedge \neg L$} & {\redandgray{6}$\neg W \wedge L$} & \\
 			\end{tabular} 
 		\end{example}
 		\begin{example}{Pairwise Coverage with Six Configurations}
 			\footnotesize\color{lightgray}
-			{\redandgray{1}$\{C,P,D,T,W\}$}\\
-			{\redandgray{2}$\{C,G,D,L\}$}\\
-			{\redandgray{3}$\{C,G,P,T,L\}$}\\
-			{\redandgray{4}$\{C,G,W\}$}\\
-			{\redandgray{5}$\{C,P,W\}$}\\
-			{\redandgray{6}$\{C,D,T,L\}$}\\
+			{\redandgray{5}$\{C,P,D,T,W\}$}\\
+			{\redandgray{6}$\{C,G,D,L\}$}\\
+			{\redandgray{7}$\{C,G,P,T,L\}$}\\
+			{\redandgray{8}$\{C,G,W\}$}\\
+			{\redandgray{9}$\{C,P,W\}$}\\
+			{\redandgray{10}$\{C,D,T,L\}$}\\
 		\end{example}
 	\end{mycolumns}
 \end{frame}
 % TODO use different colors for the different configurations (instead of separate handouts) + animation showing all pairs in the first place
 
 \subsection{T-Wise Interaction Testing}
-\begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={65}]
+\begin{frame}{\myframetitle{} \deutschertitel{T-Weises Interaktionstesten}}
+	\begin{mycolumns}[widths={60}]
 		\begin{definition}{T-Wise Interaction Testing}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
 				\item generalization of pairwise interaction testing
 				\item t-wise coverage: every t-wise interaction is covered by at least one configuration in the sample
-				\item t=1: every feature is selected and also deselected
-				\item t=2: pairwise interaction coverage
-				\item t=3: every combination of three features covered
+				\item $t=1$: every feature is selected and also deselected
+				\item $t=2$: pairwise interaction coverage
+				\item $t=3$: every combination of three features covered
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
-		\begin{example}{{T=3 Interactions}}
+		\begin{example}{{$t=3$ Interactions}}
 			for the features $G$, $P$, and $D$:
 
 			\begin{mycolumns}[animation=none]
@@ -229,7 +204,7 @@
 \end{frame}
 
 \subsection{Algorithms for Combinatorial Interaction Testing}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{} \deutschertitel{Algorithmen für kombinatorisches Interaktionstesten}}
 	\begin{mycolumns}[widths={63}]
 		\begin{definition}{A Greedy Algorithm}
 			idea: select configuration that cover most of the missing interactions in each step
@@ -266,7 +241,7 @@
 
 \subsection{Efficiency of Combinatorial Interaction Testing}
 %\subsection{Combinatorial Interaction Testing with ICPL}
-\begin{frame}{\myframetitle\ \mytitlesource{\icpl}}
+\begin{frame}{\myframetitle{} \deutschertitel{Algorithmen für kombinatorisches Interaktionstesten} \mytitlesource{\icpl}}
 	\begin{exampletight}{Assumption: All Features are Optional}
 		\centering\footnotesize\featureDiagramEightOptionalFeatures
 	\end{exampletight}
@@ -284,7 +259,7 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle\ \mytitlesource{\icpl}}
+\begin{frame}{\myframetitle{} \mytitlesource{\icpl}}
 	\begin{mycolumns}[forget]
 		\begin{exampletight}{Time in Minutes to Compute Sample}
 			\includegraphics[width=\linewidth,page=2]{cit-plots}
@@ -312,7 +287,7 @@
 % TODO distinguish testing efficiency and sampling efficiency
 
 \subsection{Effectiveness of Combinatorial Interaction Testing}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{}}
 	\begin{mycolumns}[forget]
 		\begin{exampletight}{Effectiveness of Interaction Testing \mysource{\href{https://ieeexplore.ieee.org/document/1321063}{Kuhn et al.\ 2004}}}
 			\includegraphics[width=\linewidth,page=1]{cit-plots}

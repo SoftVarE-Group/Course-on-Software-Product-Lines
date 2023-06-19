@@ -1,6 +1,6 @@
 \subsection{Coverage in Single-System Engineering}
-\begin{frame}{Recap: Coverage in White-Box Testing \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}[forget]
+\begin{frame}{Recap: Coverage in White-Box Testing{} \deutschertitel{Testüberdeckung für Strukturtests} \mytitlesource{\ludewiglichter}}
+	\begin{mycolumns}
 		\begin{definition}{White-Box Testing \deutsch{Strukturtest}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
@@ -15,8 +15,8 @@
 			\begin{itemize}
 				\setlength\itemsep{.1em}
 				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
-				\uncover<3->{\item[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised} % TODO not so easy to define as percentage
-				\uncover<4->{\item[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)}
+				\item<3->[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised % TODO not so easy to define as percentage
+				\item<4->[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)
 				% TODO discuss path coverage?
 			\end{itemize}
 		\end{definition}
@@ -37,22 +37,24 @@
 		\item<+-> both problems detected with pairwise coverage, but presence conditions are more complicated in practice
 		\item<+-> also: pairwise coverage often too much effort for large configuration spaces / continuous integration
 	\end{itemize}
-	\onslide<+->{\begin{definition}{\myframetitle\mysource{\tartlerconfigurationcoverage}}
-		every block selected for at least one configuration in the sample (cf.\ statement coverage)
+	\onslide<+->{\begin{definition}{\myframetitle{} \deutschertitel{Überdeckung von Ifdef-Blöcken} \mysource{\tartlerconfigurationcoverage}}
+	\begin{itemize}
+		\item every block selected for at least one configuration in the sample (cf.\ statement coverage)
+	\end{itemize}
 	\end{definition}}
 \end{frame}
 
 \subsection{Presence-Condition Coverage}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{} \deutschertitel{Presence-Condition-Überdeckung}}
 	\begin{mycolumns}[widths={48}]
 		\begin{definition}{Presence-Condition Coverage\mysource{\krieterpresenceconditioncoverage}}
 			\begin{itemize}
 				\item application of t-wise interaction testing to presence conditions
 				\item recap presence condition: formula specifying exactly those configurations under which a block is present
 				\item t-wise presence condition coverage: every t-wise interaction of presence conditions is covered by at least one configuration in the sample
-				\item t=1: every block is selected and also deselected (i.e., more than Tartler's coverage of ifdef blocks)
-				\item t=2: every combination of two blocks covered
-				\item t=3: every combination of three blocks covered
+				\item $t=1$: every block is selected and also deselected (i.e., more than Tartler's coverage of ifdef blocks)
+				\item $t=2$: every combination of two blocks covered
+				\item $t=3$: every combination of three blocks covered
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
@@ -85,14 +87,14 @@
 \end{frame}
 
 \subsection{Overview on Coverage Criteria}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{} \deutschertitel{Überblick über Überdeckungskriterien}}
 	\begin{definition}{Techniques \& Coverage Criteria \mysource{\samplingsurvey}}
 		\includegraphics[width=\linewidth,page=4,trim=50 100 310 610,clip]{2018/2018-SPLC-Varshosaz}
 	\end{definition}
 \end{frame}
 
 \subsection{Input for Sampling Algorithms}
-\begin{frame}{\myframetitle}
+\begin{frame}{\myframetitle{}}
 	\begin{mycolumns}
 		\begin{definition}{Input Data \mysource{\samplingsurvey}}
 			\includegraphics[width=\linewidth,page=3,trim=350 430 90 310,clip]{2018/2018-SPLC-Varshosaz}
@@ -101,12 +103,13 @@
 		\begin{example}{Domain Knowledge \mysource{\samplingsurvey}}
 			\begin{itemize}
 				\item except the feature model
-				\item e.g., configurations choosen by experts
+				\item e.g., configurations chosen by experts
 				\item e.g., feature model specialized prior to sampling
 			\end{itemize}
 		\end{example}
 	\mynextcolumn
-		\pause\vspace{-5mm}
+		\pause
+		\vspace{-5mm}
 		\begin{example}{Part 2: Combinatorial Interaction Testing}
 			\begin{itemize}
 				\item (Problem-Space Sampling)
