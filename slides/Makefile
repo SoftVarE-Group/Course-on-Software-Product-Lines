@@ -20,8 +20,8 @@ endif
 all: $(PDF_FILES)
 
 %.pdf: %.tex
-	latexmk -pdf -pdflatex='pdflatex %O -interaction=nonstopmode -synctex=1 -halt-on-error "\def\ismake{}$(def_handout)$(def_darkmode)\def\university{$(university)}\input{%S}"' $<
-	latexmk -c
+	latexmk -quiet -silent -pdf -pdflatex='pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error "\def\ismake{}$(def_handout)$(def_darkmode)\def\university{$(university)}\input{%S}"' $<
+	latexmk -quiet -silent -c $<
 	
 clean: *.tex
 	latexmk -C $?
