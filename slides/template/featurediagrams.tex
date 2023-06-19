@@ -14,7 +14,40 @@
 			[\subnode{Linux#1}{Linux},concrete]
 		]
 	}
+	$Transactions \pimplies Put \por Delete$
+}
 
+\newcommand{\featureDiagramConfigurableDatabaseNoAbstract}[1][]{
+	\featureDiagram{
+		\subnode{ConfigDB#1}{ConfigDB},concrete
+		[\subnode{API#1}{\textcolor{black!30}{API}},abstract,mandatory
+			[\subnode{Get#1}{Get},concrete,or]
+			[\subnode{Put#1}{Put},concrete]
+			[\subnode{Delete#1}{Delete},concrete]
+		]
+		[\subnode{Transactions#1}{Transactions},concrete,optional]
+		[\subnode{OS#1}{\textcolor{black!30}{OS}},abstract,mandatory
+			[\subnode{Windows#1}{Windows},concrete,alternative]
+			[\subnode{Linux#1}{Linux},concrete]
+		]
+	}
+	$Transactions \pimplies Put \por Delete$
+}
+
+\newcommand{\featureDiagramConfigurableDatabaseNoAbstractNoCore}[1][]{
+	\featureDiagram{
+		\subnode{ConfigDB#1}{\textcolor{black!30}{ConfigDB}},concrete
+		[\subnode{API#1}{\textcolor{black!30}{API}},abstract,mandatory
+			[\subnode{Get#1}{Get},concrete,or]
+			[\subnode{Put#1}{Put},concrete]
+			[\subnode{Delete#1}{Delete},concrete]
+		]
+		[\subnode{Transactions#1}{Transactions},concrete,optional]
+		[\subnode{OS#1}{\textcolor{black!30}{OS}},abstract,mandatory
+			[\subnode{Windows#1}{Windows},concrete,alternative]
+			[\subnode{Linux#1}{Linux},concrete]
+		]
+	}
 	$Transactions \pimplies Put \por Delete$
 }
 
