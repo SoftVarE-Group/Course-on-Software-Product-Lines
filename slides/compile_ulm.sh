@@ -1,21 +1,21 @@
 #! /bin/bash
 
-lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance" "advanced" "conclusion")
+lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")
 university=ulm
 
 make_lecture () {
     latexmk -quiet -silent -C ${TEXFILE}
     make ${lecture}.pdf university=${university} handout=n darkmode=n
     rm ${lecture}.*.vrb
-    mv ${lecture}.pdf ${lecture}_animated.pdf
+    mv -f ${lecture}.pdf ../../SPL-Slide-Archive/2023s-Ulm/animated/${lecture}.pdf
 
     make ${lecture}.pdf university=${university} handout=y darkmode=n
     rm ${lecture}.*.vrb
-    mv ${lecture}.pdf ${lecture}_handout.pdf
+    mv -f ${lecture}.pdf ../../SPL-Slide-Archive/2023s-Ulm/${lecture}.pdf
 
     make ${lecture}.pdf university=${university} handout=y darkmode=y
     rm ${lecture}.*.vrb
-    mv ${lecture}.pdf ${lecture}_handout_dark.pdf
+    cp -f ${lecture}.pdf ../../SPL-Slide-Archive/2023s-Ulm/${lecture}-dark.pdf
 }
 
 make_overview () {
@@ -33,12 +33,12 @@ make_overview () {
     latexmk -quiet -silent -pdf -pdflatex="$latexmk" spl.tex
     latexmk -quiet -silent -c spl.tex
     rm spl.*.vrb
-    mv spl.pdf spl_handout.pdf
+    mv -f spl.pdf ../../SPL-Slide-Archive/2023s-Ulm/spl.pdf
 
     latexmk="pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error \"\def\ismake{}\def\ishandout{}\def\isdarkmode{}\def\university{${university}}\input{%S}\""
     latexmk -quiet -silent -pdf -pdflatex="$latexmk" spl.tex
     latexmk -quiet -silent -c spl.tex
-    mv spl.pdf spl_handout_dark.pdf
+    cp -f spl.pdf ../../SPL-Slide-Archive/2023s-Ulm/spl-dark.pdf
     rm spl.*.vrb
     rm spl.tex
 }
@@ -47,15 +47,17 @@ make_recording () {
     latexmk -quiet -silent -C ${TEXFILE}
     make ${lecture}.pdf university=recording handout=n darkmode=y
     rm ${lecture}.*.vrb
-    mv ${lecture}.pdf ${lecture}_recording.pdf
+    mv -f ${lecture}.pdf ../../SPL-Slide-Archive/2023s-Recording/animated/${lecture}.pdf
 
     make ${lecture}.pdf university=recording handout=y darkmode=n
     rm ${lecture}.*.vrb
-    mv ${lecture}.pdf ${lecture}_recording_handout.pdf
+    cp -f ${lecture}.pdf ../../SPL-Slide-Archive/2023s-Recording/${lecture}.pdf
+    mv -f ${lecture}.pdf ../../SPL-Slides/2023st/${lecture}.pdf
 
     make ${lecture}.pdf university=recording handout=y darkmode=y
     rm ${lecture}.*.vrb
-    mv ${lecture}.pdf ${lecture}_recording_handout_dark.pdf
+    cp -f ${lecture}.pdf ../../SPL-Slide-Archive/2023s-Recording/${lecture}-dark.pdf
+    cp -f ${lecture}.pdf ../../SPL-Slides/2023st/${lecture}-dark.pdf
 }
 
 while getopts "lro" opt
@@ -91,6 +93,6 @@ else
     exit 1
 fi
 
-if test $is_make_lecture -gt 0; then make_lecture ; fi
 if test $is_make_recording -gt 0; then make_recording ; fi
+if test $is_make_lecture -gt 0; then make_lecture ; fi
 if test $is_make_overview -gt 0; then make_overview ; fi
