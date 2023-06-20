@@ -14,6 +14,7 @@
 *.vrb
 *.synctex*
 *.listing
+/slides/spl.tex
 /slides/*.pdf
 /pics/preprocessors/fortyproductlines-paper.pdf
 /pics/interactions/variabilitybugdatabase-paper.pdf
