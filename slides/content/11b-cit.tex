@@ -112,12 +112,12 @@
 \newcommand{\pair}[2]{$#1 \wedge #2$ & $#1 \wedge \neg #2$ & $\neg #1 \wedge #2$ & $\neg #1 \wedge \neg #2$\\}
 %\newcommand{\redandgray}[1]{\only<#1-| handout:#1->{\color{black}}\only<#1| handout:#1>{\color{blue}}}
 \newcommand{\epairone}[6]{
-	\alt<1-#5>{$#1 \wedge #2$}{\textcolor{#3}{$#1 \wedge #2$}} & 
-	\alt<1-#6>{$\neg #1 \wedge #2$}{\textcolor{#4}{$\neg #1 \wedge #2$}} & 
+	\alt<#5->{\textcolor{#3}{$#1 \wedge #2$}}{$#1 \wedge #2$} & 
+	\alt<#6->{\textcolor{#4}{$\neg #1 \wedge #2$}}{$\neg #1 \wedge #2$} & 
 }
 \newcommand{\epairtwo}[6]{
-	\alt<1-#5>{$#1 \wedge \neg #2$}{\textcolor{#3}{$#1 \wedge \neg #2$}} & 
-	\alt<1-#6>{$\neg #1 \wedge \neg #2$}{\textcolor{#4}{$\neg #1 \wedge \neg #2$}} \\
+	\alt<#5->{\textcolor{#3}{$#1 \wedge \neg #2$}}{$#1 \wedge \neg #2$} & 
+	\alt<#6->{\textcolor{#4}{$\neg #1 \wedge \neg #2$}}{$\neg #1 \wedge \neg #2$} \\
 }
 
 \begin{frame}{Pairwise Coverage \deutschertitel{Paarweise Überdeckung}}
@@ -144,31 +144,31 @@
 		\begin{example}{Pairwise Interactions}
 			\centering\footnotesize\color{lightgray}
 			\begin{tabular}{llll}				
-				\epairone{G}{P}{black}{blue}{6}{5}\epairtwo{G}{P}{orange}{red}{4}{9}
-				\epairone{G}{D}{blue}{black}{5}{6}\epairtwo{G}{D}{orange}{green}{4}{8}
-				\epairone{G}{T}{black}{blue}{6}{5}\epairtwo{G}{T}{orange}{green}{4}{8}
-				\epairone{G}{W}{black!40}{blue}{7}{5}\epairtwo{G}{W}{orange}{red}{4}{9}
-				\epairone{G}{L}{blue}{black!40}{5}{7}\epairtwo{G}{L}{red}{orange}{9}{4}
-				\epairone{P}{D}{orange}{black}{4}{6}\epairtwo{P}{D}{blue}{black!40}{5}{7}
-				\epairone{P}{T}{orange}{green}{4}{8}\epairtwo{P}{T}{red}{blue}{9}{5}
-				\epairone{P}{W}{orange}{black}{4}{6}\epairtwo{P}{W}{black!40}{blue}{7}{5}
-				\epairone{P}{L}{black}{orange}{6}{4}\epairtwo{P}{L}{blue}{black!40}{5}{7}
-				\epairone{D}{T}{orange}{blue}{4}{5}\epairtwo{D}{T}{black}{black!40}{6}{7}
-				\epairone{D}{W}{orange}{blue}{4}{5}\epairtwo{D}{W}{black!40}{black}{7}{6}
-				\epairone{D}{L}{blue}{orange}{5}{4}\epairtwo{D}{L}{black}{black!40}{6}{7}
-				\epairone{T}{W}{orange}{black}{4}{6}\epairtwo{T}{W}{black!40}{blue}{7}{5}
-				\epairone{T}{L}{black}{orange}{6}{4}\epairtwo{T}{L}{blue}{black!40}{5}{7}
-				& \alt<1-4>{$W \wedge \neg L$}{\textcolor{orange}{$W \wedge \neg L$}} &  \alt<1-5>{$\neg W \wedge L$}{\textcolor{blue}{$\neg W \wedge L$}} & \\
+				\epairone{G}{P}{black}{blue}{7}{6}\epairtwo{G}{P}{orange}{red}{5}{10}
+				\epairone{G}{D}{blue}{black}{6}{7}\epairtwo{G}{D}{orange}{green}{5}{9}
+				\epairone{G}{T}{black}{blue}{7}{6}\epairtwo{G}{T}{orange}{green}{5}{9}
+				\epairone{G}{W}{black!50}{blue}{8}{6}\epairtwo{G}{W}{orange}{red}{5}{10}
+				\epairone{G}{L}{blue}{black!50}{6}{8}\epairtwo{G}{L}{red}{orange}{10}{5}
+				\epairone{P}{D}{orange}{black}{5}{7}\epairtwo{P}{D}{blue}{black!50}{6}{8}
+				\epairone{P}{T}{orange}{green}{5}{9}\epairtwo{P}{T}{red}{blue}{10}{6}
+				\epairone{P}{W}{orange}{black}{5}{7}\epairtwo{P}{W}{black!50}{blue}{8}{6}
+				\epairone{P}{L}{black}{orange}{7}{5}\epairtwo{P}{L}{blue}{black!50}{6}{8}
+				\epairone{D}{T}{orange}{blue}{5}{6}\epairtwo{D}{T}{black}{black!50}{7}{8}
+				\epairone{D}{W}{orange}{blue}{5}{6}\epairtwo{D}{W}{black!50}{black}{8}{7}
+				\epairone{D}{L}{blue}{orange}{6}{5}\epairtwo{D}{L}{black}{black!50}{7}{8}
+				\epairone{T}{W}{orange}{black}{5}{7}\epairtwo{T}{W}{black!50}{blue}{8}{6}
+				\epairone{T}{L}{black}{orange}{7}{5}\epairtwo{T}{L}{blue}{black!50}{6}{8}
+				& \alt<5->{\textcolor{orange}{$W \wedge \neg L$}}{$W \wedge \neg L$} &  \alt<6->{\textcolor{blue}{$\neg W \wedge L$}}{$\neg W \wedge L$} & \\
 			\end{tabular} 
 		\end{example}
 		\begin{example}{Pairwise Coverage with Six Configurations}
 			\footnotesize\color{lightgray}
-			\alt<1-4>{$\{C,P,D,T,W\}$}{\textcolor{orange}{$\{C,P,D,T,W\}$}}\\
-			\alt<1-5>{$\{C,G,D,L\}$}{\textcolor{blue}{$\{C,G,D,L\}$}}\\
-			\alt<1-6>{$\{C,G,P,T,L\}$}{\textcolor{black}{$\{C,G,P,T,L\}$}}\\
-			\alt<1-7>{$\{C,G,W\}$}{\textcolor{black!50}{$\{C,G,W\}$}}\\
-			\alt<1-8>{$\{C,P,W\}$}{\textcolor{green}{$\{C,P,W\}$}}\\
-			\alt<1-9>{$\{C,D,T,L\}$}{\textcolor{red}{$\{C,D,T,L\}$}}\\
+			\alt<5->{\textcolor{orange}{$\{C,P,D,T,W\}$}}{$\{C,P,D,T,W\}$}\\
+			\alt<6->{\textcolor{blue}{$\{C,G,D,L\}$}}{$\{C,G,D,L\}$}\\
+			\alt<7->{\textcolor{black}{$\{C,G,P,T,L\}$}}{$\{C,G,P,T,L\}$}\\
+			\alt<8->{\textcolor{black!50}{$\{C,G,W\}$}}{$\{C,G,W\}$}\\
+			\alt<9->{\textcolor{green}{$\{C,P,W\}$}}{$\{C,P,W\}$}\\
+			\alt<10->{\textcolor{red}{$\{C,D,T,L\}$}}{$\{C,D,T,L\}$}\\
 		\end{example}
 	\end{mycolumns}
 \end{frame}
