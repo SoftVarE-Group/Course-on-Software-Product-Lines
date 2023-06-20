@@ -144,31 +144,31 @@
 		\begin{example}{Pairwise Interactions}
 			\centering\footnotesize\color{lightgray}
 			\begin{tabular}{llll}				
-				\epairone{G}{P}{black}{blue}{7}{6}\epairtwo{G}{P}{orange}{red}{5}{10}
-				\epairone{G}{D}{blue}{black}{6}{7}\epairtwo{G}{D}{orange}{green}{5}{9}
-				\epairone{G}{T}{black}{blue}{7}{6}\epairtwo{G}{T}{orange}{green}{5}{9}
-				\epairone{G}{W}{black!50}{blue}{8}{6}\epairtwo{G}{W}{orange}{red}{5}{10}
-				\epairone{G}{L}{blue}{black!50}{6}{8}\epairtwo{G}{L}{red}{orange}{10}{5}
-				\epairone{P}{D}{orange}{black}{5}{7}\epairtwo{P}{D}{blue}{black!50}{6}{8}
-				\epairone{P}{T}{orange}{green}{5}{9}\epairtwo{P}{T}{red}{blue}{10}{6}
-				\epairone{P}{W}{orange}{black}{5}{7}\epairtwo{P}{W}{black!50}{blue}{8}{6}
-				\epairone{P}{L}{black}{orange}{7}{5}\epairtwo{P}{L}{blue}{black!50}{6}{8}
-				\epairone{D}{T}{orange}{blue}{5}{6}\epairtwo{D}{T}{black}{black!50}{7}{8}
-				\epairone{D}{W}{orange}{blue}{5}{6}\epairtwo{D}{W}{black!50}{black}{8}{7}
-				\epairone{D}{L}{blue}{orange}{6}{5}\epairtwo{D}{L}{black}{black!50}{7}{8}
-				\epairone{T}{W}{orange}{black}{5}{7}\epairtwo{T}{W}{black!50}{blue}{8}{6}
-				\epairone{T}{L}{black}{orange}{7}{5}\epairtwo{T}{L}{blue}{black!50}{6}{8}
-				& \alt<5->{\textcolor{orange}{$W \wedge \neg L$}}{$W \wedge \neg L$} &  \alt<6->{\textcolor{blue}{$\neg W \wedge L$}}{$\neg W \wedge L$} & \\
+				\epairone{G}{P}{green}{orange}{7}{6}\epairtwo{G}{P}{red}{black!50}{5}{10}
+				\epairone{G}{D}{orange}{green}{6}{7}\epairtwo{G}{D}{red}{black}{5}{9}
+				\epairone{G}{T}{green}{orange}{7}{6}\epairtwo{G}{T}{red}{black}{5}{9}
+				\epairone{G}{W}{blue}{orange}{8}{6}\epairtwo{G}{W}{red}{black!50}{5}{10}
+				\epairone{G}{L}{orange}{blue}{6}{8}\epairtwo{G}{L}{black!50}{red}{10}{5}
+				\epairone{P}{D}{red}{green}{5}{7}\epairtwo{P}{D}{orange}{blue}{6}{8}
+				\epairone{P}{T}{red}{black}{5}{9}\epairtwo{P}{T}{black!50}{orange}{10}{6}
+				\epairone{P}{W}{red}{green}{5}{7}\epairtwo{P}{W}{blue}{orange}{8}{6}
+				\epairone{P}{L}{green}{red}{7}{5}\epairtwo{P}{L}{orange}{blue}{6}{8}
+				\epairone{D}{T}{red}{orange}{5}{6}\epairtwo{D}{T}{green}{blue}{7}{8}
+				\epairone{D}{W}{red}{orange}{5}{6}\epairtwo{D}{W}{blue}{green}{8}{7}
+				\epairone{D}{L}{orange}{red}{6}{5}\epairtwo{D}{L}{green}{blue}{7}{8}
+				\epairone{T}{W}{red}{green}{5}{7}\epairtwo{T}{W}{blue}{orange}{8}{6}
+				\epairone{T}{L}{green}{red}{7}{5}\epairtwo{T}{L}{orange}{blue}{6}{8}
+				& \alt<5->{\textcolor{red}{$W \wedge \neg L$}}{$W \wedge \neg L$} &  \alt<6->{\textcolor{orange}{$\neg W \wedge L$}}{$\neg W \wedge L$} & \\
 			\end{tabular} 
 		\end{example}
 		\begin{example}{Pairwise Coverage with Six Configurations}
 			\footnotesize\color{lightgray}
-			\alt<5->{\textcolor{orange}{$\{C,P,D,T,W\}$}}{$\{C,P,D,T,W\}$}\\
-			\alt<6->{\textcolor{blue}{$\{C,G,D,L\}$}}{$\{C,G,D,L\}$}\\
-			\alt<7->{\textcolor{black}{$\{C,G,P,T,L\}$}}{$\{C,G,P,T,L\}$}\\
-			\alt<8->{\textcolor{black!50}{$\{C,G,W\}$}}{$\{C,G,W\}$}\\
-			\alt<9->{\textcolor{green}{$\{C,P,W\}$}}{$\{C,P,W\}$}\\
-			\alt<10->{\textcolor{red}{$\{C,D,T,L\}$}}{$\{C,D,T,L\}$}\\
+			\alt<5->{\textcolor{red}{$\{C,P,D,T,W\}$}}{$\{C,P,D,T,W\}$}\\
+			\alt<6->{\textcolor{orange}{$\{C,G,D,L\}$}}{$\{C,G,D,L\}$}\\
+			\alt<7->{\textcolor{green}{$\{C,G,P,T,L\}$}}{$\{C,G,P,T,L\}$}\\
+			\alt<8->{\textcolor{blue}{$\{C,G,W\}$}}{$\{C,G,W\}$}\\
+			\alt<9->{\textcolor{black}{$\{C,P,W\}$}}{$\{C,P,W\}$}\\
+			\alt<10->{\textcolor{black!50}{$\{C,D,T,L\}$}}{$\{C,D,T,L\}$}\\
 		\end{example}
 	\end{mycolumns}
 \end{frame}
@@ -248,13 +248,13 @@
 
 \subsection{Efficiency of Combinatorial Interaction Testing}
 %\subsection{Combinatorial Interaction Testing with ICPL}
-\begin{frame}{\myframetitle{} \deutschertitel{Algorithmen für kombinatorisches Interaktionstesten} \mytitlesource{\icpl}}
+\begin{frame}{\myframetitle{} \mytitlesource{\icpl}}
 	\begin{exampletight}{Assumption: All Features are Optional}
 		\centering\footnotesize\featureDiagramEightOptionalFeatures
 	\end{exampletight}
-
-	\pause
+	\vspace{-2mm} % TODO Benno: not sure why this is needed
 	\begin{mycolumns}
+		\pause
 		\begin{exampletight}{Number of Configurations in Pairwise Sample}
 			\pic[width=\linewidth,page=4]{cit-plots}
 		\end{exampletight}
@@ -267,7 +267,7 @@
 \end{frame}
 
 \begin{frame}{\myframetitle{} \mytitlesource{\icpl}}
-	\begin{mycolumns}
+	\begin{mycolumns}[t]
 		\begin{exampletight}{Time in Minutes to Compute Sample}
 			\pic[width=\linewidth,page=2]{cit-plots}
 
