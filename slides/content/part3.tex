@@ -200,7 +200,7 @@
 % TODO \section{Product-Line Testing in Practice} practice part still missing
 \input{content/11a-practice}
 \lessonslearned{
-	\item recap on software testing
+	\item recap on software testing and test-case design
 	\item testing all configurations
 	\item testing one configuration
 	\item sample-based testing
@@ -214,12 +214,16 @@
 \section{Combinatorial Interaction Testing}
 \input{content/11b-cit}
 \lessonslearned{
-	\item recap on black-box testing and test-case design
+	\item recap on black-box testing
 	\item combinatorial interaction testing: pairwise testing, t-wise testing
 	\item efficiency: number of configurations, time to compute sample
 	\item effectiveness: percentage of found defects
 }{
-	\item \icpl: most popular algorithm for t-wise 
+	\item popular t-wise sampling algorithms
+	\begin{itemize}
+		\item ICPL: \icpl{}
+		\item YASA: \yasa{}
+	\end{itemize}
 }{
 	Why is it hard to find a good trade-off between efficiency and effectiveness?
 }
@@ -241,15 +245,26 @@
 
 % TODO Thomas: add exam questions here
 \faq{
-	\item What is the goal of quality assurance?
-	\item What is software testing?
+	\item What is the goal of quality assurance for software product lines?
+	\item How can software product lines be tested?
 	\item Why is testing software product lines challenging?
+	\item What are advantages and disadvantages of testing all configurations?
 	\item What are advantages and disadvantages of testing only one configuration?
-	\item What is a sample?
+	\item What is a sample? How can a sample be determined?
 }{
-	\item \ldots
+	\item How is black-box testing used for testing product lines?
+	\item What is the difference between a test configuration and a test case?
+	\item What are advantages and disadvantages of combinatorial interaction testing?
+	\item What is pairwise interaction testing?
+	\item What is t-wise interaction testing?
+	\item When does a sample achieve 100\% pairwise coverage?
+	\item How can a t-wise sample be computed?
 }{
-	\item \ldots
+	\item How can white-box testing be used for testing product lines?
+	\item What are potential problems with t-wise interaction testing?
+	\item What is presence condition coverage?
+	\item What are different techniques for t-wise sampling?
+	\item Which additional inputs can be used for sampling algorithms?
 }
 
 \input{template/footer}

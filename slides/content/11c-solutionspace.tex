@@ -3,20 +3,22 @@
 	\begin{mycolumns}
 		\begin{definition}{White-Box Testing \deutsch{Strukturtest}}
 			\begin{itemize}
-				\setlength\itemsep{.1em}
+%				\setlength\itemsep{.1em}
 				\item inner structure of test object is used
 				\item idea: coverage of structural elements
-				\item code translated into control flow graph
-				\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
+				\begin{itemize}
+					\item code translated into control flow graph
+					\item specific test case (concrete inputs)\\derived from logical test case (conditions)\\derived from path in control flow graph
+				\end{itemize}	
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
 		\begin{definition}{Coverage Criteria \deutsch{Überdeckungskriterien}}
 			\begin{itemize}
-				\setlength\itemsep{.1em}
-				\item[1.] statement coverage \deutsch{Anweisungsüberdeck.}: all statements are executed for at least one test case
-				\item<3->[2.] branching coverage \deutsch{Zweigüberdeckung}: statement coverage and for each branching statement all branches have been exercised % TODO not so easy to define as percentage
-				\item<4->[3.] term coverage \deutsch{Termüberdeckung}: branching coverage and terms ($n$) used in a branching statement are combined exhaustively ($2^n$)\hfill(simplified)
+%				\setlength\itemsep{.1em}
+				\item[1.] \emph{statement coverage} \deutsch{Anweisungsüberdeck.}:\\all statements are executed for at least one test case
+				\item<3->[2.] \emph{branching coverage} \deutsch{Zweigüberdeckung}: statement coverage and all branches of branching statement are executed %TODO not so easy to define as percentage
+				\item<4->[3.] \emph{term coverage} \deutsch{Termüberdeckung}:\\branching coverage and all terms used in a branching statement ($n$) are combined exhaustively ($2^n$)\hfill(simplified)
 				% TODO discuss path coverage?
 			\end{itemize}
 		\end{definition}
@@ -31,10 +33,10 @@
 	\pause
 	\begin{itemize}
 		\item<+-> Line~29: compiler error (i.e., field \texttt{dreq} undefined) %for partial configuration $(\{FIFO\},\{DirectedCall\})$ / 
-		due to feature interaction $FIFO \pand \pnot DirectedCall$
+		when $FIFO \pand \pnot DirectedCall$
 		\item<+-> Line~8: null pointer exception %for partial configuration $(\{DirectedCall\},\{FIFO\})$ / 
-		due to feature interaction $DirectedCall \pand \pnot FIFO$
-		\item<+-> both problems detected with pairwise coverage, but presence conditions are more complicated in practice
+		when $DirectedCall \pand \pnot FIFO$
+		\item<+-> both problems detectable with pairwise coverage, but presence conditions are more complicated in practice
 		\item<+-> also: pairwise coverage often too much effort for large configuration spaces / continuous integration
 	\end{itemize}
 	\onslide<+->{\begin{definition}{\myframetitle{} \deutschertitel{Überdeckung von Ifdef-Blöcken} \mysource{\tartlerconfigurationcoverage}}
@@ -100,11 +102,11 @@
 			\includegraphics[width=\linewidth,page=3,trim=350 430 90 310,clip]{2018/2018-SPLC-Varshosaz}
 		\end{definition}
 		\pause
-		\begin{example}{Domain Knowledge \mysource{\samplingsurvey}}
+		\begin{example}{Further Domain Knowledge \mysource{\samplingsurvey}}
 			\begin{itemize}
-				\item except the feature model
+				\item in addition to feature model
 				\item e.g., configurations chosen by experts
-				\item e.g., feature model specialized prior to sampling
+				\item \textcolor{red}{e.g., feature model specialized prior to sampling}
 			\end{itemize}
 		\end{example}
 	\mynextcolumn
@@ -119,7 +121,7 @@
 		\pause
 		\begin{example}{Part 3: Solution-Space Sampling}
 			\begin{itemize}
-				\item mapping from features to \emph{implementation artifacts} used
+				\item mapping from features to \emph{implementation artifacts}
 				\item \emph{feature model} used to consider only valid configurations
 			\end{itemize}
 		\end{example}

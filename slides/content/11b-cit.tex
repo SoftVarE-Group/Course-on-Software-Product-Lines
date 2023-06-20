@@ -43,7 +43,7 @@
 	\begin{mycolumns}
 		\begin{example}{Configurations with the Interaction Get $\wedge$ Put}
 			\footnotesize
-			\begin{mycolumns}[animation=none]
+			\begin{mycolumns}[animation=none,widths={55,45}]
 				$\{C,G,W\}$\\
 				$\{C,P,W\}$\\
 				\emph{$\{C,G,P,W\}$}\\
@@ -77,8 +77,8 @@
 		\begin{definition}{Pairwise Interaction Testing}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
-				\item test a sample set $S \subseteq C$ of all valid configurations $C$ with pairwise coverage
-				\item every pairwise interaction is covered by at least one configuration in the sample $S$
+				\item create a sample $S \subseteq C$, in which every pairwise interaction is covered by at least one configuration %(all valid configurations $C$)
+				\item test every configuration in $S$
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
@@ -87,8 +87,9 @@
 			\begin{itemize}
 				\setlength\itemsep{.4em}
 				\item applicable to large product lines
-				\item reduced redundant effort compared to testing all configurations
-				\item coverage guarantee (opposed to random configurations)
+				\item reduced redundant effort compared to\\testing all configurations
+				\item full coverage guarantee\\(opposed to random configurations)
+				\vspace*{1ex}
 				\item still requires good test cases (program inputs)
 				\item hard to compute small sample sets
 			\end{itemize}
@@ -120,9 +121,9 @@
 \begin{frame}{Pairwise Coverage \deutschertitel{Paarweise Überdeckung}}
 	\begin{mycolumns}[animation=none]
 		\centering
-		\only<1>{\featureDiagramConfigurableDatabase}%
-		\only<2>{\featureDiagramConfigurableDatabaseNoAbstract}%
-		\only<3->{\featureDiagramConfigurableDatabaseNoAbstractNoCore}
+		\alt<1>{\featureDiagramConfigurableDatabase}{%
+		\alt<2>{\featureDiagramConfigurableDatabaseNoAbstract}
+		{\featureDiagramConfigurableDatabaseNoAbstractNoCore}}
 
 		\pause
 		\begin{definition}{Interactions to Cover}
@@ -172,8 +173,8 @@
 % TODO use different colors for the different configurations (instead of separate handouts) + animation showing all pairs in the first place
 
 \subsection{T-Wise Interaction Testing}
-\begin{frame}{\myframetitle{} \deutschertitel{T-Weises Interaktionstesten}}
-	\begin{mycolumns}[widths={60}]
+\begin{frame}{\myframetitle{}}
+	\begin{mycolumns}[widths={60,38}]
 		\begin{definition}{T-Wise Interaction Testing}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
@@ -181,7 +182,7 @@
 				\item t-wise coverage: every t-wise interaction is covered by at least one configuration in the sample
 				\item $t=1$: every feature is selected and also deselected
 				\item $t=2$: pairwise interaction coverage
-				\item $t=3$: every combination of three features covered
+				\item $t=3$: every valid combination of three features covered
 			\end{itemize}
 		\end{definition}
 	\mynextcolumn
@@ -207,19 +208,21 @@
 \begin{frame}{\myframetitle{} \deutschertitel{Algorithmen für kombinatorisches Interaktionstesten}}
 	\begin{mycolumns}[widths={63}]
 		\begin{definition}{A Greedy Algorithm}
-			idea: select configuration that cover most of the missing interactions in each step
+			idea: select configuration that cover most missing interactions in each step
 			\begin{enumerate}
-				\item randomly choose first configuration (each covers one interaction of every line)
+				\item randomly choose first configuration
 				\item find next optimal configuration
-				\item repeat steps 2--3 until all interactions covered
+				\item repeat step 2 until all interactions are covered
 			\end{enumerate}
 		\end{definition}
 		\pause
 		\begin{note}{Challenges and Optimizations}
 			\begin{itemize}
-				\item non-deterministic: different sample for each run (cf.\ Step 1)
-				\item starting with all-yes-config? covers more code
-				\item Step 2: iterating over all valid configurations does not scale
+				\item non-deterministic: different sample for each run (cf.\ Step~1)
+				\begin{itemize}
+					\item starting with all-yes-config? $\Rightarrow$ covers more code
+				\end{itemize}
+				\item iterating all valid configurations does not scale (cf.\ Step~2)
 				\item greedy strategy: optimal configuration in each step does not guarantee optimal sample
 			\end{itemize}
 		\end{note}
@@ -228,11 +231,13 @@
 		\begin{definition}{ICPL\mysource{\icpl}}
 			\begin{itemize}
 				\item widespread greedy algorithm
-				\item maintains several partial configurations
 				\item iterates over all interactions
-				\item tries to integrate interaction into existing partial configuration
-				\item if not possible: create new partial configuration
-				\item avoids extensive Step 2
+				\begin{itemize}
+					\item identifies core and dead features early
+					\item identifies invalid and already covered interactions
+					\item utilizes parallelization
+				\end{itemize}
+				\item incrementally increases $t$ up to desired value
 				\item performance shown on next slides
 			\end{itemize}
 		\end{definition}
