@@ -54,7 +54,7 @@
 
 \subsection{Presence Conditions}
 
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}[b,fragile]{\myframetitle}
 	\vspace*{-4ex}
 	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\begin{definition}{Presence Condition}
@@ -130,7 +130,7 @@ class Edge {
 
 \subsection{Detecting Dead Code}
 
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}[b,fragile]{\myframetitle}
 	\vspace*{-4ex}
 	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\begin{definition}{Dead Code}
@@ -216,7 +216,7 @@ class Edge {
 
 \subsection{Detecting Superfluous Annotations}
 
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}[b,fragile]{\myframetitle}
 	\vspace*{-4ex}
 	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\begin{definition}{Superfluous Annotation}
@@ -352,7 +352,7 @@ class Edge {
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}[fragile]{\myframetitle}
+\begin{frame}[b,fragile]{\myframetitle}
 	\begin{mycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
 		\emph{Problem Space}
 		\uncover<5->{
@@ -525,7 +525,8 @@ class Edge {
 
 \subsection{Analyzing Feature Modules}
 
-\begin{frame}{\myframetitle}
+\begin{frame}[b]{\myframetitle}
+	\vspace*{-4ex}
 	\begin{mycolumns}[widths={34,66},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
@@ -557,13 +558,14 @@ class Edge {
 	}
 \end{frame}
 
-\begin{frame}{\myframetitle}
+\begin{frame}[b]{\myframetitle}
+	\vspace*{-4ex}
 	\begin{mycolumns}[widths={34,66},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
 		\end{exampletight}
 		\begin{notetight}{Recap: 1:1 Feature Mapping!}
-			\pic[width=\linewidth,clip,trim=0 120 250 0]{feature_komposition1}
+			\picDark[width=\linewidth,clip,trim=0 120 250 0]{feature_komposition1}
 		\end{notetight}
 	\mynextcolumn
 		\picDark[width=\linewidth]{fop-csur-example}
