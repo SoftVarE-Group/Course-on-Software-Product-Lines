@@ -6,6 +6,9 @@
 \fi
 
 \newcommand{\deutsch}[1]{{\color{blue}(#1)}}
+\ifdarkmode
+	\renewcommand{\deutsch}[1]{{\color{orange}(#1)}}
+\fi
 \newcommand{\deutschertitel}[1]{{\tiny\deutsch{#1}}}
 
 \newcommand{\mycite}[1]{``#1''}
