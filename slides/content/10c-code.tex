@@ -38,7 +38,8 @@
 
 \subsubsection{Analyzing Feature Modules}
 
-\begin{frame}{\myframetitle}
+\begin{frame}[b]{\myframetitle}
+	\vspace*{-4ex}
 	\begin{mycolumns}[widths={37,63},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
@@ -68,8 +69,10 @@
 		\only<2->{\picDark[width=\linewidth]{fop-csur-example-error-blind}}
 	\end{mycolumns}
 \end{frame}
+% TODO would be good to avoid the abbreviation SS here. what about only referring to concrete features here?
 
-\begin{frame}{\myframetitle}
+\begin{frame}[b]{\myframetitle}
+	\vspace*{-4ex}
 	\begin{mycolumns}[widths={37,63},animation=none]
 		\begin{definition}{Reachability Condition of $id$}
 			guarantees that a given \emph{reference} to $id$ is also \emph{defined} somewhere:\\[1ex]
@@ -223,7 +226,7 @@ std::ostream& operator<<(
 		\begin{example}{Examples}
 			% also put examples of analysis strategies here, and which kind of mapping/code analysis scales for which class?
 			\begin{enumerate}
-				\uncover<2->{\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}}
+				\uncover<2->{\item[\color{gray}\textbf{NC}] {\color{gray}all product lines with mandatory custom development in application engineering\\(e.g., components and services with glue code, white-box frameworks)}}
 				\uncover<3->{\item[\textbf{C1}] $< 2000$ products for 1 min per product}
 				\uncover<4->{\item[\textbf{C2}] $< 90000$ products for 1 s per product}
 				\uncover<5->{\item[\textbf{C3}] $< 10^{13}$ configurations for 1 ns per configuration}

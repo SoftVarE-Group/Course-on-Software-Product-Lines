@@ -102,7 +102,7 @@
 	\item \emph{feature-based}: fairly simple, but misses interactions
 	\item \emph{family-based}: efficient, but most complex
 }{
-	\item \fospl, Chapter 10
+	\item \fospl\mychapter{10}
 	\item \analysisstrategies
 }{
 	Can you imagine other analysis strategies than product-based, feature-based, and family-based?
@@ -116,7 +116,7 @@
 	\item they are usually not necessary when there is good feature traceability
 	\item they cannot detect bugs in the actual code
 }{
-	\item \fospl, Chapter 10
+	\item \fospl\mychapter{10}
 }{
 	Above, we assumed that we know all presence conditions already.
 	How can we automatically extract presence conditions from code that uses the C preprocessor?
@@ -135,7 +135,7 @@
 	\item type checking all products at once is possible for product lines up to medium size
 	\item for huge product lines (e.g., Linux), it is infeasible
 }{
-	\item \fospl, Chapter 10
+	\item \fospl\mychapter{10}
 	\item \typechef
 }{
 	Suppose you have a preprocessor-based product line (with \texttt{\#ifdef}'s).
@@ -144,13 +144,28 @@
 	Is this possible? What problems might occur?
 }
 
-% TODO Thomas: add exam questions here
 \faq{
-	\item \ldots
+	\item How to find variability bugs?
+	\item What is a program analysis? What are examples?
+	\item What is a product-line analysis?
+	\item What are principal strategies to analyze product lines? What are (dis-)advantages?
+	\item Given a specific algorithm, classify its analysis strategy!
 }{
-	\item \ldots
+	\item How to analyze feature mappings?
+	\item What are potential problems in feature mappings?
+	\item What are presence conditions, dead code, superfluous annotations?
+	\item Shall we incorporate the feature model when analyzing feature mappings?
+	\item Shall product-line analyses analyze problem and solution space separately?
+	\item What is special when analyzing the feature mapping of feature modules?
+	\item What are limitations of analyzing feature mappings?
+	\item Given CPP source code, determine its presence conditions, dead code, and superfluous annotations!
 }{
-	\item \ldots
+	\item What are (examples of) type errors?
+	\item Why are type errors challenging to detect in product lines?
+	\item What is a type-safe product line, reachability condition, conflict condition?
+	\item How does the analysis complexity differ for real-world product lines?
+	\item What are analyses for problem and solution space?
+	\item Give examples for easy and difficult product lines in terms of analysis effort!
 }
 
 \input{template/footer}
