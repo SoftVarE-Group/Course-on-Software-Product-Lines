@@ -44,6 +44,10 @@
 \subsection{Test-Case Design in Single-System Engineering}
 \begin{frame}{Recap: Test-Case Design \deutschertitel{Testfallentwurf}}
 	\begin{mycolumns}
+		\begin{definition}{Test Case \mysource{\ludewiglichter}}
+			In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
+		\end{definition}
+		\pause
 		\begin{definition}{Systematic Test \mysource{\ludewiglichter}}
 			A systematic test is a test, in which
 			\begin{itemize}
@@ -52,10 +56,6 @@
 				\item[2.] the \emph{inputs} are chosen systematically,
 				\item[3.] the \emph{results} are documented and evaluated by criteria being defined prior to the test. 
 			\end{itemize}
-		\end{definition}
-		\pause
-		\begin{definition}{Test Case \mysource{\ludewiglichter}}
-			In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
 		\end{definition}
 	\mynextcolumn
 		\pause
@@ -115,6 +115,7 @@
 		\end{example}
 	\mynextcolumn
 		\vspace{-7mm}
+		\pause
 		\begin{note}{Discussion}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
@@ -201,8 +202,8 @@
 			\begin{itemize}
 				\setlength\itemsep{.4em}
 				\item applicable to large product lines
-				\item strategy in practice: all-yes-config (configuration with many features selected)
 				\item no redundant test effort (from configurations)
+				\item strategy in practice: all-yes-config (configuration with many features selected)
 				\vspace*{1ex}
 				\item often unfeasible to test all features wit a single configuration (e.g., \texttt{Windows} and \texttt{Linux})
 				\item[$\Rightarrow$] unnoticed feature interactions\mysource{\lectureinteractions}

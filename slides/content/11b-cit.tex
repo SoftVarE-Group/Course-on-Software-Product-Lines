@@ -83,18 +83,6 @@
 		\end{definition}
 	\mynextcolumn
 		\pause
-		\begin{note}{Discussion}
-			\begin{itemize}
-				\setlength\itemsep{.4em}
-				\item applicable to large product lines
-				\item reduced redundant effort compared to\\testing all configurations
-				\item full coverage guarantee\\(opposed to random configurations)
-				\vspace*{1ex}
-				\item still requires good test cases (program inputs)
-				\item hard to compute small sample sets
-			\end{itemize}
-		\end{note}
-		\pause
 		\begin{definition}{Pairwise Combinations}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
@@ -106,6 +94,18 @@
 				\end{itemize}
 				\end{itemize}
 		\end{definition}
+		\pause
+		\begin{note}{Discussion}
+			\begin{itemize}
+				\setlength\itemsep{.4em}
+				\item applicable to large product lines
+				\item reduced redundant effort compared to\\testing all configurations
+				\item full coverage guarantee\\(opposed to random configurations)
+				\vspace*{1ex}
+				\item still requires good test cases (program inputs)
+				\item hard to compute small sample sets
+			\end{itemize}
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
@@ -158,9 +158,10 @@
 				\epairone{D}{L}{orange}{red}{6}{5}\epairtwo{D}{L}{green}{blue}{7}{8}
 				\epairone{T}{W}{red}{green}{5}{7}\epairtwo{T}{W}{blue}{orange}{8}{6}
 				\epairone{T}{L}{green}{red}{7}{5}\epairtwo{T}{L}{orange}{blue}{6}{8}
-				& \alt<5->{\textcolor{red}{$W \wedge \neg L$}}{$W \wedge \neg L$} &  \alt<6->{\textcolor{orange}{$\neg W \wedge L$}}{$\neg W \wedge L$} & \\
+				&  \alt<6->{\textcolor{orange}{$\neg W \wedge L$}}{$\neg W \wedge L$} & \alt<5->{\textcolor{red}{$W \wedge \neg L$}}{$W \wedge \neg L$} & \\
 			\end{tabular} 
 		\end{example}
+		\pause
 		\begin{example}{Pairwise Coverage with Six Configurations}
 			\footnotesize\color{lightgray}
 			\alt<5->{\textcolor{red}{$\{C,P,D,T,W\}$}}{$\{C,P,D,T,W\}$}\\
