@@ -1,0 +1,65 @@
+\subsection{Recap: Evolution and Maintenance}
+\begin{frame}{\insertsubsection}
+	\begin{mycolumns}[columns=3,widths={25,50},animation=none]
+	\mynextcolumn
+		\begin{note}{Jimmy Koppel, 2019\mysource{\href{https://corecursive.com/036-jimmy-koppel-advanced-software-design/}{corecursive.com}}}
+			\mycite{Software maintenance is important because the world runs on software, and changing the world means changing the software.}
+		\end{note}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\begin{mycolumns}[t]
+		\begin{note}{Evolution}
+			\begin{itemize}
+				\item new or removed functionality
+				\item larger changes
+				\item often foreseen changes
+				\item results in upgrades, service packs, or cumulative updates
+			\end{itemize}
+		\end{note}
+		\begin{example}{Minor Release}
+			new minor version: 2.3.1 $\Rightarrow$ 2.4.0
+		\end{example}
+		\begin{example}{Major Release}
+			new major version: 2.3.1 $\Rightarrow$ 3.0.0
+		\end{example}
+	\mynextcolumn
+		\begin{note}{Maintenance}
+			\begin{itemize}
+				\item mostly corrections
+				\item smaller changes
+				\item often unforeseen changes
+				\item results in patches and hot fixes
+			\end{itemize}
+		\end{note}
+		\begin{example}{Patch Release}
+			new patch version: 2.3.1 $\Rightarrow$ 2.3.2
+		\end{example}
+	\end{mycolumns}
+\end{frame}
+
+\subsection{Growing Configuration Spaces}
+% plots showing the increase in features/constraints/configurations
+\subsection{Classification of Changes}
+% refactoring, specialization, generalization
+% examples for each type + advantages from this knowledge
+% Venn diagram
+\begin{frame}{\myframetitle{} \mytitlesource{...}}
+	\begin{mycolumns}
+		\mywhite{}{\href{https://github.com/SoftVarE-Group/Papers/blob/main/2009/2009-ICSE-Thuem.pdf}{\pic[width=\linewidth,page=3,trim=70 200 330 460,clip]{2009/2009-ICSE-Thuem}}}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+% TODO add examples from spl09.tex (authored by Thomas Thuem)
+\subsection{Automated Classification}
+% how to use a SAT solver for this
+% derive formulas, from tautology to SAT query (mention laws on equivalent feature models?)
+% only mention: added/removed features, abstract features, scalability issues
+\subsection{Frequency of Feature Model Changes}
+% in comparison to number of commits, how many commits change feature model, mapping, code (Hildesheim? Pett?)
+\subsection{Outlook on Co-Evolution}
+% outlook on related topics: co-evolution patterns (Fever, refinement theory), refactorings including artifacts, co-evolution of feature model and configurations (GuyDance)
+% Sampling/Analysis/Testing under Evolution?
+% Continuous Integration for Product Lines?
