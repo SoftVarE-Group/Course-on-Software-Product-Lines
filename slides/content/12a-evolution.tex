@@ -16,12 +16,15 @@
 \againframe<2>{FeaturesOfLinux}
 \againframe<2>{ProductsOfLinux}
 
-\subsection{Comparison of Feature Models}
+\subsection{Evolution of Feature Models}
 \begin{frame}{\myframetitle{} \mytitlesource{\reasoningfme}}
 	\begin{mycolumns}
-		\mywhite{}{\href{https://github.com/SoftVarE-Group/Papers/blob/main/2009/2009-ICSE-Thuem.pdf}{\pic[width=\linewidth,page=3,trim=70 200 330 460,clip]{2009/2009-ICSE-Thuem}}}
+		\mywhite{Classification of Changes}{\href{https://github.com/SoftVarE-Group/Papers/blob/main/2009/2009-ICSE-Thuem.pdf}{\pic[width=\linewidth,page=3,trim=70 200 330 460,clip]{2009/2009-ICSE-Thuem}}}
+		\pause\begin{definition}{Automated Classification}
+			classification can be reduced to SAT problems
+		\end{definition}
 	\mynextcolumn
-		\begin{note}{Advantages for Quality Assurance}
+		\pause\begin{note}{Advantages for Quality Assurance}
 			assumption: only feature model has changed
 			\begin{itemize}
 				\item refactoring: no retest needed
@@ -30,10 +33,13 @@
 				\item arbitrary edit: retest needed
 			\end{itemize}
 		\end{note}
+		\pause\begin{note}{Advantages for Modelers}
+			did the configuration space change as intended?
+		\end{note}
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\myframetitle{} \mytitlesource{...}}
+\begin{frame}{\myframetitle{}}
 	\begin{mycolumns}
 		\begin{mycolumns}[t]
 			\begin{example}{Version 1}
@@ -97,15 +103,150 @@
 	\end{mycolumns}
 \end{frame}
 
+\subsubsection{Refactorings}
+\newcommand{\addpattern}[1]{
+	\mywhite{}{\pic[width=\linewidth,page=#1]{fmrefactoring}}
+}
+\begin{frame}{\myframetitle{} \mytitlesource{\fmrefactoring}}
+	\begin{mycolumns}[columns=3]
+		\addpattern{1}
+	\mynextcolumn
+		\addpattern{2}
+	\mynextcolumn
+		\addpattern{3}
+	\end{mycolumns}
+
+	\begin{mycolumns}[columns=4,widths={17,33,33}]
+	\mynextcolumn
+		\addpattern{4}
+	\mynextcolumn
+		\addpattern{5}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+
+\subsubsection{Generalizations}
+\begin{frame}{\myframetitle{} \mytitlesource{\fmrefactoring}}
+	\begin{mycolumns}[columns=3]
+		\addpattern{6}
+	\mynextcolumn
+		\addpattern{7}
+	\mynextcolumn
+		\addpattern{8}
+	\end{mycolumns}
+
+	\begin{mycolumns}[columns=3]
+		\addpattern{9}
+	\mynextcolumn
+		\addpattern{10}
+	\mynextcolumn
+		\addpattern{11}
+	\end{mycolumns}
+\end{frame}
+\begin{frame}{\myframetitle{} \mytitlesource{\fmrefactoring}}
+	\begin{mycolumns}[columns=4,widths={17,33,33}]
+	\mynextcolumn
+		\addpattern{12}
+	\mynextcolumn
+		\addpattern{13}
+	\mynextcolumn
+	\end{mycolumns}
+
+	\begin{mycolumns}[columns=4,widths={17,33,33}]
+	\mynextcolumn
+		\addpattern{14}
+	\mynextcolumn
+		\addpattern{15}
+	\mynextcolumn
+	\end{mycolumns}
+\end{frame}
+
+% TODO staged configuration: CHE:SPIP05staged
+% TODO from diffs to edit operations: BKL+:AUSE15
+
 % TODO \subsection{Automated Classification}
 % how to use a SAT solver for this
 % derive formulas, from tautology to SAT query (mention laws on equivalent feature models?)
 % only mention: added/removed features, abstract features, scalability issues
 
-\subsection{Frequency of Feature Model Changes}
+% TODO \subsection{Frequency of Feature Model Changes}
 % in comparison to number of commits, how many commits change feature model, mapping, code (Hildesheim? Pett?)
+% 
+\subsection{Co-Evolution of Product Lines}
+\newcommand{\addevolution}[2]{
+	\begin{mycolumns}[widths={67},animation=none]
+		\mywhite{}{\pic[width=\linewidth,page=#1]{splevolution}}
+	\mynextcolumn
+		\begin{note}{}
+			\begin{itemize}
+				#2
+			\end{itemize}
+		\end{note}
+	\end{mycolumns}
+}
+\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+	\addevolution{1}{
+		\item not only feature models evolve
+		\item but also source code
+		\item and mapping from features to source code
+		\item aka.\ \emph{co-evolution}
+		\item for conditional compilation:
+			\begin{enumerate}
+				\item feature model
+				\item build scripts with features
+				\item source code with preprocessor statements
+			\end{enumerate}
+		\item how frequent are those changes?
+	}
+\end{frame}
+\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+	\addevolution{2}{
+		\item variability information evolves
+		\item artifact-specific information evolves
+		\item how frequent are those changes?
+	}
+\end{frame}
+\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+	\addevolution{3}{
+		\item most changes only affect artifact-specific information
+		\item fewest changes only affect variability information
+	}
+\end{frame}
+\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+	\addevolution{4}{
+		\item 1\,\% of commits in Linux \emph{only} change feature model
+		\item 4\,\% of commits in Linux change feature model\\~
+		\item $<$1\,\% of commits in Linux \emph{only} change build scripts
+		\item 3\,\% of commits in Linux change build scripts\\~
+		\item 79\,\% of commits in Linux \emph{only} change source code
+		\item 87\,\% of commits in Linux change source code\\~
+		\item different percentages for other systems
+	}
+\end{frame}
+%\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+%	\addevolution{5}{
+%		\item ...
+%	}
+%\end{frame}
+%\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+%	\addevolution{6}{
+%		\item ...
+%	}
+%\end{frame}
+%\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+%	\addevolution{7}{
+%		\item ...
+%	}
+%\end{frame}
+% TODO there are more plots in this paper, but probably too much content for this lecture
 
-\subsection{Outlook on Co-Evolution}
-% outlook on related topics: co-evolution patterns (Fever, refinement theory), refactorings including artifacts, co-evolution of feature model and configurations (GuyDance)
+% TODO Bittner's solution space classification
+
+% TODO \subsection{Outlook on Co-Evolution}
+% TODO refinement theory (BTG12) including code examples in Figure 3+4
+% TODO refactoring including code and partial fefactorings (SBT:JSS19, Page 6+7 Figure 2+3)
+% outlook on related topics: co-evolution patterns (Fever, refinement theory), refactorings including artifacts, partial refactorings, co-evolution of feature model and configurations (GuyDance)
 % Sampling/Analysis/Testing under Evolution?
 % Continuous Integration for Product Lines?
+% regression testing
+
