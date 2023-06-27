@@ -1,4 +1,4 @@
-\subsection{Recap: Evolution and Maintenance}
+\subsection{Recap and Motivation}
 \begin{frame}{\insertsubsection}
 	\begin{mycolumns}[columns=3,widths={25,50},animation=none]
 	\mynextcolumn
@@ -9,56 +9,102 @@
 	\end{mycolumns}
 \end{frame}
 
-\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}[t]
-		\begin{note}{Evolution}
-			\begin{itemize}
-				\item new or removed functionality
-				\item larger changes
-				\item often foreseen changes
-				\item results in upgrades, service packs, or cumulative updates
-			\end{itemize}
-		\end{note}
-		\begin{example}{Minor Release}
-			new minor version: 2.3.1 $\Rightarrow$ 2.4.0
-		\end{example}
-		\begin{example}{Major Release}
-			new major version: 2.3.1 $\Rightarrow$ 3.0.0
-		\end{example}
+\againframe<2>{ContinuingChangeAndGrowth}
+
+\subsection{Recap: Evolution of the Linux Kernel}
+\againframe<2>{CommitsOfLinux}
+\againframe<2>{FeaturesOfLinux}
+\againframe<2>{ProductsOfLinux}
+
+\subsection{Comparison of Feature Models}
+\begin{frame}{\myframetitle{} \mytitlesource{\reasoningfme}}
+	\begin{mycolumns}
+		\mywhite{}{\href{https://github.com/SoftVarE-Group/Papers/blob/main/2009/2009-ICSE-Thuem.pdf}{\pic[width=\linewidth,page=3,trim=70 200 330 460,clip]{2009/2009-ICSE-Thuem}}}
 	\mynextcolumn
-		\begin{note}{Maintenance}
+		\begin{note}{Advantages for Quality Assurance}
+			assumption: only feature model has changed
 			\begin{itemize}
-				\item mostly corrections
-				\item smaller changes
-				\item often unforeseen changes
-				\item results in patches and hot fixes
+				\item refactoring: no retest needed
+				\item specialization: cannot produce new faults
+				\item generalization: cannot fix known faults
+				\item arbitrary edit: retest needed
 			\end{itemize}
 		\end{note}
-		\begin{example}{Patch Release}
-			new patch version: 2.3.1 $\Rightarrow$ 2.3.2
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle{} \mytitlesource{...}}
+	\begin{mycolumns}
+		\begin{mycolumns}[t]
+			\begin{example}{Version 1}
+				\centering\featureDiagram{
+					A,concrete
+					[B,concrete,mandatory]
+					[C,concrete,optional]
+					[D,concrete,optional]
+					[E,concrete,mandatory]
+				}
+				$B \pequals C \por D$
+			\end{example}
+		\mynextcolumn
+			\begin{example}{Version 2}
+				\pause\centering\featureDiagram{
+					A,concrete
+					[B,concrete,mandatory
+						[C,concrete,or]
+						[D,concrete]
+					]
+					[E,concrete,mandatory]
+				}
+			\end{example}
+		\end{mycolumns}
+		\begin{mycolumns}
+			\begin{example}{Version 3}
+				\pause\centering\featureDiagram{
+					A,concrete
+					[B,concrete,mandatory
+						[C,concrete,or]
+						[D,concrete]
+					]
+					[E,concrete,optional]
+				}
+			\end{example}
+		\mynextcolumn
+			\begin{example}{Version 4}
+				\pause\centering\featureDiagram{
+					A,concrete
+					[B,concrete,mandatory
+						[C,concrete,optional]
+						[D,concrete,optional]
+					]
+					[E,concrete,mandatory]
+				}
+			\end{example}
+		\end{mycolumns}
+	\mynextcolumn
+		\pause\begin{example}{Refactoring}
+			1 to 2, 2 to 1
+		\end{example}
+		\pause\begin{example}{Generalization}
+			1/2 to 3/4
+		\end{example}
+		\pause\begin{example}{Specialization}
+			3/4 to 1/2
+		\end{example}
+		\pause\begin{example}{Arbitrary Edit}
+			3 to 4, 4 to 3
 		\end{example}
 	\end{mycolumns}
 \end{frame}
 
-\subsection{Growing Configuration Spaces}
-% plots showing the increase in features/constraints/configurations
-\subsection{Classification of Changes}
-% refactoring, specialization, generalization
-% examples for each type + advantages from this knowledge
-% Venn diagram
-\begin{frame}{\myframetitle{} \mytitlesource{...}}
-	\begin{mycolumns}
-		\mywhite{}{\href{https://github.com/SoftVarE-Group/Papers/blob/main/2009/2009-ICSE-Thuem.pdf}{\pic[width=\linewidth,page=3,trim=70 200 330 460,clip]{2009/2009-ICSE-Thuem}}}
-	\mynextcolumn
-	\end{mycolumns}
-\end{frame}
-% TODO add examples from spl09.tex (authored by Thomas Thuem)
-\subsection{Automated Classification}
+% TODO \subsection{Automated Classification}
 % how to use a SAT solver for this
 % derive formulas, from tautology to SAT query (mention laws on equivalent feature models?)
 % only mention: added/removed features, abstract features, scalability issues
+
 \subsection{Frequency of Feature Model Changes}
 % in comparison to number of commits, how many commits change feature model, mapping, code (Hildesheim? Pett?)
+
 \subsection{Outlook on Co-Evolution}
 % outlook on related topics: co-evolution patterns (Fever, refinement theory), refactorings including artifacts, co-evolution of feature model and configurations (GuyDance)
 % Sampling/Analysis/Testing under Evolution?
