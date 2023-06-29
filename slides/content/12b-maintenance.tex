@@ -1,13 +1,33 @@
-\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+\subsection{Recap on Software Maintenance}
+\begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
+	\begin{mycolumns}
+		\begin{note}{Motivation}
+			\begin{itemize}
+				\item for software: no compensation of deterioration, repair, spare parts
+				\item corrections (especially shortly after first delivery)
+				\item modification and reconstruction
+			\end{itemize}
+		\end{note}
+	\mynextcolumn
+		\begin{definition}{Operation and Maintenance Phase \mysource{\ieeesixten}}
+			\mycite{The period of time in the software life cycle during which a software product is employed in its operational environment, monitored for satisfactory performance, and modified as necessary to correct problems or to respond to changing requirements.}
+		\end{definition}
+		\begin{definition}{Maintenance \mysource{\ieeesixten}}
+			\mycite{The process of modifying a software system or component after delivery to correct faults, improve performance or other attributes, or adapt to a changed environment.}
+		\end{definition}
+	\end{mycolumns}
+\end{frame}
+
+\begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
 	\begin{mycolumns}[t]
-		\begin{note}{Evolution}
+		\begin{definition}{Evolution}
 			\begin{itemize}
 				\item new or removed functionality
 				\item larger changes
 				\item often foreseen changes
 				\item results in upgrades, service packs, or cumulative updates
 			\end{itemize}
-		\end{note}
+		\end{definition}
 		\begin{example}{Minor Release}
 			new minor version: 2.3.1 $\Rightarrow$ 2.4.0
 		\end{example}
@@ -15,115 +35,99 @@
 			new major version: 2.3.1 $\Rightarrow$ 3.0.0
 		\end{example}
 	\mynextcolumn
-		\begin{note}{Maintenance}
+		\begin{definition}{Maintenance}
 			\begin{itemize}
 				\item mostly corrections
 				\item smaller changes
 				\item often unforeseen changes
 				\item results in patches and hot fixes
 			\end{itemize}
-		\end{note}
+		\end{definition}
 		\begin{example}{Patch Release}
 			new patch version: 2.3.1 $\Rightarrow$ 2.3.2
 		\end{example}
 	\end{mycolumns}
+	\pause\pause\begin{note}{}
+		\centering not easy to distinguish -- there is a continuum between evolution and maintenance
+	\end{note}
 \end{frame}
 
+\subsection{Kinds of Maintenance}
+\begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
+	\begin{mycolumns}
+		\begin{definition}{Adaptive Maintenance \mysource{\lientzswanson}}
+			\mycite{Software maintenance performed to make a computer program usable in a changed environment.} \hfill \deutsch{adaptive Wartung}
+		\end{definition}
+		\begin{example}{}
+			desktop application for a new version of an operating system (e.g., from Windows 10 to 11)
+		\end{example}
+		\begin{definition}{Corrective Maintenance \mysource{\lientzswanson}}
+			\mycite{Maintenance performed to correct faults in software.} \hfill \deutsch{korrektive Wartung}
+		\end{definition}
+		\begin{example}{}
+			feature interaction of Lenovo products fixed with BIOS update
+		\end{example}
+	\mynextcolumn
+		% TODO from SE course: it is really annoying that this category has an overlap with preventive maintenance, as better maintainability typically also results in fewer problems
+		\begin{definition}{Perfective Maintenance \mysource{\lientzswanson}}
+			\mycite{Software maintenance performed to improve the performance, maintainability, or other attributes of a computer program.} \hfill \deutsch{perfektive Wartung}
+		\end{definition}
+		\begin{example}{}
+			improve start-up time of the Linux kernel
+		\end{example}
+		\begin{definition}{Preventive Maintenance \mysource{\lientzswanson}}
+			\mycite{Maintenance performed for the purpose of preventing problems before they occur.} \hfill \deutsch{präventive Wartung}
+		\end{definition}
+		\begin{example}{}
+			code audit of car software before next leap second
+		\end{example}
+	\end{mycolumns}
+\end{frame}
 
+\subsection{Recap on Feature Model Transformations}
+\againframe<2>{FeatureModelTransformations}
 
-%\subsection{Software Maintenance}
-%\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-%	\begin{mycolumns}
-%		\begin{note}{Motivation}
-%			\begin{itemize}
-%				\item for software: no compensation of deterioration, repair, spare parts
-%				\item corrections (especially shortly after first delivery)
-%				\item modification and reconstruction
-%			\end{itemize}
-%		\end{note}
-%	\mynextcolumn
-%		\begin{definition}{Operation and Maintenance Phase \mysource{\ieeesixten}}
-%			\mycite{The period of time in the software life cycle during which a software product is employed in its operational environment, monitored for satisfactory performance, and modified as necessary to correct problems or to respond to changing requirements.}
-%		\end{definition}
-%		\begin{definition}{Maintenance \mysource{\ieeesixten}}
-%			\mycite{The process of modifying a software system or component after delivery to correct faults, improve performance or other attributes, or adapt to a changed environment.}
-%		\end{definition}
-%	\end{mycolumns}
-%\end{frame}
-% TODO Operations
+\subsection{Reengineering Tasks}
+\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
+	\begin{mycolumns}
+		\begin{definition}{Reverse Engineering \mysource{Chikofsky und Cross}} % TODO link to literature missing
+			\mycite{Reverse engineering is the process of analyzing a system to identify the system’s components and their interrelationships and create representations of the system in another form or at a higher level of abstraction.}
+		\end{definition}
+		\begin{example}{}
+			create feature model from existing configurations
+		\end{example}
+		\begin{definition}{Forward Engineering \mysource{Chikofsky und Cross}}
+			\mycite{Forward engineering is the traditional process of moving from high-level abstractions and logical, implementation-independent designs to the physical implementation of a system.}
+		\end{definition}
+		\begin{example}{}
+			domain engineering \mysource{\lectureprocess\parta}
+		\end{example}
+	\mynextcolumn
+		\vspace{-3.5mm}
+		\begin{definition}{Refactoring \mysource{Chikofsky und Cross}}
+			\mycite{Refactoring is a transformation from one form of representation to another at the same relative level of abstraction. The new representation is meant to preserve the semantics and external behavior of the original.}
+		\end{definition}
+		\begin{example}{}
+			feature-model refactorings \mysource{\lectureevonance\parta}
+		\end{example}
+		\begin{definition}{Reengineering \mysource{Chikofsky und Cross}}
+			\mycite{Reengineering is the examination and alteration of a subject system to reconstitute it in a new form and the subsequent implementation of the new form.}
+		\end{definition}
+		\begin{example}{}
+			combination of reverse engineering, refactoring, and forward engineering
+		\end{example}
+	\end{mycolumns}
+\end{frame}
 
-%\subsection{Kinds of Maintenance}
-%\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-%	\begin{mycolumns}
-%		\begin{definition}{Adaptive Maintenance \mysource{\lientzswanson}}
-%			\mycite{Software maintenance performed to make a computer program usable in a changed environment.} \hfill \deutsch{adaptive Wartung}
-%		\end{definition}
-%		\begin{example}{}
-%			desktop application for a new version of an operating system (e.g., from Windows 8.1 to 10)
-%		\end{example}
-%		\begin{definition}{Corrective Maintenance \mysource{\lientzswanson}}
-%			\mycite{Maintenance performed to correct faults in software.} \hfill \deutsch{korrektive Wartung}
-%		\end{definition}
-%		\begin{example}{}
-%			Windows calculator showing wrong formulas
-%		\end{example}
-%	\mynextcolumn
-%		% TODO it is really annoying that this category has an overlap with preventive maintenance, as better maintainability typically also results in fewer problems
-%		\begin{definition}{Perfective Maintenance \mysource{\lientzswanson}}
-%			\mycite{Software maintenance performed to improve the performance, maintainability, or other attributes of a computer program.} \hfill \deutsch{perfektive Wartung}
-%		\end{definition}
-%		\begin{example}{}
-%			better handling of very large files in a text editor
-%		\end{example}
-%		\begin{definition}{Preventive Maintenance \mysource{\lientzswanson}}
-%			\mycite{Maintenance performed for the purpose of preventing problems before they occur.} \hfill \deutsch{präventive Wartung}
-%		\end{definition}
-%		\begin{example}{}
-%			2,000 year problem, leap seconds/years
-%		\end{example}
-%	\end{mycolumns}
-%\end{frame}
+% TODO \subsection{Refactoring of Product Lines}
 
-%\subsection{Reengineering Tasks}
-%\begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-%	\begin{mycolumns}
-%		\begin{definition}{Reverse Engineering \mysource{Chikofsky und Cross}}
-%			\mycite{Reverse engineering is the process of analyzing a system to identify the system’s components and their interrelationships and create representations of the system in another form or at a higher level of abstraction.}
-%		\end{definition}
-%		\begin{example}{}
-%			updating UML diagrams from source code
-%		\end{example}
-%		\begin{definition}{Forward Engineering \mysource{Chikofsky und Cross}}
-%			\mycite{Forward engineering is the traditional process of moving from high-level abstractions and logical, implementation-independent designs to the physical implementation of a system.}
-%		\end{definition}
-%		\begin{example}{}
-%			see Software Engineering I
-%		\end{example}
-%	\mynextcolumn
-%		\vspace{-3.5mm}
-%		\begin{definition}{Restructuring \mysource{Chikofsky und Cross}}
-%			\mycite{Restructuring is a transformation from one form of representation to another at the same relative level of abstraction. The new representation is meant to preserve the semantics and external behavior of the original.}
-%		\end{definition}
-%		\begin{example}{}
-%			refactorings as introduced in lecture on evolution
-%		\end{example}
-%		\begin{definition}{Reengineering \mysource{Chikofsky und Cross}}
-%			\mycite{Reengineering is the examination and alteration of a subject system to reconstitute it in a new form and the subsequent implementation of the new form.}
-%		\end{definition}
-%		\begin{example}{}
-%			combination of reverse engineering, refactoring, and forward engineering
-%		\end{example}
-%	\end{mycolumns}
-%\end{frame}
+% TODO \subsection{Reverse Engineering of Product Lines}
 
+% TODO \subsection{Reengineering of Product Lines}
+% TODO Fenske's reengineering classification
 
-\subsection{Reengineering and Reverse Engineering}
-\subsection{Recap: Adoption Strategies}
-\subsection{Reverse Engineering from Configurations}
-\subsection{Reverse Engineering from Formulas}
-\subsection{Outlook on Reverse Engineering Solution Space}
+%\subsection{Outlook on Reverse Engineering Solution Space}
 % Migration to New Implementation Technique?
 % some transitions can be automated, others not, use for taxonomy in continuum between clone-and-own and product lines?
 % TODO managed clone-and-own? VariantSync?
 % clones levels?
-% Fenske's reengineering classification

@@ -53,8 +53,8 @@
 				$B \pequals C \por D$
 			\end{example}
 		\mynextcolumn
-			\begin{example}{Version 2}
-				\pause\centering\featureDiagram{
+			\pause\begin{example}{Version 2}
+				\centering\featureDiagram{
 					A,concrete
 					[B,concrete,mandatory
 						[C,concrete,or]
@@ -65,8 +65,8 @@
 			\end{example}
 		\end{mycolumns}
 		\begin{mycolumns}
-			\begin{example}{Version 3}
-				\pause\centering\featureDiagram{
+			\pause\begin{example}{Version 3}
+				\centering\featureDiagram{
 					A,concrete
 					[B,concrete,mandatory
 						[C,concrete,or]
@@ -76,8 +76,8 @@
 				}
 			\end{example}
 		\mynextcolumn
-			\begin{example}{Version 4}
-				\pause\centering\featureDiagram{
+			\pause\begin{example}{Version 4}
+				\centering\featureDiagram{
 					A,concrete
 					[B,concrete,mandatory
 						[C,concrete,optional]
@@ -108,7 +108,7 @@
 	\mywhite{}{\pic[width=\linewidth,page=#1]{fmrefactoring}}
 }
 \begin{frame}{\myframetitle{} \mytitlesource{\fmrefactoring}}
-	\begin{mycolumns}[columns=3]
+	\begin{mycolumns}[columns=3,animation=none]
 		\addpattern{1}
 	\mynextcolumn
 		\addpattern{2}
@@ -116,18 +116,18 @@
 		\addpattern{3}
 	\end{mycolumns}
 
-	\begin{mycolumns}[columns=4,widths={17,33,33}]
-	\mynextcolumn
-		\addpattern{4}
+	\begin{mycolumns}[columns=3,animation=none]
+		\pause\addpattern{4}
 	\mynextcolumn
 		\addpattern{5}
 	\mynextcolumn
+		\centering\Huge\ldots
 	\end{mycolumns}
 \end{frame}
 
 \subsubsection{Generalizations}
 \begin{frame}{\myframetitle{} \mytitlesource{\fmrefactoring}}
-	\begin{mycolumns}[columns=3]
+	\begin{mycolumns}[columns=3,animation=none]
 		\addpattern{6}
 	\mynextcolumn
 		\addpattern{7}
@@ -135,8 +135,8 @@
 		\addpattern{8}
 	\end{mycolumns}
 
-	\begin{mycolumns}[columns=3]
-		\addpattern{9}
+	\begin{mycolumns}[columns=3,animation=none]
+		\pause\addpattern{9}
 	\mynextcolumn
 		\addpattern{10}
 	\mynextcolumn
@@ -144,23 +144,24 @@
 	\end{mycolumns}
 \end{frame}
 \begin{frame}{\myframetitle{} \mytitlesource{\fmrefactoring}}
-	\begin{mycolumns}[columns=4,widths={17,33,33}]
-	\mynextcolumn
+	\begin{mycolumns}[columns=3,animation=none]
 		\addpattern{12}
 	\mynextcolumn
 		\addpattern{13}
 	\mynextcolumn
+		\addpattern{14}
 	\end{mycolumns}
 
-	\begin{mycolumns}[columns=4,widths={17,33,33}]
+	\begin{mycolumns}[columns=4,widths={17,33,33},animation=none]
 	\mynextcolumn
-		\addpattern{14}
+		\pause\addpattern{15}
 	\mynextcolumn
-		\addpattern{15}
+		\centering\Huge\ldots
 	\mynextcolumn
 	\end{mycolumns}
 \end{frame}
 
+% TODO feature model diffing: by Acher
 % TODO staged configuration: CHE:SPIP05staged
 % TODO from diffs to edit operations: BKL+:AUSE15
 
@@ -212,7 +213,7 @@
 		\item fewest changes only affect variability information
 	}
 \end{frame}
-\begin{frame}{\myframetitle{} \mytitlesource{\splevolution}}
+\begin{frame}[label=CoEvolutionOfLinux]{\myframetitle{} \mytitlesource{\splevolution}}
 	\addevolution{4}{
 		\item 1\,\% of commits in Linux \emph{only} change feature model
 		\item 4\,\% of commits in Linux change feature model\\~

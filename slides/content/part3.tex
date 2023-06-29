@@ -284,8 +284,8 @@
 
 % TODO L12 EVOLUTION AND MAINTENANCE
 
-\ifuniversity{recording}{\date{???}\setcopyright{}} % TODO \setpicture[200]{}
-\ifuniversity{ulm}{\date{July 18, 2023}} % TODO \setpicture[200]{}
+\ifuniversity{recording}{\date{June 28, 2023}\setpicture[275]{may23-west1}\setcopyright{}}
+\ifuniversity{ulm}{\date{July 18, 2023}\setpicture[275]{may23-west1}}
 
 \author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
 \lecture{Evolution and Maintenance}{evonance}
@@ -298,30 +298,47 @@
 	\item different kinds of changes to feature models (e.g., refactorings)
 	\item co-evolution of feature model, feature mapping, artifacts
 }{
-	\item \ldots
+	\item \reasoningfme\\ --- SAT-based classification of feature-model changes
+	\item \fmrefactoring\\ --- patterns for feature-model refactorings
+	\item \splevolution\\ --- product-line evolution
 	% TODO literature presenting laws to translate tree constraints into cross-tree constraints and back https://www.jucs.org/jucs_14_21/algebraic_laws_for_feature/jucs_14_21_3573_3591_gheyi.pdf
 }{
-	\ldots
+	After which changes do we need to analyze and test the product line again?
+
+	Do we always need to analyze and test the complete product line again?
 }
 
 \section{Product-Line Maintenance}
 \input{content/12b-maintenance}
 \lessonslearned{
-	\item \ldots
+	\item what is maintenance?
+	\item what are examples for product-line maintenance?
+	\item what is reengineering?
+	\item what are examples of product-line reengineering?
 }{
-	\item \ldots
+	\item \ludewiglichter\\ --- maintenance and reengineering
 }{
-	\ldots
+	How do \emph{product-line adoption strategies}
+
+	(proactive, reactive, extractive)
+
+	correlate with \emph{reengineering tasks}
+
+	(reengineering, refactoring, forward/reverse engineering)?
 }
 
-\section{Course Summary and Outlook}
+\section{Course Summary}
+% TODO no outlook yet: \section{Course Summary and Outlook}
 \input{content/12c-summary}
 \lessonslearned{
-	\item \ldots
+	\item how to implement features and variability?
+	\item how to model valid combinations and reason about those?
+	\item how to do quality assurance?
+	\item (how to evolve and maintain a product line?)
 }{
-	\item \ldots
+	\item[] see earlier parts
 }{
-	\ldots
+	Questions? Feedback?
 }
 
 % TODO Thomas: add exam questions here
