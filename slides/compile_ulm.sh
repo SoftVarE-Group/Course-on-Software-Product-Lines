@@ -49,9 +49,6 @@ make_overview () {
 }
 
 make_full_overview () {
-	university=recording
-	outpath="${archive_path}${semester}-${university^}/"
-
     cur_lectures=$(printf ",%s" "${lecture_names[@]}")
     cur_lectures=${cur_lectures:1}
 
@@ -61,16 +58,16 @@ make_full_overview () {
     spl="\input{spl1.tex}\includeonlylecture{$cur_lectures}\input{spl2.tex}"
     echo $spl > spl.tex
 
-    latexmk="pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error \"\def\ismake{}\def\ishandout{}\def\university{${university}}\input{%S}\""
+    latexmk="pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error \"\def\ismake{}\def\ishandout{}\def\university{recording}\input{%S}\""
     latexmk -quiet -silent -pdf -pdflatex="$latexmk" spl.tex
     latexmk -quiet -silent -c spl.tex
     rm spl.*.vrb
-    mv -f spl.pdf ${outpath}spl_recording.pdf
+    mv -f spl.pdf ${slide_path}spl.pdf
 
-    latexmk="pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error \"\def\ismake{}\def\ishandout{}\def\isdarkmode{}\def\university{${university}}\input{%S}\""
+    latexmk="pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error \"\def\ismake{}\def\ishandout{}\def\isdarkmode{}\def\university{recording}\input{%S}\""
     latexmk -quiet -silent -pdf -pdflatex="$latexmk" spl.tex
     latexmk -quiet -silent -c spl.tex
-    cp -f spl.pdf ${outpath}spl-dark_recording.pdf
+    cp -f spl.pdf ${slide_path}spl-dark.pdf
     rm spl.*.vrb
 }
 
@@ -79,16 +76,14 @@ make_recording () {
     latexmk -quiet -silent -C ${TEXFILE}
     make ${lecture}.pdf university=recording handout=n darkmode=y
     rm ${lecture}.*.vrb
-    mv -f ${lecture}.pdf ${outpath}animated/${lecture}.pdf
+    mv -f ${lecture}.pdf ${outpath}${lecture}.pdf
 
     make ${lecture}.pdf university=recording handout=y darkmode=n
     rm ${lecture}.*.vrb
-    cp -f ${lecture}.pdf ${outpath}${lecture}.pdf
     mv -f ${lecture}.pdf ${slide_path}${lecture}.pdf
 
     make ${lecture}.pdf university=recording handout=y darkmode=y
     rm ${lecture}.*.vrb
-    cp -f ${lecture}.pdf ${outpath}${lecture}-dark.pdf
     cp -f ${lecture}.pdf ${slide_path}${lecture}-dark.pdf
 }
 
@@ -135,7 +130,9 @@ if [ "$#" -ge 2 ]; then
     echo "Using university ${university}"
 fi
 
+# create slides for recording first, such that university-specific files remain in the slides folder
 if test ${is_make_recording} -gt 0 ; then make_recording ; fi
+if test ${is_make_full_overview} -gt 0 ; then make_full_overview ; fi
 if test ${is_make_lecture} -gt 0 ; then make_lecture ; fi
 if test ${is_make_overview} -gt 0 ; then make_overview ; fi
-if test ${is_make_full_overview} -gt 0 ; then make_full_overview ; fi
+
