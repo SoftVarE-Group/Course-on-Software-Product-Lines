@@ -3,7 +3,7 @@
 **[Open educational resources](https://en.wikipedia.org/wiki/Open_educational_resources) on software product lines**
 
 * **LaTeX Slides**: Material for lectures on software product lines 
-* [LaTeX Exercises](https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises): Material for exercises on software product lines 
+* [LaTeX Exercises](https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises): Material for exercises on software product lines (available on request)
 * [PDF Slides](https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course): Released version of slides for the lecture on software product lines
 * [Recordings](https://www.youtube.com/playlist?list=PL4hJhdKDPIxha8So7muX2zfNUU8NBoiu3): YouTube playlist with lecture recordings
 
