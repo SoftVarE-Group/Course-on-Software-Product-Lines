@@ -113,10 +113,10 @@
 %\newcommand{\redandgray}[1]{\only<#1-| handout:#1->{\color{black}}\only<#1| handout:#1>{\color{blue}}}
 \newcommand{\epairone}[6]{
 	\alt<#5->{\textcolor{#3}{$#1 \wedge #2$}}{$#1 \wedge #2$} & 
-	\alt<#6->{\textcolor{#4}{$\neg #1 \wedge #2$}}{$\neg #1 \wedge #2$} & 
+	\alt<#6->{\textcolor{#4}{$#1 \wedge \neg #2$}}{$#1 \wedge \neg #2$} & 
 }
 \newcommand{\epairtwo}[6]{
-	\alt<#5->{\textcolor{#3}{$#1 \wedge \neg #2$}}{$#1 \wedge \neg #2$} & 
+	\alt<#5->{\textcolor{#3}{$\neg #1 \wedge #2$}}{$\neg #1 \wedge #2$} & 
 	\alt<#6->{\textcolor{#4}{$\neg #1 \wedge \neg #2$}}{$\neg #1 \wedge \neg #2$} \\
 }
 
