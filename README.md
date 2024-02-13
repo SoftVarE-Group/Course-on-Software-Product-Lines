@@ -17,11 +17,17 @@
 </picture>
 </a>
 
-## Contributors
+## Contact
 
-- Thomas Thüm (University of Ulm, Germany)
-- Timo Kehrer (University of Bern, Switzerland)
-- Elias Kuiter (University of Magdeburg, Germany)
+Core contributors:
+
+- [Thomas Thüm](https://www.uni-ulm.de/in/sp/team/thuem/) (University of Ulm, Germany)
+- [Timo Kehrer](https://www.inf.unibe.ch/ueber_uns/personen/seg/prof_dr_kehrer_timo/index_ger.html) (University of Bern, Switzerland)
+- [Elias Kuiter](https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html) (University of Magdeburg, Germany)
+
+Further contributors and former project members:
+
+- [Sebastian Krieter](https://www.uni-ulm.de/in/sp/team/sebastian-krieter/) (University of Ulm, Germany)
 
 ## Usage in Lectures
 
