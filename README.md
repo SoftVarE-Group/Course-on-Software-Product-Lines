@@ -31,7 +31,7 @@ Further contributors and former project members:
 
 ## Usage in Lectures
 
-- University of Bern, Switzerland: Software Product Lines (Winter Term 2022/23)
+- University of Bern, Switzerland: Software Product Lines (Winter Term 2022/23, Winter Term 2023/24)
 - University of Magdeburg, Germany: Implementation Techniques for Software Product Lines (Winter Term 2022/23, Winter Term 2023/24)
 - Harz University of Applies Sciences, Wernigerode, Germany: Requirements Engineering II - Software Product Lines (Summer Term 2023)
 - University of Ulm, Germany: Software Product Lines (Summer Term 2023)
