@@ -5,7 +5,7 @@
 \newcommand{\definelanguage}[2]{
 	\lstdefinelanguage{#1}{#2}
 	\lstnewenvironment{#1}[1][]{\lstset{language=#1,##1}}{}
-	\newtcblisting{#1tight}[2][]{uulm@tightboxstyle={top=-6pt,bottom=-6pt}{##2}{blue},listing only,listing options={language=#1,##1}}
+	\newtcblisting{#1tight}[2][]{fancy@tightboxstyle={top=-6pt,bottom=-6pt}{##2}{blue},listing only,listing options={language=#1,##1}}
 }
 
 % listing style inherited by all languages

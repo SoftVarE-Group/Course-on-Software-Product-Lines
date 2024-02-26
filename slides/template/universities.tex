@@ -37,54 +37,54 @@
 	\mode<beamer>{\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}} % avoid annoying tool tips during the recording
 	\setpicture[550]{jun22-clouds3} % default picture
 }{
-	\hypersetup{linkcolor=uulm@text, citecolor=red, filecolor=red, runcolor=red, urlcolor=red, colorlinks=true} % emphasizing links, but not when recording
+	\hypersetup{linkcolor=foreground, citecolor=red, filecolor=red, runcolor=red, urlcolor=red, colorlinks=true} % emphasizing links, but not when recording
 }
 
 \ifuniversity{ulm}{
-	% copied from beamerthemeuulm.sty
-	\definecolor{black}{HTML}{000000}
-	\definecolor{uulmlogoblue}{HTML}{89a2b3}
-	\definecolor{uulmblue}{HTML}{7D9AAA}
-	\definecolor{uulmaccent}{HTML}{A9A28D}
-	\definecolor{green}{HTML}{56AA1C}
-	\definecolor{red}{HTML}{A32638}
-	\definecolor{orange}{HTML}{DF6D07}
-	\definecolor{blue}{HTML}{26547C}
-	\ifdarkmode
-		\colorlet{green}{green!90!white}
-		\colorlet{red}{red!90!white}
-		\colorlet{orange}{orange!90!white}
-		\colorlet{blue}{blue!90!white}
-	\fi
+	\AtEndPreamble{ % copied from https://github.com/sp-uulm/FancyBeamerUULM/blob/main/fancyuulm.sty
+		% uulm color scheme
+		\definecolor{red}{HTML}{A32638}
+		\definecolor{green}{HTML}{56AA1C}
+		\definecolor{blue}{HTML}{26547C}
+		\definecolor{orange}{HTML}{DF6D07}
+		\definecolor{accent}{HTML}{A9A28D}
+		\colorlet{accenttwo}{red} % specify faculty color here: red, green, blue, orange
 
-	\uulmlogos{,softvare,,sp,,uulm,}
+		% beamer colors in darkmode
+		\ifdarkmode
+		\colorlet{red}{red!50!white}
+		\colorlet{green}{green!50!white}
+		\colorlet{blue}{blue!50!white}
+		\colorlet{orange}{orange!50!white}
+		\colorlet{accent}{accent!25!darkgray}
+		\colorlet{accenttwo}{accenttwo!25!darkgray}
+		\fi
+	}
+
+	\fancylogos{,softvare,,sp,,uulm,}
 	\setpicture[550]{jun22-clouds3} % default picture
 }
 
 \ifuniversity{bern}{
-	% todo
-	\uulmlogos{unibe}
+	\fancylogos{unibe}
 }
 
 \ifuniversity{magdeburg}{
 	% OVGU colors: https://www.cd.ovgu.de/Logo_+Farbe_+Schrift/Farbe.html
 	% FIN colors: https://www.cd.ovgu.de/Fakult%C3%A4ten/Informatik.html
-	\definecolor{uulmaccent}{RGB}{77,77,77} % accent gray
 	\definecolor{green}{RGB}{5,165,53} % natural sciences
 	\definecolor{red}{RGB}{209,63,88} % mathematics
 	\definecolor{orange}{RGB}{243,145,0} % humanities
 	\definecolor{blue}{RGB}{0,104,180} % computer science
-	\setbeamercolor{mypagenumber}{fg=white,bg=blue}
-	\setbeamercolor{titlebox}{fg=white,bg=blue}
-	\uulmlogos{ovgu-blue}
+	\definecolor{accent}{RGB}{77,77,77} % accent gray
+	\colorlet{accenttwo}{blue} % computer science
+	\fancylogos{ovgu-blue}
 }
 
 \ifuniversity{wernigerode}{
-	\definecolor{uulmaccent}{HTML}{a09377}
-	\definecolor{lightaccent}{HTML}{e9e9e5}
-	\uulmlogos{hs-harz}
-	\setbeamercolor{titlebox}{fg=black,bg=lightaccent}
-	\setbeamercolor{mypagenumber}{fg=black,bg=lightaccent}
+	\definecolor{accent}{HTML}{a09377}
+	\definecolor{accenttwo}{HTML}{e9e9e5}
+	\fancylogos{hs-harz}
 	\setpicture[400]{wernigerode-castle}
 	\renewcommand{\faq}[3]{}
 }
