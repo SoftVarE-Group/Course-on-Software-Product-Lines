@@ -14,6 +14,7 @@
 % TITLE
 \title{Software Product Lines} % default title for the course
 \ifuniversity{ulm}{\title[SPL]{Software Product Lines}} % abbreviation used to make footer fit for Lecture 3
+\ifuniversity{paderborn}{\title[SPL]{Software Product Lines}} % abbreviation used to make footer fit for Lecture 3
 \ifuniversity{bern}{\title{Software Product Lines}}
 \ifuniversity{magdeburg}{\title[Software Product Lines]{Implementation Techniques for Software Product Lines}}
 \ifuniversity{wernigerode}{\title{Requirements Engineering II -- Software Product Lines}}
@@ -23,6 +24,7 @@
 \let\author@old\author
 \renewcommand{\author}[1]{
 	\ifuniversity{ulm}{\author@old{Thomas Thüm, Chico Sundermann, Sebastian Krieter}}
+	\ifuniversity{paderborn}{\author@old{Thomas Thüm, Paul Bittner}}
 	\ifuniversity{bern}{\author@old{Timo Kehrer, Sandra Greiner}}
 	\ifuniversity{magdeburg}{\author@old{Gunter Saake, Elias Kuiter}}
 	\ifuniversity{wernigerode}{\author@old{Elias Kuiter}}
@@ -63,6 +65,49 @@
 
 	\fancylogos{,softvare,,sp,,uulm,}
 	\setpicture[550]{jun22-clouds3} % default picture
+}
+
+\ifuniversity{paderborn}{
+	\AtEndPreamble{ % copied from https://github.com/SEatUPB/FancyBeamerUPB/blob/main/fancyupb.sty
+		% upb color scheme
+		% primary, barrierearm, cannot be mixed
+		\definecolor{upbultrablau}{HTML}{0025AA} % headings, text hightlighting
+		% secondary, not barrierearm, can be mixed
+		\definecolor{upbarktisblau}{HTML}{58C6C7} % not allowed with white font
+		% secondary, barrierearm, can be mixed
+		\definecolor{upbmeerblau}{HTML}{3AA9C7} % not allowed with white font
+		\definecolor{upbhimmelblau}{HTML}{2056AE}
+		\definecolor{upbsaphirblau}{HTML}{181C63}
+		\definecolor{upbirisviolett}{HTML}{7E3FA8}
+		\definecolor{upbfuchsiarot}{HTML}{B43093}
+		% tertiary, not barrierearm, cannot be mixed
+		\definecolor{upbgranatpink}{HTML}{EE288A} % only for triangles
+		\definecolor{upblimettengruen}{HTML}{A5CE42} % only for triangles
+
+		% redefines colors used in fancybeamer
+		\colorlet{red}{upbfuchsiarot}
+		\colorlet{green}{upbarktisblau}
+		\colorlet{blue}{upbhimmelblau}
+		\colorlet{orange}{upbirisviolett}
+		\colorlet{accent}{blue!80!white}
+		\colorlet{accenttwo}{red!80!white}
+		\ifdarkmode
+		\colorlet{red}{red!90!white}
+		\colorlet{green}{green!90!white}
+		\colorlet{blue}{blue!90!white}
+		\colorlet{orange}{orange!90!white}
+		\colorlet{accent}{accent!25!darkgray}
+		\colorlet{accenttwo}{accenttwo!25!darkgray}
+		\fi
+
+		% hack to force use of changed colors
+		\UpdateBoxColor{definition}{blue}
+		\UpdateBoxColor{example}{green}
+		\UpdateBoxColor{note}{red}
+	}
+
+	\fancylogos{upb,upb-triangles}
+	%\setpicture[550]{jun22-clouds3} % default picture
 }
 
 \ifuniversity{bern}{
