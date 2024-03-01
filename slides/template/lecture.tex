@@ -1,15 +1,8 @@
-\usepackage{../SoftVarE-SlideTemplate/beamerthemeuulm} % use the inofficial uulm beamer theme
-\uulmlogos{,uulm,,unibe,,ovgu-blue,}
+\usepackage{../FancyBeamer/fancybeamer} % use the fancy beamer package
+\fancylogos{,uulm,,unibe,,ovgu-blue,}
 \setmycolumnsdefault{animation=keep} % animate all columns per default
 
 % GRAPHICSPATH
-
-\makeatletter
-\newcommand{\setpaths}[1]{
-	\graphicspath{#1} % for loading pictures
-	\def\input@path{#1} % for loading picture sources
-}
-\makeatother
 
 \setpaths{
 	{../SoftVarE-SlideTemplate/pics/logos/}
@@ -37,6 +30,7 @@
 	{../pics/logos/}
 	{../pics/magdeburg/}
 	{../pics/mindmaps/}
+	{../pics/paderborn/}
 	{../pics/people/}
 	{../pics/preprocessors/}
 	{../pics/process/}
@@ -69,7 +63,6 @@
 
 % INCLUDED TEMPLATE FILES
 
-\input{template/colorscheme}
 \input{template/macros}
 \input{template/featurediagrams} % TODO merge into template?
 \input{template/listings} % TODO merge into template?

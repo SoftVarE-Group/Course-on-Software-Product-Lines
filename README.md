@@ -28,9 +28,12 @@ Core contributors:
 Further contributors and former project members:
 
 - [Sebastian Krieter](https://www.uni-ulm.de/in/sp/team/sebastian-krieter/) (University of Ulm, Germany)
+- [Chico Sundermann](https://www.uni-ulm.de/in/sp/team/chico-sundermann/) (University of Ulm, Germany)
+- Benno Hölz (University of Ulm, Germany)
 
 ## Usage in Lectures
 
+- Paderborn University, Germany: Software Product Lines (Summer Term 2024)
 - University of Bern, Switzerland: Software Product Lines (Winter Term 2022/23, Winter Term 2023/24)
 - University of Magdeburg, Germany: Implementation Techniques for Software Product Lines (Winter Term 2022/23, Winter Term 2023/24)
 - Harz University of Applies Sciences, Wernigerode, Germany: Requirements Engineering II - Software Product Lines (Summer Term 2023)

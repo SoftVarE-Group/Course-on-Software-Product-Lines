@@ -57,21 +57,6 @@
 
 % TODO would be great if the footer links to the respective current lecture
 
-% load href target from file: \href{file.txt}{text}
-\newcommand\hreffile[1]{%
-	\CatchFileDef\myurl{#1}{\catcode`\#=12\catcode`\%=12\endlinechar=-1}%
-	\expandafter\href\expandafter{\myurl}}
-\newcommand{\pic}[2][]{%
-	\IfFileExists{#2.txt}{\hreffile{#2.txt}}{}{\includegraphics[#1]{#2}}}
-\newcommand{\picDark}[2][]{\pic[#1]{#2}}
-\ifdarkmode
-	\renewcommand{\picDark}[2][]{%
-		\IfFileExists{#2-dark.png}{\pic[#1]{#2-dark.png}}{%
-		\IfFileExists{#2-dark.pdf}{\pic[#1]{#2-dark.pdf}}{%
-		\pic[#1,decodearray={1 .25 1 .25 1 .25 1 .25}]{#2}}}%
-	}
-\fi
-
 % TODO hack to switch the lecture title with its subtitle on the title slide + add photo copyright notice
 \makeatletter
 \setbeamercolor{copyrightbox}{fg=white}
@@ -102,7 +87,7 @@
         \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
             \vspace{-1ex}%
             \hspace{10pt}
-            \@mainlogo
+            \fancy@logoline
             \hspace{10pt}
         \end{beamercolorbox}%
     \end{frame}
@@ -146,7 +131,7 @@
         \begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,left]{logobox}
             \vspace{-1ex}%
             \hspace{10pt}
-            \@mainlogo
+            \fancy@logoline
             \hspace{10pt}
         \end{beamercolorbox}%
     \end{frame}
@@ -178,7 +163,7 @@
 % setter for title picture + copyright notice
 \newcommand{\setpicture}[2][150]{\def\thepicture{#2}\def\thepictureoffset{#1}}
 \newcommand{\setcopyright}[1]{\def\thecopyright{#1}}
-\newcommand{\picborder}[1]{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{.75pt}\fcolorbox{uulmaccent}{white}{#1}}}
+\newcommand{\picborder}[1]{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{.75pt}\fcolorbox{accent}{white}{#1}}}
 
 % TODO improve itemize + enumerate margins
 \setlength{\leftmargini}{2.5ex}
