@@ -28,6 +28,8 @@ Core contributors:
 Further contributors and former project members:
 
 - [Sebastian Krieter](https://www.uni-ulm.de/in/sp/team/sebastian-krieter/) (University of Ulm, Germany)
+- [Chico Sundermann](https://www.uni-ulm.de/in/sp/team/chico-sundermann/) (University of Ulm, Germany)
+- Benno Hölz (University of Ulm, Germany)
 
 ## Usage in Lectures
 
