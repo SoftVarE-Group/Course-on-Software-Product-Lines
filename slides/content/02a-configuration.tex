@@ -1,7 +1,7 @@
 \subsection{Variability and Binding Time}
 
 \begin{frame}{Recap: Software Product Lines}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}
 			\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
@@ -12,9 +12,9 @@
 			\end{itemize}
 			\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=24]{lego}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{How to Implement Software Product Lines?}
@@ -30,15 +30,15 @@
 \subsubsection{Command-Line Parameters}
 
 \begin{frame}{Example: Command-Line Parameters}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\centering\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir}
 
 		Description of configuration options
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir2}
 
 		Two different instances? \pause\pause separator \emph{,} in file sizes
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Preference Dialogs}
@@ -56,16 +56,16 @@
 \subsection{Configuration Options and Runtime Variability}
 
 \begin{frame}{What do these examples have in common?}
-	\begin{mycolumns}[columns=3,widths={26,36,36},animation=none]
+	\begin{fancycolumns}[columns=3,widths={26,36,36},animation=none]
 		\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{preferences-eclipse}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{configfile-eclipse-ini}
-	\end{mycolumns}
+	\end{fancycolumns}
 		
 	\uncover<2->{
-		\begin{mycolumns}[t,widths={57},animation=none]
+		\begin{fancycolumns}[t,widths={57},animation=none]
 			\begin{note}{Configuration Options}
 				\begin{itemize}
 					\item Behavior of a program is determined by configuration options being interpreted at runtime
@@ -73,11 +73,11 @@
 					\item Configuration may happen interactively (command-line parameters, preference dialogs) or non-interactively (configuration files)
 				\end{itemize}
 			\end{note}
-		\mynextcolumn	
+		\nextcolumn	
 			\begin{definition}{Runtime Variability\mysource{\fospl\mypage{49}}}
 				Runtime variability \deutsch{Laufzeitvariabilität} is decided after compilation when the program is started (aka.\ load-time variability) or during program execution.
 			\end{definition}
-		\end{mycolumns}
+		\end{fancycolumns}
 	}
 \end{frame}
 
@@ -88,7 +88,7 @@
 \begin{frame}{Example: Graph Library}
 	\myframeicon{\mysource{inspired by \gpl}}
 	A simple library for graphs providing \ldots\\~\\
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{example}{\ldots\ Data Structures}
 			\begin{itemize}
 				\item Directed/undirected edges
@@ -97,7 +97,7 @@
 				\item \ldots
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{\ldots\ and Algorithms}
 			\begin{itemize}
 				\item Vertex numbering
@@ -107,45 +107,45 @@
 				\item \ldots
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Features of a Graph}
-	\begin{mycolumns}[t,columns=4]
+	\begin{fancycolumns}[t,columns=4]
 		\pic[width=\linewidth,page=1]{graphs}
 		\pic[width=\linewidth,page=3]{graphs}
 		\centering\Huge\vdots
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=5]{graphs}
 		\pic[width=\linewidth,page=7]{graphs}
 		\centering\Huge\vdots
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=11]{graphs}
 		\pic[width=\linewidth,page=13]{graphs}
 		\centering\Huge\vdots
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=15]{graphs}
 		\pic[width=\linewidth,page=17]{graphs}		
 		\centering\Huge\vdots
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Features as Configuration Options}
-	\begin{mycolumns}[columns=3,widths={25,25},animation=none]
+	\begin{fancycolumns}[columns=3,widths={25,25},animation=none]
 		\begin{exampletight}{Directed}
 			\pic[width=\linewidth,page=3]{graphs}
 		\end{exampletight}
 		\begin{exampletight}{Colored}
 			\pic[width=\linewidth,page=11]{graphs}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Weighted}
 			\pic[width=\linewidth,page=5]{graphs}
 		\end{exampletight}
 		\begin{exampletight}{Weighted, Colored}
 			\pic[width=\linewidth,page=15]{graphs}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\pause\pic[width=0.45\linewidth,page=6]{graphs}
 		\hfill
 		\pic[width=0.45\linewidth,page=12]{graphs}
@@ -158,13 +158,13 @@
 				\item Their boolean value determines which features are \emph{activated} / \emph{deactivated}
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Valid Combinations of Options}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=4,widths={65,5,15,15},animation=none]
+	\begin{fancycolumns}[columns=4,widths={65,5,15,15},animation=none]
 		\begin{tabular}{llll}
 			\toprule
 			{\bf Algorithm} 							& {\bf Graph type} 	& {\bf Weights} & {\bf Coloring}  \\ \midrule
@@ -181,20 +181,20 @@
 				\item whenever options are loaded/changed at runtime
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
-	\mynextcolumn
+	\nextcolumn
+	\nextcolumn
 		\begin{exampletight}{Directed\\~}
 			\pic[width=\linewidth,page=3]{graphs}
 		\end{exampletight}	
 		\begin{exampletight}{Colored\\~}
 			\pic[width=\linewidth,page=11]{graphs}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Weighted\\~}
 			\pic[width=\linewidth,page=5]{graphs}
 		\end{exampletight}
 		\begin{exampletight}{Weighted,\\Colored}
 			\pic[width=\linewidth,page=15]{graphs}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

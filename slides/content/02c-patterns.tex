@@ -3,7 +3,7 @@
 \subsection{Recap on Object Orientation}
 
 \begin{frame}[label=ObjectOrientation]{Recap: Object Orientation}
-	\begin{mycolumns}[height=50mm,animation=none]
+	\begin{fancycolumns}[height=50mm,animation=none]
 		\begin{definition}{Key Concepts}
 			\begin{itemize}
 				\item \textbf{Encapsulation}:\\abstraction and information hiding
@@ -13,14 +13,14 @@
 				\item \textbf{Inheritance}:\\conceptual hierarchy, polymorphism, reuse
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{oo-concepts-illustration} % TODO what illustrates which concept? why is square not a rectangle or rectangle not a square?
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Recap on Design Patterns}
 \begin{frame}[label=DesignPatterns]{Recap: Design Patterns\ \mytitlesource{\gof}}
-	\begin{mycolumns}[widths={60},animation=none]
+	\begin{fancycolumns}[widths={60},animation=none]
 		\begin{definition}{Design Patterns \deutsch{Entwurfsmuster}}
 			\begin{itemize}
 				\item Document common solutions to concrete yet frequently occurring design problems
@@ -35,14 +35,14 @@
 				\item Decorator
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\picborder{\pic[width=\linewidth]{gof}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Template Method Pattern}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40}]
+	\begin{fancycolumns}[widths={40}]
 		\begin{definition}{Template Method \mysource{\gof\mypages{325--330}}}
 			\begin{itemize}
 				\item {\bf Intent:} \mycite{Define the overall structure of an algorithm, while allowing subclasses to refine, or redefine, certain steps.}
@@ -50,9 +50,9 @@
 				\item {\bf Idea:} A template method defines the skeleton of an algorithm. Concrete methods override the hook methods.
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{templatemethod}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % design patterns as uml class diagrams modeled with diagrams.net
@@ -71,7 +71,7 @@
 
 \subsubsection{Abstract Factory Pattern}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40}]
+	\begin{fancycolumns}[widths={40}]
 		\begin{definition}{Abstract Factory \mysource{\gof\mypages{87--95}}}
 			\begin{itemize}
 				\item {\bf Intent:} \mycite{Provide an interface for creating families of related or dependent objects without specifying their concrete classes.}
@@ -79,17 +79,17 @@
 				\item {\bf Idea:} Create classes for the consistent creation of objects.
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\tcbset{uulm@tightboxstyle/.append style={colback=white}} % hack to fix partially transparent background
 		\begin{exampletight}{}
 			\abstractfactory{width=\linewidth}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Decorator Pattern}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={45}]
+	\begin{fancycolumns}[widths={45}]
 		\begin{definition}{Decorator \mysource{\gof\mypages{175--184}}}
 			\begin{itemize}
 				\item {\bf Intent:} \mycite{Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.}
@@ -97,28 +97,28 @@
 				\item {\bf Idea:} Create decorators and components with the same interface, whereas decorators forward behavior whenever feasible.
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\tcbset{uulm@tightboxstyle/.append style={colback=white}} % hack to fix partially transparent background
 		\begin{exampletight}{}
 			\decorator{width=\linewidth}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Trade-Offs and Limitations}
 
 \subsubsection{Template Method and Abstract Factory}
 \begin{frame}{Object-Oriented Design of our Graph Library}
-	\begin{mycolumns}[widths={40}]
+	\begin{fancycolumns}[widths={40}]
 		\picDark[width=\linewidth]{graphlib-oo-node-edge}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{graphlib-oo-graph}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Instantiation Through Template Method Pattern}
 	\small
-	\begin{mycolumns}[widths={45}]
+	\begin{fancycolumns}[widths={45}]
 \begin{codetight}{}
 class Graph {
 	...
@@ -144,14 +144,14 @@ class Graph {
 	}
 }@
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\centering\picDark[width=.7\linewidth]{graphlib-oo-node-edge}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Instantiation Through Abstract Factory Pattern}
 	\small
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 \begin{codetight}{}
 class Graph {
 	EdgeFactory edgeFactory;
@@ -173,7 +173,7 @@ class EdgeFactory {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\centering\picDark[width=.75\linewidth]{graphlib-oo-node-edge}	
 \begin{codetight}{}
 @class WeightedEdgeFactory extends EdgeFactory {
@@ -184,7 +184,7 @@ class EdgeFactory {
 	}
 }@
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Diamond Problem and Decorator}
@@ -193,7 +193,7 @@ class EdgeFactory {
 \end{frame}
 
 \begin{frame}{Diamond Problem}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Multiple Inheritance}
 			\begin{itemize}
 				\item most object-oriented programming languages do not support multiple inheritance (or only provide workarounds)
@@ -202,24 +202,24 @@ class EdgeFactory {
 			% TODO add quote on multiple inheritance?
 			% Multiple Inheritance is like a parachute. You don't often need it, but when you do, you really need it. Grady Booch? this one does not really fit here
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{graphlib-oo-diamond-commented}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[label=StaticModelingOfFeatureCombinations]{Static Modeling of Feature Combinations}
-	\begin{mycolumns}[columns=3,widths={10,80},animation=none]
-	\mynextcolumn
+	\begin{fancycolumns}[columns=3,widths={10,80},animation=none]
+	\nextcolumn
 		\picDark[width=\linewidth]{graphlib-oo-combinatorial}
 		\begin{note}{}
 			Even if multiple inheritance is supported, statically combining features through inheritance is tedious (or infeasible).
 		\end{note}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Decorator Pattern as a Solution?} % TODO motivation too short
-	\begin{mycolumns}[widths={52}]
+	\begin{fancycolumns}[widths={52}]
 		\small
 \begin{codetight}{}
 abstract class GraphDecorator implements IGraph {
@@ -242,9 +242,9 @@ abstract class GraphDecorator implements IGraph {
 	...
 }@
 \end{codetight} % TODO old slides had a further example. add it?
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{graphlib-oo-decorator}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\small
 \begin{codetight}{Example Usage}
 IGraph graph = @new WeightedGraph(@~new ColoredGraph(~new Graph(@new WeightedEdgeFactory()@)~)~@)@;
@@ -252,7 +252,7 @@ IGraph graph = @new WeightedGraph(@~new ColoredGraph(~new Graph(@new WeightedEdg
 \end{frame}
 
 \begin{frame}{Delegation Instead of Inheritance}
-	\begin{mycolumns}[widths={55}]
+	\begin{fancycolumns}[widths={55}]
 		\begin{note}{Discussion}
 			Extensions (i.e., features) can be combined dynamically, but \ldots
 			\begin{itemize}
@@ -262,7 +262,7 @@ IGraph graph = @new WeightedGraph(@~new ColoredGraph(~new Graph(@new WeightedEdg
 				\item several physical objects are forming a conceptual one (e.g., problems with object identity)
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{graphlib-oo-decorator}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

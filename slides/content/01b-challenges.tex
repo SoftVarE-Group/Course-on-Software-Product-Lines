@@ -5,7 +5,7 @@
 
 \subsection{Feature Traceability}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={40}]
+	\begin{fancycolumns}[widths={40}]
 		%\mydefinition{Feature Traceability \mysource{\fospl\mypage{54}}}{\mycite{Feature traceability is the ability to trace a feature from the problem space (for example, the feature model) to the solution space (that is, its manifestation in design and code artifacts).}}
 		\begin{definition}{Feature Traceability}
 			Feature traceability is the ability to trace a feature throughout the software life cycle (i.e., from requirements to source code).
@@ -13,38 +13,38 @@
 		\begin{example}{Intuition on Feature Traceability}
 			find feature \pic[width=.17\linewidth]{pants-blue} in product \pic[width=.17\linewidth]{230}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Feature Traceability with Colored Source Code}
 			\picDark[width=\linewidth]{feature-traceability}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Automated Generation}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={37,7},animation=none]
+	\begin{fancycolumns}[columns=3,widths={37,7},animation=none]
 		\begin{exampletight}{Features}
 			\foreach \animation/\handout/\page in {1-2/0/5,3-4/0/6,5-6/0/7,7-8/0/8,9-10/0/9,11-/1/10} {%
 				\only<\animation|handout:\handout>{\pic[width=\linewidth,page=\page,trim=45 0 45 0,clip]{lego}}%
 			}%
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\centering\Huge$\Rightarrow$
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Products}
 			\foreach \animation/\handout/\page in {1/0/3,2-3/0/11,4-5/0/12,6-7/0/13,8-9/0/14,10-11/0/15,12-/1/18} {%
 				\only<\animation|handout:\handout>{\pic[width=\linewidth,page=\page]{lego}}%
 			}%
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={45},animation=none]
+	\begin{fancycolumns}[widths={45},animation=none]
 		\begin{example}{Product Line with Features}
 			\only<1-2|handout:0>{\pic[width=\linewidth]{metaproduct}}%
 			\only<3->{\pic[width=\linewidth]{metaproduct2}}%
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Goal}
 			\begin{itemize}
 			\item automatic generation of products
@@ -58,12 +58,12 @@
 			\item how to define valid combinations of features?
 			\end{itemize}
 		\end{note}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Combinatorial Explosion}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={49}]
+	\begin{fancycolumns}[widths={49}]
 		\begin{exampletight}{Combinatorial Explosion}
 			\pic[width=\linewidth,page=6]{cit-plots}%
 			\small%
@@ -73,7 +73,7 @@
 				\item 320 features: more combinations than atoms in the universe
 			\end{itemize}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Industrial Configuration Spaces \mysource{\evaluatingsharpsatsolvers}}
 			\evaluatingsharpsatsolverslink{\pic[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}%
 			\small%
@@ -83,7 +83,7 @@
 				\item largest automotive product line has about $1.7 \cdot 10^{1534}$ products
 			\end{itemize}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
 	\centering\href{https://github.com/SoftVarE-Group/Slides/blob/main/2021/2021-02-10-VaMoS-SharpSATApplications.pdf}{\pic[height=\textheightwithtitle,page=9,trim=60 15 15 5,clip]{2021/2021-02-10-VaMoS-SharpSATApplications}}
@@ -91,10 +91,10 @@
 
 \subsection{Feature Interactions}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\only<1-2|handout:0>{\pic[width=\linewidth,page=24]{lego}}%
 		\only<3->{\pic[width=\linewidth,page=25]{lego}}%
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Example Interaction}
 			phone \pic[width=.14\linewidth]{phone} cannot be used with helmet \pic[width=.14\linewidth]{helmet}
 		\end{example}
@@ -105,21 +105,21 @@
 			\item challenge for quality assurance
 			\end{itemize}
 		\end{note}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={13,74},animation=none]
-	\mynextcolumn
+	\begin{fancycolumns}[columns=3,widths={13,74},animation=none]
+	\nextcolumn
 		\begin{exampletight}{Invalid Car Configurations}
 			\picDark[width=\linewidth]{bmw-series1-confassistant-bluetooth}
 		\end{exampletight}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Continuing Change and Growth}
 \begin{frame}[label=ContinuingChangeAndGrowth]{\myframetitle}
-	\begin{mycolumns}[widths={42}]
+	\begin{fancycolumns}[widths={42}]
 		\begin{definition}{Lehman's Laws of Software Evolution (excerpt) \mysource{\lehmanslaws}}
 			\begin{itemize}
 				\item Continuing Change: systems must be continually adapted to stay satisfactory % E-type systems must be continually adapted else they become progressively less satisfactorv.
@@ -132,7 +132,7 @@
 				%\item Feedback System: %E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base.
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Essence of the Laws}
 			\begin{itemize}
 				\item software that is used will be modified
@@ -152,11 +152,11 @@
 					\end{itemize}
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[label=CommitsOfLinux]{Evolution of the Linux Kernel}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{example}{}
 			\begin{itemize}
 				\item about $60,000$ commits per year
@@ -164,15 +164,15 @@
 				\item in average weeks: every 9 minutes
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-\textheightoftitle}
 		\picDark[width=\linewidth,trim=100 70 110 80,clip]{linux-stack-plot}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\twodimensionalanalysislink{\pic[width=.8\linewidth,page=1,trim=80 420 80 260,clip]{2019/2019-VariVolution-Thuem}}
 \end{frame}
 
 \begin{frame}[label=FeaturesOfLinux]{Evolution of the Linux Kernel}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Size of the Code Base}
 			\pic[width=\linewidth,page=1]{linux-plots}%
 			\begin{itemize}
@@ -181,7 +181,7 @@
 				\item about 3,000 LOC per day
 			\end{itemize}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Number of Features}
 			\pic[width=\linewidth,page=2]{linux-plots}%
 			\begin{itemize}
@@ -190,11 +190,11 @@
 				\item in 2018 four times more features than in 2005
 			\end{itemize}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[label=ProductsOfLinux]{Evolution of the Linux Kernel}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Number of Products}
 			\pic[width=\linewidth,page=3]{linux-plots}%
 			\begin{itemize}
@@ -202,7 +202,7 @@
 				\item the current kernel is likely to have more than $10^{1500}$ products
 			\end{itemize}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Time to Count Products}
 			\pic[width=\linewidth,page=4]{linux-plots}%
 			\begin{itemize}
@@ -210,7 +210,7 @@
 				\item most kernel versions after 2006 cannot be computed within 1 hour
 			\end{itemize}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % costs: development, investment, maintenance, logistic, production

@@ -1,12 +1,12 @@
 \subsection{Handcrafting and Customization}
 \begin{frame}{What do these examples have in common?}
-	\begin{mycolumns}[columns=3,widths={35,28},animation=none]
+	\begin{fancycolumns}[columns=3,widths={35,28},animation=none]
 		\pic[width=\linewidth,trim=25 200 25 25,clip]{wedding}
 		
 		\pic[width=\linewidth]{shoes}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,trim=85 0 0 0]{eiffel-tower}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,trim=70 35 0 0]{draisine}
 		
 		~
@@ -18,53 +18,53 @@
 			\item highly individual goods
 			\end{itemize}
 		\end{definition}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Customization of Elevators}
-	\begin{mycolumns}[columns=4,T]
+	\begin{fancycolumns}[columns=4,T]
 		\centering\pic[width=\linewidth]{elevator1-out}
 
 		two buttons
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{elevator2-out2}
 
 		one button
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{elevator3-out}
 
 		keyhole
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{elevator2-out1}
 
 		floor display
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Customization of Elevators}
-	\begin{mycolumns}[columns=4,widths={28,21,28,21},T]
+	\begin{fancycolumns}[columns=4,widths={28,21,28,21},T]
 		\centering\pic[width=\linewidth]{elevator1-in2}
 
 		no button to close door
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{elevator3-in1}
 
 		two keyholes
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{elevator4-in}
 
 		keycard
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{elevator2-in2}
 
 		double tap for~undo
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Mass Production}
 \begin{frame}[b]{\myframetitle}
 	\vspace{-\textheightoftitle}
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 		\begin{definition}{Mass Production \deutschertitel{Massenproduktion}\mysource{\fospl\mypages{3--4}}}
 			\begin{itemize}
 			\item consequence of industrialization
@@ -81,12 +81,12 @@
 			\end{itemize}
 		\end{example}
 		\centering\picDark[width=.45\linewidth]{wollmilchsau}}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth]{swiss-army-knife}
 		\uncover<3->{\begin{note}{Mass Production for Software?\mysource{\fospl\mypage{7}}}
 			\mycite{The idea is to provide software that satisfies the needs of most customers, which leads almost automatically to the situation, in which customers miss desired functionality and are overwhelmed with functionality they do not need actually (just think of any contemporary office or graphics program). It is often this generality that makes software complex, slow, and buggy.}
 		\end{note}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % industrial revolution/era:
 % - John Hall, exchangable parts 1826, 25 years of trials (source?)
@@ -99,7 +99,7 @@
 	\centering\pic[width=.66\linewidth]{many-cars}
 \end{frame}
 \begin{frame}[label=MassCustomization]{\myframetitle\ \deutschertitel{Kundenindividuelle Massenproduktion}}
-	\begin{mycolumns}[widths={45}]
+	\begin{fancycolumns}[widths={45}]
 		\begin{definition}{Mass Customization\mysource{\fospl\mypage{4}}}
 			\begin{itemize}
 			\item = mass production + customization
@@ -109,18 +109,18 @@
 		\begin{exampletight}{Car Configuration}
 			\pic[width=\linewidth]{toyota-aygo-wheels}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Car Production}
 			\pic[width=\linewidth,trim=0 50 0 240,clip]{car-manufacturing}
 		\end{exampletight}
 		\begin{example}{Other Domains}
 			bikes, computers, electronics, tools, medicine, clothing, food, financial services, \ldots, software?
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Mass Customization for Software?}
-	\begin{mycolumns}[b,widths={55},animation=none]
+	\begin{fancycolumns}[b,widths={55},animation=none]
 		\begin{definition}{Mass Customization for Software?}
 			\begin{itemize}
 			\item customization: individual software developed using Waterfall model or Scrum
@@ -137,9 +137,9 @@
 			\item how is software developed?
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,trim=250 0 0 0,clip]{car-tower}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Recap: The Software Life Cycle}
@@ -161,12 +161,12 @@
 
 \subsection{Features and Products of a Domain}
 \begin{frame}{What is a Feature?}
-	\begin{mycolumns}[widths={45},t]
+	\begin{fancycolumns}[widths={45},t]
 		\uncover<2->{\begin{definition}{Feature \deutsch{Feature} \mysource{\fospl\mypage{18}}}
 			\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}
 		\end{definition}}
 		\centering\xkcd{2369}{width=.9\linewidth,trim=35 35 35 35,clip}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<3->{\begin{note}{Feature in a Product Line \mysource{\fospl\mypage{18}}}
 			\mycitebegin Features are used in product-line engineering
 			\begin{itemize}
@@ -176,7 +176,7 @@
 		\end{note}}
 		\renewcommand{\projectcartoonwidth}{.18}\scriptsize
 		\uncover<4->{\waterfallcartoon}\\
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO picture of a program highlighting one or two features? settings? changelog? marketing description of new features (Github?)?
 
@@ -186,7 +186,7 @@
 %an optional or incremental unit of Zave 2003) 
 
 \begin{frame}{What is a Product?}
-	\begin{mycolumns}[t,animation=none]
+	\begin{fancycolumns}[t,animation=none]
 		\begin{definition}{Product \deutsch{Produkt} \mysource{\fospl\mypage{19}}}
 			\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}
 		\end{definition}
@@ -199,18 +199,18 @@
 			\end{itemize}
 		\end{note}}
 		% TODO exemplify difference between hardware product, software product (VLC?), and program (reuse pictures from before)
-	\mynextcolumn
+	\nextcolumn
 		\uncover<3->{
 			\begin{exampletight}{Product Map for Eclipse (excerpt)}
 				\picDark[width=\linewidth,trim=0 460 635 0,clip]{eclipse-product-map}
 			\end{exampletight}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO Venn diagram could also be a good visualization: products correspond to sets and features to set elements
 
 \begin{frame}{What is a Domain?}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Domain \deutsch{Domäne} \mysource{\fospl\mypage{19}}} % TODO cite CE00 here too?
 			\mycitebegin A \emph{domain} is an area of knowledge that:
 			\begin{itemize}
@@ -227,19 +227,19 @@
 				\item later: select features for a product line?
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=.5\linewidth]{many-cars}
 
 		\hfill\xkcd{2369}{width=.5\linewidth,trim=35 35 35 35,clip}\hfill{}
 
 		\hfill\pic[width=.5\linewidth]{eclipse-luna}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO add more examples for domains
 
 \subsection{Software Product Line}
 \begin{frame}[label=SoftwareProductLine]{\myframetitle}
-	\begin{mycolumns}[widths={78},columns=1]
+	\begin{fancycolumns}[widths={78},columns=1]
 		\begin{definition}{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}
 			\mycitebegin A \emph{software product line} is
 			\begin{itemize}
@@ -266,14 +266,14 @@
 				\mysource{\href{https://resources.sei.cmu.edu/library/asset-view.cfm?assetID=513819}{Software Engineering Institute, Carnegie Mellon University}}
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % variants / platforms / domain / variant generation
 % configurable software, highly-configurable software, variable software, software variation
 
 \subsection{Product-Line Engineering}
 \begin{frame}[label=SoftwareProductLineEngineering]{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Product-Line Engineering\mysource{\sple\mypage{14}}}
 			\mycite{\emph{Software product-line engineering} is a paradigm to develop software applications (software-intensive systems and software products) using software platforms and mass customization.}
 %			\begin{itemize}
@@ -288,7 +288,7 @@
 				\item reduced time-to-market \deutsch{Reduzierung der Produktentwicklungszeit}
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-5mm}
 		\uncover<3->{\begin{notetight}{Idea of Product-Line Engineering}
 			Reduce effort per product by means of an up-front investment for the product line:
@@ -301,7 +301,7 @@
 			\item[] classical software development that is not considered as product-line engineering
 			\end{itemize}
 		\end{definition}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % product-line hall of fame

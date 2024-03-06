@@ -15,25 +15,25 @@
 \subsection{Motivation and Goals}
 
 \begin{frame}{Handling/Implementing Feature Interactions}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Assumptions}
 			\begin{itemize}
 				\item Interacting features have been already identified
 				\item Interaction is a pairwise interaction (i.e., two features)
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Problem Description}
 			\begin{itemize}
 				\item Find a strategy to handle the interaction 
 				\item Strategy does not introduce the optional-feature problem % TODO term not introduced before
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Running Example: A Feature Interaction in our Graph Library}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\centering
 		\featureDiagram{
 			Graph,concrete
@@ -56,7 +56,7 @@
 				\item Implementation view: $ShortestPath$ requires $Weighted$ due to an implementation dependency.
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module BasicGraph}
 class Edge {
 	Node a, b; ...
@@ -77,7 +77,7 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO refines keyword not highlighted
 
@@ -86,7 +86,7 @@ refines class Graph {
 		What makes a good strategy to implement coordination code for feature interactions (while solving/avoiding the optional-feature problem)?
 	\end{note}
 	\pause
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{1. Variability}
 			For every valid configuration (according to feature model), we can generate a product that implements this configuration.
 		\end{definition}
@@ -95,7 +95,7 @@ refines class Graph {
 			Should not require overwhelming implementation effort (would not be attractive in practice).
 		\end{definition}
 		\pause
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{3. Binary Size and Performance}
 			Should not increase binary size or decrease performance of products compared to an individual implementation of each product.
 		\end{definition}
@@ -103,24 +103,24 @@ refines class Graph {
 		\begin{definition}{4. Code Quality}
 			Should not reduce code quality, which would make the product line harder to maintain. 
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Strategy S1: Adapt Feature Model}
 
 \subsubsection*{(a) Add Domain Dependency}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\begin{definition}{Strategy S1a}
 			Declare implementation dependency as domain dependency in the feature model.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=1]{interaction-handling}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\centering
 		\featureDiagram{
 			Graph,concrete
@@ -139,7 +139,7 @@ refines class Graph {
 		\begin{note}{}
 			Same implementation as before, but we make implementation dependency explicit: $ShortestPath$ requires $Weighted$.
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module BasicGraph}
 class Edge {
 	Node a, b; ...
@@ -160,22 +160,22 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{(b) Exclude Feature Combination}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\begin{definition}{Strategy S1b}
 			Declare problematic feature combinations as mutually exclusive in the feature model.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=2]{interaction-handling}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\centering
 		\featureDiagram{
 			Graph,concrete
@@ -194,7 +194,7 @@ refines class Graph {
 		\begin{note}{}
 			We may safely assume any uniform weight because $ShortestPath$ and $Weighted$ are mutually exclusive.
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module BasicGraph}
 class Edge {
 	Node a, b; ...
@@ -216,23 +216,23 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Strategy S2: Orthogonal Implementation}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\begin{definition}{Strategy S2}
 			Orthogonal implementation with no dedicated coordination of interaction.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=3]{interaction-handling}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\centering
 		\featureDiagram{
 			Graph,concrete
@@ -251,7 +251,7 @@ refines class Graph {
 		\begin{note}{}
 			Calculation of shortest path ignores weights but merely counts the number of edges on a path.
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module BasicGraph}
 class Edge {
 	Node a, b; ...
@@ -270,23 +270,23 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Strategy S3: Duplicate Implementations}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\begin{definition}{Strategy S3}
 			Multiple implementations of a feature, with and without coordination code.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=4]{interaction-handling}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[widths={55},animation=none]
+	\begin{fancycolumns}[widths={55},animation=none]
 		{\centering\small
 		\featureDiagram{
 			Graph,concrete
@@ -309,7 +309,7 @@ refines class Graph {
 		\begin{note}{}
 			One of two different implementations chosen based on selection of interacting features.
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module UnweightedShortestPath}
 refines class Graph {
 	List shortestPath(Node a, Node b){
@@ -330,23 +330,23 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Strategy S4: Move Source Code}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\begin{definition}{Strategy S4}
 			Move all the coordination code to one of the features (or to a third one all interacting features depend on).
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=5]{interaction-handling}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 \begin{codetight}{Feature Module BasicGraph}
 class Edge {
 	Node a, b;
@@ -359,7 +359,7 @@ refines class Edge {
 	...
 }
 \end{codetight}	
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module ShortestPath}
 refines class Graph {
 	List shortestPath(Node a, Node b){
@@ -370,23 +370,23 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Strategy S5: Conditional Compilation}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\begin{definition}{Strategy S5}
 			Coordination code is only executed if both features are selected.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=6]{interaction-handling}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 \begin{codetight}{Feature Module BasicGraph}
 class Edge {
 	Node a, b; ...
@@ -397,7 +397,7 @@ refines class Edge {
 	double weight; ...
 }
 \end{codetight}	
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module ShortestPath}
 refines class Graph {
 	List shortestPath(Node a, Node b){
@@ -410,23 +410,23 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Strategy S6: Derivative Modules}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\begin{definition}{Strategy S6}
 			Create a dedicated module for code that coordinates features.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth,page=7]{interaction-handling}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\centering
 		\featureDiagram{
 			Graph,concrete
@@ -446,7 +446,7 @@ refines class Graph {
 		\begin{note}{}
 			Derivative module is selected only if both interacting features are selected.
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Feature Module ShortestPath}
 refines class Graph {
 	List shortestPath(Node a, Node b){
@@ -467,7 +467,7 @@ refines class Graph {
 	}
 }
 \end{codetight}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Overview and Discussion}

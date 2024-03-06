@@ -1,7 +1,7 @@
 \subsection{Automated Analysis of Variable Code}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t,widths={46}]
+	\begin{fancycolumns}[t,widths={46}]
 		\begin{example}{Asking Questions About\\the Feature Mapping \ldots}
 			\begin{itemize}
 				\item Are there contradictory or unnecessary preprocessor annotations in the code?
@@ -13,7 +13,7 @@
 		\begin{note}{}
 			only finds code-agnostic anomalies
 		\end{note}
-		\mynextcolumn
+		\nextcolumn
 		\begin{example}{\ldots\ and the Variable Code}
 			\begin{itemize}
 				\item Can every product be generated (e.g., compiled)?\\
@@ -31,7 +31,7 @@
 		\begin{example}{Today's Example}
 			type checking for FOP and conditional compilation
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Variability-Aware Type Checking}
@@ -40,7 +40,7 @@
 
 \begin{frame}[b]{\myframetitle}
 	\vspace*{-4ex}
-	\begin{mycolumns}[widths={37,63},animation=none]
+	\begin{fancycolumns}[widths={37,63},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
 		\end{exampletight}
@@ -51,13 +51,13 @@
 		\begin{example}{Valid Configurations}
 			\vspace*{-2ex}
 			\small
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				{\color{black}$\{SS\}$}\\
 				$\{SS, AC\}$
-			\mynextcolumn
+			\nextcolumn
 				{\color{black}$\{MS\}$}\\
 				$\{MS, AC\}$\\
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
 		\uncover<3->{
 			\begin{note}{}
@@ -65,15 +65,15 @@
 				\uncover<4->{What about $\{SS, AC\}$?}
 			\end{note}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\only<2->{\picDark[width=\linewidth]{fop-csur-example-error-blind}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO would be good to avoid the abbreviation SS here. what about only referring to concrete features here?
 
 \begin{frame}[b]{\myframetitle}
 	\vspace*{-4ex}
-	\begin{mycolumns}[widths={37,63},animation=none]
+	\begin{fancycolumns}[widths={37,63},animation=none]
 		\begin{definition}{Reachability Condition of $id$}
 			guarantees that a given \emph{reference} to $id$ is also \emph{defined} somewhere:\\[1ex]
 			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies \bigvee_{def} PC_{def}^{id})$\\[1ex]
@@ -94,15 +94,15 @@
 				{\color{gray}\ldots\ and many more conditions \ldots}
 			\end{definition}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{fop-csur-example-error}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Analyzing Conditional Compilation}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={37,29,34},animation=none]
+	\begin{fancycolumns}[columns=3,widths={37,29,34},animation=none]
 		\begin{exampletight}{}
 			\centering
 			\featureDiagram{Graph,concrete[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]}
@@ -121,7 +121,7 @@
 				$\Phi(FM) \mimplies \bigwedge_{d_1 \neq d_2} \pnot (PC_{d_1}^{id} \pand PC_{d_2}^{id}))$
 			\end{definition}
 		}
-	\mynextcolumn
+	\nextcolumn
 	\uncover<2->{
 		\begin{example}{Is $e.nodes$ reachable?}
 			\small
@@ -145,7 +145,7 @@
 				all reachable, no conflicts
 			\end{example}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node { ... };
 
@@ -168,13 +168,13 @@ std::ostream& operator<<(
 	return s << e.nodes;
 }
 		\end{cpptight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Discussion}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Just the Tip of the Iceberg}
 			\begin{itemize}
 				\item here, we only discussed reachability and conflict conditions
@@ -190,7 +190,7 @@ std::ostream& operator<<(
 				\end{itemize}
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{The TypeChef Project \mysource{\typechef}}
 			\begin{itemize}
 				\item a variability-aware lexer, parser framework, and type system for C code with \texttt{\#ifdef}'s
@@ -201,7 +201,7 @@ std::ostream& operator<<(
 				{\small Linux (6065 features): \mycite{We successfully parsed [it in] roughly 85 hours on a single machine.}} \mysource{\href{https://dl.acm.org/doi/10.1145/2048066.2048128}{ref}} % not practically possible, can be used to motivate testing in next lecture
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Product-Line Analyses in the Wild}
@@ -209,7 +209,7 @@ std::ostream& operator<<(
 \subsubsection*{Product-Line Complexity}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Six Classes of Product-Line Complexity \mytitlesource{\href{https://youtu.be/qUuRp7_d0rU?t=1651}{Thüm~2021}}}
 			In a timeframe of 24h \ldots
 			\begin{enumerate}
@@ -222,7 +222,7 @@ std::ostream& operator<<(
 				\uncover<8->{\item[\textbf{C6}] It cannot be computed whether there is a valid configuration}
 			\end{enumerate}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Examples}
 			% also put examples of analysis strategies here, and which kind of mapping/code analysis scales for which class?
 			\begin{enumerate}
@@ -235,29 +235,29 @@ std::ostream& operator<<(
 				\uncover<8->{\item[\textbf{C6}] No example known}
 			\end{enumerate}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Automated Analysis \ldots}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t,columns=3]
+	\begin{fancycolumns}[t,columns=3]
 		\textbf{\lecturemodeling\partc}
 		\begin{definition}{\ldots\ of Feature Models}
 			analyze only the feature model
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\textbf{\lectureanalyses\partb}
 		\begin{definition}{\ldots\ of Feature Mappings}
 			analyze the feature mapping (considering the feature model)
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\textbf{\lectureanalyses\partc}
 		\begin{definition}{\ldots\ of Variable Code}
 			analyze the variable code (considering the feature model and feature mapping)
 		\end{definition}
-	\end{mycolumns}
-	\begin{mycolumns}[t,columns=3]
+	\end{fancycolumns}
+	\begin{fancycolumns}[t,columns=3]
 		\begin{example}{}
 			\begin{itemize}
 				\item void, core/dead features
@@ -266,7 +266,7 @@ std::ostream& operator<<(
 				\item \ldots
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			\begin{itemize}
 				\item dead code
@@ -275,7 +275,7 @@ std::ostream& operator<<(
 				\item \ldots
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			\begin{itemize}
 				\item parsing, type checking
@@ -284,11 +284,11 @@ std::ostream& operator<<(
 				\item \ldots
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
-	\begin{mycolumns}[t,columns=2,widths={32}]
-	\mynextcolumn
+	\end{fancycolumns}
+	\begin{fancycolumns}[t,columns=2,widths={32}]
+	\nextcolumn
 		\begin{note}{}
 			here: \emph{family-based} analysis strategies for \emph{conditional compilation} and \emph{feature-oriented programming}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

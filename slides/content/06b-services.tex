@@ -1,6 +1,6 @@
 \subsection{(Micro-)Services}
 \begin{frame}{(Micro-)Services}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{(Micro-)Service}
 			\mycite{[A (micro-)service is a module] implemented and operated as a small yet independent system, offering access to its internal logic and data through a well-defined network interface.}
 				{Jamshidi et al., 2018}
@@ -10,29 +10,29 @@
 				A microservice architecture [service-oriented architecture] is a distributed application where all its modules are microservices.}
 				{Dragoni et al., 2017}
 		\end{definition}
-	\mynextcolumn		
+	\nextcolumn		
 		\pic[width=\linewidth]{peer-to-peer}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO hard to talk on this slide. we should avoid using all those brackets and rather state the differences between services and microservices explicitly.
 
 \subsection{Services vs. Components}
 \begin{frame}{Services vs.\ Components}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Component}
 			Intra-process communication (i.e., method calls)
 			\begin{center}
 				\pic[width=0.65\linewidth]{component_vs_service_1}
 			\end{center}			
 		\end{definition}
-	\mynextcolumn		
+	\nextcolumn		
 		\begin{definition}{Service}
 			Inter-process communication (e.g., REST API)
 			\begin{center}
 				\pic[width=0.65\linewidth]{component_vs_service_2}
 			\end{center}	
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 	~
 	\pause
 	\begin{note}{}
@@ -42,12 +42,12 @@
 
 \subsection{Microservice Architectures}
 \begin{frame}{Microservice Architecture: Motivation}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{note}{Recap: The Library Scaling Problem}
 			\centering
 			\pic[width=.95\linewidth]{tangram}			
 		\end{note}
-	\mynextcolumn		
+	\nextcolumn		
 		\pause
 		\begin{note}{How small is a Microservice?}
 			\begin{itemize}
@@ -59,11 +59,11 @@
 		\begin{definition}{}
 			\mycite{If the codebase is too big to be \emph{managed by a small team}, looking to break it down is very sensible. [...] The smaller the service, the more you \emph{maximize the benefits and downsides} of microservice architecture.}{Sam Newman, 2015}% [...] The golden rule: can you make a change to a service and deploy it by itself without changing anything else?
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Microservice Architecture: Philosophy and Principles}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Conway's Law}
 			\mycite{Organizations which design systems [...] are constrained to produce designs which are copies of the communication structures of these organizations.}{\href{https://www.melconway.com/Home/pdf/committees.pdf}{Melvin Edward Conway, 1968}}			
 		\end{definition}
@@ -73,7 +73,7 @@
 		\begin{definition}{}
 			\mycite{You build it, you run it.}{Amazon CTO Werner Vogel, 2006}			
 		\end{definition}
-	\mynextcolumn		
+	\nextcolumn		
 		\pause
 		\begin{note}{Consequences}
 			\begin{itemize}
@@ -89,11 +89,11 @@
 		\begin{definition}{}
 			\mycite{Every team should be small enough that it can be fed with two pizzas.}{\href{https://www.theguardian.com/technology/2018/apr/24/the-two-pizza-rule-and-the-secret-of-amazons-success}{Jeff Bezos, 2018}}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Traditional Promises of Microservices}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{}
 			\begin{itemize}
 				\item \emph{Scalability}: Microservices are small enough to be developed by a small, agile team. %(cf. typical size of a Scrum team).
@@ -104,20 +104,20 @@
 				\item \emph{Modernization}: A microservice can be easily replaced by an alternative one (even re-implemented from scratch).
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{The Microservice ``Hype''}
 			\pic[width=\linewidth]{microservices}
 
 			\pic[width=\linewidth]{microservices-comparison}
 		\end{exampletight}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection{Implementation of Product Lines}
 \begin{frame}<1-3>[label=SPLwithServices]
 	\frametitle<1-3>{Service-Oriented Implementation of Software Product Lines}
 	\frametitle<4>{\myframetitle}
-	\begin{mycolumns}[widths={40},animation=none]
+	\begin{fancycolumns}[widths={40},animation=none]
 		\begin{example}{Recap: Component-Based Implementation}
 			\pic[width=.24\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
@@ -133,7 +133,7 @@
 			\centering
 			\pic[width=.65\linewidth,height=2.5cm]{lego_glue}				
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{definition}{Same Idea}
 			\begin{itemize}
@@ -156,12 +156,12 @@
 				\vspace*{\fill}	
 			\pic[width=.35\linewidth,height=1.75cm]{lego_product}
 		\end{example}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection{Service Composition}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{definition}{Orchestration \deutsch{Orchestrierung}}
 			Description of an executable (business-)process as a combination of services (centralized perspective).
 		\end{definition}
@@ -170,7 +170,7 @@
 		\end{example}
 
 		\centering\pic[height=35mm]{trafficlights}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Choreography \deutsch{Choreographie}}
 			Each service describes its own task within a service composition (decentralized perspective).
 		\end{definition}
@@ -179,5 +179,5 @@
 		\end{example}
 
 		\centering\pic[height=35mm]{crossroad}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}

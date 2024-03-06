@@ -48,7 +48,7 @@
 \subsection{Recap: Quality Assurance}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}[widths={45},animation=none]
+	\begin{fancycolumns}[widths={45},animation=none]
 		\uncover<2->{
 			\begin{note}{}
 				\begin{itemize}
@@ -59,14 +59,14 @@
 				\end{itemize}
 			\end{note}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\only<1|handout:0>{\picDark[height=\textheightwithtitle,page=1]{quality-assurance}}%
 		\only<2|handout:0>{\picDark[height=\textheightwithtitle,page=2]{quality-assurance}}%
 		\only<3|handout:0>{\picDark[height=\textheightwithtitle,page=3]{quality-assurance}}%
 		\only<4|handout:0>{\picDark[height=\textheightwithtitle,page=4]{quality-assurance}}%
 		\only<5|handout:1>{\picDark[height=\textheightwithtitle,page=5]{quality-assurance}}%
 		\only<6|handout:0>{\picDark[height=\textheightwithtitle,page=6]{quality-assurance}}%
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \widexkcdframe{1700}
@@ -74,9 +74,9 @@
 \subsection{Automated Analysis of Product Lines}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t,widths={47}]
+	\begin{fancycolumns}[t,widths={47}]
 		\begin{note}{Typical Program Analyses}
-			\begin{mycolumns}[c,animation=none]
+			\begin{fancycolumns}[c,animation=none]
 				\begin{itemize}
 					\item code metrics
 					\item type checking
@@ -85,9 +85,9 @@
 					\item performance analysis
 					\item \ldots
 				\end{itemize}
-			\mynextcolumn
+			\nextcolumn
 				\centering\mglass{3}
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{note}
 		\begin{definition}{What is a Program Analysis?}
 			\begin{itemize}
@@ -95,7 +95,7 @@
 				\item can be used to automatically find bugs, bottlenecks, and other \emph{vulnerabilities}
 			\end{itemize}
 		\end{definition}
-		\mynextcolumn
+		\nextcolumn
 		\begin{example}{Asking Questions About Product Lines}
 			\begin{itemize}
 				\item Which product has the most lines of code? \mysource{\href{https://dl.acm.org/doi/10.1145/3307630.3342384}{ref}}
@@ -118,13 +118,13 @@
 				\end{itemize}
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Product-Based Strategies} % refs missing in whole part!
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Intuition}
 			\begin{itemize}
 				\item to analyze the product line, just analyze \emph{each product}
@@ -139,13 +139,13 @@
 		\begin{exampletight}{}
 			\centering\featureDiagramLego\\$Helmet \pimplies \pnot Phone$
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth,page=9]{lego-analyses}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Algorithm}
 			\begin{algorithmic}
 				\Require a product line $pl$; algorithms $\gamma$, $\alpha$, $\sigma$
@@ -165,7 +165,7 @@
 				\item $\sigma$ \emph{summarizes} the results (e.g., each individual call to $\alpha$ must succeed)
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{}
 			\begin{center}
 				\small\featureDiagramConfigurableDatabase
@@ -173,7 +173,7 @@
 		\end{exampletight}
 		\begin{example}{}
 			\footnotesize
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				$\sigma([\alpha(\gamma(\{C,G,W\}))$\\
 				$~~~~\alpha(\gamma(\{C,P,W\}))$\\
 				$~~~~\alpha(\gamma(\{C,G,P,W\}))$\\
@@ -187,7 +187,7 @@
 				$~~~~\alpha(\gamma(\{C,G,D,T,W\}))$\\
 				$~~~~\alpha(\gamma(\{C,P,D,T,W\}))$\\
 				$~~~~\alpha(\gamma(\{C,G,P,D,T,W\}))$
-			\mynextcolumn
+			\nextcolumn
 				$\alpha(\gamma(\{C,G,L\}))$\\
 				$\alpha(\gamma(\{C,P,L\}))$\\
 				$\alpha(\gamma(\{C,G,P,L\}))$\\
@@ -201,17 +201,17 @@
 				$\alpha(\gamma(\{C,G,D,T,L\}))$\\
 				$\alpha(\gamma(\{C,P,D,T,L\}))$\\
 				$\alpha(\gamma(\{C,G,P,D,T,L\}))])$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Classification of Strategies}
-	\begin{mycolumns}[t,columns=3,animation=none]
+	\begin{fancycolumns}[t,columns=3,animation=none]
 		\summaryproductbased
-	\mynextcolumn
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Feature-Based Strategies}
@@ -219,7 +219,7 @@
 % in https://corecursive.com/015-dependant-types-in-haskell-with-stephanie-weirich/#interacting-ghc-extensions, Stephanie Weirich explains how type extensions to the Haskell compiler are often proved correct in isolation, which misses their interactions -> this is basically an example for a feature-based analysis strategy in compiler design
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Intuition}
 			\begin{itemize}
 				\item to analyze the product line, just analyze \emph{each feature} individually
@@ -231,13 +231,13 @@
 		\begin{exampletight}{}
 			\centering\featureDiagramLego\\$Helmet \pimplies \pnot Phone$
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth,page=6]{lego-analyses}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Algorithm}
 			\begin{algorithmic}
 				\Require a product line $pl$; algorithms $\alpha$, $\sigma$
@@ -254,7 +254,7 @@
 				\item $\sigma$ \emph{summarizes} the results (see product-based)
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{}
 			\begin{center}
 				\small\featureDiagramConfigurableDatabase
@@ -273,22 +273,22 @@
 				&\alpha(L)])
 			\end{align*}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Classification of Strategies}
-	\begin{mycolumns}[t,columns=3,animation=none]
+	\begin{fancycolumns}[t,columns=3,animation=none]
 		\summaryproductbased
-	\mynextcolumn
+	\nextcolumn
 		\summaryfeaturebased
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Family-Based Strategies}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Intuition}
 			\begin{itemize}
 				\item analyze the product line (or \emph{family}) as a whole
@@ -305,19 +305,19 @@
 			\end{itemize}
 			$\Rightarrow$ here: for \emph{conditional compilation} and \emph{feature-oriented programming}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\centering\familybasedlego
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Classification of Strategies}
 
 \begin{frame}[label=AnalysisStrategies]{\myframetitle}
-	\begin{mycolumns}[t,columns=3,animation=none]
+	\begin{fancycolumns}[t,columns=3,animation=none]
 		\summaryproductbased
-	\mynextcolumn
+	\nextcolumn
 		\summaryfeaturebased
-	\mynextcolumn
+	\nextcolumn
 		\summaryfamilybased
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

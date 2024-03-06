@@ -1,6 +1,6 @@
 \subsection{Recap on Software Maintenance}
 \begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Motivation}
 			\begin{itemize}
 				\item for software: no compensation of deterioration, repair, spare parts
@@ -8,18 +8,18 @@
 				\item modification and reconstruction
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Operation and Maintenance Phase \mysource{\ieeesixten}}
 			\mycite{The period of time in the software life cycle during which a software product is employed in its operational environment, monitored for satisfactory performance, and modified as necessary to correct problems or to respond to changing requirements.}
 		\end{definition}
 		\begin{definition}{Maintenance \mysource{\ieeesixten}}
 			\mycite{The process of modifying a software system or component after delivery to correct faults, improve performance or other attributes, or adapt to a changed environment.}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{definition}{Evolution}
 			\begin{itemize}
 				\item new or removed functionality
@@ -34,7 +34,7 @@
 		\begin{example}{Major Release}
 			new major version: 2.3.1 $\Rightarrow$ 3.0.0
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Maintenance}
 			\begin{itemize}
 				\item mostly corrections
@@ -46,7 +46,7 @@
 		\begin{example}{Patch Release}
 			new patch version: 2.3.1 $\Rightarrow$ 2.3.2
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\pause\pause\begin{note}{}
 		\centering not easy to distinguish -- there is a continuum between evolution and maintenance
 	\end{note}
@@ -54,7 +54,7 @@
 
 \subsection{Kinds of Maintenance}
 \begin{frame}{\myframetitle\ \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Adaptive Maintenance \mysource{\lientzswanson}}
 			\mycite{Software maintenance performed to make a computer program usable in a changed environment.} \hfill \deutsch{adaptive Wartung}
 		\end{definition}
@@ -67,7 +67,7 @@
 		\begin{example}{}
 			feature interaction of Lenovo products fixed with BIOS update
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		% TODO from SE course: it is really annoying that this category has an overlap with preventive maintenance, as better maintainability typically also results in fewer problems
 		\begin{definition}{Perfective Maintenance \mysource{\lientzswanson}}
 			\mycite{Software maintenance performed to improve the performance, maintainability, or other attributes of a computer program.} \hfill \deutsch{perfektive Wartung}
@@ -81,7 +81,7 @@
 		\begin{example}{}
 			code audit of car software before next leap second
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Recap on Feature Model Transformations}
@@ -89,7 +89,7 @@
 
 \subsection{Reengineering Tasks}
 \begin{frame}{\insertsubsection\ \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Reverse Engineering \mysource{Chikofsky und Cross}} % TODO link to literature missing
 			\mycite{Reverse engineering is the process of analyzing a system to identify the system’s components and their interrelationships and create representations of the system in another form or at a higher level of abstraction.}
 		\end{definition}
@@ -102,7 +102,7 @@
 		\begin{example}{}
 			domain engineering \mysource{\lectureprocess\parta}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-3.5mm}
 		\begin{definition}{Refactoring \mysource{Chikofsky und Cross}}
 			\mycite{Refactoring is a transformation from one form of representation to another at the same relative level of abstraction. The new representation is meant to preserve the semantics and external behavior of the original.}
@@ -116,7 +116,7 @@
 		\begin{example}{}
 			combination of reverse engineering, refactoring, and forward engineering
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO \subsection{Refactoring of Product Lines}

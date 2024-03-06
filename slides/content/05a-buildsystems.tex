@@ -1,29 +1,29 @@
 \subsection{How to Implement Features?}
 \begin{frame}[label=HowToImplementFeatures]{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Given a feature model for graphs \ldots}
 			\centering\featureDiagramGraphs
 		\end{exampletight}
 		\begin{example}{\ldots\ we can derive a valid configuration}
 			\small
-			\begin{mycolumns}[columns=3,animation=none]
+			\begin{fancycolumns}[columns=3,animation=none]
 				$\{G\}$\\
 				$\{G,C\}$\\
 				$\{G,D\}$\\
 				$\{G,C,D\}$\\
-			\mynextcolumn
+			\nextcolumn
 				$\{G,W\}$\\
 				$\{G,C,W\}$\\
 				$\{G,D,W\}$\\
 				$\{G,C,D,W\}$\\
-			\mynextcolumn
+			\nextcolumn
 				$\{G,W,S\}$\\
 				$\{G,C,W,S\}$\\
 				$\{G,D,W,S\}$\\
 				$\{G,C,D,W,S\}$\\
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{How to Generate Products Automatically?}
 			\centering\foreach \page in {2,12,4,14,6,16,8,18,10,20,42,44}{\mbox{~\pic[width=.175\linewidth,page=\page]{graphs}~} }
 		\end{exampletight}
@@ -34,7 +34,7 @@
 			\end{itemize}
 			Focus of \lecturefeatures\ --\ \lecturelanguages
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Problems of Ad-Hoc Approaches for Variability}
@@ -43,7 +43,7 @@
 \againframe<2>{GraphWithGlobalVariables}
 
 \begin{frame}[label=SPLwithPreferenceDialogsCommandLineOptionsConfigurationFiles]{\myframetitle}
-	\begin{mycolumns}[b,widths={36}]
+	\begin{fancycolumns}[b,widths={36}]
 		\picDark[width=\linewidth]{preferences-eclipse}
 
 		\begin{definition}{How to? -- Preference Dialog}
@@ -54,12 +54,12 @@
 				\item \emph{manually adjust preferences based on configuration}
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
-		\begin{mycolumns}[widths={41},animation=none]
+	\nextcolumn
+		\begin{fancycolumns}[widths={41},animation=none]
 			\pic[width=\linewidth]{runtime-parameters-win10-cmd-dir}
-		\mynextcolumn
+		\nextcolumn
 			\picDark[width=\linewidth]{configfile-eclipse-ini}
-		\end{mycolumns}
+		\end{fancycolumns}
 
 		\begin{definition}{How to? -- Command-Line Options / Configuration Files}
 			\begin{itemize}
@@ -69,11 +69,11 @@
 				\item run the program
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile,label=SPLwithImmutableGlobalVariables]{\myframetitle}
-	\begin{mycolumns}[widths={48}]
+	\begin{fancycolumns}[widths={48}]
 \begin{codetight}[basicstyle=\small]{}
 public class Config {
 	~public final static boolean COLORED = true;~
@@ -87,7 +87,7 @@ public class Config {
 				\item compile and run the program
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{What is missing?}
 			\begin{itemize}
 				\item automated generation:\\\hfill for preference dialogs
@@ -95,12 +95,12 @@ public class Config {
 				\item very limited compile-time variability:\\\hfill for immutable global variables
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Features with Clone-and-Own?}
 \begin{frame}[label=SPLwithCloneAndOwn]{\myframetitle}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\centering~
 
 		\picDark[scale=0.2]{alice}
@@ -111,7 +111,7 @@ public class Config {
 
 		\picDark[scale=0.2]{eve}
 		\pic[scale=0.26,page=16]{graphs}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{How to?}
 			\begin{itemize}
 				\item implement separate project for each product\\(i.e., branch with version control)
@@ -129,13 +129,13 @@ public class Config {
 				\item no free feature selection (i.e., configuration)
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Recap: Clone-and-Own with Build Systems}
 \begin{frame}{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
-	\begin{mycolumns}[columns=2,widths={76},animation=none]
-		\begin{mycolumns}[widths={50},animation=none] % TODO widths needed due to bug #56 in slide template
+	\begin{fancycolumns}[columns=2,widths={76},animation=none]
+		\begin{fancycolumns}[widths={50},animation=none] % TODO widths needed due to bug #56 in slide template
 			\begin{example}{Case Study: Anesthesia Device}
 				\begin{itemize}
 					\item C application
@@ -143,37 +143,37 @@ public class Config {
 					\item configurations are hard-coded as build scripts
 				\end{itemize}
 			\end{example}
-		\mynextcolumn
+		\nextcolumn
 			\uncover<4->{
 				\begin{exampletight}{{\color{red}Production Device}: OLED, Clock}
 					\centering\pic[height=25mm]{pignap-cfg-production-oled}
 				\end{exampletight}
 			}
-		\end{mycolumns}
-		\begin{mycolumns}[widths={50},animation=none] % TODO widths needed due to bug #56 in slide template
+		\end{fancycolumns}
+		\begin{fancycolumns}[widths={50},animation=none] % TODO widths needed due to bug #56 in slide template
 			\uncover<2->{
 				\begin{exampletight}{{\color{green}Prototype}: OLED Display}
 					\centering\pic[height=25mm]{pignap-cfg-prototype-oled}
 				\end{exampletight}
 			}
-		\mynextcolumn
+		\nextcolumn
 			\uncover<3->{
 				\begin{exampletight}{{\color{blue}Prototype}: LCD, Real-Time Clock}
 					\centering\pic[height=25mm]{pignap-cfg-prototype-lcd-rtc}
 				\end{exampletight}
 			}
-		\end{mycolumns}
-	\mynextcolumn
+		\end{fancycolumns}
+	\nextcolumn
 		\only<1|handout:0>{\pic[width=\linewidth,page=1]{pignap-variants}}%
 		\only<2|handout:0>{\pic[width=\linewidth,page=2]{pignap-variants}}%
 		\only<3|handout:0>{\pic[width=\linewidth,page=3]{pignap-variants}}%
 		\only<4->{\pic[width=\linewidth,page=4]{pignap-variants}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Introducing Features to Build Systems}
 \begin{frame}[label=SPLwithBuildSystems]{\myframetitle\  \mytitlesource{\href{https://dl.acm.org/doi/10.1145/3461002.3473950}{Kuiter~et~al.~2021}}}
-	\begin{mycolumns}[widths={60}]
+	\begin{fancycolumns}[widths={60}]
 		\begin{definition}{How to Implement Features with Build Systems?}
 			\begin{itemize}
 				\item step 1: model variability in a feature model
@@ -195,9 +195,9 @@ public class Config {
 
 			$History \pimplies Storage \pand RTC$
 		\end{center}
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[height=\textheightwithtitle]{pignap-features}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{The Linux Kernel}
@@ -207,7 +207,7 @@ public class Config {
 \subsubsection*{KConfig for Feature Modeling}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{kconfigtight}[basicstyle=\small]{Part of the x86 Architecture \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{linux/arch/x86/Kconfig}}}
 config 64BIT
 	bool "64-bit kernel" if "$(ARCH)" = "x86"
@@ -230,7 +230,7 @@ config X86_64
 	select ARCH_HAS_GIGANTIC_PAGE
 	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128
 \end{kconfigtight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{KConfig Language\mysource{\href{https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html}{kernel.org}}}
 			\begin{itemize}
 				\item configuration language used in embedded/OS development (e.g., Linux, Zephyr, ESP32)
@@ -240,17 +240,17 @@ config X86_64
 		\end{definition}
 		\hspace*{-0.07253886\linewidth}%=2*0.035/(1-0.035)
 		\linuxbddlink{\pic[width=1.3\linewidth,trim=220 510 60 180,clip]{2020/2020-SPLC-Thuem}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{MenuConfig for Configuration}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={60,40}]
+	\begin{fancycolumns}[widths={60,40}]
 		\begin{exampletight}{}
 			\pic[width=\textwidth]{linux-menuconfig} % sudo apt install make flex bison libncurses5-dev && make menuconfig
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{make menuconfig}
 			\begin{itemize}
 				\item configures KConfig models
@@ -259,13 +259,13 @@ config X86_64
 				\item still: it is possible to create invalid configurations and products % TODO does not fit into the storyline anymore. remove?
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{KBuild as Build System}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{kconfigtight}[basicstyle=\footnotesize]{Feature Model with KConfig\mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{linux/arch/x86/Kconfig}}}
 config X86_32 ...
 config X86_64 ...
@@ -287,7 +287,7 @@ config IA32_EMULATION
 				\item full power of Make $\Rightarrow$ hard to comprehend
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{kbuildtight}[basicstyle=\small]{Feature Mapping with KBuild \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kbuild}{linux/arch/x86/Kbuild}}}
 # link these subdirectories statically:
 obj-y += entry/ # entry routines
@@ -311,11 +311,11 @@ audit-class-~$(CONFIG_AUDIT)~ := audit.o
 # IA32_EMULATION and AUDIT required for audit.o:
 obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
 		\end{kbuildtight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{example}{Interactive Linux Kernel Configurator}
 			\pic[width=\linewidth]{linux-menuconfig-emulation}
 		\end{example}
@@ -326,7 +326,7 @@ obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
 			config HYPERV ... # configured as MODULE
 			config XEN ... # configured as NO
 \end{kconfigtight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{kbuildtight}[basicstyle=\small]{Feature Mapping}
 obj-y += entry/ realmode/ kernel/ mm/
 obj-~$(CONFIG_IA32_EMULATION)~ += ia32/
@@ -350,7 +350,7 @@ obj-?y? +=
 		\begin{note}{}
 			\small i.e., \texttt{entry, realmode, kernel, mm, ia32, hyperv, ia32\_signal.o} are compiled
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO add quote? \mycite{As Kbuild relies on a Turing-complete language, complex conditions can be encoded.} \mysource{\fospl\mypage{108}}
@@ -365,7 +365,7 @@ obj-?y? +=
 \begin{frame}<1-2>[label=DiscussionOfBuildSystems]
 	\frametitle<1-2>{Discussion of Features with Build Systems}
 	\frametitle<3>{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item compile-time variability\\
@@ -376,12 +376,12 @@ obj-?y? +=
 					$\Rightarrow$ high-level, \emph{modular variability}
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Challenges}
 			\begin{itemize}
 				\item not reconfigurable at run- or load-time % this challenge is not relevant on subsequent slides
 				\MajorChallengesOfBuildSystems
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

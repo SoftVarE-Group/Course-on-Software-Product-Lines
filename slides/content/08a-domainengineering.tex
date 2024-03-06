@@ -10,19 +10,19 @@
 		\renewcommand{\projectcartoonwidth}{.17}
 		\waterfallcartoon
 	\end{definition}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\uncover<2->{\begin{example}{Process Models for Single-System Engineering}
 			waterfall model, V model, scrum, \ldots
 		\end{example}}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<3->{\begin{note}{Process Models for Product-Line Engineering}
 			???
 		\end{note}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Recap: Domain}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Recap: Domain \deutsch{Domäne} \hfill\mysource{\lectureintroduction}}
 			\mycitebegin A \emph{domain} is an area of knowledge that:
 			\begin{itemize}
@@ -32,8 +32,8 @@
 				software systems) in that area.\myciteend
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 % TODO introduce domain and application artifacts here? see \sple
 % would also apply to domain/application requirements, but domain requirement is a confusing term (as it would refer to requirements of a product line and not all of a domain)
@@ -43,7 +43,7 @@
 	\begin{note}{A Process Model for Product-Line Engineering}
 		idea: split development into two phases, one for product line and one for products
 	\end{note}
-	\begin{mycolumns}[animation=none,T]
+	\begin{fancycolumns}[animation=none,T]
 		\uncover<2->{\begin{definition}{Domain Engineering\mysource{\fospl\mypages{21--22}}}
 			\mycite{\emph{Domain engineering} is the process of analyzing the domain of a product line and developing reusable artifacts.}
 		\end{definition}
@@ -54,7 +54,7 @@
 				\item goal: reduce effort per product (i.e., effort during application engineering)
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<3->{\begin{definition}{Application Engineering\mysource{\fospl\mypage{21}}}
 			\mycite{\emph{Application engineering} has the goal of developing a specific product for the needs of a particular customer (or other stakeholder).}
 		\end{definition}
@@ -66,15 +66,15 @@
 				\item \mycite{application} of the product line (i.e., suitable for application and system software)
 			\end{itemize}
 		\end{note}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % terms used in the remainder are mostly taken from \sple and some from \fospl
 \begin{frame}[label=DomainAndApplicationEngineeringDiagram]
 	\footnotesize%
-	\begin{mycolumns}[columns=3,widths={10,70,10},animation=none]
+	\begin{fancycolumns}[columns=3,widths={10,70,10},animation=none]
 		\renewcommand{\projectcartoonwidth}{1}\projectcartoon{01}{Product-Line Requirements}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Domain Engineering}
 			\renewcommand{\projectcartoonwidth}{.15}%
 			\projectcartoon{02}{Domain Analysis}%
@@ -82,12 +82,12 @@
 			\projectcartoon{04}{Domain Implementation}%
 			\projectcartoon{05}{Domain Testing}
 		\end{note}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 	\pause
-	\begin{mycolumns}[columns=3,widths={10,70,10},animation=none]
+	\begin{fancycolumns}[columns=3,widths={10,70,10},animation=none]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{01}{Product Requirements}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Application Engineering}
 			\renewcommand{\projectcartoonwidth}{.15}%
 			\hprojectcartoon{02}{Application Analysis}%
@@ -95,16 +95,16 @@
 			\hprojectcartoon{04}{Application Implementation}%
 			\hprojectcartoon{05}{Application Testing}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{13}{Product}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Analysis and Design}
 \begin{frame}{Domain and Application Analysis}\small
-	\begin{mycolumns}[T,columns=3,widths={10}]
+	\begin{fancycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{02}{}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Domain Analysis\mysource{\fospl\mypage{21}, \sple\mypage{25}}}
 			\begin{itemize}
 				\item requirements analysis for a product line
@@ -122,7 +122,7 @@
 			\end{itemize}
 		\end{definition}
 		% TODO introduce term Domain Modeling?
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Application Analysis\mysource{\fospl\mypages{21--25}}}
 			\begin{itemize}
 				\item requirements analysis for a product
@@ -138,14 +138,14 @@
 			\end{itemize}
 		\end{definition}
 		% TODO pointer to staged configuration? or even introduce it here?
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO running example
 
 \begin{frame}{Domain Scoping in Practice}
-	\begin{mycolumns}[widths={70},animation=none]
+	\begin{fancycolumns}[widths={70},animation=none]
 		\centering\pic[width=\linewidth]{toyota-aygo-mirrorcovers}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Aygo Mirror Covers}
 			Can customers choose \ldots
 			\begin{itemize}
@@ -155,13 +155,13 @@
 				\item between 2, 3, 4, \ldots\ colors and which ones?
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Domain Scoping in Practice}
-	\begin{mycolumns}[widths={70},animation=none]
+	\begin{fancycolumns}[widths={70},animation=none]
 		\centering\picDark[width=\linewidth]{linux-architectures}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Linux Kernel Architectures}
 			\begin{itemize}
 				\item in Linux, $\approx 20$ CPU architectures are carefully maintained in 2023
@@ -169,13 +169,13 @@
 				\item requires an answer to ``is this architecture still used by a relevant number of people?''
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Domain and Application Design}
-	\begin{mycolumns}[T,columns=3,widths={10,50}]
+	\begin{fancycolumns}[T,columns=3,widths={10,50}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{03}{}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Domain Design\mysource{\sple\mypage{26}}} % TODO see \sple Chapter 6+11
 			\begin{itemize}
 				\item development of a reference architecture (e.g., client-server or pipe-and-filter)
@@ -191,7 +191,7 @@
 					\end{itemize}
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Application Design\\\mysource{\sple\mypages{32--33}}}
 			\begin{itemize}
 				\item create application architecture
@@ -200,14 +200,14 @@
 				\item design decisions for application-specific requirements
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Implementation and Testing}
 \begin{frame}{Domain and Application Implementation}
-	\begin{mycolumns}[T,columns=3,widths={10}]
+	\begin{fancycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{04}{}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Domain Implementation\mysource{\fospl\mypage{21}}} % TODO see \sple Chapter 7+12
 			\begin{itemize}
 				\item development of reusable artifacts
@@ -215,7 +215,7 @@
 				\item implementation largely depends on the implementation technique chosen in domain design
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Application Implementation\mysource{\fospl\mypage{21}}}
 			\begin{itemize}
 				\item development of products based on reusable artifacts
@@ -227,15 +227,15 @@
 					\end{enumerate}
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % reusable parts indespensible, reusable architecture optional
 % fully automatic or semi-automatic with custom design and implementation
 
 \begin{frame}{Domain and Application Testing}
-	\begin{mycolumns}[T,columns=3,widths={10}]
+	\begin{fancycolumns}[T,columns=3,widths={10}]
 		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{05}{}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Domain Testing\mysource{\sple\mypage{27}}} % TODO see \sple Chapter 8+13
 			\begin{itemize}
 				\item validation and verification of reusable artifacts
@@ -244,7 +244,7 @@
 				\item testing of sample products\\\mysource{more in \lecturetesting}
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Application Testing\mysource{\sple\mypages{33--34}}}
 			\begin{itemize}
 				\item testing of the application
@@ -252,7 +252,7 @@
 				\item new test artifacts for custom development
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % systematic testing, sometimes skipped (e.g., if product derivation not automatic)
 % testing of a single product, sometimes optional
@@ -262,7 +262,7 @@
 
 \subsection{Problem and Solution Space}
 \begin{frame}[label=ProblemAndSolutionSpace]{\myframetitle}
-	\begin{mycolumns}[widths={35},T]
+	\begin{fancycolumns}[widths={35},T]
 		\begin{definition}{Problem Space\mysource{\fospl\mypage{21}}}
 			\mycite{The \emph{problem space} takes the perspective of stakeholders and their problems, requirements, and views of the entire domain and individual products. Features are, in fact, domain abstractions that characterize the problem space.}\\\mysource{\lecturemodeling}
 		\end{definition}
@@ -270,13 +270,13 @@
 		
 		\centering
 		\pic[width=.4\linewidth]{preprocessor-wilderness-problem-space}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Solution Space\mysource{\fospl\mypage{21}}}
 			\mycite{The \emph{solution space} represents the developer’s and vendor’s perspectives. It is characterized by the terminology of the developer, which includes names of functions, classes, and program parameters. The solution space covers the design, implementation, and validation and verification of features and their combinations in suitable ways to facilitate systematic reuse.}\\\mysource{\lectureruntime, \lecturecloneandown, \lecturefeatures, \lecturemodules, \lecturelanguages}
 		\end{definition}
 		\centering
 		\pic[width=.6\linewidth,trim=20 20 20 40,clip]{preprocessor-wilderness-solution-space}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO we could repeat the slide on the up-front investment here (diagram with two lines indicating when a product line is better than single-system development)

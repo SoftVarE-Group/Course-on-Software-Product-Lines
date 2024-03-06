@@ -6,7 +6,7 @@
 \subsection{Build Systems}
 
 \begin{frame}{Tool Support: \myframetitle}
-	\begin{mycolumns}[widths={40},animation=none]
+	\begin{fancycolumns}[widths={40},animation=none]
 		\begin{definition}{Build Systems} % TODO source missing
 			\begin{itemize}
 				\item Automation of the build process through build scripts
@@ -26,16 +26,16 @@
 				\end{itemize}
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{ant-hello-world}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection{Variability with Build Systems}
 
 \begin{frame}{\myframetitle}
 	\myframeicon{\mysource{\staplesandhill}}%
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Basic Idea}
 			\begin{itemize}
 				\item One build script per variant
@@ -43,19 +43,19 @@
 				\item Overwrite variant-specific files
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-\textheightoftitle}
 
 		\centering\pic[height=\textheightwithouttitle]{buildsystems} % TODO looks weird in dark mode
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 % TODO the next two slides could profit from adding the main insights in a short but textual form
 \begin{frame}[fragile]{Example: Graph Library}
 	\myframeicon{\mysource{\fospl\mypage{107}}}%
-	\begin{mycolumns}[b,columns=3,widths={50,32},height=\textheightwithtitle,animation=none]
+	\begin{fancycolumns}[b,columns=3,widths={50,32},height=\textheightwithtitle,animation=none]
 		\hfill\pic[height=\textheightwithtitle]{buildsystems-graphs-1} % TODO what about Node.java and Weight.java? + looks weird in dark mode
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{}
 class Edge {
 	Node a, b;
@@ -83,14 +83,14 @@ class Edge {
 	}
 }
 \end{codetight}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Example: Graph Library}
-	\begin{mycolumns}[b,columns=3,widths={50,43},height=\textheightwithtitle,animation=none]
+	\begin{fancycolumns}[b,columns=3,widths={50,43},height=\textheightwithtitle,animation=none]
 		\hfill\pic[height=\textheightwithtitle]{buildsystems-graphs-2} % TODO what about Node.java, Weight.java, EdgeFactory.java? + looks weird in dark mode
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{}
 class Graph {
 	@EdgeFactory edgeFactory;@
@@ -118,8 +118,8 @@ class WeightedEdge extends Edge {
 	...
 }
 \end{codetight}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 % TODO new slide about experience report by \staplesandhill\ Section~3--6
@@ -128,7 +128,7 @@ class WeightedEdge extends Edge {
 
 \begin{frame}{Clone-and-Own with Build Systems}
 	\vspace{-\textheightoftitle}
-	\begin{mycolumns}[b,widths={55},animation=none]
+	\begin{fancycolumns}[b,widths={55},animation=none]
 		\begin{note}{Comparison to Version Control Systems}
 			\begin{itemize}
 				\item Supports combination of more fine-grained software items (i.e., files)
@@ -146,9 +146,9 @@ class WeightedEdge extends Edge {
 					\end{itemize}
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[height=\textheightwithouttitle]{buildsystems} % TODO looks weird in dark mode
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO a general discussion of advantages and disadvantages is missing here, see \fospl\mypages{108--110} (but be aware that the book is mixing two ways of using build systems)

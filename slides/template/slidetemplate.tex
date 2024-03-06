@@ -104,13 +104,13 @@
 			{\footnotesize\lectureseriesoverview[\insertlecturenumber]}
         \end{beamercolorbox}
 		\begin{beamercolorbox}[wd=.95\paperwidth,ht=12ex,dp=2ex]{lecture}
-			\begin{mycolumns}[t,columns=3,animation=none]
+			\begin{fancycolumns}[t,columns=3,animation=none]
 				\setlength{\parskip}{.5ex}\tableofcontents[sections={1}]
-			\mynextcolumn
+			\nextcolumn
 				\setlength{\parskip}{.5ex}\tableofcontents[sections={2}]
-			\mynextcolumn
+			\nextcolumn
 				\setlength{\parskip}{.5ex}\tableofcontents[sections={3}]
-			\end{mycolumns}
+			\end{fancycolumns}
         \end{beamercolorbox}
         \vskip0pt plus 1filll
         \mode<beamer>{\begin{beamercolorbox}[wd=\paperwidth,ht=4.5ex,dp=2ex,right]{titlebox}

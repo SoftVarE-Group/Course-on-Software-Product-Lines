@@ -2,9 +2,9 @@
 \againframe{HowToImplementFeatures}
 
 \begin{frame}{Recap: Features with Build Systems}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\centering\pic[width=\linewidth]{pignap-features}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Conditional Compilation with Build Systems}
 			\begin{itemize}
 				\item exploit the expressiveness of a build system's configuration language
@@ -18,13 +18,13 @@
 				\end{itemize}
 			\end{note}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Recap: Features with Preprocessors}
-	\begin{mycolumns}[widths={30},animation=none]
+	\begin{fancycolumns}[widths={30},animation=none]
 		\pic[width=\linewidth,page=1,trim=15 20 185 40,clip]{preprocessor-wilderness}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Conditional Compilation with Preprocessors}
 			\begin{itemize}
 				\item use conditional compilation facilities provided by preprocessors 
@@ -38,12 +38,12 @@
 				\end{itemize}
 			\end{note}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Modularity}
 \begin{frame}{Modularity} % TODO references missing
-	\begin{mycolumns}[widths={50,50},animation=none]
+	\begin{fancycolumns}[widths={50,50},animation=none]
 		\begin{definition}{Modularization}
 			consistent application of \emph{information hiding} and \emph{data encapsulation} to achieve:
 			\begin{itemize}
@@ -58,7 +58,7 @@
 				\item \emph{coupling}: measure of the complexity of communication across modules\\ $\Rightarrow$ inter-module~communication % removed term interface as the term is too narrow
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-1cm}
 		\begin{exampletight}{High Coupling, Low Cohesion}
 			\centering
@@ -68,13 +68,13 @@
 			\centering
 			\picDark[width=0.5\textwidth]{cohesion_coupling_2} % TODO picture source?
 		\end{exampletight}
-	\end{mycolumns}
-	\begin{mycolumns}[widths={50,50},animation=none]	
-	\end{mycolumns}
+	\end{fancycolumns}
+	\begin{fancycolumns}[widths={50,50},animation=none]	
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Why Modularity?} % TODO references missing
-	\begin{mycolumns}[widths={45,55},animation=none]
+	\begin{fancycolumns}[widths={45,55},animation=none]
 		\begin{note}{Traditional Reasons}
 			\begin{itemize}
 				\item modules can be developed independently of each other (collaborative work)
@@ -86,7 +86,7 @@
 			\end{itemize}						
 		\end{note}
 		\pause
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Modularization and Software Product Lines}
 			\begin{itemize}
 				\item \emph{reuse}: parts of the software can be {\em reused}
@@ -97,12 +97,12 @@
 		\begin{exampletight}{}
 			\pic[width=\linewidth,page=18,trim=5 115 5 5,clip]{lego} 
 		\end{exampletight}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection{Software Components}
 \begin{frame}{Components}
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 		\begin{definition}{Component \mysource{\szyperski}}		
 			A software component is a unit of composition with contractually specified \emph{interfaces} and explicit \emph{context dependencies} only. 
 			A software component can be deployed independently and is \emph{subject to composition} by third parties. % TODO real quote? then use \mycite{}
@@ -114,7 +114,7 @@
 		\begin{note}{Context/Deployment Dependencies} % TODO references missing
 			typically container or middleware (e.g., JavaEE, CORBA, OSGi, etc.)
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-12mm}
 		\begin{note}{Composition and Reuse} % TODO references missing
 			Components \ldots
@@ -128,11 +128,11 @@
 			\centering
 			\pic[width=\linewidth]{component_diagram_uml}
 		\end{exampletight}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \begin{frame}{Components vs. Objects/Classes} % TODO references missing
-	\begin{mycolumns}[widths={33},animation=none]
+	\begin{fancycolumns}[widths={33},animation=none]
 		\begin{note}{Commonalities}	
 			Numerous similar principles:
 			\begin{itemize}
@@ -143,7 +143,7 @@
 			\end{itemize}
 		\end{note}
 		\pause
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Differences}
 			\begin{itemize}
 				\item \emph{objects are smaller} than components by focusing on detailed implementation problems (components aim at abstracting from implementation details)
@@ -151,19 +151,19 @@
 				\item \emph{classes are reused through inheritance and polymorphism} whereas components are reused by being integrated into a component architecture
 			\end{itemize}			
 		\end{note}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection[Example Component]{Example: A Color Component}
 \begin{frame}[fragile]{\myframetitle\ \mytitlesource{\fospl}}
-	\begin{mycolumns}[widths={40}]
+	\begin{fancycolumns}[widths={40}]
 			\begin{example}{A Reusable Component in Java}
 				\begin{itemize}
 					\item assume that storing and printing colors is non-trivial (e.g., in our graph library)
 					\item implement color management as a reusable component, using Java's visibility mechanism to enforce encapsulation
 				\end{itemize}
 			\end{example}
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}{}
 package components.color;
 
@@ -186,11 +186,11 @@ class ColorImpl implements Color { /* ... */ }
 class ColorPrinter { /* ... */ }
 class ColorMapping { /* ... */ }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[b,widths={60},animation=none]
+	\begin{fancycolumns}[b,widths={60},animation=none]
 \begin{codetight}{}
 public class Graph {
 	private List<Node> nodes = new ArrayList<Node>();
@@ -208,7 +208,7 @@ public class Graph {
 	// ...
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 		\vspace{-10mm}
 \begin{codetight}{}
 public class Node {
@@ -229,7 +229,7 @@ public class Node {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\begin{note}{}
 		\begin{itemize}
 			\item we can \emph{reuse} the color component when implementing the color feature for the graph library and also for other applications
@@ -241,7 +241,7 @@ public class Node {
 
 \subsection{Component-Based Product Lines}
 \begin{frame}[label=SPLwithComponents]{\myframetitle} % TODO check license of pictures
-	\begin{mycolumns}[t,widths={40}]
+	\begin{fancycolumns}[t,widths={40}]
 		\begin{definition}{General Idea}					
 			\begin{itemize}
 				\item every feature is implemented by a dedicated component
@@ -255,7 +255,7 @@ public class Node {
 				\vspace*{\fill}	
 			\pic[height=1.75cm]{lego_product}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Reality}
 			\pic[height=1.75cm]{lego_components}
 				\vspace*{\fill}
@@ -273,16 +273,16 @@ public class Node {
 				\item components may contain run-time variability\\e.g., color manager in our example may be parameterized by color model RGB or CMYK
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection[Discussion]{Discussion of Components}
 \begin{frame}{The Library Scaling Problem}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{exampletight}{Decomposition and Reuse}
 			\picDark[width=\linewidth]{tangram} % TODO source? license?
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{What is the optimal size of a component?}
 			\begin{itemize}
 				\item large components (vertical scaling):\\typically not widely reusable
@@ -296,7 +296,7 @@ public class Node {
 				\item in other words: there is no general market for arbitrary components, but a few specialized market segments % TODO unclear (Thomas)
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \newcommand{\MajorChallengesOfComponents}{
@@ -306,19 +306,19 @@ public class Node {
 	\item no support for fine-granular variability\\ $\Rightarrow$ often combined with runtime variability within components
 }
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item supports \emph{compile-time variability}
 				\item modular implementation with reduced scattering and tangling (compared to runtime variability and preprocessors)
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{note}{Challenges}
 			\begin{itemize}
 				\MajorChallengesOfComponents
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

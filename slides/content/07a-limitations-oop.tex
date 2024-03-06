@@ -11,7 +11,7 @@
 \againframe{DesignPatterns}
 
 \begin{frame}{Recap: Modularity - Components, Services, and Frameworks} % TODO such an overview slide could be helpful in Lecture 6 already
-	\begin{mycolumns}[widths={40,60},animation=none]
+	\begin{fancycolumns}[widths={40,60},animation=none]
 		\begin{example}{Component-/Service-Based SPLs} % TODO separate visualization for components?
 			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
@@ -27,7 +27,7 @@
 			\centering
 			\pic[width=.45\linewidth,height=1.7cm]{lego_orchestration}				
 		\end{example}
-	\mynextcolumn		
+	\nextcolumn		
 		\begin{example}{Framework-Based SPLs}
 			\pic[width=.31\linewidth,height=1.75cm]{lego_product_partial} 
 				\vspace*{\fill}
@@ -42,7 +42,7 @@
 		\begin{note}{}
 			Neither glue code nor service composition required.
 		\end{note}			
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \againframe<2>{GraphsWithPlugins}
@@ -52,7 +52,7 @@
 \subsection{Preplanning Problem}
 
 \begin{frame}{Preplanning Problem}
-	\begin{mycolumns}[t,widths={45}]
+	\begin{fancycolumns}[t,widths={45}]
 		\begin{note}{Components, Services, and Frameworks}
 			Extensions are not possible ad-hoc, but must be foreseen and planned in advance:
 			\begin{itemize}
@@ -61,7 +61,7 @@
 			\end{itemize}
 			\emph{$\Rightarrow$ No modular extension without a suitable extension point / interface!}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{And classical OO language concepts?}
 			Subtyping and polymorphism allow for ad-hoc extensions to some extent, but:
 			\begin{itemize}
@@ -71,28 +71,28 @@
 			\end{itemize}
 			\emph{$\Rightarrow$ No variable extension without loosing modularity!}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Crosscutting Concerns}
 
 \begin{frame}{Crosscutting Concerns \deutschertitel{Querschneidende Belange}} % TODO 1:1 quotes? use mycite then?
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{definition}{Concern \mysource{\fospl\mypages{55}}}
 			A concern is an area of interest or focus in a system, and features are the concerns of primary interest in product-line engineering.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Crosscutting (Concern) \mysource{\fospl\mypages{55}}}
 			Crosscutting is a structural relationship between the representations of two concerns. 
 			It is an alternative to hierarchical and block structure.
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Tyranny of the Dominant Decomposition}
 
 \begin{frame}{Tyranny of the Dominant Decomposition \deutschertitel{Tyrannei der dominanten Dekomposition}} % TODO citation to ICSE'99?
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Tyranny of the Dominant Decomposition}
 			\begin{itemize}
 				\item Many concerns can be modularized, but not always at the same time.
@@ -100,7 +100,7 @@
 				\item Simultaneous modularization along different dimensions is not possible.
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{} % TODO use example environment instead? split?
 			Crosscutting concerns are inherently difficult to separate using traditional mechanisms.
 			\begin{itemize}
@@ -110,18 +110,18 @@
 			\end{itemize}
 			Features in a software product line are often crosscutting (e.g., color and weight in our graph example).
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Example: Arithmetic Expressions}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={60}]
+	\begin{fancycolumns}[widths={60}]
 		\begin{exampletight}{$(5 + ln(50)) * 1.73$}
 			\centering
 			\picDark[width=.45\linewidth]{expressions}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			\begin{itemize}
 				\item Arithmetic expressions are stored in a tree structure.
@@ -131,11 +131,11 @@
 		\begin{note}{Question}
 			How to separate data structures and operations such that both can be extended independently of each other?
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Arithmetic Expressions -- Data-Centric Decomposition}
-	\begin{mycolumns}[widths={40},animation=none]
+	\begin{fancycolumns}[widths={40},animation=none]
 		\begin{definition}{Implementation Variant 1:\\Data-Centric}
 			\begin{itemize}
 				\item Recursive class structure (composite pattern)
@@ -149,15 +149,15 @@
 				\item Operations cut across the expressions.
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{}
 			\picDark[width=\linewidth]{data_centered}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Arithmetic Expressions -- Operation-Centric Decomposition}
-	\begin{mycolumns}[widths={40}]
+	\begin{fancycolumns}[widths={40}]
 		\begin{definition}{Implementation Variant 2:\\Operation-Centric}
 			\begin{itemize}
 				\item Just a single accept method per class (visitor pattern).
@@ -171,11 +171,11 @@
 				\item Expressions cut across operations
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{}
 			\picDark[width=\linewidth]{method_centered}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Lessons Learned from the Simple Example}
@@ -183,19 +183,19 @@
 		Hardly possible to modularize expressions and operations at the same time!
 	\end{note}
 	\pause
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Data-Centric Decomposition}
 			\begin{itemize}
 				\item New expressions can be added directly: modular.
 				\item New operations must be added to all classes: not modular.
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Operation-Centric Decomposition}
 			\begin{itemize}
 				\item New operations can be added as another visitor: modular.
 				\item For new expressions, all existing visitors must be extended: not modular.
 			\end{itemize}
 		\end{note}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

@@ -11,7 +11,7 @@
 \begin{frame}<1-2>[label=PrinciplesAndProblemsOfRuntimeVariability]
 	\frametitle<1-2>{Recap: Runtime Variability}
 	\frametitle<3>{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{note}{Basic Principles}
 			{\bf Variability with Configuration Options:}
 			\begin{itemize}
@@ -25,17 +25,17 @@
 				\item Decorator
 			\end{itemize}	
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\frameRuntimeVariabilityProblems
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection{Compile-Time Variability}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={50},animation=none]
+	\begin{fancycolumns}[widths={50},animation=none]
 		\frameRuntimeVariabilityProblems		
-	\mynextcolumn
+	\nextcolumn
 		\uncover<2->{\begin{definition}{Compile-Time Variability\mysource{\fospl\mypage{49}}}
 			\mycite{Compile-time variability is decided before or at compile time.}
 		\end{definition}}
@@ -53,17 +53,17 @@
 		\uncover<4->{\begin{note}{In this Lecture}
 			Simple concepts and techniques for a few variants
 		\end{note}}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection{Ad-Hoc Clone-and-Own}
 
 \begin{frame}{Ad-Hoc Clone-and-Own}
-	\begin{mycolumns}[widths={47},animation=none]
+	\begin{fancycolumns}[widths={47},animation=none]
 		\begin{note}{Clone-and-Own\mysource{\seiwhitepaperspl\mypage{7}}}
 			\mycite{Suppose you are developing a new system that seems very similar to one you have built before. You borrow what you can from your previous effort, modify it as necessary, add whatever it takes, and field the product, which then assumes its own maintenance trajectory separate from that of the first product. What you have done is what is called \emph{clone and own}. You certainly have taken economic advantage of previous work; you have reused a part of another system. But now you have two entirely different systems, not two systems built from the same base. This is again \emph{ad hoc reuse}.}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Cloning Whole Products}
 			~\hfill\pic[width=.2\linewidth]{130}\hfill\pic[width=.2\linewidth]{230}\hfill~
 		\end{example}
@@ -74,14 +74,14 @@
 				\item Afterwards, cloned variants evolve independently of each other
 			\end{itemize}	
 		\end{definition}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \subsection{Variability with Clone-and-Own}
 
 \begin{frame}[fragile]{Example for Ad-Hoc Clone-and-Own}
 	\myframeicon{\pic[scale=0.25,page=6]{graphs}}%
-	\begin{mycolumns}[b,columns=3,widths={43,32},animation=none]
+	\begin{fancycolumns}[b,columns=3,widths={43,32},animation=none]
 \begin{codetight}{}
 class Graph {
 	List nodes = new ArrayList();
@@ -106,7 +106,7 @@ class Graph {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			initial graph implementation providing weighted graphs
 		\end{example}
@@ -129,7 +129,7 @@ class Weight {
 	void print() {...}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -139,12 +139,12 @@ public class Node {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Alice's Clone: Unweighted Graphs}
 	\myframeicon{\picDark[scale=0.25]{alice} \pic[scale=0.25,page=2]{graphs}}%
-	\begin{mycolumns}[b,columns=3,widths={43,32},animation=none]
+	\begin{fancycolumns}[b,columns=3,widths={43,32},animation=none]
 \begin{codetight}{}
 class Graph {
 	List nodes = new ArrayList();
@@ -169,7 +169,7 @@ class Graph {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			Alice works with unweighted graphs: she copies and adapts the basic implementation
 		\end{example}
@@ -192,7 +192,7 @@ class Edge {
 	void print() {...}
 }|@
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -202,12 +202,12 @@ public class Node {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Alice's Clone: Unweighted Graphs}
 	\myframeicon{\picDark[scale=0.25]{alice} \pic[scale=0.25,page=2]{graphs}}%
-	\begin{mycolumns}[b,columns=3,widths={43,32},animation=none]
+	\begin{fancycolumns}[b,columns=3,widths={43,32},animation=none]
 \begin{codetight}{}
 class Graph {
 	List nodes = new ArrayList();
@@ -225,7 +225,7 @@ class Graph {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			Alice works with unweighted graphs: she copies and adapts the basic implementation
 		\end{example}
@@ -241,7 +241,7 @@ class Edge {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -251,12 +251,12 @@ public class Node {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Bob's Clone: Colored Graphs}
 	\myframeicon{\picDark[scale=0.25]{bob} \pic[scale=0.25,page=12]{graphs}}%
-	\begin{mycolumns}[b,columns=3,widths={43,26},animation=none]
+	\begin{fancycolumns}[b,columns=3,widths={43,26},animation=none]
 \begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
@@ -274,7 +274,7 @@ public class Graph {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			Bob works with colored graphs: he is a colleague of Alice and knows her variant, so he copies and adapts Alice's variant
 		\end{example}
@@ -290,7 +290,7 @@ class Edge {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -307,7 +307,7 @@ public class Node {
 	static void setDisplayColor(Color c) {...}
 }~
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Problems of Clone-and-Own}
@@ -328,12 +328,12 @@ public class Node {
 	\myframeicon{\picDark[scale=0.25]{eve} \pic[scale=0.25,page=16]{graphs}}%
 	\vspace{5mm}
 
-	\begin{mycolumns}[widths={42}]
+	\begin{fancycolumns}[widths={42}]
 		\begin{example}{}
 			Eve has a new requirement:
 			she wants to work with graphs which are both colored and weighted
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			\begin{itemize}
 				\item Where to start from?
@@ -341,7 +341,7 @@ public class Node {
 				\item If so, how to avoid repeating the work that has been already done by Alice and Bob, respectively?
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 
 	~
 
@@ -360,7 +360,7 @@ public class Node {
 
 \begin{frame}[fragile]{Clone-and-Own Problems: Evolution \& Maintenance}
 	\myframeicon{\pic[scale=0.2,page=6]{graphs}\\[-9mm]\pic[scale=0.2,page=26]{graphs}~~~}%
-	\begin{mycolumns}[b,widths={43}]
+	\begin{fancycolumns}[b,widths={43}]
 		\begin{example}{}
 			Maintainers of the initial variant refactor the code of the basic implementation
 		\end{example}
@@ -383,7 +383,7 @@ public class Graph {
 	...
 }
 \end{codetight} % TODO order of statements not consistent with prior examples: shall we revert the changed order in prior examples?
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			\begin{itemize}
 				\item Who informs Alice, Bob and Eve about the improvement?
@@ -402,7 +402,7 @@ public class Graph {
 		\hfill
 		\picDark[scale=0.15]{eve}
 		\pic[scale=0.15,page=16]{graphs}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Software Clones}
@@ -412,7 +412,7 @@ public class Graph {
 \end{frame}
 
 \begin{frame}[b]{Types of \myframetitle}
-	\begin{mycolumns}[b,height=\textheightwithtitle]
+	\begin{fancycolumns}[b,height=\textheightwithtitle]
 		\begin{definition}{Types of Software Clones\mysource{\softwareclonedetection\mypage{1167}}}
 			\begin{itemize}
 			\item Type 1: identical except whitespaces and comments
@@ -424,7 +424,7 @@ public class Graph {
 		\begin{example}{Cloning Parts of Software}
 			~\hfill\pic[width=.2\linewidth]{pants-blue}\hfill\pic[width=.2\linewidth]{pants-red}\hfill~
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Relevant Types for Clone-and-\emph{Own}?}
 			\begin{itemize}
 			\item Type 1: may happen if clones diverge and comments need to reflect actual changes
@@ -437,7 +437,7 @@ public class Graph {
 		\begin{example}{Cloning Whole Products (Clone-and-Own)}
 			~\hfill\pic[width=.2\linewidth]{130}\hfill\pic[width=.2\linewidth]{230}\hfill~
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Discussion}
@@ -456,7 +456,7 @@ public class Graph {
 	\hfill
 	\pic[scale=0.2,page=26]{graphs}
 
-	\begin{mycolumns}[columns=2,widths={45,55}]
+	\begin{fancycolumns}[columns=2,widths={45,55}]
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Simple and straightforward approach
@@ -464,7 +464,7 @@ public class Graph {
 				\item No upfront investments
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Disadvantages}
 			\begin{itemize}
 				\item No structured and systematic reuse (copy \& edit)
@@ -472,9 +472,9 @@ public class Graph {
 				\item Maintenance quickly becomes impractical
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}	
-	\begin{mycolumns}[columns=3,widths={15,70}]
-	\mynextcolumn
+	\end{fancycolumns}	
+	\begin{fancycolumns}[columns=3,widths={15,70}]
+	\nextcolumn
 		\uncover<3->{\begin{note}{Towards Managed Clone-and-Own}
 			\begin{itemize}
 				\item How can we better manage such clone-and-own development?
@@ -482,8 +482,8 @@ public class Graph {
 				\item In the sequel: Software Configuration Management in practice
 			\end{itemize}
 		\end{note}}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 % TODO add \pic[width=\linewidth,page=24]{lego}
