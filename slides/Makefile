@@ -25,3 +25,4 @@ all: $(PDF_FILES)
 	
 clean: *.tex
 	latexmk -C $?
+	rm -rf *.fls *.nav *.snm *.listing *.vrb
