@@ -46,7 +46,6 @@ git clone --recursive https://github.com/SoftVarE-Group/Course-on-Software-Produ
 cd Course-on-Software-Product-Lines/slides
 make # to compile all slides with default options
 make <lecture>.pdf handout=... darkmode=... university=... # to compile one lecture with given options (for valid values, see Makefile)
-docker run --rm -v $(pwd)/..:/spl -w /spl/slides texlive/texlive:TL2021-historic make # to compile all slides with Texlive 2021 in Docker
 ```
 
 ## License
