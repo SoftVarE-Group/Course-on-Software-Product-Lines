@@ -71,39 +71,48 @@
 \subsection{Credit for the Slides}
 
 \begin{frame}{\myframetitle{}}
-	\myframeicon{\href{https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines}{\pic[scale=.75]{cc-by-sa}}}
+	\ifuniversity{anonymous}{\mynote{}{\centering\huge Anonymous Authors}}
+	\unlessuniversity{anonymous}{
+		\myframeicon{\href{https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines}{\pic[scale=.75]{cc-by-sa}}}
+	}
 	\begin{fancycolumns}[columns=3,animation=none]
-		\begin{note}{Thomas Thüm}
-			\centering
-			\href{https://www.uni-ulm.de/en/in/sp/team/thuem/}{\adjincludegraphics[height=.45\textheight,trim={.125\width} 0 {.125\width} 0,clip]{thomas-thuem}}
+		\unlessuniversity{anonymous}{
+			\begin{note}{Thomas Thüm}
+				\centering
+				\href{https://www.uni-ulm.de/en/in/sp/team/thuem/}{\adjincludegraphics[height=.45\textheight,trim={.125\width} 0 {.125\width} 0,clip]{thomas-thuem}}
 
-			\small Professor at Paderborn University
+				\small Professor at Paderborn University
 
-			software engineering
+				software engineering
 
-			FeatureIDE team leader
-		\end{note}
+				FeatureIDE team leader
+			\end{note}
+		}
 	\nextcolumn
-		\begin{note}{Timo Kehrer}
-			\centering
-			\href{https://seg.inf.unibe.ch/people/timo/}{\pic[height=.45\textheight]{timo-kehrer}}
+		\unlessuniversity{anonymous}{
+			\begin{note}{Timo Kehrer}
+				\centering
+				\href{https://seg.inf.unibe.ch/people/timo/}{\pic[height=.45\textheight]{timo-kehrer}}
 
-			\small Professor at University of Bern
+				\small Professor at University of Bern
 
-			software engineering
+				software engineering
 
-			~
-		\end{note}
+				~
+			\end{note}
+		}
 	\nextcolumn
-		\begin{note}{Elias Kuiter}
-			\centering
-			\href{https://www.dbse.ovgu.de/en/Staff/Elias+Kuiter.html}{\pic[height=.45\textheight]{elias-kuiter}}
+		\unlessuniversity{anonymous}{
+			\begin{note}{Elias Kuiter}
+				\centering
+				\href{https://www.dbse.ovgu.de/en/Staff/Elias+Kuiter.html}{\pic[height=.45\textheight]{elias-kuiter}}
 
-			\small PhD student in Magdeburg
+				\small PhD student in Magdeburg
 
-			feature-model analysis
+				feature-model analysis
 
-			FeatureIDE core developer
-		\end{note}
+				FeatureIDE core developer
+			\end{note}
+		}
 	\end{fancycolumns}
 \end{frame}

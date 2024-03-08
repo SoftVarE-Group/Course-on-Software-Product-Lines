@@ -29,6 +29,7 @@
 	\ifuniversity{magdeburg}{\author@old{Gunter Saake, Elias Kuiter}}
 	\ifuniversity{wernigerode}{\author@old{Elias Kuiter}}
 	\ifuniversity{recording}{\author@old{#1}}
+	\ifuniversity{anonymous}{\author@old{Anonymous Authors}}
 	\ifuniversity{}{\author@old{#1}}
 }
 \makeatother
@@ -132,6 +133,13 @@
 	\fancylogos{hs-harz}
 	\setpicture[400]{wernigerode-castle}
 	\renewcommand{\faq}[3]{}
+}
+
+\ifuniversity{anonymous}{
+	\fancylogos{}
+	\renewcommand{\pic}[2][]{\includegraphics[#1]{#2}}
+	\renewcommand{\deutsch}[1]{}
+	\renewcommand{\deutschertitel}[1]{}
 }
 
 % QR CODES
