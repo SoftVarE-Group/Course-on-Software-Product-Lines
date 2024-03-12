@@ -150,7 +150,7 @@ constraints
 \begin{frame}{\myframetitle}
 	\begin{fancycolumns}
 		\begin{definition}{Syntax of Propositional Formulas}
-			Inductive definition of \emph{propositional formulas}\deutsch{\\aussagenlogische Formeln}:
+			Inductive definition of \emph{propositional formulas} \deutsch{aussagenlogische Formeln}
 			\begin{itemize}
 				\item the \emph{Boolean truth values} $\top$, $\bot$
 				\item any \emph{Boolean variable} $X$
@@ -161,7 +161,7 @@ constraints
 		\end{definition}
 	\nextcolumn
 		\begin{definition}{Informal Semantics of Propositional Formulas}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\begin{equation*}
 				\begin{rcases}
 					\top                \\
@@ -183,7 +183,7 @@ constraints
 			\end{equation*}
 		\end{definition}
 		\begin{example}{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}
-			\vspace*{-4ex} % TODO Benno: why is this hack needed?
+			\vspace*{-3ex} % TODO Benno: why is this hack needed?
 			\begin{align*}
 				           &~Transactions \pimplies (Put \por Delete) \\
 				\equiv     &~Transactions \pimplies Put \por Delete \\
@@ -240,7 +240,7 @@ constraints
 				}
 			\end{exampletight}
 			\begin{exampletight}{\ldots as a Propositional Formula $\Phi(FM)$}
-				\vspace*{-4ex}
+				\vspace*{-1.5ex}
 				\small
 				\begin{align*}
 					\Phi(FM) = &~ConfigDB \\
@@ -257,7 +257,7 @@ constraints
 	\nextcolumn
 		\only<9-|handout:1-2>{
 			\begin{example}{Is This a Valid Configuration?}
-				\vspace*{-4ex}
+				\vspace*{-3ex}
 				\only<9-12|handout:1>{
 					\begin{align*}
 								&~\Phi(FM)({\{C, A, G, O, W\}}) \\
@@ -324,7 +324,7 @@ constraints
 		\end{definition}
 	\nextcolumn
 		\begin{definition}{}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\begin{align*}
 				\uncover<3->{\featureDiagramFn{\Phi}{6ex}{Root,concrete}{Root}}\\
 				\uncover<4->{\featureDiagramFn{\Phi}{6ex}{P,concrete[C,optional,concrete]}{C \pimplies P}}\\
@@ -363,7 +363,7 @@ constraints
 	\nextcolumn
 		\uncover<2->{
 			\begin{example}{Transforming Part of $\Phi(FM)$ into $CNF(\Phi(FM))$}
-				\vspace*{-4ex}
+				\vspace*{-1.5ex}
 				\small
 				% TODO: use color-blind friendly colors
 				\begin{fancycolumns}[animation=none]

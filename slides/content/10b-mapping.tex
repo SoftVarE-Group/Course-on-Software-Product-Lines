@@ -55,7 +55,7 @@
 \subsection{Presence Conditions}
 
 \begin{frame}[b,fragile]{\myframetitle}
-	\vspace*{-4ex}
+	\vspace*{-3ex}
 	\begin{fancycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\begin{definition}{Presence Condition}
 			A \emph{presence condition (PC)} for a code location (i.e., a line or file) is a formula that describes the circumstances under which the code location is included in a product.
@@ -70,7 +70,7 @@
 	\nextcolumn
 		\uncover<3->{
 			\begin{exampletight}{Presence Conditions}
-				\small\vspace*{-1.3ex}
+				\small\vspace*{0.5ex}
 				\begin{flushright}
 
 					\uncover<4->{{$\top$}\\
@@ -157,7 +157,7 @@ class Edge {
 	\nextcolumn
 		\uncover<2->{
 			\begin{exampletight}{Presence Conditions}
-				\small\vspace*{-1.3ex}
+				\small\vspace*{0.5ex}
 				\begin{flushright}
 					{\color{gray}$\top$}\\
 					{\color{gray}$\top$}\\
@@ -242,7 +242,7 @@ class Edge {
 	\nextcolumn
 	\uncover<2->{
 		\begin{exampletight}{Presence Conditions}
-			\small\vspace*{-1.3ex}
+			\small\vspace*{0.5ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
 				{\color{gray}$\top$}\\
@@ -369,7 +369,7 @@ class Edge {
 		\end{align*}
 		\vspace*{-5ex}
 		\begin{exampletight}{}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\begin{align*}
 				&Graph \pand Node \pand Edge \\
 				\pand &\pnot (Directed \pand Undirected) \\
@@ -394,7 +394,7 @@ class Edge {
 	\nextcolumn
 		\uncover<3->{
 			\begin{exampletight}{Line PCs \tiny\texttt{node.cpp}}
-				\tiny\vspace*{-1.3ex}
+				\tiny\vspace*{0.5ex}
 				\begin{flushright}
 					{$\top$}\\
 					{$\top$}\\
@@ -405,7 +405,7 @@ class Edge {
 				\end{flushright}
 			\end{exampletight}
 			\begin{exampletight}{Line PCs \tiny\texttt{edge.cpp}}
-				\tiny\vspace*{-1.3ex}
+				\tiny\vspace*{0.5ex}
 				\begin{flushright}
 					{$\top$}\\
 					{$Directed$}\\
@@ -459,7 +459,7 @@ class Edge {
 \begin{frame}[fragile]{\myframetitle}
 	\begin{fancycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
 		\begin{exampletight}{Feature-Model Formula}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\color{red}
 			\begin{align*}
 				&Graph \pand Node \pand Edge \\
@@ -476,7 +476,7 @@ class Edge {
 		\end{exampletight}
 	\nextcolumn
 		\begin{exampletight}{Line PCs \tiny\texttt{edge.cpp}}
-			\tiny\vspace*{-1.3ex}
+			\tiny\vspace*{0.5ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
 				{\color{gray}$Directed$}\\
@@ -526,7 +526,7 @@ class Edge {
 \subsection{Analyzing Feature Modules}
 
 \begin{frame}[b]{\myframetitle}
-	\vspace*{-4ex}
+	\vspace*{-3ex}
 	\begin{fancycolumns}[widths={34,66},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
@@ -537,7 +537,6 @@ class Edge {
 				$\Phi(FM) = Store \pand Type \pand (SS \por MS) \pand (\pnot SS \por \pnot MS)$
 			\end{example}
 			\begin{example}{Valid Configurations}
-				\vspace*{-2ex}
 				\small
 				\begin{fancycolumns}[animation=none]
 					{$\{SS\}$}\\
@@ -552,6 +551,7 @@ class Edge {
 		\uncover<3->{\picDark[width=\linewidth]{fop-csur-example}}
 	\end{fancycolumns}
 	\uncover<3->{
+		\vspace*{-3ex}
 		\begin{note}{}
 			Is there dead code? Are there superfluous annotations?
 		\end{note}
@@ -559,7 +559,7 @@ class Edge {
 \end{frame}
 
 \begin{frame}[b]{\myframetitle}
-	\vspace*{-4ex}
+	\vspace*{-3ex}
 	\begin{fancycolumns}[widths={34,66},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
@@ -571,6 +571,7 @@ class Edge {
 		\picDark[width=\linewidth]{fop-csur-example}
 	\end{fancycolumns}
 	\uncover<2->{
+		\vspace*{-3ex}
 		\begin{note}{}
 			\sout{Is} {\color{red}Are} there \sout{dead code} {\color{red}dead features}? Are there \sout{superfluous annotations} {\color{red}redundant constraints}?
 		\end{note}

@@ -38,9 +38,9 @@
 
 \subsubsection{Analyzing Feature Modules}
 
-\begin{frame}[b]{\myframetitle}
-	\vspace*{-4ex}
+\begin{frame}{\myframetitle}
 	\begin{fancycolumns}[widths={37,63},animation=none]
+		\vspace*{-3ex}
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
 		\end{exampletight}
@@ -49,7 +49,6 @@
 			$\Phi(FM) = Store \pand Type \pand (SS \por MS) \pand (\pnot SS \por \pnot MS)$
 		\end{example}
 		\begin{example}{Valid Configurations}
-			\vspace*{-2ex}
 			\small
 			\begin{fancycolumns}[animation=none]
 				{\color{black}$\{SS\}$}\\
@@ -72,8 +71,8 @@
 % TODO would be good to avoid the abbreviation SS here. what about only referring to concrete features here?
 
 \begin{frame}[b]{\myframetitle}
-	\vspace*{-4ex}
 	\begin{fancycolumns}[widths={37,63},animation=none]
+		\vspace*{-3ex}
 		\begin{definition}{Reachability Condition of $id$}
 			guarantees that a given \emph{reference} to $id$ is also \emph{defined} somewhere:\\[1ex]
 			$\Phi(FM) \mimplies (PC_{ref}^{id} \pimplies \bigvee_{def} PC_{def}^{id})$\\[1ex]
