@@ -27,8 +27,9 @@ Core contributors:
 
 Further contributors and former project members:
 
-- [Sebastian Krieter](https://www.uni-ulm.de/in/sp/team/sebastian-krieter/) (University of Ulm, Germany)
+- [Sebastian Krieter](https://www.uni-ulm.de/in/sp/team/sebastian-krieter/) (Paderborn University, Germany)
 - [Chico Sundermann](https://www.uni-ulm.de/in/sp/team/chico-sundermann/) (University of Ulm, Germany)
+- [Paul Maximilian Bittner](https://www.uni-ulm.de/in/sp/team/paul-maximilian-bittner/) (Paderborn University, Germany)
 - Benno Hölz (University of Ulm, Germany)
 
 ## Usage in Lectures
