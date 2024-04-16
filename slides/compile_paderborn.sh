@@ -16,7 +16,7 @@ lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "
 university=paderborn
 semester=2024s
 
-archive_path="../../SPL-Slide-Archive/"
+archive_path="../../Course-on-Software-Product-Lines-Slide-Archive/"
 slide_path="../../SPL-Slides/${semester}t/"
 
 make_lecture () {
