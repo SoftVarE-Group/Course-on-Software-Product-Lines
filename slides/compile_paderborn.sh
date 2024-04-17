@@ -1,4 +1,16 @@
 #! /bin/bash
+# Usage
+#   ./compile_paderborn.sh -options <nr>
+# where options is a string consisting of the characters l, o, f, r
+#   l = lecture
+#   o = overview
+#   f = full
+#   r = recording
+# and <nr> is the number of the lecture you want to compile.
+# The output will be written to the value stored in "slide_path" below.
+# Example, to compile the lecture 3 and also prepare the overview slides (i.e., a big pdf containing lectures 1-3), you can run
+#   ./compile_paderborn.sh -lo 3
+# Important: Run this script from the directory the script is in. Otherwise paths for output pdfs might be wrong.
 
 lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")
 university=paderborn
