@@ -118,7 +118,7 @@
 			\begin{itemize}
 				\item How do such configurators work?
 				\item How to avoid inconsistencies?
-				\item How to provide explanations and fixes?
+				\item How to provide explanations and fixes? % TODO not explained in this part. remove?
     			\item How to get all valid configurations automatically? (\emph{P2(b)})
 			\end{itemize}
 		\end{note}
@@ -467,7 +467,7 @@
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
 		\end{definition}
-		\begin{definition}{Commonality: How Dead is This Feature?}
+		\begin{definition}{Commonality: How Constrained is This Feature?}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -484,14 +484,14 @@
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
-			$X$ is dead, $Root$ and $Y$ are core
+			$X$ is dead\hfill$Root$ and $Y$ are core
 		\end{exampletight}
 		\nextcolumn
 		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
-			$X$: 0 products, $Root$ and $Y$: 1 products
+			$X$: 0 products\hfill$Root$ and $Y$: 1 products
 		\end{exampletight}
 	\end{fancycolumns}
 \end{frame}
@@ -579,7 +579,7 @@
 					\item \ldots{} select features that are now \emph{conditionally core}
 					\item \ldots{} deselect features that are now \emph{conditionally dead}
 				\end{itemize}
-				\item this way it is impossible to configure an invalid product
+				\item this way it is impossible to configure an invalid configuration
 				\item explanations for all propagated decisions
 			\end{itemize}
 		\end{note}
@@ -596,7 +596,7 @@
 				\node [block, right =4mm of fm] (formula) {Formula};
 				\node [block, right =8mm of formula] (cnf) {DIMACS};
 				\node [block, below right =8mm and -12mm of fm] (query) {Query};
-				\node [block, below =-.5mm of query,align=center,color=blue,font={\footnotesize}] (query2) {void feature model\\variability factor\\all products\\core/dead features\\false-optional features\\commonality\\valid partial configuration\\decision propagation};
+				\node [block, below =-.5mm of query,align=center,color=blue,font={\footnotesize}] (query2) {void feature model\\variability factor\\all products\\core/dead features\\commonality\\valid partial configuration\\decision propagation};
 				\node [block, right =27mm of query] (answer) {Answer};
 				\node [block, right =4mm of answer] (result) {};
 				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
@@ -620,7 +620,7 @@
 				\node [block, right =8mm of formula] (cnf) {DIMACS};
 				\node [block, above =.5mm of cnf,align=center,color=red,font={\footnotesize}] (cnf2) {DNF\\d-DNNF\\BDD};
 				\node [block, below right =8mm and -12mm of fm] (query) {Query};
-				\node [block, below =-.5mm of query,align=center,color=red,font={\footnotesize}] (query2) {atomic sets\\redundant constraints\\feature-model edits\\explanations\\sampling\\slicing};
+				\node [block, below =-.5mm of query,align=center,color=red,font={\footnotesize}] (query2) {false-optional features\\atomic sets\\redundant constraints\\feature-model edits\\explanations\\sampling\\slicing};
 				\node [block, right =27mm of query] (answer) {Answer};
 				\node [block, right =4mm of answer] (result) {};
 				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
