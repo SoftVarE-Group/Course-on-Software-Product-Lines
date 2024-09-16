@@ -21,3 +21,6 @@
 /pics/evonance/fmrefactoring-paper.pdf
 /pics/evonance/splevolution-paper.pdf
 build
+
+# emacs auctex
+.auctex-auto

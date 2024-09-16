@@ -5,7 +5,7 @@
 % esp+abs: both control brakes and motor
 
 \begin{frame}{An Interaction when Customizing Clothes}
-	\begin{mycolumns}[widths={33},animation=none]
+	\begin{fancycolumns}[widths={33},animation=none]
 		\begin{example}{Customization of Clothes}
 			\begin{itemize}
 			\item platforms to create and buy clothes
@@ -14,16 +14,16 @@
 			\item where is the problem?
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\mywhite{uulm Shop \mysource{\href{https://uulm.myspreadshop.de/collections}{myspreadshop.de}}}{
 			\pic[height=40mm]{spreadshirt-shop-2}
 			\hfill
 			\pic[height=40mm]{spreadshirt-shop-3}
 		} % TODO exampletight with white background in darkmode
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{The Problem: Unwanted Interaction of Colors}
 			~
 
@@ -31,7 +31,7 @@
 
 			~
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{The Solution: Choose Other Colors}
 			~
 
@@ -39,18 +39,18 @@
 
 			~
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{An Interaction when Customizing Clothes}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\mywhite{The Problem: Unwanted Interaction of Colors}{
 			\centering\pic[height=45mm,trim=50 3550 690 3340,clip]{spreadshirt-order}
 		} % TODO exampletight with white background in darkmode
-	\mynextcolumn
+	\nextcolumn
 		\mywhite{The Solution: Choose Other Colors}{
 			\centering\pic[height=45mm,trim=50 3255 690 3635,clip]{spreadshirt-order}
 		} % TODO exampletight with white background in darkmode
-	\end{mycolumns}
+	\end{fancycolumns}
 	\uncover<3->{\begin{note}{}
 		\centering seems that contrast is checked for each order (cf.\ application engineering)\\and not for each published design (cf.\ domain engineering)
 	\end{note}}
@@ -58,13 +58,13 @@
 % TODO add links to keynote?
 
 \begin{frame}{An Interaction of Android Apps}
-	\begin{mycolumns}[widths={67},animation=none]
+	\begin{fancycolumns}[widths={67},animation=none]
 		\mywhite{}{\only<1-2|handout:0>{\pic[width=\linewidth,page=11,trim=40 30 280 100,clip]{2021/2021-09-08-SPLC-Keynote}}%
 		\only<3->{\pic[width=\linewidth,page=11,trim=40 30 40 100,clip]{2021/2021-09-08-SPLC-Keynote}}}%
 		\only<4->{\begin{note}{}%
 			\centering which of those 3.5 million Android apps interact?\\where to document?\\whom to blame?%
 		\end{note}}%
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Skype vs BabyMonitor}
 			\begin{itemize}
 			\item Skype app installed and used for years
@@ -75,7 +75,7 @@
 			\item \alt<-2>{what is the problem?}{found baby crying as no one answered the dialog}
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO use pictures directly, add picture showing all apps
 % TODO add links to keynote?
@@ -87,7 +87,7 @@
 
 \subsection{Feature Interactions}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Feature Interaction\mysource{\fospl\mypage{214}}}
 			\mycite{A \emph{feature interaction} between two or more features is an
 emergent behavior that cannot be easily deduced from the behaviors associated
@@ -100,7 +100,7 @@ with the individual features involved.}
 
 			here simplified as: wanted vs unwanted
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Feature-Interaction Problem\mysource{\fospl\mypage{214}}}
 			\mycite{The \emph{feature-interaction problem} is to detect, manage, and resolve (inadvertent) feature interactions among features.}
 		\end{definition}
@@ -118,31 +118,31 @@ with the individual features involved.}
 				\item interactions with the base code
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{A Common Interaction of Toasters}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\only<1|handout:0>{\pic[width=\linewidth]{toast1}}%
 		\only<2|handout:0>{\pic[width=\linewidth]{toast2}}%
 		\only<3-|handout:1>{\pic[width=\linewidth]{toast3}}%
 		\uncover<5->{\begin{example}{}
 			\centering no interaction for two toasts (i.e., \emph{$T_1 \pand T_2$} shown) and for no toasts (i.e., $\pnot T_1 \pand \pnot T_2$ not shown)
 		\end{example}}
-	\mynextcolumn
+	\nextcolumn
 		\only<4->{\pic[width=\linewidth]{toast4}}%
 		\uncover<6->{\begin{example}{}
 			\centering unwanted interaction for one toast\\(i.e., \emph{$T_1 \pand \pnot T_2$} shown and  $\pnot T_1 \pand T_2$ not shown)
 		\end{example}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Example Interactions with Preprocessors}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70}]
+	\begin{fancycolumns}[widths={70}]
 		\only<1|handout:0>{\pic[width=\linewidth,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
 		\only<2->{\pic[width=\linewidth,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{No Interaction?}\setlength\leftmargini{3mm}
 			\begin{itemize}
 				\item configuration for undirected, weighted edges
@@ -150,12 +150,12 @@ with the individual features involved.}
 				\item what is the problem?
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70}]
+	\begin{fancycolumns}[widths={70}]
 		\pic[width=\linewidth,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Static Interaction}\setlength\leftmargini{3mm}
 			\begin{itemize}
 				\item configuration for undirected, unweighted edges
@@ -164,12 +164,12 @@ with the individual features involved.}
 				\item occurs whenever features \emph{Directed} and \emph{Weighted} are both not selected
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70}]
+	\begin{fancycolumns}[widths={70}]
 		\pic[width=\linewidth,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Other Static Interaction}\setlength\leftmargini{3mm}
 			\begin{itemize}
 				\item configuration for directed, weighted edges
@@ -178,12 +178,12 @@ with the individual features involved.}
 				\item feature \emph{Directed} has inadvertent interaction with base code
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 \begin{frame}{\myframetitle}\setlength\leftmargini{3mm}
-	\begin{mycolumns}[widths={70}]
+	\begin{fancycolumns}[widths={70}]
 		\pic[width=\linewidth,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Dynamic Interaction?}
 			\begin{itemize}
 				\item again: configuration for directed, weighted edges
@@ -200,7 +200,7 @@ with the individual features involved.}
 				\item next: interactions of more than two features
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 %\subsection{Unwanted and Wanted Interactions} % Desired + Undesired
@@ -209,7 +209,7 @@ with the individual features involved.}
 %\subsection{Pairwise Interactions}
 \subsection{Higher-Order Interactions}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Kinds of Interactions}
 			\begin{itemize}
 				\item wanted and unwanted interactions
@@ -228,18 +228,18 @@ with the individual features involved.}
 				\item 3D printer firmware Marlin (14)
 			\end{itemize}
 		\end{example}}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Patterns of Feature Interactions\mysource{\VBDb}}
 			\pic[width=\linewidth]{variabilitybugdatabase-patterns}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO example from the The Variability Bug Database?
 
 \begin{frame}{Interaction on Data and Control Flow \mytitlesource{\essentialconfigurationcomplexity}}\setlength\leftmargini{3mm}
-	\begin{mycolumns}[widths={70}]
+	\begin{fancycolumns}[widths={70}]
 		\mywhite{}{\essentialconfigurationcomplexitylink{\pic[width=\linewidth,page=2,trim=55 495 225 75,clip]{2016/2016-ASE-Meinicke}}}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{How do Features Interact?}
 			\begin{itemize}
 				\item given a program with runtime variability
@@ -250,7 +250,7 @@ with the individual features involved.}
 				\item blue color not relevant here (minimal overhead during simultaneous execution)
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 \begin{frame}[label=ExecutionTracesInConfigurableSystems]{Execution Traces in Configurable Systems \mytitlesource{\essentialconfigurationcomplexity}}
 	\mywhite{}{\essentialconfigurationcomplexitylink{\pic[width=.95\linewidth,page=8,trim=55 520 55 55,clip]{2016/2016-ASE-Meinicke}}}

@@ -2,7 +2,7 @@
 
 \subsection{Hot Spots and Plug-Ins}
 \begin{frame}{Framework with Plug-Ins}
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 		\begin{definition}{Framework and Hot Spot \mysource{\fospl\mypages{80--81}}}
 			A \emph{framework} is a set of classes that embodies an abstract design for solutions to a family of related problems, and supports reuse at a larger granularity than classes. A framework is open for \emph{extension} at explicit \emph{hot spots} (aka.\ extention point).
 		\end{definition}
@@ -12,7 +12,7 @@
 		\begin{note}{}
 			Frameworks with plug-ins are also called \emph{black-box frameworks}: Developers need to understand interfaces, but not the internal framework implementation.
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-12mm}
 		\begin{note}{Inversion of Control}
 			Hollywood principle: \mycite{Don't call us, we call you}
@@ -26,53 +26,53 @@
 				\item Requires \emph{preplanning} for possible future extensions
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Preplanned Extensions}
 \begin{frame}{Real-World Example: Preplanned Bike Extensions}
-	\begin{mycolumns}[columns=4,T]
+	\begin{fancycolumns}[columns=4,T]
 		\centering\pic[width=\linewidth]{bike-extensionpoint1}
 
 		bike lock
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{bike-extensionpoint2}
 
 		front wheel brake
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{bike-extensionpoint3}
 
 		rear wheel brake
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{bike-extensionpoint4}
 
 		kickstand
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Real-World Example: Preplanned Bike Extensions}
-	\begin{mycolumns}[columns=5,widths={30,5,30,5,30}]
+	\begin{fancycolumns}[columns=5,widths={30,5,30,5,30}]
 		\centering\pic[width=\linewidth]{bike-extensionpoint1-withoutplugin}
 
 		framework with extension~points
-	\mynextcolumn
+	\nextcolumn
 		\centering\Huge +
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{bike-lock}
 
 		plug-ins\\~
-	\mynextcolumn
+	\nextcolumn
 		\centering\Huge =
-	\mynextcolumn
+	\nextcolumn
 		\centering\pic[width=\linewidth]{bike-extensionpoint1}
 
 		framework with plug-ins\\~
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Basic Design Principles}
 \begin{frame}{Simple Java Example: A Family of Dialogs \mytitlesource{\fospl}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{}
 			\centering \pic[width=0.8\linewidth]{dialog1}
 		\end{exampletight}
@@ -82,7 +82,7 @@
 		\begin{exampletight}{}
 			\centering \pic[width=\linewidth]{dialog3}
 		\end{exampletight}
-	\mynextcolumn		
+	\nextcolumn		
 		\begin{note}{}
 			\begin{itemize}
 				\item All dialogs have a similar structure (basically textfield + button)
@@ -96,12 +96,12 @@
 				\end{itemize}
 			\end{itemize}
 		\end{note}	
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 	
 \begin{frame}[fragile]{Simple Java Example: A Family of Dialogs}
 	\vspace{-2mm}
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 \begin{codetight}{}
 public class Calc extends JFrame {
 	private JTextField textfield;
@@ -128,7 +128,7 @@ public class Calc extends JFrame {
 	}
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}{}
 public class Ping extends JFrame {
 	private JTextField textfield;
@@ -155,13 +155,13 @@ public class Ping extends JFrame {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 
 \begin{frame}[fragile]{Simple Java Example: A Family of Dialogs}
 	\vspace{-2mm}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{}
 			plug-in implementation hidden from application
 		\end{note}
@@ -194,7 +194,7 @@ public class Application extends JFrame {
 	}@
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 {
 \begin{codetight}[basicstyle=\tiny]{}
 public interface Plugin {
@@ -230,11 +230,11 @@ public class CalcPlugin implements Plugin {
 }
 \end{codetight}
 }
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Simple Example: A Family of Dialogs}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{}
 			application implementation hidden from plug-in
 		\end{note}
@@ -265,7 +265,7 @@ public class Application extends JFrame @implements InputProvider@ {
 	}
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 {
 \begin{codetight}[basicstyle=\tiny]{}
 public interface InputProvider {
@@ -300,12 +300,12 @@ public class CalcPlugin implements Plugin {
 }
 \end{codetight}
 }
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Plug-In Loading and Management}
 \begin{frame}{Plug-In Loading and Management}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Simple Example vs.\ Reality}
 			simplification in our previous example:
 			\begin{itemize}
@@ -320,7 +320,7 @@ public class CalcPlugin implements Plugin {
 				\item plug-in implementation provided by third parties %(requires load-time variability) % TODO sounds wrong to me (Thomas)
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Plug-In Loader}
 			\begin{itemize}
 				\item Searches in a dedicated directory for DLL/JAR/XML files
@@ -332,11 +332,11 @@ public class CalcPlugin implements Plugin {
 		\begin{definition}{Plug-In Manager}
 			GUI and/or console interface for plug-in administration and configuration
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Example: Plug-In Loading and Management}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 \begin{codetight}{Plug-In Loader using Java Reflection}
 public class Starter {
 	public static void main(String[] args) {
@@ -356,7 +356,7 @@ public class Starter {
 	}
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}{Handling multiple Plug-Ins}
 public class Application {
 	private List<Plugin> plugins;
@@ -377,14 +377,14 @@ public class Application {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Frameworks in the Wild}
 \begin{frame}{Frameworks in the Wild: Eclipse}
-	\begin{mycolumns}[widths={70},animation=none]
+	\begin{fancycolumns}[widths={70},animation=none]
 		\pic[width=\linewidth]{eclipse_overview}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-0.7cm}
 		\begin{example}{Versatile IDE}
 			\begin{itemize}
@@ -401,20 +401,20 @@ public class Application {
 				\item Largely declarative description of extension points
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Frameworks in the Wild: Eclipse \mytitlesource{\featureide}}
-	\begin{mycolumns}%[forget]
+	\begin{fancycolumns}%[forget]
 		\pic[width=\linewidth]{framework-with-plugins}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth]{framework-a-plugin}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Frameworks in the Wild: Further Examples}
-	\begin{mycolumns}[columns=3,widths={15,70},animation=none]
-	\mynextcolumn
+	\begin{fancycolumns}[columns=3,widths={15,70},animation=none]
+	\nextcolumn
 		\begin{example}{}
 			\begin{itemize}
 				\item Other IDEs (e.g., IntelliJ, ...)
@@ -430,15 +430,15 @@ public class Application {
 				\item etc.
 			\end{itemize}
 		\end{example}		
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Implementation of Product Lines}
 \begin{frame}<1-4>[label=SPLwithPlugIns]
 	\frametitle<1-4>{Framework-Based Implementation of Software Product Lines}
 	\frametitle<5>{\myframetitle}
-	\begin{mycolumns}[widths={40},animation=none]
+	\begin{fancycolumns}[widths={40},animation=none]
 		\begin{example}{Recap: Service-Based Implementation}
 			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
 				\vspace*{\fill}
@@ -454,7 +454,7 @@ public class Application {
 			\centering
 			\pic[width=.65\linewidth,height=2.5cm]{lego_orchestration}				
 		\end{example}
-	\mynextcolumn		
+	\nextcolumn		
 		\pause
 		\begin{definition}{Same Idea}
 			\begin{itemize}
@@ -481,11 +481,11 @@ public class Application {
 		\begin{note}{}
 				full automation comes at a price (cf.\ preplanning problem)
 		\end{note}		
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 
 \begin{frame}[fragile,label=GraphsWithPlugins]{Example: Extending Basic Graphs by Plug-Ins?}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 \begin{codetight}[basicstyle=\tiny]{}
 public class Graph {
 	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
@@ -518,7 +518,7 @@ public class Graph {
 	// ...
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}[basicstyle=\tiny]{}
 public interface GraphPlugin {
 	public void aboutToAdd(Node n, Color c);
@@ -549,14 +549,14 @@ public class ColorPlugin implements GraphPlugin {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Discussion}
 \begin{frame}<1-2>[label=ChallengesOfPlugins]
 	\frametitle<1-2>{Challenges and Problems}
 	\frametitle<3>{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{example}{}
 			In our example, we can observe that:
 			\begin{itemize}
@@ -571,7 +571,7 @@ public class ColorPlugin implements GraphPlugin {
 				\item causes lots of communication overhead between plug-ins and framework
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{}
 			If we were not familiar with our graph library, would we anticipate that:
 			\begin{itemize}
@@ -585,5 +585,5 @@ public class ColorPlugin implements GraphPlugin {
 				\item Developing a framework needs lots of expertise and excellent domain knowledge 
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

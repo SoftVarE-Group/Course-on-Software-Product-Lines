@@ -5,7 +5,7 @@
 \subsubsection*{Cars}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[b,widths={67}]
+	\begin{fancycolumns}[b,widths={67}]
 		\begin{exampletight}{Configuring a car \ldots}
 			\centering\small%
 			\only<1-3>{\pic[width=\linewidth]{toyota-aygo-wheels0}}%
@@ -18,7 +18,7 @@
 			\only<14-15|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels3}}%
 			\only<16-|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels4}}%
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-\textheightoftitle}
 		\begin{example}{\ldots\ is complicated!}
 			\begin{enumerate}
@@ -34,26 +34,26 @@
 			\end{enumerate}
 			\uncover<15->{what now? back to Step 3?}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t,columns=3,widths={33,22}]
+	\begin{fancycolumns}[t,columns=3,widths={33,22}]
 		\begin{exampletight}{Configuring a Car \ldots}
 			\pic[width=\linewidth]{toyota-aygo-wheels3}\\\centering
 			10. cancel the dialog
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{with a Weird Price}
 			\centering\picDark[width=\linewidth]{toyota-aygo-costs}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{with 8 Wheels!}
 			\picDark[width=\linewidth]{toyota-aygo-costs3}
 		\end{exampletight}
-	\end{mycolumns}
-	\begin{mycolumns}[columns=3,widths={20,60},animation=none]
-	\mynextcolumn
+	\end{fancycolumns}
+	\begin{fancycolumns}[columns=3,widths={20,60},animation=none]
+	\nextcolumn
 		\uncover<4->{
 			\begin{note}{}
 				\begin{itemize}
@@ -63,47 +63,47 @@
 				\end{itemize}
 			\end{note}
 		}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70,30}]
+	\begin{fancycolumns}[widths={70,30}]
 		\begin{exampletight}{Configuring a German Car\mysource{example from \lectureintroduction}}
 			\picDark[width=\linewidth]{bmw-series1-confassistant-bluetooth}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			Why does the telephone conflict with Microsoft Office?
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Notebooks}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={65}]
+	\begin{fancycolumns}[widths={65}]
 		\begin{exampletight}{Configuring a Notebook} % it is on purpose that both pictures are shown in handout
 			\only<1>{\picDark[width=\linewidth]{thinkpad-x1-yoga-display}}
 			\only<2->{\picDark[width=\linewidth]{thinkpad-x1-yoga-display-invalidconf}}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			can detect mistakes, but provides no explanations or fixes
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={70,30}]
+	\begin{fancycolumns}[widths={70,30}]
 		\begin{exampletight}{Still Configuring a Notebook}
 			\picDark[width=\linewidth]{thinkpad-x1-yoga-office}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			allows some feature combinations and not others, prices are opaque
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO further example? unclear why certain options are missing: windows10-sign-in-options
@@ -113,12 +113,12 @@
 \subsection{Automated Analysis of Feature Models}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Open Questions}
 			\begin{itemize}
 				\item How do such configurators work?
 				\item How to avoid inconsistencies?
-				\item How to provide explanations and fixes?
+				\item How to provide explanations and fixes? % TODO not explained in this part. remove?
     			\item How to get all valid configurations automatically? (\emph{P2(b)})
 			\end{itemize}
 		\end{note}
@@ -129,7 +129,7 @@
 				\item for brevity: product = valid configuration
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Asking Questions About Feature Models}
 			\begin{itemize}
 				\item Is a given configuration valid?
@@ -145,13 +145,13 @@
 				\item \color{gray}{(Why is \ldots? How to fix \ldots?)}
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{SAT, \ssat{}, and AllSAT}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Recap: Boolean Satisfiability Problem (SAT)}
 			\begin{itemize}
 				\item \emph{decision problem}: is there any assignment $A$ that satisfies a given formula?
@@ -172,7 +172,7 @@
 				\item $X \pand \pnot X$ is not satisfiable (why?)
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Sharp Satisfiability Problem (\ssat{})}
 			\begin{itemize}
 				\item \emph{counting problem}: how many assignments satisfy a given formula?
@@ -192,11 +192,11 @@
 				\end{itemize}
 			\end{definition}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Automated Analysis of Feature Models}
-	\begin{mycolumns}[widths={52}]
+	\begin{fancycolumns}[widths={52}]
 		\begin{example}{Asking Questions About Feature Models}
 			\begin{itemize}
 				\item Is a given configuration valid? $\Rightarrow$ \emph{evaluate}
@@ -215,7 +215,7 @@
 				\item ``which?''~~~~~~\,$\approx$ AllSAT solver query
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Typical Feature-Model Analysis Process}
 			\centering
 			\begin{tikzpicture}
@@ -238,7 +238,7 @@
 		\begin{note}{}
 			for brevity, we assume that $\phi = CNF(\Phi(FM))$ for a given feature model $FM$
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO I think I need a table here illustrating how the three different solvers can be combined with the three/four queries - to understand what comes next and in which order
@@ -248,7 +248,7 @@
 \subsubsection{Feature Model}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\emph{Consistency of Feature Models (SAT)}
 		\begin{definition}{Void/Consistent Feature Model}
 			\begin{itemize}
@@ -267,7 +267,7 @@
 							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
 			\end{tikzpicture}
 		\end{definition}
-		\mynextcolumn
+		\nextcolumn
 		\emph{Cardinality of Feature Models (\ssat{})}
 		\begin{definition}{How Many Products Are There?}
 			\centering
@@ -289,40 +289,40 @@
 							(answer) edge node [yshift=2mm,sloped]{} (num);
 			\end{tikzpicture}
 		\end{definition}
-	\end{mycolumns}
-	\begin{mycolumns}[t]
+	\end{fancycolumns}
+	\begin{fancycolumns}[t]
 		\begin{exampletight}{}
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				void
-			\mynextcolumn
+			\nextcolumn
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				consistent
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{exampletight}
-		\mynextcolumn
+		\nextcolumn
 		\begin{exampletight}{}
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				$0$ products, VF $0$
-			\mynextcolumn
+			\nextcolumn
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				$2$ products, VF $\frac{2}{8}$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\emph{Feasibility of SAT-Based Analyses}
 
 		\begin{note}{Is SAT-Based Analysis ``Easy''?}
@@ -338,22 +338,22 @@
 				\end{itemize}
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\emph{Feasibility of \ssat{}-Based Analyses}
 	
 		\begin{exampletight}{Time to Count Products of Linux}
-			\pic[width=\linewidth,page=4]{linux-plots}\\[-7mm]
+			\pic[width=\linewidth,page=4]{linux-plots}\\[-3mm]
 			\begin{itemize}
 				\item the solver from 2023 can solve models from 2003 % TODO which solver?
 				\item can we analyze the models from 2023 in 2043?
 			\end{itemize}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\emph{Enumeration of Feature Models (AllSAT)}
 		\begin{definition}{Which Products Are There?}
 			\begin{itemize}
@@ -372,19 +372,19 @@
 			50 features, configurations \`a 1 Byte $\approx$ 1 Petabyte
 		\end{note} % TODO better example? what about the number of features such that it cannot be stored on all servers of the world? or we take a reasonable size of a hard disk in a notebook? 5 terrabyte? I (Thomas) cannot imagine a petabyte.
 		\begin{exampletight}{}
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot (X \por Y)$}
 
 				$\varnothing$
-			\mynextcolumn
+			\nextcolumn
 				\centering
 				{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$X \por Y$}
 
 				$\{\{Root, X\},\{Root, Y\}\}$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\centering
 		\sffamily
 		\begin{tikzpicture}
@@ -422,13 +422,13 @@
 		
 			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
 		\end{tikzpicture} % TODO position of "Concrete Format" not optimal. gray out irrelevant parts? not sure what to look at here.
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Features}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\emph{Consistency of Features (SAT)}
 		\begin{definition}{Core/Dead Feature}
 			\begin{itemize}
@@ -456,7 +456,7 @@
 							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
 			\end{tikzpicture}
 		\end{definition}
-		\mynextcolumn
+		\nextcolumn
 		\emph{Cardinality of Features (\ssat{})}
 		\begin{definition}{How Many Products Include Feature $F$?}
 			\centering
@@ -467,7 +467,7 @@
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
 		\end{definition}
-		\begin{definition}{Commonality: How Dead is This Feature?}
+		\begin{definition}{Commonality: How Constrained is This Feature?}
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
@@ -478,28 +478,28 @@
 							(answer) edge node [yshift=2mm,sloped]{} (num);
 			\end{tikzpicture}
 		\end{definition}
-	\end{mycolumns}
-	\begin{mycolumns}[t]
+	\end{fancycolumns}
+	\begin{fancycolumns}[t]
 		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
-			$X$ is dead, $Root$ and $Y$ are core
+			$X$ is dead\hfill$Root$ and $Y$ are core
 		\end{exampletight}
-		\mynextcolumn
+		\nextcolumn
 		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,alternative][Y,concrete]}\\$\pnot X$}
 
-			$X$: 0 products, $Root$ and $Y$: 1 products
+			$X$: 0 products\hfill$Root$ and $Y$: 1 products
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Partial Configurations}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\emph{Consistency of Partial Configurations (SAT)}
 		\begin{definition}{Valid Partial Configuration}
 			Is a partial configuration $C = ({\color{green}S}, {\color{red}D})$ consistent with the feature model? % TODO would be easier if term valid could be used here
@@ -516,7 +516,7 @@
 							(answer) edge node [yshift=-2mm,sloped]{\small $\top$} (notvoid);
 			\end{tikzpicture}
 		\end{definition}
-		\mynextcolumn
+		\nextcolumn
 		\emph{Cardinality of Partial Configurations (\ssat{})}
 		\begin{definition}{How Many Products Are Still Configurable for $C$?}
 			\centering
@@ -527,22 +527,22 @@
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
 		\end{definition}
-	\end{mycolumns}
-	\begin{mycolumns}[t]
+	\end{fancycolumns}
+	\begin{fancycolumns}[t]
 		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,optional][Y,concrete,optional]}\\$X \pimplies Y$}
 
 			\cfg{Root}{X} \checkmark
 		\end{exampletight}
-		\mynextcolumn
+		\nextcolumn
 		\begin{exampletight}{}
 			\centering
 			{\small\featureDiagram{Root,concrete[X,concrete,optional][Y,concrete,optional]}\\$X \pimplies Y$}
 
 			\cfg{Root}{X}: 2 products
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Automated Analyses in FeatureIDE}
@@ -550,28 +550,28 @@
 \subsubsection*{Feature-Model Editor}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={60,40}]
+	\begin{fancycolumns}[widths={60,40}]
 		\begin{exampletight}{} % TODO would be great to show an explanation here
 			\picDark[width=\textwidth]{featureide-feature-model-editor-waffle}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{}
 			\picDark[width=\textwidth]{featureide-feature-model-statistics}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Configuration Editor}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={60,40}]
+	\begin{fancycolumns}[widths={60,40}]
 		\begin{exampletight}{}
 			\centering
 			\picDark[width=.27\textwidth]{featureide-configuration-editor-step1}
 			$\Rightarrow$
 			\picDark[width=.63\textwidth]{featureide-configuration-editor-step2}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Decision Propagation}
 			\begin{itemize}
 				\item after each decision (i.e., click) \ldots
@@ -579,15 +579,15 @@
 					\item \ldots{} select features that are now \emph{conditionally core}
 					\item \ldots{} deselect features that are now \emph{conditionally dead}
 				\end{itemize}
-				\item this way it is impossible to configure an invalid product
+				\item this way it is impossible to configure an invalid configuration
 				\item explanations for all propagated decisions
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Automated Analysis of Feature Models}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{The Road So Far \ldots}
 			\centering
 			\begin{tikzpicture}
@@ -596,7 +596,7 @@
 				\node [block, right =4mm of fm] (formula) {Formula};
 				\node [block, right =8mm of formula] (cnf) {DIMACS};
 				\node [block, below right =8mm and -12mm of fm] (query) {Query};
-				\node [block, below =-.5mm of query,align=center,color=blue,font={\footnotesize}] (query2) {void feature model\\variability factor\\all products\\core/dead features\\false-optional features\\commonality\\valid partial configuration\\decision propagation};
+				\node [block, below =-.5mm of query,align=center,color=blue,font={\footnotesize}] (query2) {void feature model\\variability factor\\all products\\core/dead features\\commonality\\valid partial configuration\\decision propagation};
 				\node [block, right =27mm of query] (answer) {Answer};
 				\node [block, right =4mm of answer] (result) {};
 				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
@@ -608,7 +608,7 @@
 							(answer) edge (result);
 			\end{tikzpicture}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{\ldots\ and Beyond}
 			\centering
 			\begin{tikzpicture}
@@ -620,7 +620,7 @@
 				\node [block, right =8mm of formula] (cnf) {DIMACS};
 				\node [block, above =.5mm of cnf,align=center,color=red,font={\footnotesize}] (cnf2) {DNF\\d-DNNF\\BDD};
 				\node [block, below right =8mm and -12mm of fm] (query) {Query};
-				\node [block, below =-.5mm of query,align=center,color=red,font={\footnotesize}] (query2) {atomic sets\\redundant constraints\\feature-model edits\\explanations\\sampling\\slicing};
+				\node [block, below =-.5mm of query,align=center,color=red,font={\footnotesize}] (query2) {false-optional features\\atomic sets\\redundant constraints\\feature-model edits\\explanations\\sampling\\slicing};
 				\node [block, right =27mm of query] (answer) {Answer};
 				\node [block, right =4mm of answer] (result) {};
 				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
@@ -631,12 +631,12 @@
 							(query) edge node[yshift=-7mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT, \ssat{}, AllSAT\\{\color{red}MAX-SAT}\\{\color{red}Solution-SAT}\\{\color{red}MUS}\\{\color{red}SMT, CSP}\\{\color{red}QBF}\\{\color{red}WMC, PMC}} (answer)
 							(answer) edge (result);
 			\end{tikzpicture}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\begin{itemize}
 				\item develop new analyses
 				\item improve efficiency of existing analyses
 				\item investigate correctness and compositionality
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

@@ -3,7 +3,7 @@
 
 \subsection{Granularity of Variability}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Granularity of Variability}
 			\begin{itemize}
 				\item Depending on the implementation technique, variability can be introduced at different levels of granularity.
@@ -18,7 +18,7 @@
 			modules $>$ libraries $>$ packages $>$ classes $>$ members $>$ statements $>$ parameters
 		\end{example}
 		\pause
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{What we have seen so far?}
 			\begin{itemize}
 				\item Coarse-grained: Clone-and-own with version control (entire variants)
@@ -32,7 +32,7 @@
 		\begin{note}{What is missing?}
 			Yet no approach supporting fine-grained compile-time variability!
 		\end{note}		
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % Christian's paper?
 % empirical studies?
@@ -40,7 +40,7 @@
 
 \subsection{What is a Preprocessor?}
 \begin{frame}{\myframetitle\ \mytitlesource{\fospl\mypages{110--111}}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Preprocessor}
 			\begin{itemize}
 				\item tool manipulating source code before compilation (i.e., at compile time)
@@ -52,7 +52,7 @@
 					\end{itemize}
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Preprocessor}
 			\begin{itemize}
 				\item the C Preprocessor (CPP) is used in almost every C/C++ project
@@ -60,7 +60,7 @@
 				\item conditional compilation is a very common technique to implement product lines
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % in-place vs outa-place preprocessors
@@ -69,7 +69,7 @@
 \subsection{CPP -- The C Preprocessor}
 \begin{frame}[label=SPLwithPreprocessors]{\myframetitle}
 	\setlength\leftmargini{4mm}%
-	\begin{mycolumns}[T,columns=3,animation=none]
+	\begin{fancycolumns}[T,columns=3,animation=none]
 		\begin{definition}{CPP Directives\mysource{\href{https://en.cppreference.com/w/cpp/preprocessor}{cppreference.com}}}
 			file inclusion
 			\begin{itemize}
@@ -88,11 +88,11 @@
 				\item<8-> new: \texttt{\#elifdef}, \texttt{\#elifndef}}
 			\end{itemize}}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Example Input}
 			\picDark[scale=.3]{preprocessor-c}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<4->{
 			\begin{exampletight}{Example Output (Simplified)}
 				\picDark[scale=.15]{preprocessor-c-output}
@@ -104,7 +104,7 @@
 				\item preprocessors typically do not remove line breaks to not influence line numbers reported by compilers
 			\end{itemize}
 		\end{note}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO example contains "Beautiful" but should be "beautiful"
 % TODO illustrate parameters and the call of the preprocessor
@@ -120,11 +120,11 @@
 \subsection{Preprocessors for Java}
 
 \begin{frame}{Munge -- A Simple Preprocessor for Java \mytitlesource{\featureide}}
-	\begin{mycolumns}[T,widths={75}]
+	\begin{fancycolumns}[T,widths={75}]
 		\begin{exampletight}{Example Input and Output}
 			\centering\picDark[width=\linewidth]{preprocessor-munge}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Munge}
 			\begin{itemize}
 				\item preprocessor for Java
@@ -132,7 +132,7 @@
 				\item about 300 LOC
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 
 	\begin{exampletight}{Call of Munge on Command Line}
 		\centering\picDark[scale=.3]{preprocessor-munge-call}
@@ -140,11 +140,11 @@
 \end{frame}
 
 \begin{frame}{Antenna -- An In-Place Preprocessor for Java \mytitlesource{\featureide}}
-	\begin{mycolumns}[T,widths={75}]
+	\begin{fancycolumns}[T,widths={75}]
 		\begin{exampletight}{Example Input and Output}
 			\centering\picDark[width=\linewidth]{preprocessor-antenna}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Antenna}
 			\begin{itemize}
 				\item preprocessor for Java
@@ -152,7 +152,7 @@
 				\item has been used for Java ME (micro edition) projects
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 
 	\begin{exampletight}{Call of Munge on Command Line}
 		\centering\picDark[scale=.3]{preprocessor-antenna-call}
@@ -160,7 +160,7 @@
 \end{frame}
 
 \begin{frame}{In-Place and Out-of-Place Preprocessors \mytitlesource{\featureide}}
-	\begin{mycolumns}[T]
+	\begin{fancycolumns}[T]
 		\begin{note}{In-Place Preprocessor}
 			\begin{itemize}
 				\item input file manipulated
@@ -171,7 +171,7 @@
 		\begin{exampletight}{Antenna, \ldots}
 			\picDark[height=30mm]{preprocessor-antenna-idea}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Out-of-Place Preprocessor}
 			\begin{itemize}
 				\item separate output file generated
@@ -182,17 +182,17 @@
 		\begin{exampletight}{CPP, Munge, \ldots}
 			\picDark[height=30mm]{preprocessor-munge-idea}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Preprocessors in FeatureIDE}
 \begin{frame}{\myframetitle\ \mytitlesource{\featureide}}
-	\begin{mycolumns}[animation=none,widths={75}]
+	\begin{fancycolumns}[animation=none,widths={75}]
 		\only<1|handout:0>{\pic[width=\linewidth]{featureide-antenna-featuremodel}}%
 		\only<2|handout:1>{\pic[width=\linewidth]{featureide-antenna-configuration}}%
 		\only<3|handout:0>{\pic[width=\linewidth]{featureide-antenna-warning}}%
 		\only<4|handout:0>{\pic[width=\linewidth]{featureide-antenna-contentassist}}%
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{\href{https://www.youtube.com/watch?v=jVe7f32mLCQ}{Demo Video}}
 			\begin{itemize}
 				\item preprocessing with Antenna on command line
@@ -203,13 +203,13 @@
 				\item (first 2 min relevant here)
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection[Discussion]{Discussion of Preprocessors}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T,animation=none,widths={26}]
+	\begin{fancycolumns}[T,animation=none,widths={26}]
 		\begin{note}{Powerful Preprocessors}
 			we can annotate
 			\setlength\leftmargini{3mm}
@@ -226,16 +226,16 @@
 		\uncover<3->{\begin{example}{}
 			everyone happy?
 		\end{example}}
-	\mynextcolumn
+	\nextcolumn
 		\only<1|handout:0>{\pic[width=\linewidth,page=1,trim=20 20 20 40,clip]{preprocessor-wilderness}}%
 		\only<2->{\pic[width=\linewidth,page=2,trim=20 20 20 40,clip]{preprocessor-wilderness}}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T,animation=none,widths={73}]
+	\begin{fancycolumns}[T,animation=none,widths={73}]
 		\pic[width=\linewidth,page=3,trim=20 20 20 40,clip]{preprocessor-wilderness}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Syntax Error}
 			missing ) and semicolon!
 		\end{example}
@@ -252,13 +252,13 @@
 
 			\mysource{more in \lecturefeatures\partc}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T,animation=none,widths={73}]
+	\begin{fancycolumns}[T,animation=none,widths={73}]
 		\pic[width=\linewidth,page=4,trim=20 20 20 40,clip]{preprocessor-wilderness}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Type Error}
 			\texttt{weight} undefined!
 		\end{example}
@@ -274,13 +274,13 @@
 			\end{itemize}
 			\mysource{more in \lectureanalyses}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[T,animation=none,widths={73}]
+	\begin{fancycolumns}[T,animation=none,widths={73}]
 		\pic[width=\linewidth,page=5,trim=20 20 20 40,clip]{preprocessor-wilderness}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Runtime Error}
 			assertion failed!
 		\end{example}
@@ -296,7 +296,7 @@
 			\end{itemize}
 			\mysource{more in \lecturetesting}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 %\begin{frame}{\myframetitle}
@@ -311,7 +311,7 @@
 % cons: IDE support, easy to create mistakes
 
 \begin{frame}[fragile]{Problem: Source-Code ``Obfuscation''}
-	\begin{mycolumns}[reverse]
+	\begin{fancycolumns}[reverse]
 		\begin{note}{Observations on Readability}
 			\begin{itemize}
 				\item Mixing \emph{two languages} (C and \#ifdefs, or Java and Munge, ...)
@@ -327,7 +327,7 @@
 				\item considerably worsens readability
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{cpptight}[basicstyle=\small]{Can you read this source code?\mysource{\href{https://dl.acm.org/doi/abs/10.1145/1960275.1960299}{{Liebig~et~al.~2011; xterm}}}}
 #if ~defined(__GLIBC__)~
 	// additional lines of code
@@ -349,7 +349,7 @@
 #endif
 #endif
 		\end{cpptight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \newcommand{\MajorChallengesOfPreprocessors}{
@@ -364,7 +364,7 @@
 \begin{frame}<1-2>[label=DiscussionOfPreprocessors]
 	\frametitle<1-2>{Discussion of Preprocessors}
 	\frametitle<3>{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item well-known and mature tools, readily available
@@ -377,50 +377,50 @@
 				$\Rightarrow$ variability can be added to an existing project
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Challenges}
 			\begin{itemize}
 				\MajorChallengesOfPreprocessors
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Preprocessor-Based Product Lines in the Wild}
 \begin{frame}{\myframetitle\ \mytitlesource{\fortyproductlines}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Number of Features}
 			\centering\pic[width=.8\linewidth,page=1]{fortyproductlines}\\Lines of Code
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Percentage of Variable Code}
 			\centering\pic[width=.8\linewidth,page=2]{fortyproductlines}\\Lines of Code
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\fortyproductlines}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Lines of Variable Code}
 			\centering\pic[width=.8\linewidth,page=3]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Average Nesting Depth}
 			\centering\pic[width=.8\linewidth,page=6]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\fortyproductlines}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Average Number of Feature References}
 			\centering\pic[width=.8\linewidth,page=4]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Average Number of Features per Annotation}
 			\centering\pic[width=.8\linewidth,page=5]{fortyproductlines}\\Number of Features
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO create own plots for the data?
 % TODO add pictures from Rodrigues et al. @ INFSOF’16 (Assessing ﬁne-grained feature dependencies): methods with directives vs product lines

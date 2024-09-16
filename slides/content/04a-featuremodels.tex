@@ -1,6 +1,6 @@
 \subsection{Recap: Software Product Lines}
 \begin{frame}{\myframetitle\ \mytitlesource{\lectureintroduction}}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{definition}{Software Product Line \mysource{\seiwhitepaperspl\mypage{5}}}
 			\mycitebegin A \emph{software product line} is 
 			\begin{itemize}
@@ -14,29 +14,29 @@
 		\begin{definition}{Product \mysource{\fospl\mypage{19}}}
 			\mycite{A \emph{product of a product line} is specified by a valid feature selection (a subset of the features of the product line). A feature selection is \emph{valid} if and only if it fulfills all feature dependencies.}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Feature \mysource{\fospl\mypage{18}}}
 			\mycite{A \emph{feature} is a characteristic or end-user-visible behavior of a software system.}
 		\end{definition}
 		\centering\xkcd{2369}{width=.9\linewidth,trim=35 35 35 35,clip}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Features Have Dependencies}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={40,20,40}]
+	\begin{fancycolumns}[columns=3,widths={40,20,40}]
 		\myexampletight{Ordering a Waffle \ldots}{
 			\pic[width=\textwidth]{waffle-feature-model}
 		}
-		\mynextcolumn
+		\nextcolumn
 		\myexampletight{\ldots with Sugar}{
 			\pic[width=\textwidth]{waffle-sugar}
 		}
 		\myexampletight{\ldots with Cherries}{
 			\pic[width=\textwidth]{waffle-cherries}
 		}
-		\mynextcolumn
+		\nextcolumn
 		\begin{note}{This is Nice, But \ldots}
 			\begin{itemize}
 				\item plate and sugar seem to always be included, a fork is only included for some orders\\
@@ -54,14 +54,14 @@
 				\item how to \emph{analyze and understand}?
 			\end{enumerate}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Specifying Valid Configurations}
 
 \newcommand{\feat}[1]{{\emph{#1}}}
 \newcommand{\exampleFeatureSetConfigDB}{
-	\vspace*{-4ex}
+	\vspace*{-3ex}
 	\begin{align*}
 		\text{Feature set } F = \{&\textbf{C}onfigDB, \textbf{G}et, \textbf{P}ut, \textbf{D}elete,\\
 		&\textbf{T}ransactions, \textbf{W}indows, \textbf{L}inux\}
@@ -69,7 +69,7 @@
 }
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Configuration}
 			\begin{itemize}
 				\item a \emph{configuration} \deutsch{Konfiguration} over a set of features $F$ selects and deselects features in $F$
@@ -79,7 +79,7 @@
 				\item we often abbreviate complete configurations with $S \equiv (S, F \setminus S)$
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\myexample{}{
 			\exampleFeatureSetConfigDB
 			Examples for \emph{complete} configurations:
@@ -97,13 +97,13 @@
 			
 			$\cfg{C, G}{P, D}$, $(\varnothing, \varnothing)$
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Natural Language}
 
 \begin{frame}{\myframetitle}\label{frame:natlang}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Valid Configuration}
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
@@ -118,19 +118,19 @@
 				\item[--] not machine-readable
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\myexample{}{
 			``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
 			Optionally, the database can support \feat{transactions}, provided that the API allows for Put or Delete requests.
 			Also, the database targets a supported operating system, which is either \feat{Windows} or \feat{Linux}.''
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{Configuration Map}
 
 \begin{frame}{\myframetitle}\label{frame:cfgmap}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Valid Configuration}
 			A complete configuration over $F$ is valid if it ``makes sense'' in the domain.
 			\emph{\color{red}{$\leadsto$ ``makes sense''?}}
@@ -146,11 +146,11 @@
 				\item[--] redundant, explodes in size ($0 \leq \abs{M} \leq 2^{\abs{F}}$)
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\myexample{}{
 			\exampleFeatureSetConfigDB
 			Configuration map:\\\small
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				{\color{black}$\{C,G,W\}$}\\
 				$\{C,P,W\}$\\
 				$\{C,G,P,W\}$\\
@@ -164,7 +164,7 @@
 				$\{C,G,D,T,W\}$\\
 				$\{C,P,D,T,W\}$\\
 				$\{C,G,P,D,T,W\}$
-			\mynextcolumn
+			\nextcolumn
 				$\{C,G,L\}$\\
 				$\{C,P,L\}$\\
 				$\{C,G,P,L\}$\\
@@ -178,9 +178,9 @@
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
 				{\color{black}$\{C,G,P,D,T,L\}$}
-			\end{mycolumns}
+			\end{fancycolumns}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Configuration Map in Excel}
@@ -197,12 +197,12 @@
 \subsubsection*{Syntax}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\fospl; \foda\mypages{63--72}; \batorygrammars}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\centering
 		\featureDiagramConfigurableDatabase
 		
 		\featureDiagramLegend
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Feature Model \deutsch{Feature-Modell}}
 			\begin{itemize}
 				\item hierarchy of features
@@ -215,13 +215,13 @@
 				\item notation for \emph{optional/mandatory features} and \emph{or/alternative groups}
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Semantics}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\fospl; \batorygrammars}}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\uncover<2-|handout:1>{
 			\begin{definition}{Tree Constraints}
 				\begin{itemize}
@@ -234,7 +234,7 @@
 				\end{itemize}
 			\end{definition}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\centering
 		\featureDiagramConfigurableDatabase
 		\uncover<3|handout:1>{
@@ -245,13 +245,13 @@
 				\end{itemize}
 			\end{definition}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Examples}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\centering
 		\featureDiagramConfigurableDatabase[_fm]
 		\featureDiagramOverlay{
@@ -272,7 +272,7 @@
 				\featureDeselected{(Put_fm)(Delete_fm)(Windows_fm)}
 			}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\myexample{Is This a Valid Configuration?}{
 			\begin{itemize}
 				\item<2-|handout:1> \emph{valid} (read-only database on Windows):
@@ -285,28 +285,28 @@
 					$\cfg[5|handout:0]{C, A, G, T, O, L}{P, D, W}$
 			\end{itemize}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[columns=3,widths={5,90,5},animation=none]
-	\mynextcolumn
+	\begin{fancycolumns}[columns=3,widths={5,90,5},animation=none]
+	\nextcolumn
 		\centering
 		\featureDiagramWaffle
 		\begin{note}{}
 			\begin{itemize}
-				\item abstract and concrete features can be assigned arbitrarily
+				\item every feature (leaf or compound) can be abstract or concrete
 				\item groups can be used anywhere
 				\item directly below groups, no optional or mandatory markers are allowed
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}
 
 \subsection[Discussion]{Discussion of Feature Models}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{note}{Pro: Making Tacit Knowledge Explicit}
 			\small\mycite{I think the best [about feature modeling] is you can see relationships, to actually know what configurations are allowed and what are not allowed. That was also not so easy to express in the past [\ldots] This is from the developer's point of view. But it's also [\ldots] important, because before we noticed that \emph{the same functionality was implemented twice} within the same project, basically they haven't realized that. They implemented the same features.} -- {\footnotesize Interview with Practitioners}\mysource{\href{https://link.springer.com/chapter/10.1007/978-3-319-11653-2_19}{Berger~et~al.~2014}}
 		\end{note}
@@ -314,7 +314,7 @@
 		\begin{note}{Pro: Tool Support} % TODO would be great to show more tool logos here from our community, and possibly also for commercial tools (upon request)
 			\pic[width=.3\linewidth]{featureide-logo},\hspace{2mm}\href{https://biglever.com/solution/gears/}{Gears},\hspace{2mm}\href{https://www.pure-systems.com/de/purevariants}{pure::variants},\hspace{2mm}\ldots% end goal: the lecture shows how to realize a automated configurator that does not allow invalid configurations
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Con: Challenges}
 			\begin{itemize}
 				\item \emph{domain scoping}: which features?
@@ -324,5 +324,5 @@
 		\end{note}
 
 		\vspace*{2mm}\centering\picDark[width=.85\linewidth]{wollmilchsau}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

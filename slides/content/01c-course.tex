@@ -1,7 +1,7 @@
 \subsection{What You Should Know}
 
 \begin{frame}{\myframetitle{}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Fundamentals of Software Engineering}
 			\begin{itemize}
 				\item development processes
@@ -12,7 +12,7 @@
 			\end{itemize}
 			\ifuniversity{magdeburg}{$\Rightarrow$ \emph{Software Engineering}}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Fundamentals of Theoretical Computer Science}
 			\begin{itemize}
 				\item set theory
@@ -32,7 +32,7 @@
 				$\Rightarrow$ \emph{Algorithmen und Datenstrukturen}
 			}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{What You Will Learn}
@@ -45,7 +45,7 @@
 
 \begin{frame}{\myframetitle{}}
 	\myframeicon{\mytitlesource{\fospl, \featureide}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Recommended Literature for Lecture \& Exercise}
 			\centering
 			\parbox{0.49\linewidth}{
@@ -59,51 +59,60 @@
 				\emph{practice-oriented}
 			}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Recommended Tool Support for the Exercise}
 			\centering
 			\picDark[width=\linewidth]{featureide-feature-model-editor}\\[.5ex]
 			\pic[width=0.25\linewidth]{featureide-logo}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Credit for the Slides}
 
 \begin{frame}{\myframetitle{}}
-	\myframeicon{\href{https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines}{\pic[scale=.75]{cc-by-sa}}}
-	\begin{mycolumns}[columns=3,animation=none]
-		\begin{note}{Thomas Thüm}
-			\centering
-			\href{https://www.uni-ulm.de/en/in/sp/team/thuem/}{\adjincludegraphics[height=.45\textheight,trim={.125\width} 0 {.125\width} 0,clip]{thomas-thuem}}
+	\ifuniversity{anonymous}{\mynote{}{\centering\huge Anonymous Authors}}
+	\unlessuniversity{anonymous}{
+		\myframeicon{\href{https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines}{\pic[scale=.75]{cc-by-sa}}}
+	}
+	\begin{fancycolumns}[columns=3,animation=none]
+		\unlessuniversity{anonymous}{
+			\begin{note}{Thomas Thüm}
+				\centering
+				\href{https://www.uni-ulm.de/en/in/sp/team/thuem/}{\adjincludegraphics[height=.45\textheight,trim={.125\width} 0 {.125\width} 0,clip]{thomas-thuem}}
 
-			\small Professor at University of Ulm
+				\small Professor at Paderborn University
 
-			software engineering
+				software engineering
 
-			FeatureIDE team leader
-		\end{note}
-	\mynextcolumn
-		\begin{note}{Timo Kehrer}
-			\centering
-			\href{https://seg.inf.unibe.ch/people/timo/}{\pic[height=.45\textheight]{timo-kehrer}}
+				FeatureIDE team leader
+			\end{note}
+		}
+	\nextcolumn
+		\unlessuniversity{anonymous}{
+			\begin{note}{Timo Kehrer}
+				\centering
+				\href{https://seg.inf.unibe.ch/people/timo/}{\pic[height=.45\textheight]{timo-kehrer}}
 
-			\small Professor at University of Bern
+				\small Professor at University of Bern
 
-			software engineering
+				software engineering
 
-			~
-		\end{note}
-	\mynextcolumn
-		\begin{note}{Elias Kuiter}
-			\centering
-			\href{https://www.dbse.ovgu.de/en/Staff/Elias+Kuiter.html}{\pic[height=.45\textheight]{elias-kuiter}}
+				~
+			\end{note}
+		}
+	\nextcolumn
+		\unlessuniversity{anonymous}{
+			\begin{note}{Elias Kuiter}
+				\centering
+				\href{https://www.dbse.ovgu.de/en/Staff/Elias+Kuiter.html}{\pic[height=.45\textheight]{elias-kuiter}}
 
-			\small PhD student in Magdeburg
+				\small PhD student in Magdeburg
 
-			feature-model analysis
+				feature-model analysis
 
-			FeatureIDE core developer
-		\end{note}
-	\end{mycolumns}
+				FeatureIDE core developer
+			\end{note}
+		}
+	\end{fancycolumns}
 \end{frame}

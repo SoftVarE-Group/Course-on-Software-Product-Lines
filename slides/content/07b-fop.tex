@@ -6,7 +6,7 @@
 \subsection{Motivation}
 
 \begin{frame}[label=MotivationFOPandAOP]{Motivation}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Modularization of Cross-Cutting Concerns}
 			\centering
 			\picDark[width=1.0\linewidth]{aop-motivation-1} % todo: replace with picture from public domain
@@ -14,7 +14,7 @@
 		\begin{example}{Feature Traceability}
 			find feature \includegraphics[width=.15\linewidth]{pants-blue} in product \includegraphics[width=.15\linewidth]{230}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Flexible Extension / Minimal Preplanning}
 			\centering
 			\picDark[width=1.0\linewidth]{aop-motivation-2}
@@ -25,13 +25,13 @@
 		\begin{note}{}
 			Achieving all this requires novel implementation techniques that overcome the limitations of classical object-oriented paradigms.
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Feature Modules}
 
 \begin{frame}{Background: Collaboration-Based Design} % TODO: is this original source ? \mytitlesource{Reenskaug et al.\ 1992}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Inspiration: Collaborations in the Real World}
 			\begin{itemize}
 				\item People collaborate to achieve a common goal.
@@ -45,7 +45,7 @@
 				\item A person in the role of a student has responsibilities to study the offered material.
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{definition}{Collaborations in Java \mysource{\fospl\mypages{131}}}
 			\begin{itemize}
@@ -60,7 +60,7 @@
 				\item A role encapsulates the behavior/functionality of a class relevant to a collaboration.
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Example: Collaborations, Classes and Roles}
@@ -75,18 +75,18 @@
 \begin{frame}<1-2>[label=SPLwithFeatureModules]
 	\frametitle<1-2>{Feature Modules and Feature Module Composition}
 	\frametitle<3>{\myframetitle}
-	\begin{mycolumns}[widths={65,35}]
+	\begin{fancycolumns}[widths={65,35}]
 		\begin{definition}{Feature Modules}
 			\begin{itemize}
 				\item Each collaboration mapped to a feature and is called a feature module (or layer).
 				\item Feature modules may refine a base implementation by adding new elements or by modifying and extending existing ones.
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Feature Module Composition}
 			Selected feature modules may be superimposed by lining-up classes according to the roles they play.
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\begin{exampletight}{}
 		\centering
 		\picDark[width=0.9\linewidth]{feature-modules}
@@ -109,7 +109,7 @@
 \subsection{Feature Modules in Java}
 
 \begin{frame}{Jak: A Java Extension for Feature-Oriented Programming \mytitlesource{Batory et al.\ 2004}} % TODO I would prefer introducting FOP with FeatureHouse only as this is also used in practical exercises
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Layers}
 			\begin{itemize}
 				\item keyword \emph{layer} denotes the feature a class belongs to
@@ -126,7 +126,7 @@
 				\item Internally, the composer invokes a variety of tools to perform its task
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Composer (High-Level View)}
 			\centering
 			\picDark[width=1.0\linewidth]{AHEAD-composer}
@@ -138,21 +138,21 @@
 			\centering
 			\picDark[width=1.0\linewidth]{AHEAD-jampack-mixin}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Jak: Layers}
 	\myframeicon{\picDark[width=25mm]{fop-horizontal}}
-	\begin{mycolumns}[widths={60},animation=none]
+	\begin{fancycolumns}[widths={60},animation=none]
 		\begin{example}{}
 			\begin{itemize}
 				\item Layer (i.e., feature module) Base consists of the classes Graph, Node, and Edge 
 				\item The three classes collaborate to provide the functionality to construct and display graph structures.
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
-	\end{mycolumns}
-	\begin{mycolumns}[t,columns=3,widths={43,27},animation=none]
+	\nextcolumn
+	\end{fancycolumns}
+	\begin{fancycolumns}[t,columns=3,widths={43,27},animation=none]
 \begin{codetight}{Graph.jak}
 class Graph {
 	private List nodes = new ArrayList();
@@ -166,7 +166,7 @@ class Graph {
 	void print() { ... }
 }
 \end{codetight}		
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Node.jak}
 class Node {
 	private int id = 0;
@@ -176,7 +176,7 @@ class Node {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Edge.jak}
 class Edge {
 	private Node a, b;
@@ -189,12 +189,12 @@ class Edge {
 	}
 }
 \end{codetight}			
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Jak: Class Refinement -- New Members} % TODO copied slide content on next slide
 	\myframeicon{\picDark[width=25mm]{fop-vertical}}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Mixin-Based Inheritance} % TODO confusing term. it is neither a mixin, nor inheritance.
 			Subclasses are abstract in the sense that they can be applied to \emph{different} concrete superclasses.
 		\end{definition}
@@ -204,7 +204,7 @@ class Edge {
 		\begin{definition}{New Members}
 			A stepwise refinement can add new members (i.e., fields and methods) to a class.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Edge.jak}
 class Edge {
 	...
@@ -222,12 +222,12 @@ refines class Edge {
 	...
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Jak: Class Refinement -- Method Extensions}
 	\myframeicon{\picDark[width=25mm]{fop-vertical}}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Mixin-Based Inheritance}
 			Subclasses are abstract in the sense that they can be applied to \emph{different} concrete superclasses.
 		\end{definition}
@@ -237,7 +237,7 @@ refines class Edge {
 		\begin{definition}{Method Extension}
 			A method extension is implemented by method overriding and calling the overridden method via the keyword Super.
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 	\footnotesize
 \begin{codetight}[basicstyle=\tiny]{Edge.jak in Layer Base}
 class Edge {
@@ -255,7 +255,7 @@ refines class Edge {
 	}
 }
 \end{codetight}
-\begin{codetight}[basicstyle=\tiny]{Edge.jak in Layer Colored}
+\begin{codetight}[basicstyle=\tiny]{Edge.jak in Layer Weighted}
 refines class Edge {
 	...
 	void print() {
@@ -264,18 +264,18 @@ refines class Edge {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{AHEAD: Composition Using Jampack}
-	\begin{mycolumns}[widths={35,65},animation=none]
+	\begin{fancycolumns}[widths={35,65},animation=none]
 		\begin{definition}{Jampack}
 			\begin{itemize}
 				\item Jampack superimposes the refinement chain into a single class.
 				\item Super calls are integrated by method inlining (cf.\ optimization in compiler construction).
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 \begin{codetight}{Composition Result}
 class Edge {
 	private Node start;
@@ -287,11 +287,11 @@ class Edge {
 	}
 }
 \end{codetight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{AHEAD: Composition Using Mixin}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Mixin}
 			\begin{itemize}
 				\item Mixin retains layer relationships as an inheritance chain.  
@@ -302,7 +302,7 @@ class Edge {
 		\begin{note}{Do Not Confuse with Mixins} % TODO provide reference
 			mixins are a language concept to decompose classes into parts without inheritance and rather similar to Jampack
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 {\small
 \begin{codetight}{Composition Result}
 class Edge$$Base {
@@ -324,29 +324,29 @@ class Edge extends Edge$$Directed {
 }
 \end{codetight}
 }
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Jampack vs. Mixin} % TODO I would recommend to remove this whole distinction from the lecture. in the exercise we are only using FeatureHouse anyway
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Jampack}
 			\begin{itemize}
 				\item Assignment of generated code to roles disappears after generation 
 				\item Local variables can be accessed from within refined methods
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Mixin}
 			\begin{itemize}
 				\item Code overhead and method call indirections negatively impact runtime performance
 				\item Feature modularity preserved even after composition
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Jampack and Mixin in Practice}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Recommended Usage}
 			\begin{itemize}
 				\item Use Mixin during development and iterative refinement (debugging)
@@ -356,7 +356,7 @@ class Edge extends Edge$$Directed {
 		\begin{definition}{Unmixin}
 			Automatically propagates changes from the composed .jak file back to its original layer files
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Unmixin and Debugging}
 			\begin{itemize}
 				\item Make changes to a mixin-composed .jak file during debugging 
@@ -367,12 +367,12 @@ class Edge extends Edge$$Directed {
 			\centering
 			\picDark[width=1.0\linewidth]{AHEAD-unmixin}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Composition: Order Matters!}
 	\small
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 \begin{codetight}[style=footnotesize]{(a) Edge.jak}
 class Edge {
 	void print() {
@@ -396,7 +396,7 @@ refines class Edge { ...
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			Class refinements themselves are (largely) independent of the order in which they are eventually composed.
 		\end{note}
@@ -415,12 +415,12 @@ class Edge {
 			However, the order in which features are applied is important 
 			(e.g., earlier features in the sequence may add elements that are refined by later features). 
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{Composition: Order Matters!}
 	\small
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 \begin{codetight}[style=footnotesize]{(a) Edge.jak}
 class Edge {
 	void print() {
@@ -444,7 +444,7 @@ refines class Edge { ...
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			Class refinements themselves are (largely) independent of the order in which they are eventually composed.
 		\end{note}
@@ -463,11 +463,11 @@ class Edge {
 			However, the order in which features are applied is important 
 			(e.g., earlier features in the sequence may add elements that are refined by later features). 
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Composition: Order Matters!}
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 		\begin{note}{}
 			The order in which compositions are to be applied is an input parameter of the composition tool.
 		\end{note}
@@ -477,12 +477,12 @@ class Edge {
 				\item Default: depth-first traversal of the feature model (only concrete features)
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\centering\featureDiagramGraphs
 		\begin{example}{Default Order for Example}
 			Graph, Colored, Directed, Weighted, ShortestPath
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Big Picture: Product-Line Implementation and Product Generation}
@@ -494,22 +494,22 @@ class Edge {
 \end{frame}
 
 \begin{frame}{Practical Organization of Feature Modules}
-	\begin{mycolumns}[widths={70,30},animation=none]
+	\begin{fancycolumns}[widths={70,30},animation=none]
 		\picDark[width=1.0\linewidth]{fop-directories-fide}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{}
 			\begin{itemize}
 				\item In most FOP tools, feature modules are represented by (nested) file-system directories
 				\item Classes and their refinements are stored in files inside the corresponding containment hierarchies
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Principle of Uniformity}
 
 \begin{frame}{Beyond Jak: Uniformity}
-	\begin{mycolumns}[widths={35,65},animation=none]
+	\begin{fancycolumns}[widths={35,65},animation=none]
 		\begin{note}{Motivation}
 			\begin{itemize}
 				\item Software does not only consist of Java source code, but also other programming languages, build scripts, documentation, models, etc.
@@ -517,7 +517,7 @@ class Edge {
 				\item Integration of different artifacts in collaborations
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Idea}
 			\begin{itemize}
 				\item Each feature is represented by a containment hierarchy: 
@@ -529,7 +529,7 @@ class Edge {
 				\item For each artifact type, a different implementation of the composition operator ``$\bullet$'' has to be provided in AHEAD (just like the Jak-composition tool)
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Beyond Jak: Uniformity}
@@ -540,7 +540,7 @@ class Edge {
 \end{frame}
 
 \begin{frame}{FeatureHouse: A Model and Framework for FOP} % TODO references to FeatureHouse missing on this and the next slides
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Goal} % TODO it seems that \emph produces some extra space here
 			\emph{Language-independent model and tool chain} to enhance given languages rapidly with support for feature-oriented programming
 		\end{definition}
@@ -550,7 +550,7 @@ class Edge {
 				\item Example; Java: Packages, Classes, Methods and Fields 
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Idea}
 			\begin{itemize}
 				\item Composition = Superimposition of FSTs (i.e., recursively superimpose nodes of FST, starting with the root node)
@@ -558,7 +558,7 @@ class Edge {
 				\item Leaf nodes: Type-specific resolution of conflicts
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{FeatureHouse: Overview}
@@ -576,7 +576,7 @@ class Edge {
 \end{frame}
 
 \begin{frame}[fragile]{Example: Java Support in FeatureHouse}
-	\begin{mycolumns}[widths={60,40},animation=none]
+	\begin{fancycolumns}[widths={60,40},animation=none]
 \begin{codetight}{}
 class Edge {
 	private Node a, b;
@@ -603,20 +603,20 @@ class Edge {
 	}
 }
 \end{codetight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Differences Compared to Jak}
 			\begin{itemize}
 				\item No explicit keyword refines 
 				\item Calling the method from previous refinement using keyword original
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Discussion}
 
 \begin{frame}[label=DiscussionOfFeatureModules]{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{note}{Advantages}
 			\begin{itemize}
 				\item Easy to use language-based mechanism, requires only minimal language extensions.
@@ -626,7 +626,7 @@ class Edge {
 				\item Direct feature traceability from a feature to its implementation in a feature module.
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Disadvantages}
 			\begin{itemize}
 				\item Requires adoption of a language extension and composition tools.
@@ -635,7 +635,7 @@ class Edge {
 				\item Granularity restricted to method-level (or other named structural entities).
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO mention deltas?

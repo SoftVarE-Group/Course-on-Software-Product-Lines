@@ -2,7 +2,7 @@
 
 \subsection{Recap: Software Testing}
 \begin{frame}{\myframetitle{}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\uncover<1->{
 			\begin{definition}{Software Testing \mysource{\sommerville}}
 				\mycite{Testing is intended to show that a program does what it is intended to do and to discover program defects before it is put into use.}
@@ -18,7 +18,7 @@
 				\mycite{Find inputs or input sequences where the behavior of the software is incorrect, undesirable, or does not conform to its specification.}
 			\end{definition}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<4->{
 			\begin{note}{Stages of Testing \mysource{\sommerville}}
 				\begin{itemize}
@@ -38,12 +38,12 @@
 				compares the results to their expectations. [...] In \emph{automated testing}, the tests are encoded in a program that is run each time the system under development is to be tested.}
 			\end{note}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Test-Case Design in Single-System Engineering}
 \begin{frame}{Recap: Test-Case Design \deutschertitel{Testfallentwurf}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Test Case \mysource{\ludewiglichter}}
 			In a test, a number of test cases are executed, whereas each test case consists \emph{input values} for a single execution and \emph{expected outputs}. An \emph{exhaustive test} refers a test in which the test cases exercise all the possible inputs.
 		\end{definition}
@@ -57,7 +57,7 @@
 				\item[3.] the \emph{results} are documented and evaluated by criteria being defined prior to the test. 
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{note}{Goal \mysource{\ludewiglichter}}%
 			Detect a large number of failures with a low number of test cases. A test case (execution) is \emph{positive}, if it detects a failure, and \emph{successful} if it detects an unknown failure.
@@ -71,19 +71,19 @@
 				\item non-redundant: does not check what other test cases already check
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO recap analysis strategies for product lines and discuss why feature based and family based is typically not feasible for testing
 
 \subsection{Testing All Configurations}
 \begin{frame}{\myframetitle{}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\centering\featureDiagramConfigurableDatabase
 		
 		\begin{example}{Recap: 26 Valid Configurations\mysource{\lecturemodeling}}
 			\footnotesize
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				$\{C,G,W\}$\\
 				$\{C,P,W\}$\\
 				$\{C,G,P,W\}$\\
@@ -97,7 +97,7 @@
 				$\{C,G,D,T,W\}$\\
 				$\{C,P,D,T,W\}$\\
 				$\{C,G,P,D,T,W\}$
-			\mynextcolumn
+			\nextcolumn
 				$\{C,G,L\}$\\
 				$\{C,P,L\}$\\
 				$\{C,G,P,L\}$\\
@@ -111,9 +111,9 @@
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
 				$\{C,G,P,D,T,L\}$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-7mm}
 		\pause
 		\begin{note}{Discussion}
@@ -128,7 +128,7 @@
 				\end{itemize}
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Recap: Feature Model of the Linux Kernel}
@@ -136,7 +136,7 @@
 \end{frame}
 
 \begin{frame}{\myframetitle{}}
-	\begin{mycolumns}[widths={60}]
+	\begin{fancycolumns}[widths={60}]
 		\begin{exampletight}{Recap: Industrial Configuration Spaces\mysource{\lectureintroduction}}
 			\centering\evaluatingsharpsatsolverslink{\pic[width=\linewidth,page=6,trim=50 210 320 440,clip]{2020/2020-VaMoS-Sundermann}}
 		\end{exampletight}
@@ -145,7 +145,7 @@
 				Why being complete on the configurations then?
 			\end{note}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-7mm}
 		\href{https://commons.wikimedia.org/wiki/File:Edsger_Wybe_Dijkstra.jpg}{\pic[width=\linewidth,trim=0 425 0 75,clip]{edsger-dijkstra}}
 		\vspace{-7mm}
@@ -154,19 +154,19 @@
 			\mycite{Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.}\mysource{\thehumbleprogrammer}
 		\end{note}
 		% 1930-2002, ACM Turing Award winner
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \newcommand{\eemph}[1]{{\color{red}\textbf{#1}}}
 
 \subsection{Testing One Configuration}
 \begin{frame}[b]{\myframetitle{}}
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 		\centering\featureDiagramConfigurableDatabase
 		
 		\begin{example}{Recap: 26 Valid Configurations\mysource{\lecturemodeling}}
 			\footnotesize
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				$\{C,G,W\}$\\
 				$\{C,P,W\}$\\
 				$\{C,G,P,W\}$\\
@@ -180,7 +180,7 @@
 				$\{C,G,D,T,W\}$\\
 				$\{C,P,D,T,W\}$\\
 				\emph{$\{C,G,P,D,T,W\}$}
-			\mynextcolumn
+			\nextcolumn
 				$\{C,G,L\}$\\
 				$\{C,P,L\}$\\
 				$\{C,G,P,L\}$\\
@@ -194,9 +194,9 @@
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
 				$\{C,G,P,D,T,L\}$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\pause\vspace{-10mm}
 		\begin{note}{Discussion}
 			\begin{itemize}
@@ -213,12 +213,12 @@
 		\begin{example}{What about interactions with missing features?}
 			\centering\pic[width=.5\linewidth]{toast4}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Sample-Based Testing}
 \begin{frame}{\myframetitle{} \deutschertitel{Stichprobenbasiertes Testen}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Intuition}
 			\begin{itemize}
 				\item to analyze the product line, just analyze \emph{some products}
@@ -235,10 +235,10 @@
 				\item[--] how many configurations to test?\\which configurations to test?
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\pic[width=\linewidth,page=10]{lego-analyses}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO \subsection{Expert Knowledge in Sampling}

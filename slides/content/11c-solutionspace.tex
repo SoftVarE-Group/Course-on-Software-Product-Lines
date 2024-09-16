@@ -1,6 +1,6 @@
 \subsection{Coverage in Single-System Engineering}
 \begin{frame}{Recap: Coverage in White-Box Testing{} \deutschertitel{Testüberdeckung für Strukturtests} \mytitlesource{\ludewiglichter}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{White-Box Testing \deutsch{Strukturtest}}
 			\begin{itemize}
 %				\setlength\itemsep{.1em}
@@ -12,7 +12,7 @@
 				\end{itemize}	
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Coverage Criteria \deutsch{Überdeckungskriterien}}
 			\begin{itemize}
 %				\setlength\itemsep{.1em}
@@ -22,7 +22,7 @@
 				% TODO discuss path coverage?
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Coverage of Ifdef Blocks}
@@ -48,7 +48,7 @@
 
 \subsection{Presence-Condition Coverage}
 \begin{frame}{\myframetitle{} \deutschertitel{Presence-Condition-Überdeckung}}
-	\begin{mycolumns}[widths={48}]
+	\begin{fancycolumns}[widths={48}]
 		\begin{definition}{Presence-Condition Coverage\mysource{\krieterpresenceconditioncoverage}}
 			\begin{itemize}
 				\item application of t-wise interaction testing to presence conditions
@@ -59,22 +59,22 @@
 				\item $t=3$: every combination of three blocks covered
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{example}{{T=3 Presence-Condition Interactions}}
 			for the blocks $a$, $b$, and $c$ with presence conditions $A$, $B$, and $C$:
 
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				$A \wedge B \wedge C$\\
 				$A \wedge B \wedge \neg C$\\
 				$A \wedge \neg B \wedge C$\\
 				$A \wedge \neg B \wedge \neg C$
-			\mynextcolumn
+			\nextcolumn
 				$\neg A \wedge B \wedge C$\\
 				$\neg A \wedge B \wedge \neg C$\\
 				$\neg A \wedge \neg B \wedge C$\\
 				$\neg A \wedge \neg B \wedge \neg C$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
 		\pause
 		\begin{note}{Presence-Condition Coverage\mysource{\krieterpresenceconditioncoverage}}
@@ -85,7 +85,7 @@
 				\item also feasible by translating presence conditions into feature model \mysource{\hentzesolutionspacesampling}
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Overview on Coverage Criteria}
@@ -97,7 +97,7 @@
 
 \subsection{Input for Sampling Algorithms}
 \begin{frame}{\myframetitle{}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Input Data \mysource{\samplingsurvey}}
 			\pic[width=\linewidth,page=3,trim=350 430 90 310,clip]{2018/2018-SPLC-Varshosaz}
 		\end{definition}
@@ -109,7 +109,7 @@
 				\item e.g., specialized feature model for sampling
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\vspace{-5mm}
 		\begin{example}{Part 2: Combinatorial Interaction Testing}
@@ -133,5 +133,5 @@
 				\item \emph{feature model} used to consider only valid configurations
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

@@ -1,10 +1,10 @@
 \documentclass{beamer}
+\usepackage{../../FancyBeamer/fancybeamer} % use the fancy beamer package
 \beamertemplatenavigationsymbolsempty % remove the default navigation symbols
 
 \usepackage{tikz}
 \usetikzlibrary{mindmap}
 
-\input{../../slides/template/colorscheme}
 \input{../../slides/template/macros}
 \input{../../slides/template/tikzmacros}
 
@@ -23,7 +23,7 @@
 		\path[small mindmap,
 		every node/.style={concept,font=\tiny},
 		emph/.style={font=\bfseries\tiny},
-		concept color=uulmaccent!20,
+		concept color=accent!20,
 		level 1/.append style={level distance=25mm,sibling angle=360/6},
 		level 2/.append style={level distance=20mm,sibling angle=360/6},
 		level 3/.append style={level distance=20mm,sibling angle=360/8},

@@ -1,6 +1,6 @@
 \subsection{Recap: Code Scattering and Tangling}
 \begin{frame}[fragile]{\myframetitle}
-	\small\begin{mycolumns}[columns=3,T,animation=none,widths={43,32}]
+	\small\begin{fancycolumns}[columns=3,T,animation=none,widths={43,32}]
 \begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
@@ -25,7 +25,7 @@ public class Graph {
 	}
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -51,7 +51,7 @@ public class Edge {
 	}
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}{}
 public class Color {
 	static void setDisplayColor(Color c) {...}
@@ -71,7 +71,7 @@ public class Weight {
 				\item<+-> feature traceability? 
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % note to editors: it is on purpose that no feature traces are shown on this slide, as the students are supposed to trace features manually
 
@@ -79,7 +79,7 @@ public class Weight {
 % TODO would be nice to avoid this example clone (below) by ignoring @ and ~ on certain slides/animations
 
 \begin{frame}[fragile]{\myframetitle}
-	\small\begin{mycolumns}[columns=3,T,animation=none,widths={43,32}]
+	\small\begin{fancycolumns}[columns=3,T,animation=none,widths={43,32}]
 \begin{codetight}{}
 public class Graph {
 	List nodes = new ArrayList();
@@ -104,7 +104,7 @@ public class Graph {
 	}
 }
 \end{codetight} % TODO colors not readable on projector. still true?
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}{}
 public class Node {
 	int id = 0;
@@ -130,7 +130,7 @@ public class Edge {
 	}
 }
 \end{codetight}
-		\mynextcolumn
+		\nextcolumn
 \begin{codetight}{}
 ~public class Color {
 	static void setDisplayColor(Color c) {...}
@@ -151,12 +151,12 @@ public class Edge {
 				\item conditional compilation?\mysource{\lecturefeatures}
 			\end{enumerate}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Feature Traceability Problem}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Recap: Feature Traceability}
 			Feature traceability is the ability to trace a feature throughout the software life cycle (i.e., from requirements to source code).
 		\end{definition}
@@ -167,23 +167,23 @@ public class Edge {
 		\begin{definition}{Feature Traceability (revisited) \mysource{\fospl\mypage{54}}}
 			\mycite{Feature traceability is the ability to trace a feature from the \textbf{problem space} (for example, the feature model) to the \textbf{solution space} (that is, its manifestation in design and code artifacts).}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{definition}{Feature Traceability Problem}
 			The feature traceability problem is the challenge to trace a feature in software artifacts (i.e., all or some locations).
 		\end{definition}
 		\pause
 		\centering\pic[width=.93\linewidth]{messy-lego}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 %\subsection{Feature Location}
 %\begin{frame}{\myframetitle}
-%	\begin{mycolumns}
+%	\begin{fancycolumns}
 %		\todots
-%	\mynextcolumn
+%	\nextcolumn
 %		\todots
-%	\end{mycolumns}
+%	\end{fancycolumns}
 %\end{frame}
 % TODO add slide on feature location (in single system engineering)
 
@@ -191,7 +191,7 @@ public class Edge {
 
 \subsubsection{Feature Commander}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none,widths={35}]
+	\begin{fancycolumns}[animation=none,widths={35}]
 		\begin{definition}{\featurecommander}
 			\begin{itemize}
 				\item each feature can be assigned to a color
@@ -203,22 +203,22 @@ public class Edge {
 		\begin{note}{\href{https://www.tu-chemnitz.de/informatik/ST/research/material/xenomai/video.wmv}{Demo Video}}
 			 (there is no sound)
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\only<1,6-|handout:1>{\pic[width=\linewidth]{feature-commander1-cropped}}%
 		\only<2|handout:0>{\pic[width=\linewidth,trim=0 450 600 0,clip]{feature-commander1-cropped}}%
 		\only<3|handout:0>{\pic[width=\linewidth,trim=750 400 -150 50,clip]{feature-commander1-cropped}}%
 		\only<4|handout:0>{\pic[width=\linewidth,trim=175 175 425 275,clip]{feature-commander1-cropped}}%
 		\only<5|handout:0>{\pic[width=\linewidth,trim=600 0 0 450,clip]{feature-commander1-cropped}}%
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none,widths={65}]
+	\begin{fancycolumns}[animation=none,widths={65}]
 		\only<1,5-|handout:1>{\pic[width=\linewidth]{feature-commander2-cropped}}%
 		\only<2|handout:0>{\pic[width=\linewidth,trim=0 450 600 0,clip]{feature-commander2-cropped}}%
 		\only<3|handout:0>{\pic[width=\linewidth,trim=600 450 0 0,clip]{feature-commander2-cropped}}%
 		\only<4|handout:0>{\pic[width=\linewidth,trim=600 0 0 450,clip]{feature-commander2-cropped}}%
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{\featurecommander}
 			\begin{itemize}
 				\item research prototype (last update August 2010)
@@ -227,16 +227,16 @@ public class Edge {
 				\item further reading on experiments with developers: \backgroundcolors
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{FeatureIDE}
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none,widths={65}]
+	\begin{fancycolumns}[animation=none,widths={65}]
 		\only<1,4-|handout:1>{\pic[width=\linewidth]{feature-traceability}}%
 		\only<2|handout:0>{\pic[width=\linewidth,trim=0 160 350 120,clip]{feature-traceability}}%
 		\only<3|handout:0>{\pic[width=\linewidth,trim=210 65 140 295,clip]{feature-traceability}}%
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{FeatureIDE\mysource{\featureide}}
 			\begin{itemize}
 				\item tool support for feature traceability
@@ -251,14 +251,14 @@ public class Edge {
 				\item support for colors
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % \href{https://www.youtube.com/watch?v=S32Cy2LXB8o}{assigning colors from everywhere}
 % \href{https://www.youtube.com/watch?v=9QNDu0rMuQQ}{overview on support for colors with FeatureHouse (even in generated code)}
 
 \subsection{Virtual Separation of Concerns}
 \begin{frame}{\myframetitle\ \mytitlesource{\virtualseparation}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Virtual Separation of Concerns}
 			\begin{itemize}
 				\item annotations of code based on the underlying structure (i.e., abstract syntax)
@@ -268,7 +268,7 @@ public class Edge {
 			\end{itemize}
 		\end{definition}
 		% TODO show abstract syntax tree here? maybe for expressions with addition, multiplication, and values. or classes, class name, methods, fields, parameters, return type?
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{What is different with preprocessors?}
 			\begin{itemize}
 				\item annotation of characters in plain text
@@ -283,14 +283,14 @@ public class Edge {
 				\item dedicated modules, folders, files \mysource{\lecturelanguages}
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection{CIDE}
 \begin{frame}{\myframetitle\ \mytitlesource{\cide}}
-	\begin{mycolumns}[widths={60},animation=none]
+	\begin{fancycolumns}[widths={60},animation=none]
 		\pic[width=\linewidth]{cide-open-editor}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{What is CIDE?}
 			\begin{itemize}
 				\item stands for \textbf{C}olored \textbf{I}ntegrated \textbf{D}evelopment \textbf{E}nvironment
@@ -301,7 +301,7 @@ public class Edge {
 				ANTLR, Bali, C, C++, C\#, JavaScript, Featherweight Java, \textbf{Java 1.5}, gCIDE, Haskell, HTML, JavaCC, OSGi Manifest, Properties, Python, and XHTML
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 %Featherweight Java 	.fj 	
 %Java 	.java 	
@@ -323,9 +323,9 @@ public class Edge {
 %OSGi Manifest 	MANIFEST.MF 	simple, with simple type system
 
 \begin{frame}{\myframetitle\ \mytitlesource{\cide}}
-	\begin{mycolumns}[widths={70},animation=none]
+	\begin{fancycolumns}[widths={70},animation=none]
 		\pic[width=\linewidth]{cide-editor-and-outline}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Why colors?}
 			\begin{itemize}
 				\item colors replace preprocessor directives
@@ -335,13 +335,13 @@ public class Edge {
 				\item annotations stored externally (no changes outside the special editor feasible)
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\cide}}
-	\begin{mycolumns}[widths={65},animation=none]
+	\begin{fancycolumns}[widths={65},animation=none]
 		\pic[width=\linewidth]{cide}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Why virtual separation?}
 			\begin{itemize}
 				\item source code is a view on the abstract syntax tree (AST)
@@ -352,7 +352,7 @@ public class Edge {
 				\item efficient detection of type errors\mysource{\lectureanalyses}
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\cide}}
@@ -363,7 +363,7 @@ public class Edge {
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\cide}}
-	\begin{mycolumns}[widths={45},animation=none]
+	\begin{fancycolumns}[widths={45},animation=none]
 		\begin{example}{Why configuration?}
 			\begin{itemize}
 				\item features specified in FeatureIDE feature model
@@ -372,13 +372,13 @@ public class Edge {
 				\item \ldots
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth]{cide-feature-selection}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle\ \mytitlesource{\cide}}
-	\begin{mycolumns}[widths={45},animation=none]
+	\begin{fancycolumns}[widths={45},animation=none]
 		\begin{example}{Why configuration?}
 			\begin{itemize}
 				\item \ldots
@@ -387,9 +387,9 @@ public class Edge {
 				\item pressing it again returns to the view of the product line
 			\end{itemize}
 		\end{example}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth]{cide-variant-view-in-project-explorer}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % CIDE literature
 % forward reference to physical separation of concerns in next two lectures

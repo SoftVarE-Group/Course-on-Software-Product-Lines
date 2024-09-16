@@ -6,7 +6,7 @@
 
 \begin{frame}{Excursus: Software Configuration Management}
 	\myframeicon{\mysource{\fospl\mypages{100--101}}}% TODO source missing for configuration and baseline
-	\begin{mycolumns}[widths={45},animation=none]
+	\begin{fancycolumns}[widths={45},animation=none]
 		\begin{definition}{Basic Terms and Definitions}
 			\begin{itemize}
 				\item {\bf Software Item}: An (atomic) artifact that can be uniquely identified
@@ -22,10 +22,10 @@
 				}
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\only<1|handout:0>{\pic[width=\linewidth]{configuration-management-1}}%
 		\only<2-|handout:1>{\pic[width=\linewidth]{configuration-management-2}}%
-	\end{mycolumns}	
+	\end{fancycolumns}	
 \end{frame}
 % TODO introduce terms variation in time and variation in space? intentional versioning?
 % TODO introduce what branches are designed for? development branches, release branches, feature branches, bug fixes \fospl\mypages{101--102}
@@ -79,7 +79,7 @@
 \subsection{Discussion}
 
 \begin{frame}{Clone-and-Own with Version Control}
-	\begin{mycolumns}[widths={60}]
+	\begin{fancycolumns}[widths={60}]
 		\begin{note}{Observations}
 			\begin{itemize}
 				\item Aka.\ \emph{managed clone-and-own} (opposed to ad-hoc clone-and-own)
@@ -93,7 +93,7 @@
 				\item No flexible combination of software items
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Advantages\mysource{\fospl\mypage{104}}}
 			\begin{itemize}
 				\item Well-established and stable systems
@@ -108,15 +108,15 @@
 				\item Merging and cherrypicking not fully automated
 			\end{itemize}	
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{No Version Control at All?}
-	\begin{mycolumns}[columns=3,widths={20,60},animation=none]
-	\mynextcolumn
+	\begin{fancycolumns}[columns=3,widths={20,60},animation=none]
+	\nextcolumn
 		\begin{note}{Revision Control $\subset$ Version Control}
 			\mycite{Unless only few small variations are required for few customers, the use of version control systems should be restricted to \emph{revision control}.}\mysource{\fospl\mypage{104}}
 		\end{note}
-	\mynextcolumn
-	\end{mycolumns}
+	\nextcolumn
+	\end{fancycolumns}
 \end{frame}

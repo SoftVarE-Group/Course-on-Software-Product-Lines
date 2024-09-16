@@ -4,7 +4,7 @@
 \subsection{Automated Analysis of Feature Mappings}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={45,55}]
+	\begin{fancycolumns}[widths={45,55}]
 		\begin{note}{Recap: A Typical Product Line}
 			\begin{itemize}
 				\item embedded or systems programming (e.g., Linux)
@@ -23,7 +23,7 @@
 				\item connects the problem space to the solution space
 			\end{itemize}
 		\end{definition}
-		\mynextcolumn
+		\nextcolumn
 		\begin{example}{Asking Questions About the Feature Mapping}
 			\begin{itemize}
 				\item Is the code even included in any product?
@@ -32,11 +32,11 @@
 				\item \ldots
 			\end{itemize}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={45,55}]
+	\begin{fancycolumns}[widths={45,55}]
 		\begin{exampletight}{Running Example: Graph Product Line}
 			\centering
 			\featureDiagram{Graph,concrete[Node,concrete,mandatory[Colored,concrete,optional]][Edge,concrete,mandatory[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]]}
@@ -44,19 +44,19 @@
 			$Hyper \pimplies Undirected$\\
 			$Directed \por Hyper$
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\myexample{An Undirected Hypergraph}{
 			\centering
 			\picDark[width=.8\linewidth]{hypergraph}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Presence Conditions}
 
 \begin{frame}[b,fragile]{\myframetitle}
-	\vspace*{-4ex}
-	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
+	\vspace*{-3ex}
+	\begin{fancycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\begin{definition}{Presence Condition}
 			A \emph{presence condition (PC)} for a code location (i.e., a line or file) is a formula that describes the circumstances under which the code location is included in a product.
 		\end{definition}
@@ -67,10 +67,10 @@
 				\item here: line PCs for the C preprocessor
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<3->{
 			\begin{exampletight}{Presence Conditions}
-				\small\vspace*{-1.3ex}
+				\small\vspace*{0.5ex}
 				\begin{flushright}
 
 					\uncover<4->{{$\top$}\\
@@ -98,7 +98,7 @@
 				\end{flushright}
 			\end{exampletight}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\begin{uncoverenv}<2->
 			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
@@ -125,14 +125,14 @@ class Edge {
 };
 			\end{cpptight}
 		\end{uncoverenv}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Detecting Dead Code}
 
 \begin{frame}[b,fragile]{\myframetitle}
 	\vspace*{-4ex}
-	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
+	\begin{fancycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\begin{definition}{Dead Code}
 			A line or file of code is \emph{dead} when
 
@@ -154,10 +154,10 @@ class Edge {
 				\end{itemize}
 			\end{note}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<2->{
 			\begin{exampletight}{Presence Conditions}
-				\small\vspace*{-1.3ex}
+				\small\vspace*{0.5ex}
 				\begin{flushright}
 					{\color{gray}$\top$}\\
 					{\color{gray}$\top$}\\
@@ -184,7 +184,7 @@ class Edge {
 				\end{flushright}
 			\end{exampletight}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\begin{uncoverenv}<2->
 			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
@@ -211,14 +211,14 @@ class Edge {
 };
 			\end{cpptight}
 		\end{uncoverenv}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Detecting Superfluous Annotations}
 
 \begin{frame}[b,fragile]{\myframetitle}
 	\vspace*{-4ex}
-	\begin{mycolumns}[t,columns=3,widths={40,23,37},animation=none]
+	\begin{fancycolumns}[t,columns=3,widths={40,23,37},animation=none]
 		\begin{definition}{Superfluous Annotation}
 			An annotation is \emph{superfluous}
 
@@ -239,10 +239,10 @@ class Edge {
 				\end{itemize}
 			\end{example}
 		}
-	\mynextcolumn
+	\nextcolumn
 	\uncover<2->{
 		\begin{exampletight}{Presence Conditions}
-			\small\vspace*{-1.3ex}
+			\small\vspace*{0.5ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
 				{\color{gray}$\top$}\\
@@ -269,7 +269,7 @@ class Edge {
 			\end{flushright}
 		\end{exampletight}
 	}
-	\mynextcolumn
+	\nextcolumn
 		\begin{uncoverenv}<2->
 			\begin{cpptight}[basicstyle=\small]{\texttt{graph.cpp}}
 class Node {
@@ -296,13 +296,13 @@ class Edge {
 };
 			\end{cpptight}
 		\end{uncoverenv}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Joining the Problem and Solution Space}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[widths={67,33},animation=none]
+	\begin{fancycolumns}[widths={67,33},animation=none]
 		\begin{note}{}
 			\begin{itemize}
 				\item right now, we only consider \emph{line PCs} (from the preprocessor)
@@ -321,7 +321,7 @@ class Edge {
 				$\pnot (Directed \pand Undirected) \pand (Hyper \pimplies Undirected) \pand (Directed \por Hyper)$
 			\end{exampletight}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\begin{uncoverenv}<3->
 			\begin{cpptight}[basicstyle=\tiny]{\ldots\ and two files: \texttt{node.cpp} \ldots}
 class Node {
@@ -349,11 +349,11 @@ class Edge {
 };
 			\end{cpptight}
 		\end{uncoverenv}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[b,fragile]{\myframetitle}
-	\begin{mycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
+	\begin{fancycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
 		\emph{Problem Space}
 		\uncover<5->{
 		\begin{exampletight}{}
@@ -369,7 +369,7 @@ class Edge {
 		\end{align*}
 		\vspace*{-5ex}
 		\begin{exampletight}{}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\begin{align*}
 				&Graph \pand Node \pand Edge \\
 				\pand &\pnot (Directed \pand Undirected) \\
@@ -378,7 +378,7 @@ class Edge {
 			\end{align*}
 		\end{exampletight}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\emph{Solution Space $\rightarrow$}
 		\uncover<4->{
 			\begin{exampletight}{File PC \tiny\texttt{node.cpp}}
@@ -391,10 +391,10 @@ class Edge {
 				\vspace*{4.5ex}
 			\end{exampletight}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<3->{
 			\begin{exampletight}{Line PCs \tiny\texttt{node.cpp}}
-				\tiny\vspace*{-1.3ex}
+				\tiny\vspace*{0.5ex}
 				\begin{flushright}
 					{$\top$}\\
 					{$\top$}\\
@@ -405,7 +405,7 @@ class Edge {
 				\end{flushright}
 			\end{exampletight}
 			\begin{exampletight}{Line PCs \tiny\texttt{edge.cpp}}
-				\tiny\vspace*{-1.3ex}
+				\tiny\vspace*{0.5ex}
 				\begin{flushright}
 					{$\top$}\\
 					{$Directed$}\\
@@ -425,7 +425,7 @@ class Edge {
 				\end{flushright}
 			\end{exampletight}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\begin{uncoverenv}<2->
 			\begin{cpptight}[basicstyle=\tiny]{\texttt{node.cpp}}
 class Node {
@@ -453,13 +453,13 @@ class Edge {
 };
 			\end{cpptight}
 		\end{uncoverenv}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}[fragile]{\myframetitle}
-	\begin{mycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
+	\begin{fancycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
 		\begin{exampletight}{Feature-Model Formula}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\color{red}
 			\begin{align*}
 				&Graph \pand Node \pand Edge \\
@@ -468,15 +468,15 @@ class Edge {
 				\pand &(Directed \por Hyper)
 			\end{align*}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{File PC \tiny\texttt{edge.cpp}}
 			\vspace*{4.5ex}
 			\Huge\centering\rotatebox{45}{\color{red}$Edge$}
 			\vspace*{4.5ex}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Line PCs \tiny\texttt{edge.cpp}}
-			\tiny\vspace*{-1.3ex}
+			\tiny\vspace*{0.5ex}
 			\begin{flushright}
 				{\color{gray}$\top$}\\
 				{\color{gray}$Directed$}\\
@@ -495,7 +495,7 @@ class Edge {
 				{\color{gray}$\top$}
 			\end{flushright}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{cpptight}[basicstyle=\tiny]{\texttt{edge.cpp}}
 class Edge {
 #ifdef DIRECTED
@@ -513,7 +513,7 @@ class Edge {
 #endif
 };
 		\end{cpptight}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\begin{alignat*}{3}
 		PC_{location} \defeq~&\uncover<2->{\Phi(FM) &~\pand~& PC_{\texttt{edge.cpp}} &~\pand~& PC_{\texttt{pair<Node, Node> nodePair;}}\\}
 		\uncover<3->{=~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand (D \por H) &~\pand~& E &~\pand~& \pnot D \pand \pnot H \pand \pnot D\\}
@@ -526,8 +526,8 @@ class Edge {
 \subsection{Analyzing Feature Modules}
 
 \begin{frame}[b]{\myframetitle}
-	\vspace*{-4ex}
-	\begin{mycolumns}[widths={34,66},animation=none]
+	\vspace*{-3ex}
+	\begin{fancycolumns}[widths={34,66},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
 		\end{exampletight}
@@ -537,21 +537,21 @@ class Edge {
 				$\Phi(FM) = Store \pand Type \pand (SS \por MS) \pand (\pnot SS \por \pnot MS)$
 			\end{example}
 			\begin{example}{Valid Configurations}
-				\vspace*{-2ex}
 				\small
-				\begin{mycolumns}[animation=none]
+				\begin{fancycolumns}[animation=none]
 					{$\{SS\}$}\\
 					$\{SS, AC\}$
-				\mynextcolumn
+				\nextcolumn
 					{$\{MS\}$}\\
 					$\{MS, AC\}$\\
-				\end{mycolumns}
+				\end{fancycolumns}
 			\end{example}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<3->{\picDark[width=\linewidth]{fop-csur-example}}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\uncover<3->{
+		\vspace*{-3ex}
 		\begin{note}{}
 			Is there dead code? Are there superfluous annotations?
 		\end{note}
@@ -559,18 +559,19 @@ class Edge {
 \end{frame}
 
 \begin{frame}[b]{\myframetitle}
-	\vspace*{-4ex}
-	\begin{mycolumns}[widths={34,66},animation=none]
+	\vspace*{-3ex}
+	\begin{fancycolumns}[widths={34,66},animation=none]
 		\begin{exampletight}{}
 			\featureDiagram{Store,abstract[Type,abstract,mandatory[SingleStore,concrete,alternative][MultiStore,concrete]][AccessControl,concrete,optional]}
 		\end{exampletight}
 		\begin{notetight}{Recap: 1:1 Feature Mapping!}
 			\picDark[width=\linewidth,clip,trim=0 120 250 0]{feature_komposition1}
 		\end{notetight}
-	\mynextcolumn
+	\nextcolumn
 		\picDark[width=\linewidth]{fop-csur-example}
-	\end{mycolumns}
+	\end{fancycolumns}
 	\uncover<2->{
+		\vspace*{-3ex}
 		\begin{note}{}
 			\sout{Is} {\color{red}Are} there \sout{dead code} {\color{red}dead features}? Are there \sout{superfluous annotations} {\color{red}redundant constraints}?
 		\end{note}
@@ -580,11 +581,11 @@ class Edge {
 \subsection{Feature-Mapping Analyses in FeatureIDE}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[widths={57,43}]
+	\begin{fancycolumns}[widths={57,43}]
 		\picDark[width=\linewidth]{featureide-dead-code}
 		~
 		\href{https://youtu.be/jVe7f32mLCQ?t=125}{demo video available} (minute 3 and 4): dead code block, superfluous annotations, generation of all products, error propagation, unit testing
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Discussion}
 			\begin{itemize}
 				\item we can now \emph{identify anomalies}:
@@ -601,5 +602,5 @@ class Edge {
 				\item difficulty depends on the feature traceability (harder for conditional compilation than for FOP)
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

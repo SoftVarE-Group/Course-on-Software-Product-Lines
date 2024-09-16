@@ -1,7 +1,7 @@
 \subsection{Representations and Transformations}
 
 \begin{frame}[label=FeatureModelRepresentations]{\myframetitle}
-	\begin{mycolumns}[b]
+	\begin{fancycolumns}[b]
 		\begin{example}{Natural Language}
 			\tiny ``A \feat{configurable database} has an API that allows for at least one of the request types \feat{Get}, \feat{Put}, or \feat{Delete}.
 			Optionally, the database can support \feat{transactions}, provided that the API allows for Put or Delete requests.
@@ -9,21 +9,21 @@
 		\end{example}
 		\begin{example}{Configuration Map}
 			\tiny
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				$\{C,G,W\}$\\
 				\hspace{4mm}\vdots\\[1ex]
 				$\{C,G,P,D,T,W\}$
-			\mynextcolumn
+			\nextcolumn
 				$\{C,G,L\}$\\
 				\hspace{4mm}\vdots\\[1ex]
 				$\{C,G,P,D,T,L\}$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
 		\begin{exampletight}{Feature Diagram (Graphical Feature Model)}
 			\centering\tiny
 			\featureDiagramConfigurableDatabase
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\centering
 		\sffamily
 		\begin{tikzpicture}
@@ -55,13 +55,13 @@
 				\item<5->[P3] \color{gray}{(How to reverse engineer feature models?)}
 			\end{enumerate}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{UVL, the Universal Variability Language}
 
 \begin{frame}[fragile]{\myframetitle\ \mytitlesource{\uvlwebsite}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 \begin{uvltight}[basicstyle=\normalsize]{}
 features
 	ConfigDB
@@ -83,7 +83,7 @@ features
 constraints
 	Transactions => Put | Delete
 \end{uvltight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{A Feature Model ``Sideways''}
 			\centering
 			\pic[width=\linewidth]{varied-model}
@@ -95,11 +95,11 @@ constraints
 				\item adds advanced modeling constructs (e.g.,~attributes, cardinalities, submodels, \ldots)
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{Representations and Transformations}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\centering
 		\sffamily
 		\begin{tikzpicture}
@@ -123,7 +123,7 @@ constraints
 		
 			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{red}Concrete Format};
 		\end{tikzpicture}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Problems}
 			\begin{enumerate}
 				\item[P1] How to express feature models \emph{textually}?
@@ -138,7 +138,7 @@ constraints
 				\item[P3] \color{gray}{--}
 			\end{enumerate}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 % TODO first show the simpler version of the tikz picture, then animate towards the above, animate together with text
 % TODO do we really need this slide? semantics was already defined in Part 4a for feature models
@@ -148,9 +148,9 @@ constraints
 \subsubsection*{Recap}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Syntax of Propositional Formulas}
-			Inductive definition of \emph{propositional formulas}\deutsch{\\aussagenlogische Formeln}:
+			Inductive definition of \emph{propositional formulas} \deutsch{aussagenlogische Formeln}
 			\begin{itemize}
 				\item the \emph{Boolean truth values} $\top$, $\bot$
 				\item any \emph{Boolean variable} $X$
@@ -159,9 +159,9 @@ constraints
 				\item any \emph{disjunction} $(\phi \por \psi)$, \emph{implication} $(\phi \pimplies \psi)$, or \emph{biimplication} $(\phi \pequals \psi)$
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{Informal Semantics of Propositional Formulas}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\begin{equation*}
 				\begin{rcases}
 					\top                \\
@@ -183,20 +183,20 @@ constraints
 			\end{equation*}
 		\end{definition}
 		\begin{example}{Operator Precedence: $\pnot$, $\pand$, $\por$, $\pimplies$, $\pequals$}
-			\vspace*{-4ex} % TODO Benno: why is this hack needed?
+			\vspace*{-3ex} % TODO Benno: why is this hack needed?
 			\begin{align*}
 				           &~Transactions \pimplies (Put \por Delete) \\
 				\equiv     &~Transactions \pimplies Put \por Delete \\
 				\not\equiv &~(Transactions \pimplies Put) \por Delete
 			\end{align*}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Example}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\only<13|handout:2>{\addtocounter{framenumber}{+1}}\only<1-|handout:1-2>{
 			\begin{exampletight}{A Feature Model $FM$ \ldots}
 				\centering\tiny
@@ -240,7 +240,7 @@ constraints
 				}
 			\end{exampletight}
 			\begin{exampletight}{\ldots as a Propositional Formula $\Phi(FM)$}
-				\vspace*{-4ex}
+				\vspace*{-1.5ex}
 				\small
 				\begin{align*}
 					\Phi(FM) = &~ConfigDB \\
@@ -254,10 +254,10 @@ constraints
 				\end{align*}
 			\end{exampletight}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\only<9-|handout:1-2>{
 			\begin{example}{Is This a Valid Configuration?}
-				\vspace*{-4ex}
+				\vspace*{-3ex}
 				\only<9-12|handout:1>{
 					\begin{align*}
 								&~\Phi(FM)({\{C, A, G, O, W\}}) \\
@@ -292,7 +292,7 @@ constraints
 				}
 			\end{example}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsubsection*{Algorithm}
@@ -301,7 +301,7 @@ constraints
 \newcommand{\featureDiagramPhantom}[4]{\vphantom{#1\left(~\parbox{#2}{\centering\scalebox{0.8}{\featureDiagram{#3}}}~\right)}}
 
 \begin{frame}{\myframetitle}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Algorithm: Translate $FM$ Into $\Phi(FM)$}
 			\begin{enumerate}
 				\item<2-> translate each tree constraint
@@ -322,9 +322,9 @@ constraints
 				\item<10-> $\Phi(FM) \gets \Phi(TC) \pand \Phi(CTC)$
 			\end{enumerate}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{}
-			\vspace*{-4ex}
+			\vspace*{-3ex}
 			\begin{align*}
 				\uncover<3->{\featureDiagramFn{\Phi}{6ex}{Root,concrete}{Root}}\\
 				\uncover<4->{\featureDiagramFn{\Phi}{6ex}{P,concrete[C,optional,concrete]}{C \pimplies P}}\\
@@ -334,13 +334,13 @@ constraints
 				\uncover<7->{& \pand \bigwedge_{1 \leq i < j \leq n} \pnot (C_i \pand C_j)}
 			\end{align*}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{CNF as a Universal Formula Language}
 
 \begin{frame}{\myframetitle} % TODO unmotivated topic switch after prior slide?
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\begin{definition}{Recap: Conjunctive Normal Form}
 			\begin{itemize}
 				\item a \emph{literal} $L$ is a variable $X$ or its negation $\pnot X$
@@ -360,13 +360,13 @@ constraints
 				\end{itemize}
 			\end{definition}
 		}
-	\mynextcolumn
+	\nextcolumn
 		\uncover<2->{
 			\begin{example}{Transforming Part of $\Phi(FM)$ into $CNF(\Phi(FM))$}
-				\vspace*{-4ex}
+				\vspace*{-1.5ex}
 				\small
 				% TODO: use color-blind friendly colors
-				\begin{mycolumns}[animation=none]
+				\begin{fancycolumns}[animation=none]
 					\begin{align*}
 						\uncover<2->{&~\clause{C} \\
 						\pand &~(T \pimplies C) \\
@@ -374,7 +374,7 @@ constraints
 						\pand &~(W \por L \pequals O) \\
 						\pand &~\pnot (W \pand L)}
 					\end{align*}
-				\mynextcolumn
+				\nextcolumn
 					\begin{align*}
 						\uncover<3->{&~\clause{C} \\
 						\pand &~\clause{(\pnot T \por C)} \\
@@ -383,8 +383,8 @@ constraints
 						\pand &~\clause{(\pnot O \por W \por L)} \\
 						\pand &~\pnot (W \pand L)}
 					\end{align*}
-				\end{mycolumns}
-				\begin{mycolumns}[animation=none]
+				\end{fancycolumns}
+				\begin{fancycolumns}[animation=none]
 					\begin{align*}
 						\uncover<4->{&~\clause{C} \\
 						\pand &~\clause{(\pnot T \por C)} \\
@@ -393,7 +393,7 @@ constraints
 						\pand &~\clause{(\pnot O \por W \por L)} \\
 						\pand &~\clause{(\pnot W \por \pnot L)}}
 					\end{align*}
-				\mynextcolumn
+				\nextcolumn
 					\begin{align*}
 						\uncover<5->{&~\clause{C} \\
 						\pand &~\clause{(\pnot T \por C)} \\
@@ -402,16 +402,16 @@ constraints
 						\pand &~\clause{(\pnot O \por W \por L)} \\
 						\pand &~\clause{(\pnot W \por \pnot L)}}
 					\end{align*}
-				\end{mycolumns}
+				\end{fancycolumns}
 			\end{example}
 		}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame} % TODO would be more intuitive to me if clauses are green (as they are good to go)
 
 \subsubsection*{DIMACS}
 
 \begin{frame}[fragile]{\myframetitle}
- 	\begin{mycolumns}[columns=3,widths={25,25,50}]
+ 	\begin{fancycolumns}[columns=3,widths={25,25,50}]
 		\vspace*{14ex}
 		\begin{align*}
 			&~C \\
@@ -421,7 +421,7 @@ constraints
 			\pand &~(\pnot O \por W \por L) \\
 			\pand &~(\pnot W \por \pnot L)
 		\end{align*}
- 	\mynextcolumn
+ 	\nextcolumn
 \begin{dimacstight}[basicstyle=\large]{}
 c 1 C
 c 2 T
@@ -436,7 +436,7 @@ p cnf 5 6
 -3 4 5 0
 -4 5 0
 \end{dimacstight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{definition}{DIMACS Format\mysource{\dimacsformat}}
 			\begin{itemize}
 				\item de facto industry standard for storing CNF
@@ -459,12 +459,12 @@ p cnf 5 6
 					\end{equation*}
 			\end{itemize}
 		\end{definition}
- 	\end{mycolumns}
+ 	\end{fancycolumns}
 \end{frame}
 
 \subsection*{Representations and Transformations}
 \begin{frame}[label=FeatureModelTransformations]{\myframetitle}
-	\begin{mycolumns}[widths={52,48}]
+	\begin{fancycolumns}[widths={52,48}]
 		\centering
 		\sffamily
 		\begin{tikzpicture}
@@ -502,7 +502,7 @@ p cnf 5 6
 		
 			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
 		\end{tikzpicture} % TODO would prefer another color for concrete formats, as they have nothing to do with the red boxes on thoses slides. what about green? needs to be changed consistently in all slides of this lecture
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Problems}
 			\begin{enumerate}
 				\item[P1] How to express feature models \emph{textually}?
@@ -526,7 +526,7 @@ p cnf 5 6
 				\item[P3] \color{gray}{(i) e.g., \bakarnaturallanguage\\(ii) e.g., \czarneckithereandbackagain}
 			\end{enumerate}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % removed the following slide. could be confusing to use Excel in two different ways.

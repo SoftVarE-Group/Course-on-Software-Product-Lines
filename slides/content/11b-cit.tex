@@ -1,5 +1,5 @@
 \begin{frame}{Recap: Black-Box Testing \deutschertitel{Funktionstest}}
-	\begin{mycolumns}[widths={40}]
+	\begin{fancycolumns}[widths={40}]
 		\begin{note}{Motivation \mysource{\ludewiglichter}}
 			\begin{itemize}
 				\setlength\itemsep{.1em}
@@ -18,7 +18,7 @@
 				\item source code and its inner structure is ignored (assumed as a black-box)
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{note}{Sample Configuration $\neq$ Test Case}
 			\begin{itemize}
@@ -35,15 +35,15 @@
 				\item on next slides: idea of black-box testing applied to derive sample configuration
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Pairwise Interaction Testing}
 \begin{frame}{\myframetitle{} \deutschertitel{Paarweises Interaktionstesten}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{example}{Configurations with the Interaction Get $\wedge$ Put}
 			\footnotesize
-			\begin{mycolumns}[animation=none,widths={55,45}]
+			\begin{fancycolumns}[animation=none,widths={55,45}]
 				$\{C,G,W\}$\\
 				$\{C,P,W\}$\\
 				\emph{$\{C,G,P,W\}$}\\
@@ -57,7 +57,7 @@
 				$\{C,G,D,T,W\}$\\
 				$\{C,P,D,T,W\}$\\
 				\emph{$\{C,G,P,D,T,W\}$}
-			\mynextcolumn
+			\nextcolumn
 				$\{C,G,L\}$\\
 				$\{C,P,L\}$\\
 				\emph{$\{C,G,P,L\}$}\\
@@ -71,7 +71,7 @@
 				$\{C,G,D,T,L\}$\\
 				$\{C,P,D,T,L\}$\\
 				\emph{$\{C,G,P,D,T,L\}$}
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
 		\pause
 		\begin{definition}{Pairwise Interaction Testing}
@@ -81,7 +81,7 @@
 				\item test every configuration in $S$
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{definition}{Pairwise Combinations}
 			\begin{itemize}
@@ -106,22 +106,22 @@
 				\item hard to compute small sample sets
 			\end{itemize}
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \newcommand{\pair}[2]{$#1 \wedge #2$ & $#1 \wedge \neg #2$ & $\neg #1 \wedge #2$ & $\neg #1 \wedge \neg #2$\\}
 %\newcommand{\redandgray}[1]{\only<#1-| handout:#1->{\color{black}}\only<#1| handout:#1>{\color{blue}}}
 \newcommand{\epairone}[6]{
 	\alt<#5->{\textcolor{#3}{$#1 \wedge #2$}}{$#1 \wedge #2$} & 
-	\alt<#6->{\textcolor{#4}{$\neg #1 \wedge #2$}}{$\neg #1 \wedge #2$} & 
+	\alt<#6->{\textcolor{#4}{$#1 \wedge \neg #2$}}{$#1 \wedge \neg #2$} & 
 }
 \newcommand{\epairtwo}[6]{
-	\alt<#5->{\textcolor{#3}{$#1 \wedge \neg #2$}}{$#1 \wedge \neg #2$} & 
+	\alt<#5->{\textcolor{#3}{$\neg #1 \wedge #2$}}{$\neg #1 \wedge #2$} & 
 	\alt<#6->{\textcolor{#4}{$\neg #1 \wedge \neg #2$}}{$\neg #1 \wedge \neg #2$} \\
 }
 
 \begin{frame}[label=PairwiseCoverage]{Pairwise Coverage \deutschertitel{Paarweise Überdeckung}}
-	\begin{mycolumns}[animation=none]
+	\begin{fancycolumns}[animation=none]
 		\centering
 		\alt<1>{\featureDiagramConfigurableDatabase}{%
 		\alt<2>{\featureDiagramConfigurableDatabaseNoAbstract}
@@ -138,7 +138,7 @@
 			\end{itemize}
 			% TODO \todo{add formal definitions based on \lecturemodeling}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\vspace{-10mm}
 		\pause\pause
 		\begin{example}{Pairwise Interactions}
@@ -158,7 +158,7 @@
 				\epairone{D}{L}{orange}{red}{6}{5}\epairtwo{D}{L}{green}{blue}{7}{8}
 				\epairone{T}{W}{red}{green}{5}{7}\epairtwo{T}{W}{blue}{orange}{8}{6}
 				\epairone{T}{L}{green}{red}{7}{5}\epairtwo{T}{L}{orange}{blue}{6}{8}
-				&  \alt<6->{\textcolor{orange}{$\neg W \wedge L$}}{$\neg W \wedge L$} & \alt<5->{\textcolor{red}{$W \wedge \neg L$}}{$W \wedge \neg L$} & \\
+				&  \alt<6->{\textcolor{orange}{$L \wedge \neg W$}}{$L \wedge \neg W$} & \alt<5->{\textcolor{red}{$\neg L \wedge W$}}{$\neg L \wedge W$} & \\
 			\end{tabular} 
 		\end{example}
 		\pause
@@ -171,12 +171,12 @@
 			\alt<9->{\textcolor{black}{$\{C,P,W\}$}}{$\{C,P,W\}$}\\
 			\alt<10->{\textcolor{black!50}{$\{C,D,T,L\}$}}{$\{C,D,T,L\}$}\\
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{T-Wise Interaction Testing}
 \begin{frame}{\myframetitle{}}
-	\begin{mycolumns}[widths={60,38}]
+	\begin{fancycolumns}[widths={60,38}]
 		\begin{definition}{T-Wise Interaction Testing}
 			\begin{itemize}
 				\setlength\itemsep{.5em}
@@ -187,28 +187,28 @@
 				\item $t=3$: every valid combination of three features covered
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{{$t=3$ Interactions}}
 			for the features $G$, $P$, and $D$:
 
-			\begin{mycolumns}[animation=none]
+			\begin{fancycolumns}[animation=none]
 				$G \wedge P \wedge D$\\
 				$G \wedge P \wedge \neg D$\\
 				$G \wedge \neg P \wedge D$\\
 				$G \wedge \neg P \wedge \neg D$
-			\mynextcolumn
+			\nextcolumn
 				$\neg G \wedge P \wedge D$\\
 				$\neg G \wedge P \wedge \neg D$\\
 				$\neg G \wedge \neg P \wedge D$\\
 				$\neg G \wedge \neg P \wedge \neg D$
-			\end{mycolumns}
+			\end{fancycolumns}
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Algorithms for Combinatorial Interaction Testing}
 \begin{frame}{\myframetitle{} \deutschertitel{Algorithmen für kombinatorisches Interaktionstesten}}
-	\begin{mycolumns}[widths={63}]
+	\begin{fancycolumns}[widths={63}]
 		\begin{definition}{A Greedy Algorithm}
 			idea: select configuration that cover most missing interactions in each step
 			\begin{enumerate}
@@ -228,7 +228,7 @@
 				\item greedy strategy: optimal configuration in each step does not guarantee optimal sample
 			\end{itemize}
 		\end{note}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{definition}{ICPL\mysource{\icpl}}
 			\begin{itemize}
@@ -243,7 +243,7 @@
 				\item performance shown on next slides
 			\end{itemize}
 		\end{definition}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \subsection{Efficiency of Combinatorial Interaction Testing}
@@ -253,21 +253,21 @@
 		\centering\footnotesize\featureDiagramEightOptionalFeatures
 	\end{exampletight}
 	\vspace{-2mm} % TODO Benno: not sure why this is needed
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\pause
 		\begin{exampletight}{Number of Configurations in Pairwise Sample}
 			\pic[width=\linewidth,page=4]{cit-plots}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\pause
 		\begin{exampletight}{Number of Configurations in T-Wise Sample}
 			\pic[width=\linewidth,page=5]{cit-plots}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 \begin{frame}{\myframetitle{} \mytitlesource{\icpl}}
-	\begin{mycolumns}[t]
+	\begin{fancycolumns}[t]
 		\begin{exampletight}{Time in Minutes to Compute Sample}
 			\pic[width=\linewidth,page=2]{cit-plots}
 
@@ -277,7 +277,7 @@
 				\item 480 configuration in pairwise sample
 			\end{itemize}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{exampletight}{Number of Configurations in Sample}
 			\pic[width=\linewidth,page=3]{cit-plots}
 
@@ -288,22 +288,22 @@
 				\item 187,193 clauses in conjunctive normal form
 			\end{itemize}
 		\end{exampletight}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}
 
 % TODO distinguish testing efficiency and sampling efficiency
 
 \subsection{Effectiveness of Combinatorial Interaction Testing}
 \begin{frame}{\myframetitle{}}
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{exampletight}{Effectiveness of Interaction Testing \mysource{\href{https://ieeexplore.ieee.org/document/1321063}{Kuhn et al.\ 2004}}}
 			\pic[width=\linewidth,page=1]{cit-plots}
 		\end{exampletight}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Trade-Off}
 			large t: high coverage (more effective)
 			
 			small t: low testing effort (more efficient)
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 \end{frame}

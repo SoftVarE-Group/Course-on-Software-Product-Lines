@@ -11,7 +11,7 @@
 % introduced: 01b-challenges
 % reused: 03a-intro
 \newcommand{\frameSoftwareClones}{
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Software Clone\mysource{\softwareclonedetection\mypage{1166}}}
 			\begin{itemize}
 			\item = result of copying and pasting existing fragments of the software
@@ -22,7 +22,7 @@
 			\item in practice: a common source for inconsistencies and bugs
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{example}{Cloning Parts of Software}
 			~\hfill\pic[width=.2\linewidth]{pants-blue}\hfill\pic[width=.2\linewidth]{pants-red}\hfill~
 		\end{example}
@@ -30,15 +30,15 @@
 		\begin{example}{Cloning Whole Products (Clone-and-Own)}
 			~\hfill\pic[width=.2\linewidth]{130}\hfill\pic[width=.2\linewidth]{230}\hfill~
 		\end{example}
-	\end{mycolumns}
+	\end{fancycolumns}
 }
 
 % introduced: 02a-configuration
 % reused: 03a-intro
 \newcommand{\frameImplementSPLs}{
-	\begin{mycolumns}[widths={45},animation=none]
+	\begin{fancycolumns}[widths={45},animation=none]
 		\pic[width=\linewidth]{metaproduct2}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{Key Issues}
 			\begin{itemize}
 			\item Systematic reuse of implementation artifacts
@@ -52,13 +52,13 @@
 		\uncover<3->{\begin{note}{Variability-Intensive System}
 			Any software product line is a variability-intensive system. % TODO Timo: do we really need this term? where does this definition come from?
 		\end{note}}
-	\end{mycolumns}
+	\end{fancycolumns}
 }
 
 % introduced: 02a-configuration
 % reused: 02b-implementation, 03a-intro
 \newcommand{\frameVariabilityAndBindingTimes}{
-	\begin{mycolumns}[widths={55},animation=none]
+	\begin{fancycolumns}[widths={55},animation=none]
 		\begin{definition}{Binding Time \deutsch{Bindungszeitpunkt}\mysource{\fospl\mypage{48}}}
 			\begin{itemize}
 				\item Variability offers choices
@@ -72,9 +72,9 @@
 
 			\lectureruntime\partb: \emph{how}
 		\end{note}}
-	\mynextcolumn
+	\nextcolumn
 		\pic[width=\linewidth]{metaproduct2}
-	\end{mycolumns}
+	\end{fancycolumns}
 }
 
 % introduced: 03a-intro
@@ -101,7 +101,7 @@
 % introduced: 03a-intro
 % reused: 03a-intro
 \newcommand{\frameSoftwareConfigurationManagement}{
-	\begin{mycolumns}
+	\begin{fancycolumns}
 		\begin{definition}{Software Configuration Management} % TODO source missing
 			Policies, processes, and tools for managing evolving software systems:
 			\begin{itemize}
@@ -112,7 +112,7 @@
 				\item Collaborative work
 			\end{itemize}
 		\end{definition}
-	\mynextcolumn
+	\nextcolumn
 		\begin{note}{No Software Configuration Management}
 			\lecturecloneandown\parta: Ad-Hoc Clone-and-Own
 
@@ -128,5 +128,5 @@
 
 			instance of managed clone-and-own
 		\end{note}
-	\end{mycolumns}
+	\end{fancycolumns}
 }

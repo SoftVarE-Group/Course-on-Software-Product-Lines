@@ -3,7 +3,7 @@
 **[Open educational resources](https://en.wikipedia.org/wiki/Open_educational_resources) on software product lines**
 
 * **LaTeX Slides**: Material for lectures on software product lines 
-* [LaTeX Exercises](https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises): Material for exercises on software product lines 
+* [LaTeX Exercises](https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises): Material for exercises on software product lines (available on request)
 * [PDF Slides](https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course): Released version of slides for the lecture on software product lines
 * [Recordings](https://www.youtube.com/playlist?list=PL4hJhdKDPIxha8So7muX2zfNUU8NBoiu3): YouTube playlist with lecture recordings
 
@@ -17,24 +17,28 @@
 </picture>
 </a>
 
-## Contributors
+## Contact
 
-- Thomas Thüm (University of Ulm, Germany)
-- Timo Kehrer (University of Bern, Switzerland)
-- Elias Kuiter (University of Magdeburg, Germany)
+Core contributors:
+
+- [Thomas Thüm](https://www.uni-paderborn.de/person/102807) (Paderborn University, Germany)
+- [Timo Kehrer](https://www.inf.unibe.ch/ueber_uns/personen/seg/prof_dr_kehrer_timo/index_ger.html) (University of Bern, Switzerland)
+- [Elias Kuiter](https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html) (University of Magdeburg, Germany)
+
+Further contributors and former project members:
+
+- [Sebastian Krieter](https://www.uni-ulm.de/in/sp/team/sebastian-krieter/) (Paderborn University, Germany)
+- [Chico Sundermann](https://www.uni-ulm.de/in/sp/team/chico-sundermann/) (University of Ulm, Germany)
+- [Paul Maximilian Bittner](https://www.uni-ulm.de/in/sp/team/paul-maximilian-bittner/) (Paderborn University, Germany)
+- Benno Hölz (University of Ulm, Germany)
 
 ## Usage in Lectures
 
-- University of Bern, Switzerland: Software Product Lines (Winter Term 2022/23)
-- University of Magdeburg, Germany: Implementation Techniques for Software Product Lines (Winter Term 2022/23)
+- Paderborn University, Germany: Software Product Lines (Summer Term 2024)
+- University of Bern, Switzerland: Software Product Lines (Winter Term 2022/23, Winter Term 2023/24)
+- University of Magdeburg, Germany: Implementation Techniques for Software Product Lines (Winter Term 2022/23, Winter Term 2023/24)
 - Harz University of Applies Sciences, Wernigerode, Germany: Requirements Engineering II - Software Product Lines (Summer Term 2023)
 - University of Ulm, Germany: Software Product Lines (Summer Term 2023)
-
-<!--
-## Exercises
-
-Exercise sheets for this course are available in a dedicated repository: https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises
--->
 
 ## Getting Started
 
@@ -43,7 +47,6 @@ git clone --recursive https://github.com/SoftVarE-Group/Course-on-Software-Produ
 cd Course-on-Software-Product-Lines/slides
 make # to compile all slides with default options
 make <lecture>.pdf handout=... darkmode=... university=... # to compile one lecture with given options (for valid values, see Makefile)
-docker run --rm -v $(pwd)/..:/spl -w /spl/slides texlive/texlive:TL2021-historic make # to compile all slides with Texlive 2021 in Docker
 ```
 
 ## License
