@@ -8,7 +8,7 @@
 * [Recordings](https://www.youtube.com/playlist?list=PL4hJhdKDPIxha8So7muX2zfNUU8NBoiu3): YouTube playlist with lecture recordings
 
 
-*If you have any feedback, please contact [Thomas Thüm](mailto:thomas.thuem@uni-ulm.de).*
+*If you have any feedback, please contact [Thomas Thüm](mailto:t.thuem@tu-braunschweig.de).*
 
 <a href="https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course">
 <picture>
@@ -21,13 +21,13 @@
 
 Core contributors:
 
-- [Thomas Thüm](https://www.uni-paderborn.de/person/102807) (Paderborn University, Germany)
+- [Thomas Thüm](https://www.tu-braunschweig.de/isf/team/thuem) (TU Braunschweig, Germany)
 - [Timo Kehrer](https://www.inf.unibe.ch/ueber_uns/personen/seg/prof_dr_kehrer_timo/index_ger.html) (University of Bern, Switzerland)
 - [Elias Kuiter](https://www.dbse.ovgu.de/Mitarbeiter/Elias+Kuiter.html) (University of Magdeburg, Germany)
 
 Further contributors and former project members:
 
-- [Sebastian Krieter](https://www.uni-ulm.de/in/sp/team/sebastian-krieter/) (Paderborn University, Germany)
+- [Sebastian Krieter](https://www.tu-braunschweig.de/isf/team/krieter) (TU Braunschweig, Germany)
 - [Chico Sundermann](https://www.uni-ulm.de/in/sp/team/chico-sundermann/) (University of Ulm, Germany)
 - [Paul Maximilian Bittner](https://www.uni-ulm.de/in/sp/team/paul-maximilian-bittner/) (Paderborn University, Germany)
 - Benno Hölz (University of Ulm, Germany)
