@@ -1,15 +1,5 @@
 #! /bin/bash
 # Cloned and owned from compile_paderborn.sh and simplified for my (Elias) needs.
-#   ./compile_magdeburg.sh -options <nr>
-# where options is a string consisting of the characters l, o, f, r
-#   l = lecture
-#   o = overview
-#   f = full
-#   r = recording
-# and <nr> is the number of the lecture you want to compile.
-# Example, to compile the lecture 3 and also prepare the overview slides (i.e., a big pdf containing lectures 1-3), you can run
-#   ./compile_magdeburg.sh -lo 3
-# Important: Run this script from the directory the script is in. Otherwise paths for output pdfs might be wrong.
 
 lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")
 university=magdeburg
@@ -23,7 +13,7 @@ upper_first () {
 
 make_lecture () {
 	outpath="${archive_path}${semester}-$(upper_first "$university")/"
-    mkdir -p "${outpath}}animated"
+    mkdir -p "${outpath}animated"
     
     latexmk -quiet -silent -C ${TEXFILE}
     make ${lecture}.pdf university=${university} handout=n darkmode=n
@@ -33,10 +23,6 @@ make_lecture () {
     make ${lecture}.pdf university=${university} handout=y darkmode=n
     rm ${lecture}.*.vrb
     mv -f ${lecture}.pdf ${outpath}${lecture}.pdf
-
-    # make ${lecture}.pdf university=${university} handout=y darkmode=y
-    # rm ${lecture}.*.vrb
-    # cp -f ${lecture}.pdf ${outpath}${lecture}-dark.pdf
 }
 
 make_overview () {
@@ -110,8 +96,7 @@ if [ "$#" -ge 2 ]; then
     echo "Using university ${university}"
 fi
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit
 
-# create slides for recording first, such that university-specific files remain in the slides folder
 if test ${is_make_lecture} -gt 0 ; then make_lecture ; fi
 if test ${is_make_overview} -gt 0 ; then make_overview ; fi
