@@ -12,10 +12,7 @@
 \newcommand{\inputuniversity}[1]{\IfFileExists{#1-\university}{\input{#1-\university}}{}}
 
 % TITLE
-\title{Software Product Lines} % default title for the course
-\ifuniversity{ulm}{\title[SPL]{Software Product Lines}} % abbreviation used to make footer fit for Lecture 3
-\ifuniversity{paderborn}{\title[SPL]{Software Product Lines}} % abbreviation used to make footer fit for Lecture 3
-\ifuniversity{bern}{\title{Software Product Lines}}
+\title[SPL]{Software Product Lines} % default title for the course
 \ifuniversity{magdeburg}{\title[Software Product Lines]{Implementation Techniques for Software Product Lines}}
 \ifuniversity{wernigerode}{\title{Requirements Engineering II -- Software Product Lines}}
 
@@ -25,6 +22,7 @@
 \renewcommand{\author}[1]{
 	\ifuniversity{ulm}{\author@old{Thomas Thüm, Chico Sundermann, Sebastian Krieter}}
 	\ifuniversity{paderborn}{\author@old{Thomas Thüm, Paul Bittner}}
+	\ifuniversity{braunschweig}{\author@old{Thomas Thüm, Sebastian Krieter}}
 	\ifuniversity{bern}{\author@old{Timo Kehrer, Sandra Greiner}}
 	\ifuniversity{magdeburg}{\author@old{Gunter Saake, Elias Kuiter}}
 	\ifuniversity{wernigerode}{\author@old{Elias Kuiter}}
@@ -108,7 +106,45 @@
 	}
 
 	\fancylogos{upb,upb-triangles}
-	%\setpicture[550]{jun22-clouds3} % default picture
+}
+
+\ifuniversity{braunschweig}{
+	\usepackage{tubscolors}
+	% redefine colors used in fancybeamer
+	% Orange, OrangeLight (Yellow), OrangeDark (tubsRed)
+	% Green, GreenLight, GreenDark
+	% Blue, BlueLight, BlueDark
+	% Violet, VioletLight, VioletDark
+	% tubsGray (tubsGray60), tubsLightGray (tubsGray20)
+	% tubsSecondaryLight, tubsSecondaryMedium, tubsSecondary, tubsSecondaryDark
+	% x20, x40, x60, x80, x100
+
+	\AtEndPreamble{
+		\colorlet{red}{tubsRed}
+		\colorlet{accent}{background}
+		\colorlet{accenttwo}{red}
+		\setbeamercolor{logobox}{bg=background}
+		\setbeamercolor{myfooter}{fg=foreground,bg=accent}
+		\setbeamercolor{subtitlebox}{fg=foreground,bg=accent}
+		\fancylogos{tubs,isf}
+		\ifdarkmode
+			\colorlet{red}{red!90!white}
+			\colorlet{green}{green!90!white}
+			\colorlet{blue}{blue!90!white}
+			\colorlet{orange}{orange!90!white}
+			\colorlet{accenttwo}{accenttwo!25!darkgray}
+			\setbeamercolor{mypagenumber}{fg=foreground,bg=accenttwo}
+			\setbeamercolor{titlebox}{fg=foreground,bg=accenttwo}
+			\fancylogos{tubs-black,isf}
+		\fi
+
+		% hack to force use of changed colors
+		\UpdateBoxColor{definition}{orange}
+		\UpdateBoxColor{example}{blue}
+		\UpdateBoxColor{note}{red}
+	}
+
+	\setpicture[75]{iz} % default picture
 }
 
 \ifuniversity{bern}{

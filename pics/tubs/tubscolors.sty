@@ -1,0 +1,365 @@
+%%
+%% This is file `tubscolors.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% ../tubsvers.inc  (with options: `default')
+%% tubscolors.dtx  (with options: `package')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 by Enrico Jörns et al.
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.2 of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%% 
+%%   http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of
+%% LaTeX version 1999/12/01 or later.
+%% 
+\RequirePackage{ifthen}
+\RequirePackage{scrlfile}%TODO: KOMA-Check?
+\RequirePackage{etoolbox}%
+\begingroup
+  \makeatletter
+  \ifx\tubslatexVersion\undefined
+    \newcommand*{\check@tubslatexVersion}[1]{%
+      \gdef\tubslatexVersion{#1}%
+    }%
+  \else
+    \newcommand*{\check@tubslatexVersion}[1]{%
+      \def\@tempa{#1}%
+      \ifx\tubslatexVersion\@tempa\else
+        \@latex@warning@no@line{%
+          \noexpand\tubslatexVersion\space is
+          `\tubslatexVersion',\MessageBreak
+          but `#1' was expected!\MessageBreak
+          You should not use classes, packages or files
+          from\MessageBreak
+          different tubslatex versions%
+        }%
+      \fi
+    }
+  \fi
+  \check@tubslatexVersion{2020/11/30 v1.3.4-r149 tubslatex}%
+\endgroup
+\providecommand{\tubslatex}{tubs\LaTeX}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tubscolors}[\tubslatexVersion, file v0.6 Farbschema der TU-Braunschweig]
+\RequirePackage{xkeyval}
+\RequirePackage{xcolor}
+\RequirePackage{ifthen}
+\RequirePackage{forloop}
+\RequirePackage{etoolbox}
+\RequirePackage{scrlfile}
+\newboolean{rgbbeamer}\setboolean{rgbbeamer}{false}
+\newboolean{cmyk}\setboolean{cmyk}{false}
+\newcommand*{\tc@colormodel}{rgb}
+\def\secondaryColorName{undefined}
+\newif\iftc@mono\tc@monofalse
+\newif\iftc@trueblack\tc@trueblackfalse
+\DeclareOptionX{rgb}{\renewcommand*{\tc@colormodel}{rgb}}
+\DeclareOptionX{rgbbeamer}{\renewcommand*{\tc@colormodel}{rgbbeamer}}
+\DeclareOptionX{cmyk}{\renewcommand*{\tc@colormodel}{cmyk}}
+\DeclareOptionX{mono}{\tc@monotrue}
+\def\tc@trueblackval{0.75,0.68,0.67,0.90}%
+\DeclareOptionX{trueblack}[0.75,0.68,0.67,0.90]{%
+  \tc@trueblacktrue
+  \def\tc@trueblackval{#1}
+}
+\DeclareOptionX{richblack}[0.75,0.68,0.67,0.90]{%
+  \tc@trueblacktrue
+  \def\tc@trueblackval{#1}
+}
+\DeclareOptionX{orange}{\def\secondaryColorName{Orange}}
+\DeclareOptionX{green}{\def\secondaryColorName{Green}}
+\DeclareOptionX{blue}{\def\secondaryColorName{Blue}}
+\DeclareOptionX{violet}{\def\secondaryColorName{Violet}}
+\DeclareOptionX{Orange}{\def\secondaryColorName{Orange}}
+\DeclareOptionX{Green}{\def\secondaryColorName{Green}}
+\DeclareOptionX{Blue}{\def\secondaryColorName{Blue}}
+\DeclareOptionX{Violet}{\def\secondaryColorName{Violet}}
+\DeclareOptionX*{%
+  \PackageWarning{tubscolors}{Unknown option `\CurrentOption'}%
+}
+\ExecuteOptionsX{rgb,blue} %TODO: check
+\ProcessOptionsX*\relax% Behandelt auch Optionen der Dokumentenklasse!
+\newcommand\tubs@color@prefix{tubs}
+\newcommand\tubs@color@compprefix{tu}
+\newcommand\create@tubscolor[3]{%
+  \def\current@basename{\tubs@color@prefix#1}
+  \definecolor{\current@basename}{#2}{#3}
+  \colorlet{\current@basename100}{\current@basename}
+  \colorlet{\current@basename80}{\current@basename!80}
+  \colorlet{\current@basename60}{\current@basename!60}
+  \colorlet{\current@basename40}{\current@basename!40}
+  \colorlet{\current@basename20}{\current@basename!20}
+  \def\current@basename{\tubs@color@compprefix#1}
+  \definecolor{\current@basename}{#2}{#3}
+  \colorlet{\current@basename100}{\current@basename}
+  \colorlet{\current@basename80}{\current@basename!80}
+  \colorlet{\current@basename60}{\current@basename!60}
+  \colorlet{\current@basename40}{\current@basename!40}
+  \colorlet{\current@basename20}{\current@basename!20}
+}
+\newcommand\let@tubscolor[2]{%
+  \def\from@basename{\tubs@color@prefix#2}
+  \def\to@basename{\tubs@color@prefix#1}
+  \colorlet{\to@basename}{\from@basename}
+  \colorlet{\to@basename 100}{\from@basename 100}
+  \colorlet{\to@basename 80}{\from@basename 80}
+  \colorlet{\to@basename 60}{\from@basename 60}
+  \colorlet{\to@basename 40}{\from@basename 40}
+  \colorlet{\to@basename 20}{\from@basename 20}
+  \def\from@basename{\tubs@color@compprefix#2}
+  \def\to@basename{\tubs@color@compprefix#1}
+  \colorlet{\to@basename}{\from@basename}
+  \colorlet{\to@basename 100}{\from@basename 100}
+  \colorlet{\to@basename 80}{\from@basename 80}
+  \colorlet{\to@basename 60}{\from@basename 60}
+  \colorlet{\to@basename 40}{\from@basename 40}
+  \colorlet{\to@basename 20}{\from@basename 20}
+}
+\ifthenelse{\equal{\tc@colormodel}{cmyk}}{%
+\selectcolormodel{cmyk}
+\create@tubscolor{RichBlack}{cmyk}{\tc@trueblackval}
+\iftc@trueblack
+  \create@tubscolor{Black}{cmyk}{\tc@trueblackval}
+\else
+  \create@tubscolor{Black}{cmyk}{0.0,0.0,0.0,1.0}
+\fi
+\iftc@mono
+  \colorlet{tubsRed}{tubsBlack}
+  \colorlet{tuRed}{tuBlack}
+\else
+  \definecolor{tubsRed}{cmyk}{0.1,1.0,0.8,0.0}
+  \definecolor{tuRed}{cmyk}{0.1,1.0,0.8,0.0}
+\fi
+\definecolor{tubsWhite}{cmyk}{0.0,0.0,0.0,0.0}
+\definecolor{tuWhite}{cmyk}{0.0,0.0,0.0,0.0}
+\create@tubscolor{Yellow}{cmyk}{0.0,0.25,0.90,0.0}
+\create@tubscolor{Orange}{cmyk}{0.0,0.58,0.93,0.0}
+\definecolor{tuRed100}{cmyk}{0.0,1.00,0.6,0.6}
+\colorlet{tuRed80}{tuRed100!80}
+\colorlet{tuRed60}{tuRed100!60}
+\colorlet{tuRed40}{tuRed100!40}
+\colorlet{tuRed20}{tuRed100!20}
+\definecolor{tubsRed100}{cmyk}{0.0,1.00,0.6,0.6}
+\colorlet{tubsRed80}{tubsRed100!80}
+\colorlet{tubsRed60}{tubsRed100!60}
+\colorlet{tubsRed40}{tubsRed100!40}
+\colorlet{tubsRed20}{tubsRed100!20}
+\create@tubscolor{GreenLight}{cmyk}{0.4,0.0,1.0,0.0}
+\create@tubscolor{Green}{cmyk}{0.45,0.0,1.0,0.4}
+\create@tubscolor{GreenDark}{cmyk}{0.94,0.0,0.59,0.64}
+\create@tubscolor{BlueLight}{cmyk}{0.7,0.07,0.1,0.0}
+\create@tubscolor{Blue}{cmyk}{1.0,0.0,0.06,0.4}
+\create@tubscolor{BlueDark}{cmyk}{1.0,0.2,0.12,0.73}
+\create@tubscolor{VioletLight}{cmyk}{0.54,0.93,0.0,0.0}
+\create@tubscolor{Violet}{cmyk}{0.5,1.0,0.0,0.5}
+\create@tubscolor{VioletDark}{cmyk}{0.5,1.0,0.35,0.60}
+}{%
+\ifthenelse{\equal{\tc@colormodel}{rgbbeamer}}{%
+\selectcolormodel{rgb}
+\create@tubscolor{RichBlack}{RGB}{0,0,0}% Nur für Kompatibilität!
+\create@tubscolor{Black}{RGB}{0,0,0}% TODO: nicht doch (8,8,8)?
+\iftc@mono
+  \definecolor{tubsRed}{RGB}{tubsBlack}
+  \definecolor{tuRed}{RGB}{tuBlack}
+\else
+  \definecolor{tubsRed}{RGB}{190,30,60}
+  \definecolor{tuRed}{RGB}{190,30,60}
+\fi
+\definecolor{tubsWhite}{RGB}{255,255,255}
+\definecolor{tuWhite}{RGB}{255,255,255}
+\create@tubscolor{Yellow}{RGB}{255,205,0}
+\create@tubscolor{Orange}{RGB}{250,110,0}
+\definecolor{tuRed100}{RGB}{176,0,70}
+\colorlet{tuRed80}{tuRed100!80}
+\colorlet{tuRed60}{tuRed100!60}
+\colorlet{tuRed40}{tuRed100!40}
+\colorlet{tuRed20}{tuRed100!20}
+\definecolor{tubsRed100}{RGB}{176,0,70}
+\colorlet{tubsRed80}{tubsRed100!80}
+\colorlet{tubsRed60}{tubsRed100!60}
+\colorlet{tubsRed40}{tubsRed100!40}
+\colorlet{tubsRed20}{tubsRed100!20}
+\create@tubscolor{GreenLight}{RGB}{198,238,0}
+\create@tubscolor{Green}{RGB}{137,164,0}
+\create@tubscolor{GreenDark}{RGB}{0,113,86}
+\create@tubscolor{BlueLight}{RGB}{124,205,230}
+\create@tubscolor{Blue}{RGB}{0,128,180}
+\create@tubscolor{BlueDark}{RGB}{0,83,116}
+\create@tubscolor{VioletLight}{RGB}{204,0,153}
+\create@tubscolor{Violet}{RGB}{118,0,118}
+\create@tubscolor{VioletDark}{RGB}{118,0,84}
+}{%
+\selectcolormodel{rgb}
+\iftc@mono
+  \definecolor{tuRed}{RGB}{0,0,0}
+  \definecolor{tubsRed}{RGB}{0,0,0}
+\else
+  \definecolor{tuRed}{RGB}{190,30,60}
+  \definecolor{tubsRed}{RGB}{190,30,60}
+\fi
+\create@tubscolor{RichBlack}{RGB}{0,0,0}% Nur für Kompatibilität!
+\create@tubscolor{Black}{RGB}{0,0,0}
+\definecolor{tuWhite}{RGB}{255,255,255}
+\definecolor{tubsWhite}{RGB}{255,255,255}
+\create@tubscolor{Yellow}{RGB}{255,200,41}
+\create@tubscolor{Orange}{RGB}{225,109,0}
+\definecolor{tuRed100}{RGB}{113,28,47}
+\colorlet{tuRed80}{tuRed100!80}
+\colorlet{tuRed60}{tuRed100!60}
+\colorlet{tuRed40}{tuRed100!40}
+\colorlet{tuRed20}{tuRed100!20}
+\definecolor{tubsRed100}{RGB}{113,28,47}
+\colorlet{tubsRed80}{tubsRed100!80}
+\colorlet{tubsRed60}{tubsRed100!60}
+\colorlet{tubsRed40}{tubsRed100!40}
+\colorlet{tubsRed20}{tubsRed100!20}
+\create@tubscolor{GreenLight}{RGB}{172,193,58}
+\create@tubscolor{Green}{RGB}{109,131,0}
+\create@tubscolor{GreenDark}{RGB}{0,83,74}
+\create@tubscolor{BlueLight}{RGB}{102,180,211}
+\create@tubscolor{Blue}{RGB}{0,112,155}
+\create@tubscolor{BlueDark}{RGB}{0,63,87}
+\create@tubscolor{VioletLight}{RGB}{138,48,127}
+\create@tubscolor{Violet}{RGB}{81,18,70}
+\create@tubscolor{VioletDark}{RGB}{76,24,48}
+}}
+\let@tubscolor{Gray}{Black}
+%% Yellow/red auch als |orangeLight| bzw. |orangeDark| verwendbar
+\let@tubscolor{OrangeLight}{Yellow}
+\colorlet{tuOrangeDark}{tuRed100}
+\colorlet{tuOrangeDark100}{tuRed100}
+\colorlet{tuOrangeDark80}{tuRed80}
+\colorlet{tuOrangeDark60}{tuRed60}
+\colorlet{tuOrangeDark40}{tuRed40}
+\colorlet{tuOrangeDark20}{tuRed20}
+\colorlet{tubsOrangeDark}{tubsRed100}
+\colorlet{tubsOrangeDark100}{tubsRed100}
+\colorlet{tubsOrangeDark80}{tubsRed80}
+\colorlet{tubsOrangeDark60}{tubsRed60}
+\colorlet{tubsOrangeDark40}{tubsRed40}
+\colorlet{tubsOrangeDark20}{tubsRed20}
+%% Definiere: Alle Medium-Farben auch mit Zusatz  Medium zugreifbar
+\let@tubscolor{OrangeMedium}{Orange}
+\let@tubscolor{GreenMedium}{Green}
+\let@tubscolor{BlueMedium}{Blue}
+\let@tubscolor{VioletMedium}{Violet}
+\let@tubscolor{LightOrange}{OrangeLight}
+\let@tubscolor{LightGreen}{GreenLight}
+\let@tubscolor{LightBlue}{BlueLight}
+\let@tubscolor{LightViolet}{VioletLight}
+\let@tubscolor{MediumOrange}{OrangeMedium}
+\let@tubscolor{MediumGreen}{GreenMedium}
+\let@tubscolor{MediumBlue}{BlueMedium}
+\let@tubscolor{MediumViolet}{VioletMedium}
+\let@tubscolor{DarkOrange}{OrangeDark}
+\let@tubscolor{DarkGreen}{GreenDark}
+\let@tubscolor{DarkBlue}{BlueDark}
+\let@tubscolor{DarkViolet}{VioletDark}
+\colorlet{tuGray}{tuGray60}
+\colorlet{tuLightGray}{tuGray20}
+\colorlet{tuGrayLight}{tuGray20}
+\colorlet{tubsGray}{tubsGray60}
+\colorlet{tubsLightGray}{tubsGray20}
+\colorlet{tubsGrayLight}{tubsGray20}
+
+\let@tubscolor{Grey}{Gray}
+\colorlet{tuLightGrey}{tuLightGray}
+\colorlet{tuGreyLight}{tuGrayLight}
+\colorlet{tubsLightGrey}{tubsLightGray}
+\colorlet{tubsGreyLight}{tubsGrayLight}
+%% Define secondary colors
+%% Can be adressed as tuSecondary exactly as the other colors
+%% Defined via |\defineSecondary|
+\newcounter{perc}
+\def\create@SecColor#1#2{%
+\colorlet{tuSecondaryLight#2}{tu#1Light#2}%
+\colorlet{tuSecondaryMedium#2}{tu#1Medium#2}%
+\colorlet{tuSecondary#2}{tu#1Medium#2}%
+\colorlet{tuSecondaryDark#2}{tu#1Dark#2}%
+\colorlet{tubsSecondaryLight#2}{tubs#1Light#2}%
+\colorlet{tubsSecondaryMedium#2}{tubs#1Medium#2}%
+\colorlet{tubsSecondary#2}{tubs#1Medium#2}%
+\colorlet{tubsSecondaryDark#2}{tubs#1Dark#2}%
+}
+\def\define@Secondary#1{%
+\forloop[20]{perc}{20}{\value{perc}< 101}{%
+\create@SecColor{#1}{\arabic{perc}}%
+}%
+\colorlet{tuSecondaryLight}{tu#1Light100}%
+\colorlet{tuSecondaryMedium}{tu#1Medium100}%
+\colorlet{tuSecondary}{tu#1Medium100}%
+\colorlet{tuSecondaryDark}{tu#1Dark100}%
+\colorlet{tubsSecondaryLight}{tubs#1Light100}%
+\colorlet{tubsSecondaryMedium}{tubs#1Medium100}%
+\colorlet{tubsSecondary}{tubs#1Medium100}%
+\colorlet{tubsSecondaryDark}{tubs#1Dark100}%
+}
+\ifthenelse{\equal{\secondaryColorName}{undefined}}{}{%
+\define@Secondary{\secondaryColorName}}
+\newcommand{\selectSecondary}[1]{
+  \def\tc@sec@arg{#1}
+  \ifthenelse{\equal{#1}{orange}}{%
+    \def\tc@sec@arg{Orange}
+  }{\ifthenelse{\equal{#1}{green}}{%
+    \def\tc@sec@arg{Green}
+  }{\ifthenelse{\equal{#1}{blue}}{%
+    \def\tc@sec@arg{Blue}
+  }{\ifthenelse{\equal{#1}{violet}}{%
+    \def\tc@sec@arg{Violet}
+  }{}}}}
+  \define@Secondary{\tc@sec@arg}
+}
+\newlength{\cshowwidth}
+\newcommand{\colorshow}[3][\relax]{{\noindent\sffamily\small%
+\if#1\relax\setlength{\cshowwidth}{\textwidth}\else\setlength{\cshowwidth}{#1}\fi
+\colorlet{fglbg}{black}
+\colorbox{tu#2#3100}{\hbox to 0.188\cshowwidth{%
+  \color{fglbg}\vphantom{Fg}#3{}100\hfill}}%
+\colorbox{tu#2#380}{\hbox to 0.188\cshowwidth{%
+  \color{fglbg}\vphantom{Fg}#3{}80\hfill}}%
+\colorbox{tu#2#360}{\hbox to 0.188\cshowwidth{\vphantom{Fg}#3{}60\hfill}}%
+\colorbox{tu#2#340}{\hbox to 0.188\cshowwidth{\vphantom{Fg}#3{}40\hfill}}%
+\colorbox{tu#2#320}{\hbox to 0.188\cshowwidth{\vphantom{Fg}#3{}20\hfill}}\\%
+}}
+\newcommand\tubs@colorbox[4][\relax]{% TODO: use this!
+  \setlength{\cshowwidth}{\textwidth}%TODO...
+  \ifx#1\relax
+    \colorlet{fglbg}{tuBlack}%
+  \else
+    \colorlet{fglbg}{#1}%
+  \fi
+  \colorbox{tubs#2#3#4}{\hbox to 0.188\cshowwidth{%
+    \color{fglbg}%
+    \vphantom{Fg}#3{}#4\hfill}%
+  }%
+}
+\newcommand{\tubscolorshow}[3][\relax]{{\noindent\sffamily%
+\if#1\relax\setlength{\cshowwidth}{\textwidth}\else\setlength{\cshowwidth}{#1}\fi
+\colorlet{fglbg}{black}
+\colorbox{tubs#2#3100}{\hbox to 0.188\cshowwidth{%
+  \color{fglbg}\vphantom{Fg}#3{}100\hfill}}%
+\colorbox{tubs#2#380}{\hbox to 0.188\cshowwidth{%
+  \color{fglbg}\vphantom{Fg}#3{}80\hfill}}%
+\colorbox{tubs#2#360}{\hbox to 0.188\cshowwidth{\vphantom{Fg}#3{}60\hfill}}%
+\colorbox{tubs#2#340}{\hbox to 0.188\cshowwidth{\vphantom{Fg}#3{}40\hfill}}%
+\colorbox{tubs#2#320}{\hbox to 0.188\cshowwidth{\vphantom{Fg}#3{}20\hfill}}\\%
+}}%    \end{macrocode}
+\color{tubsBlack}
+\AfterPackage*{soul}{%
+\patchcmd{\SOUL@ulunderline}{\dimen@}{\SOUL@dimen}{}{}%
+\patchcmd{\SOUL@ulunderline}{\dimen@}{\SOUL@dimen}{}{}%
+\patchcmd{\SOUL@ulunderline}{\dimen@}{\SOUL@dimen}{}{}%
+\newdimen\SOUL@dimen%
+}
+\endinput
+%%
+%% End of file `tubscolors.sty'.
