@@ -34,6 +34,7 @@ Further contributors and former project members:
 
 ## Usage in Lectures
 
+- TU Braunschweig, Germany: Software Product Lines (Winter Term 2024/25)
 - Paderborn University, Germany: Software Product Lines (Summer Term 2024)
 - University of Bern, Switzerland: Software Product Lines (Winter Term 2022/23, 2023/24, 2024/25)
 - University of Magdeburg, Germany: Implementation Techniques for Software Product Lines (Winter Term 2022/23, 2023/24, 2024/25)
