@@ -5,43 +5,10 @@
 \subsubsection*{Cars}
 
 \begin{frame}{\myframetitle}
-	\begin{fancycolumns}[b,widths={67}]
-		\begin{exampletight}{Configuring a car \ldots}
-			\centering\small%
-			\only<1-3>{\pic[width=\linewidth]{toyota-aygo-wheels0}}%
-			\only<4-5|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels}}%
-			\only<6-7|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels2}}%
-			\only<8-9|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels2b}}%
-			\only<10|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels}}%
-			\only<11-12|handout:0>{\pic[width=.8\linewidth]{toyota-aygo-color}}%
-			\only<13|handout:0>{\pic[width=.8\linewidth]{toyota-aygo-color2}}%
-			\only<14-15|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels3}}%
-			\only<16-|handout:0>{\pic[width=\linewidth]{toyota-aygo-wheels4}}%
-		\end{exampletight}
-	\nextcolumn
-		\vspace{-\textheightoftitle}
-		\begin{example}{\ldots\ is complicated!}
-			\begin{enumerate}
-				\item the default configuration
-				\uncover<3->{\item we want \textbf{black cap}}
-				\uncover<5->{\item we want \textbf{white wheels}}
-				\uncover<6->{\item black cap unavailable,\\red selected automatically\\(not blue!)}
-				\uncover<7->{\item fine, back to \textbf{black wheels}}
-				\uncover<9->{\item and, back to \textbf{black cap}}
-				\uncover<11->{\item \textbf{confirm selection} to continue with selection of the car color}
-				\uncover<12->{\item we want a \textbf{red car}}
-				\uncover<14->{\item popup dialog: black wheels unavailable (no automatic selection! preview of unavailable wheels!)}
-			\end{enumerate}
-			\uncover<15->{what now? back to Step 3?}
-		\end{example}
-	\end{fancycolumns}
-\end{frame}
-
-\begin{frame}{\myframetitle}
 	\begin{fancycolumns}[t,columns=3,widths={33,22}]
 		\begin{exampletight}{Configuring a Car \ldots}
 			\pic[width=\linewidth]{toyota-aygo-wheels3}\\\centering
-			10. cancel the dialog
+			\href{https://www.youtube.com/watch?v=OpSaA1Nt56w&list=PL4hJhdKDPIxha8So7muX2zfNUU8NBoiu3&index=13}{Demo Video}
 		\end{exampletight}
 	\nextcolumn
 		\begin{exampletight}{with a Weird Price}
@@ -116,6 +83,7 @@
 	\begin{fancycolumns}
 		\begin{note}{Open Questions}
 			\begin{itemize}
+				% TODO these questions are not answered really well in 04c. could put more emphasis on configurators and decision propagation
 				\item How do such configurators work?
 				\item How to avoid inconsistencies?
 				\item How to provide explanations and fixes? % TODO not explained in this part. remove?
