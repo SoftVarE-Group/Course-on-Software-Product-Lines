@@ -130,7 +130,7 @@
 \author{Thomas Thüm, Elias Kuiter, Timo Kehrer}
 \lecture{Conditional Compilation}{conditional}
 
-% TODO shall we use conditional compilation with build systems (preprocessors) instead? would require numerous changes in this lecture
+% TODO we should use conditional compilation with build systems (preprocessors) instead. would require numerous changes in this lecture. problem is that conditional compilation is currently introduced in Part II only, which needs to be somehow moved to Part I then.
 \section{Features with Build Systems}
 \input{content/05a-buildsystems}
 \lessonslearned{
@@ -152,8 +152,13 @@
 %		\small\featureDiagramConfigurableDatabase
 %	\end{center}
 	\begin{enumerate}
-		\item How are features implemented with build systems different from clone-and-own with build systems?
-		\item What is the respective granularity?
+		\item[] What are differences of the following two implementation techniques for variability?
+			\begin{enumerate}
+				\item[(a)] clone-and-own with build systems
+				\item[(b)] features with build systems
+			\end{enumerate}
+		% TODO removed the next task, as the term granularity has not been defined yet
+		%\item What is the respective granularity?
 	\end{enumerate}
 
 	\uploadpractice
