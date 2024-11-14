@@ -264,8 +264,9 @@ config X86_64
 
 \subsubsection*{KBuild as Build System}
 
-\begin{frame}[fragile]{\myframetitle}
-	\begin{fancycolumns}
+\begin{frame}[fragile,t]{\myframetitle}
+	\vspace*{-2ex}
+	\begin{fancycolumns}[t]
 		\begin{kconfigtight}[basicstyle=\footnotesize]{Feature Model with KConfig\mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kconfig}{linux/arch/x86/Kconfig}}}
 config X86_32 ...
 config X86_64 ...
@@ -280,15 +281,18 @@ config IA32_EMULATION
 				\item a style for writing Makefiles in Linux
 				\item defines goals with Make variables
 				\begin{itemize}
-					\item \texttt{obj-y}: static linkage (= include feature)
-					\item \texttt{obj-m}: dynamic linkage (= as module)
-					\item \texttt{obj-}: no linkage (= exclude feature)
+					\small
+					\item \texttt{obj-y} ($\approx 8\%$): static linkage (= include feature)
+					\item \texttt{obj-m} ($< 1\%$): dynamic linkage (= as module)
+					\item \texttt{obj-} ($0\%$): no linkage (= exclude feature)
+					\item \texttt{obj-\$(\ldots)} ($\approx 91\%$): conditional compilation
 				\end{itemize}
 				\item full power of Make $\Rightarrow$ hard to comprehend
 			\end{itemize}
 		\end{definition}
 	\nextcolumn
-		\begin{kbuildtight}[basicstyle=\small]{Feature Mapping with KBuild \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kbuild}{linux/arch/x86/Kbuild}}}
+		\begin{onlyenv}<2|handout:0>
+			\begin{kbuildtight}[basicstyle=\small]{Feature Mapping with KBuild \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kbuild}{linux/arch/x86/Kbuild}}}
 # link these subdirectories statically:
 obj-y += entry/ # entry routines
 obj-y += realmode/ # 16-bit support
@@ -299,18 +303,36 @@ obj-y += mm/ # memory management
 obj-~$(CONFIG_IA32_EMULATION)~ += ia32/
 obj-~$(CONFIG_XEN)~ += xen/ # paravirtualization
 
-# the KConfig feature model can even be overridden:
-obj-~$(subst m,y,$(CONFIG_HYPERV))~ += hyperv/
-		\end{kbuildtight}
 
-		\begin{kbuildtight}[basicstyle=\small]{Recurse into Subsystems\mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/ia32/Makefile}{linux/arch/x86/ia32/Makefile}}}
+obj-~$(CONFIG_HYPERV)~ += hyperv/
+			\end{kbuildtight}
+		\end{onlyenv}
+		\begin{uncoverenv}<3-|handout:1>
+			\begin{kbuildtight}[basicstyle=\small]{Feature Mapping with KBuild \mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/Kbuild}{linux/arch/x86/Kbuild}}}
+# link these subdirectories statically:
+obj-y += entry/ # entry routines
+obj-y += realmode/ # 16-bit support
+obj-y += kernel/ # x86 kernel
+obj-y += mm/ # memory management
+
+# link these depending on a configuration option:
+obj-~$(CONFIG_IA32_EMULATION)~ += ia32/
+obj-~$(CONFIG_XEN)~ += xen/ # paravirtualization
+
+# in the real code, kconfig is (unintuitively?) overridden:
+obj-~$(subst m,y,$(CONFIG_HYPERV))~ += hyperv/
+			\end{kbuildtight}
+		\end{uncoverenv}
+		\begin{uncoverenv}<4-|handout:1>
+			\begin{kbuildtight}[basicstyle=\small]{Recurse into Subsystems\mysource{\href{https://github.com/torvalds/linux/blob/0326074/arch/x86/ia32/Makefile}{linux/arch/x86/ia32/Makefile}}}
 # ia32 kernel emulation subsystem
 obj-~$(CONFIG_IA32_EMULATION)~ := ia32_signal.o
 audit-class-~$(CONFIG_AUDIT)~ := audit.o
 
 # IA32_EMULATION and AUDIT required for audit.o:
 obj-~$(CONFIG_IA32_EMULATION)~ += ~$(audit-class-y)~
-		\end{kbuildtight}
+			\end{kbuildtight}
+		\end{uncoverenv}
 	\end{fancycolumns}
 \end{frame}
 
