@@ -18,9 +18,7 @@
 	breaklines=true, % sets automatic line breaking
 	breakatwhitespace=false,
 	columns=fullflexible,
-	commentstyle=\color{green},
-	keywordstyle=\color{blue},
-	stringstyle=\color{red},
+	commentstyle=\color{black!50}
 }
 
 % easy font size selection
@@ -34,8 +32,8 @@
 	style=small,
 	language=Java,
 	keywordstyle=\bf,
-	moredelim=**[is][\color{red}]{@}{@},
-	moredelim=**[is][\color{green}]{?}{?},
+	moredelim=**[is][\color{lecturegreen}]{@}{@},
+	moredelim=**[is][\color{lecturered}]{?}{?},
 	moredelim=**[is][\color{blue}]{~}{~},
 	moredelim=[is][\sout]{|}{|},
 }
@@ -62,14 +60,14 @@
 \definelanguage{kbuild}{
 	morekeywords={config, bool, default, if, help, def_bool, depends, on, select},
 	morecomment=[l]{\#},
-	moredelim=**[is][\color{red}]{~}{~},
-	moredelim=**[is][\color{green}]{?}{?},
+	moredelim=**[is][\color{lecturered}]{~}{~},
+	moredelim=**[is][\color{lecturegreen}]{?}{?},
 	literate={-}{{-}}1,
 }
 
 \definelanguage{cpp}{
 	language=C++,
 	morekeywords={elifdef,elifndef},
-	moredelim=**[is][\color{green}\bfseries\itshape]{~}{~},
-	moredelim=**[is][\color{red}\bfseries\itshape]{@}{@}
+	moredelim=**[is][\color{lecturegreen}\bfseries\itshape]{~}{~},
+	moredelim=**[is][\color{lecturered}\bfseries\itshape]{@}{@}
 }

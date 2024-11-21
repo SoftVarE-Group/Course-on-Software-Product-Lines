@@ -374,9 +374,9 @@ public class Graph {
 		return e;
 	}
 	Edge add(Node n, Node m, Weight w) {
-		@|Edge e = new Edge(n, m);|@
-		@|nodes.add(n); nodes.add(m); edges.add(e);|@
-		?Edge e = add(n, m);?
+		?|Edge e = new Edge(n, m);|?
+		?|nodes.add(n); nodes.add(m); edges.add(e);|?
+		@Edge e = add(n, m);@
 		e.weight = w;
 		return e;
 	}

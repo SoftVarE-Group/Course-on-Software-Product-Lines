@@ -1,5 +1,9 @@
 % TYPICAL COMMANDS FOR LECTURES
 
+\definecolor{lecturered}{RGB}{217,95,2}
+\definecolor{lecturegreen}{RGB}{27,158,119}
+\definecolor{lectureblue}{RGB}{117,112,179}
+
 \renewcommand{\emph}[1]{{\color{blue}\textbf{#1}}}
 %\ifdarkmode
 %	\renewcommand{\emph}[1]{{\color{orange}\textbf{#1}}} % workaround for better readability
@@ -155,10 +159,16 @@
 \newcommand{\defeq}{\vcentcolon=} % defining equals
 \newcommand{\power}[1]{\mathcal{P}(#1)} % power set
 \newcommand{\refslide}[1]{\hyperlink{#1}{(see Slide \autoref{#1})}} % link to slide
-\newcommand{\fs}[1]{\ensuremath{{\color{green}#1}}} % selected feature
-\newcommand{\fd}[1]{\ensuremath{{\color{red}#1}}} % deselected feature
-\newcommand{\clause}[1]{\ensuremath{{\color{red}#1}}} % clause in a CNF
-\newcommand{\cfg}[3][0]{\ensuremath({{\only<#1>{\color{green}}\{#2\}}, {\only<#1>{\color{red}}\{#3\}})}} % configuration
+\newcommand{\fs}[1]{\ensuremath{{\color{lecturegreen}#1}}} % selected feature
+\newcommand{\fd}[1]{\ensuremath{{\color{lecturered}#1}}} % deselected feature
+\newcommand{\clause}[1]{\ensuremath{{\color{lecturered}#1}}} % clause in a CNF
+\newcommand{\cfg}[3][0]{\ensuremath{({\only<#1>{\color{lecturegreen}}\{#2\}}, {\only<#1>{\color{lecturered}}\{#3\}})}} % configuration
+
+
+\let\oldtop\top
+\renewcommand{\top}{\ensuremath{\boldsymbol{\oldtop}}}
+\let\oldbot\bot
+\renewcommand{\bot}{\ensuremath{\boldsymbol{\oldbot}}}
 
 \usepackage{mathtools} % required for absolute value in modeling lecture
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value

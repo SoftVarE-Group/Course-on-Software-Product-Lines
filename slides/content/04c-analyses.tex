@@ -361,11 +361,11 @@
 			\node (topleft) at (-1.4,0) {};
 			\node (bottomleft) at (-1.4,-4) {};
 			
-			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\tiny\color{red}Feature Diagram, UVL}};
-			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{red}Thoughts, Plain Text}};
-			\node (phi) at (2,-2) [align=center] {Formula\\[-1ex]{\tiny\color{red}Infix Notation}};
-			\node (cfg) at (4,-4) [align=center] {Configuration Map\\[-1ex]{\tiny\color{red}Excel, Set of Sets}};
-			\node (cnf) at (2,-4) [align=center] {CNF\\[-1ex]{\tiny\color{red}DIMACS}};
+			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\tiny\color{lecturered}Feature Diagram, UVL}};
+			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{lecturered}Thoughts, Plain Text}};
+			\node (phi) at (2,-2) [align=center] {Formula\\[-1ex]{\tiny\color{lecturered}Infix Notation}};
+			\node (cfg) at (4,-4) [align=center] {Configuration Map\\[-1ex]{\tiny\color{lecturered}Excel, Set of Sets}};
+			\node (cnf) at (2,-4) [align=center] {CNF\\[-1ex]{\tiny\color{lecturered}DIMACS}};
 
 			\path [dashed, thick, ->] (topleft) edge node[left, rotate=90, yshift=2mm, xshift=10mm] {Loss of Structure} (bottomleft);
 		
@@ -388,7 +388,7 @@
 			\path [->] (trans) edge node[yshift=1mm] {Automated Transformation} (trans2);
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
-			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
+			\node (bottomleft2) at (-0.2,-5) {\tiny\color{lecturered}Concrete Format};
 		\end{tikzpicture} % TODO position of "Concrete Format" not optimal. gray out irrelevant parts? not sure what to look at here.
 	\end{fancycolumns}
 \end{frame}
@@ -470,12 +470,12 @@
 	\begin{fancycolumns}[t]
 		\emph{Consistency of Partial Configurations (SAT)}
 		\begin{definition}{Valid Partial Configuration}
-			Is a partial configuration $C = ({\color{green}S}, {\color{red}D})$ consistent with the feature model? % TODO would be easier if term valid could be used here
+			Is a partial configuration $C = ({\color{lecturegreen}S}, {\color{lecturered}D})$ consistent with the feature model? % TODO would be easier if term valid could be used here
 
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
-				\node [block] (query) {$\phi \pand \bigwedge_{s \in S} {\color{green}s} \pand \bigwedge_{d \in D} {\color{red}\pnot d}$};
+				\node [block] (query) {$\phi \pand \bigwedge_{s \in S} {\color{lecturegreen}s} \pand \bigwedge_{d \in D} {\color{lecturered}\pnot d}$};
 				\node [block, right =10mm of query] (answer) {$\bot/\top$};
 				\node [block, above right =-3mm and 6mm of answer] (void) {$C$ $\times$};
 				\node [block, below right =-3mm and 6mm of answer] (notvoid) {$C$ \checkmark};
@@ -491,7 +491,7 @@
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
 				\node [block] (query) {$\phi \pand ...$};
-				\node [block, right =10mm of query] (answer) {$\abs{\{(S', D') \in C \mid {\color{green}S} \subseteq S', {\color{red}D} \in D'\}}$};
+				\node [block, right =10mm of query] (answer) {$\abs{\{(S', D') \in C \mid {\color{lecturegreen}S} \subseteq S', {\color{lecturered}D} \in D'\}}$};
 				\path[draw,->,color=blue] (query) edge node[yshift=2mm] {\small \ssat{}} (answer);
 			\end{tikzpicture}
 		\end{definition}
@@ -581,22 +581,22 @@
 			\centering
 			\begin{tikzpicture}
 				\tikzset{block/.style={align=center,minimum height=5mm}}
-				\node [block,align=center,color=red,font={\footnotesize}] (fm2) {attributes\\cardinalities\\submodels};
+				\node [block,align=center,color=lecturered,font={\footnotesize}] (fm2) {attributes\\cardinalities\\submodels};
 				\node [block, below =.5mm of fm2] (fm) {Feature Model};
 				\node [block, right =4mm of fm] (formula) {Formula};
-				\node [block, above =.5mm of formula,align=center,color=red,font={\footnotesize}] (formula2) {quantifiers\\predicates\\functions};
+				\node [block, above =.5mm of formula,align=center,color=lecturered,font={\footnotesize}] (formula2) {quantifiers\\predicates\\functions};
 				\node [block, right =8mm of formula] (cnf) {DIMACS};
-				\node [block, above =.5mm of cnf,align=center,color=red,font={\footnotesize}] (cnf2) {DNF\\d-DNNF\\BDD};
+				\node [block, above =.5mm of cnf,align=center,color=lecturered,font={\footnotesize}] (cnf2) {DNF\\d-DNNF\\BDD};
 				\node [block, below right =8mm and -12mm of fm] (query) {Query};
-				\node [block, below =-.5mm of query,align=center,color=red,font={\footnotesize}] (query2) {false-optional features\\atomic sets\\redundant constraints\\feature-model edits\\explanations\\sampling\\slicing};
+				\node [block, below =-.5mm of query,align=center,color=lecturered,font={\footnotesize}] (query2) {false-optional features\\atomic sets\\redundant constraints\\feature-model edits\\explanations\\sampling\\slicing};
 				\node [block, right =27mm of query] (answer) {Answer};
 				\node [block, right =4mm of answer] (result) {};
 				\node [coordinate, below right =5mm and 2mm of cnf] (right) {};
 				\node [coordinate, above left =3mm and 2mm of query] (left) {};
 				\path[draw,->,color=blue] (fm) edge node[yshift=2mm] {\small $\Phi$} (formula)
-							(formula) edge node[yshift=0mm,align=center] {\small $CNF$\\{\footnotesize\color{red}Tseitin}} (cnf)
+							(formula) edge node[yshift=0mm,align=center] {\small $CNF$\\{\footnotesize\color{lecturered}Tseitin}} (cnf)
 							(cnf.east) -| (right) -- node[yshift=2mm] {\small formulate} (left) |- (query)
-							(query) edge node[yshift=-7mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT, \ssat{}, AllSAT\\{\color{red}MAX-SAT}\\{\color{red}Solution-SAT}\\{\color{red}MUS}\\{\color{red}SMT, CSP}\\{\color{red}QBF}\\{\color{red}WMC, PMC}} (answer)
+							(query) edge node[yshift=-7mm,align=center,font={\footnotesize}] {{\small solve}\\[1.5ex]SAT, \ssat{}, AllSAT\\{\color{lecturered}MAX-SAT}\\{\color{lecturered}Solution-SAT}\\{\color{lecturered}MUS}\\{\color{lecturered}SMT, CSP}\\{\color{lecturered}QBF}\\{\color{lecturered}WMC, PMC}} (answer)
 							(answer) edge (result);
 			\end{tikzpicture}
 			\vspace*{-3ex}
