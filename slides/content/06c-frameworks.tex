@@ -417,16 +417,16 @@ public class Application {
 	\nextcolumn
 		\begin{example}{}
 			\begin{itemize}
-				\item Other IDEs (e.g., IntelliJ, ...)
-				\item Unit test frameworks (e.g., JUnit, ...)
-				\item Frontend frameworks (e.g., React, Angular ...)
-				\item Backend frameworks (e.g., Spring Boot, Ruby on Rails, Django, ...) 
-				\item Multimedia frameworks (e.g., DirectX, ...)
-				\item Raster/vector graphics editors (e.g., Adobe Photoshop, MS Visio, ...)
+				\item Other IDEs (e.g., IntelliJ)
+				\item Unit test frameworks (e.g., JUnit)
+				\item Frontend frameworks (e.g., React, Angular)
+				\item Backend frameworks (e.g., Spring Boot, Ruby on Rails, Django) 
+				\item Multimedia frameworks (e.g., DirectX)
+				\item Raster/vector graphics editors (e.g., Adobe Photoshop, MS Visio)
 				\item Instant messenger frameworks (e.g., Miranda, Trillian)
 				\item Compiler frameworks (e.g., LLVM, Polyglot, abc, JustAddJ)
-				\item Web browsers (e.g., Firefox, ...)
-				\item E-Mail clients (e.g., Thunderbird, ...)
+				\item Web browsers (e.g., Firefox)
+				\item E-Mail clients (e.g., Thunderbird)
 				\item etc.
 			\end{itemize}
 		\end{example}		
@@ -440,15 +440,11 @@ public class Application {
 	\frametitle<5>{\myframetitle}
 	\begin{fancycolumns}[widths={40},animation=none]
 		\begin{example}{Recap: Service-Based Implementation}
-			\pic[width=.23\linewidth,height=1.0cm]{lego_components} 
-				\vspace*{\fill}
-					$+$ 
-				\vspace*{\fill}	
-			\pic[width=.23\linewidth,height=1.0cm]{lego_orchestration}
-				\vspace*{\fill}
-					$=$ 
-				\vspace*{\fill}	
-			\pic[width=.3\linewidth,height=1.0cm]{lego_product}
+			\raisebox{-0.4cm}{\pic[width=.23\linewidth,height=1.0cm]{lego_components}}
+			$+$ 
+			\raisebox{-0.4cm}{\pic[width=.23\linewidth,height=1.0cm]{lego_orchestration}}
+			$=$
+			\raisebox{-0.4cm}{\pic[width=.3\linewidth,height=1.0cm]{lego_product}}
 		\end{example}
 		\begin{example}{Still needs some specification of ``composition'' (cf.\ orchestration vs.\ choreography)}
 			\centering
@@ -467,15 +463,11 @@ public class Application {
 				neither glue code nor explicit service composition required
 		\end{note}
 		\begin{example}{}
-			\pic[width=.31\linewidth,height=1.75cm]{lego_product_partial} 
-				\vspace*{\fill}
-					$+$ 
-				\vspace*{\fill}	
-			\pic[width=.27\linewidth,height=1.75cm]{lego_components}
-				\vspace*{\fill}
-					$=$ 
-				\vspace*{\fill}	
-			\pic[width=.31\linewidth,height=1.75cm]{lego_product}
+			\raisebox{-0.8cm}{\pic[width=.29\linewidth,height=1.75cm]{lego_product_partial}}
+			$+$
+			\raisebox{-0.8cm}{\pic[width=.27\linewidth,height=1.75cm]{lego_components}}
+			$=$
+			\raisebox{-0.8cm}{\pic[width=.29\linewidth,height=1.75cm]{lego_product}}
 		\end{example}
 		\pause
 		\begin{note}{}
