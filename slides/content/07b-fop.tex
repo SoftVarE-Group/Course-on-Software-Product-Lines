@@ -212,13 +212,13 @@ class Edge {
 \end{codetight}
 \begin{codetight}{Edge.jak}
 refines class Edge {
-	@private Node start;@
+	~private Node start;~
 	...
 }
 \end{codetight}
 \begin{codetight}{Edge.jak}
 refines class Edge {
-	@private Weight weight;@
+	?private Weight weight;?
 	...
 }
 \end{codetight}
@@ -250,8 +250,8 @@ class Edge {
 refines class Edge {
 	...
 	void print() {
-		@Super().print();@
-		@System.out.print(" directed from " + start);@
+		~Super().print();~
+		~System.out.print(" directed from " + start);~
 	}
 }
 \end{codetight}
@@ -259,8 +259,8 @@ refines class Edge {
 refines class Edge {
 	...
 	void print() {
-		@Super().print();@
-		@System.out.print(" weighted with " + weight);@
+		?Super().print();?
+		?System.out.print(" weighted with " + weight);?
 	}
 }
 \end{codetight}
