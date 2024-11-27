@@ -167,14 +167,14 @@ class Edge {
 					{\color{gray}$\top$}\\
 					{\color{gray}$\top$}\\
 					{\color{gray}$\top$}\\
-					{\color{green}$Directed$}\\
+					{\color{lecturegreen}$Directed$}\\
 					{\color{gray}$Directed$}\\
-					{\color{green}$\pnot Dir \pand Hyper$}\\
+					{\color{lecturegreen}$\pnot Dir \pand Hyper$}\\
 					{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
 					{\color{gray}$\pnot Dir \pand Hy \pand Un$}\\
-					{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-					{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-					{\color{red}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+					{\color{lecturered}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+					{\color{lecturered}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
+					{\color{lecturered}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 					{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
 					{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 					{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
@@ -234,8 +234,8 @@ class Edge {
 		\uncover<2->{
 			\begin{example}{}
 				\begin{itemize}
-					\item {\color{green}$PC' = \pnot Dir \pand \pnot Hy$}
-					\item {\color{red}$PC = \pnot Dir \pand \pnot Hy \pand \pnot Dir$}
+					\item {\color{lecturegreen}$PC' = \pnot Dir \pand \pnot Hy$}
+					\item {\color{lecturered}$PC = \pnot Dir \pand \pnot Hy \pand \pnot Dir$}
 				\end{itemize}
 			\end{example}
 		}
@@ -260,11 +260,11 @@ class Edge {
 				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
-				{\color{green}$\pnot Dir \pand \pnot Hy$}\\
-				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-				{\color{green}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{lecturegreen}$\pnot Dir \pand \pnot Hy$}\\
+				{\color{lecturered}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{lecturered}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{lecturered}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{lecturegreen}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\top$}
 			\end{flushright}
 		\end{exampletight}
@@ -460,7 +460,7 @@ class Edge {
 	\begin{fancycolumns}[t,columns=4,widths={31,20,20,29},animation=none]
 		\begin{exampletight}{Feature-Model Formula}
 			\vspace*{-3ex}
-			\color{red}
+			\color{lecturered}
 			\begin{align*}
 				&Graph \pand Node \pand Edge \\
 				\pand &\pnot (Directed \pand Undirected) \\
@@ -471,7 +471,7 @@ class Edge {
 	\nextcolumn
 		\begin{exampletight}{File PC \tiny\texttt{edge.cpp}}
 			\vspace*{4.5ex}
-			\Huge\centering\rotatebox{45}{\color{red}$Edge$}
+			\Huge\centering\rotatebox{45}{\color{lecturered}$Edge$}
 			\vspace*{4.5ex}
 		\end{exampletight}
 	\nextcolumn
@@ -489,7 +489,7 @@ class Edge {
 				{\color{gray}$\pnot Dir \pand Hy \pand \pnot Un \pand Dir$}\\
 				{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
-				{\color{red}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
+				{\color{lecturered}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 				{\color{gray}$\pnot Dir \pand \pnot Hy \pand \pnot Dir$}\\
 				{\color{gray}$\pnot Dir \pand \pnot Hy$}\\
 				{\color{gray}$\top$}
@@ -517,7 +517,7 @@ class Edge {
 	\begin{alignat*}{3}
 		PC_{location} \defeq~&\uncover<2->{\Phi(FM) &~\pand~& PC_{\texttt{edge.cpp}} &~\pand~& PC_{\texttt{pair<Node, Node> nodePair;}}\\}
 		\uncover<3->{=~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand (D \por H) &~\pand~& E &~\pand~& \pnot D \pand \pnot H \pand \pnot D\\}
-		\uncover<4->{\mequals~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand {\color{red}(D \por H)} &~\pand~& E &~\pand~& {\color{red}\pnot D \pand \pnot H} \pand \pnot D\\}
+		\uncover<4->{\mequals~&G \pand N \pand E \pand \pnot (D \pand U) \pand (H \pimplies U) \pand {\color{lecturered}(D \por H)} &~\pand~& E &~\pand~& {\color{lecturered}\pnot D \pand \pnot H} \pand \pnot D\\}
 		\uncover<5->{\mimplies~&(D \por H) \pand \pnot D \pand \pnot H\\}
 		\uncover<6->{\mimplies~&\bot \text{ -- so this code is dead after all!}}
 	\end{alignat*}
@@ -573,7 +573,7 @@ class Edge {
 	\uncover<2->{
 		\vspace*{-3ex}
 		\begin{note}{}
-			\sout{Is} {\color{red}Are} there \sout{dead code} {\color{red}dead features}? Are there \sout{superfluous annotations} {\color{red}redundant constraints}?
+			\sout{Is} \emph{Are} there \sout{dead code} \emph{dead features}? Are there \sout{superfluous annotations} \emph{redundant constraints}?
 		\end{note}
 	}
 \end{frame}

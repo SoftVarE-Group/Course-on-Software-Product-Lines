@@ -105,9 +105,9 @@
 		\begin{exampletight}{}
 			\centering
 			\featureDiagram{Graph,concrete[Directed,concrete,optional][Undirected,concrete,optional][Hyper,concrete,optional]}
-			{\color{blue}$\pnot (Directed \pand Undirected)$}\\
-			{\color{green}$Hyper \pimplies Undirected$}\\
-			{\color{red}$Directed \por Hyper$}
+			{\color{lectureblue}$\pnot (Directed \pand Undirected)$}\\
+			{\color{lecturegreen}$Hyper \pimplies Undirected$}\\
+			{\color{lecturered}$Directed \por Hyper$}
 		\end{exampletight}
 		\uncover<2->{
 			\begin{definition}{Reachability Condition of $id$}
@@ -126,7 +126,7 @@
 			\small
 			$\Phi(FM) \mimplies (\top \pimplies$\\
 			$~~Dir \por (Hy \pand Un) \por (Hy \pand Dir))$\\[1ex]
-			holds, because each graph is {\color{red}directed} or an ({\color{green}undirected}) {\color{red}hypergraph}
+			holds, because each graph is {\color{lecturered}directed} or an ({\color{lecturegreen}undirected}) {\color{lecturered}hypergraph}
 		\end{example}
 	}
 		\uncover<3->{
@@ -136,7 +136,7 @@
 				$~~\pnot (Dir \pand (Hy \pand Un))$\\
 				$~\pand \pnot (Dir \pand (Hy \pand Dir))$\\
 				$~~\pand \pnot ((Hy \pand Un) \pand (Hy \pand Dir)))$\\[1ex]
-				holds, because a graph is {\color{blue}never} {\color{red}directed} and an ({\color{green}undirected}) {\color{red}hypergraph} {\color{blue}at the same time}
+				holds, because a graph is {\color{lectureblue}never} {\color{lecturered}directed} and an ({\color{lecturegreen}undirected}) {\color{lecturered}hypergraph} {\color{lectureblue}at the same time}
 			\end{example}
 		}
 		\uncover<4->{
