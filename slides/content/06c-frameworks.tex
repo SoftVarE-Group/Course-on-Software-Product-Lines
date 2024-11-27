@@ -113,16 +113,16 @@ public class Calc extends JFrame {
 		JPanel p = new JPanel(new BorderLayout());
 		p.setBorder(new BevelBorder(/* ... */));
 		JButton button = new JButton();
-		button.setText(@"calculate"@);
+		button.setText(~"calculate"~);
 		p.add(button, BorderLayout.EAST);
 		textfield = new JTextField("");
-		textfield.setText(@"10 / 2 + 6"@);
+		textfield.setText(~"10 / 2 + 6"~);
 		textfield.setPreferredSize(new Dimension(350, 40));
 		p.add(textfield, BorderLayout.WEST);
 		button.addActionListener(new ActionListener() 
-			{ @/* calculate */@ });
+			{ ~/* calculate */~ });
 		this.setContentPane(p);
-		this.setTitle(@"My Great Calculator"@);
+		this.setTitle(~"My Great Calculator"~);
 		this.pack();
 		// ...
 	}
@@ -140,16 +140,16 @@ public class Ping extends JFrame {
 		JPanel p = new JPanel(new BorderLayout());
 		p.setBorder(new BevelBorder(/* ... */));
 		JButton button = new JButton();
-		button.setText(@"ping"@);
+		button.setText(~"ping"~);
 		p.add(button, BorderLayout.EAST);
 		textfield = new JTextField("");
-		textfield.setText(@"127.0.0.1"@);
+		textfield.setText(~"127.0.0.1"~);
 		textfield.setPreferredSize(new Dimension(350, 40));
 		p.add(textfield, BorderLayout.WEST);
 		button.addActionListener(new ActionListener() 
-			{ @/* calculate */@ });
+			{ ~/* calculate */~ });
 		this.setContentPane(p);
-		this.setTitle(@"Ping"@);
+		this.setTitle(~"Ping"~);
 		this.pack();	
 		// ...
 	}
@@ -169,29 +169,29 @@ public class Ping extends JFrame {
 public class Application extends JFrame {
 	private Plugin plugin;
 	// ...
-	public Application(@Plugin plugin@) {
-		@this.plugin = plugin;
-		plugin.setApplication(this);@
+	public Application(~Plugin plugin~) {
+		~this.plugin = plugin;
+		plugin.setApplication(this);~
 		init();
 	}
 	protected void init() {
 		JPanel p = new JPanel(new BorderLayout());
 		p.setBorder(new BevelBorder(/*...*/);
 		JButton button = new JButton();
-		button.setText(@plugin.getButtonText()@);
+		button.setText(~plugin.getButtonText()~);
 		p.add(button, BorderLayout.EAST);
 		textfield = new JTextField("");
-		textfield.setText(@plugin.getInitialText()@);
+		textfield.setText(~plugin.getInitialText()~);
 		textfield.setPreferredSize(new Dimension(200, 20));
 		p.add(textfield, BorderLayout.WEST);		
-		button.addActionListener(/*... @plugin.buttonClicked();@ ...*/);
+		button.addActionListener(~/*... plugin.buttonClicked(); ...*/~);
 		this.setContentPane(p);		
-		this.setTitle(@plugin.getApplicationTitle()@);
+		this.setTitle(~plugin.getApplicationTitle()~);
 		// ...
 	}
-	@public String getInput() {
+	~public String getInput() {
 		return textfield.getText();
-	}@
+	}~
 }
 \end{codetight}
 		\nextcolumn
@@ -239,12 +239,12 @@ public class CalcPlugin implements Plugin {
 			application implementation hidden from plug-in
 		\end{note}
 \begin{codetight}[basicstyle=\tiny]{}
-public class Application extends JFrame @implements InputProvider@ {
+public class Application extends JFrame ~implements InputProvider~ {
 	private Plugin plugin;
 	// ...
 	public Application(Plugin plugin) {
 		this.plugin = plugin;
-		@plugin.setInputProvider(this);@
+		~plugin.setInputProvider(this);~
 		init();
 	}
 	protected void init() {
@@ -278,22 +278,22 @@ public interface Plugin {
 	String getButtonText();
 	String getInitialText();
 	void buttonClicked();
-	@void setInputProvider(InputProvider p);@
+	~void setInputProvider(InputProvider p);~
 }
 \end{codetight}
 \begin{codetight}[basicstyle=\tiny]{}
 public class CalcPlugin implements Plugin {
-	@private InputProvider inputProvider;@
+	~private InputProvider inputProvider;~
 
 	public String getApplicationTitle() { /*...*/ }
 	public String getButtonText() { /*...*/ }
 	public String getInitialText() { /*...*/ }
 	public void buttonClicked() {
-		calculate(@inputProvider.getInput()@);
+		calculate(~inputProvider.getInput()~);
 	}
-	@public void setInputProvider(InputProvider p) {
+	~public void setInputProvider(InputProvider p) {
 		inputProvider = p;
-	}@
+	}~
 	private void calculate(String expression) {
 		/* calculate */
 	}
@@ -480,24 +480,24 @@ public class Application {
 	\begin{fancycolumns}
 \begin{codetight}[basicstyle=\tiny]{}
 public class Graph {
-	@private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();@
+	~private List<GraphPlugin> plugins = new ArrayList<GraphPlugin>();~
 	// ...	
-	@public void registerPlugin(GraphPlugin p){
+	~public void registerPlugin(GraphPlugin p){
 		plugins.add(p);
-	}@
+	}~
 	public void addNode(int id, Color c){
 		Node n = new Node(id);
-		@notifyAdd(n, c);@
+		~notifyAdd(n, c);~
 		nodes.add(n);
 	}
 	public void print() {
 		for (Node n : nodes) {
-			@notifyPrint(n);@
+			~notifyPrint(n);~
 			// ...
 		}
 		// ...
 	}
-	@private void notifyAdd(Node n, Color c) {
+	~private void notifyAdd(Node n, Color c) {
 		for (GraphPlugin p : plugins) {
 			p.aboutToAdd(n, c);
 		}
@@ -506,7 +506,7 @@ public class Graph {
 		for (GraphPlugin p : plugins) {
 			p.aboutToPrint(n);
 		}
-	}@
+	}~
 	// ...
 }
 \end{codetight}
