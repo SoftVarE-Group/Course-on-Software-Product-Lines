@@ -120,16 +120,16 @@ aspect Weighted {
 {\small
 \begin{codetight}{Anonymous Pointcut}
 aspect A1 {
-	after() : @execution(int MathUtil.twice(int))@ {
+	after() : ~execution(int MathUtil.twice(int))~ {
 		System.out.println("MathUtil.twice executed");
 	}
 }
 \end{codetight}			
 \begin{codetight}{Explicit Pointcut}
 aspect A2 {
-	@pointcut executeTwice() : 
-			execution(int MathUtil.twice(int));@
-	after() : @executeTwice()@ {
+	~pointcut executeTwice() : 
+			execution(int MathUtil.twice(int));~
+	after() : ~executeTwice()~ {
 		System.out.println("MathUtil.twice executed");
 	}
 }
@@ -142,7 +142,7 @@ aspect A2 {
 	\begin{fancycolumns}[animation=none]
 \begin{codetight}{Call of a method}
 aspect A1 {
-	after() : @call(int MathUtil.twice(int))@ {
+	after() : ~call(int MathUtil.twice(int))~ {
 		System.out.println("MathUtil.twice called");
 	}
 }
@@ -153,8 +153,8 @@ class Test {
 	public static void main(String[] args) {
 		MathUtil u = new MathUtil();
 		int i = 2;
-		@i = u.twice(i);@
-		@i = u.twice(i);@
+		~i = u.twice(i);~
+		~i = u.twice(i);~
 		System.out.println(i);
 	}
 }
@@ -179,7 +179,7 @@ aspect A1 {
 \end{codetight}
 \begin{codetight}{Constructor call}
 aspect A1 {
-	after() : @call(MathUtil.new())@ {
+	after() : ~call(MathUtil.new())~ {
 		System.out.println("MathUtil created");
 	}
 }
@@ -188,7 +188,7 @@ aspect A1 {
 \begin{codetight}{Base Program}
 class Test {
 	public static void main(String[] args) {
-		MathUtil u = @new MathUtil()@;
+		MathUtil u = ~new MathUtil()~;
 		int i = 2;
 		i = u.twice(i);
 		i = u.twice(i);
@@ -302,21 +302,21 @@ public class Test2 {
 	}
 }
 aspect AdviceTest {
-	@before()@: execution(void Test2.foo()) {
+	~before()~: execution(void Test2.foo()) {
 		System.out.println("before foo()");
 	}
-	@after()@: execution(void Test2.foo()) {
+	~after()~: execution(void Test2.foo()) {
 		System.out.println("after foo()");
 	}
-	@void around()@: execution(void Test2.foo()) {
+	~void around()~: execution(void Test2.foo()) {
 		System.out.println("around begin");
-		@proceed();@
+		~proceed();~
 		System.out.println("around end");
 	}
-	@after() returning ()@: execution(void Test2.foo()) {
+	~after() returning ()~: execution(void Test2.foo()) {
 		System.out.println("after returning from foo()");
 	}
-	@after() throwing (RuntimeException e)@: execution(void Test2.foo()) {
+	~after() throwing (RuntimeException e)~: execution(void Test2.foo()) {
 		System.out.println("after foo() throwing "+e);
 	}
 }
@@ -333,10 +333,10 @@ aspect AdviceTest {
 \begin{codetight}{}
 aspect A1 {
 	after() : call(int MathUtil.twice(int)) {
-		System.out.println(@thisJoinPoint@);
-		System.out.println(@thisJoinPoint.getSignature()@);
-		System.out.println(@thisJoinPoint.getKind()@);
-		System.out.println(@thisJoinPoint.getSourceLocation()@);
+		System.out.println(~thisJoinPoint~);
+		System.out.println(~thisJoinPoint.getSignature()~);
+		System.out.println(~thisJoinPoint.getKind()~);
+		System.out.println(~thisJoinPoint.getSourceLocation()~);
 	}
 }
 \end{codetight}
@@ -353,10 +353,10 @@ Test.java:5
 	\begin{fancycolumns}[widths={58},animation=none]
 \begin{codetight}{}
 aspect A1 {
-	pointcut execTwice(@int value@) :
-			execution(int MathUtil.twice(int)) && args(@value@);
-	after(@int value@) : execTwice(@value@) {
-		System.out.println("MathUtil.twice executed with parameter " + @value@);
+	pointcut execTwice(~int value~) :
+			execution(int MathUtil.twice(int)) && args(~value~);
+	after(~int value~) : execTwice(~value~) {
+		System.out.println("MathUtil.twice executed with parameter " + ~value~);
 	}
 }
 \end{codetight}
@@ -400,10 +400,10 @@ class MathUtil {
 	\nextcolumn
 \begin{codetight}{}
 aspect A1 {
-	pointcut P1(Main @s@, MathUtil @t@): 
+	pointcut P1(Main ~s~, MathUtil ~t~): 
 		call(* MathUtil.twice(*)) 
-		&& @this(s)@ 
-		&& @target(t)@;
+		&& ~this(s)~ 
+		&& ~target(t)~;
 }
 \end{codetight}	
 	\end{fancycolumns}
@@ -541,7 +541,7 @@ class Chess {
 	void drawKing() {...}
 	void drawQueen() {...}
 	void drawKnight() {...}
-	@void draw() {...}@ // new method matches pointcut!
+	~void draw() {...}~ // new method matches pointcut!
 }
 aspect UpdateDisplay {
 	pointcut drawn : execution(* draw*(..));

@@ -28,9 +28,9 @@
 		\sffamily
 		\begin{tikzpicture}
 			\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
-			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\uncover<3->{\tiny\color{red}Feature Diagram, \textbf{P1}}}};
-			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{red}Thoughts, Plain Text}};
-			\node (cfg) at (4,-2) [align=center] {Configuration Map\\[-1ex]{\tiny\color{red}Excel, Set of Sets}};
+			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\uncover<3->{\tiny\color{lecturered}Feature Diagram, \textbf{P1}}}};
+			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{lecturered}Thoughts, Plain Text}};
+			\node (cfg) at (4,-2) [align=center] {Configuration Map\\[-1ex]{\tiny\color{lecturered}Excel, Set of Sets}};
 
 			\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {toString} (nat);
 			\uncover<5->{\path [dotted, ->] (nat) edge[bend left] node[sloped,yshift=1mm] {\textbf{P3}} (fd);}
@@ -45,7 +45,7 @@
 			\path [->] (trans) edge node[yshift=1mm] {Automated Transformation} (trans2);
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
-			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{red}Concrete Format};
+			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{lecturered}Concrete Format};
 		\end{tikzpicture}
 
 		\begin{note}{Problems}
@@ -104,9 +104,9 @@ constraints
 		\sffamily
 		\begin{tikzpicture}
 			\tikzstyle{every edge}=[font=\tiny,draw,color=blue]
-			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\tiny\color{red}Feature Diagram, UVL}};
-			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{red}Thoughts, Plain Text}};
-			\node (cfg) at (4,-2) [align=center] {Configuration Map\\[-1ex]{\tiny\color{red}Excel, Set of Sets}};
+			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\tiny\color{lecturered}Feature Diagram, UVL}};
+			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{lecturered}Thoughts, Plain Text}};
+			\node (cfg) at (4,-2) [align=center] {Configuration Map\\[-1ex]{\tiny\color{lecturered}Excel, Set of Sets}};
 
 			\path [->] (fd) edge[bend left] node[sloped,yshift=1mm] {toString} (nat);
 			\path [dotted, ->] (nat) edge[bend left] node[sloped,yshift=1mm] {\textbf{P3}} (fd);
@@ -121,7 +121,7 @@ constraints
 			\path [->] (trans) edge node[yshift=1mm] {Automated Transformation} (trans2);
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
-			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{red}Concrete Format};
+			\node (bottomleft2) at (-0.2,-3.3) {\tiny\color{lecturered}Concrete Format};
 		\end{tikzpicture}
 	\nextcolumn
 		\begin{note}{Problems}
@@ -473,11 +473,11 @@ p cnf 5 8
 			\node (topleft) at (-1.4,0) {};
 			\node (bottomleft) at (-1.4,-4) {};
 			
-			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\tiny\color{red}Feature Diagram, UVL}};
-			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{red}Thoughts, Plain Text}};
-			\node (phi) at (2,-2) [align=center] {Formula\\[-1ex]{\tiny\color{red}Infix Notation}};
-			\node (cfg) at (4,-4) [align=center] {Configuration Map\\[-1ex]{\tiny\color{red}Excel, Set of Sets}};
-			\node (cnf) at (2,-4) [align=center] {CNF\\[-1ex]{\tiny\color{red}DIMACS}};
+			\node (fd) at (2,0) [align=center] {Feature Model\\[-1ex]{\tiny\color{lecturered}Feature Diagram, UVL}};
+			\node (nat) at (0,-2) [align=center] {Natural Language\\[-1ex]{\tiny\color{lecturered}Thoughts, Plain Text}};
+			\node (phi) at (2,-2) [align=center] {Formula\\[-1ex]{\tiny\color{lecturered}Infix Notation}};
+			\node (cfg) at (4,-4) [align=center] {Configuration Map\\[-1ex]{\tiny\color{lecturered}Excel, Set of Sets}};
+			\node (cnf) at (2,-4) [align=center] {CNF\\[-1ex]{\tiny\color{lecturered}DIMACS}};
 
 			\path [dashed, thick, ->] (topleft) edge node[left, rotate=90, yshift=2mm, xshift=10mm] {Loss of Structure} (bottomleft);
 		
@@ -500,7 +500,7 @@ p cnf 5 8
 			\path [->] (trans) edge node[yshift=1mm] {Automated Transformation} (trans2);
 			\path [dotted, ->] (trans3) edge[yshift=5mm] node[yshift=1mm] {Semi-Automated Transformation} (trans4);
 		
-			\node (bottomleft2) at (-0.2,-5) {\tiny\color{red}Concrete Format};
+			\node (bottomleft2) at (-0.2,-5) {\tiny\color{lecturered}Concrete Format};
 		\end{tikzpicture} % TODO would prefer another color for concrete formats, as they have nothing to do with the red boxes on thoses slides. what about green? needs to be changed consistently in all slides of this lecture
 	\nextcolumn
 		\begin{note}{Problems}

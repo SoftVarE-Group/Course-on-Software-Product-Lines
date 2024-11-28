@@ -110,17 +110,23 @@
 \end{frame}
 
 \newcommand{\pair}[2]{$#1 \wedge #2$ & $#1 \wedge \neg #2$ & $\neg #1 \wedge #2$ & $\neg #1 \wedge \neg #2$\\}
-%\newcommand{\redandgray}[1]{\only<#1-| handout:#1->{\color{black}}\only<#1| handout:#1>{\color{blue}}}
+%\newcommand{\redandgray}[1]{\only<#1-| handout:#1->{\color{black}}\only<#1| handout:#1>{\color{lectureblue}}}
 \newcommand{\epairone}[6]{
-	\alt<#5->{\textcolor{#3}{$#1 \wedge #2$}}{$#1 \wedge #2$} & 
-	\alt<#6->{\textcolor{#4}{$#1 \wedge \neg #2$}}{$#1 \wedge \neg #2$} & 
+	\alt<#5->{\textcolor{#3}{$\mathbf{#1} \wedge \mathbf{#2}$}}{$\mathbf{#1} \wedge \mathbf{#2}$} & 
+	\alt<#6->{\textcolor{#4}{$\mathbf{#1} \wedge \mathbf{\neg #2}$}}{$\mathbf{#1} \wedge \neg \mathbf{#2}$} & 
 }
 \newcommand{\epairtwo}[6]{
-	\alt<#5->{\textcolor{#3}{$\neg #1 \wedge #2$}}{$\neg #1 \wedge #2$} & 
-	\alt<#6->{\textcolor{#4}{$\neg #1 \wedge \neg #2$}}{$\neg #1 \wedge \neg #2$} \\
+	\alt<#5->{\textcolor{#3}{$\mathbf{\neg #1} \wedge \mathbf{#2}$}}{$\mathbf{\neg #1} \wedge \mathbf{#2}$} & 
+	\alt<#6->{\textcolor{#4}{$\mathbf{\neg #1} \wedge \mathbf{\neg #2}$}}{$\mathbf{\neg #1} \wedge \mathbf{\neg #2}$} \\
 }
 
 \begin{frame}[label=PairwiseCoverage]{Pairwise Coverage \deutschertitel{Paarweise Überdeckung}}
+	\definecolor{interactionA}{RGB}{178,24,43}
+	\definecolor{interactionB}{RGB}{239,138,98}
+	\definecolor{interactionC}{RGB}{128,128,128}
+	\definecolor{interactionD}{RGB}{0,0,0}
+	\definecolor{interactionE}{RGB}{103,169,207}
+	\definecolor{interactionF}{RGB}{33,102,172}
 	\begin{fancycolumns}[animation=none]
 		\centering
 		\alt<1>{\featureDiagramConfigurableDatabase}{%
@@ -144,32 +150,32 @@
 		\begin{example}{Pairwise Interactions}
 			\centering\footnotesize\color{lightgray}
 			\begin{tabular}{llll}				
-				\epairone{G}{P}{green}{orange}{7}{6}\epairtwo{G}{P}{red}{black!50}{5}{10}
-				\epairone{G}{D}{orange}{green}{6}{7}\epairtwo{G}{D}{red}{black}{5}{9}
-				\epairone{G}{T}{green}{orange}{7}{6}\epairtwo{G}{T}{red}{black}{5}{9}
-				\epairone{G}{W}{blue}{orange}{8}{6}\epairtwo{G}{W}{red}{black!50}{5}{10}
-				\epairone{G}{L}{orange}{blue}{6}{8}\epairtwo{G}{L}{black!50}{red}{10}{5}
-				\epairone{P}{D}{red}{green}{5}{7}\epairtwo{P}{D}{orange}{blue}{6}{8}
-				\epairone{P}{T}{red}{black}{5}{9}\epairtwo{P}{T}{black!50}{orange}{10}{6}
-				\epairone{P}{W}{red}{green}{5}{7}\epairtwo{P}{W}{blue}{orange}{8}{6}
-				\epairone{P}{L}{green}{red}{7}{5}\epairtwo{P}{L}{orange}{blue}{6}{8}
-				\epairone{D}{T}{red}{orange}{5}{6}\epairtwo{D}{T}{green}{blue}{7}{8}
-				\epairone{D}{W}{red}{orange}{5}{6}\epairtwo{D}{W}{blue}{green}{8}{7}
-				\epairone{D}{L}{orange}{red}{6}{5}\epairtwo{D}{L}{green}{blue}{7}{8}
-				\epairone{T}{W}{red}{green}{5}{7}\epairtwo{T}{W}{blue}{orange}{8}{6}
-				\epairone{T}{L}{green}{red}{7}{5}\epairtwo{T}{L}{orange}{blue}{6}{8}
-				&  \alt<6->{\textcolor{orange}{$L \wedge \neg W$}}{$L \wedge \neg W$} & \alt<5->{\textcolor{red}{$\neg L \wedge W$}}{$\neg L \wedge W$} & \\
+				\epairone{G}{P}{interactionC}{interactionB}{7}{6}\epairtwo{G}{P}{interactionA}{interactionF}{5}{10}
+				\epairone{G}{D}{interactionB}{interactionC}{6}{7}\epairtwo{G}{D}{interactionA}{interactionE}{5}{9}
+				\epairone{G}{T}{interactionC}{interactionB}{7}{6}\epairtwo{G}{T}{interactionA}{interactionE}{5}{9}
+				\epairone{G}{W}{interactionD}{interactionB}{8}{6}\epairtwo{G}{W}{interactionA}{interactionF}{5}{10}
+				\epairone{G}{L}{interactionB}{interactionD}{6}{8}\epairtwo{G}{L}{interactionF}{interactionA}{10}{5}
+				\epairone{P}{D}{interactionA}{interactionC}{5}{7}\epairtwo{P}{D}{interactionB}{interactionD}{6}{8}
+				\epairone{P}{T}{interactionA}{interactionE}{5}{9}\epairtwo{P}{T}{interactionF}{interactionB}{10}{6}
+				\epairone{P}{W}{interactionA}{interactionC}{5}{7}\epairtwo{P}{W}{interactionD}{interactionB}{8}{6}
+				\epairone{P}{L}{interactionC}{interactionA}{7}{5}\epairtwo{P}{L}{interactionB}{interactionD}{6}{8}
+				\epairone{D}{T}{interactionA}{interactionB}{5}{6}\epairtwo{D}{T}{interactionC}{interactionD}{7}{8}
+				\epairone{D}{W}{interactionA}{interactionB}{5}{6}\epairtwo{D}{W}{interactionD}{interactionC}{8}{7}
+				\epairone{D}{L}{interactionB}{interactionA}{6}{5}\epairtwo{D}{L}{interactionC}{interactionD}{7}{8}
+				\epairone{T}{W}{interactionA}{interactionC}{5}{7}\epairtwo{T}{W}{interactionD}{interactionB}{8}{6}
+				\epairone{T}{L}{interactionC}{interactionA}{7}{5}\epairtwo{T}{L}{interactionB}{interactionD}{6}{8}
+				&  \alt<6->{\textcolor{interactionB}{$\mathbf{L} \wedge \mathbf{\neg W}$}}{$\mathbf{L} \wedge \mathbf{\neg W}$} & \alt<5->{\textcolor{interactionA}{$\mathbf{\neg L} \wedge \mathbf{W}$}}{$\mathbf{\neg L} \wedge \mathbf{W}$} & \\
 			\end{tabular} 
 		\end{example}
 		\pause
 		\begin{example}{Pairwise Coverage with Six Configurations}
 			\footnotesize\color{lightgray}
-			\alt<5->{\textcolor{red}{$\{C,P,D,T,W\}$}}{$\{C,P,D,T,W\}$}\\
-			\alt<6->{\textcolor{orange}{$\{C,G,D,L\}$}}{$\{C,G,D,L\}$}\\
-			\alt<7->{\textcolor{green}{$\{C,G,P,T,L\}$}}{$\{C,G,P,T,L\}$}\\
-			\alt<8->{\textcolor{blue}{$\{C,G,W\}$}}{$\{C,G,W\}$}\\
-			\alt<9->{\textcolor{black}{$\{C,P,W\}$}}{$\{C,P,W\}$}\\
-			\alt<10->{\textcolor{black!50}{$\{C,D,T,L\}$}}{$\{C,D,T,L\}$}\\
+			\alt<5->{\textcolor{interactionA}{$\mathbf{\{C,P,D,T,W\}}$}}{$\mathbf{\{C,P,D,T,W\}}$}\\
+			\alt<6->{\textcolor{interactionB}{$\mathbf{\{C,G,D,L\}}$}}{$\mathbf{\{C,G,D,L\}}$}\\
+			\alt<7->{\textcolor{interactionC}{$\mathbf{\{C,G,P,T,L\}}$}}{$\mathbf{\{C,G,P,T,L\}}$}\\
+			\alt<8->{\textcolor{interactionD}{$\mathbf{\{C,G,W\}}$}}{$\mathbf{\{C,G,W\}}$}\\
+			\alt<9->{\textcolor{interactionE}{$\mathbf{\{C,P,W\}}$}}{$\mathbf{\{C,P,W\}}$}\\
+			\alt<10->{\textcolor{interactionF}{$\mathbf{\{C,D,T,L\}}$}}{$\mathbf{\{C,D,T,L\}}$}\\
 		\end{example}
 	\end{fancycolumns}
 \end{frame}
