@@ -51,13 +51,15 @@ make_overview () {
     latexmk -quiet -silent -pdf -pdflatex="$latexmk" spl.tex
     latexmk -quiet -silent -c spl.tex
     rm spl.*.vrb
-    mv -f spl.pdf ${outpath}spl.pdf
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=${outpath}spl.pdf spl.pdf
+    mv -f spl.pdf ${outpath}spl_uncompressed.pdf
 
     latexmk="pdflatex %O -interaction=batchmode -synctex=1 -halt-on-error \"\def\ismake{}\def\ishandout{}\def\isdarkmode{}\def\university{${university}}\input{%S}\""
     latexmk -quiet -silent -pdf -pdflatex="$latexmk" spl.tex
     latexmk -quiet -silent -c spl.tex
-    cp -f spl.pdf ${outpath}spl-dark.pdf
     rm spl.*.vrb
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=${outpath}spl-dark.pdf spl.pdf
+    cp -f spl.pdf ${outpath}spl-dark_uncompressed.pdf
 }
 
 make_full_overview () {
