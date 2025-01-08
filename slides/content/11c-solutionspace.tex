@@ -32,10 +32,9 @@
 	}
 	\pause
 	\begin{itemize}
-		\item<+-> Line~29: compiler error (i.e., field \texttt{dreq} undefined) %for partial configuration $(\{FIFO\},\{DirectedCall\})$ / 
-		when $FIFO \pand \pnot DirectedCall$
-		\item<+-> Line~8: null pointer exception %for partial configuration $(\{DirectedCall\},\{FIFO\})$ / 
-		when $DirectedCall \pand \pnot FIFO$
+		\item<+-> Line~29: compiler error when $FIFO$: field \texttt{dreq} undefined
+		\item<+-> Line~29: compiler error when $FIFO \pand \pnot DirectedCall$: method \texttt{callButtonsNextState} undefined
+		\item<+-> Line~8: runtime error when $DirectedCall \pand \pnot FIFO$: null pointer exception
 		\item<+-> both problems detectable with pairwise coverage, but presence conditions are more complicated in practice
 		\item<+-> also: pairwise coverage often too much effort for large configuration spaces / continuous integration
 	\end{itemize}
