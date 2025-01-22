@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")
 university=ulm

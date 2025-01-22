@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 # Cloned and owned from compile_paderborn.sh and simplified for my (Elias) needs.
 
 lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")

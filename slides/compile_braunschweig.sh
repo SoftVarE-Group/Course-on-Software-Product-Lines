@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 # Usage
 #   ./compile_braunschweig.sh -options <nr>
 # where options is a string consisting of the characters l, o, f, r
