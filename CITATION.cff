@@ -26,7 +26,8 @@ preferred-citation:
     given-names: "Timo"
     orcid: "https://orcid.org/0000-0002-2582-5557"
   doi: 10.1145/3715340.3715441
-  booktitle: "Proc.\ Int'l Working Conf.\ on Variability Modelling of Software-Intensive Systems (VaMoS)"
+  conference:
+    name: "Proc.\ Int'l Working Conf.\ on Variability Modelling of Software-Intensive Systems (VaMoS)"
   month: 2
   # start: 1 # First page number
   # end: 10 # Last page number
