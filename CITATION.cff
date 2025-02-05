@@ -14,7 +14,7 @@ title: "Teach Variability! A Modern University Course on Software Product Lines"
 doi: 10.1145/3715340.3715441
 url: "https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines"
 preferred-citation:
-  type: inproceedings
+  type: conference-paper
   authors:
   - family-names: "Kuiter"
     given-names: "Elias"
