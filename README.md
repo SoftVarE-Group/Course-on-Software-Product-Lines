@@ -6,7 +6,7 @@
 * [LaTeX Exercises](https://github.com/SoftVarE-Group/Course-on-Software-Product-Lines-Exercises): Material for exercises on software product lines (available on request)
 * [PDF Slides](https://github.com/SoftVarE-Group/Slides-of-the-SPL-Course): Released version of slides for the lecture on software product lines
 * [Recordings](https://www.youtube.com/playlist?list=PL4hJhdKDPIxha8So7muX2zfNUU8NBoiu3): YouTube playlist with lecture recordings
-* VaMoS'25 Paper: [PDF](https://raw.githubusercontent.com/SoftVarE-Group/Papers/main/2025/2025-VaMoS-Kuiter.pdf) | [DOI](https://doi.org/10.1145/3715340.3715441) | [Slides](https://raw.githubusercontent.com/SoftVarE-Group/Slides/main/2025/2025-02-04-VaMoS-SPL-Course.pdf) | [Artifact](https://doi.org/10.5281/zenodo.14417094)
+* VaMoS'25 Paper: [PDF](https://raw.githubusercontent.com/SoftVarE-Group/Papers/main/2025/2025-VaMoS-Kuiter.pdf) | [DOI](https://doi.org/10.1145/3715340.3715441) | [Slides](https://raw.githubusercontent.com/SoftVarE-Group/Slides/main/2025/2025-02-04-VaMoS-SPL-Course.pdf) | [Artifact](https://doi.org/10.5281/zenodo.14417094) | [Best Paper Award](https://raw.githubusercontent.com/SoftVarE-Group/Papers/main/2025/2025-VaMoS-Kuiter-BestPaperCertificate.pdf)
 
 
 *If you have any feedback, please contact [Thomas Thüm](mailto:t.thuem@tu-braunschweig.de).*
