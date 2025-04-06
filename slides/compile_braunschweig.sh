@@ -19,6 +19,11 @@ semester=2024w
 archive_path="../../SPL-Slide-Archive/"
 slide_path="../../SPL-Slides/${semester}t/"
 
+compress_slides () {
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=${outpath}${slides_name}.pdf ${slides_name}.pdf
+    mv -f ${slides_name}.pdf ${outpath}${slides_name}_uncompressed.pdf
+}
+
 make_lecture () {
 	outpath="${archive_path}${semester}-${university^}/"
     latexmk -quiet -silent -C ${TEXFILE}
