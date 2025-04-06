@@ -14,7 +14,7 @@
 
 lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")
 university=braunschweig
-semester=2024w
+semester=2025s
 
 archive_path="../../SPL-Slide-Archive/"
 slide_path="../../SPL-Slides/${semester}t/"
