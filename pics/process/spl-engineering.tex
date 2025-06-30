@@ -1,0 +1,134 @@
+% The sple graphic is a product line with two features:
+\newif\ifSpleHighlightCustomDevelopment{}
+\newif\ifSpleHighlightProblemAndSolutionSpace{}
+
+% default configuration
+\SpleHighlightCustomDevelopmenttrue{}
+\SpleHighlightProblemAndSolutionSpacetrue{}
+
+\newcommand{\spleboxwidth}{2.5cm}
+\newcommand{\spleboxheight}{1.5cm}
+\newcommand{\deaeText}[1]{#1}%% empty command as hook for extension
+\newcommand{\spleboxcontent}[1]{\parbox{\spleboxwidth}{\centering\deaeText{#1}}}
+
+\definecolor{solutioncolor}{RGB}{128 128 128}
+\tikzstyle{spleboxsize}=[minimum width=\spleboxwidth, minimum height=\spleboxheight]
+\tikzstyle{smallspleboxsize}=[minimum width=0.4*\spleboxwidth, minimum height=0.4*\spleboxwidth]
+\tikzstyle{boxed}=[draw, rectangle, black]
+\tikzstyle{splebox}=[spleboxsize, boxed, fill=white]
+\tikzstyle{smallsplebox}=[smallspleboxsize, boxed, font={\footnotesize}]
+\tikzstyle{deaebox}=[boxed, align=right, inner sep=30pt]
+\tikzstyle{label}=[font={\footnotesize}] %% Configure size of edge labels here
+\tikzstyle{deaeEdge}=[]
+\tikzstyle{deaeCustomDevBox}=[]
+\tikzstyle{deaeCustomDevEdge}=[]
+\tikzstyle{bigtip}=[-{Stealth[length=3mm, width=2mm]}]
+
+%%% CUSTOM STUFF FOR EXAM BEGIN:
+%%% These are the things you want to remove when reusing this diagram in the lecture or elsewhere.
+%%% There is also some few "ifsolution" macros and alike later in this file which can easily be removed.
+%% Only show box labels in solution.
+\renewcommand{\deaeText}[1]{{#1}}
+\tikzstyle{deaeEdge}=[color=solutioncolor]
+
+\ifSpleHighlightCustomDevelopment%
+  \tikzstyle{deaeCustomDevBox}=[draw=solutioncolor]
+  \tikzstyle{deaeCustomDevEdge}=[color=solutioncolor]
+\fi
+%%% CUSTOM STUFF FOR EXAM END
+
+\sffamily\large
+\vspace*{7ex}
+\hspace*{-4ex}
+\scalebox{0.55}{
+\begin{tikzpicture}
+  %%% === DOMAIN ENGINEERING ===
+  %%% inner boxes
+  \node[splebox] (da) at ( 0,5) {\spleboxcontent{Domain\\ Analysis}};
+  \node[splebox] (dd) at ( 5,5) {\spleboxcontent{Domain\\ Design}};
+  \node[splebox] (di) at (10,5) {\spleboxcontent{Domain\\ Implementation}};
+  \node[splebox] (dt) at (15,5) {\spleboxcontent{Domain\\ Testing}};
+
+  %%% outer box
+  \node[deaebox, fit=(da)(dd)(di)(dt)] (de) {};
+  \node[anchor=north west] (delabel) at (de.north west) {\deaeText{Domain Engineering}};
+
+  %%% === APPLICATION ENGINEERING ===
+  %%% inner boxes
+  \node[splebox] (aa) at ( 0,0) {\spleboxcontent{Application\\ Analysis}};
+  \node[splebox] (ad) at ( 5,0) {\spleboxcontent{Application\\ Design}};
+  \node[splebox] (ai) at (10,0) {\spleboxcontent{Application\\ Implementation}};
+  \node[splebox] (at) at (15,0) {\spleboxcontent{Application\\ Testing}};
+
+  %%% outer box
+  \node[deaebox, fit=(aa)(aa)(ai)(at)] (ae) {};
+  \node[anchor=north west] (aelabel) at (ae.north west) {\deaeText{Application Engineering}};
+
+  %%% === REQUIREMENTS ===
+  \node[left=of de, splebox] (plr) {\spleboxcontent{Product-Line\\ Requirements}};
+  \node[left=of ae, splebox] (pr)  {\spleboxcontent{Product\\ Requirements}};
+
+  %%% === VARIANT ===
+  \node[right=of ae, splebox] (product) {\spleboxcontent{Product}};
+
+    \path[->, draw, bigtip]
+      (plr) edge[deaeEdge] node[label, above] {} (de)
+      (pr)  edge[deaeEdge] node[label, above] {} (ae)
+
+      (da) edge[deaeEdge] node[label, above] {Feature Model} (dd)
+      (dd) edge[deaeEdge] node[label, above] {} (di)
+      (di) edge[deaeEdge] node[label, above] {} (dt)
+
+      (aa) edge[deaeEdge] node[label, above] {Configuration} (ad)
+      (ad) edge[deaeEdge] node[label, above] {} (ai)
+      (ai) edge[deaeEdge] node[label, above] {} (at)
+
+      (da) edge[deaeEdge] node[label, left] {} (aa)
+      (dd) edge[deaeEdge] node[label, left] {} (ad)
+      (di) edge[deaeEdge] node[label, left] {} (ai)
+      (dt) edge[deaeEdge] node[label, left] {} (at)
+
+      (aa) edge[deaeEdge, bend left=40] node[label, left] {} (da)
+    ;
+
+    %% Edge from AE to DE
+    \draw[->, deaeEdge, bigtip]
+      ($(ae.north east) + (-0.5, 0)$) -- node[midway, label, right]
+      {%label goes here
+      }
+      ($(de.south east) + (-0.5, 0)$)
+    ;
+
+    %% Edge to Product / Variant
+    \draw[->, deaeEdge, bigtip]
+      (ae) -- node[midway, label, above]
+      {%label goes here
+      }
+      (product)
+    ;
+
+  %%% The little "custom" boxes
+  \ifSpleHighlightCustomDevelopment%
+  \begin{scope}[on background layer]
+    {
+      \node[smallsplebox, deaeCustomDevBox] (adcustom) at (ad.north east) {};
+      \node[smallsplebox, deaeCustomDevBox] (aicustom) at (ai.north east) {};
+      \node[smallsplebox, deaeCustomDevBox] (atcustom) at (at.north east) {};
+      \path[->,draw]
+        (aa)       edge[deaeCustomDevEdge, bend left=20] node[label, above] {} (adcustom)
+        (adcustom) edge[deaeCustomDevEdge, bend left=20] node[label, above] {} (aicustom)
+        (aicustom) edge[deaeCustomDevEdge, bend left=20] node[label, above] {} (atcustom)
+        ;
+    }
+  \end{scope}
+  \fi
+
+  \ifSpleHighlightProblemAndSolutionSpace{
+    \node[yshift=+3cm] (spacesTop) at ($(da)!0.5!(dd)$) {};
+    \node[yshift=-3cm] (spacesBot) at ($(aa)!0.5!(ad)$) {};
+    \node[left  = of spacesTop, anchor = north east] {problem space};
+    \node[right = of spacesTop, anchor = north west] {solution space};
+    \draw (spacesTop) -- (spacesBot);
+  }\fi
+\end{tikzpicture}
+}

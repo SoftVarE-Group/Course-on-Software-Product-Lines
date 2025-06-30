@@ -65,33 +65,7 @@
 
 % terms used in the remainder are mostly taken from \sple and some from \fospl
 \begin{frame}[label=DomainAndApplicationEngineeringDiagram]
-	\footnotesize%
-	\begin{fancycolumns}[columns=3,widths={10,70,10},animation=none]
-		\renewcommand{\projectcartoonwidth}{1}\projectcartoon{01}{Product-Line Requirements}
-	\nextcolumn
-		\begin{note}{Domain Engineering}
-			\renewcommand{\projectcartoonwidth}{.15}%
-			\projectcartoon{02}{Domain Analysis}%
-			\projectcartoon{03}{Domain Design}%
-			\projectcartoon{04}{Domain Implementation}%
-			\projectcartoon{05}{Domain Testing}
-		\end{note}
-	\nextcolumn
-	\end{fancycolumns}
-	\pause
-	\begin{fancycolumns}[columns=3,widths={10,70,10},animation=none]
-		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{01}{Product Requirements}
-	\nextcolumn
-		\begin{note}{Application Engineering}
-			\renewcommand{\projectcartoonwidth}{.15}%
-			\hprojectcartoon{02}{Application Analysis}%
-			\hprojectcartoon{03}{Application Design}%
-			\hprojectcartoon{04}{Application Implementation}%
-			\hprojectcartoon{05}{Application Testing}
-		\end{note}
-	\nextcolumn
-		\renewcommand{\projectcartoonwidth}{1}\hprojectcartoon{13}{Product}
-	\end{fancycolumns}
+	\input{../pics/process/spl-engineering}
 \end{frame}
 
 \subsection{Analysis and Design}
