@@ -3,7 +3,7 @@
 
 lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")
 university=magdeburg
-semester=2024w
+semester=2025w
 
 archive_path="$(dirname "$0")/../../teaching-spl-archive/"
 
