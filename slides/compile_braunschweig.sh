@@ -14,7 +14,7 @@
 
 lecture_names=("introduction" "runtime" "cloneandown" "modeling" "conditional" "modular" "languages" "process" "interactions" "analyses" "testing" "evonance")
 university=braunschweig
-semester=2025s
+semester=2025w
 
 archive_path="../../SPL-Slide-Archive/"
 slide_path="../../SPL-Slides/${semester}t/"
@@ -33,11 +33,13 @@ make_lecture () {
 
     make ${lecture}.pdf university=${university} handout=y darkmode=n
     rm ${lecture}.*.vrb
-    mv -f ${lecture}.pdf ${outpath}${lecture}.pdf
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=${outpath}${lecture}.pdf ${lecture}.pdf
+    mv -f ${lecture}.pdf ${outpath}${lecture}_uncompressed.pdf
 
     make ${lecture}.pdf university=${university} handout=y darkmode=y
     rm ${lecture}.*.vrb
-    cp -f ${lecture}.pdf ${outpath}${lecture}-dark.pdf
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=${outpath}${lecture}-dark.pdf ${lecture}.pdf
+    cp -f ${lecture}.pdf ${outpath}${lecture}-dark_uncompressed.pdf
 }
 
 make_overview () {
