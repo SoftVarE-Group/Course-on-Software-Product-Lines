@@ -193,7 +193,7 @@ class ColorMapping { /* ... */ }
 	\begin{fancycolumns}[b,widths={60},animation=none]
 \begin{codetight}{}
 public class Graph {
-	private List<Node> nodes = new ArrayList<Node>();
+	private List<Node> nodes = new ArrayList<>();
 	public Node add() {
 		Node n = null;
 		@if (Config.COLORED) {
@@ -280,7 +280,8 @@ public class Node {
 \begin{frame}{The Library Scaling Problem}
 	\begin{fancycolumns}[animation=none]
 		\begin{exampletight}{Decomposition and Reuse}
-			\picDark[width=\linewidth]{tangram} % TODO source? license?
+			\only<1>{\picDark[width=\linewidth]{tangram}} % TODO source? license?
+			\only<2->{\picDark[width=\linewidth]{tg1}} % TODO source? license?
 		\end{exampletight}
 	\nextcolumn
 		\begin{definition}{What is the optimal size of a component?}
@@ -289,6 +290,7 @@ public class Node {
 				\item small components (horizontal scaling):\\limited payoff for component integrators
 			\end{itemize}
 		\end{definition}
+		\pause
 		\pause
 		\begin{note}{Practical Compromise}
 			\begin{itemize}
